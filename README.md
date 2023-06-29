@@ -33,27 +33,18 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - Caching: Vercel K/V Redis
 
 # Neurocache Hub setup steps:
-1. **Install Dependencies**
-   - Install Jest for testing: `pnpm add --save-dev jest`.
-   - Install Clerk for user authentication: `pnpm add @clerk/clerk-nextjs @clerk/clerk-react`.
-
-2. **Configure Clerk**
-   - Set up your Clerk application using the Clerk dashboard.
-   - Configure your `.env.local` file with the required environment variables, including your Clerk Frontend API (`CLERK_FRONTEND_API`), and Next.js secret (`NEXT_PUBLIC_CLERK_FRONTEND_API`).
-
-3. **Database Setup**
+## Database Setup
    - Set up a Postgres database with Vercel following the [official guide](https://vercel.com/integrations/postgres).
    - In your `.env.local` file, provide your database url in the `DATABASE_URL` variable.
 
-4. **Running the App Locally**
+## Running the App Locally
    - Run the development server: `pnpm dev`. The application will be available at `http://localhost:3000`.
 
-## Deploy to Production
-1. **Vercel Setup**
+## Vercel Setup
    - Sign up or log in to Vercel.
    - Link your GitHub repository with your Vercel project.
    - Add the necessary environment variables in the Vercel dashboard.
 
-2. **Deploy**
+## Deploy
    - Every time you push to your specified production branch (commonly `main` or `master`), Vercel will create a new deployment.
    - You can then view your application live from the provided url.
