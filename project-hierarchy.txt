@@ -1,0 +1,23 @@
+neurocache-hub
+├─ .eslintrc.json
+├─ .gitignore
+├─ .vscode
+│  └─ tasks.json
+├─ next-env.d.ts
+├─ next.config.js
+├─ package.json
+├─ pnpm-lock.yaml
+├─ postcss.config.js
+├─ project-hierarchy.txt
+├─ public
+│  ├─ next.svg
+│  └─ vercel.svg
+├─ README.md
+├─ src
+│  └─ app
+│     ├─ favicon.ico
+│     ├─ globals.css
+│     ├─ layout.tsx
+│     └─ page.tsx
+├─ tailwind.config.js
+└─ tsconfig.json
