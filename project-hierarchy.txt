@@ -1,6 +1,12 @@
 neurocache-hub
+├─ .env.development.local
+├─ .env.local
 ├─ .eslintrc.json
+├─ .example.env
 ├─ .gitignore
+├─ .vercel
+│  ├─ project.json
+│  └─ README.txt
 ├─ .vscode
 │  └─ tasks.json
 ├─ next-env.d.ts
@@ -15,6 +21,12 @@ neurocache-hub
 ├─ README.md
 ├─ src
 │  └─ app
+│     ├─ api
+│     │  └─ book-library
+│     │     ├─ add
+│     │     │  └─ route.ts
+│     │     └─ get-by-id
+│     │        └─ route.ts
 │     ├─ favicon.ico
 │     ├─ globals.css
 │     ├─ layout.tsx
