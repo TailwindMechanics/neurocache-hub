@@ -23,6 +23,7 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - Framework: Next.js
 - State Management: Redux
 - Styles: Tailwind.css
+- UI Library: Flowbite
 - Routing: Built-in with Next.js
 - User Authentication: Clerk
 - Testing: Jest
