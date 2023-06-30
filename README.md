@@ -73,6 +73,7 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 
 
 
+
 Public Home Page
 This is the landing page that all users see when they first visit your site. It typically includes information about the application, user testimonials, pricing info (if applicable), and a login/signup form. Since you're using Clerk for authentication, you can use their SignIn component to handle the login functionality.
 

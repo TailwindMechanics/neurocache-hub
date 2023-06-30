@@ -1,36 +1,33 @@
 // src\app\api\book-library\get-by-id\route.ts
-import { NextApiRequest, NextApiResponse } from "next";
-import { sql } from "@vercel/postgres";
-import { z } from "zod";
-
+import { db } from '@vercel/postgres';
+import { z } from 'zod';
 
 // Define the schema of the request query
 const getBookValidator = z.object({
   id: z.string(),
 });
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: Request) {
   try {
-    const { id } = getBookValidator.parse(req.query);
+    const query = new URLSearchParams(req.url?.split('?')[1]);
+    const { id } = getBookValidator.parse({ id: query.get('id') });
 
-    // Get the book from the database
-    const { rows } = await sql`
-      SELECT * FROM books
-      WHERE id=${id}`;
+    const client = await db.connect();
+    const { rows } = await client.sql`SELECT * FROM books WHERE id=${id}`;
 
     if (rows.length === 0) {
-      res.status(404).json({ message: "No book found with this ID." });
-      return;
+      return new Response(`No book found with this ID ${id}.`, { status: 404 });
     }
 
     // Return the found book
-    res.status(200).json(rows[0]);
+    const book = rows[0];
+    return new Response(JSON.stringify(book), { status: 200 });
+
   } catch (error) {
     if (error instanceof z.ZodError) {
-      res.status(422).json({ message: "Invalid request query" });
-      return;
+      return new Response(`${error}`, { status: 422 });
     }
 
-    res.status(400).json({ message: "Invalid request" });
+    return new Response(`${error}`, { status: 400 });
   }
 }
