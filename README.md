@@ -34,57 +34,20 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - Caching: Vercel K/V Redis
 
 # Neurocache Hub setup steps:
-## Vercel Database Setup
-1. **Set up a Postgres Database**
-   - Set up a Postgres database with Vercel following the [official guide](https://vercel.com/integrations/postgres).
+### DaisyUI setup:
+    1. Install DaisyUI using npm or pnpm.
+    2. Enable DaisyUI in your Tailwind CSS config.
+    3. Customize the DaisyUI theme as needed.
 
-2. **Configure your `.env.local` File**
-   - In your `.env.local` file, provide your database URL in the `DATABASE_URL` variable. This should look something like this:
-```shell
-     DATABASE_URL=your_postgres_database_url
-```
-   - Replace `your_postgres_database_url` with the Postgres database URL you got from the Vercel database setup.
+### Public Home Page
+    1. Set up a landing page which includes information about the application, user testimonials, and pricing info if applicable.
+    2. Include a login/signup form using Clerk's `SignIn` component.
 
-## Vercel Redis K/V Setup
-1. **Set up a Redis K/V Store**
-   - Set up a Redis K/V store with Vercel following the [official guide](https://vercel.com/docs/solutions/databases#redis).
+### Authenticated Pages
+    1. Set up pages that are only visible to logged-in users.
+    2. Use Clerk's `useUser` hook to check if a user is logged in. This can be used to protect the authenticated routes. For example:
 
-2. **Configure your `.env.local` File**
-   - In your `.env.local` file, add your Redis URL in the `REDIS_URL` variable. This should look something like this:
-     ```
-     REDIS_URL=your_redis_url
-     ```
-   - Replace `your_redis_url` with the Redis URL you got from the Vercel Redis setup.
-
-## Running the App Locally
-1. **Run the Development Server**
-   - In your terminal, navigate to the project directory and run the development server using `pnpm dev`. The application will be available at `http://localhost:3000`.
-
-## Deploy
-1. **Push to Production Branch**
-   - Every time you push to your specified production branch (commonly `main` or `master`), Vercel will create a new deployment.
-
-2. **View Live Application**
-   - You can then view your application live from the provided URL in the Vercel dashboard.
-
-3. **Add Environment Variables**
-   - In the Vercel dashboard, find your project and select `Settings > Environment Variables`.
-   - Add the necessary environment variables such as `CLERK_FRONTEND_API`, `NEXT_PUBLIC_CLERK_FRONTEND_API`, `DATABASE_URL`, and `REDIS_URL`.
-
-
-
-
-
-Public Home Page
-This is the landing page that all users see when they first visit your site. It typically includes information about the application, user testimonials, pricing info (if applicable), and a login/signup form. Since you're using Clerk for authentication, you can use their SignIn component to handle the login functionality.
-
-Authenticated Pages
-These pages are only visible to users who have logged in. Clerk provides a useUser hook that allows you to check if a user is logged in, which can be used to protect these routes.
-
-Here's an example of how you can use it:
-
-javascript
-Copy code
+```javascript
 import { useRouter } from "next/router";
 import { useUser } from "@clerk/clerk-react";
 
@@ -99,8 +62,10 @@ export default function AuthenticatedPage() {
 
   // Rest of your authenticated page component
 }
-For navigation between these pages, you'll probably want to set up a navigation bar that includes links to the authenticated pages (which only appear once a user is logged in), as well as a logout button (you can use Clerk's SignOutButton component for this).
+```
+   3. Set up a navigation bar that includes links to the authenticated pages, which should only appear once a user is logged in.
+   4. Include a logout button using Clerk's SignOutButton component.
 
-Don't forget to make sure that any links to authenticated pages are only visible to logged-in users!
-
-Also, make sure you check out the Clerk documentation for more detailed instructions and examples.
+### Remember:
+   - Ensure that any links to authenticated pages are only visible to logged-in users.
+   - Refer to the Clerk documentation for more detailed instructions and examples.
