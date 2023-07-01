@@ -20,17 +20,20 @@ neurocache-hub
 │  └─ vercel.svg
 ├─ README.md
 ├─ src
-│  └─ app
-│     ├─ api
-│     │  ├─ (swagger-docs)
-│     │  └─ book-library
-│     │     ├─ add
-│     │     │  └─ route.ts
-│     │     └─ get-by-id
-│     │        └─ route.ts
-│     ├─ favicon.ico
-│     ├─ globals.css
-│     ├─ layout.tsx
-│     └─ page.tsx
+│  ├─ app
+│  │  ├─ api
+│  │  │  └─ book-library
+│  │  │     ├─ add
+│  │  │     │  └─ route.ts
+│  │  │     ├─ get-by-id
+│  │  │     │  └─ route.ts
+│  │  │     └─ list
+│  │  │        └─ route.ts
+│  │  ├─ favicon.ico
+│  │  ├─ globals.css
+│  │  ├─ layout.tsx
+│  │  └─ page.tsx
+│  └─ types
+│     └─ index.ts
 ├─ tailwind.config.js
 └─ tsconfig.json
