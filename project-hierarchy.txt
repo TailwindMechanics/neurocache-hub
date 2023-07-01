@@ -25,9 +25,7 @@ neurocache-hub
 │  │  │  └─ book-library
 │  │  │     ├─ add
 │  │  │     │  └─ route.ts
-│  │  │     ├─ get-by-id
-│  │  │     │  └─ route.ts
-│  │  │     └─ list
+│  │  │     └─ get-by-id
 │  │  │        └─ route.ts
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
