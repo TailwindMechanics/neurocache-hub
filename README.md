@@ -33,20 +33,20 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - Database: Vercel Postgres
 - Caching: Vercel K/V Redis
 - 3d Package: React Three Fiber
+- Animation: React Spring
 
 # Neurocache Hub setup steps:
-### DaisyUI setup:
-    1. Install DaisyUI using npm or pnpm.
-    2. Enable DaisyUI in your Tailwind CSS config.
-    3. Customize the DaisyUI theme as needed.
-
 ### Public Home Page
-    1. Set up a landing page which includes information about the application, user testimonials, and pricing info if applicable.
-    2. Include a login/signup form using Clerk's `SignIn` component.
+  1. Setup basic layout with a Blocks system
+  2. Import react-threefiber, layout basic 3d background
+  3. Experiment with React Spring
+  4. Setup functional aspects of landing page which includes
+    - Multiple sections of copy and imagery explaining the product
+    - Login, Register, Logout using Clerk's `SignIn` component.
 
 ### Authenticated Pages
-    1. Set up pages that are only visible to logged-in users.
-    2. Use Clerk's `useUser` hook to check if a user is logged in. This can be used to protect the authenticated routes. For example:
+  1. Set up pages that are only visible to logged-in users.
+  2. Use Clerk's `useUser` hook to check if a user is logged in. This can be used to protect the authenticated routes. For example:
 
 ```javascript
 import { useRouter } from "next/router";
