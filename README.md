@@ -32,6 +32,7 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - CI/CD: Vercel
 - Database: Vercel Postgres
 - Caching: Vercel K/V Redis
+- 3d Package: React Three Fiber
 
 # Neurocache Hub setup steps:
 ### DaisyUI setup:
