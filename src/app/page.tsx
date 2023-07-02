@@ -14,22 +14,6 @@ export default function Home() {
             <Divider color={"primary"} />
             <Hero title={Content.Neurocache} body={Content.Tagline} btn={Content.Enter} />
           </Block>
-          <Block left="30%" right="5%">
-            <Divider color={"primary"} />
-            <Hero title={Content.Neurocache} body={Content.Tagline} btn={Content.Enter} />
-          </Block>
-          <Block left="5%" right="30%">
-            <Divider color={"primary"} />
-            <Hero title={Content.Neurocache} body={Content.Tagline} btn={Content.Enter} />
-          </Block>
-          <Block left="30%" right="5%">
-            <Divider color={"primary"} />
-            <Hero title={Content.Neurocache} body={Content.Tagline} btn={Content.Enter} />
-          </Block>
-          <Block left="5%" right="30%">
-            <Divider color={"primary"} />
-            <Hero title={Content.Neurocache} body={Content.Tagline} btn={Content.Enter} />
-          </Block>
         </main>
       </div>
     </div>

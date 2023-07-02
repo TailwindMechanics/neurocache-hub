@@ -1,4 +1,5 @@
 // src\app\layout.tsx
+import VirtualBackground from './components/threeScene';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google'
 import Content from './content.json';
@@ -18,7 +19,8 @@ export default function RootLayout({ children }: { children: React.ReactNode; })
         <title>Content.Neurocache</title>
       </head>
       <body className={`bg-background ${inter.className}`} data-theme="neuro">
-        <div className="min-h-screen flex justify-center items-start">
+        <VirtualBackground />
+        <div className="min-h-screen flex justify-center items-start z-10">
           {children}
         </div>
         <Analytics />

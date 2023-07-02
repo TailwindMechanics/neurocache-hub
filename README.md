@@ -35,10 +35,74 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - 3d Package: React Three Fiber
 - Animation: React Spring
 
-# Neurocache Hub setup steps:
-### Public Home Page
-  1. Setup basic layout with a Blocks system
-  2. Import react-threefiber, layout basic 3d background
+# Development steps:
+### React Three Fiber
+  1. Install react-three-fiber and three.js:  
+    `pnpm add react-three-fiber three`
+  2. Create a new component in your project for your Three.js content. For instance, you could create a new file at `src/components/ThreeScene.tsx` and add the following example code:
+```jsx
+  import { Canvas } from '@react-three/fiber'
+  import { Sphere, Plane, Box } from '@react-three/drei';
+
+  export default function ThreeScene() {
+      return (
+          <Canvas>
+              <ambientLight />
+              <pointLight position={[10, 10, 10]} />
+              <Box position={[-1.2, 0, 0]}>
+                  <meshStandardMaterial color={'orange'} />
+              </Box>
+              <Sphere position={[1.2, 0, 0]}>
+                  <meshStandardMaterial color={'white'} />
+              </Sphere>
+              <Plane position={[0, -0.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+                  <meshStandardMaterial color={'#282c34'} />
+              </Plane>
+          </Canvas>
+      );
+  }
+```
+  3. Then, you can import this component into your page and use it like any other component. For example, you can add it into your landing page like this:
+```jsx
+  import { Divider } from "./components/divider";
+  import { Hero } from "./components/hero";
+  import Content from "./content.json";
+  import { Block } from "./components/block";
+  import ThreeScene from './components/ThreeScene';
+
+  export default function Home() {
+    return (
+      <div className="min-h-screen overflow-hidden">
+        <div className="flex-col w-main-column mx-auto border border-white">
+          <main className="container mx-auto">
+            <Block left="5%" right="30%">
+              <Divider color={"primary"} />
+              <Hero title={Content.NeuroCache} body={Content.Tagline} btn={Content.Enter} />
+              <ThreeScene />
+            </Block>
+          </main>
+        </div>
+      </div>
+    );
+  }
+```
+  4. Please note, this example is quite simple and it just shows basic static 3D objects. If you want to create complex 3D scenes or animations, you will need to dive deeper into Three.js and react-three-fiber. React-three-fiber offers a React renderer for Three.js on the web and react-native.
+  5. I would recommend reading through the [react-three-fiber documentation](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to get a better understanding of how you can use it to create the 3D content you need.
+  6. As for `react-spring`, it is a spring-physics based animation library that should cover most of your UI related animation needs. The steps to integrate `react-spring` would be similar, you would start by installing it, creating animations, and then integrating those animations into your components.
+  7. For both libraries, keep in mind that they might require server-side rendering or static-site generation adjustments in Next.js, especially if you are planning to do complex 3D or animations.
+
+
+
+
+
+
+
+
+
+
+
+
+
   3. Experiment with React Spring
   4. Setup functional aspects of landing page which includes
     - Multiple sections of copy and imagery explaining the product
