@@ -1,6 +1,7 @@
 import { Box } from '@react-three/drei';
-import colors from '../colors.json';
+import colors from '../../colors.json';
 import React from 'react';
+
 
 export interface BuildingProps {
     position?: [number, number, number];
@@ -13,7 +14,7 @@ const Building: React.FC<BuildingProps> = ({ position = [0, 0, 0], scale = [1, 1
 
     return <>
     <Box position={pos} scale={scale}>
-        <meshStandardMaterial color={colors['primary-content']}/>
+        <meshStandardMaterial color={colors.accent}/>
     </Box>
     </>;
 };

@@ -1,10 +1,9 @@
 // src\app\components\cityBackground.tsx
 "use client"
+import Building, { BuildingProps } from './Building';
 import { CameraMotor } from "./cameraMotor";
 import { Plane } from '@react-three/drei';
-import colors from '../colors.json';
-import Building, { BuildingProps } from './Building';
-
+import colors from '../../colors.json';
 
 
 export default function CityBackground() {

@@ -2,7 +2,7 @@ import { PerspectiveCamera } from '@react-three/drei'
 import { useSpring } from '@react-spring/three'
 import { useFrame } from '@react-three/fiber'
 import React, { useRef, useEffect } from 'react'
-import { Path } from '../utils/path'
+import { Path } from '../../utils/path'
 import { Vector3 } from 'three'
 
 const right = 200;
@@ -13,13 +13,13 @@ const lookTargetPath = new Path([
 
 const left = -60;
 const moveTargetPath = new Path([
-    [left, 200, 0],
-    [left, 20, -20],
-    [left, 20, -20],
-    [left, 20, -20],
-    [left, 20, -25],
-    [left, 20, -30],
-    [left, 20, -40],
+    [left, 300, 500],
+    [left, 60, -20],
+    [left, 60, -20],
+    [left, 60, -20],
+    [left, 60, -25],
+    [left, 60, -30],
+    [left, 60, -40],
     [0, 20, -1000],
 ]);
 
