@@ -1,9 +1,11 @@
+// src\app\components\virtualBackground\cameraMotor.tsx
 import { PerspectiveCamera } from '@react-three/drei'
+import React, { useRef, useEffect } from 'react'
 import { useSpring } from '@react-spring/three'
 import { useFrame } from '@react-three/fiber'
-import React, { useRef, useEffect } from 'react'
 import { Path } from '../../utils/path'
 import { Vector3 } from 'three'
+
 
 const right = 200;
 const lookTargetPath = new Path([
@@ -13,7 +15,7 @@ const lookTargetPath = new Path([
 
 const left = -60;
 const moveTargetPath = new Path([
-    [left, 300, 500],
+    [left, 500, 3000],
     [left, 60, -20],
     [left, 60, -20],
     [left, 60, -20],

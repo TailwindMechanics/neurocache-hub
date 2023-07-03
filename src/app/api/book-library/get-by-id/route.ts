@@ -4,6 +4,7 @@ import type { Book } from "@/types"
 import { kv } from '@vercel/kv';
 import { z } from 'zod';
 
+
 // Define the schema of the request query
 const getBookValidator = z.object({
   id: z.string(),

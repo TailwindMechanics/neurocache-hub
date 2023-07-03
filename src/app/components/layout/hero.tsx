@@ -1,14 +1,13 @@
-// src\app\components\hero.tsx
 "use client"
 import { useSpring, animated } from '@react-spring/web';
-import { Divider } from './divider';
+import { Divider } from '../virtualBackground/divider';
 import React from 'react';
 
 
 interface HeroProps {
   title?: string;
   body?: string;
-  btn?: string;
+  btn?: React.ReactNode;
   imgUrl?: string;
 }
 
@@ -26,7 +25,7 @@ export const Hero: React.FC<HeroProps> = ({ title, body, btn, imgUrl }) => {
           {title && <h1 className={`mb-0 text-5xl font-bold text-primary`}>{title}</h1>}
           {body && <p className={`mb-4 mt-0 text-xl text-justify text-primary`}>{body}</p>}
           <Divider />
-          {btn && <button className={`btn bg-primary text-background hover:bg-primary hover:text-accent`}>{btn}</button>}
+          {btn}
         </div>
         {imgUrl && <img className="ml-6 mt-8 w-32 h-32" src={imgUrl} alt={imgUrl}/>}
       </div>

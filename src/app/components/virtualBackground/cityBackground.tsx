@@ -1,4 +1,4 @@
-// src\app\components\cityBackground.tsx
+// src\app\components\virtualBackground\cityBackground.tsx
 "use client"
 import Building, { BuildingProps } from './Building';
 import { CameraMotor } from "./cameraMotor";
