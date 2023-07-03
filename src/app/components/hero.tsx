@@ -1,39 +1,35 @@
 // src\app\components\hero.tsx
 "use client"
-import React from 'react';
 import { useSpring, animated } from '@react-spring/web';
+import { Divider } from './divider';
+import React from 'react';
+
 
 interface HeroProps {
-  title: string;
-  body: string;
-  btn: string;
+  title?: string;
+  body?: string;
+  btn?: string;
+  imgUrl?: string;
 }
 
-export const Hero: React.FC<HeroProps> = ({ title, body, btn }) => {
-  const [styleProps, api] = useSpring(() => ({ opacity: 0.5 }));
+export const Hero: React.FC<HeroProps> = ({ title, body, btn, imgUrl }) => {
+  const [styleProps, api] = useSpring(() => ({ opacity: 0.5, config: { duration: 500 } }));
+
   return (
-    <section className="hero">
+    <animated.section
+      className="hero"
+      style={styleProps}
+      onMouseEnter={() => api.start({ opacity: 1 })}
+      onMouseLeave={() => api.start({ opacity: 0.5 })}>
       <div className="flex items-center hero-content">
         <div>
-          <h1 className={`mb-5 text-3xl font-bold text-primary`}>
-            {title}
-          </h1>
-          <p className={`mb-5 text-lg text-primary`}>
-            {body}
-          </p>
-          <button className={`btn bg-primary text-background hover:text-secondary-focus hover:bg-primary-focus outline:none text-base`}>
-            {btn}
-          </button>
+          {title && <h1 className={`text-5xl font-bold text-primary`}>{title}</h1>}
+          {body && <p className={`text-xl text-justify text-primary`}>{body}</p>}
+          <Divider color={"primary"} />
+          {btn && <button className={`mt-4 btn bg-primary text-background hover:bg-primary hover:text-accent`}>{btn}</button>}
         </div>
-        <animated.img
-          style={styleProps}
-          src="images/neurocache.png" 
-          alt="NeuroCache logo" 
-          className="mr-5 w-32 h-32" 
-          onMouseEnter={() => api.start({ opacity: 1 })}
-          onMouseLeave={() => api.start({ opacity: 0.5 })}
-        />
+        {imgUrl && <img className="ml-15 mr-5 mt-4 w-32 h-32" src={imgUrl} alt={imgUrl}/>}
       </div>
-    </section>
+    </animated.section>
   );
 };

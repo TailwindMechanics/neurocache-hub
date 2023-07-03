@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        'main-column': '100%', // Change this value to adjust the width of the main column
+        'main-column': '0%',
       },
       colors: colors,
       fontSize: {
@@ -22,9 +22,9 @@ module.exports = {
         'xl': '1rem',    
         '2xl': '1.15rem',    
         '3xl': '1.5rem',  
-        '4xl': '2.875rem',   
-        '5xl': '3rem',      
-        '6xl': '3.5rem',     
+        '4xl': '1.75rem',   
+        '5xl': '2.875rem',      
+        '6xl': '3rem',     
       },
     },
   },

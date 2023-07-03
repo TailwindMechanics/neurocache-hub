@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode; })
         <ThreeCanvas>
           <CityBackground />
         </ThreeCanvas>
-        <div className="relative min-h-screen flex justify-center items-start z-10">
+        <div className="relative min-h-screen flex justify-left items-start z-10">
           {children}
         </div>
         <Analytics />

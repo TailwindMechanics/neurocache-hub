@@ -16,7 +16,7 @@ export class Path {
         if (normalized < 0) normalized = 0;
         if (this.curve === undefined) return [0, 0, 0];
         
-        const point = this.curve.getPoint(normalized);
+        let point = this.curve.getPoint(normalized);
         return point ? point.toArray() as number[] : [0, 0, 0];  // return a default value if point is undefined
     }
 }

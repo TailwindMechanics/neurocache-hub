@@ -1,11 +1,9 @@
-// src\app\components\cameraMotor.tsx
-"use client"
 import { PerspectiveCamera } from '@react-three/drei'
 import { useSpring } from '@react-spring/three'
 import { useFrame } from '@react-three/fiber'
+import React, { useRef, useEffect } from 'react'
 import { Path } from '../utils/path'
 import { Vector3 } from 'three'
-import React from 'react'
 
 const right = 200;
 const lookTargetPath = new Path([
@@ -27,35 +25,52 @@ const moveTargetPath = new Path([
 
 export function CameraMotor() {
     const [springProps, set] = useSpring(() => ({
-        position: [0, 0, 0], 
+        position: [0, 0, 0],
         config: {
             mass: 100,
             tension: 100,
             friction: 100,
             precision: 0.0001,
         }
-    }))
+    }));
 
-    let cameraRef = React.useRef<THREE.PerspectiveCamera>();
-    let previousCameraPos = new Vector3(0, 0, 0);
-    
+    let cameraRef = useRef<THREE.PerspectiveCamera>();
+    let acceleration = useRef(0);
+
+    // clamp a value between min and max
+    const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+
+    useEffect(() => {
+        const handleWheel = (event: WheelEvent) => {
+            const canvasRect = document.querySelector('canvas')?.getBoundingClientRect();
+            if (canvasRect && event.clientX >= canvasRect.left && event.clientX <= canvasRect.right && event.clientY >= canvasRect.top && event.clientY <= canvasRect.bottom) {
+                acceleration.current += event.deltaY * 0.001;  // adjust multiplier as needed
+                acceleration.current = clamp(acceleration.current, -1, 1);
+            }
+        }
+
+        window.addEventListener('wheel', handleWheel);
+
+        return () => {
+            window.removeEventListener('wheel', handleWheel);
+        }
+    }, []);
+
     useFrame(() => {
         if (cameraRef.current) {
-            let normalizedScroll = window.scrollY / (document.body.scrollHeight - window.innerHeight)
-            let moveTarget = moveTargetPath.Sample(normalizedScroll)
-            let lookTarget = lookTargetPath.Sample(normalizedScroll)
+            let moveTarget = moveTargetPath.Sample(0.5 + acceleration.current * 0.5);
+            let lookTarget = lookTargetPath.Sample(0.5 + acceleration.current * 0.5);
             set({ position: moveTarget })
-            
+
             let newCameraPos = new Vector3().fromArray(springProps.position.get());
             cameraRef.current.position.copy(newCameraPos);
             cameraRef.current.lookAt(new Vector3().fromArray(lookTarget));
-            
-            cameraRef.current.updateProjectionMatrix();
-            previousCameraPos.copy(newCameraPos);
-        }
-    })
 
-    return <PerspectiveCamera 
+            cameraRef.current.updateProjectionMatrix();
+        }
+    });
+
+    return <PerspectiveCamera
         ref={cameraRef}
         makeDefault // this replaces the default camera
         fov={16.665}    // field of view
