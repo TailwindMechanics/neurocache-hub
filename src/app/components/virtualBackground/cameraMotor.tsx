@@ -9,20 +9,14 @@ import { Vector3 } from 'three'
 
 const right = 200;
 const lookTargetPath = new Path([
-    [right, 340, -3500],
-    [right, 340, -4000],
+    [right, 500, -3500],
+    [right, 300, -4000],
 ]);
 
 const left = -60;
 const moveTargetPath = new Path([
-    [left, 500, 3000],
-    [left, 60, -20],
-    [left, 60, -20],
-    [left, 60, -20],
-    [left, 60, -25],
-    [left, 60, -30],
-    [left, 60, -40],
-    [0, 20, -1000],
+    [left, 1500, 10000],
+    [0, 200, -1000],
 ]);
 
 export function CameraMotor() {
@@ -31,7 +25,7 @@ export function CameraMotor() {
         config: {
             mass: 100,
             tension: 100,
-            friction: 100,
+            friction: 50,
             precision: 0.0001,
         }
     }));
@@ -46,7 +40,7 @@ export function CameraMotor() {
         const handleWheel = (event: WheelEvent) => {
             const canvasRect = document.querySelector('canvas')?.getBoundingClientRect();
             if (canvasRect && event.clientX >= canvasRect.left && event.clientX <= canvasRect.right && event.clientY >= canvasRect.top && event.clientY <= canvasRect.bottom) {
-                acceleration.current += event.deltaY * 0.001;  // adjust multiplier as needed
+                acceleration.current += event.deltaY * 0.0005;  // adjust multiplier as needed
                 acceleration.current = clamp(acceleration.current, -1, 1);
             }
         }
@@ -78,6 +72,6 @@ export function CameraMotor() {
         fov={16.665}    // field of view
         aspect={window.innerWidth / window.innerHeight}
         near={0.1}  // near clipping plane
-        far={5000}  // far clipping plane
+        far={20000}  // far clipping plane
     />
 }
