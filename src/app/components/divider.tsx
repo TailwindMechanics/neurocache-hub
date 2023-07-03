@@ -5,5 +5,5 @@ interface DividerProps {
   }
 
 export function Divider({ color }: DividerProps) {
-    return<div className={`divider h-1 bg-${color}`}></div>
+    return<div className={`divider h-0.5 bg-${color}`}></div>
 }

@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-spring/core": "^9.7.3",
+    "@react-spring/three": "^9.7.3",
+    "@react-spring/web": "^9.7.3",
     "@react-three/drei": "^9.77.10",
     "@react-three/fiber": "^8.13.4",
     "@react-three/postprocessing": "^2.14.13",
@@ -16,6 +19,7 @@
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
+    "@types/three": "^0.152.1",
     "@vercel/analytics": "^1.0.1",
     "@vercel/kv": "^0.2.2",
     "@vercel/postgres": "^0.4.0",
