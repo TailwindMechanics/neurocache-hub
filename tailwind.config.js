@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('./src/app/colors.json');
+
 module.exports = {
   mode: 'jit',
   content: [
@@ -8,33 +10,26 @@ module.exports = {
   ],
   theme: {
     extend: {
-      spacing: {
-        'root-p-l': '5%',
-        'root-p-r': '35%',
-      },
       width: {
-        'main-column': '50rem',
+        'main-column': '0%',
       },
-      colors: {
-        'background': '#091017',
+      colors: colors,
+      fontSize: {
+        'xs': '.5rem',     
+        'sm': '.675rem',    
+        'base': '.75rem',     
+        'lg': '.875rem',   
+        'xl': '1rem',    
+        '2xl': '1.15rem',    
+        '3xl': '1.5rem',  
+        '4xl': '1.75rem',   
+        '5xl': '2.875rem',      
+        '6xl': '3rem',     
       },
     },
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ['neuro', 
-      {
-        'neuro': {
-          'primary': '#a52865',
-          'primary-focus': '#ff3e9c',
-          'primary-content': '#ffb4a7',
-          'secondary': '#3addfd',
-          'secondary-focus': '#ffb4a7',
-          'secondary-content': '#ffb4a7',
-          'accent': '#3addfd',
-          'accent-focus': '#80e8fd',
-        },
-      },
-    ],
+    themes: ['neuro', colors],
   },
 }
