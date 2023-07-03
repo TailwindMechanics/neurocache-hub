@@ -23,12 +23,12 @@ export const Hero: React.FC<HeroProps> = ({ title, body, btn, imgUrl }) => {
       onMouseLeave={() => api.start({ opacity: 0.5 })}>
       <div className="flex items-center hero-content">
         <div>
-          {title && <h1 className={`text-5xl font-bold text-primary`}>{title}</h1>}
-          {body && <p className={`text-xl text-justify text-primary`}>{body}</p>}
-          <Divider color={"primary"} />
-          {btn && <button className={`mt-4 btn bg-primary text-background hover:bg-primary hover:text-accent`}>{btn}</button>}
+          {title && <h1 className={`mb-0 text-5xl font-bold text-primary`}>{title}</h1>}
+          {body && <p className={`mb-4 mt-0 text-xl text-justify text-primary`}>{body}</p>}
+          <Divider />
+          {btn && <button className={`btn bg-primary text-background hover:bg-primary hover:text-accent`}>{btn}</button>}
         </div>
-        {imgUrl && <img className="ml-15 mr-5 mt-4 w-32 h-32" src={imgUrl} alt={imgUrl}/>}
+        {imgUrl && <img className="ml-6 mt-8 w-32 h-32" src={imgUrl} alt={imgUrl}/>}
       </div>
     </animated.section>
   );

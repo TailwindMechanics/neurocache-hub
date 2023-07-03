@@ -16,8 +16,10 @@ neurocache-hub
 ├─ postcss.config.js
 ├─ project-hierarchy.txt
 ├─ public
-│  ├─ next.svg
-│  └─ vercel.svg
+│  └─ images
+│     ├─ neurocache.png
+│     ├─ wireframe.png
+│     └─ wireframe01.png
 ├─ README.md
 ├─ src
 │  ├─ app
@@ -27,10 +29,23 @@ neurocache-hub
 │  │  │     │  └─ route.ts
 │  │  │     └─ get-by-id
 │  │  │        └─ route.ts
+│  │  ├─ colors.json
+│  │  ├─ components
+│  │  │  ├─ block.tsx
+│  │  │  ├─ Building.tsx
+│  │  │  ├─ cameraMotor.tsx
+│  │  │  ├─ cityBackground.tsx
+│  │  │  ├─ divider.tsx
+│  │  │  ├─ hero.tsx
+│  │  │  ├─ ImageOverlay.tsx
+│  │  │  └─ threeCanvas.tsx
+│  │  ├─ content.json
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
-│  │  └─ page.tsx
+│  │  ├─ page.tsx
+│  │  └─ utils
+│  │     └─ path.ts
 │  └─ types
 │     └─ index.ts
 ├─ tailwind.config.js
