@@ -8,6 +8,9 @@ import { Block } from "./components/layout/block";
 import Content from "./content.json";
 
 
+
+
+
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden"
