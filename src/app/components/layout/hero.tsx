@@ -1,6 +1,6 @@
 "use client"
 import { useSpring, animated } from '@react-spring/web';
-import { Divider } from '../virtualBackground/divider';
+import { Divider } from './divider';
 import React from 'react';
 
 

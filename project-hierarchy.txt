@@ -31,23 +31,45 @@ neurocache-hub
 │  │  │        └─ route.ts
 │  │  ├─ colors.json
 │  │  ├─ components
+│  │  │  ├─ landingPage
+│  │  │  │  ├─ landingPage.tsx
+│  │  │  │  ├─ loggedInUI.tsx
+│  │  │  │  └─ loggedOutUI.tsx
 │  │  │  ├─ layout
 │  │  │  │  ├─ block.tsx
-│  │  │  │  ├─ divider.tsx
+│  │  │  │  ├─ btn.tsx
+│  │  │  │  ├─ customSignInButton.tsx
 │  │  │  │  ├─ hero.tsx
-│  │  │  │  └─ ImageOverlay.tsx
+│  │  │  │  ├─ ImageOverlay.tsx
+│  │  │  │  ├─ livePanel.tsx
+│  │  │  │  ├─ loading.tsx
+│  │  │  │  ├─ login.tsx
+│  │  │  │  ├─ modal.tsx
+│  │  │  │  ├─ signedInBadge.tsx
+│  │  │  │  └─ uiCanvas.tsx
 │  │  │  └─ virtualBackground
-│  │  │     ├─ Building.tsx
+│  │  │     ├─ building.tsx
+│  │  │     ├─ buildings.tsx
 │  │  │     ├─ cameraMotor.tsx
 │  │  │     ├─ cityBackground.tsx
+│  │  │     ├─ divider.tsx
+│  │  │     ├─ ground.tsx
+│  │  │     ├─ lights.tsx
+│  │  │     ├─ setupCamera.tsx
 │  │  │     └─ threeCanvas.tsx
 │  │  ├─ content.json
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
 │  │  ├─ page.tsx
+│  │  ├─ sign-in
+│  │  │  └─ page.tsx
+│  │  ├─ sign-up
+│  │  │  └─ page.tsx
 │  │  └─ utils
+│  │     ├─ mathUtils.ts
 │  │     └─ path.ts
+│  ├─ middleware.ts
 │  └─ types
 │     └─ index.ts
 ├─ tailwind.config.js

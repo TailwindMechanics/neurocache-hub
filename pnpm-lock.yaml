@@ -8,6 +8,9 @@ dependencies:
   '@clerk/nextjs':
     specifier: ^4.21.13
     version: 4.21.13(next@13.4.7)(react-dom@18.2.0)(react@18.2.0)
+  '@pmndrs/assets':
+    specifier: ^1.6.0
+    version: 1.6.0
   '@react-spring/core':
     specifier: ^9.7.3
     version: 9.7.3(react@18.2.0)
@@ -80,6 +83,9 @@ dependencies:
   react-redux:
     specifier: ^8.1.1
     version: 8.1.1(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+  suspend-react:
+    specifier: ^0.1.3
+    version: 0.1.3(react@18.2.0)
   tailwindcss:
     specifier: 3.3.2
     version: 3.3.2
@@ -1008,6 +1014,10 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       tslib: 2.6.0
+    dev: false
+
+  /@pmndrs/assets@1.6.0:
+    resolution: {integrity: sha512-fOFrjV6FNYIr29iEhF3JrdTAAo3v98TatmYF3efC1MNiMeN0Sx2BGvGnwgu55s6E9gBxR6yXcm/mkk7gRDT9Bg==}
     dev: false
 
   /@react-spring/animated@9.6.1(react@18.2.0):

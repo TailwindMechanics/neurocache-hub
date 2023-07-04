@@ -1,25 +1,24 @@
 // src\app\components\virtualBackground\cameraMotor.tsx
-import { PerspectiveCamera } from '@react-three/drei'
-import React, { useRef, useEffect } from 'react'
+"use client"
+
+import { useFrame, useThree } from '@react-three/fiber'
+import { clamp } from 'three/src/math/MathUtils'
 import { useSpring } from '@react-spring/three'
-import { useFrame } from '@react-three/fiber'
+import { useEffect, useRef } from 'react'
 import { Path } from '../../utils/path'
 import { Vector3 } from 'three'
 
 
-const right = 200;
-const lookTargetPath = new Path([
-    [right, 500, -3500],
-    [right, 300, -4000],
-]);
-
-const left = -60;
-const moveTargetPath = new Path([
-    [left, 1500, 10000],
-    [0, 200, -1000],
-]);
-
 export function CameraMotor() {
+    const { camera } = useThree();
+    
+    const lookTargetPath = new Path([
+        [200, 500, -3500],
+        [200, 300, -4000]]);
+    const moveTargetPath = new Path([
+        [-60, 1500, 10000],
+        [0, 200, -1000]]);
+
     const [springProps, set] = useSpring(() => ({
         position: [0, 0, 0],
         config: {
@@ -30,17 +29,13 @@ export function CameraMotor() {
         }
     }));
 
-    let cameraRef = useRef<THREE.PerspectiveCamera>();
     let acceleration = useRef(0);
-
-    // clamp a value between min and max
-    const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 
     useEffect(() => {
         const handleWheel = (event: WheelEvent) => {
             const canvasRect = document.querySelector('canvas')?.getBoundingClientRect();
             if (canvasRect && event.clientX >= canvasRect.left && event.clientX <= canvasRect.right && event.clientY >= canvasRect.top && event.clientY <= canvasRect.bottom) {
-                acceleration.current += event.deltaY * 0.0005;  // adjust multiplier as needed
+                acceleration.current += event.deltaY * 0.0005; 
                 acceleration.current = clamp(acceleration.current, -1, 1);
             }
         }
@@ -53,25 +48,14 @@ export function CameraMotor() {
     }, []);
 
     useFrame(() => {
-        if (cameraRef.current) {
-            let moveTarget = moveTargetPath.Sample(0.5 + acceleration.current * 0.5);
-            let lookTarget = lookTargetPath.Sample(0.5 + acceleration.current * 0.5);
-            set({ position: moveTarget })
+        let moveTarget = moveTargetPath.Sample(0.5 + acceleration.current * 0.5);
+        let lookTarget = lookTargetPath.Sample(0.5 + acceleration.current * 0.5);
+        set({ position: moveTarget })
 
-            let newCameraPos = new Vector3().fromArray(springProps.position.get());
-            cameraRef.current.position.copy(newCameraPos);
-            cameraRef.current.lookAt(new Vector3().fromArray(lookTarget));
-
-            cameraRef.current.updateProjectionMatrix();
-        }
+        let newCameraPos = new Vector3().fromArray(springProps.position.get());
+        camera.position.copy(newCameraPos);
+        camera.lookAt(new Vector3().fromArray(lookTarget));
     });
 
-    return <PerspectiveCamera
-        ref={cameraRef}
-        makeDefault // this replaces the default camera
-        fov={16.665}    // field of view
-        aspect={window.innerWidth / window.innerHeight}
-        near={0.1}  // near clipping plane
-        far={20000}  // far clipping plane
-    />
+    return null;
 }

@@ -21,7 +21,6 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 ### Neurocache Hub tech stack
 - Language: TypeScript
 - Framework: Next.js
-- State Management: Redux
 - Styles: Tailwind.css
 - UI Library: DaisyUi
 - Routing: Built-in with Next.js
