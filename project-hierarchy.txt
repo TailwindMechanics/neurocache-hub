@@ -31,14 +31,16 @@ neurocache-hub
 │  │  │        └─ route.ts
 │  │  ├─ colors.json
 │  │  ├─ components
-│  │  │  ├─ block.tsx
-│  │  │  ├─ Building.tsx
-│  │  │  ├─ cameraMotor.tsx
-│  │  │  ├─ cityBackground.tsx
-│  │  │  ├─ divider.tsx
-│  │  │  ├─ hero.tsx
-│  │  │  ├─ ImageOverlay.tsx
-│  │  │  └─ threeCanvas.tsx
+│  │  │  ├─ layout
+│  │  │  │  ├─ block.tsx
+│  │  │  │  ├─ divider.tsx
+│  │  │  │  ├─ hero.tsx
+│  │  │  │  └─ ImageOverlay.tsx
+│  │  │  └─ virtualBackground
+│  │  │     ├─ Building.tsx
+│  │  │     ├─ cameraMotor.tsx
+│  │  │     ├─ cityBackground.tsx
+│  │  │     └─ threeCanvas.tsx
 │  │  ├─ content.json
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css

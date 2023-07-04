@@ -1,4 +1,4 @@
-// src\app\components\ImageOverlay.tsx
+// src\app\components\layout\ImageOverlay.tsx
 "use client"
 import React, { useEffect, useState } from 'react';
 

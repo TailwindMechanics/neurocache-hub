@@ -35,102 +35,48 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - 3d Package: React Three Fiber
 - Animation: React Spring
 
-# Development steps:
-### React Three Fiber
-  1. Install react-three-fiber and three.js:  
-    `pnpm add react-three-fiber three`
-  2. Create a new component in your project for your Three.js content. For instance, you could create a new file at `src/components/ThreeScene.tsx` and add the following example code:
-```jsx
-  import { Canvas } from '@react-three/fiber'
-  import { Sphere, Plane, Box } from '@react-three/drei';
+# Development Steps
+## Login
+1. Install Clerk SDK:
+  - Open your terminal and navigate to your project's root directory (neurocache-hub)
+  - Run the following command to add Clerk to your project:
+    `pnpm add @clerk/clerk-react`
 
-  export default function ThreeScene() {
-      return (
-          <Canvas>
-              <ambientLight />
-              <pointLight position={[10, 10, 10]} />
-              <Box position={[-1.2, 0, 0]}>
-                  <meshStandardMaterial color={'orange'} />
-              </Box>
-              <Sphere position={[1.2, 0, 0]}>
-                  <meshStandardMaterial color={'white'} />
-              </Sphere>
-              <Plane position={[0, -0.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                  <meshStandardMaterial color={'#282c34'} />
-              </Plane>
-          </Canvas>
-      );
-  }
+2. Configure Clerk in your project:
+  - In the `.env.local` file, add your Clerk Frontend API variable, which can be found on your Clerk dashboard:
+      `NEXT_PUBLIC_CLERK_FRONTEND_API=<your-clerk-frontend-api>`
+
+3. Create a new SignIn page:
+    - In the `src/app/components` directory, create a new file `SignIn.tsx`
+    - In this file, import the `SignIn` component from Clerk and use it as shown in the example below:
+```typescript
+      import { SignIn } from "@clerk/clerk-react";
+
+      const SignInPage = () => {
+        return (
+          <div className="min-h-screen bg-white flex">
+            <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+              <div className="mx-auto w-full max-w-sm lg:w-96">
+                <SignIn path="/user" routing="path" />
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      export default SignInPage;
 ```
-  3. Then, you can import this component into your page and use it like any other component. For example, you can add it into your landing page like this:
-```jsx
-  import { Divider } from "./components/divider";
-  import { Hero } from "./components/hero";
-  import Content from "./content.json";
-  import { Block } from "./components/block";
-  import ThreeScene from './components/ThreeScene';
+  - In the example above, the `SignIn` component is rendered within a div element. You can customize the appearance by modifying the CSS classes.
 
-  export default function Home() {
-    return (
-      <div className="min-h-screen overflow-hidden">
-        <div className="flex-col w-main-column mx-auto border border-white">
-          <main className="container mx-auto">
-            <Block left="5%" right="30%">
-              <Divider color={"primary"} />
-              <Hero title={Content.NeuroCache} body={Content.Tagline} btn={Content.Enter} />
-              <ThreeScene />
-            </Block>
-          </main>
-        </div>
-      </div>
-    );
-  }
-```
-  4. Please note, this example is quite simple and it just shows basic static 3D objects. If you want to create complex 3D scenes or animations, you will need to dive deeper into Three.js and react-three-fiber. React-three-fiber offers a React renderer for Three.js on the web and react-native.
-  5. I would recommend reading through the [react-three-fiber documentation](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to get a better understanding of how you can use it to create the 3D content you need.
-  6. As for `react-spring`, it is a spring-physics based animation library that should cover most of your UI related animation needs. The steps to integrate `react-spring` would be similar, you would start by installing it, creating animations, and then integrating those animations into your components.
-  7. For both libraries, keep in mind that they might require server-side rendering or static-site generation adjustments in Next.js, especially if you are planning to do complex 3D or animations.
+4. Update your routing configuration:
+    - In your routing configuration file (depending on your setup, this might be `next.config.js`), add a route for the `SignIn` page.
 
+5. Run your application:
+    - Use the following command to run your application:
+      ```bash
+      pnpm run dev
+      ```
+    - You should now be able to navigate to your `SignIn` page and use the form to log in, register, or log out.
 
+Remember to check the [Clerk documentation](https://docs.clerk.dev/) for more detailed information and customization options.
 
-
-
-
-
-
-
-
-
-
-
-  3. Experiment with React Spring
-  4. Setup functional aspects of landing page which includes
-    - Multiple sections of copy and imagery explaining the product
-    - Login, Register, Logout using Clerk's `SignIn` component.
-
-### Authenticated Pages
-  1. Set up pages that are only visible to logged-in users.
-  2. Use Clerk's `useUser` hook to check if a user is logged in. This can be used to protect the authenticated routes. For example:
-
-```javascript
-import { useRouter } from "next/router";
-import { useUser } from "@clerk/clerk-react";
-
-export default function AuthenticatedPage() {
-  const { user } = useUser();
-  const router = useRouter();
-
-  // If no user, redirect to home page
-  if (!user) {
-    router.push('/');
-  }
-
-  // Rest of your authenticated page component
-}
-```
-   3. Set up a navigation bar that includes links to the authenticated pages, which should only appear once a user is logged in.
-   4. Include a logout button using Clerk's SignOutButton component.
-
-### Remember:
-   - Ensure that any links to authenticated pages are only visible to logged-in users.
-   - Refer to the Clerk documentation for more detailed instructions and examples.
