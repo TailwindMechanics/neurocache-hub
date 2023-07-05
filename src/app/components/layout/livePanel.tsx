@@ -6,13 +6,12 @@ import React from 'react';
 interface LivePanelProps {
     children?: React.ReactNode;
     tailwind?: string;
-    bgAlpha?: {min:number, max:number};
+    bgAlpha?: { min: number, max: number };
 }
 
-export const LivePanel: React.FC<LivePanelProps> = ({ children, tailwind, bgAlpha = {min:0.5, max:1} }) => {
+export const LivePanel: React.FC<LivePanelProps> = ({ children, tailwind, bgAlpha = { min: 0.5, max: 1 } }) => {
     const [styleProps, api] = useSpring(() => ({ opacity: 0.5, config: { duration: 500 } }));
-
-    return (
+    return <>
         <div>
             <animated.section
                 className="hero"
@@ -24,5 +23,5 @@ export const LivePanel: React.FC<LivePanelProps> = ({ children, tailwind, bgAlph
                 </div>
             </animated.section>
         </div>
-    );
+    </>
 };
