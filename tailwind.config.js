@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require('./src/app/colors.json');
+const colors = require('./src/app/data/colors.json');
 
 module.exports = {
   mode: 'jit',

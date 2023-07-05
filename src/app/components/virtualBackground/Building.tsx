@@ -1,17 +1,17 @@
-// src\app\components\virtualBackground\Building.tsx
-"use client"
+// src\app\components\virtualBackground\building.tsx
+"use client";
 
 import { Box } from '@react-three/drei';
 import React from 'react';
 
 
-export interface BuildingProps {
+interface BuildingProps {
+    color: string;
     position?: number[];
     scale?: number[];
-    color: string;
 }
 
-export const Building: React.FC<BuildingProps> = ({ color, position = [0, 0, 0], scale = [1, 1, 1] }) => {
+export default function Building ({ color, position = [0, 0, 0], scale = [1, 1, 1] } : BuildingProps){
     let vecScale = scale as [number, number, number];
     let pos = position as [number, number, number];
     pos[1] += scale[1] / 2;

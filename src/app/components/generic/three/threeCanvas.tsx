@@ -1,22 +1,22 @@
 // src\app\components\virtualBackground\threeCanvas.tsx
 "use client"
 
-import CityBackground from "./cityBackground";
 import { Canvas } from "@react-three/fiber";
-import { Loading } from "../layout/loading";
 import { Suspense } from "react";
+import { Loading } from "../react/loading";
 
 
 interface ThreeCanvasProps {
     tailwind?: string;
+    children?: React.ReactNode;
 }
 
-export default function ThreeCanvas({ tailwind }: ThreeCanvasProps) {
+export default function ThreeCanvas({ tailwind, children }: ThreeCanvasProps) {
     return <>
         <div className={`${tailwind} z-0 fixed top-0 left-0 right-0 bottom-0 h-screen w-screen`}>
             <Canvas shadows={"soft"} gl={{ antialias: true }}>
                 <Suspense fallback={<Loading />}>
-                    <CityBackground />
+                    {children}
                 </Suspense>
             </Canvas>
         </div>
