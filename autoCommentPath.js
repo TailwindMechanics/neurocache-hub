@@ -20,10 +20,21 @@ const traverseDirAndUpdateFiles = (dir) => {
     } else if (relativePath.endsWith('.ts') || relativePath.endsWith('.tsx')) {
       let content = fs.readFileSync(filePath, 'utf8');
 
-      // Remove any existing path comment
-      if (content.startsWith('//path: ')) {
-        content = content.replace(/^\/\/path: .*\n\n/, '');
+      // Check if the file has a path comment anywhere in it
+      const pathCommentIndex = content.indexOf('//path: ');
+      if (pathCommentIndex !== -1) {
+        // Find the start of the line with the path comment
+        const lineStart = content.lastIndexOf('\n', pathCommentIndex) + 1;
+
+        // Find the end of the line with the path comment
+        const lineEnd = content.indexOf('\n', pathCommentIndex);
+
+        // Remove the line with the path comment
+        content = content.substring(0, lineStart) + content.substring(lineEnd + 1);
       }
+
+      // Remove any leading empty lines or whitespace
+      content = content.replace(/^\s*\n*/, '');
 
       // Add the new path comment
       content = `${newPathComment}\n\n` + content;
