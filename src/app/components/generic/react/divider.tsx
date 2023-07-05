@@ -1,4 +1,4 @@
-// src\app\components\layout\divider.tsx
+//path: src\app\components\generic\react\divider.tsx
 
 interface DividerProps {
     tailwind?: string;

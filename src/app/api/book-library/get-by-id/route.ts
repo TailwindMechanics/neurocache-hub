@@ -1,4 +1,5 @@
-// src\app\api\book-library\get-by-id\route.ts
+//path: src\app\api\book-library\get-by-id\route.ts
+
 import { db } from '@vercel/postgres';
 import type { Book } from "@/types"
 import { kv } from '@vercel/kv';

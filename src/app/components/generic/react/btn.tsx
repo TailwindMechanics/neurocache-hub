@@ -1,4 +1,4 @@
-// src\app\components\layout\bootn.tsx
+//path: src\app\components\generic\react\btn.tsx
 
 interface bootnProps {
     btn?: string;

@@ -1,4 +1,5 @@
-// src\app\components\layout\signedInBadge.tsx
+//path: src\app\components\generic\react\signedInBadge.tsx
+
 import { SignedIn, UserButton } from "@clerk/nextjs";
 
 

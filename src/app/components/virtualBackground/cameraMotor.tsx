@@ -1,4 +1,5 @@
-// src\app\components\virtualBackground\cameraMotor.tsx
+//path: src\app\components\virtualBackground\cameraMotor.tsx
+
 "use client"
 
 import { useFrame, useThree } from '@react-three/fiber'

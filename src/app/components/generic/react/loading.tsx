@@ -1,3 +1,4 @@
+//path: src\app\components\generic\react\loading.tsx
 
 export function Loading() {
   return (

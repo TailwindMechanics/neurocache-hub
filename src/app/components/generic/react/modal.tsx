@@ -1,4 +1,5 @@
-// src\app\components\layout\modal.tsx
+//path: src\app\components\generic\react\modal.tsx
+
 "use client"
 
 import { useEffect } from "react";

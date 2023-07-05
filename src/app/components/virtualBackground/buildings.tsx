@@ -1,7 +1,10 @@
-"use client"
+//path: src\app\components\virtualBackground\buildings.tsx
 
-import colors from '../../colors.json';
-import { Building } from './building';
+"use client";
+
+import colors from 'src/app/data/colors.json';
+import Building from './Building';
+
 
 
 const generateBuildings = (count: number, side: number, positionZ: number, colorArray: string | any[], scaleArray: string | any[]) => {

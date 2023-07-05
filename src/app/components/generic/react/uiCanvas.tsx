@@ -1,5 +1,4 @@
-// src\app\components\layout\uiCanvas.tsx
-
+//path: src\app\components\generic\react\uiCanvas.tsx
 
 interface UICanvasProps {
     tailwind?: string;

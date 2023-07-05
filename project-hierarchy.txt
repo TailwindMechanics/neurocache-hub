@@ -18,8 +18,8 @@ neurocache-hub
 ├─ public
 │  └─ images
 │     ├─ neurocache.png
-│     ├─ wireframe.png
-│     └─ wireframe01.png
+│     ├─ pmndrs.png
+│     └─ wireframe.png
 ├─ README.md
 ├─ src
 │  ├─ app
@@ -39,6 +39,7 @@ neurocache-hub
 │  │  │  │  ├─ block.tsx
 │  │  │  │  ├─ btn.tsx
 │  │  │  │  ├─ customSignInButton.tsx
+│  │  │  │  ├─ divider.tsx
 │  │  │  │  ├─ hero.tsx
 │  │  │  │  ├─ ImageOverlay.tsx
 │  │  │  │  ├─ livePanel.tsx
@@ -50,13 +51,17 @@ neurocache-hub
 │  │  │  └─ virtualBackground
 │  │  │     ├─ building.tsx
 │  │  │     ├─ buildings.tsx
+│  │  │     ├─ cameraLook.tsx
 │  │  │     ├─ cameraMotor.tsx
+│  │  │     ├─ cameraSetup.tsx
 │  │  │     ├─ cityBackground.tsx
-│  │  │     ├─ divider.tsx
+│  │  │     ├─ freeFlyControls.tsx
 │  │  │     ├─ ground.tsx
 │  │  │     ├─ lights.tsx
-│  │  │     ├─ setupCamera.tsx
-│  │  │     └─ threeCanvas.tsx
+│  │  │     ├─ setBgColour.tsx
+│  │  │     ├─ test.md
+│  │  │     ├─ threeCanvas.tsx
+│  │  │     └─ wasdControls.ts
 │  │  ├─ content.json
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css

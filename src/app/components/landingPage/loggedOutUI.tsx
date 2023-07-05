@@ -1,9 +1,9 @@
-// src\app\components\landingPage\loggedOutUI.tsx
+//path: src\app\components\landingPage\loggedOutUI.tsx
 
-import { CustomSignInButton } from "../layout/customSignInButton";
-import { Divider } from "../layout/divider";
-import { LivePanel } from "../layout/livePanel";
-import Content from "../../content.json";
+import { CustomSignInButton } from "../generic/react/customSignInButton";
+import { LivePanel } from "../generic/react/livePanel";
+import { Divider } from "../generic/react/divider";
+import Content from "src/app/data/content.json";
 
 
 export default function LoggedOutUI() {
