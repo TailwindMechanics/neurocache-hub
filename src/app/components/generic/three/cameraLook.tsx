@@ -1,3 +1,5 @@
+//path: src\app\components\generic\three\cameraLook.tsx
+
 "use client";
 
 import { useEffect, useState } from "react";

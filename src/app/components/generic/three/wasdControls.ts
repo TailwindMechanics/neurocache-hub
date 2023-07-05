@@ -1,3 +1,5 @@
+//path: src\app\components\generic\three\wasdControls.ts
+
 "use client"
 
 import { useFrame, useThree } from '@react-three/fiber';

@@ -1,3 +1,5 @@
+//path: src\app\components\generic\three\threeCanvas.tsx
+
 "use client"
 
 import { Canvas } from "@react-three/fiber";

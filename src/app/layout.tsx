@@ -1,3 +1,5 @@
+//path: src\app\layout.tsx
+
 import { Analytics } from '@vercel/analytics/react';
 import Content from 'src/app/data/content.json';
 import { ClerkProvider } from '@clerk/nextjs'

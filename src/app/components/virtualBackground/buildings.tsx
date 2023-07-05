@@ -1,3 +1,5 @@
+//path: src\app\components\virtualBackground\buildings.tsx
+
 "use client";
 
 import colors from 'src/app/data/colors.json';

@@ -1,3 +1,5 @@
+//path: src\app\components\generic\react\loading.tsx
+
 export function Loading() {
   return (
     <div className="flex items-center justify-center h-screen w-screen bg-background">

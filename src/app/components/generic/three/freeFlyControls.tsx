@@ -1,3 +1,5 @@
+//path: src\app\components\generic\three\freeFlyControls.tsx
+
 "use client";
 
 import WasdControls from "./wasdControls";

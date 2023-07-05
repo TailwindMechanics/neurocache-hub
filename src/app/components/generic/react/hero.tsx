@@ -1,3 +1,5 @@
+//path: src\app\components\generic\react\hero.tsx
+
 "use client"
 import { useSpring, animated } from '@react-spring/web';
 import { Divider } from './divider';

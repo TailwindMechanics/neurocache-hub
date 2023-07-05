@@ -1,3 +1,5 @@
+//path: src\app\components\generic\react\block.tsx
+
 interface BlockProps {
   left?: string;
   right?: string;

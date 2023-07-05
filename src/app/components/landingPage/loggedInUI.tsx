@@ -1,3 +1,5 @@
+//path: src\app\components\landingPage\loggedInUI.tsx
+
 import SignedInBadge from "../generic/react/signedInBadge";
 import { LivePanel } from "../generic/react/livePanel";
 import { Divider } from "../generic/react/divider";

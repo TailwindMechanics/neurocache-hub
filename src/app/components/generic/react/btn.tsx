@@ -1,3 +1,5 @@
+//path: src\app\components\generic\react\btn.tsx
+
 interface bootnProps {
     btn?: string;
     onClick?: () => void;

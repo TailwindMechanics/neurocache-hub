@@ -1,3 +1,5 @@
+//path: src\app\page.tsx
+
 "use client"
 
 import CityBackground from "./components/virtualBackground/cityBackground";

@@ -1,3 +1,5 @@
+//path: src\app\components\generic\react\login.tsx
+
 "use client"
 
 import { SignIn } from "@clerk/nextjs/dist/types/client-boundary/uiComponents";

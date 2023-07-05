@@ -1,3 +1,5 @@
+//path: src\app\components\virtualBackground\lights.tsx
+
 "use client"
 
 
