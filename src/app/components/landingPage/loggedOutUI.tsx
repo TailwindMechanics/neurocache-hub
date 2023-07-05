@@ -1,5 +1,3 @@
-// src\app\components\landingPage\loggedOutUI.tsx
-
 import { CustomSignInButton } from "../generic/react/customSignInButton";
 import { LivePanel } from "../generic/react/livePanel";
 import { Divider } from "../generic/react/divider";

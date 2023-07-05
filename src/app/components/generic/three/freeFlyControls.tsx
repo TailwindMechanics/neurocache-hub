@@ -1,4 +1,3 @@
-// src\app\components\virtualBackground\freeFlyControls.tsx
 "use client";
 
 import WasdControls from "./wasdControls";

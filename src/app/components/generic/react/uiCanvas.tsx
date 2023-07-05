@@ -1,6 +1,3 @@
-// src\app\components\layout\uiCanvas.tsx
-
-
 interface UICanvasProps {
     tailwind?: string;
     children: React.ReactNode;

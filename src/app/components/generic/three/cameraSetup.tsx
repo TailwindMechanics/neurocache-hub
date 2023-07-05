@@ -1,4 +1,3 @@
-// src\app\components\virtualBackground\camera.tsx
 "use client"
 
 import { useThree } from '@react-three/fiber';

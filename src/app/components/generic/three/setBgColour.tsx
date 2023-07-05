@@ -1,4 +1,3 @@
-// src\app\components\virtualBackground\setBgColour.tsx
 "use client";
 
 

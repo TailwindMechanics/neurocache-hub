@@ -1,4 +1,3 @@
-// src\app\components\virtualBackground\cameraLook.tsx
 "use client";
 
 import { useEffect, useState } from "react";

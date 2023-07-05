@@ -1,5 +1,3 @@
-// src\app\components\layout\bootn.tsx
-
 interface bootnProps {
     btn?: string;
     onClick?: () => void;

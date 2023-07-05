@@ -1,5 +1,3 @@
-// src\app\components\layout\divider.tsx
-
 interface DividerProps {
     tailwind?: string;
 }

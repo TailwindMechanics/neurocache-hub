@@ -1,4 +1,3 @@
-// src\app\components\virtualBackground\wasdControls.ts
 "use client"
 
 import { useFrame, useThree } from '@react-three/fiber';

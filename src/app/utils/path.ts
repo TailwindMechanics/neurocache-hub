@@ -1,5 +1,5 @@
-// src\app\utils\path.ts
 "use client"
+
 import { Vector3, CatmullRomCurve3 } from 'three';
 
 

@@ -1,4 +1,3 @@
-// src\app\components\layout\signedInBadge.tsx
 import { SignedIn, UserButton } from "@clerk/nextjs";
 
 

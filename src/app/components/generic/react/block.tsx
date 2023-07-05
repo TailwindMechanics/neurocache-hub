@@ -1,5 +1,3 @@
-// src\app\components\layout\block.tsx
-
 interface BlockProps {
   left?: string;
   right?: string;

@@ -1,4 +1,3 @@
-// src\app\components\layout\signInBtn.tsx
 import { useSpring, animated } from '@react-spring/web';
 import { SignInButton } from '@clerk/nextjs';
 import React from 'react';

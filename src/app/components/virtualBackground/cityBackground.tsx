@@ -1,4 +1,3 @@
-// src\app\components\virtualBackground\cityBackground.tsx
 "use client"
 
 import FreeFlyControls from "../generic/three/freeFlyControls";

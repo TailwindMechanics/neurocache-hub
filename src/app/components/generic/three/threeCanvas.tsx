@@ -1,4 +1,3 @@
-// src\app\components\virtualBackground\threeCanvas.tsx
 "use client"
 
 import { Canvas } from "@react-three/fiber";

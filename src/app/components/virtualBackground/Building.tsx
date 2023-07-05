@@ -1,4 +1,3 @@
-// src\app\components\virtualBackground\building.tsx
 "use client";
 
 import { Box } from '@react-three/drei';
