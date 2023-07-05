@@ -1,7 +1,7 @@
 // src\app\components\virtualBackground\cityBackground.tsx
 "use client"
 
-import { CameraControls, Environment } from "@react-three/drei";
+import { CameraControls } from "@react-three/drei";
 import SetupCamera from "./setupCamera";
 import Buildings from "./buildings";
 import Ground from './ground';
