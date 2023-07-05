@@ -1,27 +1,26 @@
 {
     "version": "2.0.0",
     "tasks": [
-        {
-            "label": "Generate Project Tree",
-            "type": "shell",
-            "command": "${input:generateProjectHierarchy}", 
-            "problemMatcher": []
-        },
-        {
-            "label": "Auto Comment Paths",
-            "type": "shell",
-            "command": "node autoCommentPath.js",
-            "group": {
-              "kind": "build",
-              "isDefault": true
-            }
-          }
+      {
+        "label": "Generate Project Tree",
+        "type": "shell",
+        "command": "${input:generateProjectHierarchy}",
+        "dependsOn": "Auto Comment Paths",
+        "problemMatcher": []
+      },
+      {
+        "label": "Auto Comment Paths",
+        "type": "shell",
+        "command": "node autoCommentPath.js",
+        "problemMatcher": []
+      }
     ],
     "inputs": [
-        {
-            "id": "generateProjectHierarchy",
-            "type": "command",
-            "command": "project-hierarchy-explorer.generate"
-        }
+      {
+        "id": "generateProjectHierarchy",
+        "type": "command",
+        "command": "project-hierarchy-explorer.generate"
+      }
     ]
-}
+  }
+  

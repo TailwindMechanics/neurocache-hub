@@ -9,6 +9,7 @@ neurocache-hub
 │  └─ README.txt
 ├─ .vscode
 │  └─ tasks.json
+├─ autoCommentPath.js
 ├─ next-env.d.ts
 ├─ next.config.js
 ├─ package.json
@@ -29,48 +30,47 @@ neurocache-hub
 │  │  │     │  └─ route.ts
 │  │  │     └─ get-by-id
 │  │  │        └─ route.ts
-│  │  ├─ colors.json
 │  │  ├─ components
+│  │  │  ├─ generic
+│  │  │  │  ├─ react
+│  │  │  │  │  ├─ block.tsx
+│  │  │  │  │  ├─ btn.tsx
+│  │  │  │  │  ├─ customSignInButton.tsx
+│  │  │  │  │  ├─ divider.tsx
+│  │  │  │  │  ├─ hero.tsx
+│  │  │  │  │  ├─ ImageOverlay.tsx
+│  │  │  │  │  ├─ livePanel.tsx
+│  │  │  │  │  ├─ loading.tsx
+│  │  │  │  │  ├─ login.tsx
+│  │  │  │  │  ├─ modal.tsx
+│  │  │  │  │  ├─ signedInBadge.tsx
+│  │  │  │  │  └─ uiCanvas.tsx
+│  │  │  │  └─ three
+│  │  │  │     ├─ cameraLook.tsx
+│  │  │  │     ├─ cameraSetup.tsx
+│  │  │  │     ├─ freeFlyControls.tsx
+│  │  │  │     ├─ setBgColour.tsx
+│  │  │  │     ├─ threeCanvas.tsx
+│  │  │  │     └─ wasdControls.ts
 │  │  │  ├─ landingPage
 │  │  │  │  ├─ landingPage.tsx
 │  │  │  │  ├─ loggedInUI.tsx
 │  │  │  │  └─ loggedOutUI.tsx
-│  │  │  ├─ layout
-│  │  │  │  ├─ block.tsx
-│  │  │  │  ├─ btn.tsx
-│  │  │  │  ├─ customSignInButton.tsx
-│  │  │  │  ├─ divider.tsx
-│  │  │  │  ├─ hero.tsx
-│  │  │  │  ├─ ImageOverlay.tsx
-│  │  │  │  ├─ livePanel.tsx
-│  │  │  │  ├─ loading.tsx
-│  │  │  │  ├─ login.tsx
-│  │  │  │  ├─ modal.tsx
-│  │  │  │  ├─ signedInBadge.tsx
-│  │  │  │  └─ uiCanvas.tsx
 │  │  │  └─ virtualBackground
-│  │  │     ├─ building.tsx
+│  │  │     ├─ Building.tsx
 │  │  │     ├─ buildings.tsx
-│  │  │     ├─ cameraLook.tsx
 │  │  │     ├─ cameraMotor.tsx
-│  │  │     ├─ cameraSetup.tsx
 │  │  │     ├─ cityBackground.tsx
-│  │  │     ├─ freeFlyControls.tsx
 │  │  │     ├─ ground.tsx
 │  │  │     ├─ lights.tsx
-│  │  │     ├─ setBgColour.tsx
-│  │  │     ├─ test.md
-│  │  │     ├─ threeCanvas.tsx
-│  │  │     └─ wasdControls.ts
-│  │  ├─ content.json
+│  │  │     └─ test.md
+│  │  ├─ data
+│  │  │  ├─ colors.json
+│  │  │  └─ content.json
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
 │  │  ├─ page.tsx
-│  │  ├─ sign-in
-│  │  │  └─ page.tsx
-│  │  ├─ sign-up
-│  │  │  └─ page.tsx
 │  │  └─ utils
 │  │     ├─ mathUtils.ts
 │  │     └─ path.ts
