@@ -26,6 +26,9 @@ neurocache-hub
 ├─ README.md
 ├─ src
 │  ├─ app
+│  │  ├─ (hub)
+│  │  │  └─ dashboard
+│  │  │     └─ page.tsx
 │  │  ├─ api
 │  │  │  └─ book-library
 │  │  │     ├─ add
@@ -78,10 +81,6 @@ neurocache-hub
 │  │  │  └─ content.json
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
-│  │  ├─ hub
-│  │  │  ├─ dashboard
-│  │  │  │  └─ page.tsx
-│  │  │  └─ page.tsx
 │  │  ├─ layout.tsx
 │  │  ├─ page.tsx
 │  │  └─ utils
