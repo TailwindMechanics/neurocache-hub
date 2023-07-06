@@ -1,8 +1,10 @@
 //path: src\app\components\generic\react\livePanel.tsx
 
 "use client"
+
 import { useSpring, animated } from '@react-spring/web';
 import React from 'react';
+
 
 interface LivePanelProps {
     children?: React.ReactNode;

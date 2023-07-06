@@ -43,14 +43,22 @@ neurocache-hub
 │  │  │  │  │  ├─ ImageOverlay.tsx
 │  │  │  │  │  ├─ livePanel.tsx
 │  │  │  │  │  ├─ loading.tsx
+│  │  │  │  │  ├─ loggedInRedirect.tsx
 │  │  │  │  │  ├─ login.tsx
 │  │  │  │  │  ├─ modal.tsx
+│  │  │  │  │  ├─ redirectHome.tsx
 │  │  │  │  │  ├─ signedInBadge.tsx
 │  │  │  │  │  └─ uiCanvas.tsx
 │  │  │  │  └─ three
 │  │  │  │     ├─ cameraLook.tsx
 │  │  │  │     ├─ cameraSetup.tsx
 │  │  │  │     ├─ freeFlyControls.tsx
+│  │  │  │     ├─ geometry
+│  │  │  │     │  ├─ planeGeo.tsx
+│  │  │  │     │  └─ road.tsx
+│  │  │  │     ├─ materials
+│  │  │  │     │  ├─ mappedMetalMat.tsx
+│  │  │  │     │  └─ metalMat.tsx
 │  │  │  │     ├─ setBgColour.tsx
 │  │  │  │     ├─ threeCanvas.tsx
 │  │  │  │     └─ wasdControls.ts
@@ -63,7 +71,6 @@ neurocache-hub
 │  │  │     ├─ buildings.tsx
 │  │  │     ├─ cameraMotor.tsx
 │  │  │     ├─ cityBackground.tsx
-│  │  │     ├─ ground.tsx
 │  │  │     ├─ lights.tsx
 │  │  │     └─ test.md
 │  │  ├─ data
@@ -71,6 +78,10 @@ neurocache-hub
 │  │  │  └─ content.json
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
+│  │  ├─ hub
+│  │  │  ├─ dashboard
+│  │  │  │  └─ page.tsx
+│  │  │  └─ page.tsx
 │  │  ├─ layout.tsx
 │  │  ├─ page.tsx
 │  │  └─ utils

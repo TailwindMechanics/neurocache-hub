@@ -34,48 +34,42 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - 3d Package: React Three Fiber
 - Animation: React Spring
 
-# Development Steps
-## Login
-1. Install Clerk SDK:
-  - Open your terminal and navigate to your project's root directory (neurocache-hub)
-  - Run the following command to add Clerk to your project:
-    `pnpm add @clerk/clerk-react`
+# Next Development Steps
+### Configure Domain and Routes
+   - Set up `hub.neurocache.ai` as a separate subdomain for logged in users. 
+   - Organize all hub content in the `app/hub` directory and its subdirectories like `app/hub/dashboard`, etc.
 
-2. Configure Clerk in your project:
-  - In the `.env.local` file, add your Clerk Frontend API variable, which can be found on your Clerk dashboard:
-      `NEXT_PUBLIC_CLERK_FRONTEND_API=<your-clerk-frontend-api>`
+### Handle Logged-In Users
+   - Implement a check to detect if a user is logged in whenever a user accesses `neurocache.ai`.
+   - If the user is logged in, they should be redirected to `hub.neurocache.ai`. Use an HTTP 302 (Temporary) redirect here.
 
-3. Create a new SignIn page:
-    - In the `src/app/components` directory, create a new file `SignIn.tsx`
-    - In this file, import the `SignIn` component from Clerk and use it as shown in the example below:
-```typescript
-      import { SignIn } from "@clerk/clerk-react";
+### Handle Not-Logged-In Users
+   - Ensure that if a user is not logged in, they are only able to access `neurocache.ai` and any other public facing urls.
+   - If a not-logged-in user attempts to access any other page (especially those under the `hub.neurocache.ai` subdomain), they should be redirected to the landing page on `neurocache.ai`. Again, use an HTTP 302 (Temporary) redirect.
 
-      const SignInPage = () => {
-        return (
-          <div className="min-h-screen bg-white flex">
-            <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-              <div className="mx-auto w-full max-w-sm lg:w-96">
-                <SignIn path="/user" routing="path" />
-              </div>
-            </div>
-          </div>
-        );
-      };
+### Setup Neurocache API
+   - Configure `api.neurocache.ai` as a separate public API headless app hosted on Google Cloud Platform.
+   - Implement an authentication layer that requires a valid API key for any API request.
+   - If any user (logged in or not) tries to access `api.neurocache.ai` in their browser, redirect them:
+     - Logged in users are redirected to `hub.neurocache.ai`
+     - Not logged in users are redirected to `neurocache.ai`
+   - API should only be accessible via API calls.
 
-      export default SignInPage;
-```
-  - In the example above, the `SignIn` component is rendered within a div element. You can customize the appearance by modifying the CSS classes.
+### API Key Generation and Management
+   - Implement a feature in the hub dashboard to allow users to generate API keys. 
+   - Limit the number of API keys per user to two.
+   - Store the generated API keys securely in the database.
+   - In the future, add functionality to track API usage for billing purposes.
 
-4. Update your routing configuration:
-    - In your routing configuration file (depending on your setup, this might be `next.config.js`), add a route for the `SignIn` page.
+### User Authentication
+   - Continue using Clerk for user authentication.
+   - Integrate the authentication checks with the redirects as detailed in steps 2 and 3.
 
-5. Run your application:
-    - Use the following command to run your application:
-      ```bash
-      pnpm run dev
-      ```
-    - You should now be able to navigate to your `SignIn` page and use the form to log in, register, or log out.
+### API Authentication
+   - When an API request comes in, verify the API key against the stored keys in the database.
+   - Only grant access if the key is valid.
 
-Remember to check the [Clerk documentation](https://docs.clerk.dev/) for more detailed information and customization options.
-
+## Future Considerations
+- Decide on whether API documentation should be public or restricted to logged in users.
+- If public, set up the documentation at `neurocache.ai/docs`. If restricted, consider a route under the `hub` subdomain.
+- Implement a billing system based on API usage.
