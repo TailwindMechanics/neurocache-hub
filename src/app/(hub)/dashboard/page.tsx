@@ -1,4 +1,4 @@
-//path: src\app\hub\dashboard\page.tsx
+//path: src\app\(hub)\dashboard\page.tsx
 
 import LoggedInRedirect from "@/app/components/generic/react/loggedInRedirect";
 import UICanvas from "@/app/components/generic/react/uiCanvas";
