@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 export default function RedirectToLanding() {
     useEffect(() => {
-        window.location.href = process.env.NEXT_LANDING_URL || '/';
+        window.location.href = process.env.NEXT_PUBLIC_URL || '/';
     }, []);
 
     return <Loading />;
