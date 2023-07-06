@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    assetPrefix: 'https://neurocache.ai',
     async rewrites() {
         return {
             beforeFiles: [
@@ -18,4 +19,4 @@ const nextConfig = {
     },
 };
 
-module.exports = nextConfig;  
+module.exports = nextConfig;
