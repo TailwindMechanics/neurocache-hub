@@ -1,7 +1,7 @@
 //path: src\app\components\generic\react\loggedInRedirect.tsx
 
 import { SignedIn, SignedOut } from '@clerk/nextjs';
-import RedirectHome from './redirectHome';
+import RedirectToLanding from './redirectToLanding';
 
 
 interface LoggedInRedirectProps {
@@ -14,7 +14,7 @@ export default function LoggedInRedirect ({ children }: LoggedInRedirectProps) {
         {children}
       </SignedIn>
       <SignedOut>
-        <RedirectHome/>
+        <RedirectToLanding/>
       </SignedOut>
     </>
 }

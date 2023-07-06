@@ -46,7 +46,7 @@ neurocache-hub
 │  │  │  │  │  ├─ loggedInRedirect.tsx
 │  │  │  │  │  ├─ login.tsx
 │  │  │  │  │  ├─ modal.tsx
-│  │  │  │  │  ├─ redirectHome.tsx
+│  │  │  │  │  ├─ redirectToLanding.tsx
 │  │  │  │  │  ├─ signedInBadge.tsx
 │  │  │  │  │  └─ uiCanvas.tsx
 │  │  │  │  └─ three
