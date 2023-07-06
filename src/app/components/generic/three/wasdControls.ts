@@ -11,9 +11,8 @@ export default function WasdControls({ speed = 0.1 }: { speed?: number }) {
   const { camera, scene } = useThree();
   const moveDirections = useRef({ forward: 0, right: 0, up: 0 });
   const driverRef = useRef<Object3D>(new Object3D());
-  const [boost, setBoost] = useState(1); // Add a speed boost state
+  const [speedMultiplier, setSpeedMultiplier] = useState(1);
 
-  // Attach the camera to the driver
   useEffect(() => {
     driverRef.current.add(camera);
     scene.add(driverRef.current);
@@ -24,10 +23,9 @@ export default function WasdControls({ speed = 0.1 }: { speed?: number }) {
     camera.getWorldDirection(direction);
     const rightDirection = new Vector3().crossVectors(direction, camera.up);
 
-    // apply the move directions to the driver
-    driverRef.current.position.addScaledVector(direction, (speed / 10) * moveDirections.current.forward * boost);
-    driverRef.current.position.addScaledVector(rightDirection, (speed / 10) * moveDirections.current.right * boost);
-    driverRef.current.position.y += (speed / 10) * moveDirections.current.up * boost;
+    driverRef.current.position.addScaledVector(direction, (speed / 10) * moveDirections.current.forward * speedMultiplier);
+    driverRef.current.position.addScaledVector(rightDirection, (speed / 10) * moveDirections.current.right * speedMultiplier);
+    driverRef.current.position.y += (speed / 10) * moveDirections.current.up * speedMultiplier;
   });
 
   useEffect(() => {
@@ -57,9 +55,11 @@ export default function WasdControls({ speed = 0.1 }: { speed?: number }) {
         case 'E':
           moveDirections.current.up = 1;
           break;
-        case 'Shift':
-          setBoost(5); // Set speed boost when Shift is down
-          break;
+      }
+
+      // Handle number keys for speed multiplier
+      if (event.key >= '1' && event.key <= '9') {
+        setSpeedMultiplier(parseInt(event.key));
       }
     };
 
@@ -82,9 +82,6 @@ export default function WasdControls({ speed = 0.1 }: { speed?: number }) {
         case 'e':
         case 'E':
           moveDirections.current.up = 0;
-          break;
-        case 'Shift':
-          setBoost(1); // Reset speed boost when Shift is released
           break;
       }
     };

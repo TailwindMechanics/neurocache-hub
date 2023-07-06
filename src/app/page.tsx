@@ -13,9 +13,11 @@ import { Suspense } from "react";
 
 export default function Home() {
   return <>
-    <ThreeCanvas>
-      <CityBackground />
-    </ThreeCanvas>
+    <Suspense fallback={<Loading />}>
+      <ThreeCanvas>
+        <CityBackground />
+      </ThreeCanvas>
+    </Suspense>
     <SignedIn>
       <Suspense fallback={<Loading />}>
         <UICanvas tailwind="w-1/6 flex-col">
