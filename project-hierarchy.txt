@@ -17,10 +17,12 @@ neurocache-hub
 ├─ postcss.config.js
 ├─ project-hierarchy.txt
 ├─ public
-│  └─ images
-│     ├─ neurocache.png
-│     ├─ pmndrs.png
-│     └─ wireframe.png
+│  ├─ images
+│  │  └─ neurocache.png
+│  └─ textures
+│     ├─ grid-texture.png
+│     ├─ terrain-normal.jpg
+│     └─ terrain-roughness.jpg
 ├─ README.md
 ├─ src
 │  ├─ app
