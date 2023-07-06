@@ -1,6 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    assetPrefix: 'https://neurocache.ai',
+    async headers() {
+        return [
+            {
+                source: '/:path*',
+                headers: [
+                    {
+                        key: 'Access-Control-Allow-Origin',
+                        value: '*',
+                    },
+                ],
+            },
+        ];
+    },
     async rewrites() {
         return {
             beforeFiles: [
@@ -16,6 +28,13 @@ const nextConfig = {
                 },
             ],
         };
+    },
+    // Set assetPrefix dynamically based on the HOST header
+    webpack: (config, { isServer }) => {
+        if (!isServer) {
+            config.output.publicPath = `https://${process.env.HOST}${config.output.publicPath}`;
+        }
+        return config;
     },
 };
 
