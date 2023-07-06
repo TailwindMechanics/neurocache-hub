@@ -18,6 +18,7 @@
     "@react-three/fiber": "^8.13.4",
     "@react-three/postprocessing": "^2.14.13",
     "@reduxjs/toolkit": "^1.9.5",
+    "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",
@@ -31,7 +32,7 @@
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
     "next": "13.4.7",
-    "postcss": "8.4.24",
+    "postcss": "8.4.25",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.1.1",
@@ -42,7 +43,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "daisyui": "^3.1.7",
+    "daisyui": "^3.1.9",
     "jest": "^29.5.0"
   }
 }

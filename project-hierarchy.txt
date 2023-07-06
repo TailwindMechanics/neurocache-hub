@@ -33,6 +33,11 @@ neurocache-hub
 │  │  │     └─ get-by-id
 │  │  │        └─ route.ts
 │  │  ├─ components
+│  │  │  ├─ CalendarView
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ util.js
+│  │  │  ├─ Cards
+│  │  │  │  └─ TitleCard.js
 │  │  │  ├─ generic
 │  │  │  │  ├─ react
 │  │  │  │  │  ├─ block.tsx
@@ -62,10 +67,21 @@ neurocache-hub
 │  │  │  │     ├─ setBgColour.tsx
 │  │  │  │     ├─ threeCanvas.tsx
 │  │  │  │     └─ wasdControls.ts
+│  │  │  ├─ Input
+│  │  │  │  ├─ InputText.js
+│  │  │  │  ├─ SearchBar.js
+│  │  │  │  ├─ SelectBox.js
+│  │  │  │  ├─ TextAreaInput.js
+│  │  │  │  └─ ToogleInput.js
 │  │  │  ├─ landingPage
 │  │  │  │  ├─ landingPage.tsx
 │  │  │  │  ├─ loggedInUI.tsx
 │  │  │  │  └─ loggedOutUI.tsx
+│  │  │  ├─ Typography
+│  │  │  │  ├─ ErrorText.js
+│  │  │  │  ├─ HelperText.js
+│  │  │  │  ├─ Subtitle.js
+│  │  │  │  └─ Title.js
 │  │  │  └─ virtualBackground
 │  │  │     ├─ Building.tsx
 │  │  │     ├─ buildings.tsx
@@ -73,6 +89,15 @@ neurocache-hub
 │  │  │     ├─ cityBackground.tsx
 │  │  │     ├─ lights.tsx
 │  │  │     └─ test.md
+│  │  ├─ containers
+│  │  │  ├─ Header.js
+│  │  │  ├─ Layout.js
+│  │  │  ├─ LeftSidebar.js
+│  │  │  ├─ ModalLayout.js
+│  │  │  ├─ PageContent.js
+│  │  │  ├─ RightSidebar.js
+│  │  │  ├─ SidebarSubmenu.js
+│  │  │  └─ SuspenseContent.js
 │  │  ├─ data
 │  │  │  ├─ colors.json
 │  │  │  └─ content.json
@@ -80,11 +105,34 @@ neurocache-hub
 │  │  ├─ globals.css
 │  │  ├─ hub
 │  │  │  ├─ dashboard
-│  │  │  │  └─ page.tsx
+│  │  │  │  ├─ page.tsx
+│  │  │  │  └─ pages
+│  │  │  │     ├─ DocComponents.js
+│  │  │  │     ├─ DocFeatures.js
+│  │  │  │     ├─ Documentation.tsx
+│  │  │  │     ├─ ForgotPassword.js
+│  │  │  │     ├─ GettingStarted.js
+│  │  │  │     ├─ Login.js
+│  │  │  │     ├─ protected
+│  │  │  │     │  ├─ 404.js
+│  │  │  │     │  ├─ Bills.js
+│  │  │  │     │  ├─ Blank.js
+│  │  │  │     │  ├─ Calendar.js
+│  │  │  │     │  ├─ Charts.js
+│  │  │  │     │  ├─ Dashboard.js
+│  │  │  │     │  ├─ Integration.js
+│  │  │  │     │  ├─ Leads.js
+│  │  │  │     │  ├─ ProfileSettings.js
+│  │  │  │     │  ├─ Team.js
+│  │  │  │     │  ├─ Transactions.js
+│  │  │  │     │  └─ Welcome.js
+│  │  │  │     └─ Register.js
 │  │  │  └─ page.tsx
 │  │  ├─ layout.tsx
 │  │  ├─ page.tsx
 │  │  └─ utils
+│  │     ├─ dummyData.js
+│  │     ├─ globalConstantUtil.js
 │  │     ├─ mathUtils.ts
 │  │     └─ path.ts
 │  ├─ middleware.ts

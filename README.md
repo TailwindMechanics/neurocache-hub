@@ -35,41 +35,18 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - Animation: React Spring
 
 # Next Development Steps
-### Configure Domain and Routes
-   - Set up `hub.neurocache.ai` as a separate subdomain for logged in users. 
-   - Organize all hub content in the `app/hub` directory and its subdirectories like `app/hub/dashboard`, etc.
-
-### Handle Logged-In Users
-   - Implement a check to detect if a user is logged in whenever a user accesses `neurocache.ai`.
-   - If the user is logged in, they should be redirected to `hub.neurocache.ai`. Use an HTTP 302 (Temporary) redirect here.
-
-### Handle Not-Logged-In Users
-   - Ensure that if a user is not logged in, they are only able to access `neurocache.ai` and any other public facing urls.
-   - If a not-logged-in user attempts to access any other page (especially those under the `hub.neurocache.ai` subdomain), they should be redirected to the landing page on `neurocache.ai`. Again, use an HTTP 302 (Temporary) redirect.
-
-### Setup Neurocache API
-   - Configure `api.neurocache.ai` as a separate public API headless app hosted on Google Cloud Platform.
-   - Implement an authentication layer that requires a valid API key for any API request.
-   - If any user (logged in or not) tries to access `api.neurocache.ai` in their browser, redirect them:
-     - Logged in users are redirected to `hub.neurocache.ai`
-     - Not logged in users are redirected to `neurocache.ai`
-   - API should only be accessible via API calls.
-
-### API Key Generation and Management
-   - Implement a feature in the hub dashboard to allow users to generate API keys. 
-   - Limit the number of API keys per user to two.
-   - Store the generated API keys securely in the database.
-   - In the future, add functionality to track API usage for billing purposes.
-
-### User Authentication
-   - Continue using Clerk for user authentication.
-   - Integrate the authentication checks with the redirects as detailed in steps 2 and 3.
-
-### API Authentication
-   - When an API request comes in, verify the API key against the stored keys in the database.
-   - Only grant access if the key is valid.
-
-## Future Considerations
-- Decide on whether API documentation should be public or restricted to logged in users.
-- If public, set up the documentation at `neurocache.ai/docs`. If restricted, consider a route under the `hub` subdomain.
-- Implement a billing system based on API usage.
+1. ### Setup Neurocache Hub Dashboard
+   - Design the Dashboard: Start by sketching out a design or find a DaisyUI template to base it on. 
+      The dashboard should include sections for managing AI agents, generating API keys, and viewing usage data.
+   - Develop the Dashboard: Develop the dashboard using Next.js and Tailwind CSS along with DaisyUI for components. 
+      Utilize state management (such as Redux or Zustand) to handle user interaction and API calls.
+   - User Authentication: Ensure the dashboard is only accessible by authenticated users. Continue to use Clerk for authentication.
+   - Dashboard Testing: Write Jest tests to ensure the dashboard's features work as expected.
+  
+2. ### Build the Slack-Like Chat
+   - Design the Chat UI: Similar to the dashboard, sketch out a design for the chat interface or find a suitable template. 
+      Consider incorporating features like channels for groups of AI agents, private messages, and real-time updates.
+   - Develop the Chat: Develop the chat using the same tech stack. Consider using WebSockets or a similar technology for real-time communication.
+   - AI Agent Integration: Incorporate the ability for AI agents to participate in the chat. This might involve making API calls to the Neurocache API.
+   - Chat Testing: Write Jest tests to verify the chat's functionality.
+   - The primary goal for this phase of development is to close the loop between the Neurocache Hub and the Neurocache API, allowing users to interact with their AI agents in a real-time setting.

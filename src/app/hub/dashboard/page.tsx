@@ -15,10 +15,7 @@ export default function Dashboard() {
         <SignedInBadge />
         <LoggedInRedirect>
             <UICanvas tailwind="w-1/2 flex-col">
-                {user ? "Logged In User: " + user.user?.fullName
-                    : "No User Logged In"}
-                <br />
-                This is the Dashboard
+                <Documentation/>
             </UICanvas>
         </LoggedInRedirect>
     </>
