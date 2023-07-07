@@ -34,16 +34,17 @@ neurocache-hub
 │  │  │        └─ route.ts
 │  │  ├─ components
 │  │  │  ├─ CalendarView
-│  │  │  │  ├─ index.js
-│  │  │  │  └─ util.js
+│  │  │  │  ├─ calendarView.tsx
+│  │  │  │  └─ util.ts
 │  │  │  ├─ Cards
-│  │  │  │  └─ TitleCard.js
+│  │  │  │  └─ TitleCard.tsx
 │  │  │  ├─ generic
 │  │  │  │  ├─ react
 │  │  │  │  │  ├─ block.tsx
 │  │  │  │  │  ├─ btn.tsx
 │  │  │  │  │  ├─ customSignInButton.tsx
 │  │  │  │  │  ├─ divider.tsx
+│  │  │  │  │  ├─ GettingStartedNav.tsx
 │  │  │  │  │  ├─ hero.tsx
 │  │  │  │  │  ├─ ImageOverlay.tsx
 │  │  │  │  │  ├─ livePanel.tsx
@@ -68,20 +69,20 @@ neurocache-hub
 │  │  │  │     ├─ threeCanvas.tsx
 │  │  │  │     └─ wasdControls.ts
 │  │  │  ├─ Input
-│  │  │  │  ├─ InputText.js
-│  │  │  │  ├─ SearchBar.js
-│  │  │  │  ├─ SelectBox.js
-│  │  │  │  ├─ TextAreaInput.js
-│  │  │  │  └─ ToogleInput.js
+│  │  │  │  ├─ InputText.tsx
+│  │  │  │  ├─ SearchBar.tsx
+│  │  │  │  ├─ SelectBox.tsx
+│  │  │  │  ├─ TextAreaInput.tsx
+│  │  │  │  └─ ToggleInput.tsx
 │  │  │  ├─ landingPage
 │  │  │  │  ├─ landingPage.tsx
 │  │  │  │  ├─ loggedInUI.tsx
 │  │  │  │  └─ loggedOutUI.tsx
 │  │  │  ├─ Typography
-│  │  │  │  ├─ ErrorText.js
-│  │  │  │  ├─ HelperText.js
-│  │  │  │  ├─ Subtitle.js
-│  │  │  │  └─ Title.js
+│  │  │  │  ├─ ErrorText.tsx
+│  │  │  │  ├─ HelperText.tsx
+│  │  │  │  ├─ Subtitle.tsx
+│  │  │  │  └─ Title.tsx
 │  │  │  └─ virtualBackground
 │  │  │     ├─ Building.tsx
 │  │  │     ├─ buildings.tsx
@@ -90,18 +91,82 @@ neurocache-hub
 │  │  │     ├─ lights.tsx
 │  │  │     └─ test.md
 │  │  ├─ containers
-│  │  │  ├─ Header.js
-│  │  │  ├─ Layout.js
-│  │  │  ├─ LeftSidebar.js
+│  │  │  ├─ Header.tsx
+│  │  │  ├─ Layout.tsx
+│  │  │  ├─ LeftSidebar.tsx
 │  │  │  ├─ ModalLayout.js
 │  │  │  ├─ PageContent.js
 │  │  │  ├─ RightSidebar.js
-│  │  │  ├─ SidebarSubmenu.js
+│  │  │  ├─ SidebarSubmenu.tsx
 │  │  │  └─ SuspenseContent.js
 │  │  ├─ data
 │  │  │  ├─ colors.json
 │  │  │  └─ content.json
 │  │  ├─ favicon.ico
+│  │  ├─ features
+│  │  │  ├─ calendar
+│  │  │  │  ├─ CalendarEventsBodyRightDrawer.js
+│  │  │  │  └─ index.js
+│  │  │  ├─ charts
+│  │  │  │  ├─ components
+│  │  │  │  │  ├─ BarChart.js
+│  │  │  │  │  ├─ DoughnutChart.js
+│  │  │  │  │  ├─ LineChart.js
+│  │  │  │  │  ├─ PieChart.js
+│  │  │  │  │  ├─ ScatterChart.js
+│  │  │  │  │  └─ StackBarChart.js
+│  │  │  │  └─ index.js
+│  │  │  ├─ common
+│  │  │  │  ├─ components
+│  │  │  │  │  ├─ ConfirmationModalBody.js
+│  │  │  │  │  └─ NotificationBodyRightDrawer.js
+│  │  │  │  ├─ headerSlice.js
+│  │  │  │  ├─ modalSlice.js
+│  │  │  │  └─ rightDrawerSlice.js
+│  │  │  ├─ dashboard
+│  │  │  │  ├─ components
+│  │  │  │  │  ├─ AmountStats.js
+│  │  │  │  │  ├─ BarChart.js
+│  │  │  │  │  ├─ DashboardStats.js
+│  │  │  │  │  ├─ DashboardTopBar.js
+│  │  │  │  │  ├─ DoughnutChart.js
+│  │  │  │  │  ├─ LineChart.js
+│  │  │  │  │  ├─ PageStats.js
+│  │  │  │  │  └─ UserChannels.js
+│  │  │  │  └─ index.js
+│  │  │  ├─ documentation
+│  │  │  │  ├─ components
+│  │  │  │  │  ├─ DocComponentsContent.tsx
+│  │  │  │  │  ├─ DocComponentsNav.tsx
+│  │  │  │  │  ├─ FeaturesContent.tsx
+│  │  │  │  │  ├─ FeaturesNav.tsx
+│  │  │  │  │  └─ GettingStartedContent.tsx
+│  │  │  │  ├─ DocComponents.tsx
+│  │  │  │  ├─ DocFeatures.tsx
+│  │  │  │  └─ DocGettingStarted.tsx
+│  │  │  ├─ integration
+│  │  │  │  └─ index.js
+│  │  │  ├─ leads
+│  │  │  │  ├─ components
+│  │  │  │  │  └─ AddLeadModalBody.js
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ leadSlice.js
+│  │  │  ├─ settings
+│  │  │  │  ├─ billing
+│  │  │  │  │  └─ index.js
+│  │  │  │  ├─ profilesettings
+│  │  │  │  │  └─ index.js
+│  │  │  │  └─ team
+│  │  │  │     └─ index.js
+│  │  │  ├─ transactions
+│  │  │  │  └─ index.js
+│  │  │  └─ user
+│  │  │     ├─ components
+│  │  │     │  └─ TemplatePointers.js
+│  │  │     ├─ ForgotPassword.js
+│  │  │     ├─ LandingIntro.js
+│  │  │     ├─ Login.js
+│  │  │     └─ Register.js
 │  │  ├─ globals.css
 │  │  ├─ hub
 │  │  │  ├─ dashboard
@@ -130,6 +195,9 @@ neurocache-hub
 │  │  │  └─ page.tsx
 │  │  ├─ layout.tsx
 │  │  ├─ page.tsx
+│  │  ├─ routes
+│  │  │  ├─ index.tsx
+│  │  │  └─ sidebar.tsx
 │  │  └─ utils
 │  │     ├─ dummyData.js
 │  │     ├─ globalConstantUtil.js
@@ -137,6 +205,7 @@ neurocache-hub
 │  │     └─ path.ts
 │  ├─ middleware.ts
 │  └─ types
+│     ├─ declarations.d.ts
 │     └─ index.ts
 ├─ tailwind.config.js
 └─ tsconfig.json

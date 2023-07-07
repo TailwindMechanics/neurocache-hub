@@ -1,3 +1,5 @@
+//path: src\app\features\documentation\components\DocComponentsContent.tsx
+
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import InputText from '../../../components/Input/InputText'
@@ -83,6 +85,7 @@ function DocComponentsContent(){
                 </div>
                 <div className='p-8 bg-base-300 rounded-lg mt-4'>
                     <TitleCard title={"Card Title"}> <h1>Card Body</h1></TitleCard>
+
                 </div>
 
 

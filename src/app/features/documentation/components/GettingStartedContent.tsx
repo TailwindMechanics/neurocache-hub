@@ -1,22 +1,26 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import Subtitle from '../../../components/Typography/Subtitle'
-import { setPageTitle } from '../../common/headerSlice'
+//path: src\app\features\documentation\components\GettingStartedContent.tsx
 
-function GettingStartedContent(){
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import Subtitle from '../../../components/Typography/Subtitle';
+import { setPageTitle } from '../../common/headerSlice';
 
-    const dispatch = useDispatch()
+const GettingStartedContent: React.FC = () => {
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(setPageTitle("Getting Started"));
+    }, [dispatch]);
 
-
-    return(
+    return (
         <>
             <article className="prose">
               <h1 className="">Getting Started</h1>
 
-
               {/* Introduction */}
               <h2 className="" id="getstarted1">Introduction</h2>
+
+
               <p>A free dashboard template using <span className='font-bold'>Daisy UI</span> and react js. With the help of Dasisy UI, it comes with <span className='font-bold'>fully customizable and themable CSS</span> and power of Tailwind CSS utility classes. We have also added <span className='font-bold'>redux toolkit</span>  and configured it for API calls and state management.</p> 
               <p>User authentication has been implemented using JWT token method (ofcourse you need backend API for generating and verifying token). This template can be used to start your next SaaS project or build new internal tools in your company.</p>
               <h4> Core libraries used - </h4>

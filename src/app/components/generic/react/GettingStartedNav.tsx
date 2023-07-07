@@ -1,3 +1,5 @@
+//path: src\app\components\generic\react\GettingStartedNav.tsx
+
 import { useState, FC } from "react";
 
 interface Nav {

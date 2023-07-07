@@ -1,6 +1,13 @@
+//path: src\app\hub\dashboard\pages\Documentation.tsx
+
 import { FC } from 'react';
 import Link from 'next/link';
 import GettingStartedNav from '@/app/components/generic/react/GettingStartedNav';
+import FeaturesNav from '@/app/features/documentation/components/FeaturesNav';
+import DocComponentsNav from '@/app/features/documentation/components/DocComponentsNav';
+import GettingStartedContent from '@/app/features/documentation/components/GettingStartedContent';
+import FeaturesContent from '@/app/features/documentation/components/FeaturesContent';
+import DocComponentsContent from '@/app/features/documentation/components/DocComponentsContent';
 
 
 const Documentation: FC = () => {
@@ -16,8 +23,8 @@ const Documentation: FC = () => {
                             </Link>
 
                             <GettingStartedNav activeIndex={0} />
-                            <FeaturesNav />
-                            <DocComponentsNav />
+                            <FeaturesNav activeIndex={0} />
+                            <DocComponentsNav activeIndex={0} />
                         </div>
 
                         <div className="grow pt-16  overflow-y-scroll">
