@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import { setPageTitle } from "../common/headerSlice"
 import GettingStartedContent from "./components/GettingStartedContent"
 import GettingStartedNav from "@/app/components/generic/react/GettingStartedNav"
+import { AppDispatch } from "@/app/store"
 
 
 const GettingStarted: React.FC = () => {

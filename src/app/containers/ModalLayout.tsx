@@ -1,3 +1,5 @@
+//path: src\app\containers\ModalLayout.tsx
+
 import { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeModal } from '../features/common/modalSlice';
@@ -5,11 +7,18 @@ import AddLeadModalBody from '../features/leads/components/AddLeadModalBody';
 import ConfirmationModalBody from '../features/common/components/ConfirmationModalBody';
 import { MODAL_BODY_TYPES } from '../utils/globalConstantUtil';
 
+interface IExtraObject {
+    message: string;
+    type: string;
+    _id: string;
+    index: number;
+}
+
 interface IModalState {
     isOpen: boolean,
     bodyType: string,
     size: string,
-    extraObject: object,
+    extraObject: IExtraObject,
     title: string
 }
 
@@ -23,9 +32,10 @@ const ModalLayout: FC = () => {
 
     const close = (e?: React.MouseEvent<HTMLElement>) => {
         if (e) {
-          dispatch(closeModal(e));
+            e.stopPropagation();
+            dispatch(closeModal());
         }
-      };
+    };
 
     return(
         <>

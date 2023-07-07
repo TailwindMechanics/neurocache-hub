@@ -25,7 +25,7 @@ const Layout: React.FC = () => {
     if(newNotificationMessage !== ""){
       if(newNotificationStatus === 1) NotificationManager.success(newNotificationMessage, 'Success');
       if(newNotificationStatus === 0) NotificationManager.error(newNotificationMessage, 'Error');
-      dispatch(removeNotificationMessage({}));
+      dispatch(removeNotificationMessage());
     }
   }, [newNotificationMessage, dispatch]);
 

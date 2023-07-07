@@ -1,18 +1,21 @@
 //path: src\app\components\CalendarView\calendarView.tsx
 
 import { useEffect, useState } from "react";
-import moment from "moment";
+import moment, { Moment } from "moment";
 import { CALENDAR_EVENT_STYLE } from "./util";
+import  ChevronLeftIcon from "@heroicons/react/24/solid/ChevronLeftIcon";
+import  ChevronRightIcon  from "@heroicons/react/24/solid/ChevronRightIcon";
 
 interface Event {
   title: string;
-  theme?: string;
-  startTime?: string;
+  theme: string;
+  startTime: Moment;
+  endTime: Moment;
 }
 
 interface CalendarViewProps {
   calendarEvents: Event[];
-  addNewEvent: (date?: Date) => void;
+  addNewEvent: (date?: string | number | Date) => void;
   openDayDetail: (detail: { filteredEvents: Event[], title: string }) => void;
 }
 
@@ -58,14 +61,14 @@ const CalendarView: React.FC<CalendarViewProps> = ({ calendarEvents, addNewEvent
     if (filteredEvents.length > 2) {
       let originalLength = filteredEvents.length
       filteredEvents = filteredEvents.slice(0, 2)
-      filteredEvents.push({ title: `${originalLength - 2} more`, theme: "MORE" })
+      filteredEvents.push({ title: `${originalLength - 2} more`, theme: "MORE", startTime: moment(), endTime: moment() });
     }
     return filteredEvents
   }
 
   const openAllEventsDetail = (date: moment.MomentInput, theme: string | undefined) => {
     if (theme != "MORE") return 1
-    let filteredEvents = events.filter((e) => { return moment(date).isSame(moment(e.startTime), 'day') }).map((e) => { return { title: e.title, theme: e.theme } })
+    let filteredEvents = events.filter((e) => { return moment(date).isSame(moment(e.startTime), 'day') }).map((e) => { return { title: e.title, theme: e.theme, startTime: e.startTime, endTime: e.endTime } })
     openDayDetail({ filteredEvents, title: moment(date).format("D MMM YYYY") })
   }
 

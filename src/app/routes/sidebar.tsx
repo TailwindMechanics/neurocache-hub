@@ -1,3 +1,5 @@
+//path: src\app\routes\sidebar.tsx
+
 import { ReactElement } from 'react';
 import BellIcon from '@heroicons/react/24/outline/BellIcon'
 import DocumentTextIcon from '@heroicons/react/24/outline/DocumentTextIcon'

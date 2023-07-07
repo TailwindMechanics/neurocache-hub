@@ -2,7 +2,13 @@
 
 import { FC, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import ChevronDownIcon from  '@heroicons/react/24/outline/ChevronDownIcon';
+import ChevronDownIcon from '@heroicons/react/24/outline/ChevronDownIcon';
+
+interface SubmenuProps {
+    path: string;
+    name: string;
+    icon: JSX.Element;
+}
 
 interface SidebarSubmenuProps {
     name: string;
@@ -10,7 +16,7 @@ interface SidebarSubmenuProps {
     submenu?: SubmenuProps[];
 }
 
-const SidebarSubmenu: FC<SubmenuProps> = ({ submenu, name, icon }) => {
+const SidebarSubmenu: FC<SidebarSubmenuProps> = ({ submenu = [], name, icon }) => {
     const location = useLocation();
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -21,10 +27,10 @@ const SidebarSubmenu: FC<SubmenuProps> = ({ submenu, name, icon }) => {
     return (
         <div className='flex-col'>
             <div className='w-full' onClick={() => setIsExpanded(!isExpanded)}>
-                {icon} {name} 
-                <ChevronDownIcon className={'w-5 h-5 mt-1 float-right delay-400 duration-500 transition-all  ' + (isExpanded ? 'rotate-180' : '')}/>
+                {icon} {name}
+                <ChevronDownIcon className={'w-5 h-5 mt-1 float-right delay-400 duration-500 transition-all  ' + (isExpanded ? 'rotate-180' : '')} />
             </div>
-            <div className={`w-full `+ (isExpanded ? "" : "hidden")}>
+            <div className={`w-full ` + (isExpanded ? "" : "hidden")}>
                 <ul className={`menu menu-compact`}>
                     {
                         submenu.map((m, k) => (

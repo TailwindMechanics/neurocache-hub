@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import { setPageTitle } from "../common/headerSlice"
 import FeaturesNav from "./components/FeaturesNav"
 import FeaturesContent from "./components/FeaturesContent"
+import { AppDispatch } from "@/app/store"
 
 
 const Features: React.FC = () => {

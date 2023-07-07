@@ -17,8 +17,22 @@ neurocache-hub
 ├─ postcss.config.js
 ├─ project-hierarchy.txt
 ├─ public
+│  ├─ android-chrome-192x192.png
+│  ├─ android-chrome-512x512.png
+│  ├─ apple-touch-icon.png
+│  ├─ favicon-16x16.png
+│  ├─ favicon-32x32.png
+│  ├─ favicon.ico
 │  ├─ images
+│  │  ├─ bird80px.png
 │  │  └─ neurocache.png
+│  ├─ index.html
+│  ├─ intro.png
+│  ├─ logo.jpg
+│  ├─ logo192.png
+│  ├─ logo512.png
+│  ├─ manifest.json
+│  ├─ robots.txt
 │  └─ textures
 │     ├─ grid-texture.png
 │     ├─ terrain-normal.jpg
@@ -33,11 +47,16 @@ neurocache-hub
 │  │  │     └─ get-by-id
 │  │  │        └─ route.ts
 │  │  ├─ components
+│  │  │  ├─ AmountStats.tsx
+│  │  │  ├─ BarChart.tsx
 │  │  │  ├─ CalendarView
 │  │  │  │  ├─ calendarView.tsx
-│  │  │  │  └─ util.ts
+│  │  │  │  └─ util.tsx
 │  │  │  ├─ Cards
 │  │  │  │  └─ TitleCard.tsx
+│  │  │  ├─ DashboardStats.tsx
+│  │  │  ├─ DashboardTopBar.tsx
+│  │  │  ├─ DoughnutChart.tsx
 │  │  │  ├─ generic
 │  │  │  │  ├─ react
 │  │  │  │  │  ├─ block.tsx
@@ -78,11 +97,14 @@ neurocache-hub
 │  │  │  │  ├─ landingPage.tsx
 │  │  │  │  ├─ loggedInUI.tsx
 │  │  │  │  └─ loggedOutUI.tsx
+│  │  │  ├─ LineChart.tsx
+│  │  │  ├─ PageStats.tsx
 │  │  │  ├─ Typography
 │  │  │  │  ├─ ErrorText.tsx
 │  │  │  │  ├─ HelperText.tsx
 │  │  │  │  ├─ Subtitle.tsx
 │  │  │  │  └─ Title.tsx
+│  │  │  ├─ UserChannels.tsx
 │  │  │  └─ virtualBackground
 │  │  │     ├─ Building.tsx
 │  │  │     ├─ buildings.tsx
@@ -94,46 +116,44 @@ neurocache-hub
 │  │  │  ├─ Header.tsx
 │  │  │  ├─ Layout.tsx
 │  │  │  ├─ LeftSidebar.tsx
-│  │  │  ├─ ModalLayout.js
-│  │  │  ├─ PageContent.js
-│  │  │  ├─ RightSidebar.js
+│  │  │  ├─ ModalLayout.tsx
+│  │  │  ├─ PageContent.tsx
+│  │  │  ├─ RightSidebar.tsx
 │  │  │  ├─ SidebarSubmenu.tsx
-│  │  │  └─ SuspenseContent.js
+│  │  │  └─ SuspenseContent.tsx
+│  │  ├─ dashwindpages
+│  │  │  ├─ DocComponents.tsx
+│  │  │  ├─ DocFeatures.tsx
+│  │  │  ├─ Documentation.tsx
+│  │  │  ├─ ForgotPassword.tsx
+│  │  │  ├─ GettingStarted.tsx
+│  │  │  ├─ Login.tsx
+│  │  │  └─ Register.tsx
 │  │  ├─ data
 │  │  │  ├─ colors.json
 │  │  │  └─ content.json
 │  │  ├─ favicon.ico
 │  │  ├─ features
 │  │  │  ├─ calendar
-│  │  │  │  ├─ CalendarEventsBodyRightDrawer.js
-│  │  │  │  └─ index.js
+│  │  │  │  ├─ Calendar.tsx
+│  │  │  │  └─ CalendarEventsBodyRightDrawer.tsx
 │  │  │  ├─ charts
-│  │  │  │  ├─ components
-│  │  │  │  │  ├─ BarChart.js
-│  │  │  │  │  ├─ DoughnutChart.js
-│  │  │  │  │  ├─ LineChart.js
-│  │  │  │  │  ├─ PieChart.js
-│  │  │  │  │  ├─ ScatterChart.js
-│  │  │  │  │  └─ StackBarChart.js
-│  │  │  │  └─ index.js
+│  │  │  │  ├─ charts.tsx
+│  │  │  │  └─ components
+│  │  │  │     ├─ BarChart.tsx
+│  │  │  │     ├─ DoughnutChart.tsx
+│  │  │  │     ├─ LineChart.tsx
+│  │  │  │     ├─ PieChart.tsx
+│  │  │  │     ├─ ScatterChart.tsx
+│  │  │  │     └─ StackBarChart.tsx
 │  │  │  ├─ common
 │  │  │  │  ├─ components
-│  │  │  │  │  ├─ ConfirmationModalBody.js
-│  │  │  │  │  └─ NotificationBodyRightDrawer.js
-│  │  │  │  ├─ headerSlice.js
-│  │  │  │  ├─ modalSlice.js
-│  │  │  │  └─ rightDrawerSlice.js
+│  │  │  │  │  ├─ ConfirmationModalBody.tsx
+│  │  │  │  │  └─ NotificationBodyRightDrawer.tsx
+│  │  │  │  ├─ headerSlice.tsx
+│  │  │  │  ├─ modalSlice.tsx
+│  │  │  │  └─ rightDrawerSlice.tsx
 │  │  │  ├─ dashboard
-│  │  │  │  ├─ components
-│  │  │  │  │  ├─ AmountStats.js
-│  │  │  │  │  ├─ BarChart.js
-│  │  │  │  │  ├─ DashboardStats.js
-│  │  │  │  │  ├─ DashboardTopBar.js
-│  │  │  │  │  ├─ DoughnutChart.js
-│  │  │  │  │  ├─ LineChart.js
-│  │  │  │  │  ├─ PageStats.js
-│  │  │  │  │  └─ UserChannels.js
-│  │  │  │  └─ index.js
 │  │  │  ├─ documentation
 │  │  │  │  ├─ components
 │  │  │  │  │  ├─ DocComponentsContent.tsx
@@ -145,62 +165,57 @@ neurocache-hub
 │  │  │  │  ├─ DocFeatures.tsx
 │  │  │  │  └─ DocGettingStarted.tsx
 │  │  │  ├─ integration
-│  │  │  │  └─ index.js
+│  │  │  │  └─ integration.tsx
 │  │  │  ├─ leads
 │  │  │  │  ├─ components
-│  │  │  │  │  └─ AddLeadModalBody.js
-│  │  │  │  ├─ index.js
-│  │  │  │  └─ leadSlice.js
+│  │  │  │  │  └─ AddLeadModalBody.tsx
+│  │  │  │  ├─ leads.tsx
+│  │  │  │  └─ leadSlice.tsx
 │  │  │  ├─ settings
 │  │  │  │  ├─ billing
-│  │  │  │  │  └─ index.js
+│  │  │  │  │  └─ billing.tsx
 │  │  │  │  ├─ profilesettings
-│  │  │  │  │  └─ index.js
+│  │  │  │  │  └─ profileSettings.tsx
 │  │  │  │  └─ team
-│  │  │  │     └─ index.js
+│  │  │  │     └─ team.tsx
 │  │  │  ├─ transactions
-│  │  │  │  └─ index.js
+│  │  │  │  └─ transactions.tsx
 │  │  │  └─ user
 │  │  │     ├─ components
-│  │  │     │  └─ TemplatePointers.js
-│  │  │     ├─ ForgotPassword.js
-│  │  │     ├─ LandingIntro.js
-│  │  │     ├─ Login.js
-│  │  │     └─ Register.js
+│  │  │     │  └─ TemplatePointers.tsx
+│  │  │     ├─ ForgotPassword.tsx
+│  │  │     ├─ LandingIntro.tsx
+│  │  │     ├─ Login.tsx
+│  │  │     └─ Register.tsx
 │  │  ├─ globals.css
 │  │  ├─ hub
 │  │  │  ├─ dashboard
-│  │  │  │  ├─ page.tsx
-│  │  │  │  └─ pages
-│  │  │  │     ├─ DocComponents.js
-│  │  │  │     ├─ DocFeatures.js
-│  │  │  │     ├─ Documentation.tsx
-│  │  │  │     ├─ ForgotPassword.js
-│  │  │  │     ├─ GettingStarted.js
-│  │  │  │     ├─ Login.js
-│  │  │  │     ├─ protected
-│  │  │  │     │  ├─ 404.js
-│  │  │  │     │  ├─ Bills.js
-│  │  │  │     │  ├─ Blank.js
-│  │  │  │     │  ├─ Calendar.js
-│  │  │  │     │  ├─ Charts.js
-│  │  │  │     │  ├─ Dashboard.js
-│  │  │  │     │  ├─ Integration.js
-│  │  │  │     │  ├─ Leads.js
-│  │  │  │     │  ├─ ProfileSettings.js
-│  │  │  │     │  ├─ Team.js
-│  │  │  │     │  ├─ Transactions.js
-│  │  │  │     │  └─ Welcome.js
-│  │  │  │     └─ Register.js
+│  │  │  │  ├─ components
+│  │  │  │  ├─ dashboard.tsx
+│  │  │  │  └─ page.tsx
 │  │  │  └─ page.tsx
 │  │  ├─ layout.tsx
 │  │  ├─ page.tsx
+│  │  ├─ protected
+│  │  │  ├─ 404.tsx
+│  │  │  ├─ Bills.tsx
+│  │  │  ├─ Blank.tsx
+│  │  │  ├─ Calendar.tsx
+│  │  │  ├─ Charts.tsx
+│  │  │  ├─ Dashboard.tsx
+│  │  │  ├─ Integration.tsx
+│  │  │  ├─ Leads.tsx
+│  │  │  ├─ ProfileSettings.tsx
+│  │  │  ├─ Team.tsx
+│  │  │  ├─ Transactions.tsx
+│  │  │  └─ Welcome.tsx
 │  │  ├─ routes
 │  │  │  ├─ index.tsx
 │  │  │  └─ sidebar.tsx
+│  │  ├─ store.ts
 │  │  └─ utils
-│  │     ├─ dummyData.js
-│  │     ├─ globalConstantUtil.js
+│  │     ├─ dummyData.ts
+│  │     ├─ globalConstantUtil.ts
 │  │     ├─ mathUtils.ts
 │  │     └─ path.ts
 │  ├─ middleware.ts

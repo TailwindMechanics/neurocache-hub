@@ -6,6 +6,7 @@ import TitleCard from "../../components/Cards/TitleCard"
 import { setPageTitle } from "../common/headerSlice"
 import DocComponentsNav from "./components/DocComponentsNav"
 import DocComponentsContent from "./components/DocComponentsContent"
+import { AppDispatch } from "@/app/store"
 
 
 const DocComponents: React.FC = () => {
