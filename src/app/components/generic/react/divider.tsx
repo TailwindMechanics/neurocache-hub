@@ -5,5 +5,5 @@ interface DividerProps {
 }
 
 export const Divider: React.FC<DividerProps> = ({ tailwind }) => {
-    return <div className={`${tailwind} bg-secondary m-0 divider h-0.5`}></div>
+    return <div className={`${tailwind} divider h-0.5`}></div>
 }

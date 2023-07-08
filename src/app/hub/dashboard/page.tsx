@@ -14,11 +14,11 @@ import { store } from '@/store';
 export default function DashboardRoot() {
     return <>
         <Provider store={store}>
-            <SignedInBadge />
             <LoggedInRedirect>
                 <Router>
                     <UICanvas tailwind="w-full flex-col">
                         <Dashboard/>
+            <SignedInBadge />
                     </UICanvas>
                 </Router>
             </LoggedInRedirect>

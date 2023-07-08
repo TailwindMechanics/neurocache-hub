@@ -15,16 +15,14 @@ interface LivePanelProps {
 export const LivePanel: React.FC<LivePanelProps> = ({ children, tailwind, bgAlpha = { min: 0.5, max: 1 } }) => {
     const [styleProps, api] = useSpring(() => ({ opacity: 0.5, config: { duration: 500 } }));
     return <>
-        <div>
-            <animated.section
-                className="hero"
-                style={styleProps}
-                onMouseEnter={() => api.start({ opacity: bgAlpha.max })}
-                onMouseLeave={() => api.start({ opacity: bgAlpha.min })}>
-                <div className={`h-full w-full ${tailwind}`}>
-                    {children}
-                </div>
-            </animated.section>
-        </div>
+        <animated.section
+            className="flex-grow "
+            style={styleProps}
+            onMouseEnter={() => api.start({ opacity: bgAlpha.max })}
+            onMouseLeave={() => api.start({ opacity: bgAlpha.min })}>
+            <div className={`flex-grow ${tailwind}`}>
+                {children}
+            </div>
+        </animated.section>
     </>
 };

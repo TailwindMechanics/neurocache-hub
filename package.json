@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.21.13",
-    "@heroicons/react": "^2.0.18",
+    "@heroicons/react": "^2.0.13",
     "@pmndrs/assets": "^1.6.0",
     "@react-spring/core": "^9.7.3",
     "@react-spring/three": "^9.7.3",

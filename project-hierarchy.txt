@@ -130,6 +130,8 @@ neurocache-hub
 │  │  │  ├─ Login.tsx
 │  │  │  └─ Register.tsx
 │  │  ├─ data
+│  │  │  ├─ colors copy 2.json
+│  │  │  ├─ colors copy 3.json
 │  │  │  ├─ colors copy.json
 │  │  │  ├─ colors.json
 │  │  │  └─ content.json
@@ -194,10 +196,12 @@ neurocache-hub
 │  │  │  ├─ dashboard
 │  │  │  │  ├─ (welcome)
 │  │  │  │  │  ├─ welcome.tsx
+│  │  │  │  │  ├─ welcomeDrawer.tsx
 │  │  │  │  │  └─ welcomeSlice.ts
 │  │  │  │  ├─ dashboard.tsx
 │  │  │  │  ├─ dashboardSlice.ts
 │  │  │  │  ├─ drawer.tsx
+│  │  │  │  ├─ menuItem.tsx
 │  │  │  │  ├─ page.tsx
 │  │  │  │  └─ sideMenu.tsx
 │  │  │  ├─ hubSlice.ts

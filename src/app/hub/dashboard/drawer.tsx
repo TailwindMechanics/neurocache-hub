@@ -22,14 +22,11 @@ const Drawer: FC<DrawerProps> = ({ isOpen, onClose, children }) => {
                 checked={isOpen}
                 onChange={onClose}
             />
-            <div className="drawer-content"></div>
-            <div className="drawer-side">
-                <label htmlFor={dockClass} className="drawer-overlay"></label>
-                <div className='h-full py-2'>
-                    <ul className="menu p-4 w-80 h-full bg-primary border border-secondary text-accent rounded-xl">
+            <div className="flex drawer-content"></div>
+            <div className="drawer-side py-1 pr-1">
+                    <ul className="menu drop-shadow-xl shadow-2xl p-4 w-80 h-full bg-main-dark border border-main-light text-text-light rounded-xl">
                         {children}
                     </ul>
-                </div>
             </div>
         </div>
     </>

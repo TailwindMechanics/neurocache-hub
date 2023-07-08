@@ -7,7 +7,7 @@ interface bootnProps {
 
 export const Btn = ({ label, onClick } : bootnProps) => {
     return <>
-        {<button onClick={onClick} className={`btn bg-primary border-secondary text-fart hover:bg-secondary hover:text-accent`}>
+        {<button onClick={onClick} className={`btn bg-main-dark border-main-light text-text-dark hover:border-text-dark hover:bg-main-light hover:text-text-light`}>
             {label}
         </button>}</>
 }
