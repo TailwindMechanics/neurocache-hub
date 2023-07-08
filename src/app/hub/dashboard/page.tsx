@@ -6,9 +6,10 @@ import LoggedInRedirect from "@/app/components/generic/react/loggedInRedirect";
 import SignedInBadge from "@/app/components/generic/react/signedInBadge";
 import UICanvas from "@/app/components/generic/react/uiCanvas";
 import { BrowserRouter as Router } from 'react-router-dom';
-import Layout from '@/app/containers/Layout';
 import { Provider } from 'react-redux'
-import { store } from '@/app/store';
+import Dashboard from "./dashboard";
+import { store } from '@/store';
+
 
 export default function DashboardRoot() {
     return <>
@@ -17,7 +18,7 @@ export default function DashboardRoot() {
             <LoggedInRedirect>
                 <Router>
                     <UICanvas tailwind="w-full flex-col">
-                        <Layout/>
+                        <Dashboard/>
                     </UICanvas>
                 </Router>
             </LoggedInRedirect>

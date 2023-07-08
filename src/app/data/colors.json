@@ -1,6 +1,9 @@
 {
-    "background": "#091017",
-    "primary": "#ff3e9c",
-    "secondary": "#3addfd",
-    "accent": "#fff6a7"
+    "background": "#10121b",
+    "primary": "#12141e",
+    "secondary": "#191920",
+    "accent": "#53545b",
+    "fart":"#1a1b21",
+    "text":"#53545b",
+    "text-select":"#28172a"
 }

@@ -28,7 +28,21 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    function({ addBase, theme }) {
+      addBase({
+        '::selection': { 
+          backgroundColor: theme('colors.text-select'), 
+          color: theme('colors.text') 
+        },
+        '::-moz-selection': { 
+          backgroundColor: theme('colors.text-select'), 
+          color: theme('colors.text') 
+        },
+      });
+    },
+  ],
   daisyui: {
     themes: ['neuro', colors],
   },

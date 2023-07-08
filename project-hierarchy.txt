@@ -130,6 +130,7 @@ neurocache-hub
 │  │  │  ├─ Login.tsx
 │  │  │  └─ Register.tsx
 │  │  ├─ data
+│  │  │  ├─ colors copy.json
 │  │  │  ├─ colors.json
 │  │  │  └─ content.json
 │  │  ├─ favicon.ico
@@ -154,6 +155,7 @@ neurocache-hub
 │  │  │  │  ├─ modalSlice.tsx
 │  │  │  │  └─ rightDrawerSlice.tsx
 │  │  │  ├─ dashboard
+│  │  │  │  └─ dashboard.tsx
 │  │  │  ├─ documentation
 │  │  │  │  ├─ components
 │  │  │  │  │  ├─ DocComponentsContent.tsx
@@ -190,9 +192,15 @@ neurocache-hub
 │  │  ├─ globals.css
 │  │  ├─ hub
 │  │  │  ├─ dashboard
-│  │  │  │  ├─ components
+│  │  │  │  ├─ (welcome)
+│  │  │  │  │  ├─ welcome.tsx
+│  │  │  │  │  └─ welcomeSlice.ts
 │  │  │  │  ├─ dashboard.tsx
-│  │  │  │  └─ page.tsx
+│  │  │  │  ├─ dashboardSlice.ts
+│  │  │  │  ├─ drawer.tsx
+│  │  │  │  ├─ page.tsx
+│  │  │  │  └─ sideMenu.tsx
+│  │  │  ├─ hubSlice.ts
 │  │  │  └─ page.tsx
 │  │  ├─ layout.tsx
 │  │  ├─ page.tsx
@@ -212,13 +220,14 @@ neurocache-hub
 │  │  ├─ routes
 │  │  │  ├─ index.tsx
 │  │  │  └─ sidebar.tsx
-│  │  ├─ store.ts
 │  │  └─ utils
 │  │     ├─ dummyData.ts
 │  │     ├─ globalConstantUtil.ts
 │  │     ├─ mathUtils.ts
 │  │     └─ path.ts
+│  ├─ appState.ts
 │  ├─ middleware.ts
+│  ├─ store.ts
 │  └─ types
 │     ├─ declarations.d.ts
 │     └─ index.ts

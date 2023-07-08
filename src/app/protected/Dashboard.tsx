@@ -3,7 +3,7 @@
 import { useEffect, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '@/app/features/common/headerSlice';
-import Dashboard from '../hub/dashboard/dashboard';
+import Dashboard from '../features/dashboard/dashboard';
 
 const InternalPage: FC = () => {
     const dispatch = useDispatch();

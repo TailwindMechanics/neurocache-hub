@@ -1,93 +1,53 @@
 //path: src\app\hub\dashboard\dashboard.tsx
 
-import CircleStackIcon from '@heroicons/react/24/outline/CircleStackIcon';
-import CreditCardIcon from '@heroicons/react/24/outline/CreditCardIcon';
-import UserGroupIcon from '@heroicons/react/24/outline/UserGroupIcon';
-import { showNotification } from '@/app/features/common/headerSlice';
-import UsersIcon from '@heroicons/react/24/outline/UsersIcon';
-import AmountStats from '../../components/AmountStats';
-import { useDispatch } from 'react-redux';
-import BarChart from '@/app/components/BarChart';
-import DashboardStats from '@/app/components/DashboardStats';
-import DashboardTopBar from '@/app/components/DashboardTopBar';
-import DoughnutChart from '@/app/components/DoughnutChart';
-import LineChart from '@/app/components/LineChart';
-import PageStats from '@/app/components/PageStats';
-import UserChannels from '@/app/components/UserChannels';
+import { LivePanel } from '@/app/components/generic/react/livePanel';
+import { Divider } from '@/app/components/generic/react/divider';
+import { useDispatch, useSelector } from 'react-redux';
+import Content from "src/app/data/content.json";
+import { closeDrawer } from './dashboardSlice';
+import Welcome from './(welcome)/welcome';
+import { AppState } from '@/appState';
+import SideMenu from './sideMenu';
+import Drawer from './drawer';
 
 
-interface Stat {
-    title: string;
-    value: string;
-    icon: JSX.Element;
-    description: string;
-}
-
-interface PeriodRange {
-    startDate: Date;
-    endDate: Date;
-}
-
-const statsData: Stat[] = [
-    { title: "New Users", value: "34.7k", icon: <UserGroupIcon className='w-8 h-8' />, description: "↗︎ 2300 (22%)" },
-    { title: "Total Sales", value: "$34,545", icon: <CreditCardIcon className='w-8 h-8' />, description: "Current month" },
-    { title: "Pending Leads", value: "450", icon: <CircleStackIcon className='w-8 h-8' />, description: "50 in hot leads" },
-    { title: "Active Users", value: "5.6k", icon: <UsersIcon className='w-8 h-8' />, description: "↙ 300 (18%)" },
-]
-
-function Dashboard() {
+const Dashboard = () => {
     const dispatch = useDispatch();
+    const { isOpen, content } = useSelector((state: AppState) => state.dashboard);
 
-    const updateDashboardPeriod = (newRange: PeriodRange): void => {
-        // Dashboard range changed, write code to refresh your values
-        dispatch(
-            showNotification({
-                message: `Period updated to ${newRange.startDate} to ${newRange.endDate}`,
-                status: 1,
-            })
-        );
-    };
+    const gap = "10";
 
-
-    return (
-        <>
-            {/** ---------------------- Select Period Content ------------------------- */}
-            <DashboardTopBar updateDashboardPeriod={updateDashboardPeriod} />
-
-            {/** ---------------------- Different stats content 1 ------------------------- */}
-            <div className="grid lg:grid-cols-4 mt-2 md:grid-cols-2 grid-cols-1 gap-6">
-                {
-                    statsData.map((d, k) => {
-                        return (
-                            <DashboardStats key={k} {...d} colorIndex={k} />
-                        )
-                    })
-                }
+    return <>
+        <div className="flex text-text h-screen bg-background">
+            <div className={`w-1/6 my-${gap} ml-${gap} shadow-xl drop-shadow-xl border bg-primary rounded-xl border-secondary`}>
+                <LivePanel tailwind="mt-28">
+                    <Divider />
+                    <h1 className={`mb-1 overflow-auto justify-center flex text-3xl font-bold text-text`}>{Content.Neurocache}</h1>
+                    <Divider />
+                    <SideMenu />
+                </LivePanel>
             </div>
 
-
-
-            {/** ---------------------- Different charts ------------------------- */}
-            <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-                <LineChart />
-                <BarChart />
+            <div className={`my-${gap} mx-${gap} flex flex-col w-full rounded-xl`}>
+                <div className={``}>
+                    <div className="shadow-xl drop-shadow-xl text-center rounded-xl p-4 border bg-primary border-secondary">
+                        <LivePanel>
+                            Header
+                        </LivePanel>
+                    </div>
+                </div>
+                <div className={`mt-${gap} shadow-xl drop-shadow-xl rounded-xl border p-4 bg-primary border-secondary flex-grow`}>
+                    <LivePanel>
+                        <Welcome />
+                    </LivePanel>
+                </div>
             </div>
 
-            {/** ---------------------- Different stats content 2 ------------------------- */}
-
-            <div className="grid lg:grid-cols-2 mt-10 grid-cols-1 gap-6">
-                <AmountStats />
-                <PageStats />
-            </div>
-
-            {/** ---------------------- User source channels table  ------------------------- */}
-
-            <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-                <UserChannels />
-                <DoughnutChart />
-            </div>
-        </>
-    )
+            <Drawer isOpen={isOpen} onClose={() => dispatch(closeDrawer())}>
+                {content}
+            </Drawer>
+        </div>
+    </>
 }
 
-export default Dashboard
+export default Dashboard;
