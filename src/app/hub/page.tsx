@@ -1,25 +1,15 @@
-//path: src\app\hub\page.tsx
-
 "use client"
 
-import LoggedInRedirect from "@/app/components/generic/react/loggedInRedirect";
-import SignedInBadge from "../components/generic/react/signedInBadge";
-import UICanvas from "@/app/components/generic/react/uiCanvas";
-import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/router';
+import { FC } from 'react'
 
-
-export default function Hub() {
-    const user = useUser();
-
-    return <>
-        <SignedInBadge />
-        <LoggedInRedirect>
-            <UICanvas tailwind="w-1/2 flex-col">
-                {user ? "Logged In User: " + user.user?.fullName
-                    : "No User Logged In"}
-                <br />
-                This is the Hub
-            </UICanvas>
-        </LoggedInRedirect>
-    </>
+interface pageProps {
+  
 }
+
+const page: FC<pageProps> = ({}) => {
+    const router = useRouter();
+  return <div>page</div>
+}
+
+export default page

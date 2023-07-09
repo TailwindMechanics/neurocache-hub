@@ -1,4 +1,4 @@
-//path: src\app\hub\dashboard\page.tsx
+//path: src\app\hub\chat\page.tsx
 
 "use client"
 
@@ -7,10 +7,11 @@ import { Provider } from 'react-redux';
 import { store } from "@/store";
 
 
-export default function DashboardRoot() {
+export default function ChatRoot() {
     return <>
         <Provider store={store}>
-            <Hublayout headerText='Dashboard'>
+            <Hublayout headerText='Chat'>
+                <div>Chat</div>
             </Hublayout>
         </Provider>
     </>

@@ -2,11 +2,11 @@
 
 "use client"
 
-import CityBackground from "./components/virtualBackground/cityBackground";
-import ThreeCanvas from "./components/generic/three/threeCanvas";
-import LandingPage from "./components/landingPage/landingPage";
-import { Loading } from "./components/generic/react/loading";
-import UICanvas from "./components/generic/react/uiCanvas";
+import CityBackground from "@/threeComponents/virtualBackground/cityBackground";
+import LandingPage from "@/components/landingPage/landingPage";
+import ThreeCanvas from "@/threeComponents/threeCanvas";
+import { Loading } from "@/components/generic/loading";
+import UICanvas from "@/components/generic/uiCanvas";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Suspense } from "react";
 

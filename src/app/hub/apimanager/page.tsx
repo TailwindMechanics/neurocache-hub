@@ -1,4 +1,4 @@
-//path: src\app\hub\dashboard\page.tsx
+//path: src\app\hub\apimanager\page.tsx
 
 "use client"
 
@@ -7,10 +7,11 @@ import { Provider } from 'react-redux';
 import { store } from "@/store";
 
 
-export default function DashboardRoot() {
+export default function ApiManagerRoot() {
     return <>
         <Provider store={store}>
-            <Hublayout headerText='Dashboard'>
+            <Hublayout headerText='Api Management'>
+                <div>Api</div>
             </Hublayout>
         </Provider>
     </>

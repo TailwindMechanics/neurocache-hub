@@ -193,19 +193,34 @@ neurocache-hub
 │  │  │     └─ Register.tsx
 │  │  ├─ globals.css
 │  │  ├─ hub
-│  │  │  ├─ dashboard
-│  │  │  │  ├─ (welcome)
-│  │  │  │  │  ├─ welcome.tsx
-│  │  │  │  │  ├─ welcomeDrawer.tsx
-│  │  │  │  │  └─ welcomeSlice.ts
-│  │  │  │  ├─ dashboard.tsx
-│  │  │  │  ├─ dashboardSlice.ts
+│  │  │  ├─ agents
+│  │  │  │  ├─ agentsSlice.ts
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ apimanager
+│  │  │  │  ├─ apiManagerSlice.ts
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ chat
+│  │  │  │  ├─ chatSlice.ts
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ components
 │  │  │  │  ├─ drawer.tsx
+│  │  │  │  ├─ header.tsx
+│  │  │  │  ├─ leftSideBar.tsx
+│  │  │  │  ├─ mainContent.tsx
 │  │  │  │  ├─ menuItem.tsx
-│  │  │  │  ├─ page.tsx
+│  │  │  │  ├─ menuRoutes.tsx
 │  │  │  │  └─ sideMenu.tsx
+│  │  │  ├─ dashboard
+│  │  │  │  ├─ dashboardSlice.ts
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ docs
+│  │  │  │  ├─ docsSlice.ts
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ hubLayout.tsx
 │  │  │  ├─ hubSlice.ts
-│  │  │  └─ page.tsx
+│  │  │  └─ profile
+│  │  │     ├─ page.tsx
+│  │  │     └─ profileSlice.ts
 │  │  ├─ layout.tsx
 │  │  ├─ page.tsx
 │  │  ├─ protected
@@ -221,9 +236,6 @@ neurocache-hub
 │  │  │  ├─ Team.tsx
 │  │  │  ├─ Transactions.tsx
 │  │  │  └─ Welcome.tsx
-│  │  ├─ routes
-│  │  │  ├─ index.tsx
-│  │  │  └─ sidebar.tsx
 │  │  └─ utils
 │  │     ├─ dummyData.ts
 │  │     ├─ globalConstantUtil.ts
