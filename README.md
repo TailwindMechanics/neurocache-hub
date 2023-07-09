@@ -34,7 +34,17 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - 3d Package: React Three Fiber
 - Animation: React Spring
 
-# Next Development Steps
+# Next Steps
+   1. Study about Next.js server components: Understand how they work, how they differ from regular components, and what advantages they offer.
+   2. Study about Next.js routing: Understand how to structure your application's pages and API routes, how to navigate between pages, and how to pass data between pages using query parameters, URL parameters, and the router's state.
+   3. Plan your application's state management: Determine what data you need to store on the client side, how you'll fetch it from the server, and how you'll update it. Consider using React Query and MobX as outlined in the example.
+   4. Plan your application's server-side logic: Determine how you'll fetch data from your database, how you'll cache it with Redis, and how you'll send it to the client.
+   5. Implement error handling and loading states: Make sure your application can handle potential errors and can indicate to the user when data is being loaded.
+   6. Experiment with server component middleware: Try using middleware to customize the behavior of your server components and learn about its potential uses.
+   7. Iterate on your implementation: As you build out your application, you'll likely encounter unforeseen challenges or discover new requirements. Be prepared to iterate on your initial plan and adapt it as needed.
+   8. Finally, remember that while building out the Neurocache Hub, make sure to test regularly. Writing tests for your application will help ensure that your code is working as expected and can prevent potential bugs from making it into production.
+
+## Test case
 - Let's consider a simplified example of a chat message retrieval scenario in the context of your project, the Neurocache Hub. 
 - In this scenario, we have a `list of chat messages` that are fetched from the server and displayed in the UI. We'll use:
    - `React Query` to fetch the messages from the server.
