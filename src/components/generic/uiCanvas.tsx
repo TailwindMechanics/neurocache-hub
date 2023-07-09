@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\uiCanvas.tsx
+//path: src\components\generic\uiCanvas.tsx
 
 "use client"
 

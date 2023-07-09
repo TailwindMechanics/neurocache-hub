@@ -1,4 +1,4 @@
-//path: src\app\components\landingPage\loggedOutUI.tsx
+//path: src\components\landingPage\loggedOutUI.tsx
 
 import { CustomSignInButton } from "@/components/generic/customSignInButton";
 import { LivePanel } from "@/components/generic/livePanel";

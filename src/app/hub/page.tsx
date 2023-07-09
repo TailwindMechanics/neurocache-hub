@@ -1,3 +1,5 @@
+//path: src\app\hub\page.tsx
+
 "use client"
 
 import { useRouter } from 'next/router';

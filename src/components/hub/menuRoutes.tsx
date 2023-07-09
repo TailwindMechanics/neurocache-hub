@@ -1,4 +1,4 @@
-//path: src\app\hub\components\menuRoutes.tsx
+//path: src\components\hub\menuRoutes.tsx
 
 "use client"
 

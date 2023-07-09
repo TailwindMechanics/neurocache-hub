@@ -1,4 +1,4 @@
-//path: src\app\components\landingPage\loggedInUI.tsx
+//path: src\components\landingPage\loggedInUI.tsx
 
 import SignedInBadge from "@/components/generic/signedInBadge"
 import { LivePanel } from "@/components/generic/livePanel"

@@ -1,4 +1,4 @@
-//path: src\app\components\generic\three\threeCanvas.tsx
+//path: src\threeComponents\threeCanvas.tsx
 
 "use client"
 

@@ -1,4 +1,4 @@
-//path: src\app\components\generic\three\setBgColour.tsx
+//path: src\threeComponents\setBgColour.tsx
 
 "use client";
 

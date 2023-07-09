@@ -1,4 +1,4 @@
-//path: src\app\components\generic\three\freeFlyControls.tsx
+//path: src\threeComponents\freeFlyControls.tsx
 
 "use client";
 

@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\loggedInRedirect.tsx
+//path: src\components\generic\loggedInRedirect.tsx
 
 import { SignedIn, SignedOut } from '@clerk/nextjs';
 import RedirectToLanding from './redirectToLanding';

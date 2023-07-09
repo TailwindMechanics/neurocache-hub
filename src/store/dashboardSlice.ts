@@ -1,4 +1,4 @@
-//path: src\app\hub\dashboard\dashboardSlice.ts
+//path: src\store\dashboardSlice.ts
 
 import { createSlice } from '@reduxjs/toolkit';
 

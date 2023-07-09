@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\ImageOverlay.tsx
+//path: src\components\generic\ImageOverlay.tsx
 
 "use client"
 

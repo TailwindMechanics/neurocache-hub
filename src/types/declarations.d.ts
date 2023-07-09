@@ -1,3 +1,4 @@
+//path: src\types\declarations.d.ts
 
 declare module 'react-tailwindcss-datepicker';
 declare module 'react-notifications' {

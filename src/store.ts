@@ -1,4 +1,4 @@
-//path: src\app\store.ts
+//path: src\store.ts
 
 import dashboardReducer from './store/dashboardSlice';
 import { configureStore } from '@reduxjs/toolkit'

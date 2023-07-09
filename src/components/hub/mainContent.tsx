@@ -1,4 +1,4 @@
-//path: src\app\hub\components\mainContent.tsx
+//path: src\components\hub\mainContent.tsx
 
 import { LivePanel } from '@/components/generic/livePanel'
 import { FC } from 'react'

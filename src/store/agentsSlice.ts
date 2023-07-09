@@ -1,4 +1,4 @@
-//path: src\app\hub\agents\agentsSlice.ts
+//path: src\store\agentsSlice.ts
 
 import { createSlice } from '@reduxjs/toolkit';
 

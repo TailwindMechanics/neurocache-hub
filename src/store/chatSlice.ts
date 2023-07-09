@@ -1,4 +1,4 @@
-//path: src\app\hub\chat\chatSlice.ts
+//path: src\store\chatSlice.ts
 
 import { createSlice } from '@reduxjs/toolkit';
 

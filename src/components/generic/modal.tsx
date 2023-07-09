@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\modal.tsx
+//path: src\components\generic\modal.tsx
 
 "use client"
 

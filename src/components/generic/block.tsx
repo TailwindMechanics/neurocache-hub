@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\block.tsx
+//path: src\components\generic\block.tsx
 
 interface BlockProps {
   left?: string;

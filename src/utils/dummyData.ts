@@ -1,4 +1,4 @@
-//path: src\app\utils\dummyData.ts
+//path: src\utils\dummyData.ts
 
 import moment from "moment";
 

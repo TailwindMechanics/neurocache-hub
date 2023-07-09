@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\divider.tsx
+//path: src\components\generic\divider.tsx
 
 "use client"
 

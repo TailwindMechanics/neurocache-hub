@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\login.tsx
+//path: src\components\generic\login.tsx
 
 "use client"
 

@@ -1,4 +1,4 @@
-//path: src\app\hub\apimanager\apiManagerSlice.ts
+//path: src\store\apiManagerSlice.ts
 
 import { createSlice } from '@reduxjs/toolkit';
 

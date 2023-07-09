@@ -1,4 +1,4 @@
-//path: src\app\utils\path.ts
+//path: src\utils\path.ts
 
 "use client"
 

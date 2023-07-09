@@ -1,4 +1,4 @@
-//path: src\app\components\virtualBackground\cityBackground.tsx
+//path: src\threeComponents\virtualBackground\cityBackground.tsx
 
 "use client"
 

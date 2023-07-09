@@ -1,4 +1,4 @@
-//path: src\app\components\virtualBackground\cameraMotor.tsx
+//path: src\threeComponents\virtualBackground\cameraMotor.tsx
 
 "use client"
 

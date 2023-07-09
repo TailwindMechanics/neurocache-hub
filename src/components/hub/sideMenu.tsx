@@ -1,4 +1,4 @@
-//path: src\app\hub\components\sideMenu.tsx
+//path: src\components\hub\sideMenu.tsx
 
 "use client"
 

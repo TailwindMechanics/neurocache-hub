@@ -1,4 +1,4 @@
-//path: src\app\hub\components\drawer.tsx
+//path: src\components\hub\drawer.tsx
 
 import { useSelector } from 'react-redux';
 import { AppState } from '@/appState';

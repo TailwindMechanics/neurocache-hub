@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\customSignInButton.tsx
+//path: src\components\generic\customSignInButton.tsx
 
 "use client"
 

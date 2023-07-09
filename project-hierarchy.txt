@@ -10,6 +10,118 @@ neurocache-hub
 ├─ .vscode
 │  └─ tasks.json
 ├─ autoCommentPath.js
+├─ dashwind
+│  ├─ AmountStats.tsx
+│  ├─ BarChart.tsx
+│  ├─ CalendarView
+│  │  ├─ calendarView.tsx
+│  │  └─ util.tsx
+│  ├─ Cards
+│  │  └─ TitleCard.tsx
+│  ├─ containers
+│  │  ├─ DashLayout.tsx
+│  │  ├─ Header.tsx
+│  │  ├─ LeftSidebar.tsx
+│  │  ├─ ModalLayout.tsx
+│  │  ├─ PageContent.tsx
+│  │  ├─ RightSidebar.tsx
+│  │  ├─ SidebarSubmenu.tsx
+│  │  └─ SuspenseContent.tsx
+│  ├─ DashboardStats.tsx
+│  ├─ DashboardTopBar.tsx
+│  ├─ dashfeatures
+│  │  ├─ charts
+│  │  │  ├─ charts.tsx
+│  │  │  └─ components
+│  │  │     ├─ BarChart.tsx
+│  │  │     ├─ DoughnutChart.tsx
+│  │  │     ├─ LineChart.tsx
+│  │  │     ├─ PieChart.tsx
+│  │  │     ├─ ScatterChart.tsx
+│  │  │     └─ StackBarChart.tsx
+│  │  ├─ dashboard
+│  │  │  └─ dashboard.tsx
+│  │  ├─ documentation
+│  │  │  ├─ components
+│  │  │  │  ├─ DocComponentsContent.tsx
+│  │  │  │  ├─ DocComponentsNav.tsx
+│  │  │  │  ├─ FeaturesContent.tsx
+│  │  │  │  ├─ FeaturesNav.tsx
+│  │  │  │  └─ GettingStartedContent.tsx
+│  │  │  ├─ DocComponents.tsx
+│  │  │  ├─ DocFeatures.tsx
+│  │  │  └─ DocGettingStarted.tsx
+│  │  ├─ integration
+│  │  │  └─ integration.tsx
+│  │  ├─ leads
+│  │  │  ├─ components
+│  │  │  │  └─ AddLeadModalBody.tsx
+│  │  │  ├─ leads.tsx
+│  │  │  └─ leadSlice.tsx
+│  │  ├─ settings
+│  │  │  ├─ billing
+│  │  │  │  └─ billing.tsx
+│  │  │  ├─ profilesettings
+│  │  │  │  └─ profileSettings.tsx
+│  │  │  └─ team
+│  │  │     └─ team.tsx
+│  │  ├─ transactions
+│  │  │  └─ transactions.tsx
+│  │  └─ user
+│  │     ├─ components
+│  │     │  └─ TemplatePointers.tsx
+│  │     ├─ ForgotPassword.tsx
+│  │     ├─ LandingIntro.tsx
+│  │     ├─ Login.tsx
+│  │     └─ Register.tsx
+│  ├─ dashwindpages
+│  │  ├─ DocComponents.tsx
+│  │  ├─ DocFeatures.tsx
+│  │  ├─ Documentation.tsx
+│  │  ├─ ForgotPassword.tsx
+│  │  ├─ GettingStarted.tsx
+│  │  ├─ Login.tsx
+│  │  └─ Register.tsx
+│  ├─ DoughnutChart.tsx
+│  ├─ features
+│  │  ├─ calendar
+│  │  │  ├─ Calendar.tsx
+│  │  │  └─ CalendarEventsBodyRightDrawer.tsx
+│  │  └─ common
+│  │     ├─ components
+│  │     │  ├─ ConfirmationModalBody.tsx
+│  │     │  └─ NotificationBodyRightDrawer.tsx
+│  │     ├─ headerSlice.tsx
+│  │     ├─ modalSlice.tsx
+│  │     └─ rightDrawerSlice.tsx
+│  ├─ GettingStartedNav.tsx
+│  ├─ Input
+│  │  ├─ InputText.tsx
+│  │  ├─ SearchBar.tsx
+│  │  ├─ SelectBox.tsx
+│  │  ├─ TextAreaInput.tsx
+│  │  └─ ToggleInput.tsx
+│  ├─ LineChart.tsx
+│  ├─ PageStats.tsx
+│  ├─ protected
+│  │  ├─ 404.tsx
+│  │  ├─ Bills.tsx
+│  │  ├─ Blank.tsx
+│  │  ├─ Calendar.tsx
+│  │  ├─ Charts.tsx
+│  │  ├─ Dashboard.tsx
+│  │  ├─ Integration.tsx
+│  │  ├─ Leads.tsx
+│  │  ├─ ProfileSettings.tsx
+│  │  ├─ Team.tsx
+│  │  ├─ Transactions.tsx
+│  │  └─ Welcome.tsx
+│  ├─ Typography
+│  │  ├─ ErrorText.tsx
+│  │  ├─ HelperText.tsx
+│  │  ├─ Subtitle.tsx
+│  │  └─ Title.tsx
+│  └─ UserChannels.tsx
 ├─ next-env.d.ts
 ├─ next.config.js
 ├─ package.json
@@ -17,21 +129,9 @@ neurocache-hub
 ├─ postcss.config.js
 ├─ project-hierarchy.txt
 ├─ public
-│  ├─ android-chrome-192x192.png
-│  ├─ android-chrome-512x512.png
-│  ├─ apple-touch-icon.png
-│  ├─ favicon-16x16.png
-│  ├─ favicon-32x32.png
-│  ├─ favicon.ico
 │  ├─ images
 │  │  ├─ bird80px.png
 │  │  └─ neurocache.png
-│  ├─ index.html
-│  ├─ intro.png
-│  ├─ logo.jpg
-│  ├─ logo192.png
-│  ├─ logo512.png
-│  ├─ manifest.json
 │  ├─ robots.txt
 │  └─ textures
 │     ├─ grid-texture.png
@@ -46,206 +146,94 @@ neurocache-hub
 │  │  │     │  └─ route.ts
 │  │  │     └─ get-by-id
 │  │  │        └─ route.ts
-│  │  ├─ components
-│  │  │  ├─ AmountStats.tsx
-│  │  │  ├─ BarChart.tsx
-│  │  │  ├─ CalendarView
-│  │  │  │  ├─ calendarView.tsx
-│  │  │  │  └─ util.tsx
-│  │  │  ├─ Cards
-│  │  │  │  └─ TitleCard.tsx
-│  │  │  ├─ DashboardStats.tsx
-│  │  │  ├─ DashboardTopBar.tsx
-│  │  │  ├─ DoughnutChart.tsx
-│  │  │  ├─ generic
-│  │  │  │  ├─ react
-│  │  │  │  │  ├─ block.tsx
-│  │  │  │  │  ├─ btn.tsx
-│  │  │  │  │  ├─ customSignInButton.tsx
-│  │  │  │  │  ├─ divider.tsx
-│  │  │  │  │  ├─ GettingStartedNav.tsx
-│  │  │  │  │  ├─ hero.tsx
-│  │  │  │  │  ├─ ImageOverlay.tsx
-│  │  │  │  │  ├─ livePanel.tsx
-│  │  │  │  │  ├─ loading.tsx
-│  │  │  │  │  ├─ loggedInRedirect.tsx
-│  │  │  │  │  ├─ login.tsx
-│  │  │  │  │  ├─ modal.tsx
-│  │  │  │  │  ├─ redirectToLanding.tsx
-│  │  │  │  │  ├─ signedInBadge.tsx
-│  │  │  │  │  └─ uiCanvas.tsx
-│  │  │  │  └─ three
-│  │  │  │     ├─ cameraLook.tsx
-│  │  │  │     ├─ cameraSetup.tsx
-│  │  │  │     ├─ freeFlyControls.tsx
-│  │  │  │     ├─ geometry
-│  │  │  │     │  ├─ planeGeo.tsx
-│  │  │  │     │  └─ road.tsx
-│  │  │  │     ├─ materials
-│  │  │  │     │  ├─ mappedMetalMat.tsx
-│  │  │  │     │  └─ metalMat.tsx
-│  │  │  │     ├─ setBgColour.tsx
-│  │  │  │     ├─ threeCanvas.tsx
-│  │  │  │     └─ wasdControls.ts
-│  │  │  ├─ Input
-│  │  │  │  ├─ InputText.tsx
-│  │  │  │  ├─ SearchBar.tsx
-│  │  │  │  ├─ SelectBox.tsx
-│  │  │  │  ├─ TextAreaInput.tsx
-│  │  │  │  └─ ToggleInput.tsx
-│  │  │  ├─ landingPage
-│  │  │  │  ├─ landingPage.tsx
-│  │  │  │  ├─ loggedInUI.tsx
-│  │  │  │  └─ loggedOutUI.tsx
-│  │  │  ├─ LineChart.tsx
-│  │  │  ├─ PageStats.tsx
-│  │  │  ├─ Typography
-│  │  │  │  ├─ ErrorText.tsx
-│  │  │  │  ├─ HelperText.tsx
-│  │  │  │  ├─ Subtitle.tsx
-│  │  │  │  └─ Title.tsx
-│  │  │  ├─ UserChannels.tsx
-│  │  │  └─ virtualBackground
-│  │  │     ├─ Building.tsx
-│  │  │     ├─ buildings.tsx
-│  │  │     ├─ cameraMotor.tsx
-│  │  │     ├─ cityBackground.tsx
-│  │  │     ├─ lights.tsx
-│  │  │     └─ test.md
-│  │  ├─ containers
-│  │  │  ├─ Header.tsx
-│  │  │  ├─ Layout.tsx
-│  │  │  ├─ LeftSidebar.tsx
-│  │  │  ├─ ModalLayout.tsx
-│  │  │  ├─ PageContent.tsx
-│  │  │  ├─ RightSidebar.tsx
-│  │  │  ├─ SidebarSubmenu.tsx
-│  │  │  └─ SuspenseContent.tsx
-│  │  ├─ dashwindpages
-│  │  │  ├─ DocComponents.tsx
-│  │  │  ├─ DocFeatures.tsx
-│  │  │  ├─ Documentation.tsx
-│  │  │  ├─ ForgotPassword.tsx
-│  │  │  ├─ GettingStarted.tsx
-│  │  │  ├─ Login.tsx
-│  │  │  └─ Register.tsx
-│  │  ├─ data
-│  │  │  ├─ colors copy 2.json
-│  │  │  ├─ colors copy 3.json
-│  │  │  ├─ colors copy.json
-│  │  │  ├─ colors.json
-│  │  │  └─ content.json
 │  │  ├─ favicon.ico
-│  │  ├─ features
-│  │  │  ├─ calendar
-│  │  │  │  ├─ Calendar.tsx
-│  │  │  │  └─ CalendarEventsBodyRightDrawer.tsx
-│  │  │  ├─ charts
-│  │  │  │  ├─ charts.tsx
-│  │  │  │  └─ components
-│  │  │  │     ├─ BarChart.tsx
-│  │  │  │     ├─ DoughnutChart.tsx
-│  │  │  │     ├─ LineChart.tsx
-│  │  │  │     ├─ PieChart.tsx
-│  │  │  │     ├─ ScatterChart.tsx
-│  │  │  │     └─ StackBarChart.tsx
-│  │  │  ├─ common
-│  │  │  │  ├─ components
-│  │  │  │  │  ├─ ConfirmationModalBody.tsx
-│  │  │  │  │  └─ NotificationBodyRightDrawer.tsx
-│  │  │  │  ├─ headerSlice.tsx
-│  │  │  │  ├─ modalSlice.tsx
-│  │  │  │  └─ rightDrawerSlice.tsx
-│  │  │  ├─ dashboard
-│  │  │  │  └─ dashboard.tsx
-│  │  │  ├─ documentation
-│  │  │  │  ├─ components
-│  │  │  │  │  ├─ DocComponentsContent.tsx
-│  │  │  │  │  ├─ DocComponentsNav.tsx
-│  │  │  │  │  ├─ FeaturesContent.tsx
-│  │  │  │  │  ├─ FeaturesNav.tsx
-│  │  │  │  │  └─ GettingStartedContent.tsx
-│  │  │  │  ├─ DocComponents.tsx
-│  │  │  │  ├─ DocFeatures.tsx
-│  │  │  │  └─ DocGettingStarted.tsx
-│  │  │  ├─ integration
-│  │  │  │  └─ integration.tsx
-│  │  │  ├─ leads
-│  │  │  │  ├─ components
-│  │  │  │  │  └─ AddLeadModalBody.tsx
-│  │  │  │  ├─ leads.tsx
-│  │  │  │  └─ leadSlice.tsx
-│  │  │  ├─ settings
-│  │  │  │  ├─ billing
-│  │  │  │  │  └─ billing.tsx
-│  │  │  │  ├─ profilesettings
-│  │  │  │  │  └─ profileSettings.tsx
-│  │  │  │  └─ team
-│  │  │  │     └─ team.tsx
-│  │  │  ├─ transactions
-│  │  │  │  └─ transactions.tsx
-│  │  │  └─ user
-│  │  │     ├─ components
-│  │  │     │  └─ TemplatePointers.tsx
-│  │  │     ├─ ForgotPassword.tsx
-│  │  │     ├─ LandingIntro.tsx
-│  │  │     ├─ Login.tsx
-│  │  │     └─ Register.tsx
 │  │  ├─ globals.css
 │  │  ├─ hub
 │  │  │  ├─ agents
-│  │  │  │  ├─ agentsSlice.ts
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ apimanager
-│  │  │  │  ├─ apiManagerSlice.ts
 │  │  │  │  └─ page.tsx
 │  │  │  ├─ chat
-│  │  │  │  ├─ chatSlice.ts
 │  │  │  │  └─ page.tsx
-│  │  │  ├─ components
-│  │  │  │  ├─ drawer.tsx
-│  │  │  │  ├─ header.tsx
-│  │  │  │  ├─ leftSideBar.tsx
-│  │  │  │  ├─ mainContent.tsx
-│  │  │  │  ├─ menuItem.tsx
-│  │  │  │  ├─ menuRoutes.tsx
-│  │  │  │  └─ sideMenu.tsx
 │  │  │  ├─ dashboard
-│  │  │  │  ├─ dashboardSlice.ts
 │  │  │  │  └─ page.tsx
 │  │  │  ├─ docs
-│  │  │  │  ├─ docsSlice.ts
 │  │  │  │  └─ page.tsx
-│  │  │  ├─ hubLayout.tsx
-│  │  │  ├─ hubSlice.ts
+│  │  │  ├─ manage-api
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ page.tsx
 │  │  │  └─ profile
-│  │  │     ├─ page.tsx
-│  │  │     └─ profileSlice.ts
+│  │  │     └─ page.tsx
 │  │  ├─ layout.tsx
-│  │  ├─ page.tsx
-│  │  ├─ protected
-│  │  │  ├─ 404.tsx
-│  │  │  ├─ Bills.tsx
-│  │  │  ├─ Blank.tsx
-│  │  │  ├─ Calendar.tsx
-│  │  │  ├─ Charts.tsx
-│  │  │  ├─ Dashboard.tsx
-│  │  │  ├─ Integration.tsx
-│  │  │  ├─ Leads.tsx
-│  │  │  ├─ ProfileSettings.tsx
-│  │  │  ├─ Team.tsx
-│  │  │  ├─ Transactions.tsx
-│  │  │  └─ Welcome.tsx
-│  │  └─ utils
-│  │     ├─ dummyData.ts
-│  │     ├─ globalConstantUtil.ts
-│  │     ├─ mathUtils.ts
-│  │     └─ path.ts
+│  │  └─ page.tsx
 │  ├─ appState.ts
+│  ├─ components
+│  │  ├─ generic
+│  │  │  ├─ block.tsx
+│  │  │  ├─ btn.tsx
+│  │  │  ├─ customSignInButton.tsx
+│  │  │  ├─ divider.tsx
+│  │  │  ├─ hero.tsx
+│  │  │  ├─ ImageOverlay.tsx
+│  │  │  ├─ livePanel.tsx
+│  │  │  ├─ loading.tsx
+│  │  │  ├─ loggedInRedirect.tsx
+│  │  │  ├─ login.tsx
+│  │  │  ├─ modal.tsx
+│  │  │  ├─ redirectToLanding.tsx
+│  │  │  ├─ signedInBadge.tsx
+│  │  │  └─ uiCanvas.tsx
+│  │  ├─ hub
+│  │  │  ├─ drawer.tsx
+│  │  │  ├─ header.tsx
+│  │  │  ├─ hubLayout.tsx
+│  │  │  ├─ leftSideBar.tsx
+│  │  │  ├─ mainContent.tsx
+│  │  │  ├─ menuItem.tsx
+│  │  │  ├─ menuRoutes.tsx
+│  │  │  └─ sideMenu.tsx
+│  │  └─ landingPage
+│  │     ├─ landingPage.tsx
+│  │     ├─ loggedInUI.tsx
+│  │     └─ loggedOutUI.tsx
+│  ├─ data
+│  │  ├─ colors.json
+│  │  └─ content.json
 │  ├─ middleware.ts
+│  ├─ store
+│  │  ├─ agentsSlice.ts
+│  │  ├─ apiManagerSlice.ts
+│  │  ├─ chatSlice.ts
+│  │  ├─ dashboardSlice.ts
+│  │  ├─ docsSlice.ts
+│  │  ├─ hubSlice.ts
+│  │  └─ profileSlice.ts
 │  ├─ store.ts
-│  └─ types
-│     ├─ declarations.d.ts
-│     └─ index.ts
+│  ├─ threeComponents
+│  │  ├─ cameraLook.tsx
+│  │  ├─ cameraSetup.tsx
+│  │  ├─ freeFlyControls.tsx
+│  │  ├─ geometry
+│  │  │  ├─ planeGeo.tsx
+│  │  │  └─ road.tsx
+│  │  ├─ materials
+│  │  │  ├─ mappedMetalMat.tsx
+│  │  │  └─ metalMat.tsx
+│  │  ├─ setBgColour.tsx
+│  │  ├─ threeCanvas.tsx
+│  │  ├─ virtualBackground
+│  │  │  ├─ building.tsx
+│  │  │  ├─ buildings.tsx
+│  │  │  ├─ cameraMotor.tsx
+│  │  │  ├─ cityBackground.tsx
+│  │  │  ├─ lights.tsx
+│  │  │  └─ test.md
+│  │  └─ wasdControls.ts
+│  ├─ types
+│  │  ├─ declarations.d.ts
+│  │  └─ index.ts
+│  └─ utils
+│     ├─ dummyData.ts
+│     ├─ globalConstantUtil.ts
+│     ├─ mathUtils.ts
+│     └─ path.ts
 ├─ tailwind.config.js
 └─ tsconfig.json

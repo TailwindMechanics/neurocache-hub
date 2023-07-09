@@ -1,4 +1,4 @@
-//path: src\app\utils\globalConstantUtil.ts
+//path: src\utils\globalConstantUtil.ts
 
 export const MODAL_BODY_TYPES = {
     USER_DETAIL: "USER_DETAIL",

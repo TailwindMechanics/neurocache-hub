@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\btn.tsx
+//path: src\components\generic\btn.tsx
 
 interface bootnProps {
     label: string;

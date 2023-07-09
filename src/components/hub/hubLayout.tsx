@@ -1,4 +1,4 @@
-//path: src\app\hub\hubLayout.tsx
+//path: src\components\hub\hubLayout.tsx
 
 "use client"
 

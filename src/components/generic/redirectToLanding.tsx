@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\redirectToLanding.tsx
+//path: src\components\generic\redirectToLanding.tsx
 
 "use client"
 

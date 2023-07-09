@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\livePanel.tsx
+//path: src\components\generic\livePanel.tsx
 
 "use client"
 

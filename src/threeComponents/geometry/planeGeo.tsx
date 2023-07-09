@@ -1,4 +1,4 @@
-//path: src\app\components\generic\three\geometry\planeGeo.tsx
+//path: src\threeComponents\geometry\planeGeo.tsx
 
 "use client"
 

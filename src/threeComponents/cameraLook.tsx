@@ -1,4 +1,4 @@
-//path: src\app\components\generic\three\cameraLook.tsx
+//path: src\threeComponents\cameraLook.tsx
 
 "use client";
 

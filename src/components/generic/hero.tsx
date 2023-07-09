@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\hero.tsx
+//path: src\components\generic\hero.tsx
 
 "use client"
 import { useSpring, animated } from '@react-spring/web';

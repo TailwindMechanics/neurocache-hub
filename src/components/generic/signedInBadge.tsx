@@ -1,4 +1,4 @@
-//path: src\app\components\generic\react\signedInBadge.tsx
+//path: src\components\generic\signedInBadge.tsx
 
 "use client"
 

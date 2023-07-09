@@ -1,4 +1,4 @@
-//path: src\app\components\generic\three\geometry\road.tsx
+//path: src\threeComponents\geometry\road.tsx
 
 "use client"
 

@@ -1,4 +1,4 @@
-//path: src\app\hub\profile\profileSlice.ts
+//path: src\store\profileSlice.ts
 
 import { createSlice } from '@reduxjs/toolkit';
 
