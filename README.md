@@ -40,6 +40,7 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 # Next Steps
 ## Experiment with routes
    - Primarily we want to see if we can only reload the main content area
+   - By experimenting with parallel and intercepting routes
    - Reload as little as possible, render on server or static whenever possible
    - Use the build information to verify
    - Find other ways to verifiy
