@@ -35,18 +35,103 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - Animation: React Spring
 
 # Next Development Steps
-1. ### Setup Neurocache Hub Dashboard
-   - Design the Dashboard: Start by sketching out a design or find a DaisyUI template to base it on. 
-      The dashboard should include sections for managing AI agents, generating API keys, and viewing usage data.
-   - Develop the Dashboard: Develop the dashboard using Next.js and Tailwind CSS along with DaisyUI for components. 
-      Utilize state management (such as Redux or Zustand) to handle user interaction and API calls.
-   - User Authentication: Ensure the dashboard is only accessible by authenticated users. Continue to use Clerk for authentication.
-   - Dashboard Testing: Write Jest tests to ensure the dashboard's features work as expected.
-  
-2. ### Build the Slack-Like Chat
-   - Design the Chat UI: Similar to the dashboard, sketch out a design for the chat interface or find a suitable template. 
-      Consider incorporating features like channels for groups of AI agents, private messages, and real-time updates.
-   - Develop the Chat: Develop the chat using the same tech stack. Consider using WebSockets or a similar technology for real-time communication.
-   - AI Agent Integration: Incorporate the ability for AI agents to participate in the chat. This might involve making API calls to the Neurocache API.
-   - Chat Testing: Write Jest tests to verify the chat's functionality.
-   - The primary goal for this phase of development is to close the loop between the Neurocache Hub and the Neurocache API, allowing users to interact with their AI agents in a real-time setting.
+- Let's consider a simplified example of a chat message retrieval scenario in the context of your project, the Neurocache Hub. 
+- In this scenario, we have a `list of chat messages` that are fetched from the server and displayed in the UI. We'll use:
+   - `React Query` to fetch the messages from the server.
+   - `MobX` to store the messages on the client side.
+   - `Redis` as a cache on the server side to improve the performance of message retrieval.
+- Here's a basic outline of how it might work:
+
+1. ### React Component
+- First, we have a React component that displays the messages. This component uses a custom hook, `useMessages`, to get the messages from the `MobX store`.
+```jsx
+import { useMessages } from '../hooks/useMessages';
+
+function MessageList() {
+  const { messages, isLoading } = useMessages();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <ul>
+      {messages.map((message) => (
+        <li key={message.id}>{message.content}</li>
+      ))}
+    </ul>
+  );
+}
+```
+2. ### Custom Hook
+- The `useMessages` hook uses `React Query` to fetch the messages from the `API`, and then stores them in the `MobX store`.
+```jsx
+import { useQuery } from 'react-query';
+import { useStore } from '../stores/store';
+
+export function useMessages() {
+  const { messageStore } = useStore();
+
+  const { data: messages, isLoading } = useQuery('messages', fetchMessages, {
+    onSuccess: (messages) => {
+      messageStore.setMessages(messages);
+    },
+  });
+
+  return {
+    messages: messageStore.messages,
+    isLoading,
+  };
+}
+
+async function fetchMessages() {
+  const response = await fetch('/api/messages');
+  const data = await response.json();
+  return data;
+}
+```
+3. ### MobX Store
+- `The MobX store` is where the messages are stored on the client side. It provides an `observable messages array` and an action to update it.
+```jsx
+import { makeAutoObservable } from 'mobx';
+
+class MessageStore {
+  messages = [];
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  setMessages(messages) {
+    this.messages = messages;
+  }
+}
+```
+4. ### Server-Side Code
+- On the server side, you would use `Redis` to cache the messages. This would typically be done in your API route that handles GET requests to `/api/messages`.
+```js
+import redis from 'redis';
+
+const client = redis.createClient();
+
+export default async function handler(req, res) {
+  if (req.method === 'GET') {
+    client.get('messages', async (err, result) => {
+      if (result) {
+        // If the messages are in the Redis cache, return them.
+        return res.status(200).json(JSON.parse(result));
+      } else {
+        // Otherwise, fetch the messages from the database, store them in Redis,
+        // and then return them.
+        const messages = await getMessagesFromDatabase();
+        client.set('messages', JSON.stringify(messages));
+        return res.status(200).json(messages);
+      }
+    });
+  } else {
+    // Handle other request methods...
+  }
+}
+```
+- In this example, `getMessagesFromDatabase` is a placeholder for whatever function you would use to fetch the messages from your database. Also, in a real application, you would likely want to set an expiration time for the cache, handle errors, etc.
+- This example shows how `React Query`, `MobX`, and `Redis` can all work together in a `Next.js` application. `React Query` fetches the data, `MobX` stores and tracks it on the client side, and `Redis` caches it on the server side to improve performance.
