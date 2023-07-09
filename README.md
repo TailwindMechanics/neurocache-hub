@@ -38,9 +38,14 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - Animation: React Spring
 
 # Next Steps
-- Based on the latest information from various sources, here are the detailed steps for managing data flow within chat channels, with an emphasis on cache implementation, long-term storage management, and real-time updates.
+## Experiment with routes
+   - Primarily we want to see if we can only reload the main content area
+   - Reload as little as possible, render on server or static whenever possible
+   - Use the build information to verify
+   - Find other ways to verifiy
 
 ## Cache Implementation
+   - Based on the latest information from various sources, here are the detailed steps for managing data flow within chat channels, with an emphasis on cache implementation, long-term storage management, and real-time updates.
 ### Using Redis for Caching Channel History
 1. #### Set up Redis: 
    - If not already done, set up a Redis instance. This will be used to cache the chat history for each channel.
@@ -159,11 +164,6 @@ const closeChannel = (channelId: string) => {
    - Effortlessly Manage Data in Next.js with React Query - Upmostly
    - Realtime data streaming using server-sent events(SSE) with react.js ...
    - WhatsApp Clone with React, Express, SocketIO, PostgreSQL, and ...
-
-
-
-
-
 
 -------------
 #### Prompt:
