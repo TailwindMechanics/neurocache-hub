@@ -40,6 +40,11 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
    - `React Query` to fetch the messages from the server.
    - `MobX` to store the messages on the client side.
    - `Redis` as a cache on the server side to improve the performance of message retrieval.
+- Remove redux and then install dependencies:
+```shell
+      pnpm add mobx mobx-react-lite react-query
+      pnpm add @types/redis redis
+```
 - Here's a basic outline of how it might work:
 
 1. ### React Component
@@ -129,3 +134,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 ```
 - In this example, `getMessagesFromDatabase` is a placeholder for whatever function you would use to fetch the messages from your database. Also, in a real application, you would likely want to set an expiration time for the cache, handle errors, etc.
 - This example shows how `React Query`, `MobX`, and `Redis` can all work together in a `Next.js` application. `React Query` fetches the data, `MobX` stores and tracks it on the client side, and `Redis` caches it on the server side to improve performance.
+
+## Next steps and considerations
+1. ### Error Handling: 
+   - Anywhere you have network requests or other operations that could potentially fail (like fetching from your database or getting data from Redis), you should have some kind of error handling logic. This could be as simple as a try-catch block that catches any errors and handles them in some way, such as by logging the error or showing a message to the user.
+
+2. ### Loading States: 
+   - When you're fetching data from the server, there will typically be a delay before the data is returned. During this time, it's common to display some kind of loading indicator to the user. React Query has built-in support for loading states which you can use to determine when your fetch requests are still in progress and display a loading indicator accordingly.
+
+3. ### Database Querying Logic: 
+   - The function fetchMessagesFromDB in the provided example is a placeholder that you'll need to replace with your actual logic for fetching messages from your database. Depending on your database and the library you're using to interact with it, this could involve writing SQL queries, using an ORM (Object-Relational Mapping), or calling functions provided by a database SDK.
+
+4. ### Server Component Middleware: 
+   - This is a feature that was introduced with the server components in Next.js. Middleware allows you to modify the request or response objects before they are handled by your server component.
+   - By default, Next.js will try to respond with a server component if the file extension of the requested resource is .server.js or .server.ts. However, sometimes you might need to customize this behavior, which is where middleware comes in.
+   - An example of where you might use middleware is if you wanted to add some custom headers to all responses from your server components. You could do this with a middleware function that adds the headers to the response object.
+   - Here's an example of what a middleware function might look like:
+   ```ts
+      Copy code
+      import { NextFetchEvent, NextRequest } from 'next/server'
+
+      export function middleware(req: NextRequest, ev: NextFetchEvent) {
+      // This is an example, in this case we are modifying the request headers
+      req.headers.set('X-Custom-Header', 'Custom Value');
+      return ev.continue();
+      }
+   ```
