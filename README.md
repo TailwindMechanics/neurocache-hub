@@ -44,79 +44,73 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 
 1. ### React Component
 - First, we have a React component that displays the messages. This component uses a custom hook, `useMessages`, to get the messages from the `MobX store`.
-```jsx
-import { useMessages } from '../hooks/useMessages';
+```tsx
+// pages/api/messages.server.tsx
+import { NextFetchEvent, htm as html } from 'next/server'
 
-function MessageList() {
-  const { messages, isLoading } = useMessages();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <ul>
-      {messages.map((message) => (
-        <li key={message.id}>{message.content}</li>
-      ))}
-    </ul>
-  );
-}
-```
-2. ### Custom Hook
-- The `useMessages` hook uses `React Query` to fetch the messages from the `API`, and then stores them in the `MobX store`.
-```jsx
-import { useQuery } from 'react-query';
-import { useStore } from '../stores/store';
-
-export function useMessages() {
-  const { messageStore } = useStore();
-
-  const { data: messages, isLoading } = useQuery('messages', fetchMessages, {
-    onSuccess: (messages) => {
-      messageStore.setMessages(messages);
-    },
-  });
-
-  return {
-    messages: messageStore.messages,
-    isLoading,
-  };
+type Message = {
+  id: string;
+  content: string;
+  // any other fields your messages have
 }
 
-async function fetchMessages() {
-  const response = await fetch('/api/messages');
-  const data = await response.json();
-  return data;
+async function fetchMessagesFromDB(): Promise<Message[]> {
+  // Replace with your actual database fetching logic
+  // The return value should be a Promise that resolves to an array of messages
+}
+
+// This component will be rendered on the server
+export async function getServerComponent(props: { [key: string]: any }) {
+  const messages = await fetchMessagesFromDB()
+  return html`<div>${messages.map(message => html`<p>${message.content}</p>`)}</div>`
+}
+
+// Export handler for Server Component Middleware
+export default function Middleware(req: NextApiRequest, ev: NextFetchEvent) {
+  return ev.respondWith(getServerComponent(req.query))
 }
 ```
 3. ### MobX Store
 - `The MobX store` is where the messages are stored on the client side. It provides an `observable messages array` and an action to update it.
-```jsx
+```tsx
 import { makeAutoObservable } from 'mobx';
 
+type Message = {
+  id: string;
+  content: string;
+  // any other fields your messages have
+};
+
 class MessageStore {
-  messages = [];
+  messages: Message[] = [];
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setMessages(messages) {
+  setMessages(messages: Message[]) {
     this.messages = messages;
   }
 }
 ```
 4. ### Server-Side Code
 - On the server side, you would use `Redis` to cache the messages. This would typically be done in your API route that handles GET requests to `/api/messages`.
-```js
+- TypeScript support with redis can be a bit tricky as the redis package does not provide its own types. Instead, we use the @types/redis package to supply those types.
+- We also need to explicitly type the req and res parameters. In Next.js, you typically use the NextApiRequest and NextApiResponse types for these.
+```ts
 import redis from 'redis';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const client = redis.createClient();
 
-export default async function handler(req, res) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     client.get('messages', async (err, result) => {
+      if (err) {
+        // Handle error here
+        return res.status(500).json({ error: 'Redis error' });
+      }
+
       if (result) {
         // If the messages are in the Redis cache, return them.
         return res.status(200).json(JSON.parse(result));
