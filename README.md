@@ -44,6 +44,14 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
    - Reload as little as possible, render on server or static whenever possible
    - Use the build information to verify
    - Find other ways to verifiy
+   └─ app/
+     ├─ @sidebar/
+     ├─ @header/
+     └─ layout.tsx 
+        └─`{children, sidebar, header}`
+
+
+
 
 ## Cache Implementation
    - Based on the latest information from various sources, here are the detailed steps for managing data flow within chat channels, with an emphasis on cache implementation, long-term storage management, and real-time updates.
