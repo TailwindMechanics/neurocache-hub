@@ -2,7 +2,7 @@
 
 "use client"
 
-import { Loading } from "./loading";
+import { LoadingSpinner } from "./loadingSpinner";
 import { useEffect } from "react";
 
 
@@ -11,5 +11,5 @@ export default function RedirectToLanding() {
         window.location.href = process.env.NEXT_PUBLIC_URL || '/';
     }, []);
 
-    return <Loading />;
+    return <LoadingSpinner />;
 }

@@ -7,10 +7,11 @@ import Squares2X2Icon from '@heroicons/react/24/outline/Squares2X2Icon';
 import BookOpenIcon from '@heroicons/react/24/outline/BookOpenIcon';
 import UsersIcon from '@heroicons/react/24/outline/UsersIcon';
 import KeyIcon from '@heroicons/react/24/outline/KeyIcon';
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { ReactElement } from 'react';
 import MenuItem from './menuItem';
 import { FC } from 'react';
+
 
 interface Route {
     path: string;
@@ -20,39 +21,39 @@ interface Route {
 
 const routes: Route[] = [
     {
-        path: '/hub/dashboard',
+        path: '/dashboard',
         icon: <Squares2X2Icon />,
         name: 'Dashboard',
     },
     {
-        path: '/hub/profile',
+        path: '/profile',
         icon: <UsersIcon />,
         name: 'Profile',
     },
     {
-        path: '/hub/agents',
+        path: '/agents',
         icon: <UsersIcon />,
         name: 'Agents',
     },
     {
-        path: '/hub/chat',
+        path: '/chat',
         icon: <ChatBubbleLeftIcon />,
         name: 'Chat',
     },
     {
-        path: '/hub/apimanager',
+        path: '/manage-api',
         icon: <KeyIcon />,
-        name: 'ApiManager',
+        name: 'Manage Api',
     },
     {
-        path: '/hub/docs',
+        path: '/docs',
         icon: <BookOpenIcon />,
         name: 'Docs',
     }
 ]
 
 const MenuRoutes: FC = () => {
-    const router = useRouter();
+    const pathname = usePathname();
     
     return (
         <ul className="p-0 m-0 flex-grow menu">
@@ -62,7 +63,7 @@ const MenuRoutes: FC = () => {
                     label={route.name} 
                     icon={route.icon} 
                     path={route.path} 
-                    active={router.pathname === route.path}
+                    active={pathname === route.path}
                 />
             ))}
         </ul>

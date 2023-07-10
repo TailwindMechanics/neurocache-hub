@@ -140,31 +140,28 @@ neurocache-hub
 ├─ README.md
 ├─ src
 │  ├─ app
+│  │  ├─ agents
+│  │  │  └─ page.tsx
 │  │  ├─ api
 │  │  │  └─ book-library
 │  │  │     ├─ add
 │  │  │     │  └─ route.ts
 │  │  │     └─ get-by-id
 │  │  │        └─ route.ts
+│  │  ├─ chat
+│  │  │  └─ page.tsx
+│  │  ├─ dashboard
+│  │  │  └─ page.tsx
+│  │  ├─ docs
+│  │  │  └─ page.tsx
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
-│  │  ├─ hub
-│  │  │  ├─ agents
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ chat
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ dashboard
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ docs
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ manage-api
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ page.tsx
-│  │  │  └─ profile
-│  │  │     └─ page.tsx
 │  │  ├─ layout.tsx
-│  │  └─ page.tsx
-│  ├─ appState.ts
+│  │  ├─ manage-api
+│  │  │  └─ page.tsx
+│  │  ├─ page.tsx
+│  │  └─ profile
+│  │     └─ page.tsx
 │  ├─ components
 │  │  ├─ generic
 │  │  │  ├─ block.tsx
@@ -174,7 +171,7 @@ neurocache-hub
 │  │  │  ├─ hero.tsx
 │  │  │  ├─ ImageOverlay.tsx
 │  │  │  ├─ livePanel.tsx
-│  │  │  ├─ loading.tsx
+│  │  │  ├─ loadingSpinner.tsx
 │  │  │  ├─ loggedInRedirect.tsx
 │  │  │  ├─ login.tsx
 │  │  │  ├─ modal.tsx
@@ -198,15 +195,6 @@ neurocache-hub
 │  │  ├─ colors.json
 │  │  └─ content.json
 │  ├─ middleware.ts
-│  ├─ store
-│  │  ├─ agentsSlice.ts
-│  │  ├─ apiManagerSlice.ts
-│  │  ├─ chatSlice.ts
-│  │  ├─ dashboardSlice.ts
-│  │  ├─ docsSlice.ts
-│  │  ├─ hubSlice.ts
-│  │  └─ profileSlice.ts
-│  ├─ store.ts
 │  ├─ threeComponents
 │  │  ├─ cameraLook.tsx
 │  │  ├─ cameraSetup.tsx
