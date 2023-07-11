@@ -2,16 +2,12 @@
 
 "use client"
 
-import LoggedInRedirect from '@/components/generic/loggedInRedirect';
 import SignedInBadge from '@/components/generic/signedInBadge';
 import LeftSideBar from '@/components/hub/leftSideBar';
 import MainContent from '@/components/hub/mainContent';
 import UICanvas from '@/components/generic/uiCanvas';
-import Drawer from '@/components/hub/drawer';
 import Header from '@/components/hub/header';
 import { FC } from 'react';
-import ThreeCanvas from '@/threeComponents/threeCanvas';
-import CityBackground from '@/threeComponents/virtualBackground/cityBackground';
 
 
 interface HubLayoutProps {

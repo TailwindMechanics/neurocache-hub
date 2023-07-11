@@ -2,7 +2,7 @@
 
 "use client"
 
-import { useSpring, animated } from '@react-spring/web';
+import { motion } from 'framer-motion';
 import React from 'react';
 
 
@@ -13,16 +13,15 @@ interface LivePanelProps {
 }
 
 export const LivePanel: React.FC<LivePanelProps> = ({ children, tailwind, bgAlpha = { min: 0.5, max: 1 } }) => {
-    const [styleProps, api] = useSpring(() => ({ opacity: 0.5, config: { duration: 500 } }));
     return <>
-        <animated.section
+        <motion.section
             className="flex-grow "
-            style={styleProps}
-            onMouseEnter={() => api.start({ opacity: bgAlpha.max })}
-            onMouseLeave={() => api.start({ opacity: bgAlpha.min })}>
+            initial={{ opacity: bgAlpha.min }}
+            whileHover={{ opacity: bgAlpha.max }}
+            transition={{ duration: 0.5 }}>
             <div className={`flex-grow ${tailwind}`}>
                 {children}
             </div>
-        </animated.section>
+        </motion.section>
     </>
 };

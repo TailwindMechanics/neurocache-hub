@@ -10,118 +10,6 @@ neurocache-hub
 ├─ .vscode
 │  └─ tasks.json
 ├─ autoCommentPath.js
-├─ dashwind
-│  ├─ AmountStats.tsx
-│  ├─ BarChart.tsx
-│  ├─ CalendarView
-│  │  ├─ calendarView.tsx
-│  │  └─ util.tsx
-│  ├─ Cards
-│  │  └─ TitleCard.tsx
-│  ├─ containers
-│  │  ├─ DashLayout.tsx
-│  │  ├─ Header.tsx
-│  │  ├─ LeftSidebar.tsx
-│  │  ├─ ModalLayout.tsx
-│  │  ├─ PageContent.tsx
-│  │  ├─ RightSidebar.tsx
-│  │  ├─ SidebarSubmenu.tsx
-│  │  └─ SuspenseContent.tsx
-│  ├─ DashboardStats.tsx
-│  ├─ DashboardTopBar.tsx
-│  ├─ dashfeatures
-│  │  ├─ charts
-│  │  │  ├─ charts.tsx
-│  │  │  └─ components
-│  │  │     ├─ BarChart.tsx
-│  │  │     ├─ DoughnutChart.tsx
-│  │  │     ├─ LineChart.tsx
-│  │  │     ├─ PieChart.tsx
-│  │  │     ├─ ScatterChart.tsx
-│  │  │     └─ StackBarChart.tsx
-│  │  ├─ dashboard
-│  │  │  └─ dashboard.tsx
-│  │  ├─ documentation
-│  │  │  ├─ components
-│  │  │  │  ├─ DocComponentsContent.tsx
-│  │  │  │  ├─ DocComponentsNav.tsx
-│  │  │  │  ├─ FeaturesContent.tsx
-│  │  │  │  ├─ FeaturesNav.tsx
-│  │  │  │  └─ GettingStartedContent.tsx
-│  │  │  ├─ DocComponents.tsx
-│  │  │  ├─ DocFeatures.tsx
-│  │  │  └─ DocGettingStarted.tsx
-│  │  ├─ integration
-│  │  │  └─ integration.tsx
-│  │  ├─ leads
-│  │  │  ├─ components
-│  │  │  │  └─ AddLeadModalBody.tsx
-│  │  │  ├─ leads.tsx
-│  │  │  └─ leadSlice.tsx
-│  │  ├─ settings
-│  │  │  ├─ billing
-│  │  │  │  └─ billing.tsx
-│  │  │  ├─ profilesettings
-│  │  │  │  └─ profileSettings.tsx
-│  │  │  └─ team
-│  │  │     └─ team.tsx
-│  │  ├─ transactions
-│  │  │  └─ transactions.tsx
-│  │  └─ user
-│  │     ├─ components
-│  │     │  └─ TemplatePointers.tsx
-│  │     ├─ ForgotPassword.tsx
-│  │     ├─ LandingIntro.tsx
-│  │     ├─ Login.tsx
-│  │     └─ Register.tsx
-│  ├─ dashwindpages
-│  │  ├─ DocComponents.tsx
-│  │  ├─ DocFeatures.tsx
-│  │  ├─ Documentation.tsx
-│  │  ├─ ForgotPassword.tsx
-│  │  ├─ GettingStarted.tsx
-│  │  ├─ Login.tsx
-│  │  └─ Register.tsx
-│  ├─ DoughnutChart.tsx
-│  ├─ features
-│  │  ├─ calendar
-│  │  │  ├─ Calendar.tsx
-│  │  │  └─ CalendarEventsBodyRightDrawer.tsx
-│  │  └─ common
-│  │     ├─ components
-│  │     │  ├─ ConfirmationModalBody.tsx
-│  │     │  └─ NotificationBodyRightDrawer.tsx
-│  │     ├─ headerSlice.tsx
-│  │     ├─ modalSlice.tsx
-│  │     └─ rightDrawerSlice.tsx
-│  ├─ GettingStartedNav.tsx
-│  ├─ Input
-│  │  ├─ InputText.tsx
-│  │  ├─ SearchBar.tsx
-│  │  ├─ SelectBox.tsx
-│  │  ├─ TextAreaInput.tsx
-│  │  └─ ToggleInput.tsx
-│  ├─ LineChart.tsx
-│  ├─ PageStats.tsx
-│  ├─ protected
-│  │  ├─ 404.tsx
-│  │  ├─ Bills.tsx
-│  │  ├─ Blank.tsx
-│  │  ├─ Calendar.tsx
-│  │  ├─ Charts.tsx
-│  │  ├─ Dashboard.tsx
-│  │  ├─ Integration.tsx
-│  │  ├─ Leads.tsx
-│  │  ├─ ProfileSettings.tsx
-│  │  ├─ Team.tsx
-│  │  ├─ Transactions.tsx
-│  │  └─ Welcome.tsx
-│  ├─ Typography
-│  │  ├─ ErrorText.tsx
-│  │  ├─ HelperText.tsx
-│  │  ├─ Subtitle.tsx
-│  │  └─ Title.tsx
-│  └─ UserChannels.tsx
 ├─ next-env.d.ts
 ├─ next.config.js
 ├─ package.json
@@ -129,6 +17,7 @@ neurocache-hub
 ├─ postcss.config.js
 ├─ project-hierarchy.txt
 ├─ public
+│  ├─ favicon.ico
 │  ├─ images
 │  │  ├─ bird80px.png
 │  │  └─ neurocache.png
@@ -154,7 +43,6 @@ neurocache-hub
 │  │  │  └─ page.tsx
 │  │  ├─ docs
 │  │  │  └─ page.tsx
-│  │  ├─ favicon.ico
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
 │  │  ├─ manage-api
@@ -163,6 +51,9 @@ neurocache-hub
 │  │  └─ profile
 │  │     └─ page.tsx
 │  ├─ components
+│  │  ├─ chat
+│  │  │  ├─ autoResizingTextArea.tsx
+│  │  │  └─ chatInput.tsx
 │  │  ├─ generic
 │  │  │  ├─ block.tsx
 │  │  │  ├─ btn.tsx
@@ -193,7 +84,9 @@ neurocache-hub
 │  │     └─ loggedOutUI.tsx
 │  ├─ data
 │  │  ├─ colors.json
-│  │  └─ content.json
+│  │  ├─ content.json
+│  │  ├─ icons.tsx
+│  │  └─ shorthand.tsx
 │  ├─ middleware.ts
 │  ├─ threeComponents
 │  │  ├─ cameraLook.tsx

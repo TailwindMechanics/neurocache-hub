@@ -4,6 +4,7 @@ const colors = require('./src/data/colors.json');
 module.exports = {
   mode: 'jit',
   content: [
+    "./node_modules/flowbite-react/**/*.js",
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -29,7 +30,8 @@ module.exports = {
     },
   },
   plugins: [
-    require("daisyui"),
+    // require("flowbite/plugin"),
+    require('tailwind-scrollbar'),
     function({ addBase, theme }) {
       addBase({
         '::selection': { 
@@ -43,7 +45,4 @@ module.exports = {
       });
     },
   ],
-  daisyui: {
-    themes: ['neuro', colors],
-  },
 }

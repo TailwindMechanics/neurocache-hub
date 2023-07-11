@@ -25,30 +25,41 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - Routing: Built-in with Next.js
 - Fetching: Axios
 - State: React Query, MobX
-- Caching: Vercel K/V Redis
-- Database: Vercel Postgres
-- Realtime: Socket.io
+- Database: Supabase Postgres
+- ORM: Supabase
+- Caching: Upstash Redis
+- Redis IO: Upstash
+- Realtime: Socket.io (maybe Supabase)
 - Testing: Jest
 - Dependency Management: Pnpm
 - CI/CD: Vercel
 - Hosting: Vercel
 - Styles: Tailwind.css
-- UI Library: DaisyUi
+- UI Library: Flowbite
 - 3d Package: React Three Fiber
-- Animation: React Spring
+- Animation: Framer motion
+
+
 
 # Next Steps
-## Experiment with routes
-   - Primarily we want to see if we can only reload the main content area
-   - By experimenting with parallel and intercepting routes
-   - Reload as little as possible, render on server or static whenever possible
-   - Use the build information to verify
-   - Find other ways to verifiy
-   └─ app/
-     ├─ @sidebar/
-     ├─ @header/
-     └─ layout.tsx 
-        └─`{children, sidebar, header}`
+1. ## Set up Redis
+   - Install Redis on your machine or use a Redis cloud service. You'll use Redis to cache the channel history. Make sure to install the redis npm package in your project.
+
+2. ## Set up MobX
+   - Install MobX in your project using pnpm add mobx mobx-react. Create a MobX store that will hold the state of your application. This might include the current user, the current channel, and the list of messages in the current channel.
+
+3. ## Set up React Query and Axios
+   - Install React Query in your project using pnpm add react-query. You'll use React Query to fetch data from your backend and keep it in sync with your server state. Set up a query client and provide it at the top level of your application using the QueryClientProvider component.
+   - Axios is a promise-based HTTP client that works both in the browser and in a node.js environment. It provides a single API for dealing with XMLHttpRequests and node's http interface. Install it using pnpm add axios.
+
+4. ## Test the data flow
+   - Now that everything is set up, you can test the data flow in your application. Here's a basic example of how you might do this:
+   - Use Axios to make a request to your backend to fetch the list of channels. Use React Query's useQuery hook to cache this data.
+   - Display the list of channels in your UI. When a channel is clicked, update the currentChannel in your MobX store.
+   - Use Axios and React Query to fetch the history of the current channel from your backend. The first time you fetch the history, it will come from Postgres. Store the history in the Redis cache.
+   - The next time you fetch the history for the same channel, it should come from the Redis cache instead of Postgres. You can verify this by checking the speed of the request or by temporarily disconnecting your Postgres database.
+   - Display the channel history in your UI. When a new message is sent, add it to the messages array in your MobX store and send it to your backend to be stored in Postgres.
+
 
 
 
@@ -56,10 +67,10 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 ## Cache Implementation
    - Based on the latest information from various sources, here are the detailed steps for managing data flow within chat channels, with an emphasis on cache implementation, long-term storage management, and real-time updates.
 ### Using Redis for Caching Channel History
-1. #### Set up Redis: 
+ #### Set up Redis: 
    - If not already done, set up a Redis instance. This will be used to cache the chat history for each channel.
 
-2. #### Cache messages on send: 
+ #### Cache messages on send: 
    - Whenever a message is sent in a channel, in addition to storing it in the Postgres database, also store it in the Redis cache. Use the channel ID as the key, and store the messages as a list or array associated with that key.
 ```typescript
 const storeMessage = async (channelId: string, message: Message) => {
@@ -71,7 +82,7 @@ const storeMessage = async (channelId: string, message: Message) => {
   await redis.lpush(redisKey, JSON.stringify(message));
 };
 ```
-3. #### Retrieve messages from cache: 
+#### Retrieve messages from cache: 
    - When a user opens a channel, first try to retrieve the messages from the Redis cache. If the messages are not in the cache (for example, if the Redis instance was restarted), then fall back to retrieving the messages from the Postgres database.
 ```typescript
 const getMessages = async (channelId: string) => {
@@ -86,7 +97,7 @@ const getMessages = async (channelId: string) => {
   }
 };
 ```
-4. #### Evict old messages from cache: 
+#### Evict old messages from cache: 
    - To prevent the Redis cache from growing indefinitely, regularly evict old messages from the cache. This could be done, for example, using a scheduled job that runs every hour and removes messages that are older than a certain threshold (e.g., 1 month).
 ```typescript
 const evictOldMessages = async () => {
@@ -111,11 +122,11 @@ setInterval(evictOldMessages, 1000 * 60 * 60);
 ```
 ## Long-term Storage Management
 ### Using Postgres for Storing Chat History
-1. #### Store messages: 
+ #### Store messages: 
    - As mentioned above, whenever a message is sent in a channel, store it in the Postgres database.
-2. #### Retrieve messages: 
+#### Retrieve messages: 
    - When a user opens a channel and the messages are not in the Redis cache, retrieve the messages from the Postgres database.
-3. #### Delete old messages: 
+#### Delete old messages: 
    - Regularly delete old messages from the database that are older than your retention period (e.g., 1 month). This could be done in the same scheduled job that evicts old messages from the Redis cache.
 ```typescript
 const deleteOldMessages = async () => {
@@ -129,10 +140,10 @@ setInterval(deleteOldMessages, 1000 * 60 * 60);
 ```
 ## Real-time Updates
 ### Using Socket.io for Real-time Updates
-1. #### Set up Socket.io: 
+#### Set up Socket.io: 
    - If not already done, set up a Socket.io server. This will be used to push real-time updates to the clients.
 
-2. #### Emit events on message send: 
+#### Emit events on message send: 
    - Whenever a message is sent in a channel, emit a Socket.io event to all clients that are subscribed to that channel.
 ```typescript
 const storeMessage = async (channelId: string, message: Message) => {
@@ -142,7 +153,7 @@ const storeMessage = async (channelId: string, message: Message) => {
   io.to(channelId).emit('message', message);
 };
 ```
-3. #### Subscribe clients to channels: 
+#### Subscribe clients to channels: 
    - When a client opens a channel, subscribe them to the corresponding Socket.io room. When a message event is received, update the client's state with the new message.
 ```typescript
 // On the client
@@ -156,7 +167,7 @@ const openChannel = (channelId: string) => {
   });
 };
 ```
-4. #### Unsubscribe clients from channels: 
+#### Unsubscribe clients from channels: 
     - When a client closes a channel, unsubscribe them from the corresponding Socket.io room.
 ```typescript
 const closeChannel = (channelId: string) => {
