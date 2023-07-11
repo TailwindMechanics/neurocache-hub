@@ -6,7 +6,6 @@ import HubLayout from "@/components/hub/hubLayout";
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {
-    Breadcrumb,
     Button,
     Checkbox,
     Label,
@@ -14,16 +13,12 @@ import {
     Table,
     TextInput,
   } from "flowbite-react";
+import Image from "next/image";
   import type { FC } from "react";
   import { useState } from "react";
   import {
     HiChevronLeft,
     HiChevronRight,
-    HiCog,
-    HiDocumentDownload,
-    HiDotsVertical,
-    HiExclamationCircle,
-    HiHome,
     HiOutlineExclamationCircle,
     HiOutlinePencilAlt,
     HiPlus,
@@ -160,7 +155,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/neil-sims.png"
                 alt="Neil Sims avatar"
@@ -208,7 +203,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/roberta-casas.png"
                 alt="Roberta Casas avatar"
@@ -256,7 +251,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/michael-gough.png"
                 alt="Fart Man avatar"
@@ -304,7 +299,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/jese-leos.png"
                 alt="Jese Leos avatar"
@@ -352,7 +347,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/bonnie-green.png"
                 alt="Bonnie Green avatar"
@@ -400,7 +395,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/thomas-lean.png"
                 alt="Thomas Lean avatar"
@@ -448,7 +443,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/helene-engels.png"
                 alt="Helene Engels avatar"
@@ -496,7 +491,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/lana-byrd.png"
                 alt="Lana Byrd avatar"
@@ -544,7 +539,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/leslie-livingston.png"
                 alt="Leslie Livingston avatar"
@@ -592,7 +587,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/robert-brown.png"
                 alt="Robert Brown avatar"
@@ -640,7 +635,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/neil-sims.png"
                 alt="Neil Sims avatar"
@@ -688,7 +683,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/roberta-casas.png"
                 alt="Roberta Casas avatar"
@@ -736,7 +731,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/michael-gough.png"
                 alt="Fart Man avatar"
@@ -784,7 +779,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/jese-leos.png"
                 alt="Jese Leos avatar"
@@ -832,7 +827,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/bonnie-green.png"
                 alt="Bonnie Green avatar"
@@ -881,7 +876,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/thomas-lean.png"
                 alt="Thomas Lean avatar"
@@ -930,7 +925,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/helene-engels.png"
                 alt="Helene Engels avatar"
@@ -978,7 +973,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/lana-byrd.png"
                 alt="Lana Byrd avatar"
@@ -1026,7 +1021,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/leslie-livingston.png"
                 alt="Leslie Livingston avatar"
@@ -1074,7 +1069,7 @@ import {
               </div>
             </Table.Cell>
             <Table.Cell className="mr-12 flex items-center space-x-6 whitespace-nowrap p-4 lg:mr-0">
-              <img
+              <Image
                 className="h-10 w-10 rounded-full"
                 src="../../images/users/robert-brown.png"
                 alt="Robert Brown avatar"
