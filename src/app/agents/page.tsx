@@ -1239,7 +1239,7 @@ import Image from "next/image";
               </p>
               <div className="flex items-center gap-x-3">
                 <Button color="failure" onClick={() => setOpen(false)}>
-                  Yes, I'm sure
+                  Yes, I&apos;m sure
                 </Button>
                 <Button color="gray" onClick={() => setOpen(false)}>
                   No, cancel
