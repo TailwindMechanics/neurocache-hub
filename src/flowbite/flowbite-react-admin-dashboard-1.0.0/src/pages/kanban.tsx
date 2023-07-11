@@ -215,7 +215,7 @@ const EditCardModal: FC = function () {
                   <img
                     className="h-7 w-7 rounded-full border-2 border-white dark:border-gray-800"
                     src="../images/users/michael-gough.png"
-                    alt="Michael Gough"
+                    alt="Fart Man"
                   />
                 </a>
                 <div
@@ -223,7 +223,7 @@ const EditCardModal: FC = function () {
                   role="tooltip"
                   className="invisible absolute z-10 inline-block rounded-lg bg-gray-900 py-2 px-3 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
                 >
-                  Michael Gough
+                  Fart Man
                 </div>
               </div>
               <Button

@@ -329,11 +329,11 @@ const AllUsersTable: FC = function () {
             <img
               className="h-10 w-10 rounded-full"
               src="../../images/users/michael-gough.png"
-              alt="Michael Gough avatar"
+              alt="Fart Man avatar"
             />
             <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
               <div className="text-base font-semibold text-gray-900 dark:text-white">
-                Michael Gough
+                Fart Man
               </div>
               <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
                 michael.gough@flowbite.com
@@ -809,11 +809,11 @@ const AllUsersTable: FC = function () {
             <img
               className="h-10 w-10 rounded-full"
               src="../../images/users/michael-gough.png"
-              alt="Michael Gough avatar"
+              alt="Fart Man avatar"
             />
             <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
               <div className="text-base font-semibold text-gray-900 dark:text-white">
-                Michael Gough
+                Fart Man
               </div>
               <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
                 michael.gough@flowbite.com

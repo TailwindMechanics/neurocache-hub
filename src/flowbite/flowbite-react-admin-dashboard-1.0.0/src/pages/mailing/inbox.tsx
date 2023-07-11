@@ -275,7 +275,7 @@ const Inbox: FC = function () {
                       href="/mailing/read"
                       className="text-base font-normal text-gray-700 after:absolute after:inset-0 dark:text-gray-400"
                     >
-                      Michael Gough
+                      Fart Man
                     </a>
                   </Table.Cell>
                   <Table.Cell className="max-w-sm overflow-hidden truncate p-4 text-base font-normal text-gray-700 dark:text-gray-400 xl:max-w-screen-md 2xl:max-w-screen-lg">
@@ -706,7 +706,7 @@ const Inbox: FC = function () {
                       href="/mailing/read"
                       className="text-base font-normal text-gray-700 after:absolute after:inset-0 dark:text-gray-400"
                     >
-                      Michael Gough
+                      Fart Man
                     </a>
                   </Table.Cell>
                   <Table.Cell className="max-w-sm overflow-hidden truncate p-4 text-base font-normal text-gray-700 dark:text-gray-400 xl:max-w-screen-md 2xl:max-w-screen-lg">

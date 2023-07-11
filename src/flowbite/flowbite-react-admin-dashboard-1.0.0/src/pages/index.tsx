@@ -1392,7 +1392,7 @@ const LatestCustomers: FC = function () {
               </div>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium text-gray-900 dark:text-white">
-                  Michael Gough
+                  Fart Man
                 </p>
                 <p className="truncate text-sm text-gray-500 dark:text-gray-400">
                   email@flowbite.com
