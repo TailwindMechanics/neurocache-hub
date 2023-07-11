@@ -1252,7 +1252,7 @@ import Image from "next/image";
     );
   };
   
-  export const Pagination: FC = function () {
+  const Pagination: FC = function () {
     return (
       <div className="sticky right-0 bottom-0 w-full items-center border-t border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800 sm:flex sm:justify-between">
         <div className="mb-4 flex items-center sm:mb-0">
