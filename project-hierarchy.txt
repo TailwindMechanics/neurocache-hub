@@ -53,7 +53,8 @@ neurocache-hub
 │  ├─ components
 │  │  ├─ chat
 │  │  │  ├─ autoResizingTextArea.tsx
-│  │  │  └─ chatInput.tsx
+│  │  │  ├─ chatInput.tsx
+│  │  │  └─ messageBox.tsx
 │  │  ├─ generic
 │  │  │  ├─ block.tsx
 │  │  │  ├─ btn.tsx

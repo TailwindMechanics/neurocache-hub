@@ -1,3 +1,5 @@
+//path: src\components\chat\autoResizingTextArea.tsx
+
 import { useRef, useEffect, ChangeEvent, KeyboardEvent } from 'react';
 
 
@@ -5,10 +7,9 @@ interface AutoResizingTextareaProps {
     value: string;
     onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
     onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-    placeholder?: string;
 }
 
-const AutoResizingTextarea = ({ value, onChange, onKeyDown, placeholder }: AutoResizingTextareaProps) => {
+const AutoResizingTextarea = ({ value, onChange, onKeyDown }: AutoResizingTextareaProps) => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     const resizeTextarea = () => {
@@ -38,8 +39,8 @@ const AutoResizingTextarea = ({ value, onChange, onKeyDown, placeholder }: AutoR
             onChange={onChange}
             onKeyDown={onKeyDown}
             onInput={resizeTextarea}
-            className="overflow-hidden flex-grow w-full text-text-dark bg-bg rounded-lg border border-main-light resize-none text-2xl focus:outline-none focus:ring-0"
-            placeholder={placeholder}
+            className="placeholder-text-dark px-3 pt-1 pb-4 overflow-hidden flex-grow w-full text-text-light bg-bg rounded-lg border border-main-light resize-none focus:border-text-dark focus:outline-none focus:ring-0"
+            placeholder={"Type your message here..."}
             maxLength={250}
         />
     );

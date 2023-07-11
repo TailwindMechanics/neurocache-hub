@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.21.14",
+    "@clerk/themes": "^1.7.5",
     "@heroicons/react": "^2.0.18",
     "@pmndrs/assets": "^1.6.0",
     "@react-three/drei": "^9.78.1",
@@ -36,6 +37,7 @@
     "postcss": "8.4.25",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
     "react-notifications": "^1.7.4",
     "react-tailwindcss-datepicker": "^1.6.3",
     "suspend-react": "^0.1.3",

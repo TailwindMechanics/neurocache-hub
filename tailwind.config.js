@@ -2,6 +2,7 @@
 const colors = require('./src/data/colors.json');
 
 module.exports = {
+  darkMode: 'class',
   mode: 'jit',
   content: [
     "./node_modules/flowbite-react/**/*.js",
@@ -30,7 +31,7 @@ module.exports = {
     },
   },
   plugins: [
-    // require("flowbite/plugin"),
+    require("flowbite/plugin"),
     require('tailwind-scrollbar'),
     function({ addBase, theme }) {
       addBase({
