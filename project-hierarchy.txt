@@ -17,8 +17,11 @@ neurocache-hub
 ├─ postcss.config.js
 ├─ project-hierarchy.txt
 ├─ public
+│  ├─ favicon.ico
 │  ├─ images
+│  │  ├─ bird80px.png
 │  │  └─ neurocache.png
+│  ├─ robots.txt
 │  └─ textures
 │     ├─ grid-texture.png
 │     ├─ terrain-normal.jpg
@@ -26,69 +29,93 @@ neurocache-hub
 ├─ README.md
 ├─ src
 │  ├─ app
+│  │  ├─ agents
+│  │  │  └─ page.tsx
 │  │  ├─ api
 │  │  │  └─ book-library
 │  │  │     ├─ add
 │  │  │     │  └─ route.ts
 │  │  │     └─ get-by-id
 │  │  │        └─ route.ts
-│  │  ├─ components
-│  │  │  ├─ generic
-│  │  │  │  ├─ react
-│  │  │  │  │  ├─ block.tsx
-│  │  │  │  │  ├─ btn.tsx
-│  │  │  │  │  ├─ customSignInButton.tsx
-│  │  │  │  │  ├─ divider.tsx
-│  │  │  │  │  ├─ hero.tsx
-│  │  │  │  │  ├─ ImageOverlay.tsx
-│  │  │  │  │  ├─ livePanel.tsx
-│  │  │  │  │  ├─ loading.tsx
-│  │  │  │  │  ├─ loggedInRedirect.tsx
-│  │  │  │  │  ├─ login.tsx
-│  │  │  │  │  ├─ modal.tsx
-│  │  │  │  │  ├─ redirectToLanding.tsx
-│  │  │  │  │  ├─ signedInBadge.tsx
-│  │  │  │  │  └─ uiCanvas.tsx
-│  │  │  │  └─ three
-│  │  │  │     ├─ cameraLook.tsx
-│  │  │  │     ├─ cameraSetup.tsx
-│  │  │  │     ├─ freeFlyControls.tsx
-│  │  │  │     ├─ geometry
-│  │  │  │     │  ├─ planeGeo.tsx
-│  │  │  │     │  └─ road.tsx
-│  │  │  │     ├─ materials
-│  │  │  │     │  ├─ mappedMetalMat.tsx
-│  │  │  │     │  └─ metalMat.tsx
-│  │  │  │     ├─ setBgColour.tsx
-│  │  │  │     ├─ threeCanvas.tsx
-│  │  │  │     └─ wasdControls.ts
-│  │  │  ├─ landingPage
-│  │  │  │  ├─ landingPage.tsx
-│  │  │  │  ├─ loggedInUI.tsx
-│  │  │  │  └─ loggedOutUI.tsx
-│  │  │  └─ virtualBackground
-│  │  │     ├─ Building.tsx
-│  │  │     ├─ buildings.tsx
-│  │  │     ├─ cameraMotor.tsx
-│  │  │     ├─ cityBackground.tsx
-│  │  │     ├─ lights.tsx
-│  │  │     └─ test.md
-│  │  ├─ data
-│  │  │  ├─ colors.json
-│  │  │  └─ content.json
-│  │  ├─ favicon.ico
-│  │  ├─ globals.css
-│  │  ├─ hub
-│  │  │  ├─ dashboard
-│  │  │  │  └─ page.tsx
+│  │  ├─ chat
 │  │  │  └─ page.tsx
+│  │  ├─ dashboard
+│  │  │  └─ page.tsx
+│  │  ├─ docs
+│  │  │  └─ page.tsx
+│  │  ├─ globals.css
 │  │  ├─ layout.tsx
+│  │  ├─ manage-api
+│  │  │  └─ page.tsx
 │  │  ├─ page.tsx
-│  │  └─ utils
-│  │     ├─ mathUtils.ts
-│  │     └─ path.ts
+│  │  └─ profile
+│  │     └─ page.tsx
+│  ├─ components
+│  │  ├─ chat
+│  │  │  ├─ autoResizingTextArea.tsx
+│  │  │  ├─ chatInput.tsx
+│  │  │  └─ messageBox.tsx
+│  │  ├─ generic
+│  │  │  ├─ block.tsx
+│  │  │  ├─ btn.tsx
+│  │  │  ├─ customSignInButton.tsx
+│  │  │  ├─ divider.tsx
+│  │  │  ├─ hero.tsx
+│  │  │  ├─ ImageOverlay.tsx
+│  │  │  ├─ livePanel.tsx
+│  │  │  ├─ loadingSpinner.tsx
+│  │  │  ├─ loggedInRedirect.tsx
+│  │  │  ├─ login.tsx
+│  │  │  ├─ modal.tsx
+│  │  │  ├─ redirectToLanding.tsx
+│  │  │  ├─ signedInBadge.tsx
+│  │  │  └─ uiCanvas.tsx
+│  │  ├─ hub
+│  │  │  ├─ drawer.tsx
+│  │  │  ├─ header.tsx
+│  │  │  ├─ hubLayout.tsx
+│  │  │  ├─ leftSideBar.tsx
+│  │  │  ├─ mainContent.tsx
+│  │  │  ├─ menuItem.tsx
+│  │  │  ├─ menuRoutes.tsx
+│  │  │  └─ sideMenu.tsx
+│  │  └─ landingPage
+│  │     ├─ landingPage.tsx
+│  │     ├─ loggedInUI.tsx
+│  │     └─ loggedOutUI.tsx
+│  ├─ data
+│  │  ├─ colors.json
+│  │  ├─ content.json
+│  │  ├─ icons.tsx
+│  │  └─ shorthand.tsx
 │  ├─ middleware.ts
-│  └─ types
-│     └─ index.ts
+│  ├─ threeComponents
+│  │  ├─ cameraLook.tsx
+│  │  ├─ cameraSetup.tsx
+│  │  ├─ freeFlyControls.tsx
+│  │  ├─ geometry
+│  │  │  ├─ planeGeo.tsx
+│  │  │  └─ road.tsx
+│  │  ├─ materials
+│  │  │  ├─ mappedMetalMat.tsx
+│  │  │  └─ metalMat.tsx
+│  │  ├─ setBgColour.tsx
+│  │  ├─ threeCanvas.tsx
+│  │  ├─ virtualBackground
+│  │  │  ├─ building.tsx
+│  │  │  ├─ buildings.tsx
+│  │  │  ├─ cameraMotor.tsx
+│  │  │  ├─ cityBackground.tsx
+│  │  │  ├─ lights.tsx
+│  │  │  └─ test.md
+│  │  └─ wasdControls.ts
+│  ├─ types
+│  │  ├─ declarations.d.ts
+│  │  └─ index.ts
+│  └─ utils
+│     ├─ dummyData.ts
+│     ├─ globalConstantUtil.ts
+│     ├─ mathUtils.ts
+│     └─ path.ts
 ├─ tailwind.config.js
 └─ tsconfig.json

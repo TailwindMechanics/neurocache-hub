@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require('./src/app/data/colors.json');
+const colors = require('./src/data/colors.json');
 
 module.exports = {
+  darkMode: 'class',
   mode: 'jit',
   content: [
+    "./node_modules/flowbite-react/**/*.js",
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -28,8 +30,20 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui")],
-  daisyui: {
-    themes: ['neuro', colors],
-  },
+  plugins: [
+    require("flowbite/plugin"),
+    require('tailwind-scrollbar'),
+    function({ addBase, theme }) {
+      addBase({
+        '::selection': { 
+          backgroundColor: theme('colors.text-select'), 
+          color: theme('colors.text') 
+        },
+        '::-moz-selection': { 
+          backgroundColor: theme('colors.text-select'), 
+          color: theme('colors.text') 
+        },
+      });
+    },
+  ],
 }
