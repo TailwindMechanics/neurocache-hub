@@ -312,7 +312,7 @@ const Hobbies: FC = function () {
                 <ul className="mt-4 flex flex-wrap gap-2">
                     <li>
                         <Badge color="primary" size="xl" className="font-normal">
-                            Football
+                            Farting
                         </Badge>
                     </li>
                     <li>
@@ -343,11 +343,6 @@ const Hobbies: FC = function () {
                     <li>
                         <Badge color="primary" size="xl" className="font-normal">
                             Ice Skating
-                        </Badge>
-                    </li>
-                    <li>
-                        <Badge color="primary" size="xl" className="font-normal">
-                            The Witcher
                         </Badge>
                     </li>
                 </ul>

@@ -1,7 +1,7 @@
 //path: src\components\generic\loggedInRedirect.tsx
 
+import RedirectToDashboard from './redirectToDashboard';
 import { SignedIn, SignedOut } from '@clerk/nextjs';
-import RedirectToLanding from './redirectToLanding';
 
 
 interface LoggedInRedirectProps {
@@ -11,10 +11,10 @@ interface LoggedInRedirectProps {
 export default function LoggedInRedirect ({ children }: LoggedInRedirectProps) {
     return <>
       <SignedIn>
-        {children}
+        <RedirectToDashboard/>
       </SignedIn>
       <SignedOut>
-        <RedirectToLanding/>
+        {children}
       </SignedOut>
     </>
 }

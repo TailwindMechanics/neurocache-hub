@@ -1,0 +1,40 @@
+{
+    "Neurocache": {
+        "Products": {
+            "body": "Neurocache consists of two standalone web applications: 'Neurocache Hub' and 'Neurocache Api'. These platforms allow users to create, train, and customize their own AI agents.",
+            "moreLink": ""
+        },
+        "Website": {
+            "body": "neurocache.ai where creation and training of Ai agents takes place. The users agents are uploaded to api.neurocache.ai and from here the user can access their agents from their own code.",
+            "moreLink": "https://www.neurocache.ai/"
+        }
+    },
+    "Neurocache Hub": {
+        "Intro": {
+            "body": "Neurocache Hub is a full-stack web application. It includes a real-time chat for users to assemble groups of agents, and a dashboard for managing agents, creating Api keys, and viewing usage data.",
+            "moreLink": ""
+        },
+        "Usage": {
+            "body": "Users can create teams of AI agents with unique specializations in the Hub, and test their creations in real-time with other users in a group chat setting.",
+            "moreLink": ""
+        },
+        "Stack": {
+            "body": "Next.js, TypeScript, Clerk, Axios, React Query, MobX, Supabase Postgres, Supabase, Upstash Redis, Upstash, Socket.io (maybe Supabase), Jest, Pnpm, Vercel, Tailwind.css, Flowbite, React Three Fiber, Framer motion.",
+            "moreLink": ""
+        }
+    },
+    "Neurocache Api": {
+        "Intro": {
+            "body": "The Neurocache Api is a public, secured Api service. It enables users to interact with their AI agents and is equipped with a rich library of AI-powered abilities.",
+            "moreLink": ""
+        },
+        "Usage": {
+            "body": "The Neurocache Api serves as the brain of Neurocache, enabling users to communicate with their AI agents from any codebase.",
+            "moreLink": ""
+        },
+        "Stack": {
+            "body": "Python, FastAPI, Google Cloud Platform, FastAPI-Security, Pytest, Poetry, GitHub Actions, SlowApi, Nginx, and several AI Technologies.",
+            "moreLink": ""
+        }
+    }
+}

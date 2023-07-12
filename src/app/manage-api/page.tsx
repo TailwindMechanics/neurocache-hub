@@ -2,6 +2,7 @@
 
 "use client"
 
+import DataTable from "@/components/generic/dataTable";
 import Hublayout from "@/components/hub/hubLayout";
 import { FC } from 'react'
 
@@ -9,7 +10,9 @@ import { FC } from 'react'
 const ManageApiRoot: FC = () => {
     return <>
         <Hublayout headerText='Manage Api'>
-            <div>Manage Api</div>
+            <div className="w-full grayscale -mt-1">
+                <DataTable />
+            </div>
         </Hublayout>
     </>
 }
