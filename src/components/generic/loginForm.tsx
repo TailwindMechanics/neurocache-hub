@@ -1,9 +1,7 @@
 //path: src\components\generic\loginForm.tsx
 
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import type { FC } from "react";
-import { CustomSignInButton } from "./customSignInButton";
 import { SignInButton } from "@clerk/nextjs";
+import type { FC } from "react";
 
 
 const LoginForm: FC = function () {
@@ -19,7 +17,7 @@ const LoginForm: FC = function () {
                         Sign up
                     </a>
                 </p>
-                <div className={`py-2 text-center shadow-2xl drop-shadow-2xl border border-main-light rounded-md bg-main-dark text-text-dark hover:border-text-dark hover:text-text-light hover:bg-main-light`}>
+                <div className={`py-2 text-center shadow-lg border border-main-light rounded-md bg-main-dark text-text-dark hover:border-text-dark hover:text-text-light hover:bg-main-light`}>
                     <SignInButton mode='modal' />
                 </div>
             </div>
