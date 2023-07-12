@@ -1,9 +1,8 @@
 //path: src\components\dashboard\sessionsByCountry.tsx
 
-import { FC } from 'react'
 import BubbleChart from '../charts/bubbleChart';
 import Datepicker from './datepicker';
-
+import { FC } from 'react'
 
 
 const SessionsByCountry: FC = () => {

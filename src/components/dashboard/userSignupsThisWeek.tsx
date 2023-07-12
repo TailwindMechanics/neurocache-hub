@@ -1,9 +1,8 @@
 //path: src\components\dashboard\userSignupsThisWeek.tsx
 
-import { FC } from 'react'
 import UserSignupsChart from '../charts/userSignupsChart';
 import Datepicker from './datepicker';
-
+import { FC } from 'react'
 
 
 const UserSignupsThisWeek: FC = () => {
