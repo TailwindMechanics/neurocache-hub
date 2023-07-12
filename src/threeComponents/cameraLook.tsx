@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useThree } from "@react-three/fiber";
 import { Vector3 } from "three";
 
+
 interface CameraLookProps {
     speed: number;
 }
