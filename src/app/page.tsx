@@ -6,11 +6,11 @@ import SignedInBadge from '@/components/generic/signedInBadge';
 import Dashboard from '@/components/dashboard/dashboard';
 import LeftSideBar from '@/components/hub/leftSideBar';
 import MainContent from '@/components/hub/mainContent';
+import LoginForm from '@/components/generic/loginForm';
 import UICanvas from '@/components/generic/uiCanvas';
 import { SignedIn, SignedOut } from '@clerk/nextjs';
 import Header from '@/components/hub/header';
 import { FC } from 'react'
-import LoginForm from '@/components/generic/loginForm';
 
 
 const page: FC = () => {

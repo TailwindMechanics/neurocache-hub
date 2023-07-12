@@ -2,11 +2,11 @@
 
 "use client"
 
-import { Badge, Progress } from "flowbite-react";
+import { LivePanel } from "@/components/generic/livePanel";
 import { HiBriefcase, HiMap } from "react-icons/hi";
 import Hublayout from "@/components/hub/hubLayout";
+import { Badge, Progress } from "flowbite-react";
 import { FC } from "react";
-import { LivePanel } from "@/components/generic/livePanel";
 
 
 const ProfileRoot: FC = function () {

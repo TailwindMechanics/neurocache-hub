@@ -1,9 +1,8 @@
 //path: src\components\dashboard\newProductsThisWeek.tsx
 
-import { FC } from 'react'
 import NewProductsChart from '../charts/newProductsChart';
 import Datepicker from './datepicker';
-
+import { FC } from 'react'
 
 
 const NewProductsThisWeek: FC = () => {

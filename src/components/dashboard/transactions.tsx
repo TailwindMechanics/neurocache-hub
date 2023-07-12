@@ -5,7 +5,6 @@ import Datepicker from './datepicker';
 import { FC } from 'react'
 
 
-
 const Transactions: FC = () => {
     return (
         <div className="rounded-lg p-4 shadow  sm:p-6 xl:p-8">

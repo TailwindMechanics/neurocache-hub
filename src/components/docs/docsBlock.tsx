@@ -1,11 +1,8 @@
-//path: src\components\docs\docsBlock.tsx
 
-// path: src\app\docs\docsBlock.tsx
 
-import React from 'react';
-import DocSection from './docSection';
-import { LivePanel } from '../generic/livePanel';
 import { Divider } from '../generic/divider';
+import DocSection from './docSection';
+import React from 'react';
 
 interface SectionData {
     body: string;

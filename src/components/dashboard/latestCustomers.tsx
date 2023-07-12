@@ -1,8 +1,8 @@
 //path: src\components\dashboard\latestCustomers.tsx
 
+import Datepicker from './datepicker';
 import Image from 'next/image';
 import { FC } from 'react'
-import Datepicker from './datepicker';
 
 
 
