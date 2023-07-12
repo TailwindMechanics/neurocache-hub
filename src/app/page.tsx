@@ -19,13 +19,18 @@ const page: FC = () => {
       <div className="flex text-text-light h-screen bg-bg">
         <LeftSideBar />
         <div className={`flex flex-col my-10 mx-10 w-full rounded-xl`}>
-          <Header text="Sign in to your account" />
+          <SignedIn>
+            <Header text="Dashboard" />
+          </SignedIn>
+          <SignedOut>
+            <Header text="Sign in to your account" />
+          </SignedOut>
           <MainContent>
             <SignedIn>
               <Dashboard />
             </SignedIn>
             <SignedOut>
-                <LoginForm />
+              <LoginForm />
             </SignedOut>
           </MainContent>
         </div>
