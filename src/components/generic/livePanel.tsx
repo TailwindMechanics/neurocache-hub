@@ -15,7 +15,7 @@ interface LivePanelProps {
 export const LivePanel: React.FC<LivePanelProps> = ({ children, tailwind, bgAlpha = { min: 0.5, max: 1 } }) => {
     return <>
         <motion.section
-            className="flex-grow "
+            className={`flex-grow ${tailwind}`}
             initial={{ opacity: bgAlpha.min }}
             whileHover={{ opacity: bgAlpha.max }}
             transition={{ duration: 0.5 }}>

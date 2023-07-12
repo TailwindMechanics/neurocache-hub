@@ -20,7 +20,22 @@ neurocache-hub
 │  ├─ favicon.ico
 │  ├─ images
 │  │  ├─ bird80px.png
-│  │  └─ neurocache.png
+│  │  ├─ neurocache.png
+│  │  └─ users
+│  │     ├─ bonnie-green-2x.png
+│  │     ├─ bonnie-green.png
+│  │     ├─ helene-engels.png
+│  │     ├─ jese-leos-2x.png
+│  │     ├─ jese-leos.png
+│  │     ├─ joseph-mcfall.png
+│  │     ├─ lana-byrd.png
+│  │     ├─ leslie-livingston.png
+│  │     ├─ michael-gough.png
+│  │     ├─ neil-sims.png
+│  │     ├─ robert-brown.png
+│  │     ├─ roberta-casas-2x.png
+│  │     ├─ roberta-casas.png
+│  │     └─ thomas-lean.png
 │  ├─ robots.txt
 │  └─ textures
 │     ├─ grid-texture.png
@@ -51,41 +66,62 @@ neurocache-hub
 │  │  └─ profile
 │  │     └─ page.tsx
 │  ├─ components
+│  │  ├─ charts
+│  │  │  ├─ acquisitionChart.tsx
+│  │  │  ├─ bubbleChart.tsx
+│  │  │  ├─ newProductsChart.tsx
+│  │  │  ├─ salesChart.tsx
+│  │  │  ├─ userSignupsChart.tsx
+│  │  │  └─ visitorsChart.tsx
 │  │  ├─ chat
 │  │  │  ├─ autoResizingTextArea.tsx
 │  │  │  ├─ chatInput.tsx
 │  │  │  └─ messageBox.tsx
+│  │  ├─ dashboard
+│  │  │  ├─ acquisitionOverview.tsx
+│  │  │  ├─ dashboard.tsx
+│  │  │  ├─ datepicker.tsx
+│  │  │  ├─ latestCustomers.tsx
+│  │  │  ├─ newProductsThisWeek.tsx
+│  │  │  ├─ salesThisWeek.tsx
+│  │  │  ├─ sessionsByCountry.tsx
+│  │  │  ├─ transactions.tsx
+│  │  │  ├─ userSignupsThisWeek.tsx
+│  │  │  └─ visitorsThisWeek.tsx
+│  │  ├─ docs
+│  │  │  ├─ docsBlock.tsx
+│  │  │  └─ docSection.tsx
 │  │  ├─ generic
 │  │  │  ├─ block.tsx
 │  │  │  ├─ btn.tsx
 │  │  │  ├─ customSignInButton.tsx
+│  │  │  ├─ dataTable.tsx
 │  │  │  ├─ divider.tsx
 │  │  │  ├─ hero.tsx
 │  │  │  ├─ ImageOverlay.tsx
 │  │  │  ├─ livePanel.tsx
 │  │  │  ├─ loadingSpinner.tsx
 │  │  │  ├─ loggedInRedirect.tsx
-│  │  │  ├─ login.tsx
+│  │  │  ├─ loggedOutRedirect.tsx
+│  │  │  ├─ loginForm.tsx
 │  │  │  ├─ modal.tsx
+│  │  │  ├─ redirectToDashboard.tsx
 │  │  │  ├─ redirectToLanding.tsx
 │  │  │  ├─ signedInBadge.tsx
 │  │  │  └─ uiCanvas.tsx
-│  │  ├─ hub
-│  │  │  ├─ drawer.tsx
-│  │  │  ├─ header.tsx
-│  │  │  ├─ hubLayout.tsx
-│  │  │  ├─ leftSideBar.tsx
-│  │  │  ├─ mainContent.tsx
-│  │  │  ├─ menuItem.tsx
-│  │  │  ├─ menuRoutes.tsx
-│  │  │  └─ sideMenu.tsx
-│  │  └─ landingPage
-│  │     ├─ landingPage.tsx
-│  │     ├─ loggedInUI.tsx
-│  │     └─ loggedOutUI.tsx
+│  │  └─ hub
+│  │     ├─ drawer.tsx
+│  │     ├─ header.tsx
+│  │     ├─ hubLayout.tsx
+│  │     ├─ leftSideBar.tsx
+│  │     ├─ mainContent.tsx
+│  │     ├─ menuItem.tsx
+│  │     ├─ menuRoutes.tsx
+│  │     └─ sideMenu.tsx
 │  ├─ data
 │  │  ├─ colors.json
 │  │  ├─ content.json
+│  │  ├─ docs.json
 │  │  ├─ icons.tsx
 │  │  └─ shorthand.tsx
 │  ├─ middleware.ts

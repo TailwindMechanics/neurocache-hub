@@ -5,7 +5,7 @@ import { FC } from 'react'
 
 
 interface HeaderProps {
-    text:string
+    text: string
 }
 
 const Header: FC<HeaderProps> = ({ text }) => {
@@ -13,7 +13,9 @@ const Header: FC<HeaderProps> = ({ text }) => {
         <div className={``}>
             <div className="shadow-xl drop-shadow-2xl text-center rounded-xl p-4 border bg-main-dark border-main-light">
                 <LivePanel>
-                    {text}
+                    <h1 className="font-bold leading-tight tracking-tight text-light text-2xl">
+                        {text}
+                    </h1>
                 </LivePanel>
             </div>
         </div>

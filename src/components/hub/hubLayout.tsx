@@ -2,6 +2,7 @@
 
 "use client"
 
+import LoggedOutRedirect from '@/components/generic/loggedOutRedirect';
 import SignedInBadge from '@/components/generic/signedInBadge';
 import LeftSideBar from '@/components/hub/leftSideBar';
 import MainContent from '@/components/hub/mainContent';
@@ -17,19 +18,21 @@ interface HubLayoutProps {
 
 const HubLayout: FC<HubLayoutProps> = ({ headerText, children }) => {
     return <>
-        <UICanvas tailwind="w-full flex-col">
-            <div className="flex text-text-light h-screen bg-bg">
-                <LeftSideBar />
-                <div className={`flex flex-col my-10 mx-10 w-full rounded-xl`}>
-                    <Header text={headerText} />
-                    <MainContent>
-                        {children}
-                    </MainContent>
+        <LoggedOutRedirect>
+            <UICanvas tailwind="w-full flex-col">
+                <div className="flex text-text-light h-screen bg-bg">
+                    <LeftSideBar />
+                    <div className={`flex flex-col my-10 mx-10 w-full rounded-xl`}>
+                        <Header text={headerText} />
+                        <MainContent>
+                            {children}
+                        </MainContent>
+                    </div>
+                    {/* <Drawer isOpen={isOpen} onClose={() => dispatch(closeDrawer())}></Drawer> */}
                 </div>
-                {/* <Drawer isOpen={isOpen} onClose={() => dispatch(closeDrawer())}></Drawer> */}
-            </div>
-            <SignedInBadge />
-        </UICanvas>
+                <SignedInBadge />
+            </UICanvas>
+        </LoggedOutRedirect>
     </>
 }
 
