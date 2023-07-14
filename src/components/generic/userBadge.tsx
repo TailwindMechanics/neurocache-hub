@@ -2,9 +2,9 @@
 
 import ProfileDrawer from '../drawer/profileDrawer';
 import { storesContext } from '@/stores';
-import { UserIcon } from '@/data/icons';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
+import { User } from '@/data/icons';
 
 
 const badgeVariants = {
@@ -23,7 +23,7 @@ export default function UserBadge() {
 		userStore.user.first_name && userStore.user.last_name ? (
 			`${userStore.user.first_name[0]}${userStore.user.last_name[0]}`
 		) : (
-			<UserIcon />
+			<User />
 		);
 
 	const handleClick = () => {

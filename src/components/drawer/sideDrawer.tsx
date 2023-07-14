@@ -1,10 +1,11 @@
 //path: src\components\drawer\sideDrawer.tsx
 
+import { FC, useContext, useEffect } from 'react';
 import { RightArrow } from '@/data/icons';
 import { storesContext } from '@/stores';
 import { motion } from 'framer-motion';
-import { FC, useContext } from 'react';
 import { observer } from 'mobx-react';
+import { reaction } from 'mobx';
 
 
 const variants = {
@@ -13,8 +14,18 @@ const variants = {
 };
 
 const SideDrawer: FC = () => {
-	const { drawerStore } = useContext(storesContext);
+	const { drawerStore, userStore } = useContext(storesContext);
 	const { isOpen, content } = drawerStore;
+
+	useEffect(() => {
+		const dispose = reaction(() => userStore.isLoggedIn, isLoggedIn => {
+			if (!isLoggedIn && isOpen) {
+				drawerStore.close();
+			}
+		});
+
+		return dispose;
+	}, [userStore, isOpen, drawerStore]);
 
 	return (
 		<div className="text-center">
