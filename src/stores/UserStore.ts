@@ -31,6 +31,8 @@ class UserStore {
 	}
 
 	async loginWithGoogle() {
+		console.log(process.env.NEXT_PUBLIC_URL);
+		
 		const { error } = await supabase.auth.signInWithOAuth({
 			provider: 'google',
 			options: { redirectTo: process.env.NEXT_PUBLIC_URL }
