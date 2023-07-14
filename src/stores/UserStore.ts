@@ -2,6 +2,7 @@
 
 import { Session, AuthChangeEvent, User } from "@supabase/supabase-js";
 import { computed, makeAutoObservable } from "mobx";
+import { UserProfile } from "@/types/declarations";
 import { supabase } from "@/lib/supabase";
 
 
@@ -11,14 +12,16 @@ class UserStore {
 
 	constructor() {
 		makeAutoObservable(this, {
-			isLoggedIn: computed  // mark isLoggedIn as computed
+			isLoggedIn: computed
 		});
 		supabase.auth.onAuthStateChange((event: AuthChangeEvent, session: Session | null) => {
 			this.handleAuthChange(event, session);
 		});
 	}
+	
 	get isLoggedIn() {
-		return this.user !== null;  // return true if user is not null
+		return this.user !== null; 
+		
 	}
 
 	handleAuthChange(event: AuthChangeEvent, session: Session | null) {
