@@ -1,4 +1,4 @@
-//path: src/components/hub/SignOut.tsx
+//path: src\components\drawer\profileDrawer.tsx
 
 import { useContext } from 'react';
 import { storesContext } from '@/stores';

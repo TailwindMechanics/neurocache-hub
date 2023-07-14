@@ -1,6 +1,6 @@
-//path: src\components\hub\sideDrawer.tsx
+//path: src\components\drawer\sideDrawer.tsx
 
-import { CloseIcon, RightArrowIcon } from '@/data/icons';
+import { RightArrow } from '@/data/icons';
 import { storesContext } from '@/stores';
 import { motion } from 'framer-motion';
 import { FC, useContext } from 'react';
@@ -34,7 +34,7 @@ const SideDrawer: FC = () => {
 				<div className='flex flex-col w-full items-center my-2 mr-1 rounded-xl border border-main-light bg-main-dark shadow-2xl drop-shadow-2xl text-text-dark'>
 					{isOpen &&
 						<button className='py-4 px-5 self-start' onClick={() => drawerStore.close()}>
-							<RightArrowIcon className='w-6 h-6 text-opacity-50 text-text-dark hover:text-text-light' />
+							<RightArrow className='w-6 h-6 text-opacity-50 text-text-dark hover:text-text-light' />
 						</button>}
 					<div className='w-full'>
 						{isOpen && content}

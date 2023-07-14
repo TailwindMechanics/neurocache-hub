@@ -93,6 +93,9 @@ neurocache-hub
 │  │  ├─ docs
 │  │  │  ├─ docsBlock.tsx
 │  │  │  └─ docSection.tsx
+│  │  ├─ drawer
+│  │  │  ├─ profileDrawer.tsx
+│  │  │  └─ sideDrawer.tsx
 │  │  ├─ generic
 │  │  │  ├─ block.tsx
 │  │  │  ├─ btn.tsx
@@ -116,9 +119,7 @@ neurocache-hub
 │  │     ├─ leftSideBar.tsx
 │  │     ├─ mainContent.tsx
 │  │     ├─ menuItem.tsx
-│  │     ├─ menuRoutes.tsx
-│  │     ├─ sideDrawer.tsx
-│  │     └─ sideMenu.tsx
+│  │     └─ menuRoutes.tsx
 │  ├─ data
 │  │  ├─ colors.json
 │  │  ├─ content.json
@@ -131,7 +132,7 @@ neurocache-hub
 │  │  ├─ ChannelStore.ts
 │  │  ├─ DrawerStore.ts
 │  │  ├─ index.ts
-│  │  ├─ MessagStore.ts
+│  │  ├─ MessageStore.ts
 │  │  ├─ RouteStore.ts
 │  │  └─ UserStore.ts
 │  ├─ threeComponents

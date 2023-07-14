@@ -297,7 +297,7 @@ const closeChannel = (channelId: string) => {
 
 
 
-# Story:
+# -------------Story:
 Sure, let's imagine a bustling ancient city, a hub of commerce and knowledge, where information is the most valuable commodity. This city is your application.
 
 In the heart of the city, there's a grand library, the Library of Supabase, where all the long-term knowledge (data) is stored. The librarians (Supabase APIs) are the keepers of this knowledge, and they are the only ones who can retrieve or modify the scrolls (data) stored within.
@@ -344,7 +344,7 @@ As for Axios and Socket.IO, while Axios is typically used for HTTP requests and 
 
 
 
----
+### ---
 
 In the bustling city of Neurocache, the Neurocache Api is like the grand council of wizards, each specializing in a different form of magic (AI technologies). These wizards are masters of various arts, from the ancient knowledge of PyTorch and Hugging Face to the cutting-edge techniques of OpenAI and Google AutoML. They are the ones who empower the city's AI agents with their abilities.
 

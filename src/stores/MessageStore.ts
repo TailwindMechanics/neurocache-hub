@@ -1,11 +1,11 @@
-//path: src\stores\ChannelStore.ts
+//path: src\stores\MessageStore.ts
 
 import { makeAutoObservable } from "mobx";
 
-class ChannelStore {
+class MessageStore {
   constructor() {
     makeAutoObservable(this);
   }
 }
 
-export default ChannelStore;
+export default MessageStore;

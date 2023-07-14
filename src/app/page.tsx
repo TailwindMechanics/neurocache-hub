@@ -15,30 +15,30 @@ import { FC } from 'react'
 
 
 const page: FC = () => {
-  return <>
-    <UICanvas tailwind="w-full flex-col">
-      <div className="flex text-text-light h-screen bg-bg">
-        <LeftSideBar />
-        <div className={`flex flex-col my-10 mx-10 w-full rounded-xl`}>
-          <SignedIn>
-            <Header text="Dashboard" />
-          </SignedIn>
-          <SignedOut>
-            <Header text="Sign in to your account" />
-          </SignedOut>
-          <MainContent>
-            <SignedIn>
-              <Dashboard />
-            </SignedIn>
-            <SignedOut>
-              <LoginForm />
-            </SignedOut>
-          </MainContent>
-        </div>
-        <SideDrawer />
-      </div>
-    </UICanvas>
-  </>
+	return <>
+		<UICanvas tailwind="w-full flex-col">
+			<div className="flex text-text-light h-screen bg-bg">
+				<LeftSideBar />
+				<div className={`flex flex-col my-10 mx-10 w-full rounded-xl`}>
+					<SignedIn>
+						<Header text="Dashboard" />
+					</SignedIn>
+					<SignedOut>
+						<Header text="Sign in to your account" />
+					</SignedOut>
+					<MainContent>
+						<SignedIn>
+							<Dashboard />
+						</SignedIn>
+						<SignedOut>
+							<LoginForm />
+						</SignedOut>
+					</MainContent>
+				</div>
+				<SideDrawer />
+			</div>
+		</UICanvas>
+	</>
 }
 
 export default page
