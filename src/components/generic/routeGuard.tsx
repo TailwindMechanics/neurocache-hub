@@ -1,4 +1,4 @@
-//path: src\components\RouteGuard.tsx
+//path: src\components\generic\routeGuard.tsx
 
 import { FC, useContext, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
