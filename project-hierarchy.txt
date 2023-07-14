@@ -55,8 +55,6 @@ neurocache-hub
 │  │  │        └─ route.ts
 │  │  ├─ chat
 │  │  │  └─ page.tsx
-│  │  ├─ dashboard
-│  │  │  └─ page.tsx
 │  │  ├─ docs
 │  │  │  └─ page.tsx
 │  │  ├─ globals.css
@@ -109,6 +107,7 @@ neurocache-hub
 │  │  │  ├─ modal.tsx
 │  │  │  ├─ redirectToDashboard.tsx
 │  │  │  ├─ redirectToLanding.tsx
+│  │  │  ├─ routeGuard.tsx
 │  │  │  ├─ signedIn.tsx
 │  │  │  ├─ signedOut.tsx
 │  │  │  ├─ uiCanvas.tsx
@@ -118,8 +117,7 @@ neurocache-hub
 │  │     ├─ hubLayout.tsx
 │  │     ├─ leftSideBar.tsx
 │  │     ├─ mainContent.tsx
-│  │     ├─ menuItem.tsx
-│  │     └─ menuRoutes.tsx
+│  │     └─ menuItem.tsx
 │  ├─ data
 │  │  ├─ colors.json
 │  │  ├─ content.json
@@ -133,7 +131,7 @@ neurocache-hub
 │  │  ├─ DrawerStore.ts
 │  │  ├─ index.ts
 │  │  ├─ MessageStore.ts
-│  │  ├─ RouteStore.ts
+│  │  ├─ SidebarStore.ts
 │  │  └─ UserStore.ts
 │  ├─ threeComponents
 │  │  ├─ cameraLook.tsx
