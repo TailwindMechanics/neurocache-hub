@@ -17,38 +17,51 @@ interface Route {
     path: string;
     icon: ReactElement;
     name: string;
+    authenticated: boolean;
 }
 
 const routes: Route[] = [
     {
+        path: '/',
+        icon: <Squares2X2Icon />,
+        name: 'Home',
+        authenticated: false
+    },
+    {
         path: '/dashboard',
         icon: <Squares2X2Icon />,
         name: 'Dashboard',
+        authenticated: true
     },
     {
         path: '/profile',
         icon: <UsersIcon />,
         name: 'Profile',
+        authenticated: true
     },
     {
         path: '/agents',
         icon: <UsersIcon />,
         name: 'Agents',
+        authenticated: true
     },
     {
         path: '/chat',
         icon: <ChatBubbleLeftIcon />,
         name: 'Chat',
+        authenticated: true
     },
     {
         path: '/manage-api',
         icon: <KeyIcon />,
         name: 'Manage Api',
+        authenticated: true
     },
     {
         path: '/docs',
         icon: <BookOpenIcon />,
         name: 'Docs',
+        authenticated: true
     }
 ]
 

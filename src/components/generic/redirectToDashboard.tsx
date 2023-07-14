@@ -7,9 +7,9 @@ import { useEffect } from "react";
 
 
 export default function RedirectToDashboard() {
-    useEffect(() => {
-        window.location.href = process.env.NEXT_PUBLIC_URL || '/dashboard';
-    }, []);
+	useEffect(() => {
+		window.location.href = process.env.NEXT_PUBLIC_URL || '/dashboard';
+	}, []);
 
-    return <LoadingSpinner />;
+	return <LoadingSpinner />;
 }

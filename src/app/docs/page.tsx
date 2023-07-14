@@ -1,4 +1,4 @@
-
+//path: src\app\docs\page.tsx
 
 import DocsBlock from '@/components/docs/docsBlock';
 import HubLayout from '@/components/hub/hubLayout';

@@ -1,4 +1,4 @@
-
+//path: src\components\docs\docsBlock.tsx
 
 import { Divider } from '../generic/divider';
 import DocSection from './docSection';

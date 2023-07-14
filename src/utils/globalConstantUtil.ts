@@ -1,5 +1,10 @@
 //path: src\utils\globalConstantUtil.ts
 
+export const PROVIDERS = {
+    GOOGLE: "google",
+    GITHUB: "github"
+} as const;
+
 export const MODAL_BODY_TYPES = {
     USER_DETAIL: "USER_DETAIL",
     LEAD_ADD_NEW: "LEAD_ADD_NEW",

@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.21.14",
-    "@clerk/themes": "^1.7.5",
     "@heroicons/react": "^2.0.18",
     "@pmndrs/assets": "^1.6.0",
     "@react-three/drei": "^9.78.1",
@@ -37,6 +35,8 @@
     "flowbite": "^1.7.0",
     "flowbite-react": "^0.4.11",
     "framer-motion": "^10.12.18",
+    "mobx": "^6.9.0",
+    "mobx-react": "^7.6.0",
     "next": "13.4.9",
     "postcss": "8.4.25",
     "react": "18.2.0",

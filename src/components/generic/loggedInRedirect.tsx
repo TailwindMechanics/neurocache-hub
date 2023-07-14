@@ -1,7 +1,8 @@
 //path: src\components\generic\loggedInRedirect.tsx
 
 import RedirectToDashboard from './redirectToDashboard';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
+import SignedOut from './signedOut';
+import SignedIn from './signedIn';
 
 
 interface LoggedInRedirectProps {
