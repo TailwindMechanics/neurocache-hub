@@ -7,9 +7,9 @@ import { useEffect } from "react";
 
 
 export default function RedirectToLanding() {
-    useEffect(() => {
-        window.location.href = process.env.NEXT_PUBLIC_URL || '/';
-    }, []);
+	useEffect(() => {
+		window.location.href = process.env.NEXT_PUBLIC_URL || '/';
+	}, []);
 
-    return <LoadingSpinner />;
+	return <LoadingSpinner />;
 }

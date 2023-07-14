@@ -1,7 +1,8 @@
 //path: src\components\generic\loggedOutRedirect.tsx
 
-import { SignedIn, SignedOut } from '@clerk/nextjs';
 import RedirectToLanding from './redirectToLanding';
+import SignedOut from './signedOut';
+import SignedIn from './signedIn';
 
 
 interface LoggedOutRedirectProps {

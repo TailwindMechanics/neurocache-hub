@@ -19,7 +19,7 @@
             "moreLink": ""
         },
         "Stack": {
-            "body": "Next.js, TypeScript, Clerk, Axios, React Query, MobX, Supabase Postgres, Supabase, Upstash Redis, Upstash, Socket.io (maybe Supabase), Jest, Pnpm, Vercel, Tailwind.css, Flowbite, React Three Fiber, Framer motion.",
+            "body": "Next.js, TypeScript, Axios, React Query, MobX, Supabase Postgres, Supabase, Upstash Redis, Upstash, Socket.io (maybe Supabase), Jest, Pnpm, Vercel, Tailwind.css, Flowbite, React Three Fiber, Framer motion.",
             "moreLink": ""
         }
     },

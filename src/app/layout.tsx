@@ -1,10 +1,7 @@
 //path: src\app\layout.tsx
 
 import { Analytics } from '@vercel/analytics/react';
-import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from 'next/font/google'
-import { dark } from '@clerk/themes';
-require('dotenv').config();
 import './globals.css'
 
 const title = "Neurocache";
@@ -18,19 +15,15 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode; }) {
   return <>
-    <ClerkProvider appearance={{
-        baseTheme: dark
-      }} 
-      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
         <html lang="en">
           <head>
             <title>{title}</title>
+            <meta name="description" content={metadata.description} />
           </head>
           <body className={`${inter.className} dark`}>
             {children}
             <Analytics />
           </body>
         </html>
-    </ClerkProvider>
   </>
 }

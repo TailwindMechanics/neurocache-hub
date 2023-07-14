@@ -1,13 +1,14 @@
 neurocache-hub
 ├─ .env.development.local
 ├─ .env.local
+├─ .eslintignore
 ├─ .eslintrc.json
-├─ .example.env
 ├─ .gitignore
 ├─ .vercel
 │  ├─ project.json
 │  └─ README.txt
 ├─ .vscode
+│  ├─ settings.json
 │  └─ tasks.json
 ├─ autoCommentPath.js
 ├─ next-env.d.ts
@@ -75,6 +76,7 @@ neurocache-hub
 │  │  │  └─ visitorsChart.tsx
 │  │  ├─ chat
 │  │  │  ├─ autoResizingTextArea.tsx
+│  │  │  ├─ chatHistory.tsx
 │  │  │  ├─ chatInput.tsx
 │  │  │  └─ messageBox.tsx
 │  │  ├─ dashboard
@@ -91,14 +93,14 @@ neurocache-hub
 │  │  ├─ docs
 │  │  │  ├─ docsBlock.tsx
 │  │  │  └─ docSection.tsx
+│  │  ├─ drawer
+│  │  │  ├─ profileDrawer.tsx
+│  │  │  └─ sideDrawer.tsx
 │  │  ├─ generic
 │  │  │  ├─ block.tsx
 │  │  │  ├─ btn.tsx
-│  │  │  ├─ customSignInButton.tsx
 │  │  │  ├─ dataTable.tsx
 │  │  │  ├─ divider.tsx
-│  │  │  ├─ hero.tsx
-│  │  │  ├─ ImageOverlay.tsx
 │  │  │  ├─ livePanel.tsx
 │  │  │  ├─ loadingSpinner.tsx
 │  │  │  ├─ loggedInRedirect.tsx
@@ -107,24 +109,32 @@ neurocache-hub
 │  │  │  ├─ modal.tsx
 │  │  │  ├─ redirectToDashboard.tsx
 │  │  │  ├─ redirectToLanding.tsx
-│  │  │  ├─ signedInBadge.tsx
-│  │  │  └─ uiCanvas.tsx
+│  │  │  ├─ signedIn.tsx
+│  │  │  ├─ signedOut.tsx
+│  │  │  ├─ uiCanvas.tsx
+│  │  │  └─ userBadge.tsx
 │  │  └─ hub
-│  │     ├─ drawer.tsx
 │  │     ├─ header.tsx
 │  │     ├─ hubLayout.tsx
 │  │     ├─ leftSideBar.tsx
 │  │     ├─ mainContent.tsx
 │  │     ├─ menuItem.tsx
-│  │     ├─ menuRoutes.tsx
-│  │     └─ sideMenu.tsx
+│  │     └─ menuRoutes.tsx
 │  ├─ data
 │  │  ├─ colors.json
 │  │  ├─ content.json
 │  │  ├─ docs.json
 │  │  ├─ icons.tsx
 │  │  └─ shorthand.tsx
-│  ├─ middleware.ts
+│  ├─ lib
+│  │  └─ supabase.ts
+│  ├─ stores
+│  │  ├─ ChannelStore.ts
+│  │  ├─ DrawerStore.ts
+│  │  ├─ index.ts
+│  │  ├─ MessageStore.ts
+│  │  ├─ RouteStore.ts
+│  │  └─ UserStore.ts
 │  ├─ threeComponents
 │  │  ├─ cameraLook.tsx
 │  │  ├─ cameraSetup.tsx
@@ -140,7 +150,6 @@ neurocache-hub
 │  │  ├─ virtualBackground
 │  │  │  ├─ building.tsx
 │  │  │  ├─ buildings.tsx
-│  │  │  ├─ cameraMotor.tsx
 │  │  │  ├─ cityBackground.tsx
 │  │  │  ├─ lights.tsx
 │  │  │  └─ test.md
@@ -149,7 +158,6 @@ neurocache-hub
 │  │  ├─ declarations.d.ts
 │  │  └─ index.ts
 │  └─ utils
-│     ├─ dummyData.ts
 │     ├─ globalConstantUtil.ts
 │     ├─ mathUtils.ts
 │     └─ path.ts
