@@ -18,27 +18,27 @@ class SidebarStore {
 		});
 		this.userStore = userStore;
 	}
-	
+
 	getRoutes() {
 		const routes: Route[] = [
-			this.createRoute(['/', '/dashboard'], 'Dashboard', false, Squares2x2),
-			this.createRoute(['/profile'], 'Profile', true, User),
-			this.createRoute(['/agents'], 'Agents', true, Users),
-			this.createRoute(['/chat'], 'Chat', true, ChatBubbleLeft),
-			this.createRoute(['/manage-api'], 'Manage Api', true, Code),
-			this.createRoute(['/docs'], 'Docs', true, BookOpen),
+			this.createRoute('/', 'Dashboard', false, Squares2x2),
+			this.createRoute('/profile', 'Profile', true, User),
+			this.createRoute('/agents', 'Agents', true, Users),
+			this.createRoute('/chat', 'Chat', true, ChatBubbleLeft),
+			this.createRoute('/manage-api', 'Manage Api', true, Code),
+			this.createRoute('/docs', 'Docs', true, BookOpen),
 		];
 
 		return routes;
 	}
 
-	createRoute(paths: string[], name: string, authenticated: boolean, icon: React.FC<IconProps>): Route {
+	createRoute(path: string, name: string, authenticated: boolean, icon: React.FC<IconProps>): Route {
 		return {
-			path: paths[0],
+			path,
 			name,
 			authenticated,
 			icon,
-			isActive: (query: string) => paths.some(path => path === query),
+			isActive: (query: string) => query === path,
 		};
 	}
 
