@@ -17,11 +17,11 @@ const RouteGuard: FC<RouteGuardProps> = observer(({ children }) => {
 		if (!userStore.isLoggedIn) {
 			router.push('/');
 		}
-	}, [userStore.isLoggedIn, history]);
+	}, [userStore.isLoggedIn, router]);
 
 	return <>
 		{children}
-	</>;
+	</>
 });
 
 export default RouteGuard;
