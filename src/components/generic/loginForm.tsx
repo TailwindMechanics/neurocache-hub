@@ -1,13 +1,14 @@
 //path: src\components\generic\loginForm.tsx
 
 import { ChangeEvent, useContext, useState } from 'react';
+import SignupDrawer from '../drawer/signupDrawer';
 import { storesContext } from '@/stores';
 import validator from 'validator';
 import type { FC } from "react";
 
 
 const LoginForm: FC = function () {
-	const { userStore } = useContext(storesContext);
+	const { userStore, drawerStore } = useContext(storesContext);
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -30,13 +31,8 @@ const LoginForm: FC = function () {
 		}
 	};
 
-	const handleSignUp = async () => {
-		if (validator.isEmail(email)) {
-			const errorMessage = await userStore.signUp(email, password);
-			setError(errorMessage);
-		} else {
-			setError("Invalid email");
-		}
+	const handleSignUp = () => {
+		drawerStore.open(<SignupDrawer />); // Open the SignUpDrawer when SignUp is clicked
 	};
 
 	return (

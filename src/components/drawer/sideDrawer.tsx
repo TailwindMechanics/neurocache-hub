@@ -47,7 +47,7 @@ const SideDrawer: FC = () => {
 						<button className='py-4 px-5 self-start' onClick={() => drawerStore.close()}>
 							<RightArrow className='w-6 h-6 text-opacity-50 text-text-dark hover:text-text-light' />
 						</button>}
-					<div className='w-full'>
+					<div className='w-full h-full'>
 						{isOpen && content}
 					</div>
 				</div>
