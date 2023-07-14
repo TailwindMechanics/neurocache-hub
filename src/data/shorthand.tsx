@@ -8,8 +8,6 @@ export default class Shorthand {
     }
 
     static build(children: React.ReactNode): JSX.Element {
-        console.log(Shorthand.classes);
-        
         const result = <div className={Shorthand.classes.trim()}>{children}</div>;
         Shorthand.classes = "";
         return result;

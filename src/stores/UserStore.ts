@@ -7,7 +7,6 @@ import { supabase } from "@/lib/supabase";
 
 
 class UserStore {
-
 	user: UserProfile | null = null;
 
 	constructor() {
@@ -18,10 +17,9 @@ class UserStore {
 			this.handleAuthChange(event, session);
 		});
 	}
-	
+
 	get isLoggedIn() {
-		return this.user !== null; 
-		
+		return this.user !== null;
 	}
 
 	handleAuthChange(event: AuthChangeEvent, session: Session | null) {
@@ -30,17 +28,43 @@ class UserStore {
 		}
 	}
 
-	async loginWithGoogle() {
-		console.log(process.env.NEXT_PUBLIC_URL);
-		
-		const { error } = await supabase.auth.signInWithOAuth({
-			provider: 'google',
-			options: { redirectTo: process.env.NEXT_PUBLIC_URL }
+	async signUp(email: string, password: string): Promise<string | null> {
+		let { data, error } = await supabase.auth.signUp({
+			email: email,
+			password: password
+		});
+
+		if (error) {
+			console.error('Error signing up:', error);
+			return error.message;
+		}
+		if (!data || !data.user) {
+			const message = 'Error signing up: no user data';
+			console.error(message);
+			return message;
+		}
+
+		this.createProfileIfNotExist(data.user);
+		return null;
+	}
+	
+	async login(email: string, password: string): Promise<string | null> {
+		let { data, error } = await supabase.auth.signInWithPassword({
+			email: email,
+			password: password
 		});
 		if (error) {
 			console.error('Error logging in:', error);
-			return;
+			return error.message;
 		}
+		if (!data || !data.user) {
+			const message = 'Error logging in: no user data';
+			console.error(message);
+			return message;
+		}
+
+		this.createProfileIfNotExist(data.user);
+		return null;
 	}
 
 	async logout() {
