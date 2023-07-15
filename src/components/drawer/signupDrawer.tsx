@@ -10,7 +10,7 @@ interface SignupDrawerProps {
 const SignupDrawer: FC<SignupDrawerProps> = ({ }) => {
 	const style = "bg-bg focus:bg-main-dark text-md rounded-lg border-main-light focus:outline-none focus:border-text-dark focus:ring-0 w-full block"
 	return <>
-		<div className='flex-col border border-green-500 '>
+		<div className='flex-col'>
 			<form className="" action="#">
 				<div>
 					<input className={style} type="text" name="full-name" id="email" placeholder="First Name..." required={true} />
