@@ -1,6 +1,5 @@
 neurocache-hub
 ├─ .env.development.local
-├─ .env.local
 ├─ .eslintignore
 ├─ .eslintrc.json
 ├─ .gitignore
@@ -93,7 +92,8 @@ neurocache-hub
 │  │  │  └─ docSection.tsx
 │  │  ├─ drawer
 │  │  │  ├─ profileDrawer.tsx
-│  │  │  └─ sideDrawer.tsx
+│  │  │  ├─ sideDrawer.tsx
+│  │  │  └─ signupDrawer.tsx
 │  │  ├─ generic
 │  │  │  ├─ block.tsx
 │  │  │  ├─ btn.tsx

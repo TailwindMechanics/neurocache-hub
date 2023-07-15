@@ -42,6 +42,12 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - Animation: Framer motion
 
 # Next Steps
+
+##### Watch this again: https://youtu.be/df8afeb1FY8 #####
+- Investigate Pika labs for moving image generation
+- Investigate epidemic sounds soundmatch tool for matching music with video
+- " Bard image analysis
+
 1. ## Basic Chat Functionality: 
    - Start by setting up the basic chat functionality without any caching or real-time updates. At this stage, every time a user sends a message or switches channels, you would fetch the entire chat history for that channel from the database.
    ### 1.1 Set up MobX

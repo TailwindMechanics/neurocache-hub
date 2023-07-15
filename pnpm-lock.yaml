@@ -128,11 +128,17 @@ dependencies:
   typescript:
     specifier: 5.1.6
     version: 5.1.6
+  validator:
+    specifier: ^13.9.0
+    version: 13.9.0
   zod:
     specifier: ^3.21.4
     version: 3.21.4
 
 devDependencies:
+  '@types/validator':
+    specifier: ^13.7.17
+    version: 13.7.17
   jest:
     specifier: ^29.6.1
     version: 29.6.1(@types/node@20.3.2)
@@ -1387,6 +1393,10 @@ packages:
       fflate: 0.6.10
       lil-gui: 0.17.0
     dev: false
+
+  /@types/validator@13.7.17:
+    resolution: {integrity: sha512-aqayTNmeWrZcvnG2MG9eGYI6b7S5fl+yKgPs6bAjOTwPS316R5SxBGKvtSExfyoJU7pIeHJfsHI0Ji41RVMkvQ==}
+    dev: true
 
   /@types/websocket@1.0.5:
     resolution: {integrity: sha512-NbsqiNX9CnEfC1Z0Vf4mE1SgAJ07JnRYcNex7AJ9zAVzmiGHmjKFEk7O4TJIsgv2B1sLEb6owKFZrACwdYngsQ==}
@@ -5654,6 +5664,11 @@ packages:
       '@types/istanbul-lib-coverage': 2.0.4
       convert-source-map: 1.9.0
     dev: true
+
+  /validator@13.9.0:
+    resolution: {integrity: sha512-B+dGG8U3fdtM0/aNK4/X8CXq/EcxU2WPrPEkJGslb47qyHsxmbggTWK0yEA4qnYVNF+nxNlN88o14hIcPmSIEA==}
+    engines: {node: '>= 0.10'}
+    dev: false
 
   /walker@1.0.8:
     resolution: {integrity: sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==}

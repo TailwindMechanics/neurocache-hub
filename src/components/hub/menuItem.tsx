@@ -15,8 +15,6 @@ interface MenuItemProps {
 }
 
 const MenuItem: FC<MenuItemProps> = ({ label, icon, path, active = false }) => {
-	console.log(icon);
-
     return <>
         <div className='flex-grow'>
             <LivePanel>
