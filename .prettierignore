@@ -1,0 +1,24 @@
+# Ignore markdown files
+# *.md
+
+# Ignore node_modules
+node_modules
+
+# Ignore Next.js build output
+.next
+
+# Ignore public folder (often used in Next.js projects)
+/public
+
+# Ignore TypeScript declaration files
+*.d.ts
+
+# Ignore log files
+*.log
+
+# Ignore package-lock.json and yarn.lock
+package-lock.json
+yarn.lock
+
+# Ignore cache files
+.cache

@@ -3,6 +3,7 @@ neurocache-hub
 ├─ .eslintignore
 ├─ .eslintrc.json
 ├─ .gitignore
+├─ .prettierignore
 ├─ .vercel
 │  ├─ project.json
 │  └─ README.txt
@@ -10,11 +11,21 @@ neurocache-hub
 │  ├─ settings.json
 │  └─ tasks.json
 ├─ autoCommentPath.js
+├─ internaldocs
+│  ├─ context
+│  │  ├─ context.md
+│  │  └─ contextPrompt.md
+│  ├─ notes.md
+│  ├─ stories
+│  │  ├─ apiStory.md
+│  │  └─ hubStory.md
+│  └─ uiplan.md
 ├─ next-env.d.ts
 ├─ next.config.js
 ├─ package.json
 ├─ pnpm-lock.yaml
 ├─ postcss.config.js
+├─ prettier.config.js
 ├─ project-hierarchy.txt
 ├─ public
 │  ├─ favicon.ico
