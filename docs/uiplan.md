@@ -65,6 +65,7 @@
 - You have experience debugging in Visual Studio Code.
 ```
 
+
 ## Identify Common Atoms
 ```md
 # Analyze Your Project
@@ -74,7 +75,8 @@
 - You have identified the common, reusable components (atoms) in your project.
 ```
 
-# Get to Know Your Tools
+
+## Get to Know Your Tools
 ```md
 # 1. Research Storybook
 - Learn how to use Storybook for component development and documentation.
@@ -101,46 +103,72 @@
 ```
 
 
+```md
 # Choose a Page for Iterative Component Building
+# 1. Identify Necessary Atoms
+- Identify a handful of atomic components that are necessary for the chosen page.
 
-      - 4.1. Identify Necessary Atoms
-        Identify a handful of atomic components that are necessary for the chosen page.
-           - Acceptance Criteria - You have identified the atomic components required to build a chosen page.
-      - 4.2. Build and Test the Atoms in Storybook
-        Start building your atoms within Storybook, considering different states and variations, while applying tests.
-           - Acceptance Criteria - You have successfully built the atomic components in Storybook. - You have tested the atomic components and they work as expected.
-      - 4.3. Create Layout Components
-        Using your knowledge of Flexbox and Grid, design and build reusable layout components in Storybook.
+> Acceptance Criteria 
+- You have identified the atomic components required to build a chosen page.
 
-           - Acceptance Criteria - You have built reusable layout components.
+# 2. Build and Test the Atoms in Storybook
+- Start building your atoms within Storybook, 
+- Considering different states and variations, while applying tests.
 
-      - 4.4. Create Feature Components
-        Build higher-order components made up of the atomic components and suited for each use case in Storybook.
-           - Acceptance Criteria - You have built higher-order components that can be used in different use cases.
-      - 4.5. Refactor and Iterate
-        Continuously improve your components as project requirements evolve.
-           - Acceptance Criteria - You are continuously improving your components as project requirements evolve.
+> Acceptance Criteria 
+- You have successfully built the atomic components in Storybook. 
+- You have tested the atomic components and they work as expected.
 
-# Consider End-to-End Testing with Cypress
+# 3. Create Layout Components
+- Using your knowledge of Flexbox and Grid, design and build reusable layout components in Storybook.
 
-      - 5.1. Research Cypress
-        Familiarize yourself with Cypress and end-to-end testing to see how it could fit into your testing strategy.
-           - Acceptance Criteria - You have a basic understanding of Cypress and end-to-end testing.
+> Acceptance Criteria 
+- You have built reusable layout components.
 
-# Extend Component Library and Apply to Whole Application
+# 4. Create Feature Components
+- Build higher-order components made up of the atomic components and suited for each use case in Storybook.
 
-      - 6.1. Build Remaining Atoms and Components
-        Using the same process as in step 4, iteratively build and test the rest of your component library.
-           - Acceptance Criteria - You have built the rest of your component library, tested, and documented it in Storybook.
-      - 6.2. Apply Components to Entire Application
-        Apply your tested and refined component library to the rest of your application.
-           - Acceptance Criteria - You have successfully applied your component library across your application.
-      - 6.3. Ensure Accessibility
-        Make your site navigable with keyboard-only inputs and ensure components adhere to accessibility guidelines.
-           - Acceptance Criteria - Your site is navigable with keyboard-only inputs and your components adhere to accessibility guidelines.
+> Acceptance Criteria 
+- You have built higher-order components that can be used in different use cases.
 
-# For Future Consideration
+# 5. Refactor and Iterate
+- Continuously improve your components as project requirements evolve.
 
-      - Diving deeper into accessibility standards.
-      - Implementing end-to-end testing with Cypress.
-      - Exploring performance optimization techniques.
+> Acceptance Criteria 
+- You are continuously improving your components as project requirements evolve.
+```
+
+
+```md
+## Consider End-to-End Testing with Cypress
+- Familiarize yourself with Cypress and end-to-end testing to see how it could fit into your testing strategy.
+
+> Acceptance Criteria 
+- You have a basic understanding of Cypress and end-to-end testing.
+```
+
+```md
+## Extend Component Library and Apply to Whole Application
+# 1. Build Remaining Atoms and Components
+- Using the same process as in step 4, iteratively build and test the rest of your component library.
+
+> Acceptance Criteria 
+- You have built the rest of your component library, tested, and documented it in Storybook.
+
+# 2. Apply Components to Entire Application
+- Apply your tested and refined component library to the rest of your application.
+
+> Acceptance Criteria 
+- You have successfully applied your component library across your application.
+
+# 3. Ensure Accessibility
+- Make your site navigable with keyboard-only inputs and ensure components adhere to accessibility guidelines.
+
+> Acceptance Criteria 
+- Your site is navigable with keyboard-only inputs and your components adhere to accessibility guidelines.
+```
+
+## For Future Consideration
+- Diving deeper into accessibility standards.
+- Implementing end-to-end testing with Cypress.
+- Exploring performance optimization techniques.
