@@ -97,7 +97,7 @@
 - You understand what unit testing is and how to write tests with Jest and React Testing Library.
 
 # 4. Familiarize Yourself with Storyshots
--Learn how Storyshots can help in snapshot testing and complement your unit testing strategy.
+- Learn how Storyshots can help in snapshot testing and complement your unit testing strategy.
 > Acceptance Criteria 
 - You understand how Storyshots can be used for snapshot testing.
 ```
