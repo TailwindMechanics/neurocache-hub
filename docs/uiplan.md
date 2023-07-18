@@ -30,7 +30,9 @@
 > Implementation
 - Understand the basic principles of responsive design.
 - Get familiar with media queries and how they work. You can test media queries in the browser's developer tools.
-- Develop mobile-first: start with a mobile layout, then scale up for larger screens. This approach ensures that your site performs well on smaller, resource-constrained devices.
+- Develop mobile-first: 
+	- Start with a mobile layout, then scale up for larger screens. 
+	- This approach ensures that your site performs well on smaller, resource-constrained devices.
 - Test your designs on various screen sizes using the browser's developer tools or using a tool like Sizzy.
 - Introduce Storybook early in the process: it has a built-in tool to simulate different viewport sizes, which makes it easier to develop and test components for various screen sizes.
 
