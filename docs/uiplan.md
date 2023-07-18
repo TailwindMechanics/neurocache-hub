@@ -61,7 +61,9 @@
 ```md
 # Analyze Your Project
 - Find common, reusable components within your project. These will serve as your "atoms".
-- Acceptance Criteria - You have identified the common, reusable components (atoms) in your project.
+
+> Acceptance Criteria 
+- You have identified the common, reusable components (atoms) in your project.
 ```
 
 # Get to Know Your Tools
