@@ -105,8 +105,8 @@
 ```
 
 
+## Choose a Page for Iterative Component Building
 ```md
-# Choose a Page for Iterative Component Building
 # 1. Identify Necessary Atoms
 - Identify a handful of atomic components that are necessary for the chosen page.
 
@@ -141,16 +141,19 @@
 ```
 
 
-```md
 ## Consider End-to-End Testing with Cypress
-- Familiarize yourself with Cypress and end-to-end testing to see how it could fit into your testing strategy.
+```md
+# Familiarize yourself with Cypress
+- Check out https://www.cypress.io/ 
+- Get acquainted with end-to-end testing in general
 
 > Acceptance Criteria 
 	- You have a basic understanding of Cypress and end-to-end testing.
 ```
 
-```md
+
 ## Extend Component Library and Apply to Whole Application
+```md
 # 1. Build Remaining Atoms and Components
 - Using the same process as in step 4, iteratively build and test the rest of your component library.
 
@@ -169,8 +172,3 @@
 > Acceptance Criteria 
 	- Your site is navigable with keyboard-only inputs and your components adhere to accessibility guidelines.
 ```
-
-## For Future Consideration
-- Diving deeper into accessibility standards.
-- Implementing end-to-end testing with Cypress.
-- Exploring performance optimization techniques.
