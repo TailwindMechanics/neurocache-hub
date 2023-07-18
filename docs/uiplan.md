@@ -3,7 +3,7 @@
 ## Study and Understand Layout Design
 ```md
 # 1. Master Flexbox and Grid
-> Resources
+>  Resources
 - Flexbox Froggy: An interactive game to learn Flexbox.
 - Grid Garden: An interactive game to learn CSS Grid.
 - CSS Tricks Guide to Flexbox: A comprehensive guide on Flexbox.
