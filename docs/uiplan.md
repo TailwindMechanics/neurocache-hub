@@ -1,7 +1,6 @@
 #### docs/uiplan.md
 
 ## Study and Understand Layout Design
-
 ```md
 # 1. Master Flexbox and Grid
 > Resources
@@ -58,8 +57,8 @@
 - You have experience debugging in Visual Studio Code.
 ```
 
+## Identify Common Atoms
 ```md
-# Identify Common Atoms
 # Analyze Your Project
 - Find common, reusable components within your project. These will serve as your "atoms".
 - Acceptance Criteria - You have identified the common, reusable components (atoms) in your project.
