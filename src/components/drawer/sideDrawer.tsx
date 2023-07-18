@@ -1,16 +1,15 @@
 //path: src\components\drawer\sideDrawer.tsx
 
-import { FC, useContext, useEffect } from 'react';
-import { RightArrow } from '@/data/icons';
-import { storesContext } from '@/stores';
-import { motion } from 'framer-motion';
-import { observer } from 'mobx-react';
-import { reaction } from 'mobx';
-
+import { FC, useContext, useEffect } from "react";
+import { RightArrow } from "@/data/icons";
+import { storesContext } from "@/stores";
+import { motion } from "framer-motion";
+import { observer } from "mobx-react";
+import { reaction } from "mobx";
 
 const variants = {
 	open: { x: 0 },
-	closed: { x: '100%' },
+	closed: { x: "100%" },
 };
 
 const SideDrawer: FC = () => {
@@ -18,11 +17,14 @@ const SideDrawer: FC = () => {
 	const { isOpen, content } = drawerStore;
 
 	useEffect(() => {
-		const dispose = reaction(() => userStore.isLoggedIn, isLoggedIn => {
-			if (!isLoggedIn && isOpen) {
-				drawerStore.close();
-			}
-		});
+		const dispose = reaction(
+			() => userStore.isLoggedIn,
+			(isLoggedIn) => {
+				if (!isLoggedIn && isOpen) {
+					drawerStore.close();
+				}
+			},
+		);
 
 		return dispose;
 	}, [userStore, isOpen, drawerStore]);
@@ -31,7 +33,7 @@ const SideDrawer: FC = () => {
 		<div className="text-center">
 			<motion.div
 				id="drawer-right-example"
-				className="flex w-1/4 fixed top-0 right-0 z-40 h-screen"
+				className="fixed right-0 top-0 z-40 flex h-screen w-1/4"
 				initial="closed"
 				animate={isOpen ? "open" : "closed"}
 				variants={variants}
@@ -41,13 +43,20 @@ const SideDrawer: FC = () => {
 					duration: 0.2,
 				}}
 				tabIndex={-1}
-				aria-labelledby="drawer-right-label">
-				<div className='flex flex-col w-full items-center my-2 mr-1 rounded-xl border border-main-light bg-main-dark shadow-2xl drop-shadow-2xl text-text-dark'>
-					{isOpen &&
-						<button className='py-4 px-5 self-start' onClick={() => drawerStore.close()}>
-							<RightArrow className='w-6 h-6 text-opacity-50 text-text-dark hover:text-text-light' />
-						</button>}
-					<div className='w-full h-full'>
+				aria-labelledby="drawer-right-label"
+			>
+				<div className="my-2 mr-1 flex w-full flex-col items-center rounded-xl border border-main-light bg-main-dark text-text-dark shadow-2xl drop-shadow-2xl">
+					{isOpen && (
+						<button
+							className="self-start px-5 py-4"
+							onClick={() =>
+								drawerStore.close()
+							}
+						>
+							<RightArrow className="h-6 w-6 text-text-dark text-opacity-50 hover:text-text-light" />
+						</button>
+					)}
+					<div className="h-full w-full">
 						{isOpen && content}
 					</div>
 				</div>
