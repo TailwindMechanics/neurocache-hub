@@ -67,19 +67,31 @@
 ```
 
 # Get to Know Your Tools
+```md
+# 1. Research Storybook
+- Learn how to use Storybook for component development and documentation.
 
-      - 3.1. Research Storybook
-        Learn how to use Storybook for component development and documentation.
-           - Acceptance Criteria - You know how to use Storybook to develop and document your components.
-      - 3.2. Research Accessibility
-        Study accessibility standards and guidelines, such as WCAG, to ensure your components will be inclusive.
-           - Acceptance Criteria - You understand the basic principles of web accessibility. - You know how to check your components for accessibility issues.
-      - 3.3. Understand Testing
-        Understand the concepts of unit testing, and learn how to use Jest and React Testing Library.
-           - Acceptance Criteria - You understand what unit testing is and how to write tests with Jest and React Testing Library.
-      - 3.4. Familiarize Yourself with Storyshots
-        Learn how Storyshots can help in snapshot testing and complement your unit testing strategy.
-           - Acceptance Criteria - You understand how Storyshots can be used for snapshot testing.
+>  Acceptance Criteria 
+- You know how to use Storybook to develop and document your components.
+
+# 2. Research Accessibility
+- Study accessibility standards and guidelines, such as WCAG, to ensure your components will be inclusive.
+
+> Acceptance Criteria 
+- You understand the basic principles of web accessibility. - You know how to check your components for accessibility issues.
+
+# 3. Understand Testing
+- Understand the concepts of unit testing, and learn how to use Jest and React Testing Library.
+
+> Acceptance Criteria 
+- You understand what unit testing is and how to write tests with Jest and React Testing Library.
+
+# 4. Familiarize Yourself with Storyshots
+-Learn how Storyshots can help in snapshot testing and complement your unit testing strategy.
+> Acceptance Criteria 
+- You understand how Storyshots can be used for snapshot testing.
+```
+
 
 # Choose a Page for Iterative Component Building
 
