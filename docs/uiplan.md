@@ -1,12 +1,10 @@
 #### docs/uiplan.md
 
-### Study and Understand Layout Design
+## Study and Understand Layout Design
 
 ```md
 # 1. Master Flexbox and Grid
-
 > Resources
-
 - Flexbox Froggy: An interactive game to learn Flexbox.
 - Grid Garden: An interactive game to learn CSS Grid.
 - CSS Tricks Guide to Flexbox: A comprehensive guide on Flexbox.
@@ -15,27 +13,22 @@
 - MDN Grid: Mozilla's guide on CSS Grid.
 
 > Implementation
-
 - Understand the concepts, then apply them to small examples.
 - Experiment with different layouts to understand how Flexbox and Grid behave in different scenarios.
 - Mastering these concepts is key to create responsive designs.
 
 > Acceptance Criteria
-
 - You are able to create a complex layout using Flexbox or Grid.
 - You understand how to use Flexbox or Grid to handle responsiveness.
 - You have experimented with different layouts and understand the behavior of Flexbox and Grid in different scenarios.
 
 # 2. Ensure Responsiveness
-
 > Resources
-
 - Responsive Web Design Basics: Google's guide to responsive design.
 - Media Queries for Standard Devices: A collection of media queries for standard devices.
 - Using media queries: Mozilla's guide on using media queries.
 
 > Implementation
-
 - Understand the basic principles of responsive design.
 - Get familiar with media queries and how they work. You can test media queries in the browser's developer tools.
 - Develop mobile-first: start with a mobile layout, then scale up for larger screens. This approach ensures that your site performs well on smaller, resource-constrained devices.
@@ -43,38 +36,34 @@
 - Introduce Storybook early in the process: it has a built-in tool to simulate different viewport sizes, which makes it easier to develop and test components for various screen sizes.
 
 > Acceptance Criteria
-
 - You understand the basics of responsive design and how to use media queries.
 - You can design mobile-first layouts and scale them for larger screens.
 - You have tested your designs on various screen sizes and they are adaptable.
 
 # 3. Learn How to Use Debugging Tools
-
 > Resources
-
 - Chrome DevTools Overview: Google's guide to Chrome's built-in developer tools.
 - Firefox DevTools Overview: Mozilla's guide to Firefox's built-in developer tools.
 - Debugging in Visual Studio Code: A comprehensive guide on debugging in VS Code.
 - Breakpoints in JavaScript: Google's guide on using breakpoints for debugging JavaScript.
 
 > Implementation
-
 - Get comfortable with the DevTools in your preferred browser. They're a powerful aid in web development.
 - Understand how to use breakpoints to pause the execution of your code. This will allow you to inspect the current state of your app at that point in time.
 - Familiarize yourself with the debug features in VS Code. It integrates nicely with Chrome/Firefox and allows you to debug your JavaScript/TypeScript code directly in the editor.
 
 > Acceptance Criteria
-
 - You feel comfortable using the developer tools in your preferred browser.
 - You understand how to use breakpoints to debug your JavaScript/TypeScript code.
 - You have experience debugging in Visual Studio Code.
 ```
 
+```md
 # Identify Common Atoms
-
-      - 2.1. Analyze Your Project
-        Find common, reusable components within your project. These will serve as your "atoms".
-           - Acceptance Criteria - You have identified the common, reusable components (atoms) in your project.
+# Analyze Your Project
+- Find common, reusable components within your project. These will serve as your "atoms".
+- Acceptance Criteria - You have identified the common, reusable components (atoms) in your project.
+```
 
 # Get to Know Your Tools
 
