@@ -146,7 +146,7 @@
 - Familiarize yourself with Cypress and end-to-end testing to see how it could fit into your testing strategy.
 
 > Acceptance Criteria 
-- You have a basic understanding of Cypress and end-to-end testing.
+	- You have a basic understanding of Cypress and end-to-end testing.
 ```
 
 ```md
@@ -155,19 +155,19 @@
 - Using the same process as in step 4, iteratively build and test the rest of your component library.
 
 > Acceptance Criteria 
-- You have built the rest of your component library, tested, and documented it in Storybook.
+	- You have built the rest of your component library, tested, and documented it in Storybook.
 
 # 2. Apply Components to Entire Application
 - Apply your tested and refined component library to the rest of your application.
 
 > Acceptance Criteria 
-- You have successfully applied your component library across your application.
+	- You have successfully applied your component library across your application.
 
 # 3. Ensure Accessibility
 - Make your site navigable with keyboard-only inputs and ensure components adhere to accessibility guidelines.
 
 > Acceptance Criteria 
-- Your site is navigable with keyboard-only inputs and your components adhere to accessibility guidelines.
+	- Your site is navigable with keyboard-only inputs and your components adhere to accessibility guidelines.
 ```
 
 ## For Future Consideration
