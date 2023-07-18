@@ -17,10 +17,10 @@
 - Mastering these concepts is key to create responsive designs.
 
 > Acceptance Criteria
-- You are able to create a complex layout using Flexbox or Grid.
-- You understand how to use Flexbox or Grid to handle responsiveness.
-- You have experimented with different layouts and understand the behavior of 
-- Flexbox and Grid in different scenarios.
+	- You are able to create a complex layout using Flexbox or Grid.
+	- You understand how to use Flexbox or Grid to handle responsiveness.
+	- You have experimented with different layouts and understand the behavior of 
+	- Flexbox and Grid in different scenarios.
 
 # 2. Ensure Responsiveness
 > Resources
@@ -41,9 +41,9 @@
 - Which makes it easier to develop and test components for various screen sizes.
 
 > Acceptance Criteria
-- You understand the basics of responsive design and how to use media queries.
-- You can design mobile-first layouts and scale them for larger screens.
-- You have tested your designs on various screen sizes and they are adaptable.
+	- You understand the basics of responsive design and how to use media queries.
+	- You can design mobile-first layouts and scale them for larger screens.
+	- You have tested your designs on various screen sizes and they are adaptable.
 
 # 3. Learn How to Use Debugging Tools
 > Resources
@@ -60,9 +60,9 @@
 - It integrates nicely with Chrome/Firefox and allows you to debug your code in the editor.
 
 > Acceptance Criteria
-- You feel comfortable using the developer tools in your preferred browser.
-- You understand how to use breakpoints to debug your JavaScript/TypeScript code.
-- You have experience debugging in Visual Studio Code.
+	- You feel comfortable using the developer tools in your preferred browser.
+	- You understand how to use breakpoints to debug your JavaScript/TypeScript code.
+	- You have experience debugging in Visual Studio Code.
 ```
 
 
@@ -72,7 +72,7 @@
 - Find common, reusable components within your project. These will serve as your "atoms".
 
 > Acceptance Criteria 
-- You have identified the common, reusable components (atoms) in your project.
+	- You have identified the common, reusable components (atoms) in your project.
 ```
 
 
@@ -82,24 +82,26 @@
 - Learn how to use Storybook for component development and documentation.
 
 >  Acceptance Criteria 
-- You know how to use Storybook to develop and document your components.
+	- You know how to use Storybook to develop and document your components.
 
 # 2. Research Accessibility
 - Study accessibility standards and guidelines, such as WCAG, to ensure your components will be inclusive.
 
 > Acceptance Criteria 
-- You understand the basic principles of web accessibility. - You know how to check your components for accessibility issues.
+	- You understand the basic principles of web accessibility. 
+	- You know how to check your components for accessibility issues.
 
 # 3. Understand Testing
 - Understand the concepts of unit testing, and learn how to use Jest and React Testing Library.
 
 > Acceptance Criteria 
-- You understand what unit testing is and how to write tests with Jest and React Testing Library.
+	- You understand what unit testing is and how to write tests with Jest and React Testing Library.
 
 # 4. Familiarize Yourself with Storyshots
 - Learn how Storyshots can help in snapshot testing and complement your unit testing strategy.
+
 > Acceptance Criteria 
-- You understand how Storyshots can be used for snapshot testing.
+	- You understand how Storyshots can be used for snapshot testing.
 ```
 
 
@@ -109,33 +111,33 @@
 - Identify a handful of atomic components that are necessary for the chosen page.
 
 > Acceptance Criteria 
-- You have identified the atomic components required to build a chosen page.
+	- You have identified the atomic components required to build a chosen page.
 
 # 2. Build and Test the Atoms in Storybook
 - Start building your atoms within Storybook, 
 - Considering different states and variations, while applying tests.
 
 > Acceptance Criteria 
-- You have successfully built the atomic components in Storybook. 
-- You have tested the atomic components and they work as expected.
+	- You have successfully built the atomic components in Storybook. 
+	- You have tested the atomic components and they work as expected.
 
 # 3. Create Layout Components
 - Using your knowledge of Flexbox and Grid, design and build reusable layout components in Storybook.
 
 > Acceptance Criteria 
-- You have built reusable layout components.
+	- You have built reusable layout components.
 
 # 4. Create Feature Components
 - Build higher-order components made up of the atomic components and suited for each use case in Storybook.
 
 > Acceptance Criteria 
-- You have built higher-order components that can be used in different use cases.
+	- You have built higher-order components that can be used in different use cases.
 
 # 5. Refactor and Iterate
 - Continuously improve your components as project requirements evolve.
 
 > Acceptance Criteria 
-- You are continuously improving your components as project requirements evolve.
+	- You are continuously improving your components as project requirements evolve.
 ```
 
 
