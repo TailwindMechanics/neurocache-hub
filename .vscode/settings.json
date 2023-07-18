@@ -1,4 +1,12 @@
 {
 	"editor.tabSize": 3,
-	"editor.insertSpaces": false
+	"editor.insertSpaces": false,
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.expand": false,
+	"explorer.fileNesting.patterns": {
+		"config.group": "*.config.js, *.json, *.ignore, *.d.ts, *.yaml",
+		"env.group": ".env.*",
+		"ignore.group": ".*ignore",
+		"misc.group": "autoCommentPath.js, readme.md, project-hierarchy.txt"
+	}
 }

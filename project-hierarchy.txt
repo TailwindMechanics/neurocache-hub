@@ -11,7 +11,8 @@ neurocache-hub
 │  ├─ settings.json
 │  └─ tasks.json
 ├─ autoCommentPath.js
-├─ internaldocs
+├─ config.group
+├─ docs
 │  ├─ context
 │  │  ├─ context.md
 │  │  └─ contextPrompt.md
