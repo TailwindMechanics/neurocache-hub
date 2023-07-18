@@ -2,13 +2,10 @@
 
 // src\app\chat\chatPage.tsx
 
-
-import { FC } from 'react'
-
+import { FC } from "react";
 
 const ChatHistory: FC = () => {
-  return <>
-  </>
-}
+	return <></>;
+};
 
 export default ChatHistory;

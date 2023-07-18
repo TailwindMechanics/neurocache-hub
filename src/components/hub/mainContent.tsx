@@ -1,18 +1,21 @@
 //path: src\components\hub\mainContent.tsx
 
-import { FC } from 'react'
-
+import { FC } from "react";
 
 interface MainContentProps {
-    children?: React.ReactNode;
+	children?: React.ReactNode;
 }
 
 const MainContent: FC<MainContentProps> = ({ children }) => {
-    return <>
-        <div className={`flex w-full h-full scrollbar-none overflow-auto mt-10 shadow-2xl drop-shadow-2xl rounded-xl border bg-main-dark border-main-light`}>
-            {children}
-        </div>
-    </>
-}
+	return (
+		<>
+			<div
+				className={`mt-10 flex h-full w-full overflow-auto rounded-xl border border-main-light bg-main-dark shadow-2xl drop-shadow-2xl scrollbar-none`}
+			>
+				{children}
+			</div>
+		</>
+	);
+};
 
-export default MainContent
+export default MainContent;

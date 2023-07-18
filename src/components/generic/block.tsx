@@ -9,9 +9,24 @@ interface BlockProps {
 	children: React.ReactNode;
 }
 
-export function Block({ left = "0", right = "0", top = "0", btm = "0", tailwind = "", children }: BlockProps) {
+export function Block({
+	left = "0",
+	right = "0",
+	top = "0",
+	btm = "0",
+	tailwind = "",
+	children,
+}: BlockProps) {
 	return (
-		<div className={`${tailwind}`} style={{ paddingLeft: left, paddingRight: right, paddingTop: top, paddingBottom: btm }}>
+		<div
+			className={`${tailwind}`}
+			style={{
+				paddingLeft: left,
+				paddingRight: right,
+				paddingTop: top,
+				paddingBottom: btm,
+			}}
+		>
 			{children}
 		</div>
 	);

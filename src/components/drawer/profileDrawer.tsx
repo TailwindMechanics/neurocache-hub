@@ -1,7 +1,7 @@
 //path: src\components\drawer\profileDrawer.tsx
 
-import { useContext } from 'react';
-import { storesContext } from '@/stores';
+import { useContext } from "react";
+import { storesContext } from "@/stores";
 
 const ProfileDrawer = () => {
 	const { userStore } = useContext(storesContext);
@@ -10,13 +10,18 @@ const ProfileDrawer = () => {
 		userStore.logout();
 	};
 
-	return <>
-		<div className='w-full px-10 py-2'>
-			<button onClick={handleSignOut} className="w-full rounded-l px-4 py-2 border border-main-light hover:border-text-dark bg-main-dark text-text-dark hover:text-text-light hover:bg-main-light">
-				Sign Out
-			</button>
-		</div>
-	</>
+	return (
+		<>
+			<div className="w-full px-10 py-2">
+				<button
+					onClick={handleSignOut}
+					className="w-full rounded-l border border-main-light bg-main-dark px-4 py-2 text-text-dark hover:border-text-dark hover:bg-main-light hover:text-text-light"
+				>
+					Sign Out
+				</button>
+			</div>
+		</>
+	);
 };
 
 export default ProfileDrawer;

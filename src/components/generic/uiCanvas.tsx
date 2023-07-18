@@ -1,7 +1,6 @@
 //path: src\components\generic\uiCanvas.tsx
 
-"use client"
-
+"use client";
 
 interface UICanvasProps {
 	tailwind?: string;
@@ -9,9 +8,5 @@ interface UICanvasProps {
 }
 
 export default function UICanvas({ tailwind = "", children }: UICanvasProps) {
-	return (
-		<div className={`${tailwind} absolute z-10`}>
-			{children}
-		</div>
-	);
+	return <div className={`${tailwind} absolute z-10`}>{children}</div>;
 }

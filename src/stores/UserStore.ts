@@ -5,17 +5,21 @@ import { computed, makeAutoObservable } from "mobx";
 import { UserProfile } from "@/types/declarations";
 import { supabase } from "@/lib/supabase";
 
-
 class UserStore {
 	user: UserProfile | null = null;
 
 	constructor() {
 		makeAutoObservable(this, {
-			isLoggedIn: computed
+			isLoggedIn: computed,
 		});
-		supabase.auth.onAuthStateChange((event: AuthChangeEvent, session: Session | null) => {
-			this.handleAuthChange(event, session);
-		});
+		supabase.auth.onAuthStateChange(
+			(
+				event: AuthChangeEvent,
+				session: Session | null,
+			) => {
+				this.handleAuthChange(event, session);
+			},
+		);
 	}
 
 	get isLoggedIn() {
@@ -23,23 +27,26 @@ class UserStore {
 	}
 
 	handleAuthChange(event: AuthChangeEvent, session: Session | null) {
-		if (event === 'SIGNED_IN' && session) {
+		if (event === "SIGNED_IN" && session) {
 			this.createProfileIfNotExist(session.user);
 		}
 	}
 
-	async signUp(email: string, password: string): Promise<string | null> {
+	async signUp(
+		email: string,
+		password: string,
+	): Promise<string | null> {
 		let { data, error } = await supabase.auth.signUp({
 			email: email,
-			password: password
+			password: password,
 		});
 
 		if (error) {
-			console.error('Error signing up:', error);
+			console.error("Error signing up:", error);
 			return error.message;
 		}
 		if (!data || !data.user) {
-			const message = 'Error signing up: no user data';
+			const message = "Error signing up: no user data";
 			console.error(message);
 			return message;
 		}
@@ -47,18 +54,19 @@ class UserStore {
 		this.createProfileIfNotExist(data.user);
 		return null;
 	}
-	
+
 	async login(email: string, password: string): Promise<string | null> {
-		let { data, error } = await supabase.auth.signInWithPassword({
-			email: email,
-			password: password
-		});
+		let { data, error } =
+			await supabase.auth.signInWithPassword({
+				email: email,
+				password: password,
+			});
 		if (error) {
-			console.error('Error logging in:', error);
+			console.error("Error logging in:", error);
 			return error.message;
 		}
 		if (!data || !data.user) {
-			const message = 'Error logging in: no user data';
+			const message = "Error logging in: no user data";
 			console.error(message);
 			return message;
 		}
@@ -70,7 +78,7 @@ class UserStore {
 	async logout() {
 		const { error } = await supabase.auth.signOut();
 		if (error) {
-			console.error('Error logging out:', error);
+			console.error("Error logging out:", error);
 			return;
 		}
 		this.setUser(null);
@@ -78,25 +86,30 @@ class UserStore {
 
 	async createProfileIfNotExist(user: User) {
 		try {
-			const userProfilesTable = 'user_profiles';
-			let firstName = '';
-			let lastName = '';
+			const userProfilesTable = "user_profiles";
+			let firstName = "";
+			let lastName = "";
 
 			if (user.user_metadata?.full_name) {
-				[firstName, lastName] = user.user_metadata.full_name.split(' ');
+				[firstName, lastName] =
+					user.user_metadata.full_name.split(
+						" ",
+					);
 			}
 
 			const profileData: UserProfile = {
 				user_id: user.id,
 				first_name: firstName,
 				last_name: lastName,
-				avatar_url: user.user_metadata?.avatar_url || '',
+				avatar_url:
+					user.user_metadata
+						?.avatar_url || "",
 			};
 
 			const { data } = await supabase
 				.from(userProfilesTable)
-				.select('*')
-				.eq('user_id', profileData.user_id)
+				.select("*")
+				.eq("user_id", profileData.user_id)
 				.single();
 
 			if (!data) {
@@ -106,9 +119,11 @@ class UserStore {
 			}
 
 			this.setUser(profileData);
-
 		} catch (error) {
-			console.error('Error creating user profile:', error);
+			console.error(
+				"Error creating user profile:",
+				error,
+			);
 		}
 	}
 

@@ -3,15 +3,15 @@
 import { ReactNode } from "react";
 
 interface IconProps {
-	className?: string
+	className?: string;
 }
 
 interface UserProfile {
-	user_id: string,
-	first_name: string,
-	last_name: string,
-	avatar_url: string,
-};
+	user_id: string;
+	first_name: string;
+	last_name: string;
+	avatar_url: string;
+}
 
 interface Route {
 	isActive: (path: string) => boolean;
@@ -21,8 +21,8 @@ interface Route {
 	authenticated: boolean;
 }
 
-declare module 'react-tailwindcss-datepicker';
-declare module 'react-notifications' {
+declare module "react-tailwindcss-datepicker";
+declare module "react-notifications" {
 	const content: any;
 	export = content;
 }

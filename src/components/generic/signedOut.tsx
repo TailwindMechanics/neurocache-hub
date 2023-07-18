@@ -1,8 +1,7 @@
 //path: src\components\generic\signedOut.tsx
 
-import { storesContext } from '@/stores';
-import { useContext } from 'react';
-
+import { storesContext } from "@/stores";
+import { useContext } from "react";
 
 interface SignedOutProps {
 	children: React.ReactNode;

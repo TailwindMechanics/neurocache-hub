@@ -1,11 +1,10 @@
 //path: src\components\generic\loginForm.tsx
 
-import { ChangeEvent, useContext, useState } from 'react';
-import SignupDrawer from '../drawer/signupDrawer';
-import { storesContext } from '@/stores';
-import validator from 'validator';
+import { ChangeEvent, useContext, useState } from "react";
+import SignupDrawer from "../drawer/signupDrawer";
+import { storesContext } from "@/stores";
+import validator from "validator";
 import type { FC } from "react";
-
 
 const LoginForm: FC = function () {
 	const { userStore, drawerStore } = useContext(storesContext);
@@ -18,13 +17,18 @@ const LoginForm: FC = function () {
 		setEmail(event.target.value);
 	};
 
-	const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
+	const handlePasswordChange = (
+		event: ChangeEvent<HTMLInputElement>,
+	) => {
 		setPassword(event.target.value);
 	};
 
 	const handleLogin = async () => {
 		if (validator.isEmail(email)) {
-			const errorMessage = await userStore.login(email, password);
+			const errorMessage = await userStore.login(
+				email,
+				password,
+			);
 			setError(errorMessage);
 		} else {
 			setError("Invalid email");
@@ -36,25 +40,49 @@ const LoginForm: FC = function () {
 	};
 
 	return (
-		<div className="w-full flex justify-center items-center h-full ">
-			<div className="py-14 px-24 space-y-5 rounded-xl border border-main-light flex-col shadow-2xl drop-shadow-2xl">
-				<h1 className="text-center mb-2 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
+		<div className="flex h-full w-full items-center justify-center ">
+			<div className="flex-col space-y-5 rounded-xl border border-main-light px-24 py-14 shadow-2xl drop-shadow-2xl">
+				<h1 className="mb-2 text-center text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
 					Welcome back
 				</h1>
 				<p className="text-center text-sm font-light text-gray-500 dark:text-gray-300">
 					Dont have an account?{" "}
-					<a href="#" onClick={handleSignUp} className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+					<a
+						href="#"
+						onClick={
+							handleSignUp
+						}
+						className="text-primary-600 dark:text-primary-500 font-medium hover:underline"
+					>
 						Sign Up
 					</a>
 				</p>
-				<input type="email" value={email} onChange={handleEmailChange} placeholder="Email" />
-				<input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" />
-				<div className={`py-2 text-center shadow-lg border border-main-light rounded-md bg-main-dark text-text-dark hover:border-text-dark hover:text-text-light hover:bg-main-light`}>
+				<input
+					type="email"
+					value={email}
+					onChange={handleEmailChange}
+					placeholder="Email"
+				/>
+				<input
+					type="password"
+					value={password}
+					onChange={
+						handlePasswordChange
+					}
+					placeholder="Password"
+				/>
+				<div
+					className={`rounded-md border border-main-light bg-main-dark py-2 text-center text-text-dark shadow-lg hover:border-text-dark hover:bg-main-light hover:text-text-light`}
+				>
 					<button onClick={handleLogin}>
 						Sign In
 					</button>
 				</div>
-				{error && <p className="text-center text-sm text-red-500">{error}</p>}
+				{error && (
+					<p className="text-center text-sm text-red-500">
+						{error}
+					</p>
+				)}
 			</div>
 		</div>
 	);

@@ -1,14 +1,14 @@
 //path: src\components\generic\redirectToDashboard.tsx
 
-"use client"
+"use client";
 
 import { LoadingSpinner } from "./loadingSpinner";
 import { useEffect } from "react";
 
-
 export default function RedirectToDashboard() {
 	useEffect(() => {
-		window.location.href = process.env.NEXT_PUBLIC_URL || '/dashboard';
+		window.location.href =
+			process.env.NEXT_PUBLIC_URL || "/dashboard";
 	}, []);
 
 	return <LoadingSpinner />;

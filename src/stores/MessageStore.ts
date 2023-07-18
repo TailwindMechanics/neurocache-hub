@@ -3,9 +3,9 @@
 import { makeAutoObservable } from "mobx";
 
 class MessageStore {
-  constructor() {
-    makeAutoObservable(this);
-  }
+	constructor() {
+		makeAutoObservable(this);
+	}
 }
 
 export default MessageStore;

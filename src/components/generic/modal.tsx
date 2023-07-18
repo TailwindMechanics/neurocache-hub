@@ -1,9 +1,8 @@
 //path: src\components\generic\modal.tsx
 
-"use client"
+"use client";
 
 import { useEffect } from "react";
-
 
 interface ModalProps {
 	isOpen: boolean;
@@ -13,16 +12,20 @@ interface ModalProps {
 
 export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
 	useEffect(() => {
-		const handleEscape = (event: { key: string; }) => {
+		const handleEscape = (event: { key: string }) => {
 			if (!isOpen) return;
 
-			if (event.key === 'Escape') {
+			if (event.key === "Escape") {
 				onClose();
 			}
 		};
 
-		document.addEventListener('keydown', handleEscape);
-		return () => document.removeEventListener('keydown', handleEscape);
+		document.addEventListener("keydown", handleEscape);
+		return () =>
+			document.removeEventListener(
+				"keydown",
+				handleEscape,
+			);
 	}, [isOpen, onClose]);
 
 	if (!isOpen) {
@@ -30,17 +33,27 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
 	}
 
 	return (
-		<div className="fixed z-10 inset-0 overflow-y-auto ">
-			<div className="b flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-				<span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
-				<div className="inline-block align-bottom text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-					<div className="shadow-xl border border-primary border-opacity-10 hover:border-opacity-40 hover:border-primary flex flex-col bg-background">
-						<div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-							<h1>Modal content</h1>
+		<div className="fixed inset-0 z-10 overflow-y-auto ">
+			<div className="b flex min-h-screen items-end justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0">
+				<span className="hidden sm:inline-block sm:h-screen sm:align-middle"></span>
+				<div className="inline-block transform overflow-hidden text-left align-bottom transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle">
+					<div className="flex flex-col border border-primary border-opacity-10 bg-background shadow-xl hover:border-primary hover:border-opacity-40">
+						<div className="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+							<h1>
+								Modal
+								content
+							</h1>
 							{children}
 						</div>
-						<div className="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-							<button onClick={onClose} className={`btn bg-primary text-background hover:bg-primary hover:text-accent`}>Close</button>
+						<div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+							<button
+								onClick={
+									onClose
+								}
+								className={`btn bg-primary text-background hover:bg-primary hover:text-accent`}
+							>
+								Close
+							</button>
 						</div>
 					</div>
 				</div>

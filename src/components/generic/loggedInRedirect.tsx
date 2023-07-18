@@ -1,21 +1,20 @@
 //path: src\components\generic\loggedInRedirect.tsx
 
-import RedirectToDashboard from './redirectToDashboard';
-import SignedOut from './signedOut';
-import SignedIn from './signedIn';
-
+import RedirectToDashboard from "./redirectToDashboard";
+import SignedOut from "./signedOut";
+import SignedIn from "./signedIn";
 
 interface LoggedInRedirectProps {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }
 
-export default function LoggedInRedirect ({ children }: LoggedInRedirectProps) {
-    return <>
-      <SignedIn>
-        <RedirectToDashboard/>
-      </SignedIn>
-      <SignedOut>
-        {children}
-      </SignedOut>
-    </>
+export default function LoggedInRedirect({ children }: LoggedInRedirectProps) {
+	return (
+		<>
+			<SignedIn>
+				<RedirectToDashboard />
+			</SignedIn>
+			<SignedOut>{children}</SignedOut>
+		</>
+	);
 }

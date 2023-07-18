@@ -1,8 +1,7 @@
 //path: src\components\generic\signedIn.tsx
 
-import { storesContext } from '@/stores';
-import { useContext } from 'react';
-
+import { storesContext } from "@/stores";
+import { useContext } from "react";
 
 interface SignedInProps {
 	children: React.ReactNode;
