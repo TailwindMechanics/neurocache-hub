@@ -19,7 +19,8 @@
 > Acceptance Criteria
 - You are able to create a complex layout using Flexbox or Grid.
 - You understand how to use Flexbox or Grid to handle responsiveness.
-- You have experimented with different layouts and understand the behavior of Flexbox and Grid in different scenarios.
+- You have experimented with different layouts and understand the behavior of 
+	- Flexbox and Grid in different scenarios.
 
 # 2. Ensure Responsiveness
 > Resources
@@ -29,12 +30,15 @@
 
 > Implementation
 - Understand the basic principles of responsive design.
-- Get familiar with media queries and how they work. You can test media queries in the browser's developer tools.
+- Get familiar with media queries and how they work. 
+- You can test media queries in the browser's developer tools.
 - Develop mobile-first: 
 	- Start with a mobile layout, then scale up for larger screens. 
 	- This approach ensures that your site performs well on smaller, resource-constrained devices.
-- Test your designs on various screen sizes using the browser's developer tools or using a tool like Sizzy.
-- Introduce Storybook early in the process: it has a built-in tool to simulate different viewport sizes, which makes it easier to develop and test components for various screen sizes.
+- Test your designs on various screen sizes using the browser's developer tools... Sizzy.
+- Introduce Storybook early in the process: 
+	- It has a built-in tool to simulate different viewport sizes, 
+	- Which makes it easier to develop and test components for various screen sizes.
 
 > Acceptance Criteria
 - You understand the basics of responsive design and how to use media queries.
@@ -50,8 +54,10 @@
 
 > Implementation
 - Get comfortable with the DevTools in your preferred browser. They're a powerful aid in web development.
-- Understand how to use breakpoints to pause the execution of your code. This will allow you to inspect the current state of your app at that point in time.
-- Familiarize yourself with the debug features in VS Code. It integrates nicely with Chrome/Firefox and allows you to debug your JavaScript/TypeScript code directly in the editor.
+- Understand how to use breakpoints to pause the execution of your code. 
+- This will allow you to inspect the current state of your app at that point in time.
+- Familiarize yourself with the debug features in VS Code. 
+- It integrates nicely with Chrome/Firefox and allows you to debug your code in the editor.
 
 > Acceptance Criteria
 - You feel comfortable using the developer tools in your preferred browser.
