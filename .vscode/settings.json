@@ -1,12 +1,9 @@
 {
-	"editor.tabSize": 3,
-	"editor.insertSpaces": false,
-	"explorer.fileNesting.enabled": true,
-	"explorer.fileNesting.expand": false,
-	"explorer.fileNesting.patterns": {
-		"config.group": "*.config.js, *.json, *.ignore, *.d.ts, *.yaml",
-		"env.group": ".env.*",
-		"ignore.group": ".*ignore",
-		"misc.group": "autoCommentPath.js, readme.md, project-hierarchy.txt"
-	}
+  "editor.tabSize": 3,
+  "editor.insertSpaces": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "root": ".env.development.local, .eslintignore, .eslintrc.json, .gitignore, .prettierignore, autoCommentPath.js, next-env.d.ts, next.config.js, package.json, pnpm-lock.yaml, postcss.config.js, prettier.config.js, project-hierarchy.txt, README.md, rootGrouper.js, tailwind.config.js, tsconfig.json"
+  }
 }

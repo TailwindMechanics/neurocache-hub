@@ -11,7 +11,6 @@ neurocache-hub
 │  ├─ settings.json
 │  └─ tasks.json
 ├─ autoCommentPath.js
-├─ config.group
 ├─ docs
 │  ├─ context
 │  │  ├─ context.md
@@ -54,6 +53,8 @@ neurocache-hub
 │     ├─ terrain-normal.jpg
 │     └─ terrain-roughness.jpg
 ├─ README.md
+├─ root
+├─ rootGrouper.js
 ├─ src
 │  ├─ app
 │  │  ├─ agents
