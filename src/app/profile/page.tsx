@@ -43,8 +43,10 @@ const ProfileIntro: FC = function () {
 			<div className="sm:flex sm:space-x-4 xl:block xl:space-x-0">
 				<Image
 					alt=""
-					src="../../images/users/michael-gough.png"
+					src="/images/users/michael-gough.png"
 					className="mb-2 h-20 w-20 rounded-lg opacity-50 grayscale"
+					width={40}
+					height={40}
 				/>
 				<div>
 					<h2 className="text-xl font-bold dark:text-text-light">
