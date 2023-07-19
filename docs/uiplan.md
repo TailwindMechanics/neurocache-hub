@@ -1,6 +1,7 @@
 #### docs/uiplan.md
+<details>
+<summary>1. Study and Understand Layout Design</summary>
 
-## Study and Understand Layout Design
 ```md
 # 1. Master Flexbox and Grid
 >  Resources
@@ -10,24 +11,16 @@
 - CSS Tricks Guide to Grid: A comprehensive guide on CSS Grid.
 - MDN Flexbox: Mozilla's guide on Flexbox.
 - MDN Grid: Mozilla's guide on CSS Grid.
-
 > Implementation
 - Understand the concepts, then apply them to small examples.
 - Experiment with different layouts to understand how Flexbox and Grid behave in different scenarios.
 - Mastering these concepts is key to create responsive designs.
-
-> Acceptance Criteria
-	- You are able to create a complex layout using Flexbox or Grid.
-	- You understand how to use Flexbox or Grid to handle responsiveness.
-	- You have experimented with different layouts and understand the behavior of 
-	- Flexbox and Grid in different scenarios.
 
 # 2. Ensure Responsiveness
 > Resources
 - Responsive Web Design Basics: Google's guide to responsive design.
 - Media Queries for Standard Devices: A collection of media queries for standard devices.
 - Using media queries: Mozilla's guide on using media queries.
-
 > Implementation
 - Understand the basic principles of responsive design.
 - Get familiar with media queries and how they work. 
@@ -40,135 +33,103 @@
 - It has a built-in tool to simulate different viewport sizes, 
 - Which makes it easier to develop and test components for various screen sizes.
 
-> Acceptance Criteria
-	- You understand the basics of responsive design and how to use media queries.
-	- You can design mobile-first layouts and scale them for larger screens.
-	- You have tested your designs on various screen sizes and they are adaptable.
-
 # 3. Learn How to Use Debugging Tools
 > Resources
 - Chrome DevTools Overview: Google's guide to Chrome's built-in developer tools.
 - Firefox DevTools Overview: Mozilla's guide to Firefox's built-in developer tools.
 - Debugging in Visual Studio Code: A comprehensive guide on debugging in VS Code.
 - Breakpoints in JavaScript: Google's guide on using breakpoints for debugging JavaScript.
-
 > Implementation
 - Get comfortable with the DevTools in your preferred browser. They're a powerful aid in web development.
 - Understand how to use breakpoints to pause the execution of your code. 
 - This will allow you to inspect the current state of your app at that point in time.
 - Familiarize yourself with the debug features in VS Code. 
 - It integrates nicely with Chrome/Firefox and allows you to debug your code in the editor.
-
-> Acceptance Criteria
-	- You feel comfortable using the developer tools in your preferred browser.
-	- You understand how to use breakpoints to debug your JavaScript/TypeScript code.
-	- You have experience debugging in Visual Studio Code.
 ```
+- [x] 1.1 You are able to create a complex layout using Flexbox or Grid.
+- [x] 1.1 You understand how to use Flexbox or Grid to handle responsiveness.
+- [x] 1.1 You have experimented with Flexbox and Grid and understand their behaviour.
+- [ ] 1.2 You understand the basics of responsive design and how to use media queries.
+- [ ] 1.2 You can design mobile-first layouts and scale them for larger screens.
+- [ ] 1.2 You have tested your designs on various screen sizes and they are adaptable.
+- [ ] 1.3 You feel comfortable using the developer tools in your preferred browser.
+- [ ] 1.3 You understand how to use breakpoints to debug your JavaScript/TypeScript code.
+- [ ] 1.3 You have experience debugging in Visual Studio Code.
+</details>
+<details>
+<summary>2. Identify Common Atoms</summary>
 
-
-## Identify Common Atoms
 ```md
 # Analyze Your Project
 - Find common, reusable components within your project. These will serve as your "atoms".
-
-> Acceptance Criteria 
-	- You have identified the common, reusable components (atoms) in your project.
 ```
+- [ ] 2.1 You have identified the common, reusable components (atoms) in your project.
+</details>
+<details>
+<summary>3. Get to Know Your Tools</summary>
 
-
-## Get to Know Your Tools
 ```md
 # 1. Research Storybook
 - Learn how to use Storybook for component development and documentation.
-
->  Acceptance Criteria 
-	- You know how to use Storybook to develop and document your components.
-
 # 2. Research Accessibility
 - Study accessibility standards and guidelines, such as WCAG, to ensure your components will be inclusive.
-
-> Acceptance Criteria 
-	- You understand the basic principles of web accessibility. 
-	- You know how to check your components for accessibility issues.
-
 # 3. Understand Testing
 - Understand the concepts of unit testing, and learn how to use Jest and React Testing Library.
-
-> Acceptance Criteria 
-	- You understand what unit testing is and how to write tests with Jest and React Testing Library.
-
 # 4. Familiarize Yourself with Storyshots
 - Learn how Storyshots can help in snapshot testing and complement your unit testing strategy.
-
-> Acceptance Criteria 
-	- You understand how Storyshots can be used for snapshot testing.
 ```
 
+- [ ] 3.1 You know how to use Storybook to develop and document your components.
+- [ ] 3.2 You understand the basic principles of web accessibility. 
+- [ ] 3.2 You know how to check your components for accessibility issues.
+- [ ] 3.3 You understand what unit testing is and how to write tests with Jest and React Testing Library.
+- [ ] 3.4 You understand how Storyshots can be used for snapshot testing.
+</details>
+<details>
+<summary>4. Choose a Page for Iterative Component Building</summary>
 
-## Choose a Page for Iterative Component Building
 ```md
 # 1. Identify Necessary Atoms
 - Identify a handful of atomic components that are necessary for the chosen page.
-
-> Acceptance Criteria 
-	- You have identified the atomic components required to build a chosen page.
-
 # 2. Build and Test the Atoms in Storybook
 - Start building your atoms within Storybook, 
 - Considering different states and variations, while applying tests.
-
-> Acceptance Criteria 
-	- You have successfully built the atomic components in Storybook. 
-	- You have tested the atomic components and they work as expected.
-
 # 3. Create Layout Components
 - Using your knowledge of Flexbox and Grid, design and build reusable layout components in Storybook.
-
-> Acceptance Criteria 
-	- You have built reusable layout components.
-
 # 4. Create Feature Components
 - Build higher-order components made up of the atomic components and suited for each use case in Storybook.
-
-> Acceptance Criteria 
-	- You have built higher-order components that can be used in different use cases.
-
 # 5. Refactor and Iterate
 - Continuously improve your components as project requirements evolve.
-
-> Acceptance Criteria 
-	- You are continuously improving your components as project requirements evolve.
 ```
+- [ ] 4.1 You have identified the atomic components required to build a chosen page.
+- [ ] 4.2 You have successfully built the atomic components in Storybook.
+- [ ] 4.3 You have tested the atomic components and they work as expected.
+- [ ] 4.4 You have built reusable layout components.
+- [ ] 4.4 You have built higher-order components that can be used in different use.
+- [ ] 4.5 You are continuously improving your components as project requirements evolve.
+</details>
+<details>
+<summary>5. Consider End-to-End Testing with Cypress</summary>
 
-
-## Consider End-to-End Testing with Cypress
 ```md
 # Familiarize yourself with Cypress
 - Check out https://www.cypress.io/ 
 - Get acquainted with end-to-end testing in general
-
-> Acceptance Criteria 
-	- You have a basic understanding of Cypress and end-to-end testing.
 ```
+- [ ] 5.1 You have a basic understanding of Cypress and end-to-end testing.
+</details>
+<details>
+<summary>6. Extend Component Library and Apply to Whole Application</summary>
 
-
-## Extend Component Library and Apply to Whole Application
 ```md
 # 1. Build Remaining Atoms and Components
 - Using the same process as in step 4, iteratively build and test the rest of your component library.
-
-> Acceptance Criteria 
-	- You have built the rest of your component library, tested, and documented it in Storybook.
-
 # 2. Apply Components to Entire Application
 - Apply your tested and refined component library to the rest of your application.
-
-> Acceptance Criteria 
-	- You have successfully applied your component library across your application.
-
 # 3. Ensure Accessibility
 - Make your site navigable with keyboard-only inputs and ensure components adhere to accessibility guidelines.
-
-> Acceptance Criteria 
-	- Your site is navigable with keyboard-only inputs and your components adhere to accessibility guidelines.
 ```
+- [ ] 6.1 You have built the rest of your component library, tested, and documented it in Storybook.
+- [ ] 6.2 You have successfully applied your component library across your application.
+- [ ] 6.3 Your site is navigable with keyboard-only inputs and your components adhere to accessibility guidelines.
+</details>
