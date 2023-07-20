@@ -1,10 +1,13 @@
-//path: src\components\builders\StyleComponentBuilder.ts
+//path: src\components\builders\StyleComponentBuilder.tsx
 
-class StyleBuilder {
-	private element: React.ReactElement;
+import { AtomNode, AtomProps } from "@/types/declarations";
+import React from "react";
 
-	constructor(element: React.ReactElement) {
-		this.element = element;
+export default class StyleBuilder {
+	private node: AtomNode;
+
+	constructor(newNode: AtomNode) {
+		this.node = newNode;
 	}
 
 	private withStyle(
@@ -12,11 +15,17 @@ class StyleBuilder {
 		token: string,
 	): StyleBuilder {
 		const style = styleTokens[group][token];
-		const newElement = React.cloneElement(this.element, {
-			className: style,
-		});
 
-		this.element = newElement;
+		const NewNode = this.node;
+		const newNode = (props: AtomProps) => {
+			return (
+				<NewNode
+					{...props}
+					className={`${style} ${props.className}`}
+				/>
+			);
+		};
+		this.node = newNode;
 		return this;
 	}
 
@@ -44,8 +53,8 @@ class StyleBuilder {
 		return this.withStyle("font", "bold");
 	}
 
-	build(): React.ReactElement {
-		return this.element;
+	build(): AtomNode {
+		return this.node;
 	}
 }
 
@@ -81,9 +90,10 @@ const styleTokens: StyleTokens = {
 };
 
 // Usage:
-//  const styleBuilder = new StyleBuilder(<button>Click me</button>)
-// 	.withBgPrimary()
-// 	.withHoverPrimary()
-// 	.withTextWhite()
-// 	.withFontBold();
-//  const MyStyledButton = styleBuilder.build();
+// const StyledBox = new StyleBuilder(AtomComponent)
+// .withBgDanger()
+// .withHoverPrimary()
+// .withTextWhite()
+// .withFontBold()
+// .withBorderGhost()
+// .build();

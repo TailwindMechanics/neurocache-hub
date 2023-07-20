@@ -79,11 +79,11 @@ neurocache-hub
 │  │     └─ page.tsx
 │  ├─ components
 │  │  ├─ atoms
-│  │  │  └─ buttonAtom.tsx
+│  │  │  └─ atomComponent.tsx
 │  │  ├─ builders
 │  │  │  ├─ BehaviorComponentBuilder.ts
 │  │  │  ├─ LayoutComponentBuilder.ts
-│  │  │  └─ StyleComponentBuilder.ts
+│  │  │  └─ StyleComponentBuilder.tsx
 │  │  ├─ library
 │  │  │  └─ buttonComponent.tsx
 │  │  └─ z_deprecated
@@ -179,7 +179,6 @@ neurocache-hub
 │  │  ├─ declarations.d.ts
 │  │  └─ index.ts
 │  └─ utils
-│     ├─ globalConstantUtil.ts
 │     ├─ mathUtils.ts
 │     └─ path.ts
 ├─ tailwind.config.js

@@ -21,6 +21,13 @@ interface Route {
 	authenticated: boolean;
 }
 
+interface AtomProps {
+	children: ReactNode;
+	className: string;
+}
+
+type AtomNode = FC<AtomProps>;
+
 declare module "react-tailwindcss-datepicker";
 declare module "react-notifications" {
 	const content: any;
