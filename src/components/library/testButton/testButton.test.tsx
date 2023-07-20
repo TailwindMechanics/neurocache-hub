@@ -2,6 +2,7 @@
 
 import { render, fireEvent } from "@testing-library/react";
 import { TestButton, TestButtonProps } from "./testButton";
+import React from "react";
 
 // This is a simple test suite for your component
 describe("TestButton", () => {

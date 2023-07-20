@@ -5,7 +5,8 @@ neurocache-hub
 ├─ .gitignore
 ├─ .prettierignore
 ├─ .storybook
-│  └─ main.js
+│  ├─ main.js
+│  └─ preview.js
 ├─ .vercel
 │  ├─ project.json
 │  └─ README.txt
@@ -24,6 +25,7 @@ neurocache-hub
 │  │  └─ hubStory.md
 │  └─ uiplan.md
 ├─ jest.config.js
+├─ jest.setup.js
 ├─ next-env.d.ts
 ├─ next.config.js
 ├─ package.json
@@ -86,9 +88,13 @@ neurocache-hub
 │  │  ├─ builders
 │  │  │  ├─ BehaviorComponentBuilder.ts
 │  │  │  ├─ LayoutComponentBuilder.ts
+│  │  │  ├─ StyleComponentBuilder.test.tsx
 │  │  │  └─ StyleComponentBuilder.tsx
 │  │  ├─ library
-│  │  │  ├─ buttonComponent.tsx
+│  │  │  ├─ buttons
+│  │  │  │  ├─ primaryButton.stories.tsx
+│  │  │  │  ├─ primaryButton.test.tsx
+│  │  │  │  └─ primaryButton.tsx
 │  │  │  ├─ template
 │  │  │  │  └─ template.stories.tsx.md
 │  │  │  └─ testButton

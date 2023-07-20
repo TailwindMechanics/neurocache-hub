@@ -1,6 +1,6 @@
 //path: src\types\declarations.d.ts
 
-import { ReactNode } from "react";
+import { ReactNode, FC, HTMLAttributes } from "react";
 
 interface IconProps {
 	className?: string;
@@ -21,9 +21,9 @@ interface Route {
 	authenticated: boolean;
 }
 
-interface AtomProps {
-	children: ReactNode;
-	className: string;
+interface AtomProps extends HTMLAttributes<HTMLDivElement> {
+	children?: ReactNode;
+	className?: string;
 }
 
 type AtomNode = FC<AtomProps>;
