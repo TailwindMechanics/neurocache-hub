@@ -4,6 +4,8 @@ neurocache-hub
 ├─ .eslintrc.json
 ├─ .gitignore
 ├─ .prettierignore
+├─ .storybook
+│  └─ main.js
 ├─ .vercel
 │  ├─ project.json
 │  └─ README.txt
@@ -21,6 +23,7 @@ neurocache-hub
 │  │  ├─ apiStory.md
 │  │  └─ hubStory.md
 │  └─ uiplan.md
+├─ jest.config.js
 ├─ next-env.d.ts
 ├─ next.config.js
 ├─ package.json
@@ -85,7 +88,13 @@ neurocache-hub
 │  │  │  ├─ LayoutComponentBuilder.ts
 │  │  │  └─ StyleComponentBuilder.tsx
 │  │  ├─ library
-│  │  │  └─ buttonComponent.tsx
+│  │  │  ├─ buttonComponent.tsx
+│  │  │  ├─ template
+│  │  │  │  └─ template.stories.tsx.md
+│  │  │  └─ testButton
+│  │  │     ├─ testButton.stories.tsx
+│  │  │     ├─ testButton.test.tsx
+│  │  │     └─ testButton.tsx
 │  │  └─ z_deprecated
 │  │     ├─ charts
 │  │     │  ├─ acquisitionChart.tsx

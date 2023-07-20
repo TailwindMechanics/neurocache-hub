@@ -1,31 +1,37 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Generate Project Tree",
-			"type": "shell",
-			"command": "${input:generateProjectHierarchy}",
-			"dependsOn": "Auto Comment Paths",
-			"problemMatcher": []
-		},
-		{
-			"label": "Auto Comment Paths",
-			"type": "shell",
-			"command": "node autoCommentPath.js",
-			"problemMatcher": []
-		},
-		{
-			"label": "Group Root",
-			"type": "shell",
-			"command": "node rootGrouper.js",
-			"problemMatcher": []
-		}
-	],
-	"inputs": [
-		{
-			"id": "generateProjectHierarchy",
-			"type": "command",
-			"command": "project-hierarchy-explorer.generate"
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Generate Project Tree",
+      "type": "shell",
+      "command": "${input:generateProjectHierarchy}",
+      "dependsOn": "Auto Comment Paths",
+      "problemMatcher": []
+    },
+    {
+      "label": "Auto Comment Paths",
+      "type": "shell",
+      "command": "node autoCommentPath.js",
+      "problemMatcher": []
+    },
+    {
+      "label": "Group Root",
+      "type": "shell",
+      "command": "node rootGrouper.js",
+      "problemMatcher": []
+    },
+    {
+      "label": "Group Root",
+      "type": "shell",
+      "command": "node rootGrouper.js",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "generateProjectHierarchy",
+      "type": "command",
+      "command": "project-hierarchy-explorer.generate"
+    }
+  ]
 }
