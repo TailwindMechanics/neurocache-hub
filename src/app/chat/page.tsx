@@ -2,8 +2,8 @@
 
 "use client";
 
-import ChatInput from "@/components/chat/chatInput";
-import Hublayout from "@/components/hub/hubLayout";
+import ChatInput from "@/components/z_deprecated/chat/chatInput";
+import Hublayout from "@/components/z_deprecated/hub/hubLayout";
 
 export default function ChatRoot() {
 	return (

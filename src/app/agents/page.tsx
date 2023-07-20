@@ -2,7 +2,7 @@
 
 "use client";
 
-import HubLayout from "@/components/hub/hubLayout";
+import HubLayout from "@/components/z_deprecated/hub/hubLayout";
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {

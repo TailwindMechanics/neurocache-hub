@@ -2,9 +2,9 @@
 
 "use client";
 
-import Dashboard from "@/components/dashboard/dashboard";
-import LoginForm from "@/components/generic/loginForm";
-import HubLayout from "@/components/hub/hubLayout";
+import Dashboard from "@/components/z_deprecated/dashboard/dashboard";
+import LoginForm from "@/components/z_deprecated/generic/loginForm";
+import HubLayout from "@/components/z_deprecated/hub/hubLayout";
 import { storesContext } from "@/stores";
 import { FC, useContext } from "react";
 import { observer } from "mobx-react";

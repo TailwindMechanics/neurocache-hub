@@ -2,9 +2,9 @@
 
 "use client";
 
-import { LivePanel } from "@/components/generic/livePanel";
+import { LivePanel } from "@/components/z_deprecated/generic/livePanel";
 import { HiBriefcase, HiMap } from "react-icons/hi";
-import Hublayout from "@/components/hub/hubLayout";
+import Hublayout from "@/components/z_deprecated/hub/hubLayout";
 import { Badge, Progress } from "flowbite-react";
 import { FC } from "react";
 import Image from "next/image";

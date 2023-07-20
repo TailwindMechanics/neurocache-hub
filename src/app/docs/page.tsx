@@ -1,7 +1,7 @@
 //path: src\app\docs\page.tsx
 
-import DocsBlock from "@/components/docs/docsBlock";
-import HubLayout from "@/components/hub/hubLayout";
+import DocsBlock from "@/components/z_deprecated/docs/docsBlock";
+import HubLayout from "@/components/z_deprecated/hub/hubLayout";
 import docsData from "@/data/docs.json";
 
 const Docs = () => {
