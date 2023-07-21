@@ -1,6 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("./src/data/colors.json");
 
+import flatColors from "./src/data/colors.ts";
+
+let colorUtilities = {};
+for (let colorName in flatColors) {
+	if (flatColors.hasOwnProperty(colorName)) {
+		colorUtilities["." + colorName] = {
+			color: flatColors[colorName],
+		};
+	}
+}
+
 module.exports = {
 	darkMode: "class",
 	mode: "jit",
@@ -33,6 +44,9 @@ module.exports = {
 	plugins: [
 		require("flowbite/plugin"),
 		require("tailwind-scrollbar"),
+		function ({ addUtilities }) {
+			addUtilities(colorUtilities);
+		},
 		function ({ addBase, theme }) {
 			addBase({
 				"::selection": {

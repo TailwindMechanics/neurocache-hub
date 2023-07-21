@@ -4,33 +4,25 @@ import { AtomNode, AtomProps, Style } from "@/types/declarations";
 import React from "react";
 
 const tailwind: Record<Style["Category"], Record<Style["Element"], string>> = {
-	primary: {
-		bg: "bg-blue-500",
-		hover: "hover:bg-blue-700",
-		text: "text-white",
-		font: "font-bold",
-		border: "border-blue-700",
+	overt: {
+		bg: "bg-cherry",
+		hover: "hover:bg-cherry-l",
+		border: "border-cherry-d",
 	},
-	secondary: {
-		bg: "bg-green-500",
-		hover: "hover:bg-green-700",
-		text: "text-white",
-		font: "font-bold",
-		border: "border-green-700",
+	calm: {
+		bg: "bg-aqua",
+		hover: "hover:bg-aqua-l",
+		border: "border-aqua-d",
 	},
-	ghost: {
-		bg: "bg-gray-500",
-		hover: "hover:bg-gray-700",
-		text: "text-black",
-		font: "font-bold",
-		border: "border-gray-700",
+	alert: {
+		bg: "bg-peach",
+		hover: "hover:bg-peach-l",
+		border: "border-peach-d",
 	},
-	warning: {
-		bg: "bg-yellow-500",
-		hover: "hover:bg-yellow-700",
-		text: "text-black",
-		font: "font-bold",
-		border: "border-yellow-700",
+	subtle: {
+		bg: "bg-purple",
+		hover: "hover:bg-purple-l",
+		border: "border-purple-d",
 	},
 };
 
@@ -42,6 +34,10 @@ export default class StyleBuilder {
 		this.node = atom;
 	}
 
+	private push = (style: string) => {
+		this.styles.push(style);
+	};
+
 	// prettier-ignore
 	withStyle(style: Style["Element"], category: Style["Category"]): StyleBuilder {
 		if (!category && !style) {
@@ -49,7 +45,13 @@ export default class StyleBuilder {
 		} 
 		
 		const newStyle = tailwind[category][style];
-		this.styles.push(newStyle);
+		this.push(newStyle);
+		return this;
+	}
+
+	withShadow(): StyleBuilder {
+		const tw = "shadow-2xl drop-shadow-2xl";
+		this.push(tw);
 		return this;
 	}
 

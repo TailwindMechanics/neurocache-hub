@@ -1,6 +1,12 @@
 {
 	"tailwindCSS.experimental.classRegex": [
-		["tailwind \\= \\{([^;]*)\\};", "\"([^\"]*)\""]
+		["bg: \"(.*)\","],
+		["hover: \"(.*)\","],
+		["text: \"(.*)\","],
+		["font: \"(.*)\","],
+		["border: \"(.*)\","],
+		["tw = \"(.*)\";"],
+		[".with.*\"(.*)\""]
 	],
 	"editor.tabSize": 3,
 	"editor.insertSpaces": false,

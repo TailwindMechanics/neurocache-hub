@@ -126,24 +126,19 @@ neurocache-hub
 │  │     └─ page.tsx
 │  ├─ components
 │  │  ├─ atoms
-│  │  │  └─ atomComponent.tsx
+│  │  │  └─ atomicDiv.tsx
 │  │  ├─ builders
-│  │  │  ├─ BehaviorComponentBuilder.ts
-│  │  │  ├─ LayoutComponentBuilder.ts
 │  │  │  ├─ StyleBuilder.test.tsx
-│  │  │  └─ StyleBuilder.tsx
+│  │  │  ├─ StyleBuilder.tsx
+│  │  │  └─ TypographyBuilder.tsx
 │  │  ├─ library
 │  │  │  ├─ buttonComponent
 │  │  │  │  ├─ buttonComponent.stories.tsx
 │  │  │  │  ├─ buttonComponent.test.tsx
 │  │  │  │  └─ buttonComponent.tsx
-│  │  │  ├─ template
-│  │  │  │  ├─ template.stories.tsx.md
-│  │  │  │  └─ template.test.tsx.md
-│  │  │  └─ testButton
-│  │  │     ├─ testButton.stories.tsx
-│  │  │     ├─ testButton.test.tsx
-│  │  │     └─ testButton.tsx
+│  │  │  └─ template
+│  │  │     ├─ template.stories.tsx.md
+│  │  │     └─ template.test.tsx.md
 │  │  └─ z_deprecated
 │  │     ├─ charts
 │  │     │  ├─ acquisitionChart.tsx
@@ -201,6 +196,7 @@ neurocache-hub
 │  │        └─ menuItem.tsx
 │  ├─ data
 │  │  ├─ colors.json
+│  │  ├─ colors.ts
 │  │  ├─ content.json
 │  │  ├─ docs.json
 │  │  ├─ icons.tsx
