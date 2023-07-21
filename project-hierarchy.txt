@@ -1,4 +1,5 @@
 neurocache-hub
+├─ .babelrc
 ├─ .env.development.local
 ├─ .eslintignore
 ├─ .eslintrc.json
@@ -14,6 +15,47 @@ neurocache-hub
 │  ├─ settings.json
 │  └─ tasks.json
 ├─ autoCommentPath.js
+├─ babel.config.js
+├─ coverage
+│  ├─ clover.xml
+│  ├─ coverage-final.json
+│  ├─ lcov-report
+│  │  ├─ atoms
+│  │  │  ├─ atomComponent.tsx.html
+│  │  │  └─ index.html
+│  │  ├─ base.css
+│  │  ├─ block-navigation.js
+│  │  ├─ builders
+│  │  │  ├─ index.html
+│  │  │  └─ StyleBuilder.tsx.html
+│  │  ├─ favicon.png
+│  │  ├─ index.html
+│  │  ├─ library
+│  │  │  ├─ buttons
+│  │  │  │  ├─ index.html
+│  │  │  │  ├─ primaryButton
+│  │  │  │  │  ├─ index.html
+│  │  │  │  │  └─ primaryButton.tsx.html
+│  │  │  │  ├─ primaryButton.tsx.html
+│  │  │  │  └─ secondaryButton
+│  │  │  │     ├─ index.html
+│  │  │  │     └─ secondaryButton.tsx.html
+│  │  │  └─ testButton
+│  │  │     ├─ index.html
+│  │  │     └─ testButton.tsx.html
+│  │  ├─ prettify.css
+│  │  ├─ prettify.js
+│  │  ├─ primaryButton
+│  │  │  ├─ index.html
+│  │  │  └─ primaryButton.tsx.html
+│  │  ├─ primaryButton.tsx.html
+│  │  ├─ secondaryButton
+│  │  │  ├─ index.html
+│  │  │  ├─ primaryButton.tsx.html
+│  │  │  └─ secondaryButton.tsx.html
+│  │  ├─ sort-arrow-sprite.png
+│  │  └─ sorter.js
+│  └─ lcov.info
 ├─ docs
 │  ├─ context
 │  │  ├─ context.md
@@ -88,15 +130,16 @@ neurocache-hub
 │  │  ├─ builders
 │  │  │  ├─ BehaviorComponentBuilder.ts
 │  │  │  ├─ LayoutComponentBuilder.ts
-│  │  │  ├─ StyleComponentBuilder.test.tsx
-│  │  │  └─ StyleComponentBuilder.tsx
+│  │  │  ├─ StyleBuilder.test.tsx
+│  │  │  └─ StyleBuilder.tsx
 │  │  ├─ library
-│  │  │  ├─ buttons
-│  │  │  │  ├─ primaryButton.stories.tsx
-│  │  │  │  ├─ primaryButton.test.tsx
-│  │  │  │  └─ primaryButton.tsx
+│  │  │  ├─ buttonComponent
+│  │  │  │  ├─ buttonComponent.stories.tsx
+│  │  │  │  ├─ buttonComponent.test.tsx
+│  │  │  │  └─ buttonComponent.tsx
 │  │  │  ├─ template
-│  │  │  │  └─ template.stories.tsx.md
+│  │  │  │  ├─ template.stories.tsx.md
+│  │  │  │  └─ template.test.tsx.md
 │  │  │  └─ testButton
 │  │  │     ├─ testButton.stories.tsx
 │  │  │     ├─ testButton.test.tsx

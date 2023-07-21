@@ -26,6 +26,11 @@ interface AtomProps extends HTMLAttributes<HTMLDivElement> {
 	className?: string;
 }
 
+interface Style {
+	Category: "primary" | "secondary" | "ghost" | "warning";
+	Element: "bg" | "hover" | "text" | "font" | "border";
+}
+
 type AtomNode = FC<AtomProps>;
 
 declare module "react-tailwindcss-datepicker";

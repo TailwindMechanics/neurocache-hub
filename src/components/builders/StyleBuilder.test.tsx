@@ -11,12 +11,12 @@ const TestComponent: React.FC<{ className?: string }> = ({ className }) => {
 describe("StyleBuilder", () => {
 	it("adds styles correctly", () => {
 		const builder = new StyleBuilder(TestComponent);
-		const StyledComponent = builder
-			.withStyle("bgPrimary")
-			.withStyle("textWhite")
+		const Built = builder
+			.withStyle("bg", "primary")
+			.withStyle("text", "primary")
 			.build();
 
-		const { container } = render(<StyledComponent />);
+		const { container } = render(<Built />);
 		const div = container.firstChild;
 
 		expect(div).toHaveClass("bg-blue-500");

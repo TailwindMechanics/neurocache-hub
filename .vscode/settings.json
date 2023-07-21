@@ -1,15 +1,12 @@
 {
-  "tailwindCSS.experimental.classRegex": [
-    [
-      "tailwind \\= \\{([^}]*)\\}",
-      "\"([^\"]*)\""
-    ]
-  ],
-  "editor.tabSize": 3,
-  "editor.insertSpaces": false,
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.expand": false,
-  "explorer.fileNesting.patterns": {
-    "root": ".babelrc, .env.development.local, .eslintignore, .eslintrc.json, .gitignore, .prettierignore, autoCommentPath.js, babel.config.js, jest.config.js, jest.setup.js, next-env.d.ts, next.config.js, package.json, pnpm-lock.yaml, postcss.config.js, prettier.config.js, project-hierarchy.txt, README.md, rootGrouper.js, tailwind.config.js, tsconfig.json"
-  }
+	"tailwindCSS.experimental.classRegex": [
+		["tailwind \\= \\{([^;]*)\\};", "\"([^\"]*)\""]
+	],
+	"editor.tabSize": 3,
+	"editor.insertSpaces": false,
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.expand": false,
+	"explorer.fileNesting.patterns": {
+		"root": ".babelrc, .env.development.local, .eslintignore, .eslintrc.json, .gitignore, .prettierignore, autoCommentPath.js, babel.config.js, jest.config.js, jest.setup.js, next-env.d.ts, next.config.js, package.json, pnpm-lock.yaml, postcss.config.js, prettier.config.js, project-hierarchy.txt, README.md, rootGrouper.js, tailwind.config.js, tsconfig.json"
+	}
 }
