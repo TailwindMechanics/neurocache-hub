@@ -29,6 +29,8 @@ export default class TypographyBuilder {
 
 	withTextColor(color: Style["TextColor"]): TypographyBuilder {
 		const tw = `text-${color}`;
+		console.log(tw);
+
 		this.push(tw);
 		return this;
 	}

@@ -21,7 +21,8 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
 	let Build = new StyleBuilder(AtomComponent)
 		.withStyle("bg", category)
 		.withStyle("hover", category)
-		.withStyle("border", category)
+		.withBorder(category)
+		.withBorderRadius()
 		.withShadow()
 		.build();
 

@@ -1,13 +1,8 @@
 //path: src\components\library\buttonComponent\buttonComponent.stories.tsx
 
+import { Meta, StoryObj } from "@storybook/react";
 import ButtonComponent from "./buttonComponent";
-import { Story, Meta } from "@storybook/react";
-import { Style } from "@/types/declarations";
 import React from "react";
-
-interface ButtonComponentStoryProps {
-	category: Style["Category"];
-}
 
 export default {
 	title: "Buttons/ButtonComponent",
@@ -16,37 +11,52 @@ export default {
 		category: {
 			control: {
 				type: "select",
+
 				options: [
-					"primary",
-					"secondary",
-					"ghost",
-					"warning",
+					"overt",
+					"calm",
+					"alert",
+					"subtle",
 				],
 			},
 		},
 	},
 } as Meta;
 
-const Template: Story<ButtonComponentStoryProps> = (args) => (
-	<ButtonComponent {...args} />
-);
-
-export const Primary = Template.bind({});
-Primary.args = {
-	category: "primary",
+const Template: StoryObj<typeof ButtonComponent> = {
+	args: {},
+	render: (args) => <ButtonComponent {...args} />,
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-	category: "secondary",
+export const Overt: StoryObj<typeof ButtonComponent> = {
+	...Template,
+	args: {
+		label: "overt",
+		category: "overt",
+		textSize: "xl",
+	},
 };
 
-export const Ghost = Template.bind({});
-Ghost.args = {
-	category: "ghost",
+export const Calm: StoryObj<typeof ButtonComponent> = {
+	...Template,
+	args: {
+		label: "calm",
+		category: "calm",
+	},
 };
 
-export const Warning = Template.bind({});
-Warning.args = {
-	category: "warning",
+export const Alert: StoryObj<typeof ButtonComponent> = {
+	...Template,
+	args: {
+		label: "alert",
+		category: "alert",
+	},
+};
+
+export const Subtle: StoryObj<typeof ButtonComponent> = {
+	...Template,
+	args: {
+		label: "subtle",
+		category: "subtle",
+	},
 };

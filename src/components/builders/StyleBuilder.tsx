@@ -49,6 +49,19 @@ export default class StyleBuilder {
 		return this;
 	}
 
+	withBorder(category: Style["Category"]): StyleBuilder {
+		const newStyle = tailwind[category]["border"];
+		const tw = `border-2 border-solid ${newStyle}`;
+		this.push(tw);
+		return this;
+	}
+
+	withBorderRadius(): StyleBuilder {
+		const tw = "rounded-full";
+		this.push(tw);
+		return this;
+	}
+
 	withShadow(): StyleBuilder {
 		const tw = "shadow-2xl drop-shadow-2xl";
 		this.push(tw);
