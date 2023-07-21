@@ -11,7 +11,6 @@ export default {
 		category: {
 			control: {
 				type: "select",
-
 				options: [
 					"overt",
 					"calm",
@@ -33,7 +32,6 @@ export const Overt: StoryObj<typeof ButtonComponent> = {
 	args: {
 		label: "overt",
 		category: "overt",
-		textSize: "xl",
 	},
 };
 

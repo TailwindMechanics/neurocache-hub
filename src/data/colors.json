@@ -23,5 +23,10 @@
 		"DEFAULT": "#fb9875",
 		"l": "#fcac8f",
 		"d": "#fa8560"
+	},
+	"text": {
+		"DEFAULT": "#ed4a40",
+		"l": "#fbfaf5",
+		"d": "#20272f"
 	}
 }

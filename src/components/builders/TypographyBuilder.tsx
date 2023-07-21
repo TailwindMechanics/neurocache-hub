@@ -3,6 +3,55 @@
 import { AtomNode, AtomProps, Style } from "@/types/declarations";
 import React from "react";
 
+type TailwindCategoryStyles = {
+	color: string;
+	textSize: string;
+	fontFamily: string;
+	textAlign: string;
+	lineHeight: string;
+	fontWeight: string;
+	letterSpacing: string;
+};
+
+const tailwind: Record<Style["Category"], TailwindCategoryStyles> = {
+	overt: {
+		color: "text-text",
+		textSize: "text-lg",
+		fontFamily: "font-serif",
+		textAlign: "text-center",
+		lineHeight: "leading-relaxed",
+		fontWeight: "font-bold",
+		letterSpacing: "tracking-wide",
+	},
+	calm: {
+		color: "text-text-d",
+		textSize: "text-base",
+		fontFamily: "font-sans",
+		textAlign: "text-center",
+		lineHeight: "leading-normal",
+		fontWeight: "font-light",
+		letterSpacing: "tracking-normal",
+	},
+	alert: {
+		color: "text-text-l",
+		textSize: "text-sm",
+		fontFamily: "font-mono",
+		textAlign: "text-center",
+		lineHeight: "leading-snug",
+		fontWeight: "font-extrabold",
+		letterSpacing: "tracking-tighter",
+	},
+	subtle: {
+		color: "text-text-d",
+		textSize: "text-xl",
+		fontFamily: "font-serif",
+		textAlign: "text-center",
+		lineHeight: "leading-loose",
+		fontWeight: "font-normal",
+		letterSpacing: "tracking-wider",
+	},
+};
+
 export default class TypographyBuilder {
 	private node: AtomNode;
 	private styles: string[] = [];
@@ -15,57 +64,56 @@ export default class TypographyBuilder {
 		this.node = atom;
 	}
 
-	withTextSize(size: Style["TextSize"]): TypographyBuilder {
-		const tw = `text-${size}`;
-		this.push(tw);
+	withTextColor(category: Style["Category"]): TypographyBuilder {
+		const newStyle = tailwind[category]["color"];
+		this.push(newStyle);
 		return this;
 	}
 
-	withFontFamily(family: Style["FontFamily"]): TypographyBuilder {
-		const tw = `font-${family}`;
-		this.push(tw);
+	withTextSize(category: Style["Category"]): TypographyBuilder {
+		const newStyle = tailwind[category]["textSize"];
+		this.push(newStyle);
 		return this;
 	}
 
-	withTextColor(style: string): TypographyBuilder {
-		this.push(`text-${style}`);
+	withFontFamily(category: Style["Category"]): TypographyBuilder {
+		const newStyle = tailwind[category]["fontFamily"];
+		this.push(newStyle);
 		return this;
 	}
 
-	withTextAlignment(align: Style["TextAlignment"]): TypographyBuilder {
-		const tw = `text-${align}`;
-		this.push(tw);
+	withTextAlignment(category: Style["Category"]): TypographyBuilder {
+		const newStyle = tailwind[category]["textAlign"];
+		this.push(newStyle);
 		return this;
 	}
 
-	withLineHeight(height: Style["LineHeight"]): TypographyBuilder {
-		const tw = `leading-${height}`;
-		this.push(tw);
+	withLineHeight(category: Style["Category"]): TypographyBuilder {
+		const newStyle = tailwind[category]["lineHeight"];
+		this.push(newStyle);
 		return this;
 	}
 
-	withFontWeight(weight: Style["FontWeight"]): TypographyBuilder {
-		const tw = `font-${weight}`;
-		this.push(tw);
+	withFontWeight(category: Style["Category"]): TypographyBuilder {
+		const newStyle = tailwind[category]["fontWeight"];
+		this.push(newStyle);
 		return this;
 	}
 
-	withLetterSpacing(
-		spacing: Style["LetterSpacing"],
-	): TypographyBuilder {
-		const tw = `tracking-${spacing}`;
-		this.push(tw);
+	withLetterSpacing(category: Style["Category"]): TypographyBuilder {
+		const newStyle = tailwind[category]["letterSpacing"];
+		this.push(newStyle);
 		return this;
 	}
 
 	// prettier-ignore
 	build(): AtomNode {
-		const styles = this.styles;
-		return (props: AtomProps) => {
-			let newClassName = props.className ?? "";
-			newClassName += ` ${styles.join(" ")}`;
-			let newProps = {...props, className: newClassName.trim()};
-			return <this.node {...newProps} />;
-		};
-	}
+    const styles = this.styles;
+    return (props: AtomProps) => {
+      let newClassName = props.className ?? "";
+      newClassName += ` ${styles.join(" ")}`;
+      let newProps = {...props, className: newClassName.trim()};
+      return <this.node {...newProps} />;
+    };
+  }
 }

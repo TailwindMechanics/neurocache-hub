@@ -20,9 +20,9 @@ const tailwind: Record<Style["Category"], Record<Style["Element"], string>> = {
 		border: "border-peach-d",
 	},
 	subtle: {
-		bg: "bg-purple",
-		hover: "hover:bg-purple-l",
-		border: "border-purple-d",
+		bg: "bg-grape",
+		hover: "hover:bg-grape-l",
+		border: "border-grape-d",
 	},
 };
 

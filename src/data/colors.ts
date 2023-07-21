@@ -1,3 +1,5 @@
+//path: src\data\colors.ts
+
 import Colors from "./colors.json";
 
 // Here we define the type of flatColors explicitly

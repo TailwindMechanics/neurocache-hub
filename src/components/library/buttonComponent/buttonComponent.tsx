@@ -16,7 +16,6 @@ interface ButtonComponentProps {
 const ButtonComponent: FC<ButtonComponentProps> = ({
 	category = "calm",
 	label = "",
-	textSize = "md",
 }) => {
 	let Build = new StyleBuilder(AtomComponent)
 		.withStyle("bg", category)
@@ -27,12 +26,12 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
 		.build();
 
 	Build = new TypographyBuilder(Build)
-		.withTextSize(textSize)
-		.withTextAlignment("center")
-		.withFontFamily("sans")
-		.withTextColor("grape-l")
-		.withFontWeight("bold")
-		.withLineHeight("normal")
+		.withTextSize(category)
+		.withTextAlignment(category)
+		.withFontFamily(category)
+		.withTextColor(category)
+		.withFontWeight(category)
+		.withLineHeight(category)
 		.build();
 
 	return <Build>{label}</Build>;
