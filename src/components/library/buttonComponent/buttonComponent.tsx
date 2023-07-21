@@ -30,7 +30,7 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
 		.withTextSize(textSize)
 		.withTextAlignment("center")
 		.withFontFamily("sans")
-		.withTextColor("aqua")
+		.withTextColor("grape-l")
 		.withFontWeight("bold")
 		.withLineHeight("normal")
 		.build();

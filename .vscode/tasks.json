@@ -25,12 +25,6 @@
       "type": "shell",
       "command": "node rootGrouper.js",
       "problemMatcher": []
-    },
-    {
-      "label": "Group Root",
-      "type": "shell",
-      "command": "node rootGrouper.js",
-      "problemMatcher": []
     }
   ],
   "inputs": [
