@@ -12,6 +12,7 @@ export default {
 	component: ButtonComponent,
 	decorators: [withTests({ results })],
 	argTypes: {
+		onClick: { action: "clicked" },
 		category: {
 			control: {
 				type: "select",
