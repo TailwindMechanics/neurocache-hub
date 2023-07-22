@@ -1,14 +1,14 @@
 //path: src\components\atoms\atomicDiv.tsx
 
-import { AtomNode } from "@src/types/declarations";
+import { motion } from "framer-motion";
 import React from "react";
 
-// prettier-ignore
-const AtomicDiv: AtomNode = ({ children, className, ...props }) => {
+//prettier-ignore
+const AtomicDiv: React.FC<any> = ({ children, className, ...props }) => {
 	return (
-		<div className={className} data-testid="atomic-div" {...props}>
+		<motion.div className={className} data-testid="atomic-div" {...props}>
 			{children}
-		</div>
+		</motion.div>
 	);
 };
 

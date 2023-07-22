@@ -210,6 +210,9 @@ neurocache-hub
 │  │  └─ index.ts
 │  └─ utils
 │     ├─ mathUtils.ts
-│     └─ path.ts
+│     ├─ path.ts
+│     └─ stringUtils.ts
 ├─ tailwind.config.js
-└─ tsconfig.json
+├─ tsconfig.json
+└─ __mocks__
+   └─ framer-motion.js

@@ -19,13 +19,14 @@ interface Style {
 	LetterSpacing: "tighter" | "tight" | "normal" | "wide" | "wider" | "widest";
 }
 
-interface AtomProps extends HTMLAttributes<HTMLDivElement> {
+interface AtomProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>{
 	children?: ReactNode;
 	className?: string;
+	disabled?: boolean;
+	onClick?: () => void;
 }
 
 type AtomNode = FC<AtomProps>;
-
 
 interface IconProps {
 	className?: string;

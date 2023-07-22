@@ -1,46 +1,55 @@
 //path: src\components\library\buttonComponent\buttonComponent.tsx
 
+import TypographyBuilder from "@src/components/builders/typographyBuilder/TypographyBuilder";
 import BehaviourBuilder from "@src/components/builders/behaviourBuilder/BehaviourBuilder";
+import StyleBuilder from "@src/components/builders/styleBuilder/StyleBuilder";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { Style } from "@src/types/declarations";
 import { FC } from "react";
 import React from "react";
-import TypographyBuilder from "@src/components/builders/typographyBuilder/TypographyBuilder";
-import StyleBuilder from "@src/components/builders/styleBuilder/StyleBuilder";
 
 interface ButtonComponentProps {
 	category?: Style["Category"];
 	label?: string;
+	ariaLabel?: string;
+	tooltip?: string;
 	onClick: () => void;
+	disabled?: boolean;
 }
 
 const ButtonComponent: FC<ButtonComponentProps> = ({
 	category = "calm",
 	label = "",
+	ariaLabel = "",
+	tooltip = "",
 	onClick,
+	disabled = false,
 }) => {
 	let Build = new StyleBuilder(AtomicDiv)
-		.withBg(category)
-		.withHover(category)
 		.withBorderRadius(category)
 		.withBorder(category)
-		.withBorderRadius(category)
 		.withShadow(category)
+		.withHover(category)
+		.withBg(category)
 		.build();
 
 	Build = new TypographyBuilder(Build)
-		.withTextSize(category)
 		.withTextAlignment(category)
 		.withFontFamily(category)
-		.withTextColor(category)
 		.withHoverColor(category)
 		.withFontWeight(category)
 		.withLineHeight(category)
+		.withTextColor(category)
+		.withTextSize(category)
 		.build();
 
 	Build = new BehaviourBuilder(Build)
-		.withHover()
 		.withClick(onClick)
+		.withKeyboardNav()
+		.withAriaLabel(ariaLabel)
+		.withDisabled(disabled)
+		.withTooltip(tooltip)
+		.withHover()
 		.build();
 
 	return <Build>{label}</Build>;
