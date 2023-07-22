@@ -129,12 +129,15 @@ neurocache-hub
 │  │  ├─ atoms
 │  │  │  └─ atomicDiv.tsx
 │  │  ├─ builders
-│  │  │  ├─ BehaviourBuilder.test.tsx
-│  │  │  ├─ BehaviourBuilder.tsx
-│  │  │  ├─ StyleBuilder.test.tsx
-│  │  │  ├─ StyleBuilder.tsx
-│  │  │  ├─ TypographyBuilder.test.tsx
-│  │  │  └─ TypographyBuilder.tsx
+│  │  │  ├─ behaviourBuilder
+│  │  │  │  ├─ BehaviourBuilder.test.tsx
+│  │  │  │  └─ BehaviourBuilder.tsx
+│  │  │  ├─ styleBuilder
+│  │  │  │  ├─ StyleBuilder.test.tsx
+│  │  │  │  └─ StyleBuilder.tsx
+│  │  │  └─ typographyBuilder
+│  │  │     ├─ TypographyBuilder.test.tsx
+│  │  │     └─ TypographyBuilder.tsx
 │  │  ├─ library
 │  │  │  ├─ buttonComponent
 │  │  │  │  ├─ buttonComponent.stories.tsx

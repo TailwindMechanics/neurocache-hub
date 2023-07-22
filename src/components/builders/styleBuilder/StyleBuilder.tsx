@@ -1,4 +1,4 @@
-//path: src\components\builders\StyleBuilder.tsx
+//path: src\components\builders\styleBuilder\StyleBuilder.tsx
 
 import { AtomNode, AtomProps, Style } from "@/types/declarations";
 import React from "react";

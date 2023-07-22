@@ -1,4 +1,4 @@
-// src\components\builders\BehaviourBuilder.test.tsx
+//path: src\components\builders\behaviourBuilder\BehaviourBuilder.test.tsx
 
 import AtomComponent from "@/components/atoms/atomicDiv";
 import userEvent from "@testing-library/user-event";

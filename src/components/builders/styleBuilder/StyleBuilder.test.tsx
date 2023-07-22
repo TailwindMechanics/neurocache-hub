@@ -1,6 +1,4 @@
-//path: src\components\builders\StyleBuilder.test.tsx
-
-// path: src\components\builders\StyleBuilder.test.tsx
+//path: src\components\builders\styleBuilder\StyleBuilder.test.tsx
 
 import { render } from "@testing-library/react";
 import StyleBuilder from "./StyleBuilder";

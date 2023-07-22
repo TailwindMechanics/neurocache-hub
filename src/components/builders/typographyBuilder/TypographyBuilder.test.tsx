@@ -1,4 +1,4 @@
-//path: src\components\builders\TypographyBuilder.test.tsx
+//path: src\components\builders\typographyBuilder\TypographyBuilder.test.tsx
 
 import { render } from "@testing-library/react";
 import TypographyBuilder from "./TypographyBuilder";

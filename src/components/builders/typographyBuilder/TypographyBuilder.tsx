@@ -1,4 +1,4 @@
-//path: src\components\builders\TypographyBuilder.tsx
+//path: src\components\builders\typographyBuilder\TypographyBuilder.tsx
 
 import { AtomNode, AtomProps, Style } from "@/types/declarations";
 import React from "react";

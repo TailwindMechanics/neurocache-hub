@@ -1,4 +1,4 @@
-//path: src\components\builders\BehaviourBuilder.tsx
+//path: src\components\builders\behaviourBuilder\BehaviourBuilder.tsx
 
 import { AtomNode, AtomProps } from "@/types/declarations";
 import { motion } from "framer-motion";
