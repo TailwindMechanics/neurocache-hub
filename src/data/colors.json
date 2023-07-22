@@ -1,32 +1,50 @@
 {
 	"night": {
 		"DEFAULT": "#222632",
+		"d": "#1a1b1f",
+		"a": "#1a1b1f50",
 		"l": "#3b3e45",
-		"d": "#1a1b1f"
+		"h": "#6a6d75",
+		"p": "#9a9da5"
 	},
 	"cherry": {
 		"DEFAULT": "#f96f69",
+		"d": "#f5535f",
+		"a": "#f5535f50",
 		"l": "#fa8a82",
-		"d": "#f5535f"
+		"h": "#fcbbb6",
+		"p": "#fccbca"
 	},
 	"aqua": {
 		"DEFAULT": "#77cabf",
+		"d": "#66b3a0",
+		"a": "#66b3a050",
 		"l": "#8cd7ce",
-		"d": "#66b3a0"
+		"h": "#a1e2de",
+		"p": "#c6ede5"
 	},
 	"grape": {
-		"DEFAULT": "#914e8a",
-		"l": "#a76199",
-		"d": "#813a75"
+		"DEFAULT": "#cf91c2",
+		"d": "#a76199",
+		"a": "#a7619950",
+		"l": "#edc2e1",
+		"h": "#edd1f2",
+		"p": "#f7e1ee"
 	},
 	"peach": {
 		"DEFAULT": "#fb9875",
+		"d": "#fa8560",
+		"a": "#fa856050",
 		"l": "#fcac8f",
-		"d": "#fa8560"
+		"h": "#fcbfa9",
+		"p": "#fdd3c3"
 	},
-	"text": {
-		"DEFAULT": "#ed4a40",
-		"l": "#fbfaf5",
-		"d": "#20272f"
+	"util": {
+		"DEFAULT": "#00000000",
+		"d": "#000000",
+		"a": "#00000050",
+		"l": "#ffffff",
+		"h": "#d0d0d0",
+		"p": "#e8e8e8"
 	}
 }

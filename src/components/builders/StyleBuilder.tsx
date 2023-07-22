@@ -3,26 +3,37 @@
 import { AtomNode, AtomProps, Style } from "@/types/declarations";
 import React from "react";
 
-const tailwind: Record<Style["Category"], Record<Style["Element"], string>> = {
+type CategoryStyles = {
+	bg: string;
+	hover: string;
+	border: string;
+	shadow: string;
+};
+
+const tailwind: Record<Style["Category"], CategoryStyles> = {
 	overt: {
-		bg: "bg-cherry",
-		hover: "hover:bg-cherry-l",
-		border: "border-cherry-d",
+		bg: "bg-cherry-d",
+		hover: "hover:bg-cherry",
+		border: "border-cherry-l",
+		shadow: "shadow-lg drop-shadow-lg",
 	},
 	calm: {
-		bg: "bg-aqua",
-		hover: "hover:bg-aqua-l",
-		border: "border-aqua-d",
+		bg: "bg-aqua-d",
+		hover: "hover:bg-aqua",
+		border: "border-aqua-l",
+		shadow: "shadow-lg drop-shadow-lg",
 	},
 	alert: {
-		bg: "bg-peach",
-		hover: "hover:bg-peach-l",
-		border: "border-peach-d",
+		bg: "bg-peach-d",
+		hover: "hover:bg-peach",
+		border: "border-peach-l",
+		shadow: "shadow-lg drop-shadow-lg",
 	},
 	subtle: {
-		bg: "bg-grape",
-		hover: "hover:bg-grape-l",
-		border: "border-grape-d",
+		bg: "bg-util",
+		hover: "hover:bg-grape-a",
+		border: "border-grape",
+		shadow: "shadow-inner shadow-grape-d",
 	},
 };
 
@@ -38,33 +49,34 @@ export default class StyleBuilder {
 		this.styles.push(style);
 	};
 
-	// prettier-ignore
-	withStyle(style: Style["Element"], category: Style["Category"]): StyleBuilder {
-		if (!category && !style) {
-			throw new Error(`StyleBuilder: invalid args: ${category}, ${style}`);
-		} 
-		
-		const newStyle = tailwind[category][style];
+	withBg(category: Style["Category"] = "calm"): StyleBuilder {
+		const newStyle = tailwind[category].bg;
 		this.push(newStyle);
 		return this;
 	}
 
-	withBorder(category: Style["Category"]): StyleBuilder {
+	withHover(category: Style["Category"] = "calm"): StyleBuilder {
+		const newStyle = tailwind[category].hover;
+		this.push(newStyle);
+		return this;
+	}
+
+	withBorder(category: Style["Category"] = "calm"): StyleBuilder {
 		const newStyle = tailwind[category]["border"];
-		const tw = `border-2 border-solid ${newStyle}`;
+		const tw = `border ${newStyle}`;
 		this.push(tw);
 		return this;
 	}
 
-	withBorderRadius(): StyleBuilder {
+	withBorderRadius(category: Style["Category"] = "calm"): StyleBuilder {
 		const tw = "rounded-full";
 		this.push(tw);
 		return this;
 	}
 
-	withShadow(): StyleBuilder {
-		const tw = "shadow-2xl drop-shadow-2xl";
-		this.push(tw);
+	withShadow(category: Style["Category"] = "calm"): StyleBuilder {
+		const newStyle = tailwind[category].shadow;
+		this.push(newStyle);
 		return this;
 	}
 

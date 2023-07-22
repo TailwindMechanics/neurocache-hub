@@ -3,8 +3,9 @@
 import { AtomNode, AtomProps, Style } from "@/types/declarations";
 import React from "react";
 
-type TailwindCategoryStyles = {
+type CategoryStyles = {
 	color: string;
+	hover: string;
 	textSize: string;
 	fontFamily: string;
 	textAlign: string;
@@ -13,42 +14,46 @@ type TailwindCategoryStyles = {
 	letterSpacing: string;
 };
 
-const tailwind: Record<Style["Category"], TailwindCategoryStyles> = {
+const tailwind: Record<Style["Category"], CategoryStyles> = {
 	overt: {
-		color: "text-text",
+		color: "text-cherry-h",
+		hover: "hover:cherry-p",
 		textSize: "text-lg",
-		fontFamily: "font-serif",
-		textAlign: "text-center",
-		lineHeight: "leading-relaxed",
-		fontWeight: "font-bold",
-		letterSpacing: "tracking-wide",
-	},
-	calm: {
-		color: "text-text-d",
-		textSize: "text-base",
-		fontFamily: "font-sans",
-		textAlign: "text-center",
-		lineHeight: "leading-normal",
-		fontWeight: "font-light",
-		letterSpacing: "tracking-normal",
-	},
-	alert: {
-		color: "text-text-l",
-		textSize: "text-sm",
 		fontFamily: "font-mono",
 		textAlign: "text-center",
-		lineHeight: "leading-snug",
+		lineHeight: "leading-loose",
 		fontWeight: "font-extrabold",
-		letterSpacing: "tracking-tighter",
+		letterSpacing: "tracking-widest",
 	},
-	subtle: {
-		color: "text-text-d",
-		textSize: "text-xl",
-		fontFamily: "font-serif",
+	calm: {
+		color: "text-aqua-h",
+		hover: "hover:aqua-p",
+		textSize: "text-lg",
+		fontFamily: "font-mono",
 		textAlign: "text-center",
 		lineHeight: "leading-loose",
-		fontWeight: "font-normal",
-		letterSpacing: "tracking-wider",
+		fontWeight: "font-extrabold",
+		letterSpacing: "tracking-widest",
+	},
+	alert: {
+		color: "text-peach-h",
+		hover: "hover:peach-p",
+		textSize: "text-lg",
+		fontFamily: "font-mono",
+		textAlign: "text-center",
+		lineHeight: "leading-loose",
+		fontWeight: "font-extrabold",
+		letterSpacing: "tracking-widest",
+	},
+	subtle: {
+		color: "text-grape-h",
+		hover: "hover:grape-p",
+		textSize: "text-lg",
+		fontFamily: "font-mono",
+		textAlign: "text-center",
+		lineHeight: "leading-loose",
+		fontWeight: "font-extrabold",
+		letterSpacing: "tracking-widest",
 	},
 };
 
@@ -64,43 +69,57 @@ export default class TypographyBuilder {
 		this.node = atom;
 	}
 
-	withTextColor(category: Style["Category"]): TypographyBuilder {
+	// prettier-ignore
+	withTextColor(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["color"];
 		this.push(newStyle);
 		return this;
 	}
 
-	withTextSize(category: Style["Category"]): TypographyBuilder {
+	// prettier-ignore
+	withHoverColor(category: Style["Category"] = "calm"): TypographyBuilder {
+		const newStyle = tailwind[category]["hover"];
+		this.push(newStyle);
+		return this;
+	}
+
+	// prettier-ignore
+	withTextSize(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["textSize"];
 		this.push(newStyle);
 		return this;
 	}
 
-	withFontFamily(category: Style["Category"]): TypographyBuilder {
+	// prettier-ignore
+	withFontFamily(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["fontFamily"];
 		this.push(newStyle);
 		return this;
 	}
 
-	withTextAlignment(category: Style["Category"]): TypographyBuilder {
+	// prettier-ignore
+	withTextAlignment(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["textAlign"];
 		this.push(newStyle);
 		return this;
 	}
 
-	withLineHeight(category: Style["Category"]): TypographyBuilder {
+	// prettier-ignore
+	withLineHeight(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["lineHeight"];
 		this.push(newStyle);
 		return this;
 	}
 
-	withFontWeight(category: Style["Category"]): TypographyBuilder {
+	// prettier-ignore
+	withFontWeight(category: Style["Category"] = 'calm'): TypographyBuilder {
 		const newStyle = tailwind[category]["fontWeight"];
 		this.push(newStyle);
 		return this;
 	}
 
-	withLetterSpacing(category: Style["Category"]): TypographyBuilder {
+	// prettier-ignore
+	withLetterSpacing(category: Style["Category"] = 'calm'): TypographyBuilder {
 		const newStyle = tailwind[category]["letterSpacing"];
 		this.push(newStyle);
 		return this;
