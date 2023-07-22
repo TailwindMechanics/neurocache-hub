@@ -192,6 +192,10 @@ neurocache-hub
 │  │  ├─ icons.tsx
 │  │  └─ shorthand.tsx
 │  ├─ lib
+│  │  └─ storyshots
+│  │     ├─ Storyshots.test.js
+│  │     └─ __snapshots__
+│  │        └─ Storyshots.test.js.snap
 │  ├─ services
 │  │  └─ supabase.ts
 │  ├─ stores

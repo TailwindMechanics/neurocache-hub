@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Buttons/ButtonComponent Alert 1`] = `
+<div
+  whileHover={
+    {
+      "scale": 1.01,
+    }
+  }
+  whileTap={
+    {
+      "scale": 0.99,
+    }
+  }
+>
+  <div
+    className="text-lg text-center font-mono text-peach-h hover:peach-p font-extrabold leading-loose bg-peach-d hover:bg-peach rounded-full border border-peach-l rounded-full shadow-lg drop-shadow-lg"
+    data-testid="atomic-div"
+    onClick={[Function]}
+  >
+    alert
+  </div>
+</div>
+`;
+
+exports[`Storyshots Buttons/ButtonComponent Calm 1`] = `
+<div
+  whileHover={
+    {
+      "scale": 1.01,
+    }
+  }
+  whileTap={
+    {
+      "scale": 0.99,
+    }
+  }
+>
+  <div
+    className="text-lg text-center font-mono text-aqua-h hover:aqua-p font-extrabold leading-loose bg-aqua-d hover:bg-aqua rounded-full border border-aqua-l rounded-full shadow-lg drop-shadow-lg"
+    data-testid="atomic-div"
+    onClick={[Function]}
+  >
+    calm
+  </div>
+</div>
+`;
+
+exports[`Storyshots Buttons/ButtonComponent Overt 1`] = `
+<div
+  whileHover={
+    {
+      "scale": 1.01,
+    }
+  }
+  whileTap={
+    {
+      "scale": 0.99,
+    }
+  }
+>
+  <div
+    className="text-lg text-center font-mono text-cherry-h hover:cherry-p font-extrabold leading-loose bg-cherry-d hover:bg-cherry rounded-full border border-cherry-l rounded-full shadow-lg drop-shadow-lg"
+    data-testid="atomic-div"
+    onClick={[Function]}
+  >
+    overt
+  </div>
+</div>
+`;
+
+exports[`Storyshots Buttons/ButtonComponent Subtle 1`] = `
+<div
+  whileHover={
+    {
+      "scale": 1.01,
+    }
+  }
+  whileTap={
+    {
+      "scale": 0.99,
+    }
+  }
+>
+  <div
+    className="text-lg text-center font-mono text-grape-h hover:grape-p font-extrabold leading-loose bg-util hover:bg-grape-a rounded-full border border-grape rounded-full shadow-inner shadow-grape-d"
+    data-testid="atomic-div"
+    onClick={[Function]}
+  >
+    subtle
+  </div>
+</div>
+`;
