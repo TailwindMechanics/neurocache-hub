@@ -1,6 +1,6 @@
 //path: src\components\z_deprecated\chat\messageBox.tsx
 
-import Shorthand from "@/data/shorthand";
+import Shorthand from "@src/data/shorthand";
 
 export interface MessageData {
 	username: string;

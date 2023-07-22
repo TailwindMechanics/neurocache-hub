@@ -9,6 +9,7 @@
 		"lint": "next lint",
 		"storybook": "storybook dev",
 		"build-storybook": "storybook build",
+		"test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
 		"test": "jest"
 	},
 	"dependencies": {
@@ -61,6 +62,7 @@
 		"@storybook/addon-a11y": "^7.1.0",
 		"@storybook/addon-essentials": "7.1.0",
 		"@storybook/addon-interactions": "7.1.0",
+		"@storybook/addon-jest": "^7.1.0",
 		"@storybook/addon-links": "7.1.0",
 		"@storybook/addon-onboarding": "1.0.8",
 		"@storybook/blocks": "7.1.0",

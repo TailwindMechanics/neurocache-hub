@@ -2,8 +2,8 @@
 
 import { Session, AuthChangeEvent, User } from "@supabase/supabase-js";
 import { computed, makeAutoObservable } from "mobx";
-import { UserProfile } from "@/types/declarations";
-import { supabase } from "@/services/supabase";
+import { UserProfile } from "@src/types/declarations";
+import { supabase } from "@src/services/supabase";
 
 class UserStore {
 	user: UserProfile | null = null;

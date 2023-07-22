@@ -2,8 +2,8 @@
 
 "use client";
 
-import Building from "@/components/threejs/virtualBackground/building";
-import colors from "@/data/colors.json";
+import Building from "@src/components/threejs/virtualBackground/building";
+import colors from "@src/data/colors.json";
 
 const generateBuildings = (
 	count: number,

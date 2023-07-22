@@ -1,6 +1,6 @@
 //path: src\components\builders\behaviourBuilder\BehaviourBuilder.test.tsx
 
-import AtomicDiv from "@/components/atoms/atomicDiv";
+import AtomicDiv from "@src/components/atoms/atomicDiv";
 import userEvent from "@testing-library/user-event";
 import BehaviourBuilder from "./BehaviourBuilder";
 import { render } from "@testing-library/react";

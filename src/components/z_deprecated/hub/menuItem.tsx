@@ -2,7 +2,7 @@
 
 "use client";
 
-import { LivePanel } from "@/components/z_deprecated/generic/livePanel";
+import { LivePanel } from "@src/components/z_deprecated/generic/livePanel";
 import { FC, ReactElement } from "react";
 import Link from "next/link";
 
@@ -21,7 +21,7 @@ const MenuItem: FC<MenuItemProps> = ({ label, icon, path, active = false }) => {
 					<div className="flex-grow">
 						<Link href={path}>
 							<div
-								className={`flex w-full items-center justify-start border border-main-light p-2 text-text-dark ${
+								className={`border-main-light text-text-dark flex w-full items-center justify-start border p-2 ${
 									active
 										? "bg-main-light text-text-light"
 										: "hover:bg-main-light hover:text-text-light"

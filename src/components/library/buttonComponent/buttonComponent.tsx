@@ -1,12 +1,12 @@
 //path: src\components\library\buttonComponent\buttonComponent.tsx
 
-import TypographyBuilder from "@/components/builders/typographyBuilder/TypographyBuilder";
-import BehaviourBuilder from "@/components/builders/behaviourBuilder/BehaviourBuilder";
-import StyleBuilder from "@/components/builders/styleBuilder/StyleBuilder";
-import AtomicDiv from "@/components/atoms/atomicDiv";
-import { Style } from "@/types/declarations";
+import BehaviourBuilder from "@src/components/builders/behaviourBuilder/BehaviourBuilder";
+import AtomicDiv from "@src/components/atoms/atomicDiv";
+import { Style } from "@src/types/declarations";
 import { FC } from "react";
 import React from "react";
+import TypographyBuilder from "@src/components/builders/typographyBuilder/TypographyBuilder";
+import StyleBuilder from "@src/components/builders/styleBuilder/StyleBuilder";
 
 interface ButtonComponentProps {
 	category?: Style["Category"];

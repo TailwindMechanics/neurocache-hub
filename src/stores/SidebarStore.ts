@@ -7,9 +7,9 @@ import {
 	Squares2x2,
 	User,
 	Users,
-} from "@/data/icons";
+} from "@src/data/icons";
 import { computed, makeObservable, observable, action } from "mobx";
-import { IconProps, Route } from "@/types/declarations";
+import { IconProps, Route } from "@src/types/declarations";
 import UserStore from "./UserStore";
 
 class SidebarStore {

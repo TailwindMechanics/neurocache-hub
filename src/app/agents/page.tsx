@@ -2,7 +2,7 @@
 
 "use client";
 
-import HubLayout from "@/components/z_deprecated/hub/hubLayout";
+import HubLayout from "@src/components/z_deprecated/hub/hubLayout";
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {
@@ -162,7 +162,7 @@ const AddUserModal: FC = function () {
 
 const AllUsersTable: FC = function () {
 	return (
-		<Table className="min-w-full divide-y divide-gray-200 bg-bg grayscale dark:divide-gray-600">
+		<Table className="bg-bg min-w-full divide-y divide-gray-200 grayscale dark:divide-gray-600">
 			<Table.Head className="">
 				<Table.HeadCell>
 					<Label

@@ -1,7 +1,7 @@
 //path: src\types\declarations.d.ts
 
 import { ReactNode, FC, HTMLAttributes } from "react";
-import flatColors from '@/data/colors.ts';
+import flatColors from '@src/data/colors.ts';
 
 
 type ColorKeys = keyof typeof flatColors;

@@ -2,12 +2,12 @@
 
 "use client";
 
-import LeftSideBar from "@/components/z_deprecated/hub/leftSideBar";
-import MainContent from "@/components/z_deprecated/hub/mainContent";
-import UICanvas from "@/components/z_deprecated/generic/uiCanvas";
-import { storesContext, stores } from "@/stores";
+import LeftSideBar from "@src/components/z_deprecated/hub/leftSideBar";
+import MainContent from "@src/components/z_deprecated/hub/mainContent";
+import UICanvas from "@src/components/z_deprecated/generic/uiCanvas";
+import { storesContext, stores } from "@src/stores";
 import RouteGuard from "../generic/routeGuard";
-import Header from "@/components/z_deprecated/hub/header";
+import Header from "@src/components/z_deprecated/hub/header";
 import Drawer from "../drawer/sideDrawer";
 import { FC } from "react";
 
@@ -22,7 +22,7 @@ const HubLayout: FC<HubLayoutProps> = ({ headerText, children }) => {
 			<storesContext.Provider value={stores}>
 				<RouteGuard>
 					<UICanvas tailwind="w-full flex-col">
-						<div className="flex h-screen bg-bg text-text-light">
+						<div className="bg-bg text-text-light flex h-screen">
 							<LeftSideBar />
 							<div
 								className={`mx-10 my-10 flex w-full flex-col rounded-xl`}

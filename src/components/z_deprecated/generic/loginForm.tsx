@@ -2,7 +2,7 @@
 
 import { ChangeEvent, useContext, useState } from "react";
 import SignupDrawer from "../drawer/signupDrawer";
-import { storesContext } from "@/stores";
+import { storesContext } from "@src/stores";
 import validator from "validator";
 import type { FC } from "react";
 
@@ -41,7 +41,7 @@ const LoginForm: FC = function () {
 
 	return (
 		<div className="flex h-full w-full items-center justify-center ">
-			<div className="flex-col space-y-5 rounded-xl border border-main-light px-24 py-14 shadow-2xl drop-shadow-2xl">
+			<div className="border-main-light flex-col space-y-5 rounded-xl border px-24 py-14 shadow-2xl drop-shadow-2xl">
 				<h1 className="mb-2 text-center text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
 					Welcome back
 				</h1>
@@ -72,7 +72,7 @@ const LoginForm: FC = function () {
 					placeholder="Password"
 				/>
 				<div
-					className={`rounded-md border border-main-light bg-main-dark py-2 text-center text-text-dark shadow-lg hover:border-text-dark hover:bg-main-light hover:text-text-light`}
+					className={`border-main-light bg-main-dark text-text-dark hover:border-text-dark hover:bg-main-light hover:text-text-light rounded-md border py-2 text-center shadow-lg`}
 				>
 					<button onClick={handleLogin}>
 						Sign In

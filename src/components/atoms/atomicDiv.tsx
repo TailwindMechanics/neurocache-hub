@@ -1,6 +1,6 @@
 //path: src\components\atoms\atomicDiv.tsx
 
-import { AtomNode } from "@/types/declarations";
+import { AtomNode } from "@src/types/declarations";
 import React from "react";
 
 // prettier-ignore

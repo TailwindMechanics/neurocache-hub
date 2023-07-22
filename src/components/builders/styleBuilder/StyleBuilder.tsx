@@ -1,6 +1,6 @@
 //path: src\components\builders\styleBuilder\StyleBuilder.tsx
 
-import { AtomNode, AtomProps, Style } from "@/types/declarations";
+import { AtomNode, AtomProps, Style } from "@src/types/declarations";
 import React from "react";
 
 type CategoryStyles = {

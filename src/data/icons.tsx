@@ -1,6 +1,6 @@
 //path: src\data\icons.tsx
 
-import { IconProps } from "@/types/declarations";
+import { IconProps } from "@src/types/declarations";
 import React, { FC } from "react";
 
 export const Users: FC<IconProps> = ({ className = "w-5 h-5" }) => (

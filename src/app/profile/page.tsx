@@ -2,9 +2,9 @@
 
 "use client";
 
-import { LivePanel } from "@/components/z_deprecated/generic/livePanel";
+import { LivePanel } from "@src/components/z_deprecated/generic/livePanel";
 import { HiBriefcase, HiMap } from "react-icons/hi";
-import Hublayout from "@/components/z_deprecated/hub/hubLayout";
+import Hublayout from "@src/components/z_deprecated/hub/hubLayout";
 import { Badge, Progress } from "flowbite-react";
 import { FC } from "react";
 import Image from "next/image";
@@ -39,7 +39,7 @@ const ProfileRoot: FC = function () {
 
 const ProfileIntro: FC = function () {
 	return (
-		<div className="mb-10 rounded-lg border p-6 shadow-2xl drop-shadow-2xl dark:border-main-light dark:bg-main-dark">
+		<div className="dark:border-main-light dark:bg-main-dark mb-10 rounded-lg border p-6 shadow-2xl drop-shadow-2xl">
 			<div className="sm:flex sm:space-x-4 xl:block xl:space-x-0">
 				<Image
 					alt=""
@@ -49,17 +49,17 @@ const ProfileIntro: FC = function () {
 					height={40}
 				/>
 				<div>
-					<h2 className="text-xl font-bold dark:text-text-light">
+					<h2 className="dark:text-text-light text-xl font-bold">
 						Fart Man
 					</h2>
 					<ul className="mt-2 space-y-1">
-						<li className="flex items-center text-sm font-normal text-text-dark dark:text-text-light">
-							<HiBriefcase className="mr-2 text-lg text-text-dark dark:text-text-light" />
+						<li className="text-text-dark dark:text-text-light flex items-center text-sm font-normal">
+							<HiBriefcase className="text-text-dark dark:text-text-light mr-2 text-lg" />
 							Front-end
 							Developer
 						</li>
-						<li className="flex items-center text-sm font-normal text-text-dark dark:text-text-light">
-							<HiMap className="mr-2 text-lg text-text-dark dark:text-text-light" />
+						<li className="text-text-dark dark:text-text-light flex items-center text-sm font-normal">
+							<HiMap className="text-text-dark dark:text-text-light mr-2 text-lg" />
 							San
 							Francisco,
 							USA
@@ -69,13 +69,13 @@ const ProfileIntro: FC = function () {
 			</div>
 			<div className="sm:flex xl:block xl:space-y-4">
 				<div className="sm:flex-1">
-					<address className="text-sm font-normal not-italic text-text-dark dark:text-text-light">
+					<address className="text-text-dark dark:text-text-light text-sm font-normal not-italic">
 						<div className="mt-4">
 							Email
 							address
 						</div>
 						<a
-							className="text-sm font-medium text-text-dark dark:text-text-light"
+							className="text-text-dark dark:text-text-light text-sm font-medium"
 							href="mailto:webmaster@flowbite.com"
 						>
 							yourname@flowbite.com
@@ -84,7 +84,7 @@ const ProfileIntro: FC = function () {
 							Home
 							address
 						</div>
-						<div className="mb-2 text-sm font-medium text-text-dark dark:text-text-light">
+						<div className="text-text-dark dark:text-text-light mb-2 text-sm font-medium">
 							92 Miles
 							Drive,
 							Newark, NJ
@@ -99,7 +99,7 @@ const ProfileIntro: FC = function () {
 							Phone
 							number
 						</div>
-						<div className="mb-2 text-sm font-medium text-text-dark dark:text-text-light">
+						<div className="text-text-dark dark:text-text-light mb-2 text-sm font-medium">
 							+00 123
 							456 789 /
 							+12 345
@@ -108,10 +108,10 @@ const ProfileIntro: FC = function () {
 					</address>
 				</div>
 				<div className="hidden sm:flex-1">
-					<h3 className="mb-2 text-base font-bold text-text-dark dark:text-text-light">
+					<h3 className="text-text-dark dark:text-text-light mb-2 text-base font-bold">
 						About
 					</h3>
-					<p className="text-sm font-normal text-text-dark dark:text-text-light">
+					<p className="text-text-dark dark:text-text-light text-sm font-normal">
 						Dedicated,
 						passionate, and
 						accomplished Full
@@ -135,7 +135,7 @@ const ProfileIntro: FC = function () {
 				</div>
 			</div>
 			<div>
-				<h3 className="mb-2 text-base font-bold text-text-dark dark:text-text-light">
+				<h3 className="text-text-dark dark:text-text-light mb-2 text-base font-bold">
 					Software Skill
 				</h3>
 				<div className="flex space-x-3 opacity-40 grayscale">
@@ -284,9 +284,9 @@ const ProfileIntro: FC = function () {
 
 const Skills: FC = function () {
 	return (
-		<div className="mb-10 rounded-lg border bg-main-light p-4 shadow drop-shadow-2xl grayscale dark:border-main-light dark:bg-main-dark dark:shadow-2xl sm:p-6 xl:p-8">
+		<div className="bg-main-light dark:border-main-light dark:bg-main-dark mb-10 rounded-lg border p-4 shadow drop-shadow-2xl grayscale dark:shadow-2xl sm:p-6 xl:p-8">
 			<div className="flow-root">
-				<h3 className="text-xl font-bold dark:text-text-dark">
+				<h3 className="dark:text-text-dark text-xl font-bold">
 					Skills
 				</h3>
 				<ul className="mt-4 flex flex-wrap gap-2">
@@ -392,9 +392,9 @@ const Skills: FC = function () {
 
 const Hobbies: FC = function () {
 	return (
-		<div className="mb-10 rounded-lg border bg-main-light p-4 shadow drop-shadow-2xl dark:border-main-light dark:bg-main-dark dark:shadow-2xl sm:p-6 xl:p-8">
+		<div className="bg-main-light dark:border-main-light dark:bg-main-dark mb-10 rounded-lg border p-4 shadow drop-shadow-2xl dark:shadow-2xl sm:p-6 xl:p-8">
 			<div className="flow-root">
-				<h3 className="text-xl font-bold dark:text-text-light">
+				<h3 className="dark:text-text-light text-xl font-bold">
 					Hobbies
 				</h3>
 				<ul className="mt-4 flex flex-wrap gap-2">
@@ -470,16 +470,16 @@ const Hobbies: FC = function () {
 
 const GeneralInformation: FC = function () {
 	return (
-		<div className="mb-10 rounded-lg border bg-main-light p-4 shadow drop-shadow-2xl dark:border-main-light dark:bg-main-dark dark:shadow-2xl sm:p-6 xl:p-8">
-			<h3 className="mb-4 text-xl font-bold dark:text-text-light">
+		<div className="bg-main-light dark:border-main-light dark:bg-main-dark mb-10 rounded-lg border p-4 shadow drop-shadow-2xl dark:shadow-2xl sm:p-6 xl:p-8">
+			<h3 className="dark:text-text-light mb-4 text-xl font-bold">
 				General information
 			</h3>
 			<dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
 				<div className="sm:col-span-2">
-					<dt className="text-lg font-medium text-text-dark dark:text-text-light">
+					<dt className="text-text-dark dark:text-text-light text-lg font-medium">
 						About me
 					</dt>
-					<dd className="mt-1 max-w-prose space-y-3 text-sm text-text-dark dark:text-text-light">
+					<dd className="text-text-dark dark:text-text-light mt-1 max-w-prose space-y-3 text-sm">
 						<p>
 							Tincidunt
 							quam neque
@@ -547,70 +547,70 @@ const GeneralInformation: FC = function () {
 					</dd>
 				</div>
 				<div>
-					<dt className="text-sm font-medium text-text-dark dark:text-text-light">
+					<dt className="text-text-dark dark:text-text-light text-sm font-medium">
 						Education
 					</dt>
-					<dd className="text-sm font-semibold text-text-dark dark:text-text-light">
+					<dd className="text-text-dark dark:text-text-light text-sm font-semibold">
 						Thomas Jeff High
 						School, Stanford
 						University
 					</dd>
 				</div>
 				<div>
-					<dt className="text-sm font-medium text-text-dark dark:text-text-light">
+					<dt className="text-text-dark dark:text-text-light text-sm font-medium">
 						Work History
 					</dt>
-					<dd className="text-sm font-semibold text-text-dark dark:text-text-light">
+					<dd className="text-text-dark dark:text-text-light text-sm font-semibold">
 						Twitch, Google,
 						Apple
 					</dd>
 				</div>
 				<div>
-					<dt className="text-sm font-medium text-text-dark dark:text-text-light">
+					<dt className="text-text-dark dark:text-text-light text-sm font-medium">
 						Join Date
 					</dt>
-					<dd className="text-sm font-semibold text-text-dark dark:text-text-light">
+					<dd className="text-text-dark dark:text-text-light text-sm font-semibold">
 						12-09-2021
 					</dd>
 				</div>
 				<div>
-					<dt className="text-sm font-medium text-text-dark dark:text-text-light">
+					<dt className="text-text-dark dark:text-text-light text-sm font-medium">
 						Languages
 					</dt>
-					<dd className="text-sm font-semibold text-text-dark dark:text-text-light">
+					<dd className="text-text-dark dark:text-text-light text-sm font-semibold">
 						English, German,
 						Italian, Spanish
 					</dd>
 				</div>
 				<div>
-					<dt className="text-sm font-medium text-text-dark dark:text-text-light">
+					<dt className="text-text-dark dark:text-text-light text-sm font-medium">
 						Organization
 					</dt>
-					<dd className="text-sm font-semibold text-text-dark dark:text-text-light">
+					<dd className="text-text-dark dark:text-text-light text-sm font-semibold">
 						Themesberg LLC
 					</dd>
 				</div>
 				<div>
-					<dt className="text-sm font-medium text-text-dark dark:text-text-light">
+					<dt className="text-text-dark dark:text-text-light text-sm font-medium">
 						Role
 					</dt>
-					<dd className="text-sm font-semibold text-text-dark dark:text-text-light">
+					<dd className="text-text-dark dark:text-text-light text-sm font-semibold">
 						Graphic Designer
 					</dd>
 				</div>
 				<div>
-					<dt className="text-sm font-medium text-text-dark dark:text-text-light">
+					<dt className="text-text-dark dark:text-text-light text-sm font-medium">
 						Department
 					</dt>
-					<dd className="text-sm font-semibold text-text-dark dark:text-text-light">
+					<dd className="text-text-dark dark:text-text-light text-sm font-semibold">
 						Marketing
 					</dd>
 				</div>
 				<div>
-					<dt className="text-sm font-medium text-text-dark dark:text-text-light">
+					<dt className="text-text-dark dark:text-text-light text-sm font-medium">
 						Birthday
 					</dt>
-					<dd className="text-sm font-semibold text-text-dark dark:text-text-light">
+					<dd className="text-text-dark dark:text-text-light text-sm font-semibold">
 						15-08-1990
 					</dd>
 				</div>
@@ -621,11 +621,11 @@ const GeneralInformation: FC = function () {
 
 const ProgressBars: FC = function () {
 	return (
-		<div className="mb-10 rounded-lg border bg-main-light p-4 shadow drop-shadow-2xl dark:border-main-light dark:bg-main-dark dark:shadow-2xl sm:p-6 xl:p-8">
+		<div className="bg-main-light dark:border-main-light dark:bg-main-dark mb-10 rounded-lg border p-4 shadow drop-shadow-2xl dark:shadow-2xl sm:p-6 xl:p-8">
 			<div className="grid grid-cols-1 gap-6 grayscale md:grid-cols-2 md:gap-16 lg:gap-8 2xl:gap-24">
 				<div className=" space-y-6">
 					<div>
-						<div className="mb-1 text-base font-medium text-text-dark dark:text-text-light">
+						<div className="text-text-dark dark:text-text-light mb-1 text-base font-medium">
 							Figma
 						</div>
 						<Progress
@@ -636,7 +636,7 @@ const ProgressBars: FC = function () {
 						/>
 					</div>
 					<div>
-						<div className="mb-1 text-base font-medium text-text-dark dark:text-text-light">
+						<div className="text-text-dark dark:text-text-light mb-1 text-base font-medium">
 							Php
 						</div>
 						<Progress
@@ -647,7 +647,7 @@ const ProgressBars: FC = function () {
 						/>
 					</div>
 					<div>
-						<div className="mb-1 text-base font-medium text-text-dark dark:text-text-light">
+						<div className="text-text-dark dark:text-text-light mb-1 text-base font-medium">
 							HTML
 						</div>
 						<Progress
@@ -658,7 +658,7 @@ const ProgressBars: FC = function () {
 						/>
 					</div>
 					<div>
-						<div className="mb-1 text-base font-medium text-text-dark dark:text-text-light">
+						<div className="text-text-dark dark:text-text-light mb-1 text-base font-medium">
 							React
 						</div>
 						<Progress
@@ -671,7 +671,7 @@ const ProgressBars: FC = function () {
 				</div>
 				<div className="space-y-6">
 					<div>
-						<div className="mb-1 text-base font-medium text-text-dark dark:text-text-light">
+						<div className="text-text-dark dark:text-text-light mb-1 text-base font-medium">
 							Vue
 						</div>
 						<Progress
@@ -682,7 +682,7 @@ const ProgressBars: FC = function () {
 						/>
 					</div>
 					<div>
-						<div className="mb-1 text-base font-medium text-text-dark dark:text-text-light">
+						<div className="text-text-dark dark:text-text-light mb-1 text-base font-medium">
 							Marketing
 						</div>
 						<Progress
@@ -693,7 +693,7 @@ const ProgressBars: FC = function () {
 						/>
 					</div>
 					<div>
-						<div className="mb-1 text-base font-medium text-text-dark dark:text-text-light">
+						<div className="text-text-dark dark:text-text-light mb-1 text-base font-medium">
 							Product
 							Design
 						</div>
@@ -705,7 +705,7 @@ const ProgressBars: FC = function () {
 						/>
 					</div>
 					<div>
-						<div className="mb-1 text-base font-medium text-text-dark dark:text-text-light">
+						<div className="text-text-dark dark:text-text-light mb-1 text-base font-medium">
 							Angular
 						</div>
 						<Progress

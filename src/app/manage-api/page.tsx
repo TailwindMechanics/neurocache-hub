@@ -2,8 +2,8 @@
 
 "use client";
 
-import DataTable from "@/components/z_deprecated/generic/dataTable";
-import Hublayout from "@/components/z_deprecated/hub/hubLayout";
+import DataTable from "@src/components/z_deprecated/generic/dataTable";
+import Hublayout from "@src/components/z_deprecated/hub/hubLayout";
 import { FC } from "react";
 
 const ManageApiRoot: FC = () => {

@@ -1,8 +1,8 @@
 //path: src\components\z_deprecated\drawer\sideDrawer.tsx
 
 import { FC, useContext, useEffect } from "react";
-import { RightArrow } from "@/data/icons";
-import { storesContext } from "@/stores";
+import { RightArrow } from "@src/data/icons";
+import { storesContext } from "@src/stores";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react";
 import { reaction } from "mobx";
@@ -45,7 +45,7 @@ const SideDrawer: FC = () => {
 				tabIndex={-1}
 				aria-labelledby="drawer-right-label"
 			>
-				<div className="my-2 mr-1 flex w-full flex-col items-center rounded-xl border border-main-light bg-main-dark text-text-dark shadow-2xl drop-shadow-2xl">
+				<div className="border-main-light bg-main-dark text-text-dark my-2 mr-1 flex w-full flex-col items-center rounded-xl border shadow-2xl drop-shadow-2xl">
 					{isOpen && (
 						<button
 							className="self-start px-5 py-4"
@@ -53,7 +53,7 @@ const SideDrawer: FC = () => {
 								drawerStore.close()
 							}
 						>
-							<RightArrow className="h-6 w-6 text-text-dark text-opacity-50 hover:text-text-light" />
+							<RightArrow className="text-text-dark hover:text-text-light h-6 w-6 text-opacity-50" />
 						</button>
 					)}
 					<div className="h-full w-full">

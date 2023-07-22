@@ -1,9 +1,9 @@
 //path: src\components\z_deprecated\generic\userBadge.tsx
 
 import ProfileDrawer from "../drawer/profileDrawer";
-import { storesContext } from "@/stores";
+import { storesContext } from "@src/stores";
 import { useContext } from "react";
-import { User } from "@/data/icons";
+import { User } from "@src/data/icons";
 import Image from "next/image";
 
 export default function UserBadge() {
@@ -27,7 +27,7 @@ export default function UserBadge() {
 	return (
 		<button
 			onClick={handleClick}
-			className="rounded-full border border-main-light bg-main-dark p-2 text-sm text-text-dark  shadow-xl drop-shadow-xl hover:border-text-dark hover:bg-main-light hover:text-text-light"
+			className="border-main-light bg-main-dark text-text-dark hover:border-text-dark hover:bg-main-light hover:text-text-light rounded-full  border p-2 text-sm shadow-xl drop-shadow-xl"
 			style={{
 				position: "fixed",
 				right: "0.5rem",

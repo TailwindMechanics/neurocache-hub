@@ -2,11 +2,11 @@
 
 "use client";
 
-import { LivePanel } from "@/components/z_deprecated/generic/livePanel";
-import { Divider } from "@/components/z_deprecated/generic/divider";
+import { LivePanel } from "@src/components/z_deprecated/generic/livePanel";
+import { Divider } from "@src/components/z_deprecated/generic/divider";
 import { usePathname } from "next/navigation";
-import Content from "@/data/content.json";
-import { storesContext } from "@/stores";
+import Content from "@src/data/content.json";
+import { storesContext } from "@src/stores";
 import { FC, useContext } from "react";
 import { observer } from "mobx-react";
 import MenuItem from "./menuItem";
@@ -18,11 +18,11 @@ const LeftSidebar: FC = observer(() => {
 	return (
 		<>
 			<div
-				className={`my-10 ml-10 w-1/6 flex-col rounded-xl border border-main-light bg-main-dark shadow-2xl drop-shadow-2xl`}
+				className={`border-main-light bg-main-dark my-10 ml-10 w-1/6 flex-col rounded-xl border shadow-2xl drop-shadow-2xl`}
 			>
 				<LivePanel tailwind="">
 					<h1
-						className={`flex justify-center px-2 pt-3 text-3xl font-bold text-text-light`}
+						className={`text-text-light flex justify-center px-2 pt-3 text-3xl font-bold`}
 					>
 						{Content.Neurocache}
 					</h1>

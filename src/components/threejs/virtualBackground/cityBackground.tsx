@@ -2,12 +2,12 @@
 
 "use client";
 
-import Buildings from "@/components/threejs/virtualBackground/buildings";
-import FreeFlyControls from "@/threeComponents/freeFlyControls";
-import Lights from "@/components/threejs/virtualBackground/lights";
-import CameraSetup from "@/threeComponents/cameraSetup";
-import SetBgColor from "@/threeComponents/setBgColour";
-import Road from "@/components/threejs/geometry/road";
+import Buildings from "@src/components/threejs/virtualBackground/buildings";
+import FreeFlyControls from "@src/threeComponents/freeFlyControls";
+import Lights from "@src/components/threejs/virtualBackground/lights";
+import CameraSetup from "@src/threeComponents/cameraSetup";
+import SetBgColor from "@src/threeComponents/setBgColour";
+import Road from "@src/components/threejs/geometry/road";
 import colors from "src/data/colors.json";
 import React from "react";
 

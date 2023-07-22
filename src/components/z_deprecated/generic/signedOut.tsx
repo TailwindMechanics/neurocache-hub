@@ -1,6 +1,6 @@
 //path: src\components\z_deprecated\generic\signedOut.tsx
 
-import { storesContext } from "@/stores";
+import { storesContext } from "@src/stores";
 import { useContext } from "react";
 
 interface SignedOutProps {

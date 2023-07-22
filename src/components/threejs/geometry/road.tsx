@@ -2,8 +2,8 @@
 
 "use client";
 
-import PlaneGeo from "@/components/threejs/geometry/planeGeo";
-import colors from "@/data/colors.json";
+import PlaneGeo from "@src/components/threejs/geometry/planeGeo";
+import colors from "@src/data/colors.json";
 import React from "react";
 
 interface RoadProps {

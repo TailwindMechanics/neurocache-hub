@@ -1,6 +1,6 @@
 //path: src\components\builders\typographyBuilder\TypographyBuilder.tsx
 
-import { AtomNode, AtomProps, Style } from "@/types/declarations";
+import { AtomNode, AtomProps, Style } from "@src/types/declarations";
 import React from "react";
 
 type CategoryStyles = {

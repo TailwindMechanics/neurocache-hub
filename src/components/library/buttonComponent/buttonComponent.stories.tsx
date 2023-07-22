@@ -4,9 +4,13 @@ import { Meta, StoryObj } from "@storybook/react";
 import ButtonComponent from "./buttonComponent";
 import React from "react";
 
+import results from "@root/.jest-test-results.json";
+import { withTests } from "@storybook/addon-jest";
+
 export default {
 	title: "Buttons/ButtonComponent",
 	component: ButtonComponent,
+	decorators: [withTests({ results })],
 	argTypes: {
 		category: {
 			control: {

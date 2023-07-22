@@ -1,6 +1,6 @@
 //path: src\components\builders\behaviourBuilder\BehaviourBuilder.tsx
 
-import { AtomNode, AtomProps } from "@/types/declarations";
+import { AtomNode, AtomProps } from "@src/types/declarations";
 import { motion } from "framer-motion";
 import React from "react";
 

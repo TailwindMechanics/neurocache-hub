@@ -3,6 +3,7 @@ neurocache-hub
 ├─ .eslintignore
 ├─ .eslintrc.json
 ├─ .gitignore
+├─ .jest-test-results.json
 ├─ .prettierignore
 ├─ .storybook
 │  ├─ main.js

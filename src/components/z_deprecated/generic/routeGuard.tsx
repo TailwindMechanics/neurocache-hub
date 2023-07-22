@@ -2,7 +2,7 @@
 
 import { FC, useContext, useEffect, ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import { storesContext } from "@/stores";
+import { storesContext } from "@src/stores";
 import { observer } from "mobx-react";
 
 interface RouteGuardProps {
