@@ -1,8 +1,8 @@
 //path: src\components\library\buttonComponent\buttonComponent.tsx
 
-import TypographyBuilder from "@/components/builders/typography/TypographyBuilder";
-import BehaviourBuilder from "@/components/builders/behaviour/BehaviourBuilder";
-import StyleBuilder from "@/components/builders/style/StyleBuilder";
+import TypographyBuilder from "@/components/builders/typographyBuilder/TypographyBuilder";
+import BehaviourBuilder from "@/components/builders/behaviourBuilder/BehaviourBuilder";
+import StyleBuilder from "@/components/builders/styleBuilder/StyleBuilder";
 import AtomComponent from "@/components/atoms/atomicDiv";
 import { Style } from "@/types/declarations";
 import { FC } from "react";
