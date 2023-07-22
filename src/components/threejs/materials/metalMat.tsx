@@ -1,4 +1,4 @@
-//path: src\threeComponents\materials\metalMat.tsx
+//path: src\components\threejs\materials\metalMat.tsx
 
 "use client";
 

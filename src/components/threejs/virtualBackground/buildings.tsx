@@ -1,8 +1,8 @@
-//path: src\threeComponents\virtualBackground\buildings.tsx
+//path: src\components\threejs\virtualBackground\buildings.tsx
 
 "use client";
 
-import Building from "@/threeComponents/virtualBackground/building";
+import Building from "@/components/threejs/virtualBackground/building";
 import colors from "@/data/colors.json";
 
 const generateBuildings = (

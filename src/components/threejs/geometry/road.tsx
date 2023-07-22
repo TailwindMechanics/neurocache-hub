@@ -1,8 +1,8 @@
-//path: src\threeComponents\geometry\road.tsx
+//path: src\components\threejs\geometry\road.tsx
 
 "use client";
 
-import PlaneGeo from "@/threeComponents/geometry/planeGeo";
+import PlaneGeo from "@/components/threejs/geometry/planeGeo";
 import colors from "@/data/colors.json";
 import React from "react";
 

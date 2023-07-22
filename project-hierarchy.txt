@@ -17,46 +17,6 @@ neurocache-hub
 │  ├─ settings.json
 │  └─ tasks.json
 ├─ autoCommentPath.js
-├─ coverage
-│  ├─ clover.xml
-│  ├─ coverage-final.json
-│  ├─ lcov-report
-│  │  ├─ atoms
-│  │  │  ├─ atomComponent.tsx.html
-│  │  │  └─ index.html
-│  │  ├─ base.css
-│  │  ├─ block-navigation.js
-│  │  ├─ builders
-│  │  │  ├─ index.html
-│  │  │  └─ StyleBuilder.tsx.html
-│  │  ├─ favicon.png
-│  │  ├─ index.html
-│  │  ├─ library
-│  │  │  ├─ buttons
-│  │  │  │  ├─ index.html
-│  │  │  │  ├─ primaryButton
-│  │  │  │  │  ├─ index.html
-│  │  │  │  │  └─ primaryButton.tsx.html
-│  │  │  │  ├─ primaryButton.tsx.html
-│  │  │  │  └─ secondaryButton
-│  │  │  │     ├─ index.html
-│  │  │  │     └─ secondaryButton.tsx.html
-│  │  │  └─ testButton
-│  │  │     ├─ index.html
-│  │  │     └─ testButton.tsx.html
-│  │  ├─ prettify.css
-│  │  ├─ prettify.js
-│  │  ├─ primaryButton
-│  │  │  ├─ index.html
-│  │  │  └─ primaryButton.tsx.html
-│  │  ├─ primaryButton.tsx.html
-│  │  ├─ secondaryButton
-│  │  │  ├─ index.html
-│  │  │  ├─ primaryButton.tsx.html
-│  │  │  └─ secondaryButton.tsx.html
-│  │  ├─ sort-arrow-sprite.png
-│  │  └─ sorter.js
-│  └─ lcov.info
 ├─ docs
 │  ├─ context
 │  │  ├─ context.md
@@ -125,6 +85,7 @@ neurocache-hub
 │  │  ├─ page.tsx
 │  │  └─ profile
 │  │     └─ page.tsx
+│  ├─ assets
 │  ├─ components
 │  │  ├─ atoms
 │  │  │  └─ atomicDiv.tsx
@@ -146,6 +107,27 @@ neurocache-hub
 │  │  │  └─ template
 │  │  │     ├─ template.stories.tsx.md
 │  │  │     └─ template.test.tsx.md
+│  │  ├─ threejs
+│  │  │  ├─ controllers
+│  │  │  │  ├─ cameraLook.tsx
+│  │  │  │  └─ freeFlyControls.tsx
+│  │  │  ├─ generic
+│  │  │  │  ├─ cameraSetup.tsx
+│  │  │  │  ├─ setBgColour.tsx
+│  │  │  │  ├─ threeCanvas.tsx
+│  │  │  │  └─ wasdControls.ts
+│  │  │  ├─ geometry
+│  │  │  │  ├─ planeGeo.tsx
+│  │  │  │  └─ road.tsx
+│  │  │  ├─ materials
+│  │  │  │  ├─ mappedMetalMat.tsx
+│  │  │  │  └─ metalMat.tsx
+│  │  │  └─ virtualBackground
+│  │  │     ├─ building.tsx
+│  │  │     ├─ buildings.tsx
+│  │  │     ├─ cityBackground.tsx
+│  │  │     ├─ lights.tsx
+│  │  │     └─ test.md
 │  │  └─ z_deprecated
 │  │     ├─ charts
 │  │     │  ├─ acquisitionChart.tsx
@@ -209,6 +191,7 @@ neurocache-hub
 │  │  ├─ icons.tsx
 │  │  └─ shorthand.tsx
 │  ├─ lib
+│  ├─ services
 │  │  └─ supabase.ts
 │  ├─ stores
 │  │  ├─ ChannelStore.ts
@@ -217,25 +200,6 @@ neurocache-hub
 │  │  ├─ MessageStore.ts
 │  │  ├─ SidebarStore.ts
 │  │  └─ UserStore.ts
-│  ├─ threeComponents
-│  │  ├─ cameraLook.tsx
-│  │  ├─ cameraSetup.tsx
-│  │  ├─ freeFlyControls.tsx
-│  │  ├─ geometry
-│  │  │  ├─ planeGeo.tsx
-│  │  │  └─ road.tsx
-│  │  ├─ materials
-│  │  │  ├─ mappedMetalMat.tsx
-│  │  │  └─ metalMat.tsx
-│  │  ├─ setBgColour.tsx
-│  │  ├─ threeCanvas.tsx
-│  │  ├─ virtualBackground
-│  │  │  ├─ building.tsx
-│  │  │  ├─ buildings.tsx
-│  │  │  ├─ cityBackground.tsx
-│  │  │  ├─ lights.tsx
-│  │  │  └─ test.md
-│  │  └─ wasdControls.ts
 │  ├─ types
 │  │  ├─ declarations.d.ts
 │  │  └─ index.ts

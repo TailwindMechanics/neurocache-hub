@@ -3,7 +3,7 @@
 import TypographyBuilder from "@/components/builders/typographyBuilder/TypographyBuilder";
 import BehaviourBuilder from "@/components/builders/behaviourBuilder/BehaviourBuilder";
 import StyleBuilder from "@/components/builders/styleBuilder/StyleBuilder";
-import AtomComponent from "@/components/atoms/atomicDiv";
+import AtomicDiv from "@/components/atoms/atomicDiv";
 import { Style } from "@/types/declarations";
 import { FC } from "react";
 import React from "react";
@@ -19,7 +19,7 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
 	label = "",
 	onClick,
 }) => {
-	let Build = new StyleBuilder(AtomComponent)
+	let Build = new StyleBuilder(AtomicDiv)
 		.withBg(category)
 		.withHover(category)
 		.withBorderRadius(category)

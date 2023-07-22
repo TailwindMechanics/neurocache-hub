@@ -1,8 +1,8 @@
-//path: src\threeComponents\freeFlyControls.tsx
+//path: src\components\threejs\controllers\freeFlyControls.tsx
 
 "use client";
 
-import WasdControls from "./wasdControls";
+import WasdControls from "../generic/wasdControls";
 import CameraLook from "./cameraLook";
 
 interface FreeFlyControlsProps {

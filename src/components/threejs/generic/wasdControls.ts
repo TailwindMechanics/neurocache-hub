@@ -1,4 +1,4 @@
-//path: src\threeComponents\wasdControls.ts
+//path: src\components\threejs\generic\wasdControls.ts
 
 "use client";
 

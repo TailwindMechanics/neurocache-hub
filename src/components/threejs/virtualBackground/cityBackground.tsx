@@ -1,13 +1,13 @@
-//path: src\threeComponents\virtualBackground\cityBackground.tsx
+//path: src\components\threejs\virtualBackground\cityBackground.tsx
 
 "use client";
 
-import Buildings from "@/threeComponents/virtualBackground/buildings";
+import Buildings from "@/components/threejs/virtualBackground/buildings";
 import FreeFlyControls from "@/threeComponents/freeFlyControls";
-import Lights from "@/threeComponents/virtualBackground/lights";
+import Lights from "@/components/threejs/virtualBackground/lights";
 import CameraSetup from "@/threeComponents/cameraSetup";
 import SetBgColor from "@/threeComponents/setBgColour";
-import Road from "@/threeComponents/geometry/road";
+import Road from "@/components/threejs/geometry/road";
 import colors from "src/data/colors.json";
 import React from "react";
 

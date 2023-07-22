@@ -3,7 +3,7 @@
 import { Session, AuthChangeEvent, User } from "@supabase/supabase-js";
 import { computed, makeAutoObservable } from "mobx";
 import { UserProfile } from "@/types/declarations";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/services/supabase";
 
 class UserStore {
 	user: UserProfile | null = null;
