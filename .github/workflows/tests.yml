@@ -2,9 +2,13 @@ name: CI
 
 on:
           push:
-                    branches: [main]
+                    branches:
+                              [
+                                        development,
+                                        feature/SD_v0_create-component-library_20230718,
+                              ]
           pull_request:
-                    branches: [main]
+                    branches: [main, development]
 
 jobs:
           build:
