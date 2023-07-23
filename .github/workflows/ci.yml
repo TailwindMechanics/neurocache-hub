@@ -33,10 +33,11 @@ jobs:
               run: npx pnpm install
 
             - name: Run tests
-              run: npx pnpm run test
+              run: npx pnpm run test:generate-output
 
             - name: Publish Test Results
               uses: EnricoMi/publish-unit-test-result-action@v2.8.0
               with:
                   github_token: ${{ secrets.NEURO_CACHE }}
+                  files: ./test-results/junit/results.xml
               if: always()

@@ -9,7 +9,7 @@
 		"lint": "next lint",
 		"storybook": "storybook dev",
 		"build-storybook": "storybook build",
-		"test:generate-output": "jest --json --outputFile=.jest-test-results.json",
+		"test:generate-output": "jest --ci --reporters=default --reporters=jest-junit",
 		"test": "jest"
 	},
 	"dependencies": {
