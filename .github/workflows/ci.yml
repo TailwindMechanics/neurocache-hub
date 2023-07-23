@@ -26,11 +26,14 @@ jobs:
             - name: Install pnpm
               run: npm install -g pnpm
 
+            - name: Log pnpm version
+              run: npx pnpm --version
+
             - name: Install dependencies
-              run: pnpm install
+              run: npx pnpm install
 
             - name: Run tests
-              run: pnpm run test
+              run: npx pnpm run test
 
             - name: Publish Test Results
               uses: EnricoMi/publish-unit-test-result-action@v2.8.0
