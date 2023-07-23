@@ -69,14 +69,9 @@ export default class BehaviourBuilder {
 		this.newProps = {
 			...this.newProps,
 			tabIndex: 0,
-			onKeyDown: (
-				event: React.KeyboardEvent<HTMLDivElement>,
-			) => {
+			onKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => {
 				// Check if the key pressed was either Enter or Spacebar
-				if (
-					event.key === "Enter" ||
-					event.key === " "
-				) {
+				if (event.key === "Enter" || event.key === " ") {
 					// Prevent the default action to stop scrolling when space clicked
 					event.preventDefault();
 					// Trigger the onClick event if one is set
@@ -92,11 +87,7 @@ export default class BehaviourBuilder {
 
 	build(): AtomNode {
 		const RenderNode = (props: any) => (
-			<this.node
-				{...this.newProps}
-				{...this.animationProps}
-				{...props}
-			/>
+			<this.node {...this.newProps} {...this.animationProps} {...props} />
 		);
 		return RenderNode;
 	}
