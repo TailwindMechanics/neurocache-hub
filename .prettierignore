@@ -1,3 +1,6 @@
+# Ignore yaml
+*.yml
+
 # Ignore markdown files
 *.md
 

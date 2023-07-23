@@ -1,1 +1,268 @@
-{"numFailedTestSuites":0,"numFailedTests":0,"numPassedTestSuites":5,"numPassedTests":12,"numPendingTestSuites":0,"numPendingTests":0,"numRuntimeErrorTestSuites":0,"numTodoTests":0,"numTotalTestSuites":5,"numTotalTests":12,"openHandles":[],"snapshot":{"added":0,"didUpdate":false,"failure":false,"filesAdded":0,"filesRemoved":0,"filesRemovedList":[],"filesUnmatched":0,"filesUpdated":0,"matched":4,"total":4,"unchecked":0,"uncheckedKeysByFile":[],"unmatched":0,"updated":0},"startTime":1690104510679,"success":true,"testResults":[{"assertionResults":[{"ancestorTitles":["StyleBuilder"],"duration":36,"failureDetails":[],"failureMessages":[],"fullName":"StyleBuilder adds styles correctly","invocations":1,"location":null,"numPassingAsserts":3,"retryReasons":[],"status":"passed","title":"adds styles correctly"}],"endTime":1690104513519,"message":"","name":"C:\\Work\\Projects\\neurocache-hub\\src\\components\\builders\\styleBuilder\\StyleBuilder.test.tsx","startTime":1690104512014,"status":"passed","summary":""},{"assertionResults":[{"ancestorTitles":["TypographyBuilder"],"duration":36,"failureDetails":[],"failureMessages":[],"fullName":"TypographyBuilder adds typography styles correctly","invocations":1,"location":null,"numPassingAsserts":7,"retryReasons":[],"status":"passed","title":"adds typography styles correctly"}],"endTime":1690104513524,"message":"","name":"C:\\Work\\Projects\\neurocache-hub\\src\\components\\builders\\typographyBuilder\\TypographyBuilder.test.tsx","startTime":1690104512016,"status":"passed","summary":""},{"assertionResults":[{"ancestorTitles":["ButtonComponent"],"duration":108,"failureDetails":[],"failureMessages":[],"fullName":"ButtonComponent renders without error","invocations":1,"location":null,"numPassingAsserts":1,"retryReasons":[],"status":"passed","title":"renders without error"},{"ancestorTitles":["ButtonComponent"],"duration":10,"failureDetails":[],"failureMessages":[],"fullName":"ButtonComponent has correct styles","invocations":1,"location":null,"numPassingAsserts":14,"retryReasons":[],"status":"passed","title":"has correct styles"}],"endTime":1690104513611,"message":"","name":"C:\\Work\\Projects\\neurocache-hub\\src\\components\\library\\buttonComponent\\buttonComponent.test.tsx","startTime":1690104512015,"status":"passed","summary":""},{"assertionResults":[{"ancestorTitles":["BehaviourBuilder"],"duration":74,"failureDetails":[],"failureMessages":[],"fullName":"BehaviourBuilder invokes click handler correctly","invocations":1,"location":null,"numPassingAsserts":0,"retryReasons":[],"status":"passed","title":"invokes click handler correctly"},{"ancestorTitles":["BehaviourBuilder"],"duration":11,"failureDetails":[],"failureMessages":[],"fullName":"BehaviourBuilder prevents click handler when disabled","invocations":1,"location":null,"numPassingAsserts":0,"retryReasons":[],"status":"passed","title":"prevents click handler when disabled"},{"ancestorTitles":["BehaviourBuilder"],"duration":3,"failureDetails":[],"failureMessages":[],"fullName":"BehaviourBuilder invokes keyboard navigation correctly when enabled","invocations":1,"location":null,"numPassingAsserts":0,"retryReasons":[],"status":"passed","title":"invokes keyboard navigation correctly when enabled"},{"ancestorTitles":["BehaviourBuilder"],"duration":3,"failureDetails":[],"failureMessages":[],"fullName":"BehaviourBuilder prevents keyboard navigation when disabled","invocations":1,"location":null,"numPassingAsserts":0,"retryReasons":[],"status":"passed","title":"prevents keyboard navigation when disabled"}],"endTime":1690104513732,"message":"","name":"C:\\Work\\Projects\\neurocache-hub\\src\\components\\builders\\behaviourBuilder\\BehaviourBuilder.test.tsx","startTime":1690104512015,"status":"passed","summary":""},{"assertionResults":[{"ancestorTitles":["Storyshots","Buttons/ButtonComponent"],"duration":16,"failureDetails":[],"failureMessages":[],"fullName":"Storyshots Buttons/ButtonComponent Overt","invocations":1,"location":null,"numPassingAsserts":1,"retryReasons":[],"status":"passed","title":"Overt"},{"ancestorTitles":["Storyshots","Buttons/ButtonComponent"],"duration":2,"failureDetails":[],"failureMessages":[],"fullName":"Storyshots Buttons/ButtonComponent Calm","invocations":1,"location":null,"numPassingAsserts":1,"retryReasons":[],"status":"passed","title":"Calm"},{"ancestorTitles":["Storyshots","Buttons/ButtonComponent"],"duration":1,"failureDetails":[],"failureMessages":[],"fullName":"Storyshots Buttons/ButtonComponent Alert","invocations":1,"location":null,"numPassingAsserts":1,"retryReasons":[],"status":"passed","title":"Alert"},{"ancestorTitles":["Storyshots","Buttons/ButtonComponent"],"duration":1,"failureDetails":[],"failureMessages":[],"fullName":"Storyshots Buttons/ButtonComponent Subtle","invocations":1,"location":null,"numPassingAsserts":1,"retryReasons":[],"status":"passed","title":"Subtle"}],"endTime":1690104514394,"message":"","name":"C:\\Work\\Projects\\neurocache-hub\\src\\lib\\storyshots\\Storyshots.test.js","startTime":1690104512022,"status":"passed","summary":""}],"wasInterrupted":false}
+{
+	"numFailedTestSuites": 0,
+	"numFailedTests": 0,
+	"numPassedTestSuites": 5,
+	"numPassedTests": 12,
+	"numPendingTestSuites": 0,
+	"numPendingTests": 0,
+	"numRuntimeErrorTestSuites": 0,
+	"numTodoTests": 0,
+	"numTotalTestSuites": 5,
+	"numTotalTests": 12,
+	"openHandles": [],
+	"snapshot": {
+		"added": 0,
+		"didUpdate": false,
+		"failure": false,
+		"filesAdded": 0,
+		"filesRemoved": 0,
+		"filesRemovedList": [],
+		"filesUnmatched": 0,
+		"filesUpdated": 0,
+		"matched": 4,
+		"total": 4,
+		"unchecked": 0,
+		"uncheckedKeysByFile": [],
+		"unmatched": 0,
+		"updated": 0
+	},
+	"startTime": 1690104510679,
+	"success": true,
+	"testResults": [
+		{
+			"assertionResults": [
+				{
+					"ancestorTitles": [
+						"StyleBuilder"
+					],
+					"duration": 36,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "StyleBuilder adds styles correctly",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 3,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "adds styles correctly"
+				}
+			],
+			"endTime": 1690104513519,
+			"message": "",
+			"name": "C:\\Work\\Projects\\neurocache-hub\\src\\components\\builders\\styleBuilder\\StyleBuilder.test.tsx",
+			"startTime": 1690104512014,
+			"status": "passed",
+			"summary": ""
+		},
+		{
+			"assertionResults": [
+				{
+					"ancestorTitles": [
+						"TypographyBuilder"
+					],
+					"duration": 36,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "TypographyBuilder adds typography styles correctly",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 7,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "adds typography styles correctly"
+				}
+			],
+			"endTime": 1690104513524,
+			"message": "",
+			"name": "C:\\Work\\Projects\\neurocache-hub\\src\\components\\builders\\typographyBuilder\\TypographyBuilder.test.tsx",
+			"startTime": 1690104512016,
+			"status": "passed",
+			"summary": ""
+		},
+		{
+			"assertionResults": [
+				{
+					"ancestorTitles": [
+						"ButtonComponent"
+					],
+					"duration": 108,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "ButtonComponent renders without error",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 1,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "renders without error"
+				},
+				{
+					"ancestorTitles": [
+						"ButtonComponent"
+					],
+					"duration": 10,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "ButtonComponent has correct styles",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 14,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "has correct styles"
+				}
+			],
+			"endTime": 1690104513611,
+			"message": "",
+			"name": "C:\\Work\\Projects\\neurocache-hub\\src\\components\\library\\buttonComponent\\buttonComponent.test.tsx",
+			"startTime": 1690104512015,
+			"status": "passed",
+			"summary": ""
+		},
+		{
+			"assertionResults": [
+				{
+					"ancestorTitles": [
+						"BehaviourBuilder"
+					],
+					"duration": 74,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "BehaviourBuilder invokes click handler correctly",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 0,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "invokes click handler correctly"
+				},
+				{
+					"ancestorTitles": [
+						"BehaviourBuilder"
+					],
+					"duration": 11,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "BehaviourBuilder prevents click handler when disabled",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 0,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "prevents click handler when disabled"
+				},
+				{
+					"ancestorTitles": [
+						"BehaviourBuilder"
+					],
+					"duration": 3,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "BehaviourBuilder invokes keyboard navigation correctly when enabled",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 0,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "invokes keyboard navigation correctly when enabled"
+				},
+				{
+					"ancestorTitles": [
+						"BehaviourBuilder"
+					],
+					"duration": 3,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "BehaviourBuilder prevents keyboard navigation when disabled",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 0,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "prevents keyboard navigation when disabled"
+				}
+			],
+			"endTime": 1690104513732,
+			"message": "",
+			"name": "C:\\Work\\Projects\\neurocache-hub\\src\\components\\builders\\behaviourBuilder\\BehaviourBuilder.test.tsx",
+			"startTime": 1690104512015,
+			"status": "passed",
+			"summary": ""
+		},
+		{
+			"assertionResults": [
+				{
+					"ancestorTitles": [
+						"Storyshots",
+						"Buttons/ButtonComponent"
+					],
+					"duration": 16,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "Storyshots Buttons/ButtonComponent Overt",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 1,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "Overt"
+				},
+				{
+					"ancestorTitles": [
+						"Storyshots",
+						"Buttons/ButtonComponent"
+					],
+					"duration": 2,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "Storyshots Buttons/ButtonComponent Calm",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 1,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "Calm"
+				},
+				{
+					"ancestorTitles": [
+						"Storyshots",
+						"Buttons/ButtonComponent"
+					],
+					"duration": 1,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "Storyshots Buttons/ButtonComponent Alert",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 1,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "Alert"
+				},
+				{
+					"ancestorTitles": [
+						"Storyshots",
+						"Buttons/ButtonComponent"
+					],
+					"duration": 1,
+					"failureDetails": [],
+					"failureMessages": [],
+					"fullName": "Storyshots Buttons/ButtonComponent Subtle",
+					"invocations": 1,
+					"location": null,
+					"numPassingAsserts": 1,
+					"retryReasons": [],
+					"status": "passed",
+					"title": "Subtle"
+				}
+			],
+			"endTime": 1690104514394,
+			"message": "",
+			"name": "C:\\Work\\Projects\\neurocache-hub\\src\\lib\\storyshots\\Storyshots.test.js",
+			"startTime": 1690104512022,
+			"status": "passed",
+			"summary": ""
+		}
+	],
+	"wasInterrupted": false
+}
