@@ -66,7 +66,7 @@ export default class BehaviourBuilder {
 	withHover(): BehaviourBuilder {
 		this.animationProps = {
 			...this.animationProps,
-			whileHover: { scale: 1.01 },
+			whileHover: { scale: 1.02 },
 		};
 		return this;
 	}
@@ -80,7 +80,7 @@ export default class BehaviourBuilder {
 		if (tween) {
 			this.animationProps = {
 				...this.animationProps,
-				whileTap: { scale: 0.99 },
+				whileTap: { scale: 0.97 },
 			};
 		}
 

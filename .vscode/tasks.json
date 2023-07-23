@@ -2,9 +2,9 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Run Storybook",
+			"label": "Run Dev",
 			"type": "shell",
-			"command": "pnpm run storybook",
+			"command": "start http://localhost:3000 ; pnpm run dev",
 			"problemMatcher": []
 		},
 		{
@@ -12,6 +12,12 @@
 			"type": "shell",
 			"command": "${input:generateProjectHierarchy}",
 			"dependsOn": "Auto Comment Paths",
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Storybook",
+			"type": "shell",
+			"command": "pnpm run storybook",
 			"problemMatcher": []
 		},
 		{

@@ -268,7 +268,9 @@ const closeChannel = (channelId: string) => {
 
 
 
-
+1. Make dark mode just to save my eyes for right now, nothing special
+2. Make an empty custom node that is a react component and any react component can be nested within
+3. Test with two of these custom nodes
 
 
 

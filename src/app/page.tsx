@@ -2,26 +2,15 @@
 
 "use client";
 
-import Dashboard from "@src/components/z_deprecated/dashboard/dashboard";
-import LoginForm from "@src/components/z_deprecated/generic/loginForm";
-import HubLayout from "@src/components/z_deprecated/hub/hubLayout";
-import { storesContext } from "@src/stores";
-import { FC, useContext } from "react";
-import { observer } from "mobx-react";
+import Flow from "@src/components/react_flow/reactFlowCanvas";
+import { FC } from "react";
 
-const page: FC = observer(() => {
-	const { userStore } = useContext(storesContext);
+const page: FC = () => {
 	return (
 		<>
-			<HubLayout headerText={"Dashboard"}>
-				{!userStore.isLoggedIn ? (
-					<LoginForm />
-				) : (
-					<Dashboard />
-				)}
-			</HubLayout>
+			<Flow />
 		</>
 	);
-});
+};
 
 export default page;

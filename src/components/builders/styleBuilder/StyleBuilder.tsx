@@ -7,7 +7,9 @@ type CategoryStyles = {
 	bg: string;
 	hover: string;
 	border: string;
+	radius: string;
 	shadow: string;
+	padding: string;
 };
 
 const tailwind: Record<Style["Category"], CategoryStyles> = {
@@ -15,25 +17,33 @@ const tailwind: Record<Style["Category"], CategoryStyles> = {
 		bg: "bg-cherry-d",
 		hover: "hover:bg-cherry",
 		border: "border-cherry-l",
+		radius: "rounded-full",
 		shadow: "shadow-lg drop-shadow-lg",
+		padding: "px-4 py-2",
 	},
 	calm: {
 		bg: "bg-aqua-d",
 		hover: "hover:bg-aqua",
 		border: "border-aqua-l",
+		radius: "rounded-full",
 		shadow: "shadow-lg drop-shadow-lg",
+		padding: "px-4",
 	},
 	alert: {
 		bg: "bg-peach-d",
 		hover: "hover:bg-peach",
 		border: "border-peach-l",
+		radius: "rounded-full",
 		shadow: "shadow-lg drop-shadow-lg",
+		padding: "px-4",
 	},
 	subtle: {
 		bg: "bg-util",
 		hover: "hover:bg-grape-a",
 		border: "border-grape",
+		radius: "rounded-full",
 		shadow: "shadow-inner shadow-grape-d",
+		padding: "px-4",
 	},
 };
 
@@ -61,6 +71,12 @@ export default class StyleBuilder {
 		return this;
 	}
 
+	withPadding(category: Style["Category"] = "calm"): StyleBuilder {
+		const newStyle = tailwind[category].padding;
+		this.push(newStyle);
+		return this;
+	}
+
 	withBorder(category: Style["Category"] = "calm"): StyleBuilder {
 		const newStyle = tailwind[category]["border"];
 		const tw = `border ${newStyle}`;
@@ -69,8 +85,8 @@ export default class StyleBuilder {
 	}
 
 	withBorderRadius(category: Style["Category"] = "calm"): StyleBuilder {
-		const tw = "rounded-full";
-		this.push(tw);
+		const newStyle = tailwind[category]["radius"];
+		this.push(newStyle);
 		return this;
 	}
 
