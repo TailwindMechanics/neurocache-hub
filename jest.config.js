@@ -20,8 +20,8 @@ const customJestConfig = {
 		[
 			"jest-junit",
 			{
-				outputDirectory: "test-results/junit",
-				outputName: "results.xml",
+				outputDirectory: ".",
+				outputName: "junit.xml",
 			},
 		],
 	],

@@ -39,5 +39,5 @@ jobs:
               uses: EnricoMi/publish-unit-test-result-action@v2.8.0
               with:
                   github_token: ${{ secrets.NEURO_CACHE }}
-                  files: ./test-results/junit/results.xml
+                  files: ./junit.xml
               if: always()
