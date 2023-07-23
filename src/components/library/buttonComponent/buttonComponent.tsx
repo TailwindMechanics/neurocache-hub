@@ -45,7 +45,9 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
 
 	Build = new BehaviourBuilder(Build)
 		.withClick(onClick)
+		.withPointerCursor()
 		.withKeyboardNav()
+		.withUnselectableText()
 		.withAriaLabel(ariaLabel)
 		.withDisabled(disabled)
 		.withTooltip(tooltip)

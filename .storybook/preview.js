@@ -4,6 +4,7 @@ import { create } from "@storybook/theming";
 import "../src/app/globals.css";
 
 export const parameters = {
+	layout: "padded",
 	actions: { argTypesRegex: "^on.*" },
 	controls: {
 		matchers: {
@@ -14,9 +15,17 @@ export const parameters = {
 	docs: {
 		theme: create({
 			base: "dark",
-			colorPrimary: "#F4783F", // primary color
-			colorSecondary: "#1EA7FD", // secondary color
-			appBg: "#2f2f2f",
+			colorPrimary: "#f96f69",
+			colorSecondary: "#77cabf",
+			appBg: "#222425",
 		}),
+	},
+	backgrounds: {
+		grid: { disable: false },
+		default: "dark",
+		values: [
+			{ name: "dark", value: "#222425" },
+			{ name: "white", value: "#c6ede5" },
+		],
 	},
 };

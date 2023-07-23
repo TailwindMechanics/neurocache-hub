@@ -13,10 +13,32 @@ export default class BehaviourBuilder {
 		this.node = atom;
 	}
 
+	withPointerCursor(): BehaviourBuilder {
+		this.newProps = {
+			...this.newProps,
+			style: {
+				...this.newProps.style,
+				cursor: "pointer",
+			},
+		};
+		return this;
+	}
+
 	withAriaLabel(label: string): BehaviourBuilder {
 		if (IsNullOrEmpty(label)) return this;
 
 		this.newProps["aria-label"] = label;
+		return this;
+	}
+
+	withUnselectableText(): BehaviourBuilder {
+		this.newProps = {
+			...this.newProps,
+			style: {
+				...this.newProps.style,
+				userSelect: "none",
+			},
+		};
 		return this;
 	}
 
