@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="12" failures="0" errors="0" time="4.298">
+  <testsuite name="StyleBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-23T14:44:33" time="1.435" tests="1">
+    <testcase classname="StyleBuilder adds styles correctly" name="StyleBuilder adds styles correctly" time="0.026">
+    </testcase>
+  </testsuite>
+  <testsuite name="TypographyBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-23T14:44:33" time="1.479" tests="1">
+    <testcase classname="TypographyBuilder adds typography styles correctly" name="TypographyBuilder adds typography styles correctly" time="0.058">
+    </testcase>
+  </testsuite>
+  <testsuite name="ButtonComponent" errors="0" failures="0" skipped="0" timestamp="2023-07-23T14:44:33" time="1.571" tests="2">
+    <testcase classname="ButtonComponent renders without error" name="ButtonComponent renders without error" time="0.077">
+    </testcase>
+    <testcase classname="ButtonComponent has correct styles" name="ButtonComponent has correct styles" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="BehaviourBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-23T14:44:33" time="1.705" tests="4">
+    <testcase classname="BehaviourBuilder invokes click handler correctly" name="BehaviourBuilder invokes click handler correctly" time="0.104">
+    </testcase>
+    <testcase classname="BehaviourBuilder prevents click handler when disabled" name="BehaviourBuilder prevents click handler when disabled" time="0.005">
+    </testcase>
+    <testcase classname="BehaviourBuilder invokes keyboard navigation correctly when enabled" name="BehaviourBuilder invokes keyboard navigation correctly when enabled" time="0.003">
+    </testcase>
+    <testcase classname="BehaviourBuilder prevents keyboard navigation when disabled" name="BehaviourBuilder prevents keyboard navigation when disabled" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Storyshots" errors="0" failures="0" skipped="0" timestamp="2023-07-23T14:44:33" time="2.432" tests="4">
+    <testcase classname="Storyshots Buttons/ButtonComponent Overt" name="Storyshots Buttons/ButtonComponent Overt" time="0.019">
+    </testcase>
+    <testcase classname="Storyshots Buttons/ButtonComponent Calm" name="Storyshots Buttons/ButtonComponent Calm" time="0.002">
+    </testcase>
+    <testcase classname="Storyshots Buttons/ButtonComponent Alert" name="Storyshots Buttons/ButtonComponent Alert" time="0.001">
+    </testcase>
+    <testcase classname="Storyshots Buttons/ButtonComponent Subtle" name="Storyshots Buttons/ButtonComponent Subtle" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>

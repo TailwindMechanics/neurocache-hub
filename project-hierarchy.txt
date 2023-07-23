@@ -2,6 +2,9 @@ neurocache-hub
 ├─ .env.development.local
 ├─ .eslintignore
 ├─ .eslintrc.json
+├─ .github
+│  └─ workflows
+│     └─ ci.yml
 ├─ .gitignore
 ├─ .jest-test-results.json
 ├─ .prettierignore
@@ -30,6 +33,7 @@ neurocache-hub
 │  └─ uiplan.md
 ├─ jest.config.js
 ├─ jest.setup.js
+├─ junit.xml
 ├─ next-env.d.ts
 ├─ next.config.js
 ├─ package.json
