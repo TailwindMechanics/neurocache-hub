@@ -37,4 +37,6 @@ jobs:
 
             - name: Publish Test Results
               uses: EnricoMi/publish-unit-test-result-action@v2.8.0
+              with:
+                  github_token: ${{ secrets.NEURO_CACHE }}
               if: always()
