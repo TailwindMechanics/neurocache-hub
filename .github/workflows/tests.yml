@@ -3,10 +3,8 @@ name: CI
 on:
           push:
                     branches:
-                              [
-                                        development,
-                                        feature/SD_v0_create-component-library_20230718,
-                              ]
+                              - development
+                              - feature/SD_v0_create-component-library_20230718
           pull_request:
                     branches: [main, development]
 
@@ -16,10 +14,14 @@ jobs:
 
                     steps:
                               - uses: actions/checkout@v2
+
                               - name: Use Node.js 16
                                 uses: actions/setup-node@v2
                                 with:
                                           node-version: 16
+
+                              - name: Install pnpm
+                                run: npm install -g pnpm
 
                               - name: Install dependencies
                                 run: pnpm install
