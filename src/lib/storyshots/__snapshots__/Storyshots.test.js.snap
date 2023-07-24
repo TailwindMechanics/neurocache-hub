@@ -4,7 +4,6 @@ exports[`Storyshots Buttons/ButtonComponent Alert 1`] = `
 <div
   className="text-center font-mono hover:peach-p font-extrabold leading-loose text-peach-h text-lg rounded-full border border-peach-l shadow-lg drop-shadow-lg hover:bg-peach bg-peach-d"
   data-testid="atomic-div"
-  disabled={false}
   onKeyDown={[Function]}
   style={
     {
@@ -32,7 +31,6 @@ exports[`Storyshots Buttons/ButtonComponent Calm 1`] = `
 <div
   className="text-center font-mono hover:aqua-p font-extrabold leading-loose text-aqua-h text-lg rounded-full border border-aqua-l shadow-lg drop-shadow-lg hover:bg-aqua bg-aqua-d"
   data-testid="atomic-div"
-  disabled={false}
   onKeyDown={[Function]}
   style={
     {
@@ -60,7 +58,6 @@ exports[`Storyshots Buttons/ButtonComponent Overt 1`] = `
 <div
   className="text-center font-mono hover:cherry-p font-extrabold leading-loose text-cherry-h text-lg rounded-full border border-cherry-l shadow-lg drop-shadow-lg hover:bg-cherry bg-cherry-d"
   data-testid="atomic-div"
-  disabled={false}
   onKeyDown={[Function]}
   style={
     {
@@ -88,7 +85,6 @@ exports[`Storyshots Buttons/ButtonComponent Subtle 1`] = `
 <div
   className="text-center font-mono hover:grape-p font-extrabold leading-loose text-grape-h text-lg rounded-full border border-grape shadow-inner shadow-grape-d hover:bg-grape-a bg-util"
   data-testid="atomic-div"
-  disabled={false}
   onKeyDown={[Function]}
   style={
     {

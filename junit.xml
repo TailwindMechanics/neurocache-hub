@@ -1,120 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="15" failures="3" errors="0" time="4.312">
-  <testsuite name="StyleBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-23T21:50:12" time="1.799" tests="1">
-    <testcase classname="StyleBuilder adds styles correctly" name="StyleBuilder adds styles correctly" time="0.031">
+<testsuites name="jest tests" tests="16" failures="0" errors="0" time="3.478">
+  <testsuite name="TypographyBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="1.418" tests="1">
+    <testcase classname="TypographyBuilder adds typography styles correctly" name="TypographyBuilder adds typography styles correctly" time="0.043">
     </testcase>
   </testsuite>
-  <testsuite name="TypographyBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-23T21:50:12" time="1.807" tests="1">
-    <testcase classname="TypographyBuilder adds typography styles correctly" name="TypographyBuilder adds typography styles correctly" time="0.05">
+  <testsuite name="StyleBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="1.428" tests="1">
+    <testcase classname="StyleBuilder adds styles correctly" name="StyleBuilder adds styles correctly" time="0.041">
     </testcase>
   </testsuite>
-  <testsuite name="ButtonComponent" errors="0" failures="0" skipped="0" timestamp="2023-07-23T21:50:12" time="1.909" tests="2">
-    <testcase classname="ButtonComponent renders without error" name="ButtonComponent renders without error" time="0.131">
+  <testsuite name="ButtonComponent" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="1.501" tests="2">
+    <testcase classname="ButtonComponent renders without error" name="ButtonComponent renders without error" time="0.084">
     </testcase>
     <testcase classname="ButtonComponent has correct styles" name="ButtonComponent has correct styles" time="0.01">
     </testcase>
   </testsuite>
-  <testsuite name="ReactFlowBuilder" errors="0" failures="3" skipped="0" timestamp="2023-07-23T21:50:12" time="2.014" tests="3">
-    <testcase classname="ReactFlowBuilder adds top handle when withTopHandle is used" name="ReactFlowBuilder adds top handle when withTopHandle is used" time="0.09">
-      <failure>Error: [React Flow]: Seems like you have not used zustand provider as an ancestor. Help: https://reactflow.dev/error#001
-    at Mo (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\reactflow@11.7.4_react-dom@18.2.0_react@18.2.0\node_modules\reactflow\dist\umd\index.js:10:52176)
-    at C:\Work\Projects\neurocache-hub\node_modules\.pnpm\reactflow@11.7.4_react-dom@18.2.0_react@18.2.0\node_modules\reactflow\dist\umd\index.js:10:69050
-    at renderWithHooks (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:16305:18)
-    at updateForwardRef (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:19226:20)
-    at beginWork (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:21636:16)
-    at beginWork$1 (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:27426:14)
-    at performUnitOfWork (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:26560:12)
-    at workLoopSync (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:26466:5)
-    at renderRootSync (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:26434:7)
-    at recoverFromConcurrentError (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:25850:20)
-    at performConcurrentWorkOnRoot (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:25750:22)
-    at flushActQueue (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react@18.2.0\node_modules\react\cjs\react.development.js:2667:24)
-    at act (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react@18.2.0\node_modules\react\cjs\react.development.js:2582:11)
-    at C:\Work\Projects\neurocache-hub\node_modules\.pnpm\@testing-library+react@14.0.0_react-dom@18.2.0_react@18.2.0\node_modules\@testing-library\react\dist\act-compat.js:46:25
-    at renderRoot (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\@testing-library+react@14.0.0_react-dom@18.2.0_react@18.2.0\node_modules\@testing-library\react\dist\pure.js:161:26)
-    at render (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\@testing-library+react@14.0.0_react-dom@18.2.0_react@18.2.0\node_modules\@testing-library\react\dist\pure.js:247:10)
-    at Object.&lt;anonymous&gt; (C:\Work\Projects\neurocache-hub\src\components\builders\reactFlowBuilder\ReactFlowBuilder.test.tsx:18:31)
-    at Promise.then.completed (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\utils.js:300:28)
-    at new Promise (&lt;anonymous&gt;)
-    at callAsyncCircusFn (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\utils.js:233:10)
-    at _callCircusTest (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:314:40)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at _runTest (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:250:3)
-    at _runTestsForDescribeBlock (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:125:9)
-    at _runTestsForDescribeBlock (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:120:9)
-    at run (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:70:3)
-    at runAndTransformResultsToJestFormat (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
-    at jestAdapter (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
-    at runTestInternal (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-runner@29.6.1\node_modules\jest-runner\build\runTest.js:367:16)
-    at runTest (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-runner@29.6.1\node_modules\jest-runner\build\runTest.js:444:34)
-    at Object.worker (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-runner@29.6.1\node_modules\jest-runner\build\testWorker.js:106:12)</failure>
+  <testsuite name="ReactFlowBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="1.516" tests="4">
+    <testcase classname="ReactFlowBuilder adds top handle when withTopHandle is used" name="ReactFlowBuilder adds top handle when withTopHandle is used" time="0.04">
     </testcase>
-    <testcase classname="ReactFlowBuilder adds bottom handle when withBottomHandle is used" name="ReactFlowBuilder adds bottom handle when withBottomHandle is used" time="0.014">
-      <failure>Error: [React Flow]: Seems like you have not used zustand provider as an ancestor. Help: https://reactflow.dev/error#001
-    at Mo (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\reactflow@11.7.4_react-dom@18.2.0_react@18.2.0\node_modules\reactflow\dist\umd\index.js:10:52176)
-    at C:\Work\Projects\neurocache-hub\node_modules\.pnpm\reactflow@11.7.4_react-dom@18.2.0_react@18.2.0\node_modules\reactflow\dist\umd\index.js:10:69050
-    at renderWithHooks (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:16305:18)
-    at updateForwardRef (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:19226:20)
-    at beginWork (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:21636:16)
-    at beginWork$1 (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:27426:14)
-    at performUnitOfWork (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:26560:12)
-    at workLoopSync (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:26466:5)
-    at renderRootSync (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:26434:7)
-    at recoverFromConcurrentError (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:25850:20)
-    at performConcurrentWorkOnRoot (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react-dom@18.2.0_react@18.2.0\node_modules\react-dom\cjs\react-dom.development.js:25750:22)
-    at flushActQueue (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react@18.2.0\node_modules\react\cjs\react.development.js:2667:24)
-    at act (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\react@18.2.0\node_modules\react\cjs\react.development.js:2582:11)
-    at C:\Work\Projects\neurocache-hub\node_modules\.pnpm\@testing-library+react@14.0.0_react-dom@18.2.0_react@18.2.0\node_modules\@testing-library\react\dist\act-compat.js:46:25
-    at renderRoot (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\@testing-library+react@14.0.0_react-dom@18.2.0_react@18.2.0\node_modules\@testing-library\react\dist\pure.js:161:26)
-    at render (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\@testing-library+react@14.0.0_react-dom@18.2.0_react@18.2.0\node_modules\@testing-library\react\dist\pure.js:247:10)
-    at Object.&lt;anonymous&gt; (C:\Work\Projects\neurocache-hub\src\components\builders\reactFlowBuilder\ReactFlowBuilder.test.tsx:30:31)
-    at Promise.then.completed (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\utils.js:300:28)
-    at new Promise (&lt;anonymous&gt;)
-    at callAsyncCircusFn (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\utils.js:233:10)
-    at _callCircusTest (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:314:40)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at _runTest (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:250:3)
-    at _runTestsForDescribeBlock (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:125:9)
-    at _runTestsForDescribeBlock (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:120:9)
-    at run (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:70:3)
-    at runAndTransformResultsToJestFormat (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
-    at jestAdapter (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
-    at runTestInternal (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-runner@29.6.1\node_modules\jest-runner\build\runTest.js:367:16)
-    at runTest (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-runner@29.6.1\node_modules\jest-runner\build\runTest.js:444:34)
-    at Object.worker (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-runner@29.6.1\node_modules\jest-runner\build\testWorker.js:106:12)</failure>
+    <testcase classname="ReactFlowBuilder adds bottom handle when withBottomHandle is used" name="ReactFlowBuilder adds bottom handle when withBottomHandle is used" time="0.008">
     </testcase>
-    <testcase classname="ReactFlowBuilder adds NodeResizer when withResizer is used" name="ReactFlowBuilder adds NodeResizer when withResizer is used" time="0.029">
-      <failure>Error: expect(received).not.toBeNull()
-
-Received: null
-    at Object.toBeNull (C:\Work\Projects\neurocache-hub\src\components\builders\reactFlowBuilder\ReactFlowBuilder.test.tsx:51:9)
-    at Promise.then.completed (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\utils.js:300:28)
-    at new Promise (&lt;anonymous&gt;)
-    at callAsyncCircusFn (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\utils.js:233:10)
-    at _callCircusTest (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:314:40)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at _runTest (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:250:3)
-    at _runTestsForDescribeBlock (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:125:9)
-    at _runTestsForDescribeBlock (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:120:9)
-    at run (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\run.js:70:3)
-    at runAndTransformResultsToJestFormat (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
-    at jestAdapter (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-circus@29.6.1\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
-    at runTestInternal (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-runner@29.6.1\node_modules\jest-runner\build\runTest.js:367:16)
-    at runTest (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-runner@29.6.1\node_modules\jest-runner\build\runTest.js:444:34)
-    at Object.worker (C:\Work\Projects\neurocache-hub\node_modules\.pnpm\jest-runner@29.6.1\node_modules\jest-runner\build\testWorker.js:106:12)</failure>
+    <testcase classname="ReactFlowBuilder adds NodeResizer when withResizer is used" name="ReactFlowBuilder adds NodeResizer when withResizer is used" time="0.013">
+    </testcase>
+    <testcase classname="ReactFlowBuilder buildComponent returns a valid React component" name="ReactFlowBuilder buildComponent returns a valid React component" time="0.004">
     </testcase>
   </testsuite>
-  <testsuite name="BehaviourBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-23T21:50:12" time="2.071" tests="4">
-    <testcase classname="BehaviourBuilder invokes click handler correctly" name="BehaviourBuilder invokes click handler correctly" time="0.095">
+  <testsuite name="BehaviourBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="1.569" tests="4">
+    <testcase classname="BehaviourBuilder invokes click handler correctly" name="BehaviourBuilder invokes click handler correctly" time="0.075">
     </testcase>
-    <testcase classname="BehaviourBuilder prevents click handler when disabled" name="BehaviourBuilder prevents click handler when disabled" time="0.006">
+    <testcase classname="BehaviourBuilder prevents click handler when disabled" name="BehaviourBuilder prevents click handler when disabled" time="0.004">
     </testcase>
-    <testcase classname="BehaviourBuilder invokes keyboard navigation correctly when enabled" name="BehaviourBuilder invokes keyboard navigation correctly when enabled" time="0.003">
+    <testcase classname="BehaviourBuilder invokes keyboard navigation correctly when enabled" name="BehaviourBuilder invokes keyboard navigation correctly when enabled" time="0.004">
     </testcase>
     <testcase classname="BehaviourBuilder prevents keyboard navigation when disabled" name="BehaviourBuilder prevents keyboard navigation when disabled" time="0.003">
     </testcase>
   </testsuite>
-  <testsuite name="Storyshots" errors="0" failures="0" skipped="0" timestamp="2023-07-23T21:50:12" time="2.756" tests="4">
+  <testsuite name="Storyshots" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="2.19" tests="4">
     <testcase classname="Storyshots Buttons/ButtonComponent Overt" name="Storyshots Buttons/ButtonComponent Overt" time="0.016">
     </testcase>
     <testcase classname="Storyshots Buttons/ButtonComponent Calm" name="Storyshots Buttons/ButtonComponent Calm" time="0.002">

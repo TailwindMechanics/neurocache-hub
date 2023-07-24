@@ -24,12 +24,4 @@ describe("StyleBuilder", () => {
 		tw = "border border-aqua-l";
 		expect(div).toHaveClass(tw);
 	});
-
-	it("buildComponent returns a valid React component", () => {
-		const builder = new StyleBuilder(AtomicDiv);
-		const BuiltComponent = builder.buildComponent();
-
-		const { getByTestId } = render(<BuiltComponent />);
-		expect(getByTestId("atomic-div")).toBeInTheDocument();
-	});
 });

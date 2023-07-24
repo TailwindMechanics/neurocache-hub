@@ -1,18 +1,18 @@
 //path: src\components\builders\reactFlowBuilder\ReactFlowBuilder.tsx
 
+import { AtomNode, AtomProps } from "@src/types/declarations";
 import { Handle, Position, NodeResizer } from "reactflow";
-import { FC, ReactElement, ReactNode } from "react";
 import React from "react";
 
 export default class ReactFlowBuilder {
-	private node: ReactNode;
+	private node: AtomNode;
 	private includeTopHandle: boolean;
 	private includeBottomHandle: boolean;
 	private includeResizer: boolean;
 	private minWidthResizer: number;
 	private minHeightResizer: number;
 
-	constructor(node: ReactNode) {
+	constructor(node: AtomNode) {
 		this.node = node;
 		this.includeTopHandle = false;
 		this.includeBottomHandle = false;
@@ -44,9 +44,9 @@ export default class ReactFlowBuilder {
 		);
 	}
 
-	build(): ReactNode {
+	build(): AtomNode {
 		let uuid = this.generateId();
-		return (
+		return (props: AtomProps) => (
 			<>
 				{this.includeTopHandle && (
 					<Handle type="target" position={Position.Top} />
@@ -57,7 +57,7 @@ export default class ReactFlowBuilder {
 						minHeight={this.minHeightResizer}
 					/>
 				)}
-				{this.node}
+				<this.node {...props} />;
 				{this.includeBottomHandle && (
 					<Handle
 						type="source"
@@ -67,9 +67,5 @@ export default class ReactFlowBuilder {
 				)}
 			</>
 		);
-	}
-
-	buildComponent(): FC {
-		return () => <> {this.build()} </>;
 	}
 }

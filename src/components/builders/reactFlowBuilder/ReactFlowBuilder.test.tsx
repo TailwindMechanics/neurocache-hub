@@ -8,13 +8,12 @@ import React from "react";
 
 describe("ReactFlowBuilder", () => {
 	it("adds top handle when withTopHandle is used", () => {
-		const builder = new ReactFlowBuilder(<AtomicDiv />);
-		const BuiltNode = builder.withTopHandle().build();
+		const builder = new ReactFlowBuilder(AtomicDiv);
+		const Built = builder.withTopHandle().build();
 
-		const BuiltComponent: React.FC = () => <>{BuiltNode}</>;
 		const { container } = render(
 			<ReactFlowProvider>
-				<BuiltComponent />
+				<Built />
 			</ReactFlowProvider>,
 		);
 
@@ -23,13 +22,12 @@ describe("ReactFlowBuilder", () => {
 	});
 
 	it("adds bottom handle when withBottomHandle is used", () => {
-		const builder = new ReactFlowBuilder(<AtomicDiv />);
-		const BuiltNode = builder.withBottomHandle().build();
+		const builder = new ReactFlowBuilder(AtomicDiv);
+		const Built = builder.withBottomHandle().build();
 
-		const BuiltComponent: React.FC = () => <>{BuiltNode}</>;
 		const { container } = render(
 			<ReactFlowProvider>
-				<BuiltComponent />
+				<Built />
 			</ReactFlowProvider>,
 		);
 
@@ -38,13 +36,11 @@ describe("ReactFlowBuilder", () => {
 	});
 
 	it("adds NodeResizer when withResizer is used", () => {
-		const builder = new ReactFlowBuilder(<AtomicDiv />);
-		const BuiltNode = builder.withResizer().build();
-
-		const BuiltComponent: React.FC = () => <>{BuiltNode}</>;
+		const builder = new ReactFlowBuilder(AtomicDiv);
+		const Built = builder.withResizer().build();
 		const { container } = render(
 			<ReactFlowProvider>
-				<BuiltComponent />
+				<Built />
 			</ReactFlowProvider>,
 		);
 
@@ -53,10 +49,10 @@ describe("ReactFlowBuilder", () => {
 	});
 
 	it("buildComponent returns a valid React component", () => {
-		const builder = new ReactFlowBuilder(<AtomicDiv />);
-		const BuiltComponent = builder.buildComponent();
+		const builder = new ReactFlowBuilder(AtomicDiv);
+		const Built = builder.build();
 
-		const { getByTestId } = render(<BuiltComponent />);
+		const { getByTestId } = render(<Built />);
 		expect(getByTestId("atomic-div")).toBeInTheDocument();
 	});
 });

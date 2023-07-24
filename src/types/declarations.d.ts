@@ -19,6 +19,15 @@ interface Style {
 	LetterSpacing: "tighter" | "tight" | "normal" | "wide" | "wider" | "widest";
 }
 
+interface ButtonProps {
+	label: string;
+	category: Style["Category"];
+	onClick: () => void;
+	ariaLabel: string;
+	disabled: boolean;
+	tooltip: string;
+}
+
 interface AtomProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>{
 	children?: ReactNode;
 	className?: string;

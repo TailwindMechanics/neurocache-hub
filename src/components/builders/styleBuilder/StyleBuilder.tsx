@@ -106,9 +106,4 @@ export default class StyleBuilder {
 			return <this.node {...newProps} />;
 		};
 	}
-
-	buildComponent(): FC {
-		const Built = this.build();
-		return () => <Built />;
-	}
 }

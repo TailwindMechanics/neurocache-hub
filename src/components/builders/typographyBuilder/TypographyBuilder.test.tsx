@@ -29,12 +29,4 @@ describe("TypographyBuilder", () => {
 		expect(div).toHaveClass("font-extrabold");
 		expect(div).toHaveClass("tracking-widest");
 	});
-
-	it("buildComponent returns a valid React component", () => {
-		const builder = new TypographyBuilder(AtomicDiv);
-		const BuiltComponent = builder.buildComponent();
-
-		const { getByTestId } = render(<BuiltComponent />);
-		expect(getByTestId("atomic-div")).toBeInTheDocument();
-	});
 });

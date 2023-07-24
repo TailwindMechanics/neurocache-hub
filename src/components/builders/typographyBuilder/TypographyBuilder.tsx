@@ -134,9 +134,4 @@ export default class TypographyBuilder {
 		  let newProps = {...props, className: newClassName.trim()};
 		  return <this.node {...newProps} />;
 		};}
-
-	buildComponent(): FC {
-		const Built = this.build();
-		return () => <Built />;
-	}
 }

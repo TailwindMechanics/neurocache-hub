@@ -95,11 +95,14 @@ neurocache-hub
 │  ├─ assets
 │  ├─ components
 │  │  ├─ atoms
-│  │  │  └─ atomicDiv.tsx
+│  │  │  ├─ atomicDiv.tsx
+│  │  │  └─ buttonAtom.tsx
 │  │  ├─ builders
 │  │  │  ├─ behaviourBuilder
 │  │  │  │  ├─ BehaviourBuilder.test.tsx
 │  │  │  │  └─ BehaviourBuilder.tsx
+│  │  │  ├─ buttonBuilder
+│  │  │  │  └─ buttonBuilder.tsx
 │  │  │  ├─ reactFlowBuilder
 │  │  │  │  ├─ ReactFlowBuilder.test.tsx
 │  │  │  │  └─ ReactFlowBuilder.tsx
