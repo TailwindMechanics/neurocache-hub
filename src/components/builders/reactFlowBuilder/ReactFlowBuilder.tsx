@@ -1,4 +1,4 @@
-//path: src\components\builders\reactFlowBuilder\reactFlowBuilder.tsx
+//path: src\components\builders\reactFlowBuilder\ReactFlowBuilder.tsx
 
 import { Handle, Position, NodeResizer } from "reactflow";
 import { ReactNode } from "react";

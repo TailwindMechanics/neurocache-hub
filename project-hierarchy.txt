@@ -101,7 +101,8 @@ neurocache-hub
 │  │  │  │  ├─ BehaviourBuilder.test.tsx
 │  │  │  │  └─ BehaviourBuilder.tsx
 │  │  │  ├─ reactFlowBuilder
-│  │  │  │  └─ reactFlowBuilder.tsx
+│  │  │  │  ├─ ReactFlowBuilder.test.tsx
+│  │  │  │  └─ ReactFlowBuilder.tsx
 │  │  │  ├─ styleBuilder
 │  │  │  │  ├─ StyleBuilder.test.tsx
 │  │  │  │  └─ StyleBuilder.tsx

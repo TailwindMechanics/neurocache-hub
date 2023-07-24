@@ -1,12 +1,16 @@
 //path: src\components\builders\reactFlowBuilder\ReactFlowBuilder.test.tsx
 
 import ReactFlowBuilder from "./ReactFlowBuilder";
-import { render } from "@testing-library/react";
+import { logDOM, render } from "@testing-library/react";
 import { ReactFlowProvider } from "reactflow";
 import React from "react";
 
 const TestComponent: React.FC<{ className?: string }> = ({ className }) => {
-	return <div className={className}>Test</div>;
+	return (
+		<>
+			<div className={className}>Test</div>
+		</>
+	);
 };
 
 describe("ReactFlowBuilder", () => {
@@ -15,11 +19,14 @@ describe("ReactFlowBuilder", () => {
 		const BuiltNode = builder.withTopHandle().build();
 
 		const BuiltComponent: React.FC = () => <>{BuiltNode}</>;
-		const { container } = render(<BuiltComponent />);
+		const { container } = render(
+			<ReactFlowProvider>
+				<BuiltComponent />
+			</ReactFlowProvider>,
+		);
 
-		expect(
-			container.querySelector(".react-flow__handle--top"),
-		).not.toBeNull();
+		const handle = container.querySelector(".react-flow__handle-top");
+		expect(handle).toBeInTheDocument();
 	});
 
 	it("adds bottom handle when withBottomHandle is used", () => {
@@ -27,27 +34,28 @@ describe("ReactFlowBuilder", () => {
 		const BuiltNode = builder.withBottomHandle().build();
 
 		const BuiltComponent: React.FC = () => <>{BuiltNode}</>;
-		const { container } = render(<BuiltComponent />);
+		const { container } = render(
+			<ReactFlowProvider>
+				<BuiltComponent />
+			</ReactFlowProvider>,
+		);
 
-		expect(
-			container.querySelector(".react-flow__handle--bottom"),
-		).not.toBeNull();
+		const handle = container.querySelector(".react-flow__handle-bottom");
+		expect(handle).toBeInTheDocument();
 	});
 
 	it("adds NodeResizer when withResizer is used", () => {
 		const builder = new ReactFlowBuilder(<TestComponent />);
 		const BuiltNode = builder.withResizer().build();
 
-		const BuiltComponent: React.FC = () => (
+		const BuiltComponent: React.FC = () => <>{BuiltNode}</>;
+		const { container } = render(
 			<ReactFlowProvider>
-				<>{BuiltNode}</>
-			</ReactFlowProvider>
+				<BuiltComponent />
+			</ReactFlowProvider>,
 		);
 
-		const { container } = render(<BuiltComponent />);
-
-		expect(
-			container.querySelector(".react-flow__nodeResizer"),
-		).not.toBeNull();
+		const handle = container.querySelector(".react-flow__resize-control");
+		expect(handle).toBeInTheDocument();
 	});
 });
