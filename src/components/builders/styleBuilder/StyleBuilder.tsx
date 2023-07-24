@@ -1,7 +1,7 @@
 //path: src\components\builders\styleBuilder\StyleBuilder.tsx
 
 import { AtomNode, AtomProps, Style } from "@src/types/declarations";
-import React from "react";
+import React, { FC } from "react";
 
 type CategoryStyles = {
 	bg: string;
@@ -105,5 +105,10 @@ export default class StyleBuilder {
 			let newProps = {...props, className: newClassName.trim()};
 			return <this.node {...newProps} />;
 		};
+	}
+
+	buildComponent(): FC {
+		const Built = this.build();
+		return () => <Built />;
 	}
 }

@@ -1,21 +1,14 @@
 //path: src\components\builders\reactFlowBuilder\ReactFlowBuilder.test.tsx
 
+import AtomicDiv from "@src/components/atoms/atomicDiv";
 import ReactFlowBuilder from "./ReactFlowBuilder";
-import { logDOM, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { ReactFlowProvider } from "reactflow";
 import React from "react";
 
-const TestComponent: React.FC<{ className?: string }> = ({ className }) => {
-	return (
-		<>
-			<div className={className}>Test</div>
-		</>
-	);
-};
-
 describe("ReactFlowBuilder", () => {
 	it("adds top handle when withTopHandle is used", () => {
-		const builder = new ReactFlowBuilder(<TestComponent />);
+		const builder = new ReactFlowBuilder(<AtomicDiv />);
 		const BuiltNode = builder.withTopHandle().build();
 
 		const BuiltComponent: React.FC = () => <>{BuiltNode}</>;
@@ -30,7 +23,7 @@ describe("ReactFlowBuilder", () => {
 	});
 
 	it("adds bottom handle when withBottomHandle is used", () => {
-		const builder = new ReactFlowBuilder(<TestComponent />);
+		const builder = new ReactFlowBuilder(<AtomicDiv />);
 		const BuiltNode = builder.withBottomHandle().build();
 
 		const BuiltComponent: React.FC = () => <>{BuiltNode}</>;
@@ -45,7 +38,7 @@ describe("ReactFlowBuilder", () => {
 	});
 
 	it("adds NodeResizer when withResizer is used", () => {
-		const builder = new ReactFlowBuilder(<TestComponent />);
+		const builder = new ReactFlowBuilder(<AtomicDiv />);
 		const BuiltNode = builder.withResizer().build();
 
 		const BuiltComponent: React.FC = () => <>{BuiltNode}</>;
@@ -57,5 +50,13 @@ describe("ReactFlowBuilder", () => {
 
 		const handle = container.querySelector(".react-flow__resize-control");
 		expect(handle).toBeInTheDocument();
+	});
+
+	it("buildComponent returns a valid React component", () => {
+		const builder = new ReactFlowBuilder(<AtomicDiv />);
+		const BuiltComponent = builder.buildComponent();
+
+		const { getByTestId } = render(<BuiltComponent />);
+		expect(getByTestId("atomic-div")).toBeInTheDocument();
 	});
 });

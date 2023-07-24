@@ -1,7 +1,8 @@
 //path: src\components\builders\reactFlowBuilder\ReactFlowBuilder.tsx
 
 import { Handle, Position, NodeResizer } from "reactflow";
-import { ReactNode } from "react";
+import { FC, ReactElement, ReactNode } from "react";
+import React from "react";
 
 export default class ReactFlowBuilder {
 	private node: ReactNode;
@@ -37,6 +38,12 @@ export default class ReactFlowBuilder {
 		return this;
 	}
 
+	generateId() {
+		return (
+			Date.now().toString(36) + Math.random().toString(36).substring(2)
+		);
+	}
+
 	build(): ReactNode {
 		let uuid = this.generateId();
 		return (
@@ -62,9 +69,7 @@ export default class ReactFlowBuilder {
 		);
 	}
 
-	generateId() {
-		return (
-			Date.now().toString(36) + Math.random().toString(36).substring(2)
-		);
+	buildComponent(): FC {
+		return () => <> {this.build()} </>;
 	}
 }

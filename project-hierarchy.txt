@@ -121,6 +121,7 @@ neurocache-hub
 │  │  │  ├─ nodesData.ts
 │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  ├─ reactFlowNode.tsx
+│  │  │  ├─ registerReactFlowCallbacks.ts
 │  │  │  └─ styleReactFlowLogo.ts
 │  │  ├─ threejs
 │  │  │  ├─ controllers

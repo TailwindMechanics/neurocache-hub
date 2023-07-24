@@ -1,16 +1,13 @@
 //path: src\components\builders\typographyBuilder\TypographyBuilder.test.tsx
 
-import { render } from "@testing-library/react";
+import AtomicDiv from "@src/components/atoms/atomicDiv";
 import TypographyBuilder from "./TypographyBuilder";
+import { render } from "@testing-library/react";
 import React from "react";
-
-const TestComponent: React.FC<{ className?: string }> = ({ className }) => {
-	return <div className={className}>Test</div>;
-};
 
 describe("TypographyBuilder", () => {
 	it("adds typography styles correctly", () => {
-		const builder = new TypographyBuilder(TestComponent);
+		const builder = new TypographyBuilder(AtomicDiv);
 		const Built = builder
 			.withTextColor("overt")
 			.withTextSize("calm")
@@ -31,5 +28,13 @@ describe("TypographyBuilder", () => {
 		expect(div).toHaveClass("leading-loose");
 		expect(div).toHaveClass("font-extrabold");
 		expect(div).toHaveClass("tracking-widest");
+	});
+
+	it("buildComponent returns a valid React component", () => {
+		const builder = new TypographyBuilder(AtomicDiv);
+		const BuiltComponent = builder.buildComponent();
+
+		const { getByTestId } = render(<BuiltComponent />);
+		expect(getByTestId("atomic-div")).toBeInTheDocument();
 	});
 });

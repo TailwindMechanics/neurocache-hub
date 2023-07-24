@@ -1,7 +1,7 @@
 //path: src\components\builders\typographyBuilder\TypographyBuilder.tsx
 
 import { AtomNode, AtomProps, Style } from "@src/types/declarations";
-import React from "react";
+import React, { FC } from "react";
 
 type CategoryStyles = {
 	color: string;
@@ -127,12 +127,16 @@ export default class TypographyBuilder {
 
 	// prettier-ignore
 	build(): AtomNode {
-    const styles = this.styles;
-    return (props: AtomProps) => {
-      let newClassName = props.className ?? "";
-      newClassName += ` ${styles.join(" ")}`;
-      let newProps = {...props, className: newClassName.trim()};
-      return <this.node {...newProps} />;
-    };
-  }
+		const styles = this.styles;
+		return (props: AtomProps) => {
+		  let newClassName = props.className ?? "";
+		  newClassName += ` ${styles.join(" ")}`;
+		  let newProps = {...props, className: newClassName.trim()};
+		  return <this.node {...newProps} />;
+		};}
+
+	buildComponent(): FC {
+		const Built = this.build();
+		return () => <Built />;
+	}
 }
