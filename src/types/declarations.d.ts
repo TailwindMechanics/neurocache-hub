@@ -1,11 +1,28 @@
 //path: src\types\declarations.d.ts
 
 import { ReactNode, FC, HTMLAttributes } from "react";
+import { Node, Edge, NodeTypes } from "reactflow";
 import flatColors from '@src/data/colors.ts';
 
 
 type ColorKeys = keyof typeof flatColors;
 type ColorType = `${ColorKeys}`;
+
+interface ReactFlowCanvasProps {
+	nodes: Node[];
+	edges: Edge[];
+	types: NodeTypes;
+}
+
+interface ReactFlowNode {
+	flowData: Node;
+	atomData: AtomNode;
+}
+
+type ReactFlowNodeProps = {
+	data: Node["data"];
+	atom: AtomNode;
+};
 
 interface Style {
 	Category: "overt" | "calm" | "alert" | "subtle";

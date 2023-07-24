@@ -1,8 +1,8 @@
 //path: src\components\react_flow\registerReactFlowCallbacks.ts
 
+import { ReactFlowCanvasProps } from "@src/types/declarations";
 import { useState, useCallback } from "react";
 import "reactflow/dist/style.css";
-import data from "./nodesData";
 import {
 	applyNodeChanges,
 	applyEdgeChanges,
@@ -13,9 +13,9 @@ import {
 	Edge,
 } from "reactflow";
 
-const RegisterReactFlowCallbacks = () => {
-	const [nodes, setNodes] = useState(data.Nodes);
-	const [edges, setEdges] = useState(data.Edges);
+const RegisterReactFlowCallbacks = (props: ReactFlowCanvasProps) => {
+	const [nodes, setNodes] = useState(props.nodes);
+	const [edges, setEdges] = useState(props.edges);
 
 	const onNodesChange = useCallback(
 		(changes: NodeChange[]) =>

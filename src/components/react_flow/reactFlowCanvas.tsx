@@ -2,15 +2,15 @@
 
 import RegisterReactFlowCallbacks from "./registerReactFlowCallbacks";
 import ReactFlow, { Background, BackgroundVariant } from "reactflow";
+import { ReactFlowCanvasProps } from "@src/types/declarations";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
-import React, { PropsWithChildren } from "react";
 import colors from "@data/colors.json";
 import "reactflow/dist/style.css";
-import data from "./nodesData";
+import React from "react";
 
-const ReactFlowCanvas: React.FC<PropsWithChildren<{}>> = ({ children }) => {
+const ReactFlowCanvas: React.FC<ReactFlowCanvasProps> = (props) => {
 	StyleReactFlowLogo();
-	const callbackData = RegisterReactFlowCallbacks();
+	const callbackData = RegisterReactFlowCallbacks(props);
 
 	return (
 		<div className="h-screen w-screen bg-night">
@@ -20,13 +20,12 @@ const ReactFlowCanvas: React.FC<PropsWithChildren<{}>> = ({ children }) => {
 				edges={callbackData.edges}
 				onEdgesChange={callbackData.onEdgesChange}
 				onConnect={callbackData.onConnect}
-				nodeTypes={data.Types}
+				nodeTypes={props.types}
 			>
 				<Background
 					variant={BackgroundVariant.Dots}
 					color={colors.aqua.a}
 				/>
-				{children}
 			</ReactFlow>
 		</div>
 	);

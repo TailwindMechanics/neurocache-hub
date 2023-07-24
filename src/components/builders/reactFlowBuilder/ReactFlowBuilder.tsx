@@ -1,24 +1,50 @@
 //path: src\components\builders\reactFlowBuilder\ReactFlowBuilder.tsx
 
-import { AtomNode, AtomProps } from "@src/types/declarations";
-import { Handle, Position, NodeResizer } from "reactflow";
+import {
+	AtomNode,
+	AtomProps,
+	ReactFlowNode,
+	ReactFlowNodeProps,
+} from "@src/types/declarations";
+import { Handle, Position, NodeResizer, Node } from "reactflow";
 import React from "react";
+import { flow } from "mobx";
 
 export default class ReactFlowBuilder {
-	private node: AtomNode;
-	private includeTopHandle: boolean;
+	private atomData: AtomNode;
+	private flowData: Node;
+
 	private includeBottomHandle: boolean;
-	private includeResizer: boolean;
-	private minWidthResizer: number;
+	private includeTopHandle: boolean;
 	private minHeightResizer: number;
+	private minWidthResizer: number;
+	private includeResizer: boolean;
 
 	constructor(node: AtomNode) {
-		this.node = node;
+		this.atomData = node;
+
+		this.flowData = {
+			id: this.generateId(),
+			type: "custom",
+			position: { x: 0, y: 0 },
+			data: { label: "label" },
+		};
+
 		this.includeTopHandle = false;
 		this.includeBottomHandle = false;
 		this.includeResizer = false;
 		this.minWidthResizer = 100;
 		this.minHeightResizer = 30;
+	}
+
+	withPosition(x: number, y: number): ReactFlowBuilder {
+		this.flowData.position = { x: x, y: y };
+		return this;
+	}
+
+	withType(type: string): ReactFlowBuilder {
+		this.flowData.type = type;
+		return this;
 	}
 
 	withTopHandle(): ReactFlowBuilder {
@@ -38,14 +64,20 @@ export default class ReactFlowBuilder {
 		return this;
 	}
 
+	withLabel(label: string): ReactFlowBuilder {
+		this.flowData.data = { label: label };
+		return this;
+	}
+
 	generateId() {
 		return (
 			Date.now().toString(36) + Math.random().toString(36).substring(2)
 		);
 	}
 
-	build(): AtomNode {
+	buildAtomNode(): AtomNode {
 		let uuid = this.generateId();
+		const Atom = this.atomData;
 		return (props: AtomProps) => (
 			<>
 				{this.includeTopHandle && (
@@ -57,7 +89,7 @@ export default class ReactFlowBuilder {
 						minHeight={this.minHeightResizer}
 					/>
 				)}
-				<this.node {...props} />;
+				<Atom {...props}>{this.flowData.data.label}</Atom>;
 				{this.includeBottomHandle && (
 					<Handle
 						type="source"
@@ -67,5 +99,12 @@ export default class ReactFlowBuilder {
 				)}
 			</>
 		);
+	}
+
+	build(): ReactFlowNodeProps {
+		return {
+			data: this.flowData,
+			atom: this.buildAtomNode(),
+		};
 	}
 }
