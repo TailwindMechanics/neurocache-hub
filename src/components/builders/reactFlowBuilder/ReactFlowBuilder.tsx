@@ -1,14 +1,12 @@
 //path: src\components\builders\reactFlowBuilder\ReactFlowBuilder.tsx
 
-import {
-	AtomNode,
-	AtomProps,
-	ReactFlowNode,
-	ReactFlowNodeProps,
-} from "@src/types/declarations";
 import { Handle, Position, NodeResizer, Node } from "reactflow";
 import React from "react";
-import { flow } from "mobx";
+import {
+	ReactFlowNodeProps,
+	AtomProps,
+	AtomNode,
+} from "@src/types/declarations";
 
 export default class ReactFlowBuilder {
 	private atomData: AtomNode;

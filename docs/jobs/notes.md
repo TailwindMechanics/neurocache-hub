@@ -56,42 +56,47 @@
 
 
 
+vStream 2014
+- 
 
 
 
 
 
+# Expenses
+- Aragon: 30
+- Jobscan: 30
+- Huntr: 10
 
 
 
 
 
-
-======================
 # Photo: 5/5
 - Professional headshot shows you are credible and serious candidate.
 	- *Use AI to generate headshot*
 - Smiling, approachable vibe is ideal. Consistent with personal brand.
 	- *Personal brand is your unique value proposition - skills, experience, passion areas. Headline and summary convey this.*
 # Background Image: 4/5
+- #53131E#486C86#FFD07B#637C5A
 - Banner visually represents your expertise. Can include resume highlights, quotes etc.
   - *Creative background images like neural network visuals or AI generated art could align well with your goals.*
 - Add poignant relevant quote
   - *- Quote: "The limits of my language mean the limits of my world." (Ludwig Wittgenstein)*
 - Keep consistent color theme and relevant to industry/roles.
   - *choose a palette that aligns with your personal brand*
+======================
 # Headline: 5/5
 - Concisely summarize your value proposition.
   - *AI and Game Engineering Leader | Immersive Systems Architect*
 - Include key skills, areas of expertise, passion points.
-# Summary:
-- Provide brief overview of professional experience and capabilities tailored to target roles.
-  - *Over 14 years experience leading complex engineering initiatives. Expertise across full stack development, Unity gamedev, and advanced systems like real-time 3D graphics, VR/AR, and neural networks. Passionate about leveraging experience to meaningfully advance AI research and steer technology for social benefit*
-- Incorporate keywords from job listings.
-  - *Use the summary or work experience sections to feature self-directed learning accomplishments. For example: "Self-taught expert in Unity game development through over 10,000 hours of hands-on training."*
-  - *Over 14 years experience leading complex engineering initiatives in areas like real-time 3D graphics, VR/AR, and neural networks.*
-  - *Passionate about advancing AI research and steering technology to benefit society.*
-  - *Self-taught expert in Unity game development through over 10,000 hours of hands-on training.*
+Seasoned engineering leader with 14 years experience spearheading complex software initiatives. Self-taught expert across full-stack development with a focus on Unity, C#, and Python. Passionate about leveraging experience to meaningfully advance AI research and steer technology for social benefit.
+
+Currently leading team developing Lego Duplo Marvel mobile game, collaborating with StoryToys to build their most successful title. Previous projects include architecting computer vision pipelines and conversational AI backend systems.
+
+Significant expertise leading engineering teams to build innovative solutions in areas like real-time 3D graphics, VR/AR, and neural networks. Enjoy mentoring others and optimizing processes.
+
+Seeking opportunities at the intersection of gaming, immersive technologies, and AI where I can apply my technical leadership abilities along with my experience shipping products successfully. Especially interested in joining companies pursuing impactful advancements in artificial intelligence.
 # Work Experience: 5/5
 - Highlight most relevant positions first. Focus details on achievements, impact, technical skills used.
 	- *For Work Experience, list company, role, dates and 2-3 bullet points quantifying achievements, contributions using keywords.*
@@ -156,7 +161,7 @@
 
 
 
-
+ #59504D, #593638,#1F383C
 
 
 
@@ -214,3 +219,75 @@ Identify insider contacts at target companies using advanced search.
 Follow companies to see news/updates and be aware of openings early.
 Connect with recruiters and hiring managers, respond to InMail outreach.
 So in summary, optimize your profile to attract the right opportunities by highlighting fit, establishing expertise, and increasing exposure and connections. Does this help frame the context? Let me know if any part needs more explanation or if you have additional questions!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ballyfermot College of Further Education - Animation
+Studied traditional animation principles and techniques (2008 - 2009)
+
+Gained foundation in core artistic concepts like perspective, lighting, storytelling, and dynamic motion. Developed essential 2D drawing abilities and appreciation of the craft. Left to pursue 3D animation through continuous self-study.
+
+
+
+
+
+Virtual Reality Technologies
+Game Design Theory
+Digital Sculpting
+Robotics
+Neuroscience Advances
+Unity Community Groups
+Developing Educational Apps
+Promoting STEM Skills
+
+
+
+
+
+
+TypeScript, React, Next.js, Node.js, Tailwind, React-flow, Python, FastAPI, PostgreSQL, REST API Design, Secure Authentication, System Architecture, Component Libraries, Design Patterns, Storybook, Jest, Vercel, Socket.io, MobX, React Query, Supabase, Prompt Engineering, Responsible AI
+
+
+
+
+
+
+
+
+Python
+FastAPI
+PostgreSQL
+AWS
+REST APIs
+System Architecture
+React
+Node.js
+Next.js
+TypeScript
+Prompt Engineering
+Responsible AI
+Unity
+C#
+Mobile Gaming
+Team Leadership
+Tool Development
+
+
+
+
+
+
+
+
+ 
