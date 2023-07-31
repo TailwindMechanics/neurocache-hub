@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import React from "react";
 
 //prettier-ignore
-const AtomicDiv: React.FC<any> = ({ children, className, ...props }) => {
+const AtomicDiv: React.FC<any> = ({ children, className, label = "", ...props}) => {
 	return (
 		<motion.div className={className} data-testid="atomic-div" {...props}>
-			{children}
+			{label}
 		</motion.div>
 	);
 };

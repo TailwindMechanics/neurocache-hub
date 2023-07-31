@@ -49,6 +49,7 @@ interface AtomProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>{
 	children?: ReactNode;
 	className?: string;
 	disabled?: boolean;
+	label?: string;
 	onClick?: () => void;
 }
 

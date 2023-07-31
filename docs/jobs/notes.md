@@ -28,12 +28,13 @@
 
 # 4. Apply
 - Research company and role
-  - Store research for interview prep
-- Stress transferable skills
+    - Store research for interview prep
 - Create tailored CV using sections
-- Verify CV ats score on jobscan
+    - Stress transferable skills
+    - Verify CV ats score on jobscan
 - Generate cover letters if needed
-- Track application on huntr.co
+	- Score cover letter on jobscan
+- Track applications on huntr.co and linkedin
 
 # 5. Recruiters
 - Shortlist suitable recruiters
@@ -265,23 +266,29 @@ TypeScript, React, Next.js, Node.js, Tailwind, React-flow, Python, FastAPI, Post
 
 
 
-Python
-FastAPI
-PostgreSQL
-AWS
-REST APIs
-System Architecture
-React
-Node.js
-Next.js
-TypeScript
-Prompt Engineering
-Responsible AI
-Unity
-C#
-Mobile Gaming
-Team Leadership
-Tool Development
+
+
+
+
+
+
+
+
+
+
+
+Self-Taught Learner: Over 10+ years of continuous self-education across programming, game development, AI ethics, technical art and more. Passion for hands-on experimentation and research.
+
+Programming Fundamentals: Learned core programming principles through courses early in career.
+
+Animation and Design Skills
+Developed foundational artistic abilities through traditional animation programs.
+
+Let me know if this helps provide an outline for your Courses section! The goal is conveying the breadth and depth of your self-motivated learning. But please feel free to modify the structure/content as you see fit.
+
+
+
+
 
 
 
@@ -291,3 +298,211 @@ Tool Development
 
 
  
+
+
+
+
+
+
+
+
+
+
+• Seasoned engineering leader with over 14 years experience spearheading complex software initiatives across gaming, cloud computing, artificial intelligence, and mobile game development.
+• Self-taught expert in Unity and C#. 
+• Currently leading development of Lego Duplo Marvel mobile game using Unity and C#, collaborating with StoryToys to build their most successful title to date.
+• Previous projects include architecting computer vision pipelines in Python, designing • APIs, and building conversational AI backends.
+• Directing development of Neurocache, a personal research project leveraging Python, React, Node.js, FastAPI, PostgreSQL and other modern technologies to advance hands-on AI education.
+• Extensive experience leading high performance engineering teams to build innovative solutions in areas like VR, AR, networking, and machine learning.
+Experience with C++ and Unreal Engine through personal projects and ongoing hands-on experimentation.
+
+
+
+StoryToys (July 2020 - Present)
+Lead Unity Engineer
+
+
+
+The Virtual Wild (Jan 2015 - Dec 2017)
+Technical Lead
+• Led engineering teams of 2-3 on innovative web and Unity projects for clients like Siemens and Dynetics/NASA
+• Spearheaded multiplayer Unity web app using UniRx and Photon, adopted globally by Siemens
+• Architected Three.js web app submission for Dynetics/NASA Artemis project using Node.js - finalist in national competition
+• Introduced tools using Python to streamline workflow, managing complex data
+• Significantly expanded web development skills and multi-disciplinary team leadership abilities
+• Reduced state related bugs by 90% using reactive programming with UniRx
+• Implemented CI/CD reducing build process from 2 hours to 5 minutes
+
+
+
+
+
+Figure Drawing
+Gesture Drawing
+Character Design
+Anatomy Studies
+Acting Fundamentals
+Motion Studies
+Digital Painting
+Storyboarding
+Character Animation
+Background Design
+
+
+
+Unity Engineer, Creative Technologist, Gameplay Programmer, Unity Developer, Tools Programmer, Software Engineer, Full Stack Engineer, Software Engineer for LLM-driven agents, Gameplay Engineer, Technical Team Core Technologies, Game Client Engineer, Tech Artist, Technical Art, Game Designer, Game Programmer, Client Technical Director, AI Developer, Technical Designer, Technical Artist,, Research Scientist, Prompt Engineer, Product Designer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Seamus Dunne
+**Location:** Wexford, Ireland
+**Email:** sheadunne@gmail.com 
+**LinkedIn:** linkedin.com/in/seamusdunne
+
+## Profile Summary
+Accomplished Lead Game Programmer with over 14 years of hands-on experience architecting, implementing, and shipping mobile games using Unity and C#. Skilled in leading teams to deliver high quality titles on schedule. Strong track record of mentoring and motivating programmers to reach their full potential. Excels at promoting best practices in code quality, testing, and Agile processes. Passionate about leveraging industry knowledge and programming expertise to craft fun, engaging gameplay experiences. 
+
+## Technical Skills
+**Languages:** C#, JavaScript, Python, C++  
+**Platforms:** Unity, Android, iOS
+**Libraries:** Photon Networking, Google Play Services
+**Tools:** Perforce, Jira, Visual Studio
+**Concepts:** Multiplayer Gaming, Optimization, Procedural Generation
+
+## Professional Experience
+**Lead Game Programmer, Kwalee** (Jan 2022 - Present)
+- Spearheaded development of hypercasual mobile games downloaded over 10 million times. 
+- Established scalable architecture and workflows enabling rapid iteration and experimentation.
+- Provided mentoring and coaching to 5 junior developers, supporting their professional growth.
+- Introduced automated unit testing and code review processes, reducing defects by 30%.
+- Worked closely across disciplines to translate game design vision into high quality playable experiences.
+
+**Lead Unity Engineer, StoryToys** (Mar 2019 - Dec 2021)  
+- Led team of 3 developers on Lego Duplo Marvel mobile game grossing over $2 million in first year.
+- Architected core gameplay framework and reactive systems using Unity and C# best practices. 
+- Designed engine tools to streamline character creation pipelines, improving artist productivity 45%.
+- Optimized GPU shaders and texture compression leading to 50% app size reduction.
+- Continuously identified and resolved performance bottlenecks through profiling and enhancement.
+
+**Game Developer, Tiny Rocket Games** (Jun 2015 - Feb 2019)
+- Engineered online multiplayer functionality for Epic Race mobile kart racer using Photon networking. 
+- Developed procedural environment generation system enabling unlimited customizable tracks.
+- Implemented Google Play and Apple Game Center integration for achievements, leaderboards.
+- Worked extensively with Unity, C#, iOS, Android native plugins, and cloud services.
+- Shipped 8 titles across mobile and handheld gaming platforms.
+
+## Projects
+**Captain Blast Galaxy** (Personal Project - 2021)   
+- Developed a 2D side-scrolling action shooter game for web using PhaserJS framework.
+- Programmed enemy behaviors, combat mechanics, procedurally generated levels.
+- Published fully playable beta demo to itch.io with 100+ downloads.
+
+**Rhythmic Runner** (Personal Project - 2019)
+- Created an endless running mobile game with rhythm-based gameplay in Unity and C#.
+- Implemented custom audio synchronization and reactive beat detection systems.
+- Integrated social features like leaderboards, gif sharing.
+- Released on Google Play and garnered 500+ downloads within 2 months.
+
+## Education
+**BSc Computer Science, University College Dublin** (2005-2009) 
+
+**Diploma in Game Development, Ballyfermot College** (2003-2005)
+
+## Certifications
+- Developing 2D & 3D Games with Unity (Udemy, 2021)
+- Mastering Unity Multiplayer Development (Udemy, 2022)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. What was the inspiration and goals behind starting this project?
+	- During my time at The Virtual Wild we had a challenge I have seen time and time again which is that small to medium sized startups need to be able to move fast, be flexible, onboard rapidly, and often hire predominately juniors. This is a recipe for disaster if you don't have a strong technical leader who can set the tone and direction for the team. I wanted to create a resource that would help fill that gap and provide a solid foundation for new engineers to build on. Tailwind is an architure I devised that consists of modules. A module has a public folder and a private folder, each with their own assembly and namespace modulename.public and modulename.private. The public folder contains the API/Interface and any custom datatypes used therein, and the private folder contains the implementation. This allows you to create a module that can be consumed by other modules without exposing the implementation details. This is a powerful pattern that allows you to create a modular architecture that is easy to reason about and easy to extend. I treat each module as its own mini Unity project, so it has its own folder structure, its own assembly definitions, and its own namespace. This allows you to easily move modules between projects and even share them between projects. I have found this to be a very powerful pattern that allows you to create a modular architecture that is easy to reason about and easy to extend. I treat each module as its own mini Unity project, so it has its own folder structure, its own assembly definition, and its own namespace. This allows you to easily move modules between projects and even share them between projects. I have found this to be a very powerful pattern that allows you to create a modular architecture that is easy to reason about and easy to extend. I treat each module as its own mini Unity project, so it has its own folder structure, its own assembly definition, and its own namespace. This allows you to easily move modules between projects and even share them between projects. I have found this to be a very powerful pattern that allows you to create a modular architecture that is easy to reason about and easy to extend. I treat each module as its own mini Unity project, so it has its own folder structure, its own assembly definition, and its own namespace. This allows you to easily move modules between projects and even share them between projects. I have found this to be a very powerful pattern that allows you to create a modular architecture that is easy to reason about and easy to extend. I later realised it's similar to working with c++ in that you could think of the public folder as a header.
+2. What key technologies or frameworks are you utilizing for it?
+   - C# and Unity, but really it was about the architecture and design patterns.
+3. What motivated your choice of tech stack?
+   - Well it was a very Unity focused thing, but the architecture is applicable to any language or framework and I am currently using it in the Neurocache API python codebase.
+4. What problem does Tailwind Mechanics aim to solve?
+   - It solves multiple problems; onboarding is rapid as you don't onboard to a Untity project you onboard into a module. Jr devs can be leveraged as they can do little harm once scoped inside of a module. Modules can be reused so the studio can think of their suite of modules as one giant codebase, and the products they build as just a collection of modules. This allows you to build up a library of modules that can be reused across projects. It also allows you to share modules between projects, so if you have a module that is used in multiple projects you can make changes to it in one place and have those changes reflected in all projects that use it. This is a huge time saver and allows you to make sweeping changes to your codebase with confidence. 
+5. Who is the target audience or customer for this project?
+   - Small to medium sized game studios.
+6. What stage is the project currently at - proof of concept, MVP, prototyping?
+	- It's complete, I have used it in production a few times now and it has proven to be a very powerful pattern.
+7. Have you shared or launched any aspect of Tailwind publicly yet?
+	- Yes through my day jobs, but it is not a commercial project, more of a pattern or architecture.
+8. What major milestones or accomplishments have you achieved so far?
+	- Buy in and onboarding has been a breeze due to the 1-to-1 mapping  between folder structure, file location, namespaces, and assemblies. It's also very easy to extend and add new modules.
+9.  What skills have you developed or improved by working on this?
+	- I have become a better architect and have learned a lot about design patterns and how to apply them to Unity. Especially in the context taking into account potential future developers of all skill levels.
+10. Why does this project excite you and what do you hope to learn or gain from it?
+	- It's so easy and immediate to get right, and can be used in a hybrid way as every module comes complete with its own facade, so it excites me just because of how deeply satisfying it is.
+
+
+
+
+
+
+
+
+
+
+
+1. How large have the codebases been that utilized Tailwind, in terms of lines of code or number of modules? This helps quantify the scale.
+	- It would be pretty typical to have 20-50 modules, I don't recall seeing more than that.
+2. Have you observed any measurable improvements in productivity, release velocity, or defect rates when using Tailwind? Any metrics help showcase impact.
+	- Yes, it's very easy to onboard and get up to speed, and it's very easy to extend and add new modules. But no I know you're looking for production day job examples and I don't have any concrete. As I said it was a personal project and it will go on my Linkedin in a small personal projects section.
+3. Is Tailwind applicable for large enterprise projects or optimized for certain team sizes or project scopes? Helps understand best use cases.
+	- It is yes but you would need a large multidisciplinary team to get the most out of it. As your security, infra, and devops teams would need to be on board with it. It's not a silver bullet, it's just a pattern that I have found to be very powerful.
+4. What opportunities exist to expand Tailwind, like adding template modules or more examples? Shows potential growth.
+	- I have never gotten any of my employers to succesfully adopt it, but I have used hybrid versions of it in production and they have been robust and reused between projects. But I don't keep code I write fresh every time for my personal projects as I'm typically learning something and reps matter.
+5. What benefits have team members or stakeholders highlighted after being introduced to Tailwind? Feedback can demonstrate value.
+	- It's just extremely easy to reason about really and everyone says as much. No diagram is needed. Also it is a project structure system too it was as much about asset management as code management. So it benefits all disciplines working within Unity.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Tailwind Architecture
+
+Developed an original architectural framework for structuring Unity projects in a modular way to improve development velocity.
+
+The approach segregates features into distinct modules containing both a public API and private implementation. This encapsulation facilitates rapid onboarding, parallel development, reduces release defects, enables easier reasoning about complex projects, and facilitated code reuse across teams. 
+
+Importantly this approach is as much about asset management as it is about code management. Each module is effectively a mini Unity project, so as a small to medium size studio you can think of your suite of modules as one giant codebase, and the products you build as just a collection of modules. This allows you to build up a library of modules that can be reused across projects. It also allows you to share modules between projects, so if you have a module that is used in multiple projects you can make changes to it in one place and have those changes reflected in all projects that use it. This is a huge time saver and allows you to make sweeping changes to your codebase with confidence.

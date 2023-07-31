@@ -87,7 +87,7 @@ export default class ReactFlowBuilder {
 						minHeight={this.minHeightResizer}
 					/>
 				)}
-				<Atom {...props}>{this.flowData.data.label}</Atom>;
+				<Atom label={this.flowData.data.label} {...props} />
 				{this.includeBottomHandle && (
 					<Handle
 						type="source"

@@ -21,6 +21,7 @@ const page: FC = () => {
 		.withTopHandle()
 		.withResizer()
 		.build();
+	console.log(CalmFlowButton.data);
 
 	let OvertButton = buttonAtom.overt();
 	const OvertFlowButton = new ReactFlowBuilder(OvertButton)
@@ -32,7 +33,7 @@ const page: FC = () => {
 		.withResizer()
 		.build();
 
-	console.log(OvertFlowButton);
+	console.log(OvertFlowButton.data);
 
 	let nodes: Node[] = [CalmFlowButton.data, OvertFlowButton.data];
 	const types: NodeTypes = {
