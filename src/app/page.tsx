@@ -2,43 +2,30 @@
 
 "use client";
 
-import ReactFlowBuilder from "@src/components/builders/reactFlowBuilder/ReactFlowBuilder";
 import ReactFlowCanvas from "@src/components/react_flow/reactFlowCanvas";
 import ButtonAtom from "@src/components/atoms/buttonAtom";
-import { Node, NodeTypes } from "reactflow";
-import { FC } from "react";
+import { Node, NodeProps, NodeTypes } from "reactflow";
+import { ComponentType, FC } from "react";
 import React from "react";
 
 const page: FC = () => {
 	const buttonAtom = new ButtonAtom();
+	const calm = buttonAtom.Flow.calm;
+	const overt = buttonAtom.Flow.overt;
+	const alert = buttonAtom.Flow.alert;
+	const subtle = buttonAtom.Flow.subtle;
 
-	let CalmButton = buttonAtom.calm();
-	const CalmFlowButton = new ReactFlowBuilder(CalmButton)
-		.withType("custom_calm")
-		.withPosition(-50, 0)
-		.withBottomHandle()
-		.withLabel("Calm")
-		.withTopHandle()
-		.withResizer()
-		.build();
-	console.log(CalmFlowButton.data);
-
-	let OvertButton = buttonAtom.overt();
-	const OvertFlowButton = new ReactFlowBuilder(OvertButton)
-		.withType("custom_overt")
-		.withPosition(50, 0)
-		.withBottomHandle()
-		.withLabel("Overt")
-		.withTopHandle()
-		.withResizer()
-		.build();
-
-	console.log(OvertFlowButton.data);
-
-	let nodes: Node[] = [CalmFlowButton.data, OvertFlowButton.data];
+	let nodes: Node[] = [
+		calm.node(),
+		overt.node(),
+		alert.node(),
+		subtle.node(),
+	];
 	const types: NodeTypes = {
-		custom_calm: CalmButton as React.ComponentType<any>,
-		custom_overt: OvertButton as React.ComponentType<any>,
+		custom_calm: calm.build() as ComponentType<NodeProps>,
+		custom_overt: overt.build() as ComponentType<NodeProps>,
+		custom_alert: alert.build() as ComponentType<NodeProps>,
+		custom_subtle: subtle.build() as ComponentType<NodeProps>,
 	};
 
 	return (

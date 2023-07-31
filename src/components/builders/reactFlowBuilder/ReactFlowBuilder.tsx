@@ -2,11 +2,7 @@
 
 import { Handle, Position, NodeResizer, Node } from "reactflow";
 import React from "react";
-import {
-	ReactFlowNodeProps,
-	AtomProps,
-	AtomNode,
-} from "@src/types/declarations";
+import { AtomProps, AtomNode } from "@src/types/declarations";
 
 export default class ReactFlowBuilder {
 	private atomData: AtomNode;
@@ -21,18 +17,21 @@ export default class ReactFlowBuilder {
 	constructor(node: AtomNode) {
 		this.atomData = node;
 
+		this.minWidthResizer = 100;
+		this.minHeightResizer = 30;
+
 		this.flowData = {
 			id: this.generateId(),
 			type: "custom",
 			position: { x: 0, y: 0 },
 			data: { label: "label" },
+			width: 40,
+			height: 30,
 		};
 
 		this.includeTopHandle = false;
 		this.includeBottomHandle = false;
 		this.includeResizer = false;
-		this.minWidthResizer = 100;
-		this.minHeightResizer = 30;
 	}
 
 	withPosition(x: number, y: number): ReactFlowBuilder {
@@ -55,15 +54,15 @@ export default class ReactFlowBuilder {
 		return this;
 	}
 
-	withResizer(minWidth = 100, minHeight = 30): ReactFlowBuilder {
+	withResizer(minWidth = 40, minHeight = 30): ReactFlowBuilder {
 		this.includeResizer = true;
 		this.minWidthResizer = minWidth;
 		this.minHeightResizer = minHeight;
-		return this;
-	}
 
-	withLabel(label: string): ReactFlowBuilder {
-		this.flowData.data = { label: label };
+		this.flowData.expandParent = true;
+		this.flowData.width = minWidth;
+		this.flowData.height = minHeight;
+
 		return this;
 	}
 
@@ -73,7 +72,11 @@ export default class ReactFlowBuilder {
 		);
 	}
 
-	buildAtomNode(): AtomNode {
+	node(): Node {
+		return this.flowData;
+	}
+
+	build(): AtomNode {
 		let uuid = this.generateId();
 		const Atom = this.atomData;
 		return (props: AtomProps) => (
@@ -87,7 +90,7 @@ export default class ReactFlowBuilder {
 						minHeight={this.minHeightResizer}
 					/>
 				)}
-				<Atom label={this.flowData.data.label} {...props} />
+				<Atom {...props} />
 				{this.includeBottomHandle && (
 					<Handle
 						type="source"
@@ -97,12 +100,5 @@ export default class ReactFlowBuilder {
 				)}
 			</>
 		);
-	}
-
-	build(): ReactFlowNodeProps {
-		return {
-			data: this.flowData,
-			atom: this.buildAtomNode(),
-		};
 	}
 }

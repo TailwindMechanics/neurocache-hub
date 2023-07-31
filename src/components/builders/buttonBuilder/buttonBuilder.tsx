@@ -11,6 +11,7 @@ type buttonProps = {
 	ariaLabel: string;
 	disabled: boolean;
 	tooltip: string;
+	label: string;
 };
 
 export default class ButtonBuilder {
@@ -25,7 +26,13 @@ export default class ButtonBuilder {
 			ariaLabel: "",
 			disabled: false,
 			tooltip: "",
+			label: "",
 		};
+	}
+
+	withLabel(label: string): ButtonBuilder {
+		this.props.label = label;
+		return this;
 	}
 
 	withCategory(category: Style["Category"]): ButtonBuilder {
@@ -54,7 +61,7 @@ export default class ButtonBuilder {
 	}
 
 	build() {
-		let build = new StyleBuilder(this.node)
+		let Build = new StyleBuilder(this.node)
 			.withBorderRadius(this.props.category)
 			.withBorder(this.props.category)
 			.withShadow(this.props.category)
@@ -62,7 +69,7 @@ export default class ButtonBuilder {
 			.withBg(this.props.category)
 			.build();
 
-		build = new TypographyBuilder(build)
+		Build = new TypographyBuilder(Build)
 			.withTextAlignment(this.props.category)
 			.withFontFamily(this.props.category)
 			.withHoverColor(this.props.category)
@@ -70,9 +77,10 @@ export default class ButtonBuilder {
 			.withLineHeight(this.props.category)
 			.withTextColor(this.props.category)
 			.withTextSize(this.props.category)
+			.withLabel(this.props.label)
 			.build();
 
-		build = new BehaviourBuilder(build)
+		Build = new BehaviourBuilder(Build)
 			.withClick(this.props.onClick)
 			.withPointerCursor()
 			.withKeyboardNav()
@@ -83,6 +91,6 @@ export default class ButtonBuilder {
 			.withHover()
 			.build();
 
-		return build;
+		return Build;
 	}
 }

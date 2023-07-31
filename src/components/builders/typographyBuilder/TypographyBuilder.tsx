@@ -1,7 +1,7 @@
 //path: src\components\builders\typographyBuilder\TypographyBuilder.tsx
 
 import { AtomNode, AtomProps, Style } from "@src/types/declarations";
-import React, { FC } from "react";
+import React from "react";
 
 type CategoryStyles = {
 	color: string;
@@ -60,7 +60,7 @@ const tailwind: Record<Style["Category"], CategoryStyles> = {
 export default class TypographyBuilder {
 	private node: AtomNode;
 	private styles: string[] = [];
-
+	private label: string = "";
 	private push = (style: string) => {
 		this.styles.push(style);
 	};
@@ -76,62 +76,60 @@ export default class TypographyBuilder {
 		return this;
 	}
 
-	// prettier-ignore
+	withLabel(label: string): TypographyBuilder {
+		this.label = label;
+		return this;
+	}
+
 	withHoverColor(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["hover"];
 		this.push(newStyle);
 		return this;
 	}
 
-	// prettier-ignore
 	withTextSize(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["textSize"];
 		this.push(newStyle);
 		return this;
 	}
 
-	// prettier-ignore
 	withFontFamily(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["fontFamily"];
 		this.push(newStyle);
 		return this;
 	}
 
-	// prettier-ignore
 	withTextAlignment(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["textAlign"];
 		this.push(newStyle);
 		return this;
 	}
 
-	// prettier-ignore
 	withLineHeight(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["lineHeight"];
 		this.push(newStyle);
 		return this;
 	}
 
-	// prettier-ignore
-	withFontWeight(category: Style["Category"] = 'calm'): TypographyBuilder {
+	withFontWeight(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["fontWeight"];
 		this.push(newStyle);
 		return this;
 	}
 
-	// prettier-ignore
-	withLetterSpacing(category: Style["Category"] = 'calm'): TypographyBuilder {
+	withLetterSpacing(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["letterSpacing"];
 		this.push(newStyle);
 		return this;
 	}
 
-	// prettier-ignore
 	build(): AtomNode {
 		const styles = this.styles;
 		return (props: AtomProps) => {
-		  let newClassName = props.className ?? "";
-		  newClassName += ` ${styles.join(" ")}`;
-		  let newProps = {...props, className: newClassName.trim()};
-		  return <this.node {...newProps} />;
-		};}
+			let newClassName = props.className ?? "";
+			newClassName += ` ${styles.join(" ")}`;
+			let newProps = { ...props, className: newClassName.trim() };
+			return <this.node {...newProps}>{this.label}</this.node>;
+		};
+	}
 }

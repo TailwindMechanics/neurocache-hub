@@ -19,11 +19,6 @@ interface ReactFlowNode {
 	atomData: AtomNode;
 }
 
-type ReactFlowNodeProps = {
-	data: Node["data"];
-	atom: AtomNode;
-};
-
 interface Style {
 	Category: "overt" | "calm" | "alert" | "subtle";
 	Element: "bg" | "hover" | "border";

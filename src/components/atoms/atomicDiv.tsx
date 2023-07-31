@@ -7,7 +7,7 @@ import React from "react";
 const AtomicDiv: React.FC<any> = ({ children, className, label = "", ...props}) => {
 	return (
 		<motion.div className={className} data-testid="atomic-div" {...props}>
-			{label}
+			{label}{children}
 		</motion.div>
 	);
 };
