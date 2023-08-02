@@ -1,24 +1,21 @@
-//path: src\components\atoms\card.tsx
+//path: src\components\atoms\cardAtom.tsx
 
 import TypographyBuilder from "../builders/typographyBuilder/TypographyBuilder";
+import LayoutBuilder from "../builders/layoutBuilder/LayoutBuilder";
 import StyleBuilder from "../builders/styleBuilder/StyleBuilder";
 import { Style } from "@src/types/declarations";
 import React, { useState } from "react";
 import ButtonAtom from "./buttonAtom";
 import AtomicDiv from "./atomicDiv";
-import LayoutBuilder from "../builders/layoutBuilder/LayoutBuilder";
-import Image from "next/image";
-import { User } from "@src/data/icons";
 
-interface CardProps {
+interface CardAtomProps {
 	style: Style["Category"];
 	title: string;
 	body: string;
-	buttonLabel: string;
-	onClick: () => void;
+	imageUrl?: string;
 }
 
-const Card: React.FC<CardProps> = (props: CardProps) => {
+const CardAtom: React.FC<CardAtomProps> = (props) => {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 
 	let RootBox = new StyleBuilder(AtomicDiv)
@@ -29,11 +26,13 @@ const Card: React.FC<CardProps> = (props: CardProps) => {
 		.build();
 
 	const TitleBox = new LayoutBuilder(AtomicDiv)
-		.withFlex()
-		.withFlexDirection("row")
 		.withJustifyContent("start")
+		.withFlexDirection("row")
 		.withAlignItems("center")
+		.withHeight("full")
+		.withWidth("full")
 		.withSpace("x-2")
+		.withFlex()
 		.build();
 
 	const TitleButton = new ButtonAtom().React.ghost(props.title, () => {
@@ -41,26 +40,23 @@ const Card: React.FC<CardProps> = (props: CardProps) => {
 	});
 
 	const BodyText = new TypographyBuilder(AtomicDiv)
-		.withLabel(props.body)
 		.withTextColor(props.style)
+		.withLabel(props.body)
 		.build();
 
-	const imageUrl = "/images/icons/openai.svg";
-	const Icon = () => (
-		<div className="flex h-8 w-8 items-center justify-center rounded-full">
-			{imageUrl ? (
-				<Image
-					src={imageUrl}
-					alt="Content"
-					className="h-8 w-8 rounded-full"
-					width={80}
-					height={80}
-				/>
-			) : (
-				<User />
-			)}
-		</div>
-	);
+	let Icon = new LayoutBuilder(AtomicDiv)
+		.withJustifyContent("center")
+		.withImage(props.imageUrl)
+		.withAlignItems("center")
+		.withHeight("8")
+		.withWidth("8")
+		.withFlex()
+		.build();
+
+	Icon = new StyleBuilder(Icon)
+		.withBorderRadius(props.style)
+		.withBackground("calm")
+		.build();
 
 	return (
 		<>
@@ -75,4 +71,4 @@ const Card: React.FC<CardProps> = (props: CardProps) => {
 	);
 };
 
-export default Card;
+export default CardAtom;

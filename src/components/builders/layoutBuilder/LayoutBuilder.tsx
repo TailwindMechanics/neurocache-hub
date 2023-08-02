@@ -1,12 +1,15 @@
 //path: src\components\builders\layoutBuilder\LayoutBuilder.tsx
 
-import { AtomNode, AtomProps, Style } from "@src/types/declarations";
+import { AtomNode, AtomProps } from "@src/types/declarations";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
+import { Atom } from "@src/data/icons";
+import Image from "next/image";
 import React from "react";
 
 export default class LayoutBuilder {
-	private node: AtomNode;
+	private imageComponent?: React.ReactNode;
 	private styles: string[] = [];
+	private node: AtomNode;
 
 	constructor(atom: AtomNode) {
 		this.node = atom;
@@ -19,6 +22,31 @@ export default class LayoutBuilder {
 			this.styles.push(style);
 		}
 	};
+
+	withImage(imageUrl: string | undefined): LayoutBuilder {
+		this.imageComponent = imageUrl ? (
+			<Image
+				src={imageUrl}
+				alt="Content"
+				className="h-8 w-8 rounded-full"
+				width={80}
+				height={80}
+			/>
+		) : (
+			<Atom />
+		);
+		return this;
+	}
+
+	withWidth(value: string): LayoutBuilder {
+		this.push(`w-${value}`);
+		return this;
+	}
+
+	withHeight(value: string): LayoutBuilder {
+		this.push(`h-${value}`);
+		return this;
+	}
 
 	withSpace(value: string): LayoutBuilder {
 		this.push(`space-${value}`);
@@ -84,7 +112,12 @@ export default class LayoutBuilder {
 			let newClassName = props.className ?? "";
 			newClassName += ` ${styles.join(" ")}`;
 			let newProps = { ...props, className: newClassName.trim() };
-			return <this.node {...newProps} />;
+			return (
+				<this.node {...newProps}>
+					{this.imageComponent}
+					{props.children}
+				</this.node>
+			);
 		};
 	}
 }

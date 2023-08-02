@@ -6,43 +6,36 @@ import ReactFlowCanvas from "@src/components/react_flow/reactFlowCanvas";
 
 import ReactFlowBuilder from "@src/components/builders/reactFlowBuilder/ReactFlowBuilder";
 import { Node, NodeProps, NodeTypes, Position } from "reactflow";
-import Card from "@src/components/atoms/card";
+import CardAtom from "@src/components/atoms/cardAtom";
 import { ComponentType, FC } from "react";
 import React from "react";
+import BaseNode from "@src/components/react_flow/baseNode";
 
 const page: FC = () => {
 	let nodes: Node[] = [];
 
-	const label = new ReactFlowBuilder(() => (
-		<>
-			<Card
-				style="node"
-				title="OpenAi Node"
-				buttonLabel="Send"
-				body="Use this node to send a request to OpenAi"
-				onClick={() => {
-					console.log("clicked");
-				}}
-			/>
-		</>
-	))
-		.withType("custom_label")
-		.withHandle({
-			id: "input_1",
-			type: "target",
-			position: Position.Left,
-		})
-		.withHandle({
-			id: "output_1",
-			type: "source",
-			position: Position.Right,
-		})
-		.withNoLabel();
+	const FlowNode = new BaseNode({
+		title: "Open AI Node",
+		body: "Use this node to make rest calls to the open ai api.",
+		type: "openai_node",
+		handles: [
+			{
+				id: "a",
+				type: "target",
+				position: Position.Top,
+			},
+			{
+				id: "b",
+				type: "source",
+				position: Position.Bottom,
+			},
+		],
+	});
 
-	nodes.push(label.node());
+	nodes.push(FlowNode.node());
 
 	const types: NodeTypes = {
-		custom_label: label.build() as ComponentType<NodeProps>,
+		openai_node: FlowNode.build() as ComponentType<NodeProps>,
 	};
 
 	return (

@@ -53,6 +53,8 @@ neurocache-hub
 │  ├─ favicon.ico
 │  ├─ images
 │  │  ├─ bird80px.png
+│  │  ├─ icons
+│  │  │  └─ openai.svg
 │  │  ├─ neurocache.png
 │  │  └─ users
 │  │     ├─ bonnie-green-2x.png
@@ -104,7 +106,7 @@ neurocache-hub
 │  │  │  ├─ atomicDiv.tsx
 │  │  │  ├─ buttonAtom.tsx
 │  │  │  ├─ card copy.tsx
-│  │  │  └─ card.tsx
+│  │  │  └─ cardAtom.tsx
 │  │  ├─ builders
 │  │  │  ├─ behaviourBuilder
 │  │  │  │  ├─ BehaviourBuilder.test.tsx
@@ -127,6 +129,7 @@ neurocache-hub
 │  │  │     ├─ template.stories.tsx.md
 │  │  │     └─ template.test.tsx.md
 │  │  ├─ react_flow
+│  │  │  ├─ baseNode.tsx
 │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  ├─ registerReactFlowCallbacks.ts
 │  │  │  └─ styleReactFlowLogo.ts
