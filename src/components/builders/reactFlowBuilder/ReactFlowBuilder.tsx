@@ -1,24 +1,22 @@
 //path: src\components\builders\reactFlowBuilder\ReactFlowBuilder.tsx
 
-import { Handle, Position, NodeResizer, Node } from "reactflow";
-import React from "react";
+import { Handle, Position, NodeResizer, Node, HandleProps } from "reactflow";
 import { AtomProps, AtomNode } from "@src/types/declarations";
+import React from "react";
 
 export default class ReactFlowBuilder {
-	private atomData: AtomNode;
-	private flowData: Node;
-
-	private includeBottomHandle: boolean;
-	private includeTopHandle: boolean;
 	private minHeightResizer: number;
 	private minWidthResizer: number;
 	private includeResizer: boolean;
+	private atomData: AtomNode;
+	private flowData: Node;
+	private handles: HandleProps[] = [];
 
 	constructor(node: AtomNode) {
-		this.atomData = node;
-
+		this.includeResizer = false;
 		this.minWidthResizer = 100;
 		this.minHeightResizer = 30;
+		this.atomData = node;
 
 		this.flowData = {
 			id: this.generateId(),
@@ -28,10 +26,21 @@ export default class ReactFlowBuilder {
 			width: 40,
 			height: 30,
 		};
+	}
 
-		this.includeTopHandle = false;
-		this.includeBottomHandle = false;
-		this.includeResizer = false;
+	withLabel(label: string): ReactFlowBuilder {
+		this.flowData.data.label = label;
+		return this;
+	}
+
+	withNoLabel(): ReactFlowBuilder {
+		this.flowData.data.label = null;
+		return this;
+	}
+
+	withHandle(props: HandleProps) {
+		this.handles.push(props);
+		return this;
 	}
 
 	withPosition(x: number, y: number): ReactFlowBuilder {
@@ -41,16 +50,6 @@ export default class ReactFlowBuilder {
 
 	withType(type: string): ReactFlowBuilder {
 		this.flowData.type = type;
-		return this;
-	}
-
-	withTopHandle(): ReactFlowBuilder {
-		this.includeTopHandle = true;
-		return this;
-	}
-
-	withBottomHandle(): ReactFlowBuilder {
-		this.includeBottomHandle = true;
 		return this;
 	}
 
@@ -81,9 +80,9 @@ export default class ReactFlowBuilder {
 		const Atom = this.atomData;
 		return (props: AtomProps) => (
 			<>
-				{this.includeTopHandle && (
-					<Handle type="target" position={Position.Top} />
-				)}
+				{this.handles.map((handle) => (
+					<Handle {...handle} />
+				))}
 				{this.includeResizer && (
 					<NodeResizer
 						minWidth={this.minWidthResizer}
@@ -91,13 +90,6 @@ export default class ReactFlowBuilder {
 					/>
 				)}
 				<Atom {...props} />
-				{this.includeBottomHandle && (
-					<Handle
-						type="source"
-						position={Position.Bottom}
-						id={uuid}
-					/>
-				)}
 			</>
 		);
 	}

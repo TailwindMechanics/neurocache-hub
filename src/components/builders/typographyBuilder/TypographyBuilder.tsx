@@ -1,6 +1,7 @@
 //path: src\components\builders\typographyBuilder\TypographyBuilder.tsx
 
 import { AtomNode, AtomProps, Style } from "@src/types/declarations";
+import { IsNullOrEmpty } from "@src/utils/stringUtils";
 import React from "react";
 
 type CategoryStyles = {
@@ -55,21 +56,45 @@ const tailwind: Record<Style["Category"], CategoryStyles> = {
 		fontWeight: "font-extrabold",
 		letterSpacing: "tracking-widest",
 	},
+	ghost: {
+		color: "text-grape-h",
+		hover: "",
+		textSize: "text-3xl",
+		fontFamily: "font-mono",
+		textAlign: "text-center",
+		lineHeight: "leading-loose",
+		fontWeight: "font-extrabold",
+		letterSpacing: "tracking-widest",
+	},
+	node: {
+		color: "text-aqua-h",
+		hover: "hover:aqua-p",
+		textSize: "text-lg",
+		fontFamily: "font-mono",
+		textAlign: "text-center",
+		lineHeight: "leading-loose",
+		fontWeight: "font-extrabold",
+		letterSpacing: "tracking-widest",
+	},
 };
 
 export default class TypographyBuilder {
 	private node: AtomNode;
 	private styles: string[] = [];
 	private label: string = "";
-	private push = (style: string) => {
-		this.styles.push(style);
-	};
 
 	constructor(atom: AtomNode) {
 		this.node = atom;
 	}
 
-	// prettier-ignore
+	private push = (style: string) => {
+		if (IsNullOrEmpty(style)) return;
+
+		if (!this.styles.includes(style)) {
+			this.styles.push(style);
+		}
+	};
+
 	withTextColor(category: Style["Category"] = "calm"): TypographyBuilder {
 		const newStyle = tailwind[category]["color"];
 		this.push(newStyle);

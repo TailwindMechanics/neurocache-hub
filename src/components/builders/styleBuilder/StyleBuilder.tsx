@@ -1,6 +1,7 @@
 //path: src\components\builders\styleBuilder\StyleBuilder.tsx
 
 import { AtomNode, AtomProps, Style } from "@src/types/declarations";
+import { IsNullOrEmpty } from "@src/utils/stringUtils";
 import React, { FC } from "react";
 
 type CategoryStyles = {
@@ -45,6 +46,22 @@ const tailwind: Record<Style["Category"], CategoryStyles> = {
 		shadow: "shadow-inner shadow-grape-d",
 		padding: "px-4",
 	},
+	node: {
+		bg: "bg-aqua-d",
+		hover: "hover:bg-aqua",
+		border: "border-aqua-l",
+		radius: "rounded-full",
+		shadow: "shadow-inner shadow-aqua-d",
+		padding: "p-6",
+	},
+	ghost: {
+		bg: "bg-util",
+		hover: "",
+		border: "",
+		radius: "",
+		shadow: "",
+		padding: "",
+	},
 };
 
 export default class StyleBuilder {
@@ -56,10 +73,14 @@ export default class StyleBuilder {
 	}
 
 	private push = (style: string) => {
-		this.styles.push(style);
+		if (IsNullOrEmpty(style)) return;
+
+		if (!this.styles.includes(style)) {
+			this.styles.push(style);
+		}
 	};
 
-	withBg(category: Style["Category"] = "calm"): StyleBuilder {
+	withBackground(category: Style["Category"] = "calm"): StyleBuilder {
 		const newStyle = tailwind[category].bg;
 		this.push(newStyle);
 		return this;
@@ -79,12 +100,14 @@ export default class StyleBuilder {
 
 	withBorder(category: Style["Category"] = "calm"): StyleBuilder {
 		const newStyle = tailwind[category]["border"];
-		const tw = `border ${newStyle}`;
-		this.push(tw);
+		if (IsNullOrEmpty(newStyle)) return this;
+		this.push("border");
+		this.push(newStyle);
 		return this;
 	}
 
 	withBorderRadius(category: Style["Category"] = "calm"): StyleBuilder {
+		this.withBorder(category);
 		const newStyle = tailwind[category]["radius"];
 		this.push(newStyle);
 		return this;

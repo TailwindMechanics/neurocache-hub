@@ -1,7 +1,7 @@
 //path: src\components\atoms\buttonAtom.tsx
 
 import ReactFlowBuilder from "../builders/reactFlowBuilder/ReactFlowBuilder";
-import ButtonBuilder from "../builders/buttonBuilder/buttonBuilder";
+import ButtonBuilder from "../builders/buttonBuilder/ButtonBuilder";
 import { ButtonProps } from "@src/types/declarations";
 import atomicDiv from "./atomicDiv";
 
@@ -55,6 +55,16 @@ export default class ButtonAtom {
 				},
 			});
 		},
+		ghost(label: string, onClick: () => void) {
+			return this.build({
+				ariaLabel: "Ghost",
+				tooltip: "Ghost",
+				category: "ghost",
+				disabled: false,
+				label: label,
+				onClick: onClick,
+			});
+		},
 		build(props: ButtonProps) {
 			return new ButtonBuilder(atomicDiv)
 				.withAriaLabel(props.ariaLabel)
@@ -70,26 +80,18 @@ export default class ButtonAtom {
 	Flow = {
 		calm: new ReactFlowBuilder(this.React.calm())
 			.withType("custom_calm")
-			.withPosition(0, 0)
-			.withBottomHandle()
-			.withTopHandle(),
+			.withPosition(0, 0),
 
 		overt: new ReactFlowBuilder(this.React.overt())
 			.withType("custom_overt")
-			.withPosition(-50, 0)
-			.withBottomHandle()
-			.withTopHandle(),
+			.withPosition(-50, 0),
 
 		alert: new ReactFlowBuilder(this.React.alert())
 			.withType("custom_alert")
-			.withPosition(50, 0)
-			.withBottomHandle()
-			.withTopHandle(),
+			.withPosition(50, 0),
 
 		subtle: new ReactFlowBuilder(this.React.subtle())
 			.withType("custom_subtle")
-			.withPosition(0, 50)
-			.withBottomHandle()
-			.withTopHandle(),
+			.withPosition(0, 50),
 	};
 }

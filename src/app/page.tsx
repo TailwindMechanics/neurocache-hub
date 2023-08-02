@@ -3,29 +3,46 @@
 "use client";
 
 import ReactFlowCanvas from "@src/components/react_flow/reactFlowCanvas";
-import ButtonAtom from "@src/components/atoms/buttonAtom";
-import { Node, NodeProps, NodeTypes } from "reactflow";
+
+import ReactFlowBuilder from "@src/components/builders/reactFlowBuilder/ReactFlowBuilder";
+import { Node, NodeProps, NodeTypes, Position } from "reactflow";
+import Card from "@src/components/atoms/card";
 import { ComponentType, FC } from "react";
 import React from "react";
 
 const page: FC = () => {
-	const buttonAtom = new ButtonAtom();
-	const calm = buttonAtom.Flow.calm;
-	const overt = buttonAtom.Flow.overt;
-	const alert = buttonAtom.Flow.alert;
-	const subtle = buttonAtom.Flow.subtle;
+	let nodes: Node[] = [];
 
-	let nodes: Node[] = [
-		calm.node(),
-		overt.node(),
-		alert.node(),
-		subtle.node(),
-	];
+	const label = new ReactFlowBuilder(() => (
+		<>
+			<Card
+				style="node"
+				title="OpenAi Node"
+				buttonLabel="Send"
+				body="Use this node to send a request to OpenAi"
+				onClick={() => {
+					console.log("clicked");
+				}}
+			/>
+		</>
+	))
+		.withType("custom_label")
+		.withHandle({
+			id: "input_1",
+			type: "target",
+			position: Position.Left,
+		})
+		.withHandle({
+			id: "output_1",
+			type: "source",
+			position: Position.Right,
+		})
+		.withNoLabel();
+
+	nodes.push(label.node());
+
 	const types: NodeTypes = {
-		custom_calm: calm.build() as ComponentType<NodeProps>,
-		custom_overt: overt.build() as ComponentType<NodeProps>,
-		custom_alert: alert.build() as ComponentType<NodeProps>,
-		custom_subtle: subtle.build() as ComponentType<NodeProps>,
+		custom_label: label.build() as ComponentType<NodeProps>,
 	};
 
 	return (

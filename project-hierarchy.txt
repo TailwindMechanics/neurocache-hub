@@ -27,6 +27,12 @@ neurocache-hub
 │  ├─ context
 │  │  ├─ context.md
 │  │  └─ contextPrompt.md
+│  ├─ endToEnd
+│  │  └─ initalopenai.md
+│  ├─ jobs
+│  │  ├─ notes.md
+│  │  ├─ summaries.csv
+│  │  └─ summaries.md
 │  ├─ modulesPlan.md
 │  ├─ notes.md
 │  ├─ stories
@@ -96,13 +102,17 @@ neurocache-hub
 │  ├─ components
 │  │  ├─ atoms
 │  │  │  ├─ atomicDiv.tsx
-│  │  │  └─ buttonAtom.tsx
+│  │  │  ├─ buttonAtom.tsx
+│  │  │  ├─ card copy.tsx
+│  │  │  └─ card.tsx
 │  │  ├─ builders
 │  │  │  ├─ behaviourBuilder
 │  │  │  │  ├─ BehaviourBuilder.test.tsx
 │  │  │  │  └─ BehaviourBuilder.tsx
 │  │  │  ├─ buttonBuilder
-│  │  │  │  └─ buttonBuilder.tsx
+│  │  │  │  └─ ButtonBuilder.tsx
+│  │  │  ├─ layoutBuilder
+│  │  │  │  └─ LayoutBuilder.tsx
 │  │  │  ├─ reactFlowBuilder
 │  │  │  │  ├─ ReactFlowBuilder.test.tsx
 │  │  │  │  └─ ReactFlowBuilder.tsx
@@ -113,17 +123,11 @@ neurocache-hub
 │  │  │     ├─ TypographyBuilder.test.tsx
 │  │  │     └─ TypographyBuilder.tsx
 │  │  ├─ library
-│  │  │  ├─ buttonComponent
-│  │  │  │  ├─ buttonComponent.stories.tsx
-│  │  │  │  ├─ buttonComponent.test.tsx
-│  │  │  │  └─ buttonComponent.tsx
 │  │  │  └─ template
 │  │  │     ├─ template.stories.tsx.md
 │  │  │     └─ template.test.tsx.md
 │  │  ├─ react_flow
-│  │  │  ├─ nodesData.ts
 │  │  │  ├─ reactFlowCanvas.tsx
-│  │  │  ├─ reactFlowNode.tsx
 │  │  │  ├─ registerReactFlowCallbacks.ts
 │  │  │  └─ styleReactFlowLogo.ts
 │  │  ├─ threejs

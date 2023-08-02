@@ -1,4 +1,4 @@
-//path: src\components\builders\buttonBuilder\buttonBuilder.tsx
+//path: src\components\builders\buttonBuilder\ButtonBuilder.tsx
 
 import TypographyBuilder from "@src/components/builders/typographyBuilder/TypographyBuilder";
 import BehaviourBuilder from "@src/components/builders/behaviourBuilder/BehaviourBuilder";
@@ -63,10 +63,10 @@ export default class ButtonBuilder {
 	build() {
 		let Build = new StyleBuilder(this.node)
 			.withBorderRadius(this.props.category)
+			.withBackground(this.props.category)
 			.withBorder(this.props.category)
 			.withShadow(this.props.category)
 			.withHover(this.props.category)
-			.withBg(this.props.category)
 			.build();
 
 		Build = new TypographyBuilder(Build)
@@ -88,7 +88,7 @@ export default class ButtonBuilder {
 			.withAriaLabel(this.props.ariaLabel)
 			.withDisabled(this.props.disabled)
 			.withTooltip(this.props.tooltip)
-			.withHover()
+			.withHover(this.props.category)
 			.build();
 
 		return Build;

@@ -20,7 +20,7 @@ interface ReactFlowNode {
 }
 
 interface Style {
-	Category: "overt" | "calm" | "alert" | "subtle";
+	Category: "overt" | "calm" | "alert" | "subtle" | "node" | "ghost";
 	Element: "bg" | "hover" | "border";
 	TextSize: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
 	FontFamily: "sans" | "serif" | "mono";

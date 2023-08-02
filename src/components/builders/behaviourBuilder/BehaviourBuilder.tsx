@@ -1,6 +1,6 @@
 //path: src\components\builders\behaviourBuilder\BehaviourBuilder.tsx
 
-import { AtomNode, AtomProps } from "@src/types/declarations";
+import { AtomNode, AtomProps, Style } from "@src/types/declarations";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
 import React from "react";
 
@@ -63,7 +63,9 @@ export default class BehaviourBuilder {
 		return this;
 	}
 
-	withHover(): BehaviourBuilder {
+	withHover(style: Style["Category"]): BehaviourBuilder {
+		if (style == "ghost") return this;
+
 		this.animationProps = {
 			...this.animationProps,
 			whileHover: { scale: 1.02 },
