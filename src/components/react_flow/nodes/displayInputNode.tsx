@@ -1,6 +1,7 @@
 //path: src\components\react_flow\nodes\displayInputNode.tsx
 
 import BaseNode, { BaseNodeProps } from "../core/baseNode";
+import React, { useState } from "react";
 
 class DisplayInputNode extends BaseNode {
 	private receivedInputText: string = "";
@@ -12,7 +13,10 @@ class DisplayInputNode extends BaseNode {
 	protected receivedInput(payload: string): void {
 		super.receivedInput(payload);
 		this.receivedInputText = payload;
+		this.onReceivedInput(payload);
 	}
+
+	private onReceivedInput: (payload: string) => void = () => {};
 
 	renderCustomContent() {
 		return (
@@ -25,7 +29,15 @@ class DisplayInputNode extends BaseNode {
 	}
 
 	build() {
-		return super.build();
+		const AtomNode = super.build();
+		return (props: any) => {
+			const [receivedInputText, setReceivedInputText] = useState("");
+			this.onReceivedInput = setReceivedInputText;
+
+			return (
+				<AtomNode {...props} receivedInputText={receivedInputText} />
+			);
+		};
 	}
 }
 

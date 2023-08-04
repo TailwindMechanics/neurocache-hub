@@ -5,8 +5,6 @@ import { IsNullOrEmpty } from "@src/utils/stringUtils";
 import React, { useState } from "react";
 
 class ButtonOutputNode extends BaseNode {
-	state = { inputText: "" };
-
 	constructor(props: BaseNodeProps) {
 		super(props);
 	}

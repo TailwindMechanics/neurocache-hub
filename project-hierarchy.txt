@@ -201,8 +201,6 @@ neurocache-hub
 │  │        ├─ leftSideBar.tsx
 │  │        ├─ mainContent.tsx
 │  │        └─ menuItem.tsx
-│  ├─ contexts
-│  │  └─ FlowServiceContext.tsx
 │  ├─ data
 │  │  ├─ colors.json
 │  │  ├─ colors.ts
@@ -210,8 +208,6 @@ neurocache-hub
 │  │  ├─ docs.json
 │  │  ├─ icons.tsx
 │  │  └─ shorthand.tsx
-│  ├─ hooks
-│  │  └─ useRegisterNode.ts
 │  ├─ lib
 │  │  └─ storyshots
 │  │     ├─ Storyshots.test.js
