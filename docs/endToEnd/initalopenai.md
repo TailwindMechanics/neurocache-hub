@@ -1,5 +1,8 @@
 
 
+
+playwright for scraping
+
 # Create Base Node
 2. Create src/nodes/BaseNode.tsx
 3. Implement required anatomy (ports, activate, deactivate)

@@ -1,31 +1,28 @@
 //path: src\components\atoms\cardAtom.tsx
 
-import TypographyBuilder from "../builders/typographyBuilder/TypographyBuilder";
-import LayoutBuilder from "../builders/layoutBuilder/LayoutBuilder";
-import StyleBuilder from "../builders/styleBuilder/StyleBuilder";
-import { Style } from "@src/types/declarations";
+import ComponentBuilder from "../builders/componentBuilder/ComponentBuilder";
 import React, { useState } from "react";
-import ButtonAtom from "./buttonAtom";
 import AtomicDiv from "./atomicDiv";
 
 interface CardAtomProps {
-	style: Style["Category"];
 	title: string;
 	body: string;
 	imageUrl?: string;
+	children?: React.ReactNode;
 }
 
 const CardAtom: React.FC<CardAtomProps> = (props) => {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 
-	let RootBox = new StyleBuilder(AtomicDiv)
-		.withBorderRadius(props.style)
-		.withBackground(props.style)
-		.withPadding(props.style)
-		.withShadow(props.style)
+	let RootBox = new ComponentBuilder(AtomicDiv)
+		.withStyle("shadow-inner shadow-aqua-d")
+		.withStyle("border border-aqua-l")
+		.withStyle("rounded-full")
+		.withStyle("bg-aqua-d")
+		.withStyle("p-6")
 		.build();
 
-	const TitleBox = new LayoutBuilder(AtomicDiv)
+	const TitleBox = new ComponentBuilder(AtomicDiv)
 		.withJustifyContent("start")
 		.withFlexDirection("row")
 		.withAlignItems("center")
@@ -35,27 +32,35 @@ const CardAtom: React.FC<CardAtomProps> = (props) => {
 		.withFlex()
 		.build();
 
-	const TitleButton = new ButtonAtom().React.ghost(props.title, () => {
-		setIsCollapsed(!isCollapsed);
-	});
-
-	const BodyText = new TypographyBuilder(AtomicDiv)
-		.withTextColor(props.style)
-		.withLabel(props.body)
+	const TitleButton = new ComponentBuilder(AtomicDiv)
+		.withOnClick(() => setIsCollapsed(!isCollapsed))
+		.withLabel(props.title)
+		.withStyle("text-aqua-p")
+		.withPointerCursor()
+		.withKeyboardNav()
 		.build();
 
-	let Icon = new LayoutBuilder(AtomicDiv)
+	let BodyText = new ComponentBuilder(AtomicDiv)
+		.withStyle("border border-aqua-l")
+		.withStyle("whitespace-pre-line")
+		.withStyle("text-aqua-p")
+		.withStyle("rounded-full")
+		.withLabel(props.body)
+		.withStyle("text-sm")
+		.withStyle("mt-2")
+		.withStyle("p-2")
+		.build();
+
+	let Icon = new ComponentBuilder(AtomicDiv)
+		.withStyle("border border-aqua-l")
 		.withJustifyContent("center")
+		.withStyle("text-aqua-p")
 		.withImage(props.imageUrl)
+		.withStyle("rounded-full")
 		.withAlignItems("center")
 		.withHeight("8")
 		.withWidth("8")
 		.withFlex()
-		.build();
-
-	Icon = new StyleBuilder(Icon)
-		.withBorderRadius(props.style)
-		.withBackground("calm")
 		.build();
 
 	return (
@@ -65,7 +70,12 @@ const CardAtom: React.FC<CardAtomProps> = (props) => {
 					<Icon />
 					<TitleButton />
 				</TitleBox>
-				{isCollapsed ? null : <BodyText />}
+				{isCollapsed ? null : (
+					<>
+						<BodyText />
+						{props.children}
+					</>
+				)}
 			</RootBox>
 		</>
 	);

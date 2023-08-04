@@ -31,14 +31,14 @@ interface Style {
 	LetterSpacing: "tighter" | "tight" | "normal" | "wide" | "wider" | "widest";
 }
 
-interface ButtonProps {
-	label: string;
-	category: Style["Category"];
+type ButtonProps = {
+	category?: Style["Category"] = "calm";
 	onClick: () => void;
 	ariaLabel: string;
 	disabled: boolean;
 	tooltip: string;
-}
+	label: string;
+};
 
 interface AtomProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>{
 	children?: ReactNode;

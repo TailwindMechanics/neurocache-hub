@@ -3,7 +3,7 @@
 import { IconProps } from "@src/types/declarations";
 import React, { FC } from "react";
 
-export const Atom: FC<IconProps> = ({ className = "w-5 h-5 text-white" }) => (
+export const Atom: FC<IconProps> = ({ className = "w-5 h-5" }) => (
 	<svg
 		className={className}
 		aria-hidden="true"

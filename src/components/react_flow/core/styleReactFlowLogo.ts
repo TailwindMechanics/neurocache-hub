@@ -1,4 +1,4 @@
-//path: src\components\react_flow\styleReactFlowLogo.ts
+//path: src\components\react_flow\core\styleReactFlowLogo.ts
 
 import { useEffect } from "react";
 

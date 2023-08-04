@@ -38,6 +38,7 @@ neurocache-hub
 │  ├─ stories
 │  │  ├─ apiStory.md
 │  │  └─ hubStory.md
+│  ├─ styles.md
 │  └─ uiplan.md
 ├─ jest.config.js
 ├─ jest.setup.js
@@ -104,35 +105,26 @@ neurocache-hub
 │  ├─ components
 │  │  ├─ atoms
 │  │  │  ├─ atomicDiv.tsx
-│  │  │  ├─ buttonAtom.tsx
 │  │  │  ├─ card copy.tsx
 │  │  │  └─ cardAtom.tsx
 │  │  ├─ builders
-│  │  │  ├─ behaviourBuilder
-│  │  │  │  ├─ BehaviourBuilder.test.tsx
-│  │  │  │  └─ BehaviourBuilder.tsx
-│  │  │  ├─ buttonBuilder
-│  │  │  │  └─ ButtonBuilder.tsx
-│  │  │  ├─ layoutBuilder
-│  │  │  │  └─ LayoutBuilder.tsx
-│  │  │  ├─ reactFlowBuilder
-│  │  │  │  ├─ ReactFlowBuilder.test.tsx
-│  │  │  │  └─ ReactFlowBuilder.tsx
-│  │  │  ├─ styleBuilder
-│  │  │  │  ├─ StyleBuilder.test.tsx
-│  │  │  │  └─ StyleBuilder.tsx
-│  │  │  └─ typographyBuilder
-│  │  │     ├─ TypographyBuilder.test.tsx
-│  │  │     └─ TypographyBuilder.tsx
+│  │  │  ├─ componentBuilder
+│  │  │  │  └─ ComponentBuilder.tsx
+│  │  │  └─ reactFlowBuilder
+│  │  │     ├─ ReactFlowBuilder.test.tsx
+│  │  │     └─ ReactFlowBuilder.tsx
 │  │  ├─ library
 │  │  │  └─ template
 │  │  │     ├─ template.stories.tsx.md
 │  │  │     └─ template.test.tsx.md
 │  │  ├─ react_flow
-│  │  │  ├─ baseNode.tsx
-│  │  │  ├─ reactFlowCanvas.tsx
-│  │  │  ├─ registerReactFlowCallbacks.ts
-│  │  │  └─ styleReactFlowLogo.ts
+│  │  │  ├─ core
+│  │  │  │  ├─ baseNode.tsx
+│  │  │  │  ├─ reactFlowCanvas.tsx
+│  │  │  │  └─ styleReactFlowLogo.ts
+│  │  │  └─ nodes
+│  │  │     ├─ buttonOutputNode.tsx
+│  │  │     └─ displayInputNode.tsx
 │  │  ├─ threejs
 │  │  │  ├─ controllers
 │  │  │  │  ├─ cameraLook.tsx
@@ -209,6 +201,8 @@ neurocache-hub
 │  │        ├─ leftSideBar.tsx
 │  │        ├─ mainContent.tsx
 │  │        └─ menuItem.tsx
+│  ├─ contexts
+│  │  └─ FlowServiceContext.tsx
 │  ├─ data
 │  │  ├─ colors.json
 │  │  ├─ colors.ts
@@ -216,12 +210,15 @@ neurocache-hub
 │  │  ├─ docs.json
 │  │  ├─ icons.tsx
 │  │  └─ shorthand.tsx
+│  ├─ hooks
+│  │  └─ useRegisterNode.ts
 │  ├─ lib
 │  │  └─ storyshots
 │  │     ├─ Storyshots.test.js
 │  │     └─ __snapshots__
 │  │        └─ Storyshots.test.js.snap
 │  ├─ services
+│  │  ├─ FlowService.ts
 │  │  └─ supabase.ts
 │  ├─ stores
 │  │  ├─ ChannelStore.ts

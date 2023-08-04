@@ -1,16 +1,16 @@
 //path: src\components\builders\reactFlowBuilder\ReactFlowBuilder.tsx
 
-import { Handle, Position, NodeResizer, Node, HandleProps } from "reactflow";
+import { Handle, NodeResizer, Node, HandleProps } from "reactflow";
 import { AtomProps, AtomNode } from "@src/types/declarations";
 import React from "react";
 
 export default class ReactFlowBuilder {
+	private handles: HandleProps[] = [];
 	private minHeightResizer: number;
 	private minWidthResizer: number;
 	private includeResizer: boolean;
 	private atomData: AtomNode;
 	private flowData: Node;
-	private handles: HandleProps[] = [];
 
 	constructor(node: AtomNode) {
 		this.includeResizer = false;
@@ -76,7 +76,6 @@ export default class ReactFlowBuilder {
 	}
 
 	build(): AtomNode {
-		let uuid = this.generateId();
 		const Atom = this.atomData;
 		return (props: AtomProps) => (
 			<>
