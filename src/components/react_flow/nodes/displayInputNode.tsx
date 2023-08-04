@@ -16,7 +16,7 @@ class DisplayInputNode extends BaseNode {
 
 	renderCustomContent() {
 		return (
-			<div className="space-y-2 p-4">
+			<div className="space-y-2 px-6 pb-6 pt-2">
 				<p className="text-gray-700">
 					Received input: {this.receivedInputText}
 				</p>

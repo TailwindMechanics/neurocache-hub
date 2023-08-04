@@ -23,19 +23,19 @@ const CardAtom: React.FC<CardAtomProps> = (props) => {
 		.build();
 
 	const TitleBox = new ComponentBuilder(AtomicDiv)
-		.withJustifyContent("start")
-		.withFlexDirection("row")
-		.withAlignItems("center")
-		.withHeight("full")
-		.withWidth("full")
-		.withSpace("x-2")
-		.withFlex()
+		.withStyle("justify-center")
+		.withStyle("items-center")
+		.withStyle("space-x-2")
+		.withStyle("flex-row")
+		.withStyle("w-full")
+		.withStyle("h-full")
+		.withStyle("flex")
 		.build();
 
 	const TitleButton = new ComponentBuilder(AtomicDiv)
 		.withOnClick(() => setIsCollapsed(!isCollapsed))
-		.withLabel(props.title)
 		.withStyle("text-aqua-p")
+		.withLabel(props.title)
 		.withPointerCursor()
 		.withKeyboardNav()
 		.build();
@@ -48,19 +48,20 @@ const CardAtom: React.FC<CardAtomProps> = (props) => {
 		.withLabel(props.body)
 		.withStyle("text-sm")
 		.withStyle("mt-2")
+		.withStyle("mx-6")
 		.withStyle("p-2")
 		.build();
 
 	let Icon = new ComponentBuilder(AtomicDiv)
 		.withStyle("border border-aqua-l")
-		.withJustifyContent("center")
+		.withStyle("justify-center")
 		.withStyle("text-aqua-p")
 		.withImage(props.imageUrl)
 		.withStyle("rounded-full")
-		.withAlignItems("center")
-		.withHeight("8")
-		.withWidth("8")
-		.withFlex()
+		.withStyle("items-center")
+		.withStyle("flex")
+		.withStyle("w-8")
+		.withStyle("h-8")
 		.build();
 
 	return (

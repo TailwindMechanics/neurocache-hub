@@ -79,8 +79,8 @@ export default class ReactFlowBuilder {
 		const Atom = this.atomData;
 		return (props: AtomProps) => (
 			<>
-				{this.handles.map((handle) => (
-					<Handle {...handle} />
+				{this.handles.map((handle, index) => (
+					<Handle key={index} {...handle} />
 				))}
 				{this.includeResizer && (
 					<NodeResizer

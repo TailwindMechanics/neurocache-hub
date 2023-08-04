@@ -32,7 +32,7 @@ class ButtonOutputNode extends BaseNode {
 			};
 
 			return (
-				<div className="space-y-2 p-4">
+				<div className="-n-4 flex-col space-y-2 px-6 pb-6 pt-2">
 					<input
 						type="text"
 						className="w-full rounded border border-gray-300"
@@ -42,7 +42,7 @@ class ButtonOutputNode extends BaseNode {
 					/>
 					<button
 						onClick={handleSendOutput}
-						className="rounded bg-blue-500 px-4 py-2 text-white"
+						className="w-full rounded bg-blue-500 py-2 text-white"
 					>
 						Send Output
 					</button>
