@@ -106,7 +106,9 @@ neurocache-hub
 │  │  ├─ atoms
 │  │  │  ├─ atomicDiv.tsx
 │  │  │  ├─ card copy.tsx
-│  │  │  └─ cardAtom.tsx
+│  │  │  ├─ cardAtom.tsx
+│  │  │  ├─ controlledInput.tsx.md
+│  │  │  └─ persistentInput.tsx
 │  │  ├─ builders
 │  │  │  ├─ componentBuilder
 │  │  │  │  └─ ComponentBuilder.tsx
@@ -230,104 +232,6 @@ neurocache-hub
 │     ├─ mathUtils.ts
 │     ├─ path.ts
 │     └─ stringUtils.ts
-├─ storybook-static
-│  ├─ 1.2821f0ed.iframe.bundle.js
-│  ├─ 144.b61b0fc5.iframe.bundle.js
-│  ├─ 212.76098588.iframe.bundle.js
-│  ├─ 23.7e9fc645.iframe.bundle.js
-│  ├─ 23.7e9fc645.iframe.bundle.js.LICENSE.txt
-│  ├─ 23.7e9fc645.iframe.bundle.js.map
-│  ├─ 351.1416bb52.iframe.bundle.js
-│  ├─ 351.1416bb52.iframe.bundle.js.map
-│  ├─ 445.0e0cdc40.iframe.bundle.js
-│  ├─ 533.6d07ff7d.iframe.bundle.js
-│  ├─ 543.75464318.iframe.bundle.js
-│  ├─ 571.3ab10083.iframe.bundle.js
-│  ├─ 571.3ab10083.iframe.bundle.js.LICENSE.txt
-│  ├─ 571.3ab10083.iframe.bundle.js.map
-│  ├─ 715.9bc6d266.iframe.bundle.js
-│  ├─ 951.3915d0c4.iframe.bundle.js
-│  ├─ 951.3915d0c4.iframe.bundle.js.LICENSE.txt
-│  ├─ components-library-buttonComponent-buttonComponent-stories.16f81a79.iframe.bundle.js
-│  ├─ favicon.svg
-│  ├─ iframe.html
-│  ├─ index.html
-│  ├─ index.json
-│  ├─ main.da231964.iframe.bundle.js
-│  ├─ project.json
-│  ├─ runtime~main.2e427947.iframe.bundle.js
-│  ├─ sb-addons
-│  │  ├─ a11y-8
-│  │  │  ├─ manager-bundle.js
-│  │  │  ├─ manager-bundle.js.LEGAL.txt
-│  │  │  └─ manager-bundle.js.map
-│  │  ├─ essentials-actions-2
-│  │  │  ├─ manager-bundle.js
-│  │  │  ├─ manager-bundle.js.LEGAL.txt
-│  │  │  └─ manager-bundle.js.map
-│  │  ├─ essentials-backgrounds-3
-│  │  │  ├─ manager-bundle.js
-│  │  │  ├─ manager-bundle.js.LEGAL.txt
-│  │  │  └─ manager-bundle.js.map
-│  │  ├─ essentials-controls-1
-│  │  │  ├─ manager-bundle.js
-│  │  │  ├─ manager-bundle.js.LEGAL.txt
-│  │  │  └─ manager-bundle.js.map
-│  │  ├─ essentials-measure-6
-│  │  │  ├─ manager-bundle.js
-│  │  │  ├─ manager-bundle.js.LEGAL.txt
-│  │  │  └─ manager-bundle.js.map
-│  │  ├─ essentials-outline-7
-│  │  │  ├─ manager-bundle.js
-│  │  │  ├─ manager-bundle.js.LEGAL.txt
-│  │  │  └─ manager-bundle.js.map
-│  │  ├─ essentials-toolbars-5
-│  │  │  ├─ manager-bundle.js
-│  │  │  ├─ manager-bundle.js.LEGAL.txt
-│  │  │  └─ manager-bundle.js.map
-│  │  ├─ essentials-viewport-4
-│  │  │  ├─ manager-bundle.js
-│  │  │  ├─ manager-bundle.js.LEGAL.txt
-│  │  │  └─ manager-bundle.js.map
-│  │  ├─ jest-9
-│  │  │  ├─ manager-bundle.js
-│  │  │  ├─ manager-bundle.js.LEGAL.txt
-│  │  │  └─ manager-bundle.js.map
-│  │  ├─ links-0
-│  │  │  ├─ manager-bundle.js
-│  │  │  ├─ manager-bundle.js.LEGAL.txt
-│  │  │  └─ manager-bundle.js.map
-│  │  └─ storysource-10
-│  │     ├─ manager-bundle.js
-│  │     ├─ manager-bundle.js.LEGAL.txt
-│  │     └─ manager-bundle.js.map
-│  ├─ sb-common-assets
-│  │  ├─ fonts.css
-│  │  ├─ nunito-sans-bold-italic.woff2
-│  │  ├─ nunito-sans-bold.woff2
-│  │  ├─ nunito-sans-italic.woff2
-│  │  └─ nunito-sans-regular.woff2
-│  ├─ sb-manager
-│  │  ├─ chunk-3FAXWWKG.js
-│  │  ├─ chunk-AA6TEL5N.js
-│  │  ├─ chunk-AM2ZNZZH.js
-│  │  ├─ chunk-AS2AMEUR.js
-│  │  ├─ chunk-FPTBIX6P.js
-│  │  ├─ chunk-IPZYHIL3.js
-│  │  ├─ chunk-QPL63VNK.js
-│  │  ├─ chunk-R5BIZIS3.js
-│  │  ├─ formatter-OJ5LH2CX-IQX6U4TO.js
-│  │  ├─ globals.js
-│  │  ├─ GlobalScrollAreaStyles-DZEYMYDM-UAEZM2KF.js
-│  │  ├─ index.js
-│  │  ├─ OverlayScrollbars-OGE3XJTA-T3S33YR7.js
-│  │  ├─ runtime.js
-│  │  ├─ syntaxhighlighter-SIPZPD4I-WOB5MYBW.js
-│  │  └─ WithTooltip-I4CCNYWD-ZW5IOTVO.js
-│  ├─ sb-preview
-│  │  ├─ globals.js
-│  │  └─ runtime.js
-│  └─ stories.json
 ├─ tailwind.config.js
 ├─ tsconfig.json
 └─ __mocks__

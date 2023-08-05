@@ -12,6 +12,7 @@ const init = flowService.init();
 const ReactFlowCanvas: React.FC = () => {
 	const data = flowService.callbackData(init.nodes, init.edges, init.types);
 	StyleReactFlowLogo();
+
 	return (
 		<div className="h-screen w-screen bg-night">
 			<ReactFlow
@@ -21,6 +22,7 @@ const ReactFlowCanvas: React.FC = () => {
 				onEdgesChange={data.onEdgesChange}
 				onConnect={data.onConnect}
 				nodeTypes={data.types}
+				elementsSelectable={false}
 			>
 				<Background
 					variant={BackgroundVariant.Dots}

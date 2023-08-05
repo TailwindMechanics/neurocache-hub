@@ -1,54 +1,35 @@
 {
-  "tailwindCSS.experimental.classRegex": [
-    [
-      "shadow: \"(.*)\","
-    ],
-    [
-      "color: \"(.*)\","
-    ],
-    [
-      "bg: \"(.*)\","
-    ],
-    [
-      "hover: \"(.*)\","
-    ],
-    [
-      "text: \"(.*)\","
-    ],
-    [
-      "font: \"(.*)\","
-    ],
-    [
-      "border: \"(.*)\","
-    ],
-    [
-      "tw = \"(.*)\";"
-    ],
-    [
-      "tw = `(.*)`;"
-    ],
-    [
-      ".with.*\"(.*)\""
-    ]
-  ],
-  "editor.tabSize": 4,
-  "editor.insertSpaces": false,
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.expand": false,
-  "explorer.fileNesting.patterns": {
-    "root": ".env.development.local, .eslintignore, .eslintrc.json, .gitignore, .jest-test-results.json, .prettierignore, autoCommentPath.js, jest.config.js, jest.setup.js, junit.xml, next-env.d.ts, next.config.js, package.json, pnpm-lock.yaml, postcss.config.js, prettier.config.js, project-hierarchy.txt, README.md, rootGrouper.js, tailwind.config.js, tsconfig.json"
-  },
-  "project-hierarchy-explorer.ignorePatterns": [
-    ".git",
-    "venv",
-    "env",
-    ".venv",
-    "node_modules",
-    "__pycache__",
-    "versions",
-    ".next",
-    "flowbite",
-    "coverage"
-  ],
-  "jest.autoRun": "off"
+	"tailwindCSS.experimental.classRegex": [
+		["shadow: \"(.*)\","],
+		["color: \"(.*)\","],
+		["bg: \"(.*)\","],
+		["hover: \"(.*)\","],
+		["text: \"(.*)\","],
+		["font: \"(.*)\","],
+		["border: \"(.*)\","],
+		["tw = \"(.*)\";"],
+		["tw = `(.*)`;"],
+		[".with.*\"(.*)\""]
+	],
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.expand": false,
+	"explorer.fileNesting.patterns": {
+		"root": ".env.development.local, .eslintignore, .eslintrc.json, .gitignore, .jest-test-results.json, .prettierignore, autoCommentPath.js, jest.config.js, jest.setup.js, junit.xml, next-env.d.ts, next.config.js, package.json, pnpm-lock.yaml, postcss.config.js, prettier.config.js, project-hierarchy.txt, README.md, rootGrouper.js, tailwind.config.js, tsconfig.json"
+	},
+	"project-hierarchy-explorer.ignorePatterns": [
+		".git",
+		"venv",
+		"env",
+		".venv",
+		"node_modules",
+		"__pycache__",
+		"versions",
+		".next",
+		"flowbite",
+		"coverage",
+		"storybook-static"
+	],
+	"jest.autoRun": "off"
 }
