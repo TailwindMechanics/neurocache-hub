@@ -1,7 +1,8 @@
 //path: src\components\react_flow\nodes\displayInputNode.tsx
 
-import BaseNode, { BaseNodeProps } from "../core/baseNode";
+import { BaseNodeProps } from "@src/types/declarations";
 import React, { useState } from "react";
+import BaseNode from "../core/baseNode";
 
 class DisplayInputNode extends BaseNode {
 	private receivedInputText: string = "";

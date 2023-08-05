@@ -1,8 +1,9 @@
 //path: src\components\react_flow\nodes\buttonOutputNode.tsx
 
 import PersistentInput from "@src/components/atoms/persistentInput";
-import BaseNode, { BaseNodeProps } from "../core/baseNode";
+import { BaseNodeProps } from "@src/types/declarations";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
+import BaseNode from "../core/baseNode";
 import React, { useState } from "react";
 
 class ButtonOutputNode extends BaseNode {

@@ -19,6 +19,21 @@ interface ReactFlowNode {
 	atomData: AtomNode;
 }
 
+export interface NodeConfigItem {
+	component: new (props: BaseNodeProps) => any;
+	title: string;
+	body: string;
+	type: string;
+	label: string;
+}
+
+export interface BaseNodeProps {
+	imageUrl?: string;
+	title: string;
+	body: string;
+	type: string;
+}
+
 interface Style {
 	Category: "overt" | "calm" | "alert" | "subtle" | "node" | "ghost";
 	Element: "bg" | "hover" | "border";

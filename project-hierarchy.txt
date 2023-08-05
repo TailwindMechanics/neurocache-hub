@@ -107,7 +107,7 @@ neurocache-hub
 │  │  │  ├─ atomicDiv.tsx
 │  │  │  ├─ card copy.tsx
 │  │  │  ├─ cardAtom.tsx
-│  │  │  ├─ controlledInput.tsx.md
+│  │  │  ├─ nodeDropdown.tsx
 │  │  │  └─ persistentInput.tsx
 │  │  ├─ builders
 │  │  │  ├─ componentBuilder
@@ -209,6 +209,7 @@ neurocache-hub
 │  │  ├─ content.json
 │  │  ├─ docs.json
 │  │  ├─ icons.tsx
+│  │  ├─ nodeConfig.tsx
 │  │  └─ shorthand.tsx
 │  ├─ lib
 │  │  └─ storyshots
@@ -216,7 +217,8 @@ neurocache-hub
 │  │     └─ __snapshots__
 │  │        └─ Storyshots.test.js.snap
 │  ├─ services
-│  │  ├─ FlowService.ts
+│  │  ├─ NodeFlowService.ts
+│  │  ├─ NodeSpawnService.ts
 │  │  └─ supabase.ts
 │  ├─ stores
 │  │  ├─ ChannelStore.ts
