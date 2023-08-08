@@ -1,17 +1,17 @@
 //path: src\components\atoms\cardAtom.tsx
 
-import ComponentBuilder from "../builders/componentBuilder/ComponentBuilder";
-import React, { useState } from "react";
+import ComponentBuilder from "../builders/ComponentBuilder";
+import React, { ReactNode, useState } from "react";
 import AtomicDiv from "./atomicDiv";
 
 interface CardAtomProps {
+	renderComponent: ReactNode;
+	imageUrl?: string;
 	title: string;
 	body: string;
-	imageUrl?: string;
-	children?: React.ReactNode;
 }
 
-const CardAtom: React.FC<CardAtomProps> = (props) => {
+const CardAtom: React.FC<CardAtomProps> = (props: CardAtomProps) => {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 
 	let RootBox = new ComponentBuilder(AtomicDiv)
@@ -74,7 +74,7 @@ const CardAtom: React.FC<CardAtomProps> = (props) => {
 				{isCollapsed ? null : (
 					<>
 						<BodyText />
-						{props.children}
+						{props.renderComponent}
 					</>
 				)}
 			</RootBox>

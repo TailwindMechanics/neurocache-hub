@@ -1,9 +1,9 @@
 //path: src\types\declarations.d.ts
 
+import { ReactFlowNodeProps } from "reactflow";
 import { ReactNode, FC, HTMLAttributes } from "react";
 import { Node, Edge, NodeTypes } from "reactflow";
 import flatColors from '@src/data/colors.ts';
-
 
 type ColorKeys = keyof typeof flatColors;
 type ColorType = `${ColorKeys}`;
@@ -14,24 +14,39 @@ interface ReactFlowCanvasProps {
 	types: NodeTypes;
 }
 
-interface ReactFlowNode {
-	flowData: Node;
-	atomData: AtomNode;
-}
-
 export interface NodeConfigItem {
-	component: new (props: BaseNodeProps) => any;
+	component: React.ComponentType<BaseNodeProps>;
+	label: string;
 	title: string;
 	body: string;
 	type: string;
-	label: string;
 }
 
-export interface BaseNodeProps {
+type NodeState =
+	| "constructed"
+	| "activate"
+	| "active"
+	| "deactivate"
+	| "inactive"
+	| "completed"
+	| "failed"
+	| "paused"
+	| "resumed"
+	| "stopped"
+	| "destroyed"
+	| "error"
+	| "restarted";
+
+export interface BaseNodeProps extends ReactFlowNodeProps {
+	send: (payload: string) => void;
 	imageUrl?: string;
 	title: string;
 	body: string;
 	type: string;
+	children?: ReactNode;
+	id: string;
+	inputId: string;
+	outputId: string;
 }
 
 interface Style {

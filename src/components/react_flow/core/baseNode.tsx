@@ -1,87 +1,64 @@
 //path: src\components\react_flow\core\baseNode.tsx
 
-import ReactFlowBuilder from "../../builders/reactFlowBuilder/ReactFlowBuilder";
-import nodeFlowService from "@src/services/NodeFlowService";
+import { distinctUntilChanged, catchError, filter, EMPTY } from "rxjs";
+import ReactFlowBuilder from "../../builders/ReactFlowBuilder";
 import { BaseNodeProps } from "@src/types/declarations";
-import CardAtom from "../../atoms/cardAtom";
+import { useNodeFlow } from "./reactFlowCanvas";
+import React, { useEffect } from "react";
 import { Position } from "reactflow";
-import { filter } from "rxjs";
 
-abstract class BaseNode extends ReactFlowBuilder {
-	protected props: BaseNodeProps;
-	protected inputHandleId: string;
-	protected outputHandleId: string;
+function withBaseNode(WrappedComponent: React.FC<BaseNodeProps>) {
+	return (props: BaseNodeProps) => {
+		const nodeOutputSubject = useNodeFlow();
 
-	constructor(props: BaseNodeProps) {
-		const atom = () => (
-			<>
-				<CardAtom
-					title={props.title}
-					body={props.body}
-					imageUrl={props.imageUrl}
-					children={this.renderCustomContent()}
-				/>
-			</>
-		);
+		useEffect(() => {
+			const subscription = nodeOutputSubject
+				.pipe(
+					filter((data) => inputValid(data.ids)),
+					distinctUntilChanged(
+						(prevData, currData) =>
+							prevData?.payload === currData?.payload,
+					),
+					catchError((error) => {
+						console.error("Error occurred:", error);
+						return EMPTY;
+					}),
+				)
+				.subscribe((data) => {
+					console.log(
+						`^^^ received: ${props.inputId}, payload: ${data.payload}`,
+					);
+				});
 
-		super(atom);
-		this.props = props;
+			return () => {
+				subscription.unsubscribe();
+			};
+		}, [props.inputId, props.outputId]);
 
-		this.inputHandleId = `${this.props.type}_${this.generateId()}`;
-		this.outputHandleId = `${this.props.type}_${this.generateId()}`;
-
-		nodeFlowService.nodeEmitted
-			.pipe(filter((tuple) => this.inputValid(tuple.ids)))
-			.subscribe((tuple) => {
-				this.receivedInput(tuple.payload);
+		const build = () => {
+			const builder = new ReactFlowBuilder(WrappedComponent);
+			builder.withType(props.type);
+			builder.withHandle({
+				id: props.inputId,
+				type: "target",
+				position: Position.Left,
 			});
-	}
+			builder.withHandle({
+				id: props.outputId,
+				type: "source",
+				position: Position.Right,
+			});
 
-	inputValid(ids: string[]) {
-		let result = this.inputHandleId && ids.includes(this.inputHandleId);
+			return builder.build();
+		};
 
-		return result === true ? true : false;
-	}
+		const inputValid = (ids: string[]) => {
+			return ids.includes(props.inputId);
+		};
 
-	protected receivedInput(payload: string) {
-		console.log(
-			`^=== received input: ${this.inputHandleId}, payload: ${payload}`,
-		);
-	}
-
-	protected sendOutput(payload: string) {
-		if (this.outputHandleId) {
-			console.log(
-				`v=== sending output: id: ${this.outputHandleId}, payload: ${payload}`,
-			);
-			nodeFlowService.onNodeOutput(this.outputHandleId, payload);
-		}
-	}
-
-	renderCustomContent(content = <></>) {
-		return content;
-	}
-
-	build() {
-		this.withType(this.props.type);
-		this.withHandle({
-			id: this.inputHandleId,
-			type: "target",
-			position: Position.Left,
-		});
-		this.withHandle({
-			id: this.outputHandleId,
-			type: "source",
-			position: Position.Right,
-		});
-
-		return super.build();
-	}
-
-	generateId() {
-		return (
-			Date.now().toString(36) + Math.random().toString(36).substring(2)
-		);
-	}
+		const BuiltComponent = build();
+		return <BuiltComponent {...props} />;
+	};
 }
-export default BaseNode;
+
+export default withBaseNode;

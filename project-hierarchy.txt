@@ -110,11 +110,8 @@ neurocache-hub
 │  │  │  ├─ nodeDropdown.tsx
 │  │  │  └─ persistentInput.tsx
 │  │  ├─ builders
-│  │  │  ├─ componentBuilder
-│  │  │  │  └─ ComponentBuilder.tsx
-│  │  │  └─ reactFlowBuilder
-│  │  │     ├─ ReactFlowBuilder.test.tsx
-│  │  │     └─ ReactFlowBuilder.tsx
+│  │  │  ├─ ComponentBuilder.tsx
+│  │  │  └─ ReactFlowBuilder.tsx
 │  │  ├─ library
 │  │  │  └─ template
 │  │  │     ├─ template.stories.tsx.md
@@ -122,11 +119,10 @@ neurocache-hub
 │  │  ├─ react_flow
 │  │  │  ├─ core
 │  │  │  │  ├─ baseNode.tsx
-│  │  │  │  ├─ reactFlowCanvas.tsx
-│  │  │  │  └─ styleReactFlowLogo.ts
+│  │  │  │  └─ reactFlowCanvas.tsx
 │  │  │  └─ nodes
-│  │  │     ├─ buttonOutputNode.tsx
-│  │  │     └─ displayInputNode.tsx
+│  │  │     ├─ buttonNode.tsx
+│  │  │     └─ labelNode.tsx
 │  │  ├─ threejs
 │  │  │  ├─ controllers
 │  │  │  │  ├─ cameraLook.tsx
@@ -217,8 +213,6 @@ neurocache-hub
 │  │     └─ __snapshots__
 │  │        └─ Storyshots.test.js.snap
 │  ├─ services
-│  │  ├─ NodeFlowService.ts
-│  │  ├─ NodeSpawnService.ts
 │  │  └─ supabase.ts
 │  ├─ stores
 │  │  ├─ ChannelStore.ts
