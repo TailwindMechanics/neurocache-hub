@@ -27,12 +27,20 @@ neurocache-hub
 │  ├─ context
 │  │  ├─ context.md
 │  │  └─ contextPrompt.md
-│  ├─ endToEnd
-│  │  └─ initalopenai.md
+│  ├─ demo
+│  │  └─ demo.md
+│  ├─ gitignored
+│  │  ├─ health.md
+│  │  └─ todo.md
 │  ├─ jobs
+│  │  ├─ email_summaries.json
+│  │  ├─ email_summaries_cleaned.json
+│  │  ├─ email_summaries_detailed.json
 │  │  ├─ notes.md
+│  │  ├─ plan.md
 │  │  ├─ summaries.csv
-│  │  └─ summaries.md
+│  │  ├─ summaries.md
+│  │  └─ test.json
 │  ├─ modulesPlan.md
 │  ├─ notes.md
 │  ├─ stories

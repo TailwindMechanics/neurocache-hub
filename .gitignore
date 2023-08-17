@@ -131,3 +131,4 @@ dist
 .vercel
 
 src/flowbite/
+docs/gitignored/
