@@ -9,19 +9,19 @@ import { BehaviorSubject } from "rxjs";
 import colors from "@src/data/colors";
 import ReactFlow, {
 	BackgroundVariant,
-	applyNodeChanges,
-	applyEdgeChanges,
 	useEdgesState,
 	useNodesState,
 	Connection,
 	Background,
-	EdgeChange,
-	NodeChange,
 	NodeTypes,
 	NodeProps,
 	addEdge,
 	Node,
 	Edge,
+	EdgeChange,
+	NodeChange,
+	applyEdgeChanges,
+	applyNodeChanges,
 } from "reactflow";
 import React, {
 	ComponentType,
@@ -31,24 +31,44 @@ import React, {
 	useEffect,
 	useState,
 } from "react";
+import StyleReactFlowLogo from "./styleReactFlowLogo";
 
 const initialNodes = [] as Node[];
 const initialEdges = [] as Edge[];
 
 const ReactFlowCanvas: React.FC = () => {
-	const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-	const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+	// const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+	// const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+	const [nodes, setNodes] = useState(initialNodes);
+	const [edges, setEdges] = useState(initialEdges);
 	const [types, setTypes] = useState<NodeTypes>({});
-
 	useEffect(() => {
 		init();
 	}, []);
 
 	function init() {
-		nodeConfig.forEach((config) => {
-			addNode(config);
-		});
+		// nodeConfig.forEach((config) => {
+		// 	addNode(config);
+		// });
 	}
+
+	// const onNodesChange = useCallback(
+	// 	(changes: NodeChange[]) =>
+	// 		setNodes((nodes) => applyNodeChanges(changes, nodes)),
+	// 	[],
+	// );
+	// const onEdgesChange = useCallback(
+	// 	(changes: EdgeChange[]) =>
+	// 		setEdges((edges) => applyEdgeChanges(changes, edges)),
+	// 	[],
+	// );
+	// const onConnect = useCallback(
+	// 	(params: Edge | Connection) =>
+	// 		setEdges((edges) => addEdge(params, edges)),
+	// 	[],
+	// );
+
+	// todo
 
 	const flowSubject = new BehaviorSubject<NodeFlowValue>({
 		ids: [],
@@ -77,16 +97,6 @@ const ReactFlowCanvas: React.FC = () => {
 			.filter((id): id is string => id !== null && id !== undefined);
 
 		return targetIds;
-	};
-
-	const handleNodeChange = (changes: NodeChange[]) => {
-		const updatedNodes = applyNodeChanges(changes, nodes);
-		setNodes(updatedNodes);
-	};
-
-	const handleEdgeChange = (changes: EdgeChange[]) => {
-		const updatedEdges = applyEdgeChanges(changes, edges);
-		setEdges(updatedEdges);
 	};
 
 	const addNode = (config: NodeConfigItem) => {
@@ -130,20 +140,15 @@ const ReactFlowCanvas: React.FC = () => {
 		});
 	};
 
-	const onConnect = useCallback(
-		(params: Edge | Connection) => setEdges((eds) => addEdge(params, eds)),
-		[setEdges],
-	);
-
 	return (
 		<div className="h-screen w-screen bg-night">
 			<NodeFlowContext.Provider value={flowSubject}>
 				<ReactFlow
 					nodes={nodes}
-					onNodesChange={onNodesChange}
 					edges={edges}
-					onEdgesChange={onEdgesChange}
-					onConnect={onConnect}
+					// onNodesChange={onNodesChange}
+					// onEdgesChange={onEdgesChange}
+					// onConnect={onConnect}
 					nodeTypes={types}
 					elementsSelectable={false}
 				>

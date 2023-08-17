@@ -5,6 +5,8 @@ import { ReactNode, FC, HTMLAttributes } from "react";
 import { Node, Edge, NodeTypes } from "reactflow";
 import flatColors from '@src/data/colors.ts';
 
+export type NodeType = "debug_output" | "debug_input";
+
 type ColorKeys = keyof typeof flatColors;
 type ColorType = `${ColorKeys}`;
 
@@ -19,7 +21,7 @@ export interface NodeConfigItem {
 	label: string;
 	title: string;
 	body: string;
-	type: string;
+	type: NodeType;
 }
 
 type NodeState =
@@ -62,7 +64,7 @@ interface Style {
 }
 
 type ButtonProps = {
-	category?: Style["Category"] = "calm";
+	category?: Style["Category"];
 	onClick: () => void;
 	ariaLabel: string;
 	disabled: boolean;

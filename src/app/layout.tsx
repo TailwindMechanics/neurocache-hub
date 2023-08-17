@@ -24,16 +24,9 @@ export default function RootLayout({
 			<html lang="en">
 				<head>
 					<title>{title}</title>
-					<meta
-						name="description"
-						content={
-							metadata.description
-						}
-					/>
+					<meta name="description" content={metadata.description} />
 				</head>
-				<body
-					className={`${inter.className} dark`}
-				>
+				<body className={`${inter.className} dark`}>
 					{children}
 					<Analytics />
 				</body>
