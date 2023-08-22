@@ -23,12 +23,12 @@ import nodeConfig from "@src/data/nodeConfig";
 const newNodes: NodeType[] = nodeConfig.map((config, index) => ({
 	id: index.toString(),
 	type: config.type,
-	data: { label: config.label },
+	data: { label: config.label, title: config.title, body: config.body },
 	position: { x: index * 200, y: 100 },
 }));
 
 const newTypes: NodeTypes = nodeConfig.reduce((acc, config) => {
-	acc[config.type] = config.component as unknown as ComponentType<NodeProps>;
+	acc[config.type] = config.component as ComponentType<NodeProps>;
 	return acc;
 }, {} as NodeTypes);
 

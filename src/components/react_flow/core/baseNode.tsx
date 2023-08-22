@@ -6,6 +6,7 @@ import { BaseNodeProps } from "@src/types/declarations";
 import useNodeFlow from "@src/hooks/useNodeFlow";
 import React, { useEffect } from "react";
 import { Position } from "reactflow";
+import CardAtom from "@src/components/atoms/cardAtom";
 
 function withBaseNode(WrappedComponent: React.FC<BaseNodeProps>) {
 	return (props: BaseNodeProps) => {
@@ -14,7 +15,7 @@ function withBaseNode(WrappedComponent: React.FC<BaseNodeProps>) {
 		useEffect(() => {
 			const subscription = nodeOutputSubject
 				.pipe(
-					filter((data) => inputValid(data.ids)),
+					filter((data) => data.ids.includes(props.inputId)),
 					distinctUntilChanged(
 						(prevData, currData) =>
 							prevData?.payload === currData?.payload,
@@ -35,17 +36,21 @@ function withBaseNode(WrappedComponent: React.FC<BaseNodeProps>) {
 			};
 		}, [props.inputId, props.outputId]);
 
-		const inputValid = (ids: string[]) => {
-			return ids.includes(props.inputId);
-		};
+		const wrapped: React.FC<BaseNodeProps> = (props) => (
+			<CardAtom title={props.data.title} body={props.data.body}>
+				<WrappedComponent {...props} />
+			</CardAtom>
+		);
 
-		const builder = new ReactFlowBuilder(WrappedComponent);
+		const builder = new ReactFlowBuilder(wrapped);
 		builder.withType(props.type);
+
 		builder.withHandle({
 			id: props.inputId,
 			type: "target",
 			position: Position.Left,
 		});
+
 		builder.withHandle({
 			id: props.outputId,
 			type: "source",

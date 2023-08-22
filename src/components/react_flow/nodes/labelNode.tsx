@@ -2,6 +2,7 @@
 
 import { BaseNodeProps } from "@src/types/declarations";
 import React, { useState, useEffect } from "react";
+import withBaseNode from "../core/baseNode";
 
 const LabelNode: React.FC<BaseNodeProps> = (props: BaseNodeProps) => {
 	const [receivedInputText, setReceivedInputText] = useState("");
@@ -29,4 +30,4 @@ const LabelNode: React.FC<BaseNodeProps> = (props: BaseNodeProps) => {
 	);
 };
 
-export default LabelNode;
+export default withBaseNode(LabelNode);

@@ -2,6 +2,7 @@
 
 import PersistentInput from "@src/components/atoms/persistentInput";
 import { BaseNodeProps } from "@src/types/declarations";
+import withBaseNode from "../core/baseNode";
 import React, { useState } from "react";
 
 const ButtonNode: React.FC<BaseNodeProps> = (props: BaseNodeProps) => {
@@ -21,4 +22,4 @@ const ButtonNode: React.FC<BaseNodeProps> = (props: BaseNodeProps) => {
 	);
 };
 
-export default ButtonNode;
+export default withBaseNode(ButtonNode);

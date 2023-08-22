@@ -5,7 +5,7 @@ import React, { ReactNode, useState } from "react";
 import AtomicDiv from "./atomicDiv";
 
 interface CardAtomProps {
-	renderComponent: ReactNode;
+	children?: ReactNode;
 	imageUrl?: string;
 	title: string;
 	body: string;
@@ -74,7 +74,7 @@ const CardAtom: React.FC<CardAtomProps> = (props: CardAtomProps) => {
 				{isCollapsed ? null : (
 					<>
 						<BodyText />
-						{props.renderComponent}
+						{props.children}
 					</>
 				)}
 			</RootBox>
