@@ -26,20 +26,6 @@ const nodeConfig: NodeConfigItem[] = [
 		type: "debug_input",
 		label: "Display Input",
 	},
-	// {
-	// 	component: LabelNode,
-	// 	title: "Display Input",
-	// 	body: "This node displays input payload it receives.",
-	// 	type: "debug_input",
-	// 	label: "Display Input",
-	// },
-	// {
-	// 	component: LabelNode,
-	// 	title: "Display Input",
-	// 	body: "This node displays input payload it receives.",
-	// 	type: "debug_input",
-	// 	label: "Display Input",
-	// },
 ];
 
 export default nodeConfig;

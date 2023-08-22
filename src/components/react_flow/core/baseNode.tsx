@@ -3,7 +3,7 @@
 import { distinctUntilChanged, catchError, filter, EMPTY } from "rxjs";
 import ReactFlowBuilder from "../../builders/ReactFlowBuilder";
 import { BaseNodeProps } from "@src/types/declarations";
-import { useNodeFlow } from "./reactFlowCanvas";
+import useNodeFlow from "@src/hooks/useNodeFlow";
 import React, { useEffect } from "react";
 import { Position } from "reactflow";
 
@@ -35,28 +35,24 @@ function withBaseNode(WrappedComponent: React.FC<BaseNodeProps>) {
 			};
 		}, [props.inputId, props.outputId]);
 
-		const build = () => {
-			const builder = new ReactFlowBuilder(WrappedComponent);
-			builder.withType(props.type);
-			builder.withHandle({
-				id: props.inputId,
-				type: "target",
-				position: Position.Left,
-			});
-			builder.withHandle({
-				id: props.outputId,
-				type: "source",
-				position: Position.Right,
-			});
-
-			return builder.build();
-		};
-
 		const inputValid = (ids: string[]) => {
 			return ids.includes(props.inputId);
 		};
 
-		const BuiltComponent = build();
+		const builder = new ReactFlowBuilder(WrappedComponent);
+		builder.withType(props.type);
+		builder.withHandle({
+			id: props.inputId,
+			type: "target",
+			position: Position.Left,
+		});
+		builder.withHandle({
+			id: props.outputId,
+			type: "source",
+			position: Position.Right,
+		});
+
+		const BuiltComponent = builder.build();
 		return <BuiltComponent {...props} />;
 	};
 }

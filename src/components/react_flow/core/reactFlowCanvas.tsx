@@ -1,7 +1,7 @@
 //path: src\components\react_flow\core\reactFlowCanvas.tsx
 
-import React, { useCallback, useState } from "react";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
+import React, { ComponentType, useCallback, useState } from "react";
 import colors from "@data/colors.json";
 import "reactflow/dist/style.css";
 import ReactFlow, {
@@ -16,10 +16,22 @@ import ReactFlow, {
 	NodeTypes,
 	addEdge,
 	Edge,
+	NodeProps,
 } from "reactflow";
+import nodeConfig from "@src/data/nodeConfig";
 
-const newNodes: NodeType[] = [];
-const newTypes: NodeTypes = {};
+const newNodes: NodeType[] = nodeConfig.map((config, index) => ({
+	id: index.toString(),
+	type: config.type,
+	data: { label: config.label },
+	position: { x: index * 200, y: 100 },
+}));
+
+const newTypes: NodeTypes = nodeConfig.reduce((acc, config) => {
+	acc[config.type] = config.component as unknown as ComponentType<NodeProps>;
+	return acc;
+}, {} as NodeTypes);
+
 const newEdges: Edge[] = [];
 
 const ReactFlowCanvas: React.FC = () => {

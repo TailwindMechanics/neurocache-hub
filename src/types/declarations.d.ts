@@ -1,20 +1,20 @@
 //path: src\types\declarations.d.ts
 
-import { ReactFlowNodeProps } from "reactflow";
 import { ReactNode, FC, HTMLAttributes } from "react";
 import { Node, Edge, NodeTypes } from "reactflow";
 import flatColors from '@src/data/colors.ts';
+import { NodeProps } from 'reactflow';
 
-export type NodeType = "debug_output" | "debug_input";
 
 type ColorKeys = keyof typeof flatColors;
 type ColorType = `${ColorKeys}`;
 
-interface ReactFlowCanvasProps {
-	nodes: Node[];
-	edges: Edge[];
-	types: NodeTypes;
-}
+export type NodeType = "debug_output" | "debug_input";
+
+type NodeFlowValue = {
+	ids: string[];
+	payload: string;
+};
 
 export interface NodeConfigItem {
 	component: React.ComponentType<BaseNodeProps>;
@@ -39,7 +39,7 @@ type NodeState =
 	| "error"
 	| "restarted";
 
-export interface BaseNodeProps extends ReactFlowNodeProps {
+export type BaseNodeProps = NodeProps & {
 	send: (payload: string) => void;
 	imageUrl?: string;
 	title: string;
@@ -49,7 +49,7 @@ export interface BaseNodeProps extends ReactFlowNodeProps {
 	id: string;
 	inputId: string;
 	outputId: string;
-}
+};
 
 interface Style {
 	Category: "overt" | "calm" | "alert" | "subtle" | "node" | "ghost";

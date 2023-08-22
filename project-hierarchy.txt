@@ -1,5 +1,4 @@
 neurocache-hub
-├─ .env.development.local
 ├─ .eslintignore
 ├─ .eslintrc.json
 ├─ .github
@@ -13,12 +12,6 @@ neurocache-hub
 │  ├─ main.js
 │  ├─ manager-head.html
 │  └─ preview.js
-├─ .swc
-│  └─ plugins
-│     └─ v7_windows_x86_64_0.97.9
-├─ .vercel
-│  ├─ project.json
-│  └─ README.txt
 ├─ .vscode
 │  ├─ settings.json
 │  └─ tasks.json
@@ -29,18 +22,6 @@ neurocache-hub
 │  │  └─ contextPrompt.md
 │  ├─ demo
 │  │  └─ demo.md
-│  ├─ gitignored
-│  │  ├─ health.md
-│  │  └─ todo.md
-│  ├─ jobs
-│  │  ├─ email_summaries.json
-│  │  ├─ email_summaries_cleaned.json
-│  │  ├─ email_summaries_detailed.json
-│  │  ├─ notes.md
-│  │  ├─ plan.md
-│  │  ├─ summaries.csv
-│  │  ├─ summaries.md
-│  │  └─ test.json
 │  ├─ modulesPlan.md
 │  ├─ notes.md
 │  ├─ stories
@@ -109,7 +90,6 @@ neurocache-hub
 │  │  ├─ page.tsx
 │  │  └─ profile
 │  │     └─ page.tsx
-│  ├─ assets
 │  ├─ components
 │  │  ├─ atoms
 │  │  │  ├─ atomicDiv.tsx
@@ -127,7 +107,9 @@ neurocache-hub
 │  │  ├─ react_flow
 │  │  │  ├─ core
 │  │  │  │  ├─ baseNode.tsx
-│  │  │  │  └─ reactFlowCanvas.tsx
+│  │  │  │  ├─ oldrfc.md
+│  │  │  │  ├─ reactFlowCanvas.tsx
+│  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  └─ nodes
 │  │  │     ├─ buttonNode.tsx
 │  │  │     └─ labelNode.tsx
@@ -215,12 +197,16 @@ neurocache-hub
 │  │  ├─ icons.tsx
 │  │  ├─ nodeConfig.tsx
 │  │  └─ shorthand.tsx
+│  ├─ hooks
+│  │  └─ useNodeFlow.tsx
 │  ├─ lib
 │  │  └─ storyshots
 │  │     ├─ Storyshots.test.js
 │  │     └─ __snapshots__
 │  │        └─ Storyshots.test.js.snap
 │  ├─ services
+│  │  ├─ NodeFlowService.ts
+│  │  ├─ NodeSpawnService.ts
 │  │  └─ supabase.ts
 │  ├─ stores
 │  │  ├─ ChannelStore.ts
