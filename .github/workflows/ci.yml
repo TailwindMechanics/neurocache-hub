@@ -1,0 +1,42 @@
+name: Unit Tests
+
+on:
+    push:
+        branches:
+            - development
+            - feature/SD_v0_create-component-library_20230718
+    pull_request:
+        branches: [main, development]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [19.x]
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Install pnpm
+              run: npm install -g pnpm
+
+            - name: Log pnpm version
+              run: npx pnpm --version
+
+            - name: Install dependencies
+              run: npx pnpm install
+
+            - name: Run tests
+              run: npx pnpm run test:generate-output
+
+            - name: Publish Test Results
+              uses: EnricoMi/publish-unit-test-result-action@v2.8.0
+              with:
+                  files: ./junit.xml
+              if: always()

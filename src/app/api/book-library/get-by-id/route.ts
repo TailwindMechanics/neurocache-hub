@@ -1,6 +1,6 @@
 //path: src\app\api\book-library\get-by-id\route.ts
 
-import type { Book } from "@/types";
+import type { Book } from "@src/types";
 import { z } from "zod";
 
 // Define the schema of the request query

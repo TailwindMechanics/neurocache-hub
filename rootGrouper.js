@@ -74,7 +74,13 @@ const groupRootTask = {
 	problemMatcher: [],
 };
 
-tasks.tasks.push(groupRootTask);
+// Check if a task with label "Group Root" already exists
+const taskExists = tasks.tasks.some((task) => task.label === "Group Root");
+
+// If task does not exist, add it
+if (!taskExists) {
+	tasks.tasks.push(groupRootTask);
+}
 
 // Write tasks back to the tasks.json file
 fs.writeFileSync(tasksFilePath, JSON.stringify(tasks, null, 2));
