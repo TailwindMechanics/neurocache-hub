@@ -1,28 +1,43 @@
 //path: src\types\declarations.d.ts
 
+import { Position } from 'reactflow';
+
+import { ButtonOutput } from '@src/components/react_flow/nodes/buttonOutput';
+import { InputLabel } from '@src/components/react_flow/nodes/inputLabel';
 import { ReactNode, FC, HTMLAttributes } from "react";
 import { Node, Edge, NodeTypes } from "reactflow";
 import flatColors from '@src/data/colors.ts';
 import { NodeProps } from 'reactflow';
+import { BehaviorSubject } from 'rxjs';
 
 
 type ColorKeys = keyof typeof flatColors;
 type ColorType = `${ColorKeys}`;
 
-export type NodeType = "debug_output" | "debug_input";
+export type CustomNode = {
+	type: "button_output",
+	label: "Output Button",
+	component: typeof ButtonOutput,
+} | {
+	type: "input_label",
+	label: "Input Label",
+	component: typeof InputLabel,
+};
+
+export interface NodeConfigItem {
+	node: CustomNode;
+	outputId: string;
+	inputId: string;
+	nodeId: string;
+	title: string;
+	body: string;
+	position: {x: number, y: number};
+}
 
 type NodeFlowValue = {
 	ids: string[];
 	payload: string;
 };
-
-export interface NodeConfigItem {
-	component: React.ComponentType<BaseNodeProps>;
-	label: string;
-	title: string;
-	body: string;
-	type: NodeType;
-}
 
 type NodeState =
 	| "constructed"
@@ -39,17 +54,6 @@ type NodeState =
 	| "error"
 	| "restarted";
 
-export type BaseNodeProps = NodeProps & {
-	send: (payload: string) => void;
-	imageUrl?: string;
-	title: string;
-	body: string;
-	type: string;
-	children?: ReactNode;
-	id: string;
-	inputId: string;
-	outputId: string;
-};
 
 interface Style {
 	Category: "overt" | "calm" | "alert" | "subtle" | "node" | "ghost";

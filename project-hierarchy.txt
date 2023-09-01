@@ -111,8 +111,8 @@ neurocache-hub
 │  │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  └─ nodes
-│  │  │     ├─ buttonNode.tsx
-│  │  │     └─ labelNode.tsx
+│  │  │     ├─ buttonOutput.tsx
+│  │  │     └─ inputLabel.tsx
 │  │  ├─ threejs
 │  │  │  ├─ controllers
 │  │  │  │  ├─ cameraLook.tsx
@@ -198,7 +198,8 @@ neurocache-hub
 │  │  ├─ nodeConfig.tsx
 │  │  └─ shorthand.tsx
 │  ├─ hooks
-│  │  └─ useNodeFlow.tsx
+│  │  ├─ nodeFlowContext.tsx
+│  │  └─ useNodeFlow.tsx.md
 │  ├─ lib
 │  │  └─ storyshots
 │  │     ├─ Storyshots.test.js

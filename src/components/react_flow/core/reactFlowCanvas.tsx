@@ -1,7 +1,8 @@
 //path: src\components\react_flow\core\reactFlowCanvas.tsx
 
-import StyleReactFlowLogo from "./styleReactFlowLogo";
 import React, { ComponentType, useCallback, useState } from "react";
+import StyleReactFlowLogo from "./styleReactFlowLogo";
+import nodeConfig from "@src/data/nodeConfig";
 import colors from "@data/colors.json";
 import "reactflow/dist/style.css";
 import ReactFlow, {
@@ -14,21 +15,21 @@ import ReactFlow, {
 	EdgeChange,
 	NodeChange,
 	NodeTypes,
+	NodeProps,
 	addEdge,
 	Edge,
-	NodeProps,
 } from "reactflow";
-import nodeConfig from "@src/data/nodeConfig";
+import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
 
 const newNodes: NodeType[] = nodeConfig.map((config, index) => ({
 	id: index.toString(),
-	type: config.type,
-	data: { label: config.label, title: config.title, body: config.body },
-	position: { x: index * 200, y: 100 },
+	type: config.node.type,
+	data: { ...config },
+	position: config.position,
 }));
 
 const newTypes: NodeTypes = nodeConfig.reduce((acc, config) => {
-	acc[config.type] = config.component as ComponentType<NodeProps>;
+	acc[config.node.type] = config.node.component as ComponentType<NodeProps>;
 	return acc;
 }, {} as NodeTypes);
 
@@ -67,20 +68,22 @@ const ReactFlowCanvas: React.FC = () => {
 
 	return (
 		<div className="h-screen w-screen bg-night">
-			<ReactFlow
-				nodes={nodes}
-				onNodesChange={onNodesChange}
-				edges={edges}
-				onEdgesChange={onEdgesChange}
-				onConnect={onConnect}
-				nodeTypes={types}
-				elementsSelectable={false}
-			>
-				<Background
-					variant={BackgroundVariant.Dots}
-					color={colors.aqua.a}
-				/>
-			</ReactFlow>
+			<NodeFlowProvider edges={edges}>
+				<ReactFlow
+					nodes={nodes}
+					onNodesChange={onNodesChange}
+					edges={edges}
+					onEdgesChange={onEdgesChange}
+					onConnect={onConnect}
+					nodeTypes={types}
+					elementsSelectable={false}
+				>
+					<Background
+						variant={BackgroundVariant.Dots}
+						color={colors.aqua.a}
+					/>
+				</ReactFlow>
+			</NodeFlowProvider>
 		</div>
 	);
 };

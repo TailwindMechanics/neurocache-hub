@@ -1,31 +1,54 @@
 //path: src\data\nodeConfig.tsx
 
-import ButtonNode from "@src/components/react_flow/nodes/buttonNode";
-import LabelNode from "@src/components/react_flow/nodes/labelNode";
-import { NodeConfigItem } from "@src/types/declarations";
+import buttonOutput from "@src/components/react_flow/nodes/buttonOutput";
+import inputLabel from "@src/components/react_flow/nodes/inputLabel";
+import { NodeConfigItem, CustomNode } from "@src/types/declarations";
+import { Uid } from "@src/utils/stringUtils";
+
+const customNodes = {
+	buttonOutput: {
+		type: "button_output",
+		label: "Output Button",
+		component: buttonOutput,
+	} as CustomNode,
+	inputLabel: {
+		type: "input_label",
+		label: "Input Label",
+		component: inputLabel,
+	} as CustomNode,
+};
+
+const createNodeConfig = (
+	node: CustomNode,
+	title: string,
+	body: string,
+	pos: { x: number; y: number },
+): NodeConfigItem => {
+	const uid = Uid();
+	return {
+		node: node,
+		outputId: `${node.type}_${uid}_output`,
+		inputId: `${node.type}_${uid}_input`,
+		nodeId: `${node.type}_${uid}_node`,
+		title: title,
+		body: body,
+		position: pos,
+	};
+};
 
 const nodeConfig: NodeConfigItem[] = [
-	{
-		component: ButtonNode,
-		title: "Output On Button Click",
-		body: "This node outputs the InputField text when the Button is clicked.",
-		type: "debug_output",
-		label: "Output Button",
-	},
-	{
-		component: LabelNode,
-		title: "Display Input",
-		body: "This node displays input payload it receives.",
-		type: "debug_input",
-		label: "Display Input",
-	},
-	{
-		component: LabelNode,
-		title: "Display Input",
-		body: "This node displays input payload it receives.",
-		type: "debug_input",
-		label: "Display Input",
-	},
+	createNodeConfig(
+		customNodes.buttonOutput,
+		"Output On Button Click",
+		"This node outputs the InputField text when the Button is clicked.",
+		{ x: 0, y: 0 },
+	),
+	createNodeConfig(
+		customNodes.inputLabel,
+		"Display Input",
+		"This node displays input payload it receives.",
+		{ x: 0, y: 0 },
+	),
 ];
 
 export default nodeConfig;
