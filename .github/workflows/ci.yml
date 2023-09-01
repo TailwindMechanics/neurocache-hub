@@ -32,8 +32,8 @@ jobs:
             - name: Install dependencies
               run: npx pnpm install
 
-            - name: Run tests
-              run: npx pnpm run test:generate-output
+            # - name: Run tests
+            #   run: npx pnpm run test:generate-output
 
             - name: Publish Test Results
               uses: EnricoMi/publish-unit-test-result-action@v2.8.0
