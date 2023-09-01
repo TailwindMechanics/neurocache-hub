@@ -1,7 +1,10 @@
 //path: src\data\icons.tsx
 
-import { IconProps } from "@src/types/declarations";
 import React, { FC } from "react";
+
+interface IconProps {
+	className?: string;
+}
 
 export const Atom: FC<IconProps> = ({ className = "w-5 h-5" }) => (
 	<svg
