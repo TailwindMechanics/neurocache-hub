@@ -93,7 +93,6 @@ neurocache-hub
 │  ├─ components
 │  │  ├─ atoms
 │  │  │  ├─ atomicDiv.tsx
-│  │  │  ├─ card copy.tsx
 │  │  │  ├─ cardAtom.tsx
 │  │  │  ├─ nodeDropdown.tsx
 │  │  │  └─ persistentInput.tsx
@@ -107,7 +106,6 @@ neurocache-hub
 │  │  ├─ react_flow
 │  │  │  ├─ core
 │  │  │  │  ├─ baseNode.tsx
-│  │  │  │  ├─ oldrfc.md
 │  │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  └─ nodes
@@ -198,16 +196,13 @@ neurocache-hub
 │  │  ├─ nodeConfig.tsx
 │  │  └─ shorthand.tsx
 │  ├─ hooks
-│  │  ├─ nodeFlowContext.tsx
-│  │  └─ useNodeFlow.tsx.md
+│  │  └─ nodeFlowContext.tsx
 │  ├─ lib
 │  │  └─ storyshots
 │  │     ├─ Storyshots.test.js
 │  │     └─ __snapshots__
 │  │        └─ Storyshots.test.js.snap
 │  ├─ services
-│  │  ├─ NodeFlowService.ts
-│  │  ├─ NodeSpawnService.ts
 │  │  └─ supabase.ts
 │  ├─ stores
 │  │  ├─ ChannelStore.ts

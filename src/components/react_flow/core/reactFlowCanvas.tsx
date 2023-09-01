@@ -40,7 +40,7 @@ const ReactFlowCanvas: React.FC = () => {
 
 	const [nodes, setNodes] = useState(newNodes);
 	const [edges, setEdges] = useState(newEdges);
-	const [types, setTypes] = useState(newTypes);
+	const [types] = useState(newTypes);
 
 	const onNodesChange = useCallback(
 		(changes: NodeChange[]) => {

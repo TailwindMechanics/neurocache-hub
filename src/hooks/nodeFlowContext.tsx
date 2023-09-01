@@ -59,6 +59,7 @@ export const NodeFlowProvider: React.FC<NodeFlowProviderProps> = ({
 			`%c<<<<< Input ids:${inputIds}, payload:${newValue.payload}`,
 			"color: #d8e063",
 		);
+
 		setNodeFlowValueState({ ids: inputIds, payload: newValue.payload });
 	};
 

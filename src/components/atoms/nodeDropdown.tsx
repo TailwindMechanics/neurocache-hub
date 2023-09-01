@@ -1,11 +1,10 @@
 //path: src\components\atoms\nodeDropdown.tsx
 
-// NodeDropdown.tsx
-
 import { NodeConfigItem } from "@src/types/declarations";
 import { Listbox } from "@headlessui/react";
 import nodeConfig from "@data/nodeConfig";
 import { useState } from "react";
+import { NodeProps } from "reactflow";
 
 interface NodeDropdownProps {
 	onNodeCreate: (node: any) => void;
@@ -16,27 +15,29 @@ const NodeDropdown: React.FC<NodeDropdownProps> = ({ onNodeCreate }) => {
 		nodeConfig[0],
 	);
 
-	const handleSelection = (config: NodeConfigItem) => {
-		const newNode = new config.component({
-			title: config.title,
-			body: config.body,
-			type: config.type,
-		});
-
-		onNodeCreate(newNode);
+	const handleSelection = (props: NodeProps) => {
+		// const config = props.data as NodeConfigItem;
+		// const newNode = new config.node({
+		// 	title: config.title,
+		// 	body: config.body,
+		// 	type: props.type,
+		// }) as any;
+		// onNodeCreate(newNode);
 	};
 
 	return (
-		<Listbox value={selectedNode} onChange={handleSelection}>
-			<Listbox.Button>{selectedNode.label}</Listbox.Button>
-			<Listbox.Options>
-				{nodeConfig.map((config, index) => (
-					<Listbox.Option key={index} value={config} as="li">
-						{config.label}
-					</Listbox.Option>
-				))}
-			</Listbox.Options>
-		</Listbox>
+		<>
+			{/* <Listbox value={selectedNode} onChange={handleSelection}>
+				<Listbox.Button>{selectedNode.label}</Listbox.Button>
+				<Listbox.Options>
+					{nodeConfig.map((config, index) => (
+						<Listbox.Option key={index} value={config} as="li">
+							{config.label}
+						</Listbox.Option>
+					))}
+				</Listbox.Options>
+			</Listbox> */}
+		</>
 	);
 };
 
