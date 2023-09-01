@@ -10,7 +10,7 @@
 		"storybook": "storybook dev",
 		"build-storybook": "storybook build",
 		"test:generate-output": "jest --ci --reporters=default --reporters=jest-junit",
-		"test": "jest"
+		"test": "echo 'No tests yet'"
 	},
 	"dependencies": {
 		"@headlessui/react": "^1.7.17",
