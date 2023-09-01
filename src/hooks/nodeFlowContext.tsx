@@ -1,12 +1,8 @@
 //path: src\hooks\nodeFlowContext.tsx
 
+import { NodeFlowValue } from "@src/types/declarations";
 import React, { ReactNode, createContext, useContext, useState } from "react";
 import { Edge } from "reactflow";
-
-export interface NodeFlowValue {
-	ids: string[];
-	payload: string;
-}
 
 const NodeFlowContext = createContext<{
 	nodeFlowValue: NodeFlowValue;

@@ -17,18 +17,14 @@ neurocache-hub
 │  └─ tasks.json
 ├─ autoCommentPath.js
 ├─ docs
-│  ├─ context
-│  │  ├─ context.md
-│  │  └─ contextPrompt.md
 │  ├─ demo
 │  │  └─ demo.md
-│  ├─ modulesPlan.md
-│  ├─ notes.md
 │  ├─ stories
 │  │  ├─ apiStory.md
 │  │  └─ hubStory.md
-│  ├─ styles.md
-│  └─ uiplan.md
+│  └─ templates
+│     ├─ template.stories.tsx.md
+│     └─ template.test.tsx.md
 ├─ jest.config.js
 ├─ jest.setup.js
 ├─ junit.xml
@@ -43,24 +39,8 @@ neurocache-hub
 │  ├─ favicon.ico
 │  ├─ images
 │  │  ├─ bird80px.png
-│  │  ├─ icons
-│  │  │  └─ openai.svg
 │  │  ├─ neurocache.png
-│  │  └─ users
-│  │     ├─ bonnie-green-2x.png
-│  │     ├─ bonnie-green.png
-│  │     ├─ helene-engels.png
-│  │     ├─ jese-leos-2x.png
-│  │     ├─ jese-leos.png
-│  │     ├─ joseph-mcfall.png
-│  │     ├─ lana-byrd.png
-│  │     ├─ leslie-livingston.png
-│  │     ├─ michael-gough.png
-│  │     ├─ neil-sims.png
-│  │     ├─ robert-brown.png
-│  │     ├─ roberta-casas-2x.png
-│  │     ├─ roberta-casas.png
-│  │     └─ thomas-lean.png
+│  │  └─ openai.svg
 │  ├─ robots.txt
 │  └─ textures
 │     ├─ grid-texture.png
@@ -71,38 +51,22 @@ neurocache-hub
 ├─ rootGrouper.js
 ├─ src
 │  ├─ app
-│  │  ├─ agents
-│  │  │  └─ page.tsx
 │  │  ├─ api
 │  │  │  └─ book-library
 │  │  │     ├─ add
 │  │  │     │  └─ route.ts
 │  │  │     └─ get-by-id
 │  │  │        └─ route.ts
-│  │  ├─ chat
-│  │  │  └─ page.tsx
-│  │  ├─ docs
-│  │  │  └─ page.tsx
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
-│  │  ├─ manage-api
-│  │  │  └─ page.tsx
-│  │  ├─ page.tsx
-│  │  └─ profile
-│  │     └─ page.tsx
+│  │  └─ page.tsx
 │  ├─ components
 │  │  ├─ atoms
 │  │  │  ├─ atomicDiv.tsx
-│  │  │  ├─ cardAtom.tsx
-│  │  │  ├─ nodeDropdown.tsx
-│  │  │  └─ persistentInput.tsx
+│  │  │  └─ cardAtom.tsx
 │  │  ├─ builders
 │  │  │  ├─ ComponentBuilder.tsx
 │  │  │  └─ ReactFlowBuilder.tsx
-│  │  ├─ library
-│  │  │  └─ template
-│  │  │     ├─ template.stories.tsx.md
-│  │  │     └─ template.test.tsx.md
 │  │  ├─ react_flow
 │  │  │  ├─ core
 │  │  │  │  ├─ baseNode.tsx
@@ -111,112 +75,41 @@ neurocache-hub
 │  │  │  └─ nodes
 │  │  │     ├─ buttonOutput.tsx
 │  │  │     └─ inputLabel.tsx
-│  │  ├─ threejs
-│  │  │  ├─ controllers
-│  │  │  │  ├─ cameraLook.tsx
-│  │  │  │  └─ freeFlyControls.tsx
-│  │  │  ├─ generic
-│  │  │  │  ├─ cameraSetup.tsx
-│  │  │  │  ├─ setBgColour.tsx
-│  │  │  │  ├─ threeCanvas.tsx
-│  │  │  │  └─ wasdControls.ts
-│  │  │  ├─ geometry
-│  │  │  │  ├─ planeGeo.tsx
-│  │  │  │  └─ road.tsx
-│  │  │  ├─ materials
-│  │  │  │  ├─ mappedMetalMat.tsx
-│  │  │  │  └─ metalMat.tsx
-│  │  │  └─ virtualBackground
-│  │  │     ├─ building.tsx
-│  │  │     ├─ buildings.tsx
-│  │  │     ├─ cityBackground.tsx
-│  │  │     ├─ lights.tsx
-│  │  │     └─ test.md
-│  │  └─ z_deprecated
-│  │     ├─ charts
-│  │     │  ├─ acquisitionChart.tsx
-│  │     │  ├─ bubbleChart.tsx
-│  │     │  ├─ newProductsChart.tsx
-│  │     │  ├─ salesChart.tsx
-│  │     │  ├─ userSignupsChart.tsx
-│  │     │  └─ visitorsChart.tsx
-│  │     ├─ chat
-│  │     │  ├─ autoResizingTextArea.tsx
-│  │     │  ├─ chatHistory.tsx
-│  │     │  ├─ chatInput.tsx
-│  │     │  └─ messageBox.tsx
-│  │     ├─ dashboard
-│  │     │  ├─ acquisitionOverview.tsx
-│  │     │  ├─ dashboard.tsx
-│  │     │  ├─ datepicker.tsx
-│  │     │  ├─ latestCustomers.tsx
-│  │     │  ├─ newProductsThisWeek.tsx
-│  │     │  ├─ salesThisWeek.tsx
-│  │     │  ├─ sessionsByCountry.tsx
-│  │     │  ├─ transactions.tsx
-│  │     │  ├─ userSignupsThisWeek.tsx
-│  │     │  └─ visitorsThisWeek.tsx
-│  │     ├─ docs
-│  │     │  ├─ docsBlock.tsx
-│  │     │  └─ docSection.tsx
-│  │     ├─ drawer
-│  │     │  ├─ profileDrawer.tsx
-│  │     │  ├─ sideDrawer.tsx
-│  │     │  └─ signupDrawer.tsx
+│  │  └─ threejs
+│  │     ├─ controllers
+│  │     │  ├─ cameraLook.tsx
+│  │     │  └─ freeFlyControls.tsx
 │  │     ├─ generic
-│  │     │  ├─ block.tsx
-│  │     │  ├─ btn.tsx
-│  │     │  ├─ dataTable.tsx
-│  │     │  ├─ divider.tsx
-│  │     │  ├─ livePanel.tsx
-│  │     │  ├─ loadingSpinner.tsx
-│  │     │  ├─ loggedInRedirect.tsx
-│  │     │  ├─ loggedOutRedirect.tsx
-│  │     │  ├─ loginForm.tsx
-│  │     │  ├─ modal.tsx
-│  │     │  ├─ redirectToDashboard.tsx
-│  │     │  ├─ redirectToLanding.tsx
-│  │     │  ├─ routeGuard.tsx
-│  │     │  ├─ signedIn.tsx
-│  │     │  ├─ signedOut.tsx
-│  │     │  ├─ uiCanvas.tsx
-│  │     │  └─ userBadge.tsx
-│  │     └─ hub
-│  │        ├─ header.tsx
-│  │        ├─ hubLayout.tsx
-│  │        ├─ leftSideBar.tsx
-│  │        ├─ mainContent.tsx
-│  │        └─ menuItem.tsx
+│  │     │  ├─ cameraSetup.tsx
+│  │     │  ├─ setBgColour.tsx
+│  │     │  ├─ threeCanvas.tsx
+│  │     │  └─ wasdControls.ts
+│  │     ├─ geometry
+│  │     │  ├─ planeGeo.tsx
+│  │     │  └─ road.tsx
+│  │     ├─ materials
+│  │     │  ├─ mappedMetalMat.tsx
+│  │     │  └─ metalMat.tsx
+│  │     └─ virtualBackground
+│  │        ├─ building.tsx
+│  │        ├─ buildings.tsx
+│  │        ├─ cityBackground.tsx
+│  │        └─ lights.tsx
 │  ├─ data
 │  │  ├─ colors.json
 │  │  ├─ colors.ts
 │  │  ├─ content.json
 │  │  ├─ docs.json
 │  │  ├─ icons.tsx
-│  │  ├─ nodeConfig.tsx
-│  │  └─ shorthand.tsx
+│  │  └─ nodeConfig.tsx
 │  ├─ hooks
 │  │  └─ nodeFlowContext.tsx
-│  ├─ lib
-│  │  └─ storyshots
-│  │     ├─ Storyshots.test.js
-│  │     └─ __snapshots__
-│  │        └─ Storyshots.test.js.snap
 │  ├─ services
 │  │  └─ supabase.ts
-│  ├─ stores
-│  │  ├─ ChannelStore.ts
-│  │  ├─ DrawerStore.ts
-│  │  ├─ index.ts
-│  │  ├─ MessageStore.ts
-│  │  ├─ SidebarStore.ts
-│  │  └─ UserStore.ts
 │  ├─ types
 │  │  ├─ declarations.d.ts
 │  │  └─ index.ts
 │  └─ utils
-│     ├─ mathUtils.ts
-│     ├─ path.ts
 │     └─ stringUtils.ts
 ├─ tailwind.config.js
 ├─ tsconfig.json

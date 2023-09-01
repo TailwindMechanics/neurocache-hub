@@ -7,11 +7,7 @@ import { FC } from "react";
 import React from "react";
 
 const page: FC = () => {
-	return (
-		<>
-			<ReactFlowCanvas />
-		</>
-	);
+	return <ReactFlowCanvas />;
 };
 
 export default page;
