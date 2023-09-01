@@ -17,19 +17,9 @@ const generateBuildings = (
 		buildings.push(
 			<Building
 				key={`building-${i}`}
-				color={
-					colorArray[
-						i %
-							colorArray.length
-					]
-				}
+				color={colorArray[i % colorArray.length]}
 				position={[side, 0, positionZ * i]}
-				scale={
-					scaleArray[
-						i %
-							scaleArray.length
-					]
-				}
+				scale={scaleArray[i % scaleArray.length]}
 			/>,
 		);
 	}
@@ -49,26 +39,9 @@ const generateCars = (
 		cars.push(
 			<Building
 				key={`car-${i}`}
-				color={
-					colorArray[
-						i %
-							colorArray.length
-					]
-				}
-				position={[
-					x,
-					0,
-					positionZ *
-						i *
-						Math.random() *
-						2,
-				]} // more variation on the Z
-				scale={
-					scaleArray[
-						i %
-							scaleArray.length
-					]
-				}
+				color={colorArray[i % colorArray.length]}
+				position={[x, 0, positionZ * i * Math.random() * 2]} // more variation on the Z
+				scale={scaleArray[i % scaleArray.length]}
 			/>,
 		);
 	}
@@ -88,23 +61,9 @@ const generatePeople = (
 		people.push(
 			<Building
 				key={`person-${i}`}
-				color={
-					colorArray[
-						i %
-							colorArray.length
-					]
-				}
-				position={[
-					x,
-					0,
-					positionZ * i * Math.random(),
-				]} // more varied intervals
-				scale={
-					scaleArray[
-						i %
-							scaleArray.length
-					]
-				}
+				color={colorArray[i % colorArray.length]}
+				position={[x, 0, positionZ * i * Math.random()]} // more varied intervals
+				scale={scaleArray[i % scaleArray.length]}
 			/>,
 		);
 	}
@@ -115,12 +74,7 @@ export default function City() {
 	const leftSide = -40;
 	const rightSide = 40;
 	const positionZ = -200;
-	const colorArray = [
-		colors.primary,
-		colors.secondary,
-		colors.accent,
-		colors.background,
-	];
+	const colorArray = [colors.aqua, colors.cherry, colors.grape, colors.night];
 
 	const buildingScaleArray = [
 		[30, 120, 80],

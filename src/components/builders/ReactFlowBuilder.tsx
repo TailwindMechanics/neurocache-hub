@@ -1,7 +1,6 @@
 //path: src\components\builders\ReactFlowBuilder.tsx
 
-import { Handle, NodeResizer, Node, HandleProps } from "reactflow";
-import { BaseNodeProps } from "@src/types/declarations";
+import { Handle, NodeResizer, Node, HandleProps, NodeProps } from "reactflow";
 import React from "react";
 
 export default class ReactFlowBuilder {
@@ -9,10 +8,10 @@ export default class ReactFlowBuilder {
 	private minHeightResizer: number;
 	private minWidthResizer: number;
 	private includeResizer: boolean;
-	private atomData: React.FC<BaseNodeProps>;
+	private atomData: React.FC<NodeProps>;
 	private flowData: Node;
 
-	constructor(node: React.FC<BaseNodeProps>) {
+	constructor(node: React.FC<NodeProps>) {
 		this.includeResizer = false;
 		this.minWidthResizer = 100;
 		this.minHeightResizer = 30;
@@ -75,9 +74,9 @@ export default class ReactFlowBuilder {
 		return this.flowData;
 	}
 
-	build(): React.FC<BaseNodeProps> {
+	build(): React.FC<NodeProps> {
 		const Atom = this.atomData;
-		return (props: BaseNodeProps) => (
+		return (props: NodeProps) => (
 			<>
 				{this.handles.map((handle, index) => (
 					<Handle key={index} {...handle} />

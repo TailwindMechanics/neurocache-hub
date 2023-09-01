@@ -1,6 +1,7 @@
 //path: src\components\react_flow\core\reactFlowCanvas.tsx
 
 import React, { ComponentType, useCallback, useState } from "react";
+import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
 import nodeConfig from "@src/data/nodeConfig";
 import colors from "@data/colors.json";
@@ -19,7 +20,6 @@ import ReactFlow, {
 	addEdge,
 	Edge,
 } from "reactflow";
-import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
 
 const newNodes: NodeType[] = nodeConfig.map((config, index) => ({
 	id: index.toString(),

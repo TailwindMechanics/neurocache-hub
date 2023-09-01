@@ -132,3 +132,5 @@ dist
 
 src/flowbite/
 docs/gitignored/
+
+src/components/z_deprecated/
