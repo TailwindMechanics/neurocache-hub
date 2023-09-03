@@ -69,7 +69,7 @@ const ReactFlowCanvas: React.FC = () => {
 	);
 
 	return (
-		<div className="from-rose-d to-rose-l h-screen w-screen bg-gradient-to-tr">
+		<div className="from-rose-d via-rose to-rose-l h-screen w-screen bg-gradient-to-tr">
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
 					nodes={nodes}

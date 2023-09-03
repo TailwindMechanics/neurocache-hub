@@ -48,17 +48,11 @@ module.exports = {
 		function ({ addBase, theme }) {
 			addBase({
 				"::selection": {
-					backgroundColor:
-						theme(
-							"colors.text-select",
-						),
+					backgroundColor: theme("colors.text-select"),
 					color: theme("colors.text"),
 				},
 				"::-moz-selection": {
-					backgroundColor:
-						theme(
-							"colors.text-select",
-						),
+					backgroundColor: theme("colors.text-select"),
 					color: theme("colors.text"),
 				},
 			});

@@ -15,11 +15,11 @@ const CardAtom: React.FC<CardAtomProps> = (props: CardAtomProps) => {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 
 	let RootBox = new ComponentBuilder(AtomicDiv)
-		.withStyle("shadow-inner shadow-aqua-d")
-		.withStyle("border border-aqua-l")
-		.withStyle("rounded-full")
-		.withStyle("bg-aqua-d")
-		.withStyle("p-6")
+		.withStyle("from-night-d via-night to-night-l bg-gradient-to-t")
+		.withStyle(`drop-shadow-[-8px_12px_5px_rgba(0,0,0,.5)]`)
+		.withStyle("border border-night")
+		.withStyle("rounded-2xl")
+		.withStyle("py-4")
 		.build();
 
 	const TitleBox = new ComponentBuilder(AtomicDiv)
