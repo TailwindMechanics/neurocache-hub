@@ -14,9 +14,9 @@ interface CardAtomProps {
 const CardAtom: React.FC<CardAtomProps> = (props: CardAtomProps) => {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 
-	let RootBox = new ComponentBuilder(AtomicDiv)
+	const RootBox = new ComponentBuilder(AtomicDiv)
 		.withStyle("from-night-d via-night to-night-l bg-gradient-to-t")
-		.withStyle(`drop-shadow-[-8px_12px_5px_rgba(0,0,0,.5)]`)
+		.withStyle(`drop-shadow-[-4px_10px_2px_rgba(0,0,0,.75)]`)
 		.withStyle("border border-night")
 		.withStyle("rounded-2xl")
 		.withStyle("py-4")
