@@ -6,7 +6,7 @@ import React, { ComponentType, useCallback, useState } from "react";
 import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
 import nodeConfig from "@src/data/nodeConfig";
-import colors from "@data/colors.json";
+import colors from "@data/colors";
 import "reactflow/dist/style.css";
 import ReactFlow, {
 	BackgroundVariant,
@@ -69,7 +69,7 @@ const ReactFlowCanvas: React.FC = () => {
 	);
 
 	return (
-		<div className="h-screen w-screen bg-night">
+		<div className="from-rose-d to-rose-l h-screen w-screen bg-gradient-to-tr">
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
 					nodes={nodes}
@@ -82,7 +82,7 @@ const ReactFlowCanvas: React.FC = () => {
 				>
 					<Background
 						variant={BackgroundVariant.Dots}
-						color={colors.aqua.a}
+						color={colors["rose-d"]}
 					/>
 				</ReactFlow>
 			</NodeFlowProvider>

@@ -5,8 +5,9 @@
 
 # Steps
 1. Style UI in a way that makes better use of space
-2. Create Persona node
-3. Create Chat node
+2. Create core interaction for creating/deleting nodes
+3. Create Persona node
+4. Create Chat node
 
 # Required Nodes
 # 1. Persona: 
