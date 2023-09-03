@@ -16,9 +16,8 @@ const CardAtom: React.FC<CardAtomProps> = (props: CardAtomProps) => {
 
 	const RootBox = new ComponentBuilder(AtomicDiv)
 		.withStyle("from-night-d via-night to-night-l bg-gradient-to-t")
-		.withStyle(`drop-shadow-[-3px_9px_2px_rgba(0,0,30,.6)]`)
-		// .withStyle("border border-night")
-		.withStyle("rounded-b-lg rounded-t-md")
+		.withStyle(`drop-shadow-[-5px_12px_2px_rgba(0,0,30,.7)]`)
+		.withStyle("rounded-b-xl rounded-t-md")
 		.withStyle("py-4")
 		.build();
 
