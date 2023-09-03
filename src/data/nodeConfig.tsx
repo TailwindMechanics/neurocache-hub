@@ -1,6 +1,7 @@
 //path: src\data\nodeConfig.tsx
 
 import buttonOutput from "@src/components/react_flow/nodes/buttonOutput";
+import openAiNode from "@src/components/react_flow/nodes/openAiNode";
 import inputLabel from "@src/components/react_flow/nodes/inputLabel";
 import { NodeConfigItem, CustomNode } from "@src/types/declarations";
 import { Uid } from "@src/utils/stringUtils";
@@ -15,6 +16,11 @@ const customNodes = {
 		type: "input_label",
 		label: "Input Label",
 		component: inputLabel,
+	} as CustomNode,
+	openAiNode: {
+		type: "open_ai_node",
+		label: "OpenAI Node",
+		component: openAiNode,
 	} as CustomNode,
 };
 
@@ -47,7 +53,13 @@ const nodeConfig: NodeConfigItem[] = [
 		customNodes.inputLabel,
 		"Display Input",
 		"This node displays input payload it receives.",
-		{ x: 0, y: 0 },
+		{ x: 50, y: 0 },
+	),
+	createNodeConfig(
+		customNodes.openAiNode,
+		"OpenAI Node",
+		"This node makes an API request to OpenAI.",
+		{ x: 100, y: 0 },
 	),
 ];
 

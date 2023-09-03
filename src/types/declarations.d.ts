@@ -25,6 +25,10 @@ export type CustomNode = {
 	type: "input_label",
 	label: "Input Label",
 	component: typeof InputLabel,
+} | {
+	type: "open_ai_node",
+	label: "OpenAI Node",
+	component: typeof OpenAiNode,
 };
 
 export interface NodeConfigItem {
@@ -39,5 +43,5 @@ export interface NodeConfigItem {
 
 export type NodeFlowValue = {
 	ids: string[];
-	payload: string;
+	payload: string | null;
 };

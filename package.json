@@ -10,7 +10,7 @@
 		"storybook": "storybook dev",
 		"build-storybook": "storybook build",
 		"test:generate-output": "jest --ci --reporters=default --reporters=jest-junit",
-		"test": "echo 'No tests yet'"
+		"test": "jest"
 	},
 	"dependencies": {
 		"@headlessui/react": "^1.7.17",
@@ -40,7 +40,8 @@
 		"flowbite": "^1.8.1",
 		"flowbite-react": "^0.4.11",
 		"framer-motion": "^10.16.2",
-		"next": "13.4.9",
+		"next": "13.4.20-canary.15",
+		"openai": "^4.4.0",
 		"postcss": "8.4.25",
 		"react": "18.2.0",
 		"react-apexcharts": "^1.4.1",

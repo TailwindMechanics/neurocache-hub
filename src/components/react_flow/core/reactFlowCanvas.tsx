@@ -1,5 +1,7 @@
 //path: src\components\react_flow\core\reactFlowCanvas.tsx
 
+"use client";
+
 import React, { ComponentType, useCallback, useState } from "react";
 import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
 import StyleReactFlowLogo from "./styleReactFlowLogo";

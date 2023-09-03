@@ -13,7 +13,7 @@ const InputLabel: React.FC<NodeProps> = (props: NodeProps) => {
 
 	useEffect(() => {
 		if (nodeFlowValue.ids.includes(config.inputId)) {
-			setinputLabelText(nodeFlowValue.payload);
+			setinputLabelText(nodeFlowValue.payload as string);
 		}
 	}, [nodeFlowValue]);
 
