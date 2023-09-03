@@ -10,9 +10,7 @@ Object.entries(Colors).forEach(([colorName, colorValues]) => {
 		// If the variant is 'DEFAULT', we just use the color name.
 		// Otherwise, we append the variant to the color name.
 		const key =
-			variant === "DEFAULT"
-				? colorName
-				: `${colorName}-${variant}`;
+			variant === "DEFAULT" ? colorName : `${colorName}-${variant}`;
 
 		flatColors[key] = value;
 	});
