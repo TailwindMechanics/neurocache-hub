@@ -1,58 +1,58 @@
 {
 	"night": {
 		"DEFAULT": "#252a36",
-		"d": "#1f2430",
-		"a": "#9fa7bd0",
-		"l": "#2d3445",
-		"h": "#6d7485",
-		"p": "#9fa7bd"
+		"dark": "#1f2430",
+		"light": "#2d3445",
+		"title": "#6d7485",
+		"body": "#9fa7bd",
+		"alpha": "#9fa7bd0"
 	},
 	"cherry": {
 		"DEFAULT": "#f96f69",
-		"d": "#f5535f",
-		"a": "#f5535f50",
-		"l": "#fa8a82",
-		"h": "#fcbbb6",
-		"p": "#fccbca"
+		"dark": "#f5535f",
+		"light": "#fa8a82",
+		"title": "#fcbbb6",
+		"body": "#fccbca",
+		"alpha": "#f5535f50"
 	},
 	"aqua": {
 		"DEFAULT": "#77cabf",
-		"d": "#66b3a0",
-		"a": "#66b3a050",
-		"l": "#8cd7ce",
-		"h": "#a1e2de",
-		"p": "#c6ede5"
+		"dark": "#66b3a0",
+		"light": "#8cd7ce",
+		"title": "#a1e2de",
+		"body": "#c6ede5",
+		"alpha": "#66b3a050"
 	},
 	"grape": {
 		"DEFAULT": "#cf91c2",
-		"d": "#a76199",
-		"a": "#a7619950",
-		"l": "#edc2e1",
-		"h": "#edd1f2",
-		"p": "#f7e1ee"
+		"dark": "#a76199",
+		"light": "#edc2e1",
+		"title": "#edd1f2",
+		"body": "#f7e1ee",
+		"alpha": "#a7619950"
 	},
 	"peach": {
 		"DEFAULT": "#fb9875",
-		"d": "#fa8560",
-		"a": "#fa856050",
-		"l": "#fcac8f",
-		"h": "#fcbfa9",
-		"p": "#fdd3c3"
+		"dark": "#fa8560",
+		"light": "#fcac8f",
+		"title": "#fcbfa9",
+		"body": "#fdd3c3",
+		"alpha": "#fa856050"
 	},
 	"util": {
 		"DEFAULT": "#00000000",
-		"d": "#000000",
-		"a": "#00000050",
-		"l": "#ffffff",
-		"h": "#d0d0d0",
-		"p": "#e8e8e8"
+		"dark": "#000000",
+		"light": "#ffffff",
+		"title": "#d0d0d0",
+		"body": "#e8e8e8",
+		"alpha": "#00000050"
 	},
 	"rose": {
-		"DEFAULT": "#bd5f88",
-		"d": "#914a77",
-		"a": "#d36f95",
-		"l": "#f191af",
-		"h": "#edb9c8",
-		"p": "#f5dae2"
+		"DEFAULT": "#ea80a5",
+		"dark": "#9e5e81",
+		"light": "#ffb5b5",
+		"title": "#edb9c8",
+		"body": "#f5dae2",
+		"alpha": "#894873"
 	}
 }

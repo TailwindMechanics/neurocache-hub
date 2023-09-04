@@ -1,3 +1,7 @@
+//path: src\components\react_flow\nodes\inputLabel.tsx
+
+import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { NodeConfigItem } from "@src/types/declarations";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import { useEffect, useState } from "react";
@@ -15,13 +19,17 @@ const InputLabel: React.FC<NodeProps> = (props: NodeProps) => {
 		}
 	}, [nodeFlowValue]);
 
-	return (
-		<div className="space-y-2 px-6 pb-6 pt-2">
-			<div className="max-h-20 overflow-y-auto overflow-x-hidden text-sm text-aqua-l">
-				Received input: {inputLabelText}
-			</div>
-		</div>
-	);
+	const Root = new ComponentBuilder(AtomicDiv)
+		.withStyle("text-aqua-title")
+		.withStyle("font-mono")
+		.withStyle("space-y-2")
+		.withStyle("w-50")
+		.withStyle("p-2")
+		.withRounded()
+		.withBg()
+		.build();
+
+	return <Root>Received input: {inputLabelText}</Root>;
 };
 
 export default withBaseNode(InputLabel);

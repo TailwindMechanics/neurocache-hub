@@ -106,7 +106,7 @@ neurocache-hub
 │  │  ├─ icons.tsx
 │  │  └─ nodeConfig.tsx
 │  ├─ hooks
-│  │  ├─ apiContextCanvas.tsx
+│  │  ├─ apiContextWrapper.tsx
 │  │  ├─ nodeFlowContext.tsx
 │  │  └─ openAiContext.tsx
 │  ├─ services

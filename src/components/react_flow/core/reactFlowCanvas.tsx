@@ -69,7 +69,7 @@ const ReactFlowCanvas: React.FC = () => {
 	);
 
 	return (
-		<div className="from-rose-d via-rose to-rose-l h-screen w-screen bg-gradient-to-tr">
+		<div className="from-rose-dark to-rose-light h-screen w-screen bg-gradient-to-tr from-0% via-rose via-40% to-90%">
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
 					nodes={nodes}
@@ -79,10 +79,17 @@ const ReactFlowCanvas: React.FC = () => {
 					onConnect={onConnect}
 					nodeTypes={types}
 					elementsSelectable={false}
+					defaultEdgeOptions={{
+						style: {
+							stroke: colors["night-light"],
+							strokeWidth: 4,
+							boxShadow: "-5px 12px 2px #000",
+						},
+					}}
 				>
 					<Background
 						variant={BackgroundVariant.Dots}
-						color={colors["rose-d"]}
+						color={colors["rose-dark"]}
 					/>
 				</ReactFlow>
 			</NodeFlowProvider>

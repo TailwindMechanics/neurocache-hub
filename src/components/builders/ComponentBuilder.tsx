@@ -27,6 +27,16 @@ export default class ComponentBuilder {
 		}
 	};
 
+	withBg(): ComponentBuilder {
+		this.push("from-night-dark to-night-light bg-gradient-to-t via-night");
+		return this;
+	}
+
+	withRounded(): ComponentBuilder {
+		this.push("rounded-t-md rounded-b-xl");
+		return this;
+	}
+
 	withLabel(label: string): ComponentBuilder {
 		this.label = label;
 		return this;
