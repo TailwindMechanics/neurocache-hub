@@ -1,7 +1,7 @@
 //path: src\types\declarations.d.ts
 
 import { ButtonOutput } from '@src/components/react_flow/nodes/buttonOutput';
-import { InputLabel } from '@src/components/react_flow/nodes/inputLabel';
+import { InputLabel } from '@src/components/react_flow/nodes/inputBox';
 import { Node, Edge, NodeTypes, NodeProps, Position } from 'reactflow';
 import { ReactNode, FC, HTMLAttributes } from "react";
 import flatColors from '@src/data/colors.ts';

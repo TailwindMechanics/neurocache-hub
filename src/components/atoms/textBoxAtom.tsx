@@ -16,7 +16,9 @@ const TextBoxAtom: React.FC<TextBoxAtomProps> = ({
 	height,
 }) => {
 	return (
-		<span className={`w-${width} h-${height} ${className}`}>{value}</span>
+		<p className={`overflow-auto w-${width} h-${height} ${className}`}>
+			{value}
+		</p>
 	);
 };
 

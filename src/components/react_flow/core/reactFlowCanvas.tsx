@@ -82,7 +82,7 @@ const ReactFlowCanvas: React.FC = () => {
 						style: {
 							stroke: colors["night-light"],
 							strokeWidth: 4,
-							boxShadow: "-5px 12px 2px #000000",
+							boxShadow: "5px 12px 2px #000000",
 						},
 					}}
 				>

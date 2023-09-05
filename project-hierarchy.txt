@@ -80,8 +80,9 @@ neurocache-hub
 │  │  │  └─ nodes
 │  │  │     ├─ anchorNode.tsx
 │  │  │     ├─ buttonOutput.tsx
-│  │  │     ├─ inputLabel.tsx
-│  │  │     └─ openAiNode.tsx
+│  │  │     ├─ inputBox.tsx
+│  │  │     ├─ openAiNode.tsx
+│  │  │     └─ spawnerNode.tsx
 │  │  └─ threejs
 │  │     ├─ controllers
 │  │     │  ├─ cameraLook.tsx

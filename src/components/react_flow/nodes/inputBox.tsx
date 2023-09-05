@@ -1,13 +1,14 @@
-//path: src\components\react_flow\nodes\inputLabel.tsx
+//path: src\components\react_flow\nodes\inputBox.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
-import AtomicDiv from "@src/components/atoms/atomicDiv";
+import TextBoxAtom from "@src/components/atoms/textBoxAtom";
 import { NodeConfigItem } from "@src/types/declarations";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
+import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { useEffect, useState } from "react";
 import withBaseNode from "../core/baseNode";
 import { NodeProps } from "reactflow";
-import TextBoxAtom from "@src/components/atoms/textBoxAtom";
+import { IsNullOrEmpty } from "@src/utils/stringUtils";
 
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
@@ -19,14 +20,18 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withBg()
 	.build();
 
-const InputLabel: React.FC<NodeProps> = (props: NodeProps) => {
-	const [inputLabelText, setinputLabelText] = useState("");
+const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
+	const [inputBoxText, setinputLabelText] = useState("Input box");
 	const config = props.data as NodeConfigItem;
 	const { nodeFlowValue } = useNodeFlow();
 
 	useEffect(() => {
 		if (nodeFlowValue.ids.includes(config.inputId)) {
-			setinputLabelText(nodeFlowValue.payload as string);
+			let displayText = !IsNullOrEmpty(nodeFlowValue.payload)
+				? (nodeFlowValue.payload as string)
+				: "Input box";
+
+			setinputLabelText(displayText);
 		}
 	}, [nodeFlowValue]);
 
@@ -34,12 +39,12 @@ const InputLabel: React.FC<NodeProps> = (props: NodeProps) => {
 		<Root>
 			<TextBoxAtom
 				width={64}
-				className={"border border-aqua-title"}
-				value={`Received input: ${inputLabelText}`}
-				height={0}
+				height={64}
+				className={"border border-aqua-title px-2 text-md"}
+				value={`${inputBoxText}`}
 			/>
 		</Root>
 	);
 };
 
-export default withBaseNode(InputLabel);
+export default withBaseNode(InputBox);
