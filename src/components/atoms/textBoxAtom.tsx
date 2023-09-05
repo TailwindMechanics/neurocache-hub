@@ -1,3 +1,5 @@
+//path: src\components\atoms\textBoxAtom.tsx
+
 import React from "react";
 
 interface TextBoxAtomProps {

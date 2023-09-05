@@ -67,7 +67,8 @@ neurocache-hub
 │  │  │  ├─ atomicDiv.tsx
 │  │  │  ├─ buttonAtom.tsx
 │  │  │  ├─ cardAtom.tsx
-│  │  │  └─ inputAtom.tsx
+│  │  │  ├─ inputAtom.tsx
+│  │  │  └─ textBoxAtom.tsx
 │  │  ├─ builders
 │  │  │  ├─ ComponentBuilder.tsx
 │  │  │  └─ ReactFlowBuilder.tsx
