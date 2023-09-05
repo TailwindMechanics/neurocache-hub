@@ -2,10 +2,9 @@
 
 "use client";
 
-import React, { ComponentType, useCallback, useState } from "react";
 import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
-import nodeConfig from "@src/data/nodeConfig";
+import React, { useCallback, useState } from "react";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
 import ReactFlow, {
@@ -18,23 +17,13 @@ import ReactFlow, {
 	EdgeChange,
 	NodeChange,
 	NodeTypes,
-	NodeProps,
 	addEdge,
 	Edge,
 } from "reactflow";
+import SpacebarCapture from "./spacebarCapture";
 
-const newNodes: NodeType[] = nodeConfig.map((config, index) => ({
-	id: config.nodeId,
-	type: config.node.type,
-	data: { ...config },
-	position: config.position,
-}));
-
-const newTypes: NodeTypes = nodeConfig.reduce((acc, config) => {
-	acc[config.node.type] = config.node.component as ComponentType<NodeProps>;
-	return acc;
-}, {} as NodeTypes);
-
+const newNodes: NodeType[] = [];
+const newTypes: NodeTypes = {};
 const newEdges: Edge[] = [];
 
 const ReactFlowCanvas: React.FC = () => {
@@ -91,6 +80,11 @@ const ReactFlowCanvas: React.FC = () => {
 						color={colors["rose-dark"]}
 					/>
 				</ReactFlow>
+				<SpacebarCapture
+					onSpacebarPress={function (): void {
+						console.log("Spacebar pressed");
+					}}
+				/>
 			</NodeFlowProvider>
 		</div>
 	);

@@ -74,7 +74,7 @@ export const customNodes = {
 	} as CustomNode,
 };
 
-const createNodeConfig = (
+export const createNodeConfig = (
 	node: CustomNode,
 	title: string,
 	body: string,
@@ -97,60 +97,60 @@ const createNodeConfig = (
 };
 
 const nodeConfig: NodeConfigItem[] = [
-	createNodeConfig(
-		customNodes.buttonOutput,
-		"Output On Button Click",
-		"This node outputs the InputField text when the Button is clicked.",
-		{ x: 0, y: 0 },
-	),
-	createNodeConfig(
-		customNodes.inputLabel,
-		"Display Input",
-		"This node displays input payload it receives.",
-		{ x: 50, y: 0 },
-	),
-	createNodeConfig(
-		customNodes.openAiNode,
-		"OpenAI Node",
-		"This node makes an API request to OpenAI.",
-		{ x: 100, y: 0 },
-	),
-	createNodeConfig(
-		customNodes.anchorNode,
-		">",
-		"This node is used to clean up the flow.",
-		{ x: 100, y: 0 },
-	),
-	createNodeConfig(
-		customNodes.anchorNode,
-		"v",
-		"This node is used to clean up the flow.",
-		{ x: 100, y: 0 },
-		Position.Top,
-		Position.Bottom,
-	),
-	createNodeConfig(
-		customNodes.anchorNode,
-		"<",
-		"This node is used to clean up the flow.",
-		{ x: 100, y: 0 },
-		Position.Right,
-		Position.Left,
-	),
-	createNodeConfig(
-		customNodes.anchorNode,
-		"^",
-		"This node is used to clean up the flow.",
-		{ x: 100, y: 0 },
-		Position.Bottom,
-		Position.Top,
-	),
-	createNodeConfig(
-		customNodes.spawnerNode,
-		"Spawner Node",
-		"This node is used to spawn other nodes.",
-		{ x: 100, y: 0 },
-	),
+	// createNodeConfig(
+	// 	customNodes.buttonOutput,
+	// 	"Output On Button Click",
+	// 	"This node outputs the InputField text when the Button is clicked.",
+	// 	{ x: 0, y: 0 },
+	// ),
+	// createNodeConfig(
+	// 	customNodes.inputLabel,
+	// 	"Display Input",
+	// 	"This node displays input payload it receives.",
+	// 	{ x: 50, y: 0 },
+	// ),
+	// createNodeConfig(
+	// 	customNodes.openAiNode,
+	// 	"OpenAI Node",
+	// 	"This node makes an API request to OpenAI.",
+	// 	{ x: 100, y: 0 },
+	// ),
+	// createNodeConfig(
+	// 	customNodes.anchorNode,
+	// 	">",
+	// 	"This node is used to clean up the flow.",
+	// 	{ x: 100, y: 0 },
+	// ),
+	// createNodeConfig(
+	// 	customNodes.anchorNode,
+	// 	"v",
+	// 	"This node is used to clean up the flow.",
+	// 	{ x: 100, y: 0 },
+	// 	Position.Top,
+	// 	Position.Bottom,
+	// ),
+	// createNodeConfig(
+	// 	customNodes.anchorNode,
+	// 	"<",
+	// 	"This node is used to clean up the flow.",
+	// 	{ x: 100, y: 0 },
+	// 	Position.Right,
+	// 	Position.Left,
+	// ),
+	// createNodeConfig(
+	// 	customNodes.anchorNode,
+	// 	"^",
+	// 	"This node is used to clean up the flow.",
+	// 	{ x: 100, y: 0 },
+	// 	Position.Bottom,
+	// 	Position.Top,
+	// ),
+	// createNodeConfig(
+	// 	customNodes.spawnerNode,
+	// 	"Spawner Node",
+	// 	"This node is used to spawn other nodes.",
+	// 	{ x: 100, y: 0 },
+	// ),
 ];
 
 export default nodeConfig;
