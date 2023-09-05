@@ -48,9 +48,9 @@
 		"alpha": "#00000050"
 	},
 	"rose": {
-		"DEFAULT": "#ea80a5",
-		"dark": "#9e5e81",
-		"light": "#ffb5b5",
+		"DEFAULT": "#c98289",
+		"dark": "#bf6975",
+		"light": "#f5cdc1",
 		"title": "#edb9c8",
 		"body": "#f5dae2",
 		"alpha": "#894873"

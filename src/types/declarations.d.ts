@@ -17,20 +17,6 @@ interface AtomProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>{
 	onClick?: () => void;
 }
 
-export type CustomNode = {
-	type: "button_output",
-	label: "Output Button",
-	component: typeof ButtonOutput,
-} | {
-	type: "input_label",
-	label: "Input Label",
-	component: typeof InputLabel,
-} | {
-	type: "open_ai_node",
-	label: "OpenAI Node",
-	component: typeof OpenAiNode,
-};
-
 export interface NodeConfigItem {
 	node: CustomNode;
 	outputId: string;
@@ -39,6 +25,8 @@ export interface NodeConfigItem {
 	title: string;
 	body: string;
 	position: {x: number, y: number};
+	inputPosition: Position;
+  	outputPosition: Position;
 }
 
 export type NodeFlowValue = {

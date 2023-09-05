@@ -24,7 +24,7 @@ import ReactFlow, {
 } from "reactflow";
 
 const newNodes: NodeType[] = nodeConfig.map((config, index) => ({
-	id: index.toString(),
+	id: config.nodeId,
 	type: config.node.type,
 	data: { ...config },
 	position: config.position,
@@ -39,7 +39,6 @@ const newEdges: Edge[] = [];
 
 const ReactFlowCanvas: React.FC = () => {
 	StyleReactFlowLogo();
-
 	const [nodes, setNodes] = useState(newNodes);
 	const [edges, setEdges] = useState(newEdges);
 	const [types] = useState(newTypes);
@@ -69,7 +68,7 @@ const ReactFlowCanvas: React.FC = () => {
 	);
 
 	return (
-		<div className="from-rose-dark to-rose-light h-screen w-screen bg-gradient-to-tr from-0% via-rose via-40% to-90%">
+		<div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
 					nodes={nodes}
@@ -83,7 +82,7 @@ const ReactFlowCanvas: React.FC = () => {
 						style: {
 							stroke: colors["night-light"],
 							strokeWidth: 4,
-							boxShadow: "-5px 12px 2px #000",
+							boxShadow: "-5px 12px 2px #000000",
 						},
 					}}
 				>

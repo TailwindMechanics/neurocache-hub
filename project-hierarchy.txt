@@ -65,7 +65,9 @@ neurocache-hub
 │  ├─ components
 │  │  ├─ atoms
 │  │  │  ├─ atomicDiv.tsx
-│  │  │  └─ cardAtom.tsx
+│  │  │  ├─ buttonAtom.tsx
+│  │  │  ├─ cardAtom.tsx
+│  │  │  └─ inputAtom.tsx
 │  │  ├─ builders
 │  │  │  ├─ ComponentBuilder.tsx
 │  │  │  └─ ReactFlowBuilder.tsx
@@ -75,6 +77,7 @@ neurocache-hub
 │  │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  └─ nodes
+│  │  │     ├─ anchorNode.tsx
 │  │  │     ├─ buttonOutput.tsx
 │  │  │     ├─ inputLabel.tsx
 │  │  │     └─ openAiNode.tsx

@@ -10,12 +10,12 @@ interface CardAtomProps {
 	body: string;
 }
 
-const CardAtom: React.FC<CardAtomProps> = (props: CardAtomProps) => {
-	const RootBox = new ComponentBuilder(AtomicDiv)
-		.withStyle(`drop-shadow-[-5px_12px_2px_rgba(0,0,20,.72)]`)
-		.withStyle("rounded-b-xl rounded-t-md")
-		.build();
+const RootBox = new ComponentBuilder(AtomicDiv)
+	.withStyle(`drop-shadow-[-5px_12px_2px_rgba(0,0,20,.72)]`)
+	.withStyle("rounded-b-xl rounded-t-md")
+	.build();
 
+const CardAtom: React.FC<CardAtomProps> = (props: CardAtomProps) => {
 	return (
 		<>
 			<RootBox>{props.children}</RootBox>

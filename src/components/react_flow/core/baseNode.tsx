@@ -22,13 +22,13 @@ function withBaseNode(WrappedComponent: React.FC<NodeProps>) {
 		builder.withHandle({
 			id: config.inputId,
 			type: "target",
-			position: Position.Left,
+			position: config.inputPosition,
 		});
 
 		builder.withHandle({
 			id: config.outputId,
 			type: "source",
-			position: Position.Right,
+			position: config.outputPosition,
 		});
 
 		const BuiltComponent = builder.build();
