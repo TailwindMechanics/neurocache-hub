@@ -8,6 +8,7 @@ import { useOpenAI } from "@src/hooks/openAiContext";
 import withBaseNode from "../core/baseNode";
 import React, { useEffect } from "react";
 import { NodeProps } from "reactflow";
+import TextBoxAtom from "@src/components/atoms/textBoxAtom";
 
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
@@ -44,7 +45,16 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root>Gpt-4</Root>
+			<Root>
+				<TextBoxAtom
+					width={0}
+					height={32}
+					className={
+						"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-aqua-light ring-1 ring-night-light"
+					}
+					value={"Gpt-4"}
+				/>
+			</Root>
 		</>
 	);
 };

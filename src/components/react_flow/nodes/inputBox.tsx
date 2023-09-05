@@ -40,7 +40,9 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 			<TextBoxAtom
 				width={64}
 				height={64}
-				className={"border border-aqua-title px-2 text-md"}
+				className={
+					"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-aqua-light ring-1 ring-night-light"
+				}
 				value={`${inputBoxText}`}
 			/>
 		</Root>
