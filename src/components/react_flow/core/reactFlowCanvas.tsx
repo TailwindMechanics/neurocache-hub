@@ -2,10 +2,11 @@
 
 "use client";
 
+import customNodeTypes, { customNodeDefaults } from "@src/data/customNodeTypes";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
-import customNodeTypes, { customNodeDefaults } from "@src/data/customNodeTypes";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
+import { NodeData } from "@src/types/nodeData";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
 import ReactFlow, {
@@ -22,7 +23,6 @@ import ReactFlow, {
 	Node,
 	Edge,
 } from "reactflow";
-import { NodeData } from "@src/types/nodeData";
 
 const flowKey = "test-flow";
 
@@ -32,6 +32,7 @@ const ReactFlowCanvas: React.FC = () => {
 	const [nodes, setNodes] = useState<Node[]>([]);
 	const [edges, setEdges] = useState<Edge[]>([]);
 	const mouseCoordsRef = useRef({ x: 0, y: 0 });
+	const [isSaved, setIsSaved] = useState(false);
 	const reactFlowInstance = useReactFlow();
 	const { setViewport } = useReactFlow();
 
@@ -154,6 +155,8 @@ const ReactFlowCanvas: React.FC = () => {
 		console.log(flow);
 
 		localStorage.setItem(flowKey, flowString);
+		setIsSaved(true);
+		setTimeout(() => setIsSaved(false), 2000);
 	};
 
 	const handleKeyDown = (event: KeyboardEvent) => {
@@ -166,10 +169,21 @@ const ReactFlowCanvas: React.FC = () => {
 		}
 	};
 
+	const handleRightClick = (event: React.MouseEvent) => {
+		event.preventDefault();
+		spawnSpawnerNode();
+	};
+
 	return (
 		<div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">
+			{isSaved && (
+				<div className="absolute bottom-1 left-3 font-mono text-sm font-semibold text-rose-light">
+					Saved
+				</div>
+			)}
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
+					onContextMenu={handleRightClick}
 					onMouseMove={handleMouseMove}
 					onMouseDownCapture={handleMouseDown}
 					nodes={nodes}
@@ -178,7 +192,6 @@ const ReactFlowCanvas: React.FC = () => {
 					onEdgesChange={onEdgesChange}
 					onConnect={onConnect}
 					nodeTypes={types}
-					elementsSelectable={false}
 					defaultEdgeOptions={{
 						style: {
 							stroke: colors["night-light"],

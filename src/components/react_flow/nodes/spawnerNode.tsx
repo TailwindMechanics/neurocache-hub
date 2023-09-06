@@ -46,7 +46,10 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 		reactFlowInstance.setNodes((prevNodes) => {
 			const newNodes = [...prevNodes, spawnerNode];
-			return newNodes;
+			const filteredNodes = newNodes.filter(
+				(n) => n.id !== config.nodeId,
+			);
+			return filteredNodes;
 		});
 	};
 
