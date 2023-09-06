@@ -2,10 +2,10 @@
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
 import ButtonAtom from "@src/components/atoms/buttonAtom";
-import { NodeConfigItem } from "@src/types/declarations";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import InputAtom from "@src/components/atoms/inputAtom";
+import { NodeConfigItem } from "@src/types/nodeData";
 import { useAnimation } from "framer-motion";
 import withBaseNode from "../core/baseNode";
 import React, { useState } from "react";

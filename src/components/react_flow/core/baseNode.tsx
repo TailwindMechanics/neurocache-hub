@@ -1,38 +1,41 @@
 //path: src\components\react_flow\core\baseNode.tsx
 
 import ReactFlowBuilder from "../../builders/ReactFlowBuilder";
-import { NodeConfigItem } from "@src/types/declarations";
 import CardAtom from "@src/components/atoms/cardAtom";
-import { NodeProps, Position } from "reactflow";
+import { NodeData } from "@src/types/nodeData";
+import { NodeProps } from "reactflow";
 import React from "react";
 
 function withBaseNode(WrappedComponent: React.FC<NodeProps>) {
 	return (props: NodeProps) => {
-		const config = props.data as NodeConfigItem;
+		const config = props.data as NodeData;
 
 		const wrapped: React.FC<NodeProps> = (props) => (
-			<CardAtom title={config.title} body={config.body}>
+			<CardAtom title={config.nodeName} body={config.body}>
 				<WrappedComponent {...props} />
 			</CardAtom>
 		);
 
 		const builder = new ReactFlowBuilder(wrapped);
-		builder.withType(config.node.type);
+		builder.withType(config.nodeType);
 
-		builder.withHandle({
-			id: config.inputId,
-			type: "target",
-			position: config.inputPosition,
+		config.inputs?.forEach((tuple) => {
+			builder.withHandle({
+				id: tuple.id,
+				type: "target",
+				position: tuple.position,
+			});
 		});
 
-		builder.withHandle({
-			id: config.outputId,
-			type: "source",
-			position: config.outputPosition,
+		config.outputs?.forEach((tuple) => {
+			builder.withHandle({
+				id: tuple.id,
+				type: "source",
+				position: tuple.position,
+			});
 		});
 
 		const BuiltComponent = builder.build();
-
 		return <BuiltComponent {...props} />;
 	};
 }

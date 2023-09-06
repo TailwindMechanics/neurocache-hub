@@ -1,0 +1,92 @@
+{
+	"nodes": [
+		{
+			"nodeType": "button_output",
+			"nodeName": "Output Button",
+			"category": "Debug",
+			"nodeId": "node_button_output_60e9b8e9a7f1d8c7c7f6",
+			"body": "This node outputs the InputField text when the Button is clicked.",
+			"inputs": [
+				{
+					"id": "in_button_output_60e9b8e9a7f1d8c7c7f6",
+					"position": "left"
+				}
+			],
+			"outputs": [
+				{
+					"id": "out_button_output_60e9b8e9a7f1d8c7c7f6",
+					"position": "right"
+				}
+			],
+			"nodePosition": { "x": 0, "y": 0 }
+		},
+		{
+			"nodeType": "input_box",
+			"nodeName": "Input Box",
+			"category": "Debug",
+			"nodeId": "node_input_box_60e9b8e9a7f1d8c7c7f7",
+			"body": "This node displays input payload it receives.",
+			"inputs": [
+				{
+					"id": "in_input_box_60e9b8e9a7f1d8c7c7f7",
+					"position": "left"
+				}
+			],
+			"outputs": [
+				{
+					"id": "out_input_box_60e9b8e9a7f1d8c7c7f7",
+					"position": "right"
+				}
+			],
+			"nodePosition": { "x": 50, "y": 0 }
+		},
+		{
+			"nodeType": "open_ai",
+			"nodeName": "OpenAI",
+			"category": "OpenAi",
+			"nodeId": "node_open_ai_60e9b8e9a7f1d8c7c7f8",
+			"body": "This node makes an API request to OpenAI.",
+			"inputs": [
+				{
+					"id": "in_open_ai_60e9b8e9a7f1d8c7c7f8",
+					"position": "left"
+				}
+			],
+			"outputs": [
+				{
+					"id": "out_open_ai_60e9b8e9a7f1d8c7c7f8",
+					"position": "right"
+				}
+			],
+			"nodePosition": { "x": 100, "y": 0 }
+		},
+		{
+			"nodeType": "anchor",
+			"nodeName": "Anchor",
+			"category": "Utilities",
+			"nodeId": "anchor_60e9b8e9a7f1d8c7c7f9",
+			"body": "This node is used to clean up the flow.",
+			"inputs": [
+				{
+					"id": "in_anchor_1_60e9b8e9a7f1d8c7c7f9",
+					"position": "left"
+				},
+				{
+					"id": "in_anchor_2_60e9b8e9a7f1d8c7c7f9",
+					"position": "top"
+				}
+			],
+			"outputs": [
+				{
+					"id": "out_anchor_1_60e9b8e9a7f1d8c7c7f9",
+					"position": "right"
+				},
+				{
+					"id": "out_anchor_2_60e9b8e9a7f1d8c7c7f9",
+					"position": "bottom"
+				}
+			],
+			"nodePosition": { "x": 150, "y": 0 }
+		}
+	]
+}

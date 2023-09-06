@@ -1,5 +1,17 @@
 
 
+# Todo
+- Email Fortis
+- Email StoryToys
+- Reply to Linkedin inmail
+- Buy webcam
+- Shower
+- Work on Neurocache
+- Fix headset
+- Clean laptop
+- 
+
+
 # Objective
 - Demonstrate how you can compose an agent to accomplish the task of finding your dream job.
 

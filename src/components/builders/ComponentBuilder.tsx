@@ -7,6 +7,7 @@ import Image from "next/image";
 import React from "react";
 
 export default class ComponentBuilder {
+	private dataProps: { [key: string]: string | boolean | number } = {};
 	private imageComponent?: React.ReactNode;
 	private withTween: boolean = false;
 	private newProps: AtomProps = {};
@@ -26,6 +27,11 @@ export default class ComponentBuilder {
 			this.styles.push(style);
 		}
 	};
+
+	withData(key: string, value: string | boolean | number): ComponentBuilder {
+		this.dataProps[`data-${key}`] = value;
+		return this;
+	}
 
 	withBg(): ComponentBuilder {
 		this.push("from-night-dark to-night-light bg-gradient-to-t via-night");
@@ -171,6 +177,7 @@ export default class ComponentBuilder {
 				...props,
 				className: newClassName,
 				...this.newProps,
+				...this.dataProps,
 			};
 			return (
 				<this.node {...newProps} {...this.animationProps}>

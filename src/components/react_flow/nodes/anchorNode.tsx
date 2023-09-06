@@ -1,9 +1,9 @@
 //path: src\components\react_flow\nodes\anchorNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
-import { NodeConfigItem } from "@src/types/declarations";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
+import { NodeConfigItem } from "@src/types/nodeData";
 import withBaseNode from "../core/baseNode";
 import React, { useEffect } from "react";
 import { NodeProps } from "reactflow";
@@ -32,7 +32,7 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root>{config.title}</Root>
+			<Root>{config.label}</Root>
 		</>
 	);
 };

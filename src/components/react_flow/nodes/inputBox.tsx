@@ -2,13 +2,13 @@
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
-import { NodeConfigItem } from "@src/types/declarations";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
+import { IsNullOrEmpty } from "@src/utils/stringUtils";
+import { NodeConfigItem } from "@src/types/nodeData";
 import { useEffect, useState } from "react";
 import withBaseNode from "../core/baseNode";
 import { NodeProps } from "reactflow";
-import { IsNullOrEmpty } from "@src/utils/stringUtils";
 
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")

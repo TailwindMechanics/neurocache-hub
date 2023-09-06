@@ -1,15 +1,18 @@
 //path: src\components\react_flow\nodes\spawnerNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
-import { CustomNode, customNodes } from "@src/data/nodeConfig";
-import { Combobox, Transition } from "@headlessui/react";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
+import nodeDataJson from "@src/data/testGraph.json";
+import { NodeData } from "@src/types/nodeData";
+import createNode from "@src/utils/createNode";
+import { Combobox } from "@headlessui/react";
 import withBaseNode from "../core/baseNode";
-import { Fragment, useState } from "react";
 import { NodeProps } from "reactflow";
+import { useState } from "react";
 
 const Root = new ComponentBuilder(AtomicDiv)
+	.withData("type", "spawner-node")
 	.withStyle("text-aqua-title")
 	.withStyle("font-mono")
 	.withStyle("space-y-2")
@@ -19,43 +22,59 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withBg()
 	.build();
 
-const nodeLabel = (node: CustomNode) => {
+const nodeLabel = (node: NodeData) => {
 	if (!node) return "";
-	if (IsNullOrEmpty(node.label)) return node.label;
+	if (IsNullOrEmpty(node.nodeName)) return node.nodeName;
 
-	const label = node.label.replace("Node", "").trim();
+	const label = node.nodeName.replace("Node", "").trim();
 	return `${node.category}/${label}`;
 };
 
 const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
-	const customNodesArray = Object.values(customNodes);
-	const [selected, setSelected] = useState<CustomNode | null>(null);
+	const [selected, setSelected] = useState<NodeData | null>(null);
 	const [query, setQuery] = useState("");
 
 	const filteredNodes =
 		query === ""
-			? customNodesArray
-			: customNodesArray.filter((node) =>
+			? nodeDataJson.nodes
+			: nodeDataJson.nodes.filter((node) =>
 					nodeLabel(node)
 						.toLowerCase()
 						.replace(/\s+/g, "")
 						.includes(query.toLowerCase().replace(/\s+/g, "")),
 			  );
 
+	const onSelect = (node: NodeData) => {
+		if (node) {
+			// Use the createNode utility function to create a new node
+			const newNode = createNode({
+				type: node.nodeType,
+				name: node.nodeName,
+				body: node.body,
+				ins: node.inputs,
+				outs: node.outputs,
+				pos: { x: 0, y: 0 },
+			});
+
+			// TODO: Add the new node to the graph and write to the JSON file
+		}
+	};
+
 	return (
 		<Root>
 			<Combobox value={selected} onChange={setSelected}>
 				<Combobox.Input
-					className="bg-night-black rounded-b-lg rounded-t-sm px-2 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
-					displayValue={(node: CustomNode) => nodeLabel(node)}
+					className="rounded-b-lg rounded-t-sm bg-night-black px-2 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+					displayValue={(node: NodeData) => nodeLabel(node)}
 					onChange={(event) => setQuery(event.target.value)}
 				/>
 				<Combobox.Options>
 					{filteredNodes.map((node) => (
 						<Combobox.Option
-							key={node.type}
+							key={node.nodeType}
 							className={"hover:text-aqua-body"}
 							value={node}
+							onClick={() => onSelect(node)}
 						>
 							{nodeLabel(node)}
 						</Combobox.Option>

@@ -75,7 +75,9 @@ neurocache-hub
 │  │  ├─ react_flow
 │  │  │  ├─ core
 │  │  │  │  ├─ baseNode.tsx
+│  │  │  │  ├─ flowWithProvider.tsx
 │  │  │  │  ├─ reactFlowCanvas.tsx
+│  │  │  │  ├─ spacebarCapture.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  └─ nodes
 │  │  │     ├─ anchorNode.tsx
@@ -107,9 +109,10 @@ neurocache-hub
 │  │  ├─ colors.json
 │  │  ├─ colors.ts
 │  │  ├─ content.json
+│  │  ├─ customNodeTypes.tsx
 │  │  ├─ docs.json
 │  │  ├─ icons.tsx
-│  │  └─ nodeConfig.tsx
+│  │  └─ testGraph.json
 │  ├─ hooks
 │  │  ├─ apiContextWrapper.tsx
 │  │  ├─ nodeFlowContext.tsx
@@ -118,9 +121,10 @@ neurocache-hub
 │  │  └─ supabase.ts
 │  ├─ types
 │  │  ├─ declarations.d.ts
-│  │  └─ index.ts
+│  │  ├─ index.ts
+│  │  └─ nodeData.d.ts
 │  └─ utils
-│     ├─ nodeCreator.ts
+│     ├─ createNode.ts
 │     └─ stringUtils.ts
 ├─ tailwind.config.js
 ├─ tsconfig.json

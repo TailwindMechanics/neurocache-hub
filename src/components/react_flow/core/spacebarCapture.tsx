@@ -1,3 +1,5 @@
+//path: src\components\react_flow\core\spacebarCapture.tsx
+
 import React, { useEffect, useCallback, useState } from "react";
 
 interface SpacebarCaptureProps {
