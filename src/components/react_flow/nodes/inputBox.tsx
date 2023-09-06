@@ -5,7 +5,7 @@ import TextBoxAtom from "@src/components/atoms/textBoxAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
-import { NodeConfigItem } from "@src/types/nodeData";
+import { NodeData } from "@src/types/nodeData";
 import { useEffect, useState } from "react";
 import withBaseNode from "../core/baseNode";
 import { NodeProps } from "reactflow";
@@ -22,11 +22,15 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 	const [inputBoxText, setinputLabelText] = useState("Input box");
-	const config = props.data as NodeConfigItem;
+	const config = props.data as NodeData;
 	const { nodeFlowValue } = useNodeFlow();
 
 	useEffect(() => {
-		if (nodeFlowValue.ids.includes(config.inputId)) {
+		const anyInputIncluded = config.inputs.some((input) =>
+			nodeFlowValue.ids.includes(input.id),
+		);
+
+		if (anyInputIncluded) {
 			let displayText = !IsNullOrEmpty(nodeFlowValue.payload)
 				? (nodeFlowValue.payload as string)
 				: "Input box";

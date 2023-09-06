@@ -2,6 +2,7 @@
 
 import { Handle, NodeResizer, Node, HandleProps, NodeProps } from "reactflow";
 import React from "react";
+import colors from "@src/data/colors";
 
 export default class ReactFlowBuilder {
 	private handles: HandleProps[] = [];
@@ -79,7 +80,22 @@ export default class ReactFlowBuilder {
 		return (props: NodeProps) => (
 			<>
 				{this.handles.map((handle, index) => (
-					<Handle key={index} {...handle} />
+					<Handle
+						style={{
+							// input
+							borderColor:
+								handle.type === "source"
+									? "#00000000"
+									: colors["night-light"],
+							// output
+							background:
+								handle.type === "source"
+									? colors["night-dark"]
+									: "#00000000",
+						}}
+						key={index}
+						{...handle}
+					/>
 				))}
 				{this.includeResizer && (
 					<NodeResizer

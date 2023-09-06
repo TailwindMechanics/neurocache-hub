@@ -4,8 +4,8 @@ import ComponentBuilder from "@src/components/builders/ComponentBuilder";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
-import { NodeConfigItem } from "@src/types/nodeData";
 import { useOpenAI } from "@src/hooks/openAiContext";
+import { NodeData } from "@src/types/nodeData";
 import withBaseNode from "../core/baseNode";
 import React, { useEffect } from "react";
 import { NodeProps } from "reactflow";
@@ -21,12 +21,16 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
-	const config = props.data as NodeConfigItem;
+	const config = props.data as NodeData;
 	const openAI = useOpenAI();
 
 	useEffect(() => {
 		const fetchData = async () => {
-			if (nodeFlowValue.ids.includes(config.inputId)) {
+			const anyInputIncluded = config.inputs.some((input) =>
+				nodeFlowValue.ids.includes(input.id),
+			);
+
+			if (anyInputIncluded) {
 				const messages = [
 					{ role: "system", content: "You are a helpful assistant." },
 					{ role: "user", content: nodeFlowValue.payload },
@@ -34,7 +38,7 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 				const reply = await openAI.chat(messages);
 				setNodeFlowValue({
-					ids: [config.outputId],
+					ids: config.outputs.map((output) => output.id),
 					payload: reply,
 				});
 			}

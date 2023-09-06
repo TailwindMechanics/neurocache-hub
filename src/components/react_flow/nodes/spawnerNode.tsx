@@ -1,14 +1,14 @@
 //path: src\components\react_flow\nodes\spawnerNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import { customNodeDefaults } from "@src/data/customNodeTypes";
+import { Node, NodeProps, useReactFlow } from "reactflow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
-import nodeDataJson from "@src/data/testGraph.json";
 import { NodeData } from "@src/types/nodeData";
 import createNode from "@src/utils/createNode";
 import { Combobox } from "@headlessui/react";
 import withBaseNode from "../core/baseNode";
-import { NodeProps } from "reactflow";
 import { useState } from "react";
 
 const Root = new ComponentBuilder(AtomicDiv)
@@ -33,20 +33,25 @@ const nodeLabel = (node: NodeData) => {
 const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const [selected, setSelected] = useState<NodeData | null>(null);
 	const [query, setQuery] = useState("");
+	const reactFlowInstance = useReactFlow();
+	const config = props.data as NodeData;
 
-	const filteredNodes =
-		query === ""
-			? nodeDataJson.nodes
-			: nodeDataJson.nodes.filter((node) =>
-					nodeLabel(node)
-						.toLowerCase()
-						.replace(/\s+/g, "")
-						.includes(query.toLowerCase().replace(/\s+/g, "")),
-			  );
+	const spawnNode = (node: NodeData) => {
+		const spawnerNode: Node = {
+			id: node.nodeId,
+			type: node.nodeType,
+			position: config.nodePosition,
+			data: { ...node },
+		};
+
+		reactFlowInstance.setNodes((prevNodes) => {
+			const newNodes = [...prevNodes, spawnerNode];
+			return newNodes;
+		});
+	};
 
 	const onSelect = (node: NodeData) => {
 		if (node) {
-			// Use the createNode utility function to create a new node
 			const newNode = createNode({
 				type: node.nodeType,
 				name: node.nodeName,
@@ -55,8 +60,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 				outs: node.outputs,
 				pos: { x: 0, y: 0 },
 			});
-
-			// TODO: Add the new node to the graph and write to the JSON file
+			spawnNode(newNode);
 		}
 	};
 
@@ -69,14 +73,14 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 					onChange={(event) => setQuery(event.target.value)}
 				/>
 				<Combobox.Options>
-					{filteredNodes.map((node) => (
+					{Object.values(customNodeDefaults).map((node) => (
 						<Combobox.Option
-							key={node.nodeType}
+							key={node.nodeName}
 							className={"hover:text-aqua-body"}
-							value={node}
+							value={node.nodeName}
 							onClick={() => onSelect(node)}
 						>
-							{nodeLabel(node)}
+							{node.nodeName}
 						</Combobox.Option>
 					))}
 				</Combobox.Options>

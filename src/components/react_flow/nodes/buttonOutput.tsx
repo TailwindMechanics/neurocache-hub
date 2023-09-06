@@ -5,7 +5,7 @@ import ButtonAtom from "@src/components/atoms/buttonAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import InputAtom from "@src/components/atoms/inputAtom";
-import { NodeConfigItem } from "@src/types/nodeData";
+import { NodeData } from "@src/types/nodeData";
 import { useAnimation } from "framer-motion";
 import withBaseNode from "../core/baseNode";
 import React, { useState } from "react";
@@ -24,8 +24,8 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 	const [inputText, setInputText] = useState("");
-	const config = props.data as NodeConfigItem;
 	const { setNodeFlowValue } = useNodeFlow();
+	const config = props.data as NodeData;
 	const controls = useAnimation();
 
 	const handleHoverStart = () => {
@@ -60,7 +60,7 @@ const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 					onHoverEnd={handleHoverEnd}
 					onClick={() => {
 						setNodeFlowValue({
-							ids: [config.outputId],
+							ids: config.outputs.map((output) => output.id),
 							payload: inputText,
 						});
 					}}
