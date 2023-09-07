@@ -1,17 +1,19 @@
 
 Use this after the demo https://youtu.be/AAMJZTEH_h4
+https://youtu.be/aD-u0gl93wM
 
-
-# Todo
-- Email Fortis
-- Email StoryToys
-- Reply to Linkedin inmail
+# Now
 - Buy webcam
+- Buy storage
+- Buy t-shirts, socks, jocks
 - Shower
+- Gates landing:1265 topstair:800 btmstair:800 stairwood:40
+
+# Later
+- Reply to Linkedin inmail
 - Work on Neurocache
 - Fix headset
 - Clean laptop
-- 
 
 
 # Objective

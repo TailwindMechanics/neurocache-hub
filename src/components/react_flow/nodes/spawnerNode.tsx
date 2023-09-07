@@ -1,7 +1,7 @@
 //path: src\components\react_flow\nodes\spawnerNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
-import { customNodeDefaults } from "@src/data/customNodeTypes";
+import { getUnhiddenNodes } from "@src/data/customNodeTypes";
 import { Node, NodeProps, useReactFlow } from "reactflow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
@@ -31,26 +31,43 @@ const nodeLabel = (node: NodeData) => {
 };
 
 const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
-	const [selected, setSelected] = useState<NodeData | null>(null);
-	const [query, setQuery] = useState("");
 	const reactFlowInstance = useReactFlow();
+	const [query, setQuery] = useState("");
 	const config = props.data as NodeData;
+	const allNodes = getUnhiddenNodes();
+	const filteredNodes =
+		query === ""
+			? allNodes
+			: allNodes.filter((node) =>
+					nodeLabel(node)
+						.toLowerCase()
+						.replace(/\s+/g, "")
+						.includes(query.toLowerCase().replace(/\s+/g, "")),
+			  );
+
+	const deselectAll = (nodes: Node[]) => {
+		return nodes.map((node) => ({
+			...node,
+			selected: false,
+		}));
+	};
 
 	const spawnNode = (node: NodeData) => {
-		const spawnerNode: Node = {
+		const spawnedNode: Node = {
 			id: node.nodeId,
 			type: node.nodeType,
 			position: config.nodePosition,
 			data: { ...node },
 		};
 
-		reactFlowInstance.setNodes((prevNodes) => {
-			const newNodes = [...prevNodes, spawnerNode];
-			const filteredNodes = newNodes.filter(
-				(n) => n.id !== config.nodeId,
-			);
-			return filteredNodes;
-		});
+		const prevNodes = deselectAll(reactFlowInstance.getNodes());
+		let newNodes = prevNodes.filter(
+			(n) => n.id !== config.nodeId,
+		) as Node[];
+
+		spawnedNode.selected = true;
+		newNodes.push(spawnedNode);
+		reactFlowInstance.setNodes(newNodes);
 	};
 
 	const onSelect = (node: NodeData) => {
@@ -69,21 +86,25 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<Root>
-			<Combobox value={selected} onChange={setSelected}>
+			<Combobox>
 				<Combobox.Input
+					placeholder="Search for a node..."
+					autoFocus
 					className="rounded-b-lg rounded-t-sm bg-night-black px-2 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
 					displayValue={(node: NodeData) => nodeLabel(node)}
 					onChange={(event) => setQuery(event.target.value)}
 				/>
-				<Combobox.Options>
-					{Object.values(customNodeDefaults).map((node) => (
+				<Combobox.Options static>
+					{filteredNodes.map((node: NodeData) => (
 						<Combobox.Option
 							key={node.nodeName}
 							className={"hover:text-aqua-body"}
 							value={node.nodeName}
-							onClick={() => onSelect(node)}
+							onClick={() => {
+								onSelect(node);
+							}}
 						>
-							{node.nodeName}
+							{`${node.category}/${node.nodeName}`}
 						</Combobox.Option>
 					))}
 				</Combobox.Options>

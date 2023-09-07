@@ -111,9 +111,7 @@ neurocache-hub
 │  │  ├─ content.json
 │  │  ├─ customNodeTypes.tsx
 │  │  ├─ docs.json
-│  │  ├─ icons.tsx
-│  │  ├─ test.json
-│  │  └─ testGraph.json
+│  │  └─ icons.tsx
 │  ├─ hooks
 │  │  ├─ apiContextWrapper.tsx
 │  │  ├─ nodeFlowContext.tsx

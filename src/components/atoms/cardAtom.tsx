@@ -11,8 +11,7 @@ interface CardAtomProps {
 }
 
 const RootBox = new ComponentBuilder(AtomicDiv)
-	.withStyle(`drop-shadow-[-5px_12px_2px_rgba(0,0,20,.72)]`)
-	.withStyle("rounded-b-xl rounded-t-md")
+	.withStyle(`drop-shadow-[-4px_10px_1px_rgba(0,0,20,.72)]`)
 	.build();
 
 const CardAtom: React.FC<CardAtomProps> = (props: CardAtomProps) => {

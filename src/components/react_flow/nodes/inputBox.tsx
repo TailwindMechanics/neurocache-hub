@@ -2,6 +2,7 @@
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
+import { SelectionStyle } from "@src/utils/selectionStyle";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
@@ -22,8 +23,9 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 	const [inputBoxText, setinputLabelText] = useState("Input box");
-	const config = props.data as NodeData;
+	const selectionStyle = new SelectionStyle();
 	const { nodeFlowValue } = useNodeFlow();
+	const config = props.data as NodeData;
 
 	useEffect(() => {
 		const anyInputIncluded = config.inputs.some((input) =>
@@ -40,12 +42,12 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 	}, [nodeFlowValue]);
 
 	return (
-		<Root>
+		<Root className={selectionStyle.update(props.id)}>
 			<TextBoxAtom
 				width={64}
 				height={64}
 				className={
-					"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-aqua-light ring-1 ring-night-light"
+					"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-sm text-aqua-light ring-1 ring-night-light"
 				}
 				value={`${inputBoxText}`}
 			/>

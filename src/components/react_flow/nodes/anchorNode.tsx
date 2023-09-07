@@ -1,6 +1,7 @@
 //path: src\components\react_flow\nodes\anchorNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import { SelectionStyle } from "@src/utils/selectionStyle";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { NodeData } from "@src/types/nodeData";
@@ -19,6 +20,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
+	const selectionStyle = new SelectionStyle();
 	const config = props.data as NodeData;
 
 	useEffect(() => {
@@ -36,7 +38,9 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root>{config.nodeName}</Root>
+			<Root className={selectionStyle.update(props.id)}>
+				{config.nodeName}
+			</Root>
 		</>
 	);
 };

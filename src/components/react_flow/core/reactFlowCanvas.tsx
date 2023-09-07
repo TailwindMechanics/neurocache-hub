@@ -124,6 +124,7 @@ const ReactFlowCanvas: React.FC = () => {
 			type: nodeConfig.nodeType,
 			position: nodeConfig.nodePosition,
 			data: nodeConfig,
+			selected: true,
 		};
 
 		setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
@@ -183,6 +184,7 @@ const ReactFlowCanvas: React.FC = () => {
 			)}
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
+					autoPanOnNodeDrag={false}
 					onContextMenu={handleRightClick}
 					onMouseMove={handleMouseMove}
 					onMouseDownCapture={handleMouseDown}

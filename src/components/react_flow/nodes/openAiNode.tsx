@@ -2,6 +2,7 @@
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
+import { SelectionStyle } from "@src/utils/selectionStyle";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { useOpenAI } from "@src/hooks/openAiContext";
@@ -21,6 +22,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
+	const selectionStyle = new SelectionStyle();
 	const config = props.data as NodeData;
 	const openAI = useOpenAI();
 
@@ -49,7 +51,7 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root>
+			<Root className={selectionStyle.update(props.id)}>
 				<TextBoxAtom
 					width={0}
 					height={32}

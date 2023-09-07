@@ -1,6 +1,7 @@
 //path: src\components\react_flow\nodes\buttonOutput.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import { SelectionStyle } from "@src/utils/selectionStyle";
 import ButtonAtom from "@src/components/atoms/buttonAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
@@ -13,10 +14,10 @@ import { NodeProps } from "reactflow";
 import colors from "@src/data/colors";
 
 const Root = new ComponentBuilder(AtomicDiv)
-	.withStyle("w-64")
 	.withStyle("space-y-1")
 	.withStyle("font-mono")
 	.withStyle("flex-col")
+	.withStyle("w-64")
 	.withStyle("p-2")
 	.withRounded()
 	.withBg()
@@ -24,6 +25,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 	const [inputText, setInputText] = useState("");
+	const selectionStyle = new SelectionStyle();
 	const { setNodeFlowValue } = useNodeFlow();
 	const config = props.data as NodeData;
 	const controls = useAnimation();
@@ -44,7 +46,7 @@ const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root>
+			<Root className={selectionStyle.update(props.id)}>
 				<InputAtom
 					value={inputText}
 					onChange={(e) => setInputText(e.target.value)}

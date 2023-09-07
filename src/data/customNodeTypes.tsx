@@ -16,6 +16,10 @@ const customNodeTypes: NodeTypes = {
 	spawner: spawnerNode,
 };
 
+export const getUnhiddenNodes = () => {
+	return customNodeDefaults.filter((node) => node.category !== "Hidden");
+};
+
 export const customNodeDefaults = [
 	{
 		nodeType: "button_output",

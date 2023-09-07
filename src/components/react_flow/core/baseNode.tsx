@@ -9,7 +9,6 @@ import React from "react";
 function withBaseNode(WrappedComponent: React.FC<NodeProps>) {
 	return (props: NodeProps) => {
 		const config = props.data as NodeData;
-
 		const wrapped: React.FC<NodeProps> = (props) => (
 			<CardAtom title={config.nodeName} body={config.body}>
 				<WrappedComponent {...props} />
