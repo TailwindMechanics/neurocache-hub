@@ -63,7 +63,7 @@ export const customNodeDefaults = [
 	} as NodeData,
 	{
 		nodeType: "open_ai",
-		nodeName: "OpenAI",
+		nodeName: "Gpt-4",
 		category: "OpenAi",
 		nodeId: "node_open_ai_60e9b8e9a7f1d8c7c7f8",
 		body: "This node makes an API request to OpenAI.",

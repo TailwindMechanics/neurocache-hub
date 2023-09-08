@@ -2,7 +2,7 @@
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
-import { SelectionStyle } from "@src/utils/selectionStyle";
+import { ReactFlowHelper } from "@src/utils/reactFlowHelper";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
@@ -23,7 +23,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 	const [inputBoxText, setinputLabelText] = useState("Input box");
-	const selectionStyle = new SelectionStyle();
+	const flowHelper = new ReactFlowHelper();
 	const { nodeFlowValue } = useNodeFlow();
 	const config = props.data as NodeData;
 
@@ -42,7 +42,7 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 	}, [nodeFlowValue]);
 
 	return (
-		<Root className={selectionStyle.update(props.id)}>
+		<Root className={flowHelper.updateSelectedState(props.id)}>
 			<TextBoxAtom
 				width={64}
 				height={64}

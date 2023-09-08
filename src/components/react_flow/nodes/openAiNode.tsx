@@ -2,7 +2,7 @@
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
-import { SelectionStyle } from "@src/utils/selectionStyle";
+import { ReactFlowHelper } from "@src/utils/reactFlowHelper";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { useOpenAI } from "@src/hooks/openAiContext";
@@ -22,7 +22,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
-	const selectionStyle = new SelectionStyle();
+	const flowHelper = new ReactFlowHelper();
 	const config = props.data as NodeData;
 	const openAI = useOpenAI();
 
@@ -51,14 +51,14 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root className={selectionStyle.update(props.id)}>
+			<Root className={flowHelper.updateSelectedState(props.id)}>
 				<TextBoxAtom
 					width={0}
 					height={32}
 					className={
 						"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-aqua-light ring-1 ring-night-light"
 					}
-					value={"Gpt-4"}
+					value={config.nodeName}
 				/>
 			</Root>
 		</>

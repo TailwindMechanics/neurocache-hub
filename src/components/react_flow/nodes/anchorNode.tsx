@@ -1,15 +1,25 @@
 //path: src\components\react_flow\nodes\anchorNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
-import { SelectionStyle } from "@src/utils/selectionStyle";
+import { ReactFlowHelper } from "@src/utils/reactFlowHelper";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
-import { NodeData } from "@src/types/nodeData";
-import withBaseNode from "../core/baseNode";
-import React, { useEffect } from "react";
-import { NodeProps } from "reactflow";
+import CardAtom from "@src/components/atoms/cardAtom";
+import { NodeData, PositionId } from "@src/types/nodeData";
+import {
+	Connection,
+	Edge,
+	Handle,
+	NodeProps,
+	OnConnect,
+	Position,
+	addEdge,
+	useUpdateNodeInternals,
+} from "reactflow";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import colors from "@src/data/colors";
 
-const Root = new ComponentBuilder(AtomicDiv)
+const Build = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
 	.withStyle("font-mono")
 	.withStyle("space-y-2")
@@ -20,7 +30,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
-	const selectionStyle = new SelectionStyle();
+	const flowHelper = new ReactFlowHelper();
 	const config = props.data as NodeData;
 
 	useEffect(() => {
@@ -36,13 +46,66 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 		}
 	}, [nodeFlowValue, config]);
 
+	const Component: React.FC<NodeProps> = (props) => (
+		<CardAtom title={config.nodeName} body={config.body}>
+			<Build className={flowHelper.updateSelectedState(props.id)}>
+				{config.nodeName}
+			</Build>
+		</CardAtom>
+	);
+
+	const [sourceHandle, setSourceHandle] = useState(null);
+	const [targetHandle, setTargetHandle] = useState(null);
+	const updateNodeInternals = useUpdateNodeInternals();
+
+	const onSourceConnected = (handle: PositionId) => {
+		setSourceHandle(handle.position);
+		updateNodeInternals(config.nodeId);
+		console.log(handle);
+	};
+
+	const onTargetConnected = (handle: PositionId) => {
+		setTargetHandle(handle.position);
+		updateNodeInternals(config.nodeId);
+		console.log(handle);
+	};
+
 	return (
 		<>
-			<Root className={selectionStyle.update(props.id)}>
-				{config.nodeName}
-			</Root>
+			{!sourceHandle
+				? config.outputs.map((handle, index) => (
+						<Handle
+							onConnect={(connection) => {
+								onSourceConnected(handle);
+							}}
+							id={handle.id}
+							position={handle.position}
+							key={index}
+							type={"source"}
+							style={{
+								borderColor: "#00000000",
+								background: colors["night-dark"],
+							}}
+						/>
+				  ))
+				: null}
+			{sourceHandle
+				? config.inputs.map((handle, index) => (
+						<Handle
+							id={handle.id}
+							position={handle.position}
+							key={index}
+							type={"target"}
+							style={{
+								borderColor: colors["night-dark"],
+								background: "#00000000",
+							}}
+						/>
+				  ))
+				: null}
+			<Component {...props}></Component>
 		</>
 	);
 };
 
-export default withBaseNode(OpenAiNode);
+export default OpenAiNode;

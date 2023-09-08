@@ -2,18 +2,34 @@
 Use this after the demo https://youtu.be/AAMJZTEH_h4
 https://youtu.be/aD-u0gl93wM
 
-# Now
-- Buy webcam
-- Buy storage
-- Buy t-shirts, socks, jocks
-- Shower
-- Gates landing:1265 topstair:800 btmstair:800 stairwood:40
 
-# Later
+# Morning
 - Reply to Linkedin inmail
-- Work on Neurocache
-- Fix headset
+- Reply to StoryToys
+- Do base node refactor
+- Shower
+# Lunch
+- Clean office
 - Clean laptop
+- Fix headset
+- Work on Neurocache
+# Evening
+- 
+  
+# Neurocache tasks
+- Base node refactor:
+  - Move BaseNode functionality into node components
+  - Remove BaseNode hoc
+  - Test custom handle placement
+- Anchor has 4 inputs to start with
+  - When you assign an input other 3 are disabled 
+  - And 3 outputs are enabled
+  - When you assign an output the other two handles are disabled
+- Highlight edges when selected
+- In node flow provider kill signal flow: 
+  - if N of the same payload arrive in X time
+
+
 
 
 # Objective

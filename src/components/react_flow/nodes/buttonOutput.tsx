@@ -1,7 +1,7 @@
 //path: src\components\react_flow\nodes\buttonOutput.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
-import { SelectionStyle } from "@src/utils/selectionStyle";
+import { ReactFlowHelper } from "@src/utils/reactFlowHelper";
 import ButtonAtom from "@src/components/atoms/buttonAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
@@ -25,8 +25,8 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 	const [inputText, setInputText] = useState("");
-	const selectionStyle = new SelectionStyle();
 	const { setNodeFlowValue } = useNodeFlow();
+	const flowHelper = new ReactFlowHelper();
 	const config = props.data as NodeData;
 	const controls = useAnimation();
 
@@ -46,7 +46,7 @@ const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root className={selectionStyle.update(props.id)}>
+			<Root className={flowHelper.updateSelectedState(props.id)}>
 				<InputAtom
 					value={inputText}
 					onChange={(e) => setInputText(e.target.value)}
@@ -75,4 +75,4 @@ const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 	);
 };
 
-export default withBaseNode(React.memo(ButtonOutput));
+export default withBaseNode(ButtonOutput);

@@ -1,13 +1,19 @@
+//path: src\utils\reactFlowHelper.ts
+
 import { useReactFlow } from "reactflow";
 
-export class SelectionStyle {
+export class ReactFlowHelper {
 	reactFlowInstance = useReactFlow();
 
 	constructor() {
 		this.reactFlowInstance = useReactFlow();
 	}
 
-	update = (id: string) => {
+	getFlowInstance = () => {
+		return this.reactFlowInstance;
+	};
+
+	updateSelectedState = (id: string) => {
 		const selectedElements = this.reactFlowInstance
 			.getNodes()
 			.filter((node) => node.selected);
