@@ -1,7 +1,7 @@
-//path: src\utils\createNode.ts
+//path: src\components\react_flow\utils\createNode.tsx
 
 import { NodeData, PositionId } from "@src/types/nodeData";
-import { Uid } from "./stringUtils";
+import { Uid } from "../../../utils/stringUtils";
 
 interface CreateNodeProps {
 	type: string;

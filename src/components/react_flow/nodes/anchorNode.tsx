@@ -1,13 +1,20 @@
 //path: src\components\react_flow\nodes\anchorNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
-import { NodeProps, useEdges, useUpdateNodeInternals } from "reactflow";
-import { ReactFlowHelper } from "@src/utils/reactFlowHelper";
+import CreateHandles, { CreateHandle } from "../utils/createHandles";
+import NodeSelectionState from "../utils/nodeSelectionState";
 import { NodeData, PositionId } from "@src/types/nodeData";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import CardAtom from "@src/components/atoms/cardAtom";
 import React, { useEffect, useState } from "react";
+import DrawHandles from "../utils/drawHandles";
+import {
+	useUpdateNodeInternals,
+	useReactFlow,
+	NodeProps,
+	useEdges,
+} from "reactflow";
 
 const Build = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
@@ -23,10 +30,10 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const updateNodeInternals = useUpdateNodeInternals();
 	const config = props.data as NodeData;
 	const edges = useEdges();
+	const reactFlowInstance = useReactFlow();
 
-	const flowHelper = new ReactFlowHelper();
 	const [drawHandles, setDrawHandles] = useState(
-		flowHelper.makeHandles("target", config),
+		CreateHandles("target", config),
 	);
 
 	useEffect(() => {
@@ -49,70 +56,52 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 	}, [nodeFlowValue]);
 
 	useEffect(() => {
-		const connectedTarget = edges
-			.map((edge) => edge.targetHandle)
-			.find((targetHandle) =>
-				drawHandles.some((input) => input.id === targetHandle),
-			);
+		const edgeHandles = edges
+			.flatMap((edge) => [edge.sourceHandle, edge.targetHandle])
+			.filter(Boolean);
 
-		if (connectedTarget) {
-			const target = drawHandles.find(
-				(input) => input.id === connectedTarget,
+		let handlesToKeep: PositionId[] = [];
+		let nodesToUpdate: string[] = [config.nodeId];
+
+		drawHandles.forEach((handle) => {
+			const foundHandle = edgeHandles.includes(handle.id) ? handle : null;
+			if (!foundHandle) return;
+
+			handlesToKeep.push(
+				CreateHandle(config, foundHandle.type, foundHandle.position),
 			);
-			if (target) {
-				onInputHandleConnected(target);
-			}
-		}
+		});
+
+		console.log("handlesToKeep", handlesToKeep);
+
+		const type = handlesToKeep.length > 0 ? "source" : "target";
+		const skipOthers = handlesToKeep.length > 1;
+		setDrawHandles(CreateHandles(type, config, handlesToKeep, skipOthers));
+
+		const allNodesInEdges = edges
+			.flatMap((edge) => [edge.target, edge.source])
+			.filter(Boolean);
+		const uniqueNodesToUpdate = new Set(
+			nodesToUpdate.concat(allNodesInEdges),
+		);
+		nodesToUpdate = Array.from(uniqueNodesToUpdate);
+
+		console.log("nodesToUpdate", nodesToUpdate);
+
+		updateNodeInternals(nodesToUpdate);
 	}, [edges]);
 
 	const Component: React.FC<NodeProps> = (props) => (
 		<CardAtom title={config.nodeName} body={config.body}>
-			<Build className={flowHelper.updateSelectedState(props.id)}>
+			<Build className={NodeSelectionState(reactFlowInstance, props.id)}>
 				{config.nodeName}
 			</Build>
 		</CardAtom>
 	);
 
-	const onOutputHandleConnected = (handle: PositionId) => {
-		const inputId = drawHandles.find((input) => input.type === "target");
-		if (!inputId) return;
-
-		const input = flowHelper.makeHandle(
-			config,
-			inputId.type,
-			inputId.position,
-		);
-		const output = flowHelper.makeHandle(
-			config,
-			handle.type,
-			handle.position,
-		);
-
-		const newHandles = [input, output] as PositionId[];
-
-		setDrawHandles(newHandles);
-		updateNodeInternals(config.nodeId);
-	};
-
-	const onInputHandleConnected = (input: PositionId) => {
-		if (drawHandles.some((handle) => handle.type === "source")) {
-			return;
-		}
-
-		const newHandles = flowHelper
-			.makeHandles("source", config)
-			.filter((prev) => prev.position !== input.position);
-
-		newHandles.push(input);
-		setDrawHandles(newHandles);
-		updateNodeInternals(config.nodeId);
-	};
-
 	return (
 		<>
-			{drawHandles.map((handle, index) =>
-				flowHelper.drawHandle(handle, index, onOutputHandleConnected),
-			)}
+			{drawHandles.map((handle, index) => DrawHandles(handle, index))}
 			<Component {...props}></Component>
 		</>
 	);

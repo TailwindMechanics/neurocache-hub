@@ -1,15 +1,15 @@
 //path: src\components\react_flow\nodes\openAiNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import NodeSelectionState from "../utils/nodeSelectionState";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
-import { ReactFlowHelper } from "@src/utils/reactFlowHelper";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { useOpenAI } from "@src/hooks/openAiContext";
+import { NodeProps, useReactFlow } from "reactflow";
 import { NodeData } from "@src/types/nodeData";
 import withBaseNode from "../core/baseNode";
 import React, { useEffect } from "react";
-import { NodeProps } from "reactflow";
 
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
@@ -22,7 +22,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
-	const flowHelper = new ReactFlowHelper();
+	const reactFlowInstance = useReactFlow();
 	const config = props.data as NodeData;
 	const openAI = useOpenAI();
 
@@ -57,7 +57,7 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root className={flowHelper.updateSelectedState(props.id)}>
+			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
 				<TextBoxAtom
 					width={0}
 					height={32}

@@ -78,12 +78,17 @@ neurocache-hub
 │  │  │  │  ├─ flowWithProvider.tsx
 │  │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
-│  │  │  └─ nodes
-│  │  │     ├─ anchorNode.tsx
-│  │  │     ├─ buttonOutput.tsx
-│  │  │     ├─ inputBox.tsx
-│  │  │     ├─ openAiNode.tsx
-│  │  │     └─ spawnerNode.tsx
+│  │  │  ├─ nodes
+│  │  │  │  ├─ anchorNode.tsx
+│  │  │  │  ├─ buttonOutput.tsx
+│  │  │  │  ├─ inputBox.tsx
+│  │  │  │  ├─ openAiNode.tsx
+│  │  │  │  └─ spawnerNode.tsx
+│  │  │  └─ utils
+│  │  │     ├─ createHandles.tsx
+│  │  │     ├─ createNode.tsx
+│  │  │     ├─ drawHandles.tsx
+│  │  │     └─ nodeSelectionState.tsx
 │  │  └─ threejs
 │  │     ├─ controllers
 │  │     │  ├─ cameraLook.tsx
@@ -122,8 +127,6 @@ neurocache-hub
 │  │  ├─ index.ts
 │  │  └─ nodeData.d.ts
 │  └─ utils
-│     ├─ createNode.ts
-│     ├─ reactFlowHelper.ts
 │     └─ stringUtils.ts
 ├─ tailwind.config.js
 ├─ tsconfig.json

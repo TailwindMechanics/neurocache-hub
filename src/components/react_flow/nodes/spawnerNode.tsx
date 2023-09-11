@@ -1,12 +1,12 @@
 //path: src\components\react_flow\nodes\spawnerNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import createNode from "@src/components/react_flow/utils/createNode";
 import { getUnhiddenNodes } from "@src/data/customNodeTypes";
 import { Node, NodeProps, useReactFlow } from "reactflow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
 import { NodeData } from "@src/types/nodeData";
-import createNode from "@src/utils/createNode";
 import { Combobox } from "@headlessui/react";
 import withBaseNode from "../core/baseNode";
 import { useState } from "react";

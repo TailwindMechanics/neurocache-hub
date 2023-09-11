@@ -1,16 +1,16 @@
 //path: src\components\react_flow\nodes\buttonOutput.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
-import { ReactFlowHelper } from "@src/utils/reactFlowHelper";
+import NodeSelectionState from "../utils/nodeSelectionState";
 import ButtonAtom from "@src/components/atoms/buttonAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import InputAtom from "@src/components/atoms/inputAtom";
+import { NodeProps, useReactFlow } from "reactflow";
 import { NodeData } from "@src/types/nodeData";
 import { useAnimation } from "framer-motion";
 import withBaseNode from "../core/baseNode";
 import React, { useState } from "react";
-import { NodeProps } from "reactflow";
 import colors from "@src/data/colors";
 
 const Root = new ComponentBuilder(AtomicDiv)
@@ -26,7 +26,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 	const [inputText, setInputText] = useState("");
 	const { setNodeFlowValue } = useNodeFlow();
-	const flowHelper = new ReactFlowHelper();
+	const reactFlowInstance = useReactFlow();
 	const config = props.data as NodeData;
 	const controls = useAnimation();
 
@@ -46,7 +46,7 @@ const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root className={flowHelper.updateSelectedState(props.id)}>
+			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
 				<InputAtom
 					value={inputText}
 					onChange={(e) => setInputText(e.target.value)}
