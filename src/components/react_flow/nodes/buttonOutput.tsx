@@ -61,8 +61,12 @@ const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 					onHoverStart={handleHoverStart}
 					onHoverEnd={handleHoverEnd}
 					onClick={() => {
+						const sourceIds = config.handles
+							.filter((handle) => handle.type === "source")
+							.map((handle) => handle.id);
+
 						setNodeFlowValue({
-							ids: config.outputs.map((output) => output.id),
+							ids: sourceIds,
 							payload: inputText,
 						});
 					}}

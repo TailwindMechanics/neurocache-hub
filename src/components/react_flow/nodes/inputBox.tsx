@@ -28,9 +28,11 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 	const config = props.data as NodeData;
 
 	useEffect(() => {
-		const anyInputIncluded = config.inputs.some((input) =>
-			nodeFlowValue.ids.includes(input.id),
-		);
+		const anyInputIncluded = config.handles.some((input) => {
+			return (
+				input.type === "target" && nodeFlowValue.ids.includes(input.id)
+			);
+		});
 
 		if (anyInputIncluded) {
 			let displayText = !IsNullOrEmpty(nodeFlowValue.payload)

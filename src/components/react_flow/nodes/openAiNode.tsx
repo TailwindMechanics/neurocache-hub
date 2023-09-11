@@ -28,9 +28,12 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const anyInputIncluded = config.inputs.some((input) =>
-				nodeFlowValue.ids.includes(input.id),
-			);
+			const anyInputIncluded = config.handles.some((input) => {
+				return (
+					input.type === "target" &&
+					nodeFlowValue.ids.includes(input.id)
+				);
+			});
 
 			if (anyInputIncluded) {
 				const messages = [
@@ -39,8 +42,11 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 				];
 
 				const reply = await openAI.chat(messages);
+				const sourceIds = config.handles
+					.filter((handle) => handle.type === "source")
+					.map((handle) => handle.id);
 				setNodeFlowValue({
-					ids: config.outputs.map((output) => output.id),
+					ids: sourceIds,
 					payload: reply,
 				});
 			}

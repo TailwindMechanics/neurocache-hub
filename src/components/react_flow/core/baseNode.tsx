@@ -18,18 +18,10 @@ function withBaseNode(WrappedComponent: React.FC<NodeProps>) {
 		const builder = new ReactFlowBuilder(wrapped);
 		builder.withType(config.nodeType);
 
-		config.inputs?.forEach((tuple) => {
+		config.handles?.forEach((tuple) => {
 			builder.withHandle({
 				id: tuple.id,
-				type: "target",
-				position: tuple.position,
-			});
-		});
-
-		config.outputs?.forEach((tuple) => {
-			builder.withHandle({
-				id: tuple.id,
-				type: "source",
+				type: tuple.type,
 				position: tuple.position,
 			});
 		});

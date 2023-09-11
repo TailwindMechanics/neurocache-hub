@@ -6,12 +6,12 @@ export interface NodeData {
 	category: string;
 	nodeId: string;
 	body: string;
-	inputs: PositionId[];
-	outputs: PositionId[];
+	handles: PositionId[];
 	nodePosition: {x: number, y: number};
 }
 
 export type PositionId = {
 	id: string;
+	type: "target" | "source",
 	position: Position;
 };

@@ -77,7 +77,6 @@ neurocache-hub
 │  │  │  │  ├─ baseNode.tsx
 │  │  │  │  ├─ flowWithProvider.tsx
 │  │  │  │  ├─ reactFlowCanvas.tsx
-│  │  │  │  ├─ spacebarCapture.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  └─ nodes
 │  │  │     ├─ anchorNode.tsx

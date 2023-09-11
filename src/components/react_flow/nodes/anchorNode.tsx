@@ -23,37 +23,30 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
 	const flowHelper = new ReactFlowHelper();
 	const config = props.data as NodeData;
-
+	const updateNodeInternals = useUpdateNodeInternals();
+	const targetHandles = config.handles.filter(
+		(handle) => handle.type === "target",
+	);
+	const [drawHandles, setDrawHandles] = useState(targetHandles);
 	const edges = useEdges();
 
 	useEffect(() => {
 		const inputIds = edges.map((edge) => edge.targetHandle);
 
 		const connectedTargetHandle = inputIds.find((targetHandle) =>
-			config.inputs.some((input) => input.id === targetHandle),
+			config.handles.some((input) => input.id === targetHandle),
 		);
 
 		if (connectedTargetHandle) {
-			const connectedTarget = config.inputs.find(
+			const connectedTarget = config.handles.find(
 				(input) => input.id === connectedTargetHandle,
 			);
 
 			if (connectedTarget) {
-				onTargetConnected(connectedTarget);
+				onInputHandleConnected(connectedTarget);
 			}
 		}
-	}, [edges, config.inputs]);
-
-	useEffect(() => {
-		if (targetHandle && nodeFlowValue.ids.includes(targetHandle.id)) {
-			if (sourceHandle) {
-				setNodeFlowValue({
-					ids: [sourceHandle.id],
-					payload: nodeFlowValue.payload,
-				});
-			}
-		}
-	}, [nodeFlowValue, config]);
+	}, [edges, config.handles]);
 
 	const Component: React.FC<NodeProps> = (props) => (
 		<CardAtom title={config.nodeName} body={config.body}>
@@ -63,90 +56,54 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 		</CardAtom>
 	);
 
-	const [sourceHandle, setSourceHandle] = useState<PositionId | null>(null);
-	const [targetHandle, setTargetHandle] = useState<PositionId | null>(null);
-	const updateNodeInternals = useUpdateNodeInternals();
-
-	const onSourceConnected = (handle: PositionId) => {
-		setSourceHandle(handle);
+	const onOutputHandleConnected = (handle: PositionId) => {
+		// setOutputHandle(handle);
 		updateNodeInternals(config.nodeId);
-
-		console.log(sourceHandle);
-		console.log(targetHandle);
 	};
 
-	const onTargetConnected = (handle: PositionId) => {
-		setTargetHandle(handle);
+	const onInputHandleConnected = (handle: PositionId) => {
+		// setInputHandle(handle);
 		updateNodeInternals(config.nodeId);
-
-		console.log(sourceHandle);
-		console.log(targetHandle);
 	};
 
 	return (
 		<>
-			{
-				// Outputs
-				!sourceHandle ? (
-					config.outputs.map((handle, index) => (
-						<Handle
-							onConnect={(connection) => {
-								onSourceConnected(handle);
-							}}
-							id={handle.id}
-							position={handle.position}
-							key={index}
-							type={"source"}
-							style={{
-								borderColor: "#00000000",
-								background: colors["night-dark"],
-							}}
-						/>
-					))
-				) : (
-					<Handle
-						id={sourceHandle.id}
-						position={sourceHandle.position}
-						type={"source"}
-						style={{
-							borderColor: "#00000000",
-							background: colors["night-dark"],
-						}}
-					/>
-				)
-			}
-			{
-				// Inputs
-				sourceHandle != null ? (
-					targetHandle == null ? (
-						config.inputs.map((handle, index) => (
-							<Handle
-								id={handle.id}
-								position={handle.position}
-								key={index}
-								type={"target"}
-								style={{
-									borderColor: colors["night-dark"],
-									background: "#00000000",
-								}}
-							/>
-						))
-					) : (
-						<Handle
-							id={targetHandle.id}
-							position={targetHandle.position}
-							type={"target"}
-							style={{
-								borderColor: colors["night-dark"],
-								background: "#00000000",
-							}}
-						/>
-					)
-				) : null
-			}
+			{drawHandles.map((handle, index) =>
+				drawHandle(handle, index, onOutputHandleConnected),
+			)}
 			<Component {...props}></Component>
 		</>
 	);
 };
+
+function drawHandle(
+	handle: PositionId,
+	keyIndex: number,
+	onOutputConnected: (handle: PositionId) => void,
+) {
+	return (
+		<Handle
+			onConnect={() => {
+				if (handle.type === "source" && onOutputConnected) {
+					onOutputConnected(handle);
+				}
+			}}
+			id={handle.id}
+			position={handle.position}
+			key={keyIndex}
+			type={handle.type}
+			style={{
+				borderColor:
+					handle.type == "target"
+						? colors["night-dark"]
+						: "#00000000",
+				background:
+					handle.type == "target"
+						? "#00000000"
+						: colors["night-dark"],
+			}}
+		/>
+	);
+}
 
 export default AnchorNode;

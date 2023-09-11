@@ -7,8 +7,7 @@ interface CreateNodeProps {
 	type: string;
 	name: string;
 	body: string;
-	ins?: PositionId[];
-	outs?: PositionId[];
+	handles?: PositionId[];
 	pos: { x: number; y: number };
 }
 
@@ -19,8 +18,7 @@ const createNode = (props: CreateNodeProps) => {
 		nodeName: props.name,
 		nodeId: `node_${props.type}_${uid}`,
 		body: props.body,
-		inputs: props.ins || [],
-		outputs: props.outs || [],
+		handles: props.handles || [],
 		nodePosition: props.pos,
 	} as NodeData;
 };

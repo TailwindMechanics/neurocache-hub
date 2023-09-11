@@ -76,8 +76,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 				type: node.nodeType,
 				name: node.nodeName,
 				body: node.body,
-				ins: node.inputs,
-				outs: node.outputs,
+				handles: node.handles,
 				pos: { x: 0, y: 0 },
 			});
 			spawnNode(newNode);
