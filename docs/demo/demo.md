@@ -3,18 +3,21 @@ Use this after the demo https://youtu.be/AAMJZTEH_h4
 https://youtu.be/aD-u0gl93wM
 
 
-# Morning
+# Todo
+- Apply to jobs
 - Reply to Linkedin inmail
-- Reply to StoryToys
-- Do base node refactor
-- Shower
-# Lunch
 - Clean office
 - Clean laptop
+- StoryToys gear
+  - Order boxes or determine if have box alreeady
+  - Pack the stuff
+  - Email Aishu with dimensions
 - Fix headset
-- Work on Neurocache
-# Evening
-- 
+- Do base node refactor
+- Shower
+- Think dosage
+
+
   
 # Neurocache tasks
 - Base node refactor:

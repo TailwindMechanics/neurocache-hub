@@ -28,6 +28,8 @@ export const NodeFlowProvider: React.FC<NodeFlowProviderProps> = ({
 	});
 
 	const OutputIdToInputIds = (outputHandleId: string) => {
+		console.log(`Output id: ${outputHandleId}`);
+
 		const connectedEdges = edges.filter(
 			(edge) => edge.sourceHandle === outputHandleId,
 		);
