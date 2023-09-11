@@ -87,47 +87,7 @@ export const customNodeDefaults = [
 		category: "Utilities",
 		nodeId: "anchor_60e9b8e9a7f1d8c7c7f9",
 		body: "This node is used to clean up the flow.",
-		handles: [
-			{
-				id: "in_anchor_1_60e9b8e9a7f1d8c7c7f9",
-				type: "target",
-				position: "left",
-			},
-			{
-				id: "in_anchor_2_60e9b8e9a7f1d8c7c7f9",
-				type: "target",
-				position: "top",
-			},
-			{
-				id: "in_anchor_3_60e9b8e9a7f1d8c7c7f9",
-				type: "target",
-				position: "right",
-			},
-			{
-				id: "in_anchor_4_60e9b8e9a7f1d8c7c7f9",
-				type: "target",
-				position: "bottom",
-			},
-			{
-				id: "out_anchor_1_60e9b8e9a7f1d8c7c7f9",
-				position: "left",
-			},
-			{
-				id: "out_anchor_2_60e9b8e9a7f1d8c7c7f9",
-				type: "source",
-				position: "top",
-			},
-			{
-				id: "out_anchor_3_60e9b8e9a7f1d8c7c7f9",
-				type: "source",
-				position: "right",
-			},
-			{
-				id: "out_anchor_4_60e9b8e9a7f1d8c7c7f9",
-				type: "source",
-				position: "bottom",
-			},
-		],
+		handles: [],
 		nodePosition: { x: 150, y: 0 },
 	} as NodeData,
 	{

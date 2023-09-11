@@ -28,8 +28,6 @@ export const NodeFlowProvider: React.FC<NodeFlowProviderProps> = ({
 	});
 
 	const OutputIdToInputIds = (outputHandleId: string) => {
-		console.log(`Output id: ${outputHandleId}`);
-
 		const connectedEdges = edges.filter(
 			(edge) => edge.sourceHandle === outputHandleId,
 		);
@@ -48,7 +46,7 @@ export const NodeFlowProvider: React.FC<NodeFlowProviderProps> = ({
 			return;
 		}
 		console.log(
-			`%c>>>>> Output id: ${newValue.ids}, payload: ${newValue.payload}`,
+			`%c>>>>> ${newValue.ids}, payload: ${newValue.payload}`,
 			"color: #63dce0",
 		);
 
@@ -62,7 +60,7 @@ export const NodeFlowProvider: React.FC<NodeFlowProviderProps> = ({
 		}
 
 		console.log(
-			`%c<<<<< Input ids: ${inputIds}, payload: ${newValue.payload}`,
+			`%c<<<<< ${inputIds}, payload: ${newValue.payload}`,
 			"color: #d8e063",
 		);
 

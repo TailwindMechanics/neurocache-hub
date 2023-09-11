@@ -1,14 +1,13 @@
 //path: src\components\react_flow\nodes\anchorNode.tsx
 
-import { Handle, NodeProps, useEdges, useUpdateNodeInternals } from "reactflow";
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import { NodeProps, useEdges, useUpdateNodeInternals } from "reactflow";
 import { ReactFlowHelper } from "@src/utils/reactFlowHelper";
 import { NodeData, PositionId } from "@src/types/nodeData";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import CardAtom from "@src/components/atoms/cardAtom";
 import React, { useEffect, useState } from "react";
-import colors from "@src/data/colors";
 
 const Build = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
@@ -21,32 +20,50 @@ const Build = new ComponentBuilder(AtomicDiv)
 
 const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
-	const flowHelper = new ReactFlowHelper();
-	const config = props.data as NodeData;
 	const updateNodeInternals = useUpdateNodeInternals();
-	const targetHandles = config.handles.filter(
-		(handle) => handle.type === "target",
-	);
-	const [drawHandles, setDrawHandles] = useState(targetHandles);
+	const config = props.data as NodeData;
 	const edges = useEdges();
 
+	const flowHelper = new ReactFlowHelper();
+	const [drawHandles, setDrawHandles] = useState(
+		flowHelper.makeHandles("target", config),
+	);
+
 	useEffect(() => {
-		const inputIds = edges.map((edge) => edge.targetHandle);
+		const anyInputIncluded = drawHandles.some((handle) => {
+			return (
+				handle.type === "target" &&
+				nodeFlowValue.ids.includes(handle.id)
+			);
+		});
 
-		const connectedTargetHandle = inputIds.find((targetHandle) =>
-			config.handles.some((input) => input.id === targetHandle),
-		);
+		if (anyInputIncluded) {
+			const sourceIds = drawHandles
+				.filter((handle) => handle.type === "source")
+				.map((handle) => handle.id);
+			setNodeFlowValue({
+				ids: sourceIds,
+				payload: nodeFlowValue.payload,
+			});
+		}
+	}, [nodeFlowValue]);
 
-		if (connectedTargetHandle) {
-			const connectedTarget = config.handles.find(
-				(input) => input.id === connectedTargetHandle,
+	useEffect(() => {
+		const connectedTarget = edges
+			.map((edge) => edge.targetHandle)
+			.find((targetHandle) =>
+				drawHandles.some((input) => input.id === targetHandle),
 			);
 
-			if (connectedTarget) {
-				onInputHandleConnected(connectedTarget);
+		if (connectedTarget) {
+			const target = drawHandles.find(
+				(input) => input.id === connectedTarget,
+			);
+			if (target) {
+				onInputHandleConnected(target);
 			}
 		}
-	}, [edges, config.handles]);
+	}, [edges]);
 
 	const Component: React.FC<NodeProps> = (props) => (
 		<CardAtom title={config.nodeName} body={config.body}>
@@ -57,53 +74,48 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 	);
 
 	const onOutputHandleConnected = (handle: PositionId) => {
-		// setOutputHandle(handle);
+		const inputId = drawHandles.find((input) => input.type === "target");
+		if (!inputId) return;
+
+		const input = flowHelper.makeHandle(
+			config,
+			inputId.type,
+			inputId.position,
+		);
+		const output = flowHelper.makeHandle(
+			config,
+			handle.type,
+			handle.position,
+		);
+
+		const newHandles = [input, output] as PositionId[];
+
+		setDrawHandles(newHandles);
 		updateNodeInternals(config.nodeId);
 	};
 
-	const onInputHandleConnected = (handle: PositionId) => {
-		// setInputHandle(handle);
+	const onInputHandleConnected = (input: PositionId) => {
+		if (drawHandles.some((handle) => handle.type === "source")) {
+			return;
+		}
+
+		const newHandles = flowHelper
+			.makeHandles("source", config)
+			.filter((prev) => prev.position !== input.position);
+
+		newHandles.push(input);
+		setDrawHandles(newHandles);
 		updateNodeInternals(config.nodeId);
 	};
 
 	return (
 		<>
 			{drawHandles.map((handle, index) =>
-				drawHandle(handle, index, onOutputHandleConnected),
+				flowHelper.drawHandle(handle, index, onOutputHandleConnected),
 			)}
 			<Component {...props}></Component>
 		</>
 	);
 };
-
-function drawHandle(
-	handle: PositionId,
-	keyIndex: number,
-	onOutputConnected: (handle: PositionId) => void,
-) {
-	return (
-		<Handle
-			onConnect={() => {
-				if (handle.type === "source" && onOutputConnected) {
-					onOutputConnected(handle);
-				}
-			}}
-			id={handle.id}
-			position={handle.position}
-			key={keyIndex}
-			type={handle.type}
-			style={{
-				borderColor:
-					handle.type == "target"
-						? colors["night-dark"]
-						: "#00000000",
-				background:
-					handle.type == "target"
-						? "#00000000"
-						: colors["night-dark"],
-			}}
-		/>
-	);
-}
 
 export default AnchorNode;

@@ -184,6 +184,7 @@ const ReactFlowCanvas: React.FC = () => {
 			)}
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
+					maxZoom={4}
 					autoPanOnNodeDrag={false}
 					onContextMenu={handleRightClick}
 					onMouseMove={handleMouseMove}
