@@ -56,6 +56,9 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 	}, [nodeFlowValue]);
 
 	useEffect(() => {
+		console.log("hook edges", edges);
+		console.log("instance edges", reactFlowInstance.getEdges());
+
 		const edgeHandles = edges
 			.flatMap((edge) => [edge.sourceHandle, edge.targetHandle])
 			.filter(Boolean);
@@ -72,8 +75,6 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 			);
 		});
 
-		console.log("handlesToKeep", handlesToKeep);
-
 		const type = handlesToKeep.length > 0 ? "source" : "target";
 		const skipOthers = handlesToKeep.length > 1;
 		setDrawHandles(CreateHandles(type, config, handlesToKeep, skipOthers));
@@ -84,10 +85,8 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 		const uniqueNodesToUpdate = new Set(
 			nodesToUpdate.concat(allNodesInEdges),
 		);
+
 		nodesToUpdate = Array.from(uniqueNodesToUpdate);
-
-		console.log("nodesToUpdate", nodesToUpdate);
-
 		updateNodeInternals(nodesToUpdate);
 	}, [edges]);
 

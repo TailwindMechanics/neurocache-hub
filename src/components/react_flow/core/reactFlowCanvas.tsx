@@ -35,28 +35,34 @@ const ReactFlowCanvas: React.FC = () => {
 	const [isSaved, setIsSaved] = useState(false);
 	const reactFlowInstance = useReactFlow();
 	const { setViewport } = useReactFlow();
+	const isLoadedRef = useRef(false);
 
 	useEffect(() => {
-		const restoreFlow = async () => {
-			const flowData = localStorage.getItem(flowKey);
-			if (!flowData) return;
+		if (!isLoadedRef.current) {
+			const restoreFlow = async () => {
+				const flowData = localStorage.getItem(flowKey);
+				if (!flowData) return;
 
-			const flow = JSON.parse(flowData);
-			if (!flow) return;
+				const flow = JSON.parse(flowData);
+				if (!flow) return;
 
-			console.log(`<<< Loaded flow`);
-			console.log(flow);
+				console.log(
+					"%c>>> Loaded flow",
+					"color: #a97dd1; font-weight: bold",
+				);
+				isLoadedRef.current = true;
 
-			setNodes(flow.nodes || []);
-			setEdges(flow.edges || []);
+				setNodes(flow.nodes || []);
+				setEdges(flow.edges || []);
 
-			const { x = 0, y = 0, zoom = 1 } = flow.viewport;
-			setViewport({ x, y, zoom });
-		};
+				const { x = 0, y = 0, zoom = 1 } = flow.viewport;
+				setViewport({ x, y, zoom });
+			};
 
-		const nodeTypes = { ...customNodeTypes };
-		setTypes(nodeTypes);
-		restoreFlow();
+			const nodeTypes = { ...customNodeTypes };
+			setTypes(nodeTypes);
+			restoreFlow();
+		}
 	}, []);
 
 	useEffect(() => {
@@ -152,8 +158,7 @@ const ReactFlowCanvas: React.FC = () => {
 		const flow = reactFlowInstance.toObject();
 		const flowString = JSON.stringify(flow);
 
-		console.log(`>>> Saving flow`);
-		console.log(flow);
+		console.log("%c>>> Saving flow", "color: #d1be7d; font-weight: bold");
 
 		localStorage.setItem(flowKey, flowString);
 		setIsSaved(true);

@@ -2,21 +2,30 @@
 Use this after the demo https://youtu.be/AAMJZTEH_h4
 https://youtu.be/aD-u0gl93wM
 
-
+Think dosage
 # Todo
-- Apply to jobs
-- Reply to Linkedin inmail
-- Clean office
-- Clean laptop
-- StoryToys gear
-  - Order boxes or determine if have box alreeady
-  - Pack the stuff
-  - Email Aishu with dimensions
+---===---
+x Coffee
+x Shower
+x 
+x Take meds
+x Groom
+x
+- Fix Neurocache issue
+- Finish base node refactor
+-  
+- Organise office
 - Fix headset
-- Do base node refactor
-- Shower
-- Think dosage
-
+- 
+- Pack Storytoys gear; laptop ipad dongle cables
+- Email Aishu with dimensions
+- 
+- Reply to Linkedin inmail
+- Follow up with Illuvium, Scopely, Fortis
+- 
+- Clean laptop
+- Apply to jobs
+---===---
 
   
 # Neurocache tasks

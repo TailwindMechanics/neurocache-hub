@@ -3,6 +3,7 @@
 "use client";
 
 import FlowWithProvider from "@src/components/react_flow/core/flowWithProvider";
+import DevShortcutsWrapper from "@src/dev/shortcuts/devShortcuts";
 import ApiContextWrapper from "@src/hooks/apiContextWrapper";
 import { FC } from "react";
 import React from "react";
@@ -10,6 +11,7 @@ import React from "react";
 const page: FC = () => {
 	return (
 		<>
+			<DevShortcutsWrapper />
 			<ApiContextWrapper>
 				<FlowWithProvider />
 			</ApiContextWrapper>

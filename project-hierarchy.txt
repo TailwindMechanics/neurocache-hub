@@ -116,6 +116,10 @@ neurocache-hub
 │  │  ├─ customNodeTypes.tsx
 │  │  ├─ docs.json
 │  │  └─ icons.tsx
+│  ├─ dev
+│  │  └─ shortcuts
+│  │     ├─ clearConsole.tsx
+│  │     └─ devShortcuts.tsx
 │  ├─ hooks
 │  │  ├─ apiContextWrapper.tsx
 │  │  ├─ nodeFlowContext.tsx
