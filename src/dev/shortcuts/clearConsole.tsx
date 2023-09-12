@@ -18,7 +18,7 @@ const ClearConsole = () => {
 		};
 	}, []);
 
-	return null;
+	return <></>;
 };
 
 export default ClearConsole;
