@@ -88,6 +88,7 @@ neurocache-hub
 │  │  │     ├─ createHandles.tsx
 │  │  │     ├─ createNode.tsx
 │  │  │     ├─ drawHandles.tsx
+│  │  │     ├─ mapOutputIds.ts
 │  │  │     └─ nodeSelectionState.tsx
 │  │  └─ threejs
 │  │     ├─ controllers

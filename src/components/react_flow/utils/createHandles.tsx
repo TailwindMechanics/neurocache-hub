@@ -2,16 +2,10 @@
 
 import { NodeData, PositionId } from "@src/types/nodeData";
 
-export const CreateHandle = (
-	config: NodeData,
-	type: string,
-	pos: string,
-	key: number = 0,
-) => {
+export const CreateHandle = (config: NodeData, type: string, pos: string) => {
 	const inOrOut = type === "source" ? "out" : "in";
-
 	return {
-		id: `${inOrOut}_${key}_${config.nodeId}`,
+		id: `${inOrOut}_${pos}_${config.nodeId}`,
 		type: type,
 		position: pos,
 	} as PositionId;
@@ -32,7 +26,7 @@ const CreateHandles = (
 		if (keepHandle) {
 			handles.push(keepHandle);
 		} else if (!skipOthers) {
-			handles.push(CreateHandle(config, type, pos, index));
+			handles.push(CreateHandle(config, type, pos));
 		}
 	});
 
