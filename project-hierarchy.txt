@@ -85,11 +85,11 @@ neurocache-hub
 │  │  │  │  ├─ openAiNode.tsx
 │  │  │  │  └─ spawnerNode.tsx
 │  │  │  └─ utils
-│  │  │     ├─ createHandles.tsx
-│  │  │     ├─ createNode.tsx
 │  │  │     ├─ drawHandles.tsx
+│  │  │     ├─ handleUtils.ts
 │  │  │     ├─ mapOutputIds.ts
-│  │  │     └─ nodeSelectionState.tsx
+│  │  │     ├─ nodeSelectionState.tsx
+│  │  │     └─ nodeUtils.ts
 │  │  └─ threejs
 │  │     ├─ controllers
 │  │     │  ├─ cameraLook.tsx

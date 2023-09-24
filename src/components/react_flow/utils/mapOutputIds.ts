@@ -2,21 +2,21 @@
 
 import { PositionId } from "@src/types/nodeData";
 
-export const MapOutputIds = (
-	receivedIds: string[],
-	outputHandles: PositionId[],
-): PositionId[] | null => {
-	const anyInputIncluded = outputHandles.some((handle) => {
-		return handle.type === "target" && receivedIds.includes(handle.id);
+const MapOutputIds = (
+	inputs: string[],
+	toMap: PositionId[],
+): string[] | null => {
+	const anyInputIncluded = toMap.some((handle) => {
+		return handle.type === "target" && inputs.includes(handle.id);
 	});
 
 	if (anyInputIncluded) {
-		const sourceIds = outputHandles
+		return toMap
 			.filter((handle) => handle.type === "source")
-			.map((handle) => handle);
-
-		return sourceIds;
+			.map((handle) => handle.id);
 	}
 
 	return null;
 };
+
+export default MapOutputIds;
