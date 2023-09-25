@@ -7,7 +7,6 @@ import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import CardAtom from "@src/components/atoms/cardAtom";
 import React, { useEffect, useState } from "react";
-import { UpdateNodes } from "../utils/nodeUtils";
 import MapOutputIds from "../utils/mapOutputIds";
 import DrawHandles from "../utils/drawHandles";
 import {
@@ -53,11 +52,14 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	const updateConnectedHandles = (edges: Edge[]) => {
 		const connected = GetConnectedHandles(edges);
-		if (connected) {
-			let handles = setInput(allInputHandles, connected as string[]);
-			handles = setOutput(handles, connected as string[]);
+		if (!connected) return;
+
+		let handles = setInput(allInputHandles, connected as string[]);
+		handles = setOutput(handles, connected as string[]);
+
+		if (handles !== displayHandles) {
+			console.log("updating handles");
 			setDisplayHandles(handles);
-			UpdateNodes(config, edges, updateNodeInternals);
 		}
 	};
 

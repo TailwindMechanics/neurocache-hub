@@ -9,6 +9,7 @@ import StyleReactFlowLogo from "./styleReactFlowLogo";
 import { NodeData } from "@src/types/nodeData";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
+import "../../../styles/reactFlow.scss";
 import ReactFlow, {
 	BackgroundVariant,
 	applyEdgeChanges,
@@ -189,7 +190,7 @@ const ReactFlowCanvas: React.FC = () => {
 			)}
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
-					maxZoom={4}
+					maxZoom={6}
 					autoPanOnNodeDrag={false}
 					onContextMenu={handleRightClick}
 					onMouseMove={handleMouseMove}
@@ -200,13 +201,6 @@ const ReactFlowCanvas: React.FC = () => {
 					onEdgesChange={onEdgesChange}
 					onConnect={onConnect}
 					nodeTypes={types}
-					defaultEdgeOptions={{
-						style: {
-							stroke: colors["night-light"],
-							strokeWidth: 4,
-							boxShadow: "5px 12px 2px #000000",
-						},
-					}}
 				>
 					<Background
 						variant={BackgroundVariant.Dots}

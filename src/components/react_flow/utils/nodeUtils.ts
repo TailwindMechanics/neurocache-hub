@@ -11,21 +11,6 @@ interface CreateNodeProps {
 	pos: { x: number; y: number };
 }
 
-export const UpdateNodes = (
-	config: NodeData,
-	edges: any[],
-	updateNodeInternals: any,
-) => {
-	let nodesToUpdate: string[] = [config.nodeId];
-	const allNodesInEdges = edges
-		.flatMap((edge) => [edge.target, edge.source])
-		.filter(Boolean);
-	const uniqueNodesToUpdate = new Set(nodesToUpdate.concat(allNodesInEdges));
-
-	nodesToUpdate = Array.from(uniqueNodesToUpdate);
-	updateNodeInternals(nodesToUpdate);
-};
-
 export const createNode = (props: CreateNodeProps) => {
 	const uid = Uid();
 	return {

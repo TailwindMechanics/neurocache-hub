@@ -127,6 +127,8 @@ neurocache-hub
 │  │  └─ openAiContext.tsx
 │  ├─ services
 │  │  └─ supabase.ts
+│  ├─ styles
+│  │  └─ reactflow.scss
 │  ├─ types
 │  │  ├─ declarations.d.ts
 │  │  ├─ index.ts

@@ -1,0 +1,18 @@
+.react-flow__edge-path {
+	stroke: #1f2430;
+	stroke-width: 4px;
+	stroke-linecap: round;
+}
+
+.react-flow__edge-default.nopan.selected .react-flow__edge-path {
+	stroke: #66b3a0;
+	stroke-width: 2px;
+	stroke-linecap: round;
+}
+
+.react-flow__connection-path {
+	stroke: #66b3a0;
+	stroke-width: 2px;
+	stroke-linecap: round;
+	stroke-dasharray: 1 5;
+}
