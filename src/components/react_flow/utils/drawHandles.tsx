@@ -12,14 +12,8 @@ const DrawHandles = (handle: PositionId, keyIndex: number) => {
 			key={keyIndex}
 			type={handle.type}
 			style={{
-				borderColor:
-					handle.type == "target"
-						? colors["night-dark"]
-						: "#00000000",
-				background:
-					handle.type == "target"
-						? "#00000000"
-						: colors["night-dark"],
+				borderColor: colors["night-light"],
+				background: colors["night-light"],
 			}}
 		/>
 	);

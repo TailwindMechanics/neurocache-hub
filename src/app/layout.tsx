@@ -28,7 +28,7 @@ export default function RootLayout({
 				</head>
 				<body className={`${inter.className} dark`}>
 					{children}
-					<Analytics />
+					<Analytics debug={false} />
 				</body>
 			</html>
 		</>

@@ -34,9 +34,9 @@ const Build = new ComponentBuilder(AtomicDiv)
 
 const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const config = props.data as NodeData;
-	const allInputHandles = CreateHandles("target", config);
-	const allOutputHandles = CreateHandles("source", config);
-	const [displayHandles, setDisplayHandles] = useState(allInputHandles);
+	const inputHandles = CreateHandles("target", config);
+	const outputHandles = CreateHandles("source", config);
+	const [displayHandles, setDisplayHandles] = useState<PositionId[]>([]);
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
 	const updateNodeInternals = useUpdateNodeInternals();
 	const reactFlowInstance = useReactFlow();
@@ -51,16 +51,50 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 	}, [nodeFlowValue, displayHandles]);
 
 	const updateConnectedHandles = (edges: Edge[]) => {
-		const connected = GetConnectedHandles(edges);
-		if (!connected) return;
-
-		let handles = setInput(allInputHandles, connected as string[]);
-		handles = setOutput(handles, connected as string[]);
-
-		if (handles !== displayHandles) {
-			console.log("updating handles");
-			setDisplayHandles(handles);
+		const connected = GetConnectedHandles(edges) as string[] | undefined;
+		if (!connected || connected.length === 0) {
+			doPhase1();
+			return;
 		}
+
+		const input = GetConnectedHandle(inputHandles, connected, "target");
+		if (!input) {
+			doPhase1();
+			return;
+		}
+
+		if (connected.length === 1) {
+			doPhase2(input);
+			return;
+		}
+
+		const output = GetConnectedHandle(displayHandles, connected, "source");
+		if (!output) {
+			doPhase2(input);
+			return;
+		}
+
+		doPhase3(input, output);
+	};
+
+	const doPhase1 = () => {
+		setDisplayHandles(inputHandles);
+		const nodes = reactFlowInstance.getNodes();
+		updateNodeInternals(nodes.map((node) => node.id));
+	};
+
+	const doPhase2 = (input: PositionId) => {
+		const handles = UpdateHandles(config, outputHandles, [input]);
+		setDisplayHandles(handles);
+		const nodes = reactFlowInstance.getNodes();
+		updateNodeInternals(nodes.map((node) => node.id));
+	};
+
+	const doPhase3 = (input: PositionId, output: PositionId) => {
+		const handles = [input, output];
+		setDisplayHandles(handles);
+		const nodes = reactFlowInstance.getNodes();
+		updateNodeInternals(nodes.map((node) => node.id));
 	};
 
 	const updateNodeFlowOutputs = () => {
@@ -70,38 +104,6 @@ const AnchorNode: React.FC<NodeProps> = (props: NodeProps) => {
 				ids: outputs,
 				payload: nodeFlowValue.payload,
 			});
-		}
-	};
-
-	const setInput = (handles: PositionId[], connected: string[]) => {
-		{
-			const inputHandle = GetConnectedHandle(
-				allInputHandles,
-				connected,
-				"target",
-			);
-
-			return inputHandle
-				? UpdateHandles(config, allOutputHandles, [inputHandle])
-				: handles;
-		}
-	};
-
-	const setOutput = (handles: PositionId[], connected: string[]) => {
-		{
-			const inputHandle = handles.find(
-				(handle) => handle.type === "target",
-			);
-
-			const outputHandle = GetConnectedHandle(
-				displayHandles,
-				connected,
-				"source",
-			);
-
-			return inputHandle && outputHandle
-				? [inputHandle, outputHandle]
-				: handles;
 		}
 	};
 
