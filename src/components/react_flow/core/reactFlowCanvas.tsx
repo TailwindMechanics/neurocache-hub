@@ -7,26 +7,28 @@ import customNodeTypes, { customNodeDefaults } from "@src/data/customNodeTypes";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
+import CyanConnectionLine from "./cyanConnectionLine";
+import { loadFlow, saveFlow } from "./flowSaveLoad";
+import NeonYellowEdge from "./neonYellowEdge";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
-import "../../../styles/reactFlow.scss";
 import ReactFlow, {
+	OnConnectStartParams,
 	BackgroundVariant,
 	applyEdgeChanges,
 	applyNodeChanges,
 	useReactFlow,
+	useViewport,
 	Background,
 	Connection,
 	EdgeChange,
 	NodeChange,
 	NodeTypes,
+	Viewport,
 	addEdge,
 	Node,
 	Edge,
-	useViewport,
-	Viewport,
 } from "reactflow";
-import { loadFlow, saveFlow } from "./flowSaveLoad";
 
 const flowKey = "test-flow";
 
@@ -40,6 +42,7 @@ const ReactFlowCanvas: React.FC = () => {
 	const reactFlowInstance = useReactFlow();
 	let viewport = useViewport();
 	const viewportRef = useRef<Viewport>(viewport);
+	const [edgeTypes, setEdgeTypes] = useState({ custom: NeonYellowEdge });
 
 	useEffect(() => {
 		if (!reactFlowInstance.viewportInitialized) {
@@ -100,9 +103,18 @@ const ReactFlowCanvas: React.FC = () => {
 
 	const onConnect = useCallback(
 		(connection: Edge | Connection) => {
-			const newEdges = addEdge(connection, edges);
+			const newConnection = { ...connection, type: "custom" };
+			const newEdges = addEdge(newConnection, edges);
 			setEdges(newEdges);
 		},
+		[edges],
+	);
+
+	const onConnectStart = useCallback(
+		(
+			event: React.MouseEvent | React.TouchEvent,
+			params: OnConnectStartParams,
+		) => {},
 		[edges],
 	);
 
@@ -156,8 +168,13 @@ const ReactFlowCanvas: React.FC = () => {
 					edges={edges}
 					onEdgesChange={onEdgesChange}
 					onConnect={onConnect}
+					autoPanOnConnect={false}
+					onConnectStart={onConnectStart}
+					defaultEdgeOptions={{ type: "custom" }}
 					nodeTypes={types}
+					edgeTypes={edgeTypes}
 					attributionPosition="bottom-right"
+					connectionLineComponent={CyanConnectionLine}
 				>
 					<Background
 						variant={BackgroundVariant.Dots}

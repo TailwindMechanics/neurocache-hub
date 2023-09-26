@@ -75,18 +75,22 @@ neurocache-hub
 │  │  ├─ react_flow
 │  │  │  ├─ core
 │  │  │  │  ├─ baseNode.tsx
+│  │  │  │  ├─ colouredLine.tsx
+│  │  │  │  ├─ cyanConnectionLine.tsx
 │  │  │  │  ├─ flowSaveLoad.ts
 │  │  │  │  ├─ flowWithProvider.tsx
+│  │  │  │  ├─ neonYellowEdge.tsx
 │  │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  ├─ nodes
-│  │  │  │  ├─ anchorNode.tsx
 │  │  │  │  ├─ buttonOutput.tsx
 │  │  │  │  ├─ inputBox.tsx
+│  │  │  │  ├─ oldAnchorNode.tsx
 │  │  │  │  ├─ openAiNode.tsx
-│  │  │  │  └─ spawnerNode.tsx
+│  │  │  │  ├─ spawnerNode.tsx
+│  │  │  │  └─ splitterNode.tsx
 │  │  │  └─ utils
-│  │  │     ├─ drawHandles.tsx
+│  │  │     ├─ drawHandle.tsx
 │  │  │     ├─ handleUtils.ts
 │  │  │     ├─ mapOutputIds.ts
 │  │  │     ├─ nodeSelectionState.tsx
@@ -126,7 +130,8 @@ neurocache-hub
 │  ├─ hooks
 │  │  ├─ apiContextWrapper.tsx
 │  │  ├─ nodeFlowContext.tsx
-│  │  └─ openAiContext.tsx
+│  │  ├─ openAiContext.tsx
+│  │  └─ useKeyPress.tsx
 │  ├─ services
 │  │  └─ supabase.ts
 │  ├─ styles

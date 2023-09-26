@@ -1,18 +1,18 @@
 //path: src\data\customNodeTypes.tsx
 
+import splitterNode from "@src/components/react_flow/nodes/splitterNode";
 import buttonOutput from "@src/components/react_flow/nodes/buttonOutput";
 import spawnerNode from "@src/components/react_flow/nodes/spawnerNode";
-import anchorNode from "@src/components/react_flow/nodes/anchorNode";
 import openAiNode from "@src/components/react_flow/nodes/openAiNode";
 import inputBox from "@src/components/react_flow/nodes/inputBox";
 import { NodeData } from "@src/types/nodeData";
 import { NodeTypes } from "reactflow";
 
 const customNodeTypes: NodeTypes = {
-	button_output: buttonOutput,
+	splitter: splitterNode,
 	input_box: inputBox,
+	button_output: buttonOutput,
 	open_ai: openAiNode,
-	anchor: anchorNode,
 	spawner: spawnerNode,
 };
 
@@ -21,6 +21,37 @@ export const getUnhiddenNodes = () => {
 };
 
 export const customNodeDefaults = [
+	{
+		nodeType: "splitter",
+		nodeName: "Splitter",
+		category: "Utilities",
+		nodeId: "splitter_60e9b8e9a7f1d8c7c7f9",
+		body: "This node is used to split the flow.",
+		handles: [
+			{
+				id: "in_splitter_1_60e9b8e9a7f1d8c7c7f9",
+				type: "target",
+				position: "top",
+				offset: { x: "0px", y: "0px" },
+				angle: -90,
+			},
+			{
+				id: "out_splitter_1_60e9b8e9a7f1d8c7c7f9",
+				type: "source",
+				position: "bottom",
+				offset: { x: "-41%", y: "21%" },
+				angle: 147,
+			},
+			{
+				id: "out_splitter_2_60e9b8e9a7f1d8c7c7f9",
+				type: "source",
+				position: "bottom",
+				offset: { x: "41%", y: "21%" },
+				angle: 33,
+			},
+		],
+		nodePosition: { x: 150, y: 0 },
+	} as NodeData,
 	{
 		nodeType: "button_output",
 		nodeName: "Output Button",
@@ -32,11 +63,15 @@ export const customNodeDefaults = [
 				id: "in_button_output_60e9b8e9a7f1d8c7c7f6",
 				type: "target",
 				position: "left",
+				offset: { x: "0px", y: "0px" },
+				angle: 0,
 			},
 			{
 				id: "out_button_output_60e9b8e9a7f1d8c7c7f6",
 				type: "source",
 				position: "right",
+				offset: { x: "0px", y: "0px" },
+				angle: 0,
 			},
 		],
 		nodePosition: { x: 0, y: 0 },
@@ -52,11 +87,15 @@ export const customNodeDefaults = [
 				id: "in_input_box_60e9b8e9a7f1d8c7c7f7",
 				type: "target",
 				position: "left",
+				offset: { x: "0px", y: "0px" },
+				angle: 0,
 			},
 			{
 				id: "out_input_box_60e9b8e9a7f1d8c7c7f7",
 				type: "source",
 				position: "right",
+				offset: { x: "0px", y: "0px" },
+				angle: 0,
 			},
 		],
 		nodePosition: { x: 50, y: 0 },
@@ -72,23 +111,18 @@ export const customNodeDefaults = [
 				id: "in_open_ai_60e9b8e9a7f1d8c7c7f8",
 				type: "target",
 				position: "left",
+				offset: { x: "0px", y: "0px" },
+				angle: 0,
 			},
 			{
 				id: "out_open_ai_60e9b8e9a7f1d8c7c7f8",
 				type: "source",
 				position: "right",
+				offset: { x: "0px", y: "0px" },
+				angle: 0,
 			},
 		],
 		nodePosition: { x: 100, y: 0 },
-	} as NodeData,
-	{
-		nodeType: "anchor",
-		nodeName: "✣",
-		category: "Utilities",
-		nodeId: "anchor_60e9b8e9a7f1d8c7c7f9",
-		body: "This node is used to clean up the flow.",
-		handles: [],
-		nodePosition: { x: 150, y: 0 },
 	} as NodeData,
 	{
 		nodeType: "spawner",

@@ -1,3 +1,5 @@
+//path: src\components\react_flow\core\styleReactFlowLogo.tsx
+
 import { useEffect } from "react";
 
 export default function StyleReactFlowLogo() {
@@ -9,7 +11,7 @@ export default function StyleReactFlowLogo() {
 			// Change the link color to suit your color scheme
 			const linkElement = attributionElement.querySelector("a");
 			if (linkElement) {
-				linkElement.textContent = "Powered by React Flow";
+				// linkElement.textContent = "Powered by React Flow";
 				linkElement.style.color = "#f5cdc1";
 				linkElement.classList.add(
 					"underline",

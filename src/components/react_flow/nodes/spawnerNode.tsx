@@ -6,6 +6,7 @@ import { getUnhiddenNodes } from "@src/data/customNodeTypes";
 import { Node, NodeProps, useReactFlow } from "reactflow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
+import useKeyPress from "@src/hooks/useKeyPress";
 import { NodeData } from "@src/types/nodeData";
 import { Combobox } from "@headlessui/react";
 import withBaseNode from "../core/baseNode";
@@ -15,7 +16,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withData("type", "spawner-node")
 	.withStyle("text-aqua-title")
 	.withStyle("font-mono")
-	.withStyle("space-y-2")
+	.withStyle("text-xs")
 	.withStyle("w-50")
 	.withStyle("p-2")
 	.withRounded()
@@ -44,6 +45,16 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 						.replace(/\s+/g, "")
 						.includes(query.toLowerCase().replace(/\s+/g, "")),
 			  );
+
+	const handleEnterPress = () => {
+		if (filteredNodes.length > 0) {
+			const selectedNode = filteredNodes[0];
+			onSelect(selectedNode);
+		}
+	};
+
+	useKeyPress("Enter", handleEnterPress);
+	useKeyPress("Return", handleEnterPress);
 
 	const deselectAll = (nodes: Node[]) => {
 		return nodes.map((node) => ({
@@ -93,7 +104,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 					displayValue={(node: NodeData) => nodeLabel(node)}
 					onChange={(event) => setQuery(event.target.value)}
 				/>
-				<Combobox.Options static>
+				<Combobox.Options className={"pt-1"} static>
 					{filteredNodes.map((node: NodeData) => (
 						<Combobox.Option
 							key={node.nodeName}
