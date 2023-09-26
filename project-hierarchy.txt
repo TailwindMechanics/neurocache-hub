@@ -75,6 +75,7 @@ neurocache-hub
 │  │  ├─ react_flow
 │  │  │  ├─ core
 │  │  │  │  ├─ baseNode.tsx
+│  │  │  │  ├─ flowSaveLoad.ts
 │  │  │  │  ├─ flowWithProvider.tsx
 │  │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
@@ -89,7 +90,8 @@ neurocache-hub
 │  │  │     ├─ handleUtils.ts
 │  │  │     ├─ mapOutputIds.ts
 │  │  │     ├─ nodeSelectionState.tsx
-│  │  │     └─ nodeUtils.ts
+│  │  │     ├─ nodeUtils.ts
+│  │  │     └─ spawnerNodeUtils.ts
 │  │  └─ threejs
 │  │     ├─ controllers
 │  │     │  ├─ cameraLook.tsx
@@ -128,7 +130,7 @@ neurocache-hub
 │  ├─ services
 │  │  └─ supabase.ts
 │  ├─ styles
-│  │  └─ reactflow.scss
+│  │  └─ reactFlow.scss
 │  ├─ types
 │  │  ├─ declarations.d.ts
 │  │  ├─ index.ts

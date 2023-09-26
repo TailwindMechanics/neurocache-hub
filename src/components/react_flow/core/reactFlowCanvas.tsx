@@ -2,11 +2,11 @@
 
 "use client";
 
+import { removeSpawnerNode, spawnSpawnerNode } from "../utils/spawnerNodeUtils";
 import customNodeTypes, { customNodeDefaults } from "@src/data/customNodeTypes";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
-import { NodeData } from "@src/types/nodeData";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
 import "../../../styles/reactFlow.scss";
@@ -23,7 +23,10 @@ import ReactFlow, {
 	addEdge,
 	Node,
 	Edge,
+	useViewport,
+	Viewport,
 } from "reactflow";
+import { loadFlow, saveFlow } from "./flowSaveLoad";
 
 const flowKey = "test-flow";
 
@@ -32,39 +35,27 @@ const ReactFlowCanvas: React.FC = () => {
 	const [types, setTypes] = useState<NodeTypes>({});
 	const [nodes, setNodes] = useState<Node[]>([]);
 	const [edges, setEdges] = useState<Edge[]>([]);
-	const mouseCoordsRef = useRef({ x: 0, y: 0 });
 	const [isSaved, setIsSaved] = useState(false);
+	const mouseCoordsRef = useRef({ x: 0, y: 0 });
 	const reactFlowInstance = useReactFlow();
-	const { setViewport } = useReactFlow();
-	const isLoadedRef = useRef(false);
+	let viewport = useViewport();
+	const viewportRef = useRef<Viewport>(viewport);
 
 	useEffect(() => {
-		if (!isLoadedRef.current) {
-			const restoreFlow = async () => {
-				const flowData = localStorage.getItem(flowKey);
-				if (!flowData) return;
-
-				const flow = JSON.parse(flowData);
-				if (!flow) return;
-
-				console.log(
-					"%c>>> Loaded flow",
-					"color: #a97dd1; font-weight: bold",
-				);
-				isLoadedRef.current = true;
-
-				setNodes(flow.nodes || []);
-				setEdges(flow.edges || []);
-
-				const { x = 0, y = 0, zoom = 1 } = flow.viewport;
-				setViewport({ x, y, zoom });
-			};
-
-			const nodeTypes = { ...customNodeTypes };
-			setTypes(nodeTypes);
-			restoreFlow();
+		if (!reactFlowInstance.viewportInitialized) {
+			return;
 		}
-	}, []);
+
+		viewport = loadFlow(flowKey, setNodes, setEdges) as Viewport;
+		reactFlowInstance.setViewport(viewport);
+		viewportRef.current = viewport;
+
+		setTypes({ ...customNodeTypes });
+	}, [reactFlowInstance.viewportInitialized]);
+
+	useEffect(() => {
+		viewportRef.current = viewport;
+	}, [viewport]);
 
 	useEffect(() => {
 		window.addEventListener("keydown", handleKeyDown);
@@ -78,6 +69,7 @@ const ReactFlowCanvas: React.FC = () => {
 			x: event.clientX,
 			y: event.clientY,
 		});
+
 		mouseCoordsRef.current = reactFlowCoords;
 	};
 
@@ -86,7 +78,7 @@ const ReactFlowCanvas: React.FC = () => {
 			'[data-type="spawner-node"]',
 		);
 		if (!isSpawner) {
-			removeSpawnerNode();
+			setNodes((prevNodes: Node[]) => removeSpawnerNode(prevNodes));
 		}
 	};
 
@@ -114,78 +106,41 @@ const ReactFlowCanvas: React.FC = () => {
 		[edges],
 	);
 
-	const spawnSpawnerNode = () => {
-		console.log("Spawning spawner node");
-
-		let newPos = { ...mouseCoordsRef.current };
-		newPos.x -= 20;
-		newPos.y -= 20;
-
-		const nodeConfig = customNodeDefaults.find(
-			(item) => item.nodeType === "spawner",
-		) as NodeData;
-		nodeConfig.nodePosition = newPos;
-
-		const spawnerNode: Node = {
-			id: nodeConfig.nodeId,
-			type: nodeConfig.nodeType,
-			position: nodeConfig.nodePosition,
-			data: nodeConfig,
-			selected: true,
-		};
-
-		setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
-	};
-
-	const removeSpawnerNode = () => {
-		setNodes((prevNodes: Node[]) =>
-			prevNodes.filter((node) => node.id !== "node_spawner_1"),
-		);
-	};
-	const nodesRef = useRef<Node[]>([]);
-
-	useEffect(() => {
-		nodesRef.current = nodes;
-	}, [nodes]);
-
-	const saveFlow = () => {
-		const nodes = reactFlowInstance.getNodes();
-		if (nodes.length === 0) return;
-
-		const edges = reactFlowInstance.getEdges();
-		setNodes(nodes);
-		setEdges(edges);
-
-		const flow = reactFlowInstance.toObject();
-		const flowString = JSON.stringify(flow);
-
-		console.log("%c>>> Saving flow", "color: #d1be7d; font-weight: bold");
-
-		localStorage.setItem(flowKey, flowString);
-		setIsSaved(true);
-		setTimeout(() => setIsSaved(false), 2000);
-	};
-
 	const handleKeyDown = (event: KeyboardEvent) => {
 		if (event.code === "KeyS" && (event.metaKey || event.ctrlKey)) {
 			event.preventDefault();
-			saveFlow();
+			saveFlow(
+				reactFlowInstance,
+				setNodes,
+				setEdges,
+				setIsSaved,
+				flowKey,
+				viewportRef.current,
+			);
 		} else if (event.code === "Space") {
 			event.preventDefault();
-			spawnSpawnerNode();
+			const spawnerNode = spawnSpawnerNode(
+				mouseCoordsRef.current,
+				customNodeDefaults,
+			);
+			setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
 		}
 	};
 
 	const handleRightClick = (event: React.MouseEvent) => {
 		event.preventDefault();
-		spawnSpawnerNode();
+		const spawnerNode = spawnSpawnerNode(
+			mouseCoordsRef.current,
+			customNodeDefaults,
+		);
+		setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
 	};
 
 	return (
 		<div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">
 			{isSaved && (
-				<div className="absolute bottom-1 left-3 font-mono text-sm font-semibold text-rose-light">
-					Saved
+				<div className="absolute bottom-1 left-3 z-10 font-mono text-sm font-semibold text-rose-light">
+					Saving...
 				</div>
 			)}
 			<NodeFlowProvider edges={edges}>
@@ -202,6 +157,7 @@ const ReactFlowCanvas: React.FC = () => {
 					onEdgesChange={onEdgesChange}
 					onConnect={onConnect}
 					nodeTypes={types}
+					attributionPosition="bottom-right"
 				>
 					<Background
 						variant={BackgroundVariant.Dots}
