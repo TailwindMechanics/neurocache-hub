@@ -1,15 +1,16 @@
 //path: src\components\react_flow\nodes\inputBox.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import { NodeProps, XYPosition, useReactFlow } from "reactflow";
+import NodeSelectionState from "../utils/nodeSelectionState";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
+import CardAtom from "@src/components/atoms/cardAtom";
 import { NodeData } from "@src/types/nodeData";
+import DrawHandle from "../utils/drawHandle";
 import { useEffect, useState } from "react";
-import withBaseNode from "../core/baseNode";
-import { NodeProps, useReactFlow } from "reactflow";
-import NodeSelectionState from "../utils/nodeSelectionState";
 
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
@@ -26,6 +27,12 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 	const reactFlowInstance = useReactFlow();
 	const { nodeFlowValue } = useNodeFlow();
 	const config = props.data as NodeData;
+
+	const thisNode = reactFlowInstance?.getNode(config.nodeId);
+	const thisNodeSize: XYPosition = {
+		x: thisNode?.width as number,
+		y: thisNode?.height as number,
+	};
 
 	useEffect(() => {
 		const anyInputIncluded = config.handles.some((input) => {
@@ -44,17 +51,26 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 	}, [nodeFlowValue]);
 
 	return (
-		<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
-			<TextBoxAtom
-				width={64}
-				height={64}
-				className={
-					"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-sm text-aqua-light ring-1 ring-night-light"
-				}
-				value={`${inputBoxText}`}
-			/>
-		</Root>
+		<>
+			{config.handles?.map((handle, index) =>
+				DrawHandle(handle, thisNodeSize, index),
+			)}
+			<CardAtom title={config.nodeName} body={config.body}>
+				<Root
+					className={NodeSelectionState(reactFlowInstance, props.id)}
+				>
+					<TextBoxAtom
+						width={64}
+						height={64}
+						className={
+							"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-sm text-aqua-light ring-1 ring-night-light"
+						}
+						value={`${inputBoxText}`}
+					/>
+				</Root>
+			</CardAtom>
+		</>
 	);
 };
 
-export default withBaseNode(InputBox);
+export default InputBox;

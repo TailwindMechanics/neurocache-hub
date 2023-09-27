@@ -5,7 +5,7 @@ import NodeSelectionState from "../utils/nodeSelectionState";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import CardAtom from "@src/components/atoms/cardAtom";
-import { useReactFlow, NodeProps } from "reactflow";
+import { useReactFlow, NodeProps, XYPosition } from "reactflow";
 import MapOutputIds from "../utils/mapOutputIds";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
@@ -25,6 +25,12 @@ const SplitterNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const reactFlowInstance = useReactFlow();
 	const config = props.data as NodeData;
 
+	const thisNode = reactFlowInstance?.getNode(config.nodeId);
+	const thisNodeSize: XYPosition = {
+		x: thisNode?.width as number,
+		y: thisNode?.height as number,
+	};
+
 	useEffect(() => {
 		updateNodeFlowOutputs();
 	}, [nodeFlowValue]);
@@ -41,7 +47,9 @@ const SplitterNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			{config.handles?.map(DrawHandle)}
+			{config.handles?.map((handle, index) =>
+				DrawHandle(handle, thisNodeSize, index),
+			)}
 			<CardAtom title={config.nodeName} body={config.body}>
 				<Build
 					className={NodeSelectionState(reactFlowInstance, props.id)}

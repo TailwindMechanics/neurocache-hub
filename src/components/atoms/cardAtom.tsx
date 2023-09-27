@@ -8,6 +8,7 @@ interface CardAtomProps {
 	children?: ReactNode;
 	title: string;
 	body: string;
+	className?: string;
 }
 
 const RootBox = new ComponentBuilder(AtomicDiv)
@@ -18,7 +19,7 @@ const RootBox = new ComponentBuilder(AtomicDiv)
 const CardAtom: React.FC<CardAtomProps> = (props: CardAtomProps) => {
 	return (
 		<>
-			<RootBox>{props.children}</RootBox>
+			<RootBox className={props.className}>{props.children}</RootBox>
 		</>
 	);
 };

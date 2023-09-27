@@ -1,14 +1,15 @@
 //path: src\components\react_flow\nodes\openAiNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import { NodeProps, XYPosition, useReactFlow } from "reactflow";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
+import CardAtom from "@src/components/atoms/cardAtom";
 import { useOpenAI } from "@src/hooks/openAiContext";
-import { NodeProps, useReactFlow } from "reactflow";
 import { NodeData } from "@src/types/nodeData";
-import withBaseNode from "../core/baseNode";
+import DrawHandle from "../utils/drawHandle";
 import React, { useEffect } from "react";
 
 const Root = new ComponentBuilder(AtomicDiv)
@@ -25,6 +26,12 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const reactFlowInstance = useReactFlow();
 	const config = props.data as NodeData;
 	const openAI = useOpenAI();
+
+	const thisNode = reactFlowInstance?.getNode(config.nodeId);
+	const thisNodeSize: XYPosition = {
+		x: thisNode?.width as number,
+		y: thisNode?.height as number,
+	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -57,18 +64,25 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
-				<TextBoxAtom
-					width={0}
-					height={32}
-					className={
-						"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-aqua-light ring-1 ring-night-light"
-					}
-					value={config.nodeName}
-				/>
-			</Root>
+			{config.handles?.map((handle, index) =>
+				DrawHandle(handle, thisNodeSize, index),
+			)}
+			<CardAtom title={config.nodeName} body={config.body}>
+				<Root
+					className={NodeSelectionState(reactFlowInstance, props.id)}
+				>
+					<TextBoxAtom
+						width={0}
+						height={32}
+						className={
+							"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-aqua-light ring-1 ring-night-light"
+						}
+						value={config.nodeName}
+					/>
+				</Root>
+			</CardAtom>
 		</>
 	);
 };
 
-export default withBaseNode(OpenAiNode);
+export default OpenAiNode;

@@ -16,6 +16,6 @@ export type PositionId = {
 	id: string;
 	type: "target" | "source",
 	offset: XYPosition
-	viewClassname?: string = "";
+	viewMargin?: {top : string, left: string, bottom: string, right: string}
 	angle: number;
 };

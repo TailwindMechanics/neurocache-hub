@@ -7,9 +7,9 @@ import customNodeTypes, { customNodeDefaults } from "@src/data/customNodeTypes";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
-import CyanConnectionLine from "./cyanConnectionLine";
 import { loadFlow, saveFlow } from "./flowSaveLoad";
-import NeonYellowEdge from "./neonYellowEdge";
+import ConnectionLine from "./connectionLine";
+import EdgeLine from "./edgeLine";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
 import ReactFlow, {
@@ -29,10 +29,8 @@ import ReactFlow, {
 	Node,
 	Edge,
 } from "reactflow";
-import { z } from "zod";
 
 const flowKey = "test-flow";
-
 const ReactFlowCanvas: React.FC = () => {
 	StyleReactFlowLogo();
 	const [types, setTypes] = useState<NodeTypes>({});
@@ -43,7 +41,7 @@ const ReactFlowCanvas: React.FC = () => {
 	const reactFlowInstance = useReactFlow();
 	let viewport = useViewport();
 	const viewportRef = useRef<Viewport>(viewport);
-	const [edgeTypes, setEdgeTypes] = useState({ custom: NeonYellowEdge });
+	const [edgeTypes, setEdgeTypes] = useState({ custom: EdgeLine });
 
 	useEffect(() => {
 		if (!reactFlowInstance.viewportInitialized) {
@@ -158,6 +156,7 @@ const ReactFlowCanvas: React.FC = () => {
 			)}
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
+					connectionRadius={9}
 					maxZoom={10}
 					minZoom={0.2}
 					autoPanOnNodeDrag={false}
@@ -175,7 +174,7 @@ const ReactFlowCanvas: React.FC = () => {
 					nodeTypes={types}
 					edgeTypes={edgeTypes}
 					attributionPosition="bottom-right"
-					connectionLineComponent={CyanConnectionLine}
+					connectionLineComponent={ConnectionLine}
 				>
 					<Background
 						variant={BackgroundVariant.Dots}

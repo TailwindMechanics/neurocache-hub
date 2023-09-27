@@ -1,9 +1,15 @@
-import { PositionId } from "@src/types/nodeData";
-import { Handle, Position } from "reactflow";
-import colors from "@src/data/colors";
+//path: src\components\react_flow\utils\drawHandle.tsx
 
-const DrawHandle = (handle: PositionId, keyIndex: number) => {
-	const handleRadius = 4;
+import { Handle, Position, XYPosition } from "reactflow";
+import { PositionId } from "@src/types/nodeData";
+
+const DrawHandle = (
+	handle: PositionId,
+	parentSize: XYPosition,
+	keyIndex: number,
+) => {
+	const handleOffsetY = (handle.offset.y / 100) * parentSize.y;
+	const handleOffsetX = ((handle.offset.x - 50) / 100) * parentSize.x;
 
 	return (
 		<Handle
@@ -12,33 +18,29 @@ const DrawHandle = (handle: PositionId, keyIndex: number) => {
 			key={keyIndex}
 			type={handle.type}
 			style={{
-				display: "flex",
-				justifyContent: "center",
-				alignItems: "center",
-				borderWidth: 0,
-				outlineWidth: 0,
-				padding: 0,
-				background: "none",
-				marginTop: `${handle.offset.y}%`,
-				marginLeft: `${handle.offset.x - 50}%`,
+				border: "#00000000",
+				background: "#00000000",
+				marginTop: `${handleOffsetY}px`,
+				marginLeft: `${handleOffsetX}px`,
 			}}
 			isConnectable={true}
 			isConnectableStart={true}
 			isConnectableEnd={true}
 		>
 			<svg
-				className={handle.viewClassname}
-				viewBox={`0 0 ${handleRadius * 2} ${handleRadius * 2}`}
-				height={handleRadius * 2}
-				width={handleRadius * 2}
+				style={{
+					marginTop: handle.viewMargin?.top || 1,
+					marginRight: handle.viewMargin?.right || 0,
+					marginBottom: handle.viewMargin?.bottom || 0,
+					marginLeft: handle.viewMargin?.left || 0,
+				}}
+				className={`text-night-dark`}
+				viewBox="0 0 100 100"
+				stroke="currentColor"
+				fill="currentColor"
 				pointerEvents={"none"}
 			>
-				<circle
-					cx={handleRadius}
-					cy={handleRadius}
-					r={handleRadius}
-					fill={colors["night-dark"]}
-				/>
+				<circle cx="50" cy="50" r="50" />
 			</svg>
 		</Handle>
 	);

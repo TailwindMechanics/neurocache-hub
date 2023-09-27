@@ -1,11 +1,11 @@
-// path: src\components\react_flow\core\cyanConnectionLine.tsx
+//path: src\components\react_flow\core\connectionLine.tsx
 
 import { ConnectionLineComponentProps } from "reactflow";
 import useNodeHandle from "@src/hooks/useNodeHandle";
 import ColouredLine from "./colouredLine";
 import React, { FC } from "react";
 
-const CyanConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
+const ConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
 	if (!props.fromHandle?.id) return null;
 	const fromHandle = useNodeHandle(props.fromHandle.id.toString());
 	if (!fromHandle?.handleData) return null;
@@ -19,9 +19,10 @@ const CyanConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
 			fromY={fromXy.y}
 			toX={props.toX}
 			toY={props.toY}
+			showTargetRing={true}
 			sourceHandleRotation={fromAngle}
 		/>
 	);
 };
 
-export default CyanConnectionLine;
+export default ConnectionLine;

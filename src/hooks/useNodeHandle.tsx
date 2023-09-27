@@ -1,3 +1,5 @@
+//path: src\hooks\useNodeHandle.tsx
+
 import { Node, XYPosition, useReactFlow } from "reactflow";
 import { NodeData } from "@src/types/nodeData";
 

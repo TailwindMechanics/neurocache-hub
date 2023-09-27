@@ -6,10 +6,10 @@ import { getUnhiddenNodes } from "@src/data/customNodeTypes";
 import { Node, NodeProps, useReactFlow } from "reactflow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
+import CardAtom from "@src/components/atoms/cardAtom";
 import useKeyPress from "@src/hooks/useKeyPress";
 import { NodeData } from "@src/types/nodeData";
 import { Combobox } from "@headlessui/react";
-import withBaseNode from "../core/baseNode";
 import { useState } from "react";
 
 const Root = new ComponentBuilder(AtomicDiv)
@@ -95,32 +95,36 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 	};
 
 	return (
-		<Root>
-			<Combobox>
-				<Combobox.Input
-					placeholder="Search for a node..."
-					autoFocus
-					className="rounded-b-lg rounded-t-sm bg-night-black px-2 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
-					displayValue={(node: NodeData) => nodeLabel(node)}
-					onChange={(event) => setQuery(event.target.value)}
-				/>
-				<Combobox.Options className={"pt-1"} static>
-					{filteredNodes.map((node: NodeData) => (
-						<Combobox.Option
-							key={node.nodeName}
-							className={"hover:text-aqua-body"}
-							value={node.nodeName}
-							onClick={() => {
-								onSelect(node);
-							}}
-						>
-							{`${node.category}/${node.nodeName}`}
-						</Combobox.Option>
-					))}
-				</Combobox.Options>
-			</Combobox>
-		</Root>
+		<>
+			<CardAtom title={config.nodeName} body={config.body}>
+				<Root>
+					<Combobox>
+						<Combobox.Input
+							placeholder="Search for a node..."
+							autoFocus
+							className="rounded-b-lg rounded-t-sm bg-night-black px-2 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+							displayValue={(node: NodeData) => nodeLabel(node)}
+							onChange={(event) => setQuery(event.target.value)}
+						/>
+						<Combobox.Options className={"pt-1"} static>
+							{filteredNodes.map((node: NodeData) => (
+								<Combobox.Option
+									key={node.nodeName}
+									className={"hover:text-aqua-body"}
+									value={node.nodeName}
+									onClick={() => {
+										onSelect(node);
+									}}
+								>
+									{`${node.category}/${node.nodeName}`}
+								</Combobox.Option>
+							))}
+						</Combobox.Options>
+					</Combobox>
+				</Root>
+			</CardAtom>
+		</>
 	);
 };
 
-export default withBaseNode(SpawnerNode);
+export default SpawnerNode;

@@ -1,4 +1,7 @@
+//path: src\components\react_flow\core\colouredLine.tsx
+
 import React, { FC } from "react";
+import colors from "@data/colors";
 
 interface ColouredLineProps {
 	fromX: number;
@@ -8,6 +11,8 @@ interface ColouredLineProps {
 	sourceHandleRotation?: number;
 	targetHandleRotation?: number | null;
 	distance?: number;
+	showSourceRing?: boolean;
+	showTargetRing?: boolean;
 }
 
 const ColouredLine: FC<ColouredLineProps> = ({
@@ -18,6 +23,8 @@ const ColouredLine: FC<ColouredLineProps> = ({
 	sourceHandleRotation = 0,
 	targetHandleRotation = null,
 	distance = 50,
+	showSourceRing = false,
+	showTargetRing = false,
 }) => {
 	const length = Math.sqrt(
 		Math.pow(toX - fromX, 2) + Math.pow(toY - fromY, 2),
@@ -53,10 +60,27 @@ const ColouredLine: FC<ColouredLineProps> = ({
 	}
 
 	return (
-		<g className={`stroke bg-night-dark stroke-night-dark`}>
-			{/* <circle cx={fromX} cy={fromY} r="5" stroke="yellow" fill="none" />
-			<circle cx={toX} cy={toY} r="5" stroke="yellow" fill="none" /> */}
+		<g className={`stroke stroke-night-dark text-night-dark`}>
+			{showSourceRing ? (
+				<circle
+					cx={fromX}
+					cy={fromY}
+					r="6"
+					stroke={colors["aqua"]}
+					fill="none"
+				/>
+			) : null}
+			{showTargetRing ? (
+				<circle
+					cx={toX}
+					cy={toY}
+					r="6"
+					stroke={colors["aqua"]}
+					fill="none"
+				/>
+			) : null}
 			<path
+				stroke="currentColor"
 				fill="none"
 				strokeWidth="4"
 				strokeLinecap="round"

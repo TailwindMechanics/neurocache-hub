@@ -1,11 +1,11 @@
-//path: src\components\react_flow\core\neonYellowEdge.tsx
+//path: src\components\react_flow\core\edgeLine.tsx
 
 import useNodeHandle from "@src/hooks/useNodeHandle";
 import ColouredLine from "./colouredLine";
 import { EdgeProps } from "reactflow";
 import React, { FC } from "react";
 
-const NeonYellowEdge: FC<EdgeProps> = (props) => {
+const EdgeLine: FC<EdgeProps> = (props) => {
 	if (!props.sourceHandleId || !props.targetHandleId) return null;
 	const fromHandle = useNodeHandle(props.sourceHandleId);
 	if (!fromHandle?.handleData) return null;
@@ -31,4 +31,4 @@ const NeonYellowEdge: FC<EdgeProps> = (props) => {
 	);
 };
 
-export default NeonYellowEdge;
+export default EdgeLine;

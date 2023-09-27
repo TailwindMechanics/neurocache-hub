@@ -6,10 +6,11 @@ import ButtonAtom from "@src/components/atoms/buttonAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import InputAtom from "@src/components/atoms/inputAtom";
-import { NodeProps, useReactFlow } from "reactflow";
+import CardAtom from "@src/components/atoms/cardAtom";
+import { NodeProps, XYPosition, useReactFlow } from "reactflow";
 import { NodeData } from "@src/types/nodeData";
+import DrawHandle from "../utils/drawHandle";
 import { useAnimation } from "framer-motion";
-import withBaseNode from "../core/baseNode";
 import React, { useState } from "react";
 import colors from "@src/data/colors";
 
@@ -30,6 +31,11 @@ const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 	const config = props.data as NodeData;
 	const controls = useAnimation();
 
+	const thisNode = reactFlowInstance?.getNode(config.nodeId);
+	const thisNodeSize: XYPosition = {
+		x: thisNode?.width as number,
+		y: thisNode?.height as number,
+	};
 	const handleHoverStart = () => {
 		controls.start({
 			color: colors["aqua-title"],
@@ -46,37 +52,44 @@ const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
-				<InputAtom
-					value={inputText}
-					onChange={(e) => setInputText(e.target.value)}
-					className="w-full rounded-sm bg-night-black px-2 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
-				/>
-				<ButtonAtom
-					whileTap={{
-						scale: 0.97,
-						transition: { duration: 0.15, ease: "linear" },
-					}}
-					animate={controls}
-					onHoverStart={handleHoverStart}
-					onHoverEnd={handleHoverEnd}
-					onClick={() => {
-						const sourceIds = config.handles
-							.filter((handle) => handle.type === "source")
-							.map((handle) => handle.id);
-
-						setNodeFlowValue({
-							ids: sourceIds,
-							payload: inputText,
-						});
-					}}
-					className="w-full rounded-b-lg rounded-t-sm border border-night-light bg-night text-night-title "
+			{config.handles?.map((handle, index) =>
+				DrawHandle(handle, thisNodeSize, index),
+			)}
+			<CardAtom title={config.nodeName} body={config.body}>
+				<Root
+					className={NodeSelectionState(reactFlowInstance, props.id)}
 				>
-					Send Output
-				</ButtonAtom>
-			</Root>
+					<InputAtom
+						value={inputText}
+						onChange={(e) => setInputText(e.target.value)}
+						className="w-full rounded-sm bg-night-black px-2 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+					/>
+					<ButtonAtom
+						whileTap={{
+							scale: 0.97,
+							transition: { duration: 0.15, ease: "linear" },
+						}}
+						animate={controls}
+						onHoverStart={handleHoverStart}
+						onHoverEnd={handleHoverEnd}
+						onClick={() => {
+							const sourceIds = config.handles
+								.filter((handle) => handle.type === "source")
+								.map((handle) => handle.id);
+
+							setNodeFlowValue({
+								ids: sourceIds,
+								payload: inputText,
+							});
+						}}
+						className="w-full rounded-b-lg rounded-t-sm border border-night-light bg-night text-night-title "
+					>
+						Send Output
+					</ButtonAtom>
+				</Root>
+			</CardAtom>
 		</>
 	);
 };
 
-export default withBaseNode(ButtonOutput);
+export default ButtonOutput;
