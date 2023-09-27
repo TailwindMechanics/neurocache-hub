@@ -1,31 +1,17 @@
 //path: src\components\react_flow\core\neonYellowEdge.tsx
 
-import { EdgeProps, useReactFlow } from "reactflow";
-import { NodeData } from "@src/types/nodeData";
+import useNodeHandle from "@src/hooks/useNodeHandle";
 import ColouredLine from "./colouredLine";
+import { EdgeProps } from "reactflow";
 import React, { FC } from "react";
 
 const NeonYellowEdge: FC<EdgeProps> = (props) => {
 	const { sourceX, sourceY, targetX, targetY } = props;
-	const sourceHandleId = props.sourceHandleId;
-	const targetHandleId = props.targetHandleId;
-
-	const reactFlowInstance = useReactFlow();
-	const allNodeDatas = reactFlowInstance
-		.getNodes()
-		.map((node) => node.data as NodeData);
-
-	const sourceNodeData = allNodeDatas.find(
-		(node) => node.handles?.find((handle) => handle.id === sourceHandleId),
+	const { handleData: sourceHandleData } = useNodeHandle(
+		props.sourceHandleId?.toString(),
 	);
-	const targetNodeData = allNodeDatas.find(
-		(node) => node.handles?.find((handle) => handle.id === targetHandleId),
-	);
-	const sourceHandleData = sourceNodeData?.handles?.find(
-		(handle) => handle.id === sourceHandleId,
-	);
-	const targetHandleData = targetNodeData?.handles?.find(
-		(handle) => handle.id === targetHandleId,
+	const { handleData: targetHandleData } = useNodeHandle(
+		props.targetHandleId?.toString(),
 	);
 
 	const sourceAngle = sourceHandleData?.angle;

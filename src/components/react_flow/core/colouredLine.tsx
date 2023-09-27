@@ -53,6 +53,9 @@ const ColouredLine: FC<ColouredLineProps> = ({
 
 	return (
 		<g className={`stroke-night-dark`}>
+			<circle cx={fromX} cy={fromY} r="5" fill="red" />
+			<circle cx={toX} cy={toY} r="5" fill="blue" />
+
 			<path
 				fill="none"
 				stroke="stroke-night"
