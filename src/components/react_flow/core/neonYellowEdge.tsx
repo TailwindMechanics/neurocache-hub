@@ -6,25 +6,27 @@ import { EdgeProps } from "reactflow";
 import React, { FC } from "react";
 
 const NeonYellowEdge: FC<EdgeProps> = (props) => {
-	const { sourceX, sourceY, targetX, targetY } = props;
-	const { handleData: sourceHandleData } = useNodeHandle(
-		props.sourceHandleId?.toString(),
-	);
-	const { handleData: targetHandleData } = useNodeHandle(
-		props.targetHandleId?.toString(),
-	);
+	if (!props.sourceHandleId || !props.targetHandleId) return null;
+	const fromHandle = useNodeHandle(props.sourceHandleId);
+	if (!fromHandle?.handleData) return null;
 
-	const sourceAngle = sourceHandleData?.angle;
-	const targetAngle = targetHandleData?.angle;
+	const toHandle = useNodeHandle(props.targetHandleId);
+	if (!toHandle?.handleData) return null;
+
+	const fromAngle = fromHandle.handleData.angle;
+	const fromXy = fromHandle.handleXy;
+
+	const toAngle = toHandle.handleData.angle;
+	const toXy = toHandle.handleXy;
 
 	return (
 		<ColouredLine
-			fromX={sourceX}
-			fromY={sourceY}
-			toX={targetX}
-			toY={targetY}
-			sourceHandleRotation={sourceAngle}
-			targetHandleRotation={targetAngle}
+			fromX={fromXy.x}
+			fromY={fromXy.y}
+			toX={toXy.x}
+			toY={toXy.y}
+			sourceHandleRotation={fromAngle}
+			targetHandleRotation={toAngle}
 		/>
 	);
 };

@@ -1,5 +1,3 @@
-//path: src\components\react_flow\core\colouredLine.tsx
-
 import React, { FC } from "react";
 
 interface ColouredLineProps {
@@ -26,8 +24,10 @@ const ColouredLine: FC<ColouredLineProps> = ({
 	);
 	const dynamicDistance = Math.min(length / 2, distance);
 
+	// Adjust the starting Y coordinate by the vertical offset
+	const correctedSourceAngle = sourceHandleRotation - 90;
 	const sourceHandleRotationInRadians =
-		(sourceHandleRotation * Math.PI) / 180;
+		(correctedSourceAngle * Math.PI) / 180;
 
 	const controlPoint1X =
 		fromX + Math.cos(sourceHandleRotationInRadians) * dynamicDistance;
@@ -40,8 +40,9 @@ const ColouredLine: FC<ColouredLineProps> = ({
 
 	let controlPoint2X, controlPoint2Y;
 	if (targetHandleRotation !== null) {
+		const correctedTargetAngle = targetHandleRotation - 90;
 		const targetHandleRotationInRadians =
-			(targetHandleRotation * Math.PI) / 180;
+			(correctedTargetAngle * Math.PI) / 180;
 		controlPoint2X =
 			toX + Math.cos(targetHandleRotationInRadians) * dynamicDistance;
 		controlPoint2Y =
@@ -52,17 +53,15 @@ const ColouredLine: FC<ColouredLineProps> = ({
 	}
 
 	return (
-		<g className={`stroke-night-dark`}>
-			<circle cx={fromX} cy={fromY} r="5" fill="red" />
-			<circle cx={toX} cy={toY} r="5" fill="blue" />
-
+		<g className={`stroke bg-night-dark stroke-night-dark`}>
+			{/* <circle cx={fromX} cy={fromY} r="5" stroke="yellow" fill="none" />
+			<circle cx={toX} cy={toY} r="5" stroke="yellow" fill="none" /> */}
 			<path
 				fill="none"
-				stroke="stroke-night"
 				strokeWidth="4"
 				strokeLinecap="round"
 				strokeDasharray="1 3"
-				d={`M${fromX},${fromY} C ${controlPoint1X},${controlPoint1Y} ${controlPoint2X},${controlPoint2Y} ${toX},${toY}`}
+				d={`M${toX},${toY} C ${controlPoint2X},${controlPoint2Y} ${controlPoint1X},${controlPoint1Y} ${fromX},${fromY}`}
 			/>
 		</g>
 	);

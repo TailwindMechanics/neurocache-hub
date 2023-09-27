@@ -15,7 +15,7 @@ export interface NodeData {
 export type PositionId = {
 	id: string;
 	type: "target" | "source",
-	position: Position;
-	offset: {x: string, y: string}
+	offset: XYPosition
+	viewClassname?: string = "";
 	angle: number;
 };

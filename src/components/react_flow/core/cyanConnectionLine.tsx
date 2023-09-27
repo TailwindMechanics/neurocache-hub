@@ -5,26 +5,21 @@ import useNodeHandle from "@src/hooks/useNodeHandle";
 import ColouredLine from "./colouredLine";
 import React, { FC } from "react";
 
-const CyanConnectionLine: FC<ConnectionLineComponentProps> = ({
-	fromX,
-	fromY,
-	toX,
-	toY,
-	fromHandle,
-}) => {
-	const { handleData: sourceHandleData } = useNodeHandle(
-		fromHandle?.id?.toString(),
-	);
-	const sourceAngle = sourceHandleData?.angle;
+const CyanConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
+	if (!props.fromHandle?.id) return null;
+	const fromHandle = useNodeHandle(props.fromHandle.id.toString());
+	if (!fromHandle?.handleData) return null;
+
+	const fromAngle = fromHandle.handleData.angle;
+	const fromXy = fromHandle?.handleXy;
 
 	return (
 		<ColouredLine
-			fromX={fromX}
-			fromY={fromY}
-			toX={toX}
-			toY={toY}
-			sourceHandleRotation={sourceAngle}
-			// Pass other required props explicitly here if needed
+			fromX={fromXy.x}
+			fromY={fromXy.y}
+			toX={props.toX}
+			toY={props.toY}
+			sourceHandleRotation={fromAngle}
 		/>
 	);
 };

@@ -29,6 +29,7 @@ import ReactFlow, {
 	Node,
 	Edge,
 } from "reactflow";
+import { z } from "zod";
 
 const flowKey = "test-flow";
 
@@ -170,7 +171,7 @@ const ReactFlowCanvas: React.FC = () => {
 					onConnect={onConnect}
 					autoPanOnConnect={false}
 					onConnectStart={onConnectStart}
-					defaultEdgeOptions={{ type: "custom" }}
+					defaultEdgeOptions={{ type: "custom", zIndex: -100 }}
 					nodeTypes={types}
 					edgeTypes={edgeTypes}
 					attributionPosition="bottom-right"

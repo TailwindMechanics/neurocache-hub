@@ -13,12 +13,21 @@ interface CreateNodeProps {
 
 export const createNode = (props: CreateNodeProps) => {
 	const uid = Uid();
+	const handles = props.handles
+		? props.handles.map((handle, index) => {
+				return {
+					...handle,
+					id: `handle_${index}_${handle.type}_${props.type}_${uid}`,
+				};
+		  })
+		: ([] as PositionId[]);
+
 	return {
 		nodeType: props.type,
 		nodeName: props.name,
 		nodeId: `node_${props.type}_${uid}`,
 		body: props.body,
-		handles: props.handles || [],
+		handles: handles,
 		nodePosition: props.pos,
 	} as NodeData;
 };

@@ -1,26 +1,46 @@
-//path: src\components\react_flow\utils\drawHandle.tsx
-
 import { PositionId } from "@src/types/nodeData";
+import { Handle, Position } from "reactflow";
 import colors from "@src/data/colors";
-import { Handle } from "reactflow";
 
 const DrawHandle = (handle: PositionId, keyIndex: number) => {
+	const handleRadius = 4;
+
 	return (
 		<Handle
 			id={handle.id}
-			position={handle.position}
+			position={Position.Top}
 			key={keyIndex}
 			type={handle.type}
 			style={{
-				borderColor: colors["night-dark"],
-				background: colors["night-dark"],
-				marginBottom: handle.offset.y,
-				marginLeft: handle.offset.x,
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				borderWidth: 0,
+				outlineWidth: 0,
+				padding: 0,
+				background: "none",
+				marginTop: `${handle.offset.y}%`,
+				marginLeft: `${handle.offset.x - 50}%`,
 			}}
 			isConnectable={true}
 			isConnectableStart={true}
 			isConnectableEnd={true}
-		/>
+		>
+			<svg
+				className={handle.viewClassname}
+				viewBox={`0 0 ${handleRadius * 2} ${handleRadius * 2}`}
+				height={handleRadius * 2}
+				width={handleRadius * 2}
+				pointerEvents={"none"}
+			>
+				<circle
+					cx={handleRadius}
+					cy={handleRadius}
+					r={handleRadius}
+					fill={colors["night-dark"]}
+				/>
+			</svg>
+		</Handle>
 	);
 };
 

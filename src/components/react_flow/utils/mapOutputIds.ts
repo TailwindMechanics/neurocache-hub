@@ -6,7 +6,7 @@ const MapOutputIds = (
 	inputs: string[],
 	toMap: PositionId[],
 ): string[] | null => {
-	const anyInputIncluded = toMap.some((handle) => {
+	const anyInputIncluded = toMap?.some((handle) => {
 		return handle.type === "target" && inputs.includes(handle.id);
 	});
 

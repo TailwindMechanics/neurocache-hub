@@ -15,7 +15,6 @@ import React, { useEffect } from "react";
 const Build = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
 	.withStyle("font-mono")
-	.withStyle("space-y-2")
 	.withStyle("px-1")
 	.withRounded()
 	.withBg()
@@ -42,7 +41,7 @@ const SplitterNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			{config.handles.map(DrawHandle)}
+			{config.handles?.map(DrawHandle)}
 			<CardAtom title={config.nodeName} body={config.body}>
 				<Build
 					className={NodeSelectionState(reactFlowInstance, props.id)}
