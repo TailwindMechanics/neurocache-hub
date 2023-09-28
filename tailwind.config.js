@@ -55,6 +55,7 @@ module.exports = {
 		},
 	},
 	plugins: [
+		require("tailwind-scrollbar"),
 		function ({ addUtilities }) {
 			addUtilities(colorUtilities);
 			addUtilities(
@@ -70,6 +71,13 @@ module.exports = {
 					},
 					".stroke-dash-1-4": {
 						strokeDasharray: "1 4",
+					},
+					".scrollbar-hide": {
+						"&::-webkit-scrollbar": {
+							display: "none",
+						},
+						"-ms-overflow-style": "none",
+						"scrollbar-width": "none",
 					},
 				},
 				["responsive", "hover", "focus"],

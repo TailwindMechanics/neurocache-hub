@@ -7,17 +7,19 @@ import TextBoxAtom from "@src/components/atoms/textBoxAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
-import CardAtom from "@src/components/atoms/cardAtom";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import { useEffect, useState } from "react";
 
 const Root = new ComponentBuilder(AtomicDiv)
-	.withStyle("text-aqua-title")
+	.withStyle("overflow-auto")
+	.withStyle("scrollbar-hide")
+	.withStyle("max-w-[260px]")
+	.withStyle("max-h-[100px]")
+	.withStyle("break-words")
 	.withStyle("font-mono")
 	.withStyle("space-y-2")
 	.withStyle("p-1.5")
-	.withStyle("w-50")
 	.withRounded()
 	.withShadow()
 	.withBg()

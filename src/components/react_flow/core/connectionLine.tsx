@@ -35,16 +35,27 @@ const ConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
 	};
 
 	return (
-		<ColouredLine
-			controls={controls}
-			fromX={fromXy.x}
-			fromY={fromXy.y}
-			toX={props.toX}
-			toY={props.toY}
-			showTargetRing={true}
-			sourceHandleRotation={fromAngle}
-			className={"stroke-night-dark stroke-4 stroke-dash-1-3"}
-		/>
+		<>
+			<ColouredLine
+				controls={controls}
+				fromX={fromXy.x}
+				fromY={fromXy.y}
+				toX={props.toX}
+				toY={props.toY}
+				showTargetRing={true}
+				sourceHandleRotation={fromAngle}
+				className={"stroke-night-dark stroke-4 stroke-dash-1-3"}
+			/>
+			<ColouredLine
+				controls={controls}
+				fromX={fromXy.x}
+				fromY={fromXy.y}
+				toX={props.toX}
+				toY={props.toY}
+				sourceHandleRotation={fromAngle}
+				className={"stroke-night-light stroke-2.25 stroke-dash-1-3"}
+			/>
+		</>
 	);
 };
 

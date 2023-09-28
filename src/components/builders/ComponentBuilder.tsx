@@ -43,6 +43,13 @@ export default class ComponentBuilder {
 		return this;
 	}
 
+	withScrollbar(): ComponentBuilder {
+		this.push(
+			"scrollbar-thin scrollbar-thumb-night-dark scrollbar-track-night-light",
+		);
+		return this;
+	}
+
 	withLabel(label: string): ComponentBuilder {
 		this.label = label;
 		return this;

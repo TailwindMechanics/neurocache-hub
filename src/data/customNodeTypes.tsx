@@ -79,6 +79,7 @@ export const customNodeDefaults = [
 		category: "Debug",
 		nodeId: "node_input_box_60e9b8e9a7f1d8c7c7f7",
 		body: "This node displays input payload it receives.",
+		nodePosition: { x: 50, y: 0 },
 		handles: [
 			{
 				id: "in_input_box_60e9b8e9a7f1d8c7c7f7",
@@ -93,7 +94,6 @@ export const customNodeDefaults = [
 				angle: 90,
 			},
 		],
-		nodePosition: { x: 50, y: 0 },
 	} as NodeData,
 	{
 		nodeType: "open_ai",

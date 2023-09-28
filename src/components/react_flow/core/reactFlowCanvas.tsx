@@ -13,10 +13,11 @@ import EdgeLine from "./edgeLine";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
 import ReactFlow, {
-	OnConnectStartParams,
+	useOnSelectionChange,
 	BackgroundVariant,
 	applyEdgeChanges,
 	applyNodeChanges,
+	NodeMouseHandler,
 	useReactFlow,
 	useViewport,
 	Background,
@@ -42,6 +43,8 @@ const ReactFlowCanvas: React.FC = () => {
 	const [isSaved, setIsSaved] = useState(false);
 	const mouseCoordsRef = useRef({ x: 0, y: 0 });
 	const reactFlowInstance = useReactFlow();
+	const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
+	const [canZoom, setCanZoom] = useState(true);
 
 	useEffect(() => {
 		if (!reactFlowInstance.viewportInitialized) {
@@ -109,14 +112,6 @@ const ReactFlowCanvas: React.FC = () => {
 		[edges],
 	);
 
-	const onConnectStart = useCallback(
-		(
-			event: React.MouseEvent | React.TouchEvent,
-			params: OnConnectStartParams,
-		) => {},
-		[edges],
-	);
-
 	const handleKeyDown = (event: KeyboardEvent) => {
 		if (event.code === "KeyS" && (event.metaKey || event.ctrlKey)) {
 			event.preventDefault();
@@ -140,6 +135,27 @@ const ReactFlowCanvas: React.FC = () => {
 		setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
 	};
 
+	const handleNodeMouseEnter = useCallback<NodeMouseHandler>(
+		(event: React.MouseEvent, node: Node) => {
+			const cursorOverSelected = selectedNodes.find(
+				(selectedNode) => selectedNode.id === node.id,
+			);
+			setCanZoom(!cursorOverSelected);
+		},
+		[selectedNodes],
+	);
+
+	const handleNodeMouseLeave = useCallback(() => {
+		setCanZoom(true);
+	}, []);
+
+	useOnSelectionChange({
+		onChange: ({ nodes, edges }) => {
+			setSelectedNodes(nodes);
+			setCanZoom(!nodes.length);
+		},
+	});
+
 	return (
 		<div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">
 			{isSaved && (
@@ -149,25 +165,31 @@ const ReactFlowCanvas: React.FC = () => {
 			)}
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
+					// Element and Data Related Props
+					nodes={nodes}
+					edges={edges}
+					nodeTypes={types}
+					edgeTypes={edgeTypes}
+					// Event Handler Props
+					onConnect={onConnect}
+					onContextMenu={handleRightClick}
+					onEdgesChange={onEdgesChange}
+					onMouseDownCapture={handleMouseDown}
+					onMouseMove={handleMouseMove}
+					onNodeMouseEnter={handleNodeMouseEnter}
+					onNodeMouseLeave={handleNodeMouseLeave}
+					onNodesChange={onNodesChange}
+					// Styling and UI Props
+					attributionPosition="bottom-right"
+					connectionLineComponent={ConnectionLine}
+					defaultEdgeOptions={{ type: "custom", zIndex: -100 }}
+					// Zoom and Pan Props
+					autoPanOnConnect={false}
+					autoPanOnNodeDrag={false}
 					connectionRadius={9}
 					maxZoom={10}
 					minZoom={0.2}
-					autoPanOnNodeDrag={false}
-					onContextMenu={handleRightClick}
-					onMouseMove={handleMouseMove}
-					onMouseDownCapture={handleMouseDown}
-					nodes={nodes}
-					onNodesChange={onNodesChange}
-					edges={edges}
-					onEdgesChange={onEdgesChange}
-					onConnect={onConnect}
-					autoPanOnConnect={false}
-					onConnectStart={onConnectStart}
-					defaultEdgeOptions={{ type: "custom", zIndex: -100 }}
-					nodeTypes={types}
-					edgeTypes={edgeTypes}
-					attributionPosition="bottom-right"
-					connectionLineComponent={ConnectionLine}
+					preventScrolling={canZoom}
 				>
 					<Background
 						variant={BackgroundVariant.Dots}
