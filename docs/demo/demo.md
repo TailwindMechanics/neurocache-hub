@@ -5,8 +5,9 @@ https://youtu.be/aD-u0gl93wM
 Think dosage
 # Todo
 ---===---
-- Fix node flow
-- Fix edge selection display
+- Create login node
+- Create login flow
+- Restore graph from db
 - 
 - Organise office
 - Fix headset
