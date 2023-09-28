@@ -12,10 +12,10 @@ import DrawHandle from "../utils/drawHandle";
 import { useEffect, useState } from "react";
 
 const Root = new ComponentBuilder(AtomicDiv)
-	.withStyle("overflow-auto")
 	.withStyle("scrollbar-hide")
+	.withStyle("overflow-auto")
 	.withStyle("max-w-[260px]")
-	.withStyle("max-h-[100px]")
+	.withStyle("max-h-[200px]")
 	.withStyle("break-words")
 	.withStyle("font-mono")
 	.withStyle("space-y-2")
@@ -61,7 +61,7 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
 				<TextBoxAtom
 					className={
-						"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-sm text-aqua-light ring-1 ring-night-light"
+						"prose rounded-b-lg rounded-t-sm bg-night-dark px-2 text-sm text-aqua-light ring-1 ring-night-light prose-code:text-aqua-body prose-pre:bg-night prose-pre:scrollbar-hide"
 					}
 					value={`${inputBoxText}`}
 				/>

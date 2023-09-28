@@ -14,6 +14,7 @@ import React, { useEffect } from "react";
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
 	.withStyle("font-mono")
+	.withStyle("text-sm")
 	.withStyle("p-1.5")
 	.withRounded()
 	.withShadow()
@@ -69,7 +70,7 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
 				<TextBoxAtom
 					className={
-						"m-0 rounded-b-lg rounded-t-sm bg-night-dark p-0 px-1 text-lg text-aqua-light ring-1 ring-night-light"
+						"m-0 rounded-b-lg rounded-t-sm bg-night-dark p-0 px-1 text-aqua-light ring-1 ring-night-light"
 					}
 					value={config.nodeName}
 				/>

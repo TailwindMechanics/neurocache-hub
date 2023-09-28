@@ -2,7 +2,6 @@
 Use this after the demo https://youtu.be/AAMJZTEH_h4
 https://youtu.be/aD-u0gl93wM
 
-Think dosage
 # Todo
 ---===---
 - Create login node
@@ -15,6 +14,22 @@ Think dosage
 - Clean laptop
 - Apply to jobs
 ---===---
+
+1. Receive a response from GPT-4, which is in Markdown format.
+2. Use Remark to parse the Markdown into an AST (Abstract Syntax Tree).
+3. Use the remark-rehype plugin to convert the Markdown AST to a Rehype-compatible HTML AST.
+4. Use Rehype plugins like rehype-highlight for syntax highlighting and any other HTML transformations you need.
+5. Convert the HTML AST to actual HTML.
+6. Apply your Tailwind styling to the generated HTML.
+7. Present the styled HTML to the user.
+
+
+
+
+
+
+
+
 
   
 # Neurocache tasks
