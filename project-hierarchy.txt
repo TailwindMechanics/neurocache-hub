@@ -74,7 +74,6 @@ neurocache-hub
 │  │  │  └─ ReactFlowBuilder.tsx
 │  │  ├─ react_flow
 │  │  │  ├─ core
-│  │  │  │  ├─ baseNode.tsx
 │  │  │  │  ├─ colouredLine.tsx
 │  │  │  │  ├─ connectionLine.tsx
 │  │  │  │  ├─ edgeLine.tsx

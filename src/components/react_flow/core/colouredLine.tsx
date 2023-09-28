@@ -1,5 +1,6 @@
 //path: src\components\react_flow\core\colouredLine.tsx
 
+import { AnimationControls, motion } from "framer-motion";
 import React, { FC } from "react";
 import colors from "@data/colors";
 
@@ -14,6 +15,7 @@ interface ColouredLineProps {
 	showSourceRing?: boolean;
 	showTargetRing?: boolean;
 	className?: string;
+	controls: AnimationControls;
 }
 
 const ColouredLine: FC<ColouredLineProps> = (props) => {
@@ -80,7 +82,8 @@ const ColouredLine: FC<ColouredLineProps> = (props) => {
 					fill="none"
 				/>
 			) : null}
-			<path
+			<motion.path
+				animate={props.controls}
 				className={props.className}
 				fill="none"
 				strokeLinecap="round"

@@ -5,6 +5,8 @@ https://youtu.be/aD-u0gl93wM
 Think dosage
 # Todo
 ---===---
+- Create active nodes display
+- 
 - Create login node
 - Create login flow
 - Restore graph from db
