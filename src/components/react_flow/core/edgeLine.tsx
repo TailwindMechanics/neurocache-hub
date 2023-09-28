@@ -1,5 +1,3 @@
-//path: src\components\react_flow\core\edgeLine.tsx
-
 import useNodeHandle from "@src/hooks/useNodeHandle";
 import ColouredLine from "./colouredLine";
 import { EdgeProps } from "reactflow";
@@ -27,6 +25,11 @@ const EdgeLine: FC<EdgeProps> = (props) => {
 			toY={toXy.y}
 			sourceHandleRotation={fromAngle}
 			targetHandleRotation={toAngle}
+			className={
+				props.selected
+					? "stroke-aqua-dark stroke-3 stroke-dash-1-2"
+					: "stroke-night-dark stroke-4 stroke-dash-1-3"
+			}
 		/>
 	);
 };

@@ -23,6 +23,12 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			strokeWidth: {
+				3: "3px",
+				4: "4px",
+				5: "5px",
+				6: "6px",
+			},
 			width: {
 				"main-column": "0%",
 			},
@@ -44,6 +50,23 @@ module.exports = {
 	plugins: [
 		function ({ addUtilities }) {
 			addUtilities(colorUtilities);
+			addUtilities(
+				{
+					".stroke-dash-1-1": {
+						strokeDasharray: "1 1",
+					},
+					".stroke-dash-1-2": {
+						strokeDasharray: "1 2",
+					},
+					".stroke-dash-1-3": {
+						strokeDasharray: "1 3",
+					},
+					".stroke-dash-1-4": {
+						strokeDasharray: "1 4",
+					},
+				},
+				["responsive", "hover", "focus"],
+			);
 		},
 		function ({ addBase, theme }) {
 			addBase({

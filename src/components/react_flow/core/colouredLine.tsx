@@ -13,79 +13,78 @@ interface ColouredLineProps {
 	distance?: number;
 	showSourceRing?: boolean;
 	showTargetRing?: boolean;
+	className?: string;
 }
 
-const ColouredLine: FC<ColouredLineProps> = ({
-	fromX,
-	fromY,
-	toX,
-	toY,
-	sourceHandleRotation = 0,
-	targetHandleRotation = null,
-	distance = 50,
-	showSourceRing = false,
-	showTargetRing = false,
-}) => {
+const ColouredLine: FC<ColouredLineProps> = (props) => {
 	const length = Math.sqrt(
-		Math.pow(toX - fromX, 2) + Math.pow(toY - fromY, 2),
+		Math.pow(props.toX - props.fromX, 2) +
+			Math.pow(props.toY - props.fromY, 2),
 	);
-	const dynamicDistance = Math.min(length / 2, distance);
+	const dynamicDistance = Math.min(length / 2, props.distance || 50);
 
 	// Adjust the starting Y coordinate by the vertical offset
-	const correctedSourceAngle = sourceHandleRotation - 90;
+	const correctedSourceAngle = props.sourceHandleRotation
+		? props.sourceHandleRotation - 90
+		: -90;
 	const sourceHandleRotationInRadians =
 		(correctedSourceAngle * Math.PI) / 180;
 
 	const controlPoint1X =
-		fromX + Math.cos(sourceHandleRotationInRadians) * dynamicDistance;
+		props.fromX + Math.cos(sourceHandleRotationInRadians) * dynamicDistance;
 	const controlPoint1Y =
-		fromY + Math.sin(sourceHandleRotationInRadians) * dynamicDistance;
+		props.fromY + Math.sin(sourceHandleRotationInRadians) * dynamicDistance;
 
-	const deltaX = toX - fromX;
-	const deltaY = toY - fromY;
+	const deltaX = props.toX - props.fromX;
+	const deltaY = props.toY - props.fromY;
 	const angleToPointBack = Math.atan2(deltaY, deltaX) + Math.PI;
 
 	let controlPoint2X, controlPoint2Y;
-	if (targetHandleRotation !== null) {
-		const correctedTargetAngle = targetHandleRotation - 90;
+	if (
+		props.targetHandleRotation !== null &&
+		props.targetHandleRotation !== undefined
+	) {
+		const correctedTargetAngle = props.targetHandleRotation - 90;
 		const targetHandleRotationInRadians =
 			(correctedTargetAngle * Math.PI) / 180;
 		controlPoint2X =
-			toX + Math.cos(targetHandleRotationInRadians) * dynamicDistance;
+			props.toX +
+			Math.cos(targetHandleRotationInRadians) * dynamicDistance;
 		controlPoint2Y =
-			toY + Math.sin(targetHandleRotationInRadians) * dynamicDistance;
+			props.toY +
+			Math.sin(targetHandleRotationInRadians) * dynamicDistance;
 	} else {
-		controlPoint2X = toX + Math.cos(angleToPointBack) * dynamicDistance;
-		controlPoint2Y = toY + Math.sin(angleToPointBack) * dynamicDistance;
+		controlPoint2X =
+			props.toX + Math.cos(angleToPointBack) * dynamicDistance;
+		controlPoint2Y =
+			props.toY + Math.sin(angleToPointBack) * dynamicDistance;
 	}
 
 	return (
-		<g className={`stroke stroke-night-dark text-night-dark`}>
-			{showSourceRing ? (
+		<g>
+			{props.showSourceRing ? (
 				<circle
-					cx={fromX}
-					cy={fromY}
+					cx={props.fromX}
+					cy={props.fromY}
 					r="6"
 					stroke={colors["aqua"]}
 					fill="none"
 				/>
 			) : null}
-			{showTargetRing ? (
+			{props.showTargetRing ? (
 				<circle
-					cx={toX}
-					cy={toY}
+					cx={props.toX}
+					cy={props.toY}
 					r="6"
 					stroke={colors["aqua"]}
 					fill="none"
 				/>
 			) : null}
 			<path
-				stroke="currentColor"
+				className={props.className}
 				fill="none"
-				strokeWidth="4"
 				strokeLinecap="round"
-				strokeDasharray="1 3"
-				d={`M${toX},${toY} C ${controlPoint2X},${controlPoint2Y} ${controlPoint1X},${controlPoint1Y} ${fromX},${fromY}`}
+				d={`M${props.toX},${props.toY} C ${controlPoint2X},${controlPoint2Y} ${controlPoint1X},${controlPoint1Y} ${props.fromX},${props.fromY}`}
 			/>
 		</g>
 	);

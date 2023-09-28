@@ -21,6 +21,7 @@ const ConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
 			toY={props.toY}
 			showTargetRing={true}
 			sourceHandleRotation={fromAngle}
+			className={"stroke-night-dark stroke-4 stroke-dash-1-3"}
 		/>
 	);
 };

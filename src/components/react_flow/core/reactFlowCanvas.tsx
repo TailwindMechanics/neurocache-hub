@@ -33,15 +33,15 @@ import ReactFlow, {
 const flowKey = "test-flow";
 const ReactFlowCanvas: React.FC = () => {
 	StyleReactFlowLogo();
+	let viewport = useViewport();
+	const [edgeTypes] = useState({ custom: EdgeLine });
 	const [types, setTypes] = useState<NodeTypes>({});
 	const [nodes, setNodes] = useState<Node[]>([]);
 	const [edges, setEdges] = useState<Edge[]>([]);
+	const viewportRef = useRef<Viewport>(viewport);
 	const [isSaved, setIsSaved] = useState(false);
 	const mouseCoordsRef = useRef({ x: 0, y: 0 });
 	const reactFlowInstance = useReactFlow();
-	let viewport = useViewport();
-	const viewportRef = useRef<Viewport>(viewport);
-	const [edgeTypes, setEdgeTypes] = useState({ custom: EdgeLine });
 
 	useEffect(() => {
 		if (!reactFlowInstance.viewportInitialized) {
