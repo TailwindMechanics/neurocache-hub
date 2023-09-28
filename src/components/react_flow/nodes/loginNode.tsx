@@ -1,4 +1,4 @@
-//path: src\components\react_flow\nodes\buttonOutput.tsx
+//path: src\components\react_flow\nodes\loginNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
 import { NodeProps, XYPosition, useReactFlow } from "reactflow";
@@ -14,18 +14,22 @@ import React, { useState } from "react";
 import colors from "@src/data/colors";
 
 const Root = new ComponentBuilder(AtomicDiv)
-	.withStyle("space-y-1")
 	.withStyle("font-mono")
+	.withStyle("space-y-1")
 	.withStyle("flex-col")
+	.withStyle("text-xs")
 	.withStyle("p-1.5")
-	.withStyle("w-64")
+	.withStyle("flex")
+	.withStyle("h-16")
+	.withStyle("w-48")
 	.withRounded()
 	.withShadow()
 	.withBg()
 	.build();
 
-const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
-	const [inputText, setInputText] = useState("");
+const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
+	const [passwordText, setPasswordText] = useState("");
+	const [emailText, setEmailText] = useState("");
 	const { setNodeFlowValue } = useNodeFlow();
 	const reactFlowInstance = useReactFlow();
 	const config = props.data as NodeData;
@@ -57,11 +61,18 @@ const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 			)}
 			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
 				<InputAtom
-					value={inputText}
-					onChange={(e) => setInputText(e.target.value)}
-					className="w-full rounded-sm bg-night-black px-2 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+					value={emailText}
+					onChange={(e) => setEmailText(e.target.value)}
+					className="h-full w-full rounded-sm bg-night-black px-1 text-center text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+				/>
+				<InputAtom
+					value={passwordText}
+					type="password"
+					onChange={(e) => setPasswordText(e.target.value)}
+					className="h-full w-full rounded-sm bg-night-black px-1 text-center text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
 				/>
 				<ButtonAtom
+					className="h-full w-full rounded-b-lg rounded-t-sm border border-night-light bg-night text-night-title "
 					whileTap={{
 						scale: 0.97,
 						transition: { duration: 0.15, ease: "linear" },
@@ -70,22 +81,19 @@ const ButtonOutput: React.FC<NodeProps> = (props: NodeProps) => {
 					onHoverStart={handleHoverStart}
 					onHoverEnd={handleHoverEnd}
 					onClick={() => {
-						const sourceIds = config.handles
-							.filter((handle) => handle.type === "source")
-							.map((handle) => handle.id);
-
-						setNodeFlowValue({
-							ids: sourceIds,
-							payload: inputText,
-						});
+						console.log(
+							"Email: ",
+							emailText,
+							"Password",
+							passwordText,
+						);
 					}}
-					className="w-full rounded-b-lg rounded-t-sm border border-night-light bg-night text-night-title "
 				>
-					Send Output
+					Login
 				</ButtonAtom>
 			</Root>
 		</>
 	);
 };
 
-export default ButtonOutput;
+export default LoginNode;

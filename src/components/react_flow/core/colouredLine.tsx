@@ -11,7 +11,6 @@ interface ColouredLineProps {
 	toY: number;
 	sourceHandleRotation?: number;
 	targetHandleRotation?: number | null;
-	distance?: number;
 	showSourceRing?: boolean;
 	showTargetRing?: boolean;
 	className?: string;
@@ -23,7 +22,7 @@ const ColouredLine: FC<ColouredLineProps> = (props) => {
 		Math.pow(props.toX - props.fromX, 2) +
 			Math.pow(props.toY - props.fromY, 2),
 	);
-	const dynamicDistance = Math.min(length / 2, props.distance || 50);
+	const dynamicDistance = Math.min(length / 2, 50);
 
 	// Adjust the starting Y coordinate by the vertical offset
 	const correctedSourceAngle = props.sourceHandleRotation

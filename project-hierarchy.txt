@@ -84,6 +84,7 @@ neurocache-hub
 │  │  │  ├─ nodes
 │  │  │  │  ├─ buttonOutput.tsx
 │  │  │  │  ├─ inputBox.tsx
+│  │  │  │  ├─ loginNode.tsx
 │  │  │  │  ├─ openAiNode.tsx
 │  │  │  │  ├─ spawnerNode.tsx
 │  │  │  │  └─ splitterNode.tsx

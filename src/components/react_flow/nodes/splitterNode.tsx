@@ -1,11 +1,10 @@
 //path: src\components\react_flow\nodes\splitterNode.tsx
 
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import { useReactFlow, NodeProps, XYPosition } from "reactflow";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
-import CardAtom from "@src/components/atoms/cardAtom";
-import { useReactFlow, NodeProps, XYPosition } from "reactflow";
 import MapOutputIds from "../utils/mapOutputIds";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
@@ -17,6 +16,7 @@ const Build = new ComponentBuilder(AtomicDiv)
 	.withStyle("font-mono")
 	.withStyle("px-1")
 	.withRounded()
+	.withShadow()
 	.withBg()
 	.build();
 
@@ -50,13 +50,9 @@ const SplitterNode: React.FC<NodeProps> = (props: NodeProps) => {
 			{config.handles?.map((handle, index) =>
 				DrawHandle(handle, thisNodeSize, index),
 			)}
-			<CardAtom title={config.nodeName} body={config.body}>
-				<Build
-					className={NodeSelectionState(reactFlowInstance, props.id)}
-				>
-					<Splitter className="stroke-fill-none h-5 w-4 stroke-aqua-dark text-aqua" />
-				</Build>
-			</CardAtom>
+			<Build className={NodeSelectionState(reactFlowInstance, props.id)}>
+				<Splitter className="stroke-fill-none h-5 w-4 stroke-aqua-dark text-aqua" />
+			</Build>
 		</>
 	);
 };

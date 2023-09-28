@@ -53,6 +53,11 @@ export default class ComponentBuilder {
 		return this;
 	}
 
+	withShadow(): ComponentBuilder {
+		this.push(`drop-shadow-[-4px_10px_1px_rgba(0,0,20,.72)]`);
+		return this;
+	}
+
 	withImage(imageUrl: string | undefined): ComponentBuilder {
 		this.imageComponent = imageUrl ? (
 			<Image

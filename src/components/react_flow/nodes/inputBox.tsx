@@ -16,9 +16,10 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
 	.withStyle("font-mono")
 	.withStyle("space-y-2")
+	.withStyle("p-1.5")
 	.withStyle("w-50")
-	.withStyle("p-2")
 	.withRounded()
+	.withShadow()
 	.withBg()
 	.build();
 
@@ -55,20 +56,14 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 			{config.handles?.map((handle, index) =>
 				DrawHandle(handle, thisNodeSize, index),
 			)}
-			<CardAtom title={config.nodeName} body={config.body}>
-				<Root
-					className={NodeSelectionState(reactFlowInstance, props.id)}
-				>
-					<TextBoxAtom
-						width={64}
-						height={64}
-						className={
-							"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-sm text-aqua-light ring-1 ring-night-light"
-						}
-						value={`${inputBoxText}`}
-					/>
-				</Root>
-			</CardAtom>
+			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
+				<TextBoxAtom
+					className={
+						"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-sm text-aqua-light ring-1 ring-night-light"
+					}
+					value={`${inputBoxText}`}
+				/>
+			</Root>
 		</>
 	);
 };

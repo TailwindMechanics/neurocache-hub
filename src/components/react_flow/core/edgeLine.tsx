@@ -1,3 +1,5 @@
+//path: src\components\react_flow\core\edgeLine.tsx
+
 import { AnimationDefinition, useAnimation } from "framer-motion";
 import useNodeHandle from "@src/hooks/useNodeHandle";
 import ColouredLine from "./colouredLine";
@@ -64,7 +66,7 @@ const EdgeLine: FC<EdgeProps> = (props) => {
 				className={
 					props.selected
 						? "stroke-aqua-dark stroke-2.5 stroke-dash-1-3"
-						: "stroke-night-light stroke-2.5 stroke-dash-1-3"
+						: "stroke-night-light stroke-2.25 stroke-dash-1-3"
 				}
 			/>
 		</>

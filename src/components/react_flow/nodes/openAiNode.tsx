@@ -6,7 +6,6 @@ import NodeSelectionState from "../utils/nodeSelectionState";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
-import CardAtom from "@src/components/atoms/cardAtom";
 import { useOpenAI } from "@src/hooks/openAiContext";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
@@ -15,9 +14,9 @@ import React, { useEffect } from "react";
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
 	.withStyle("font-mono")
-	.withStyle("space-y-2")
-	.withStyle("p-2")
+	.withStyle("p-1.5")
 	.withRounded()
+	.withShadow()
 	.withBg()
 	.build();
 
@@ -67,20 +66,14 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 			{config.handles?.map((handle, index) =>
 				DrawHandle(handle, thisNodeSize, index),
 			)}
-			<CardAtom title={config.nodeName} body={config.body}>
-				<Root
-					className={NodeSelectionState(reactFlowInstance, props.id)}
-				>
-					<TextBoxAtom
-						width={0}
-						height={32}
-						className={
-							"rounded-b-lg rounded-t-sm bg-night-dark px-2 text-aqua-light ring-1 ring-night-light"
-						}
-						value={config.nodeName}
-					/>
-				</Root>
-			</CardAtom>
+			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
+				<TextBoxAtom
+					className={
+						"m-0 rounded-b-lg rounded-t-sm bg-night-dark p-0 px-1 text-lg text-aqua-light ring-1 ring-night-light"
+					}
+					value={config.nodeName}
+				/>
+			</Root>
 		</>
 	);
 };

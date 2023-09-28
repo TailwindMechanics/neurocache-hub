@@ -1,19 +1,21 @@
 //path: src\data\customNodeTypes.tsx
 
-import splitterNode from "@src/components/react_flow/nodes/splitterNode";
-import buttonOutput from "@src/components/react_flow/nodes/buttonOutput";
-import spawnerNode from "@src/components/react_flow/nodes/spawnerNode";
-import openAiNode from "@src/components/react_flow/nodes/openAiNode";
-import inputBox from "@src/components/react_flow/nodes/inputBox";
+import SplitterNode from "@src/components/react_flow/nodes/splitterNode";
+import ButtonOutput from "@src/components/react_flow/nodes/buttonOutput";
+import SpawnerNode from "@src/components/react_flow/nodes/spawnerNode";
+import OpenAiNode from "@src/components/react_flow/nodes/openAiNode";
+import LoginNode from "@src/components/react_flow/nodes/loginNode";
+import InputBox from "@src/components/react_flow/nodes/inputBox";
 import { NodeData } from "@src/types/nodeData";
 import { NodeTypes } from "reactflow";
 
 const customNodeTypes: NodeTypes = {
-	splitter: splitterNode,
-	input_box: inputBox,
-	button_output: buttonOutput,
-	open_ai: openAiNode,
-	spawner: spawnerNode,
+	splitter: SplitterNode,
+	input_box: InputBox,
+	button_output: ButtonOutput,
+	open_ai: OpenAiNode,
+	spawner: SpawnerNode,
+	login: LoginNode,
 };
 
 export const getUnhiddenNodes = () => {
@@ -123,6 +125,15 @@ export const customNodeDefaults = [
 		body: "This node spawns other nodes.",
 		handles: [],
 		nodePosition: { x: 200, y: 0 },
+	} as NodeData,
+	{
+		nodeType: "login",
+		nodeName: "Login",
+		category: "UnHidden",
+		nodeId: "node_login_1",
+		body: "This node logs a user in.",
+		handles: [],
+		nodePosition: { x: 0, y: 0 },
 	} as NodeData,
 ];
 
