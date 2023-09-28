@@ -1,10 +1,8 @@
-//path: src\components\react_flow\core\edgeLine.tsx
-
 import { AnimationDefinition, useAnimation } from "framer-motion";
 import useNodeHandle from "@src/hooks/useNodeHandle";
 import ColouredLine from "./colouredLine";
 import { EdgeProps } from "reactflow";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 
 const EdgeLine: FC<EdgeProps> = (props) => {
 	if (!props.sourceHandleId || !props.targetHandleId) return null;
@@ -39,21 +37,37 @@ const EdgeLine: FC<EdgeProps> = (props) => {
 		controls.stop();
 	};
 
+	// useEffect(() => {
+	// 	playAnimation();
+	// }, [controls]);
+
 	return (
-		<ColouredLine
-			controls={controls}
-			fromX={fromXy.x}
-			fromY={fromXy.y}
-			toX={toXy.x}
-			toY={toXy.y}
-			sourceHandleRotation={fromAngle}
-			targetHandleRotation={toAngle}
-			className={
-				props.selected
-					? "stroke-aqua stroke-3 stroke-dash-1-2"
-					: "stroke-night-dark stroke-4 stroke-dash-1-3"
-			}
-		/>
+		<>
+			<ColouredLine
+				controls={controls}
+				fromX={fromXy.x}
+				fromY={fromXy.y}
+				toX={toXy.x}
+				toY={toXy.y}
+				sourceHandleRotation={fromAngle}
+				targetHandleRotation={toAngle}
+				className={"stroke-night-dark stroke-4 stroke-dash-1-3"}
+			/>
+			<ColouredLine
+				controls={controls}
+				fromX={fromXy.x}
+				fromY={fromXy.y}
+				toX={toXy.x}
+				toY={toXy.y}
+				sourceHandleRotation={fromAngle}
+				targetHandleRotation={toAngle}
+				className={
+					props.selected
+						? "stroke-aqua-dark stroke-2.5 stroke-dash-1-3"
+						: "stroke-night-light stroke-2.5 stroke-dash-1-3"
+				}
+			/>
+		</>
 	);
 };
 

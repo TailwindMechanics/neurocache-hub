@@ -24,7 +24,13 @@ module.exports = {
 	theme: {
 		extend: {
 			strokeWidth: {
+				0.5: "0.5px",
+				1: "1px",
+				1.5: "1.5px",
+				2: "2px",
+				2.5: "2.5px",
 				3: "3px",
+				3.5: "3.5px",
 				4: "4px",
 				5: "5px",
 				6: "6px",
