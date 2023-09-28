@@ -5,23 +5,11 @@ https://youtu.be/aD-u0gl93wM
 Think dosage
 # Todo
 ---===---
-x Coffee
-x Shower
-x 
-x Take meds
-x Groom
-x
-- Fix Neurocache issue
-- Finish base node refactor
--  
+- Fix node flow
+- Fix edge selection display
+- 
 - Organise office
 - Fix headset
-- 
-- Pack Storytoys gear; laptop ipad dongle cables
-- Email Aishu with dimensions
-- 
-- Reply to Linkedin inmail
-- Follow up with Illuvium, Scopely, Fortis
 - 
 - Clean laptop
 - Apply to jobs

@@ -128,13 +128,6 @@ const ReactFlowCanvas: React.FC = () => {
 				flowKey,
 				viewportRef.current,
 			);
-		} else if (event.code === "Space") {
-			event.preventDefault();
-			const spawnerNode = spawnSpawnerNode(
-				mouseCoordsRef.current,
-				customNodeDefaults,
-			);
-			setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
 		}
 	};
 

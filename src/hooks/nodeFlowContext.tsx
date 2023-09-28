@@ -50,7 +50,7 @@ export const NodeFlowProvider: React.FC<NodeFlowProviderProps> = ({
 			"color: #63dce0",
 		);
 
-		const inputIds = OutputIdToInputIds(newValue.ids[0]);
+		const inputIds = newValue.ids.flatMap((id) => OutputIdToInputIds(id));
 		if (inputIds.length === 0) {
 			console.log(
 				`%c!!!!! No input ids found, payload: ${newValue.payload}`,
