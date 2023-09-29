@@ -8,6 +8,7 @@ import LoginNode from "@src/components/react_flow/nodes/loginNode";
 import InputBox from "@src/components/react_flow/nodes/inputBox";
 import { NodeData } from "@src/types/nodeData";
 import { NodeTypes } from "reactflow";
+import MarkdownBox from "@src/components/react_flow/nodes/markdownBox";
 
 const customNodeTypes: NodeTypes = {
 	splitter: SplitterNode,
@@ -16,6 +17,7 @@ const customNodeTypes: NodeTypes = {
 	open_ai: OpenAiNode,
 	spawner: SpawnerNode,
 	login: LoginNode,
+	markdown_box: MarkdownBox,
 };
 
 export const getUnhiddenNodes = () => {
@@ -134,6 +136,28 @@ export const customNodeDefaults = [
 		body: "This node logs a user in.",
 		handles: [],
 		nodePosition: { x: 0, y: 0 },
+	} as NodeData,
+	{
+		nodeType: "markdown_box",
+		nodeName: "Markdown Box",
+		category: "Content",
+		nodeId: "node_markdown_box_50e9b8e9a7f1d8c7c7f7",
+		body: "This node displays input markdown.",
+		nodePosition: { x: 50, y: 0 },
+		handles: [
+			{
+				id: "in_markdown_box_50e9b8e9a7f1d8c7c7f7",
+				type: "target",
+				offset: { x: -0.33, y: 40 },
+				angle: -90,
+			},
+			{
+				id: "out_markdown_box_50e9b8e9a7f1d8c7c7f7",
+				type: "source",
+				offset: { x: 100.33, y: 40 },
+				angle: 90,
+			},
+		],
 	} as NodeData,
 ];
 
