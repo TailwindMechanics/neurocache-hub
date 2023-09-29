@@ -15,13 +15,27 @@ https://youtu.be/aD-u0gl93wM
 - Apply to jobs
 ---===---
 
-1. Receive a response from GPT-4, which is in Markdown format.
-2. Use Remark to parse the Markdown into an AST (Abstract Syntax Tree).
-3. Use the remark-rehype plugin to convert the Markdown AST to a Rehype-compatible HTML AST.
-4. Use Rehype plugins like rehype-highlight for syntax highlighting and any other HTML transformations you need.
-5. Convert the HTML AST to actual HTML.
-6. Apply your Tailwind styling to the generated HTML.
-7. Present the styled HTML to the user.
+https://www.codedaily.io/tutorials/Markdown-Syntax-Highlighting-with-PrismJS-using-Unified-Remark-and-Rehype
+ 
+1. Install Required Packages: Install Unified, Remark, Rehype, and any other necessary libraries.
+
+2. Import Core Modules: Import refractor/core and the languages you wish to support (e.g., JavaScript, CSS, etc.).
+
+3. Register Languages: Use refractor.register() to register the languages you imported.
+
+4. Alias Languages: (Optional) Use refractor.alias() to alias languages, such as associating 'js' with 'jsx'.
+
+5. Create Custom Highlighter: Define a custom Prism highlighter using Refractor. This will involve writing a function that processes the AST generated for the Markdown text and applies Prism-based syntax highlighting to code blocks.
+
+6. Create Unified Processor: Use Unified's .use() method to chain together Remark for Markdown parsing, Rehype for HTML transformation, and your custom highlighter.
+
+7. Create React Markdown Component: Create a React component that takes Markdown text as a prop (source), processes it through the Unified pipeline, and renders it as React elements.
+
+8. Apply Themes: Optionally, apply a PrismJS theme for the syntax highlighting by linking to it in your HTML. The tutorial suggests using a theme from CloudFlare CDN.
+
+9. Test the Component: Use the Markdown rendering React component in your application, passing Markdown text to it and verifying that it renders correctly with syntax highlighting.
+
+10. Optimize: Check for performance and bundle size, and tweak as necessary.
 
 
 
