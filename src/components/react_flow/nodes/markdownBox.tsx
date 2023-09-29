@@ -1,6 +1,5 @@
 import ComponentBuilder from "@src/components/builders/ComponentBuilder";
 import { NodeProps, XYPosition, useReactFlow } from "reactflow";
-import markdownToComponent from "../utils/markdownToComponent";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
@@ -74,7 +73,7 @@ const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
 				DrawHandle(handle, thisNodeSize, index),
 			)}
 			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
-				<Content>{markdownToComponent(inputBoxText)}</Content>
+				<Content>{inputBoxText}</Content>
 			</Root>
 		</>
 	);
