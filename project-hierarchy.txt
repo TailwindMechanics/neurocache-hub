@@ -68,7 +68,8 @@ neurocache-hub
 │  │  │  ├─ buttonAtom.tsx
 │  │  │  ├─ inputAtom.tsx
 │  │  │  └─ textBoxAtom.tsx
-│  │  ├─ builders
+│  │  ├─ components
+│  │  │  ├─ codeBlock.tsx
 │  │  │  └─ ComponentBuilder.tsx
 │  │  ├─ react_flow
 │  │  │  ├─ core
@@ -83,6 +84,7 @@ neurocache-hub
 │  │  │  │  ├─ buttonOutput.tsx
 │  │  │  │  ├─ inputBox.tsx
 │  │  │  │  ├─ loginNode.tsx
+│  │  │  │  ├─ markdownBox.tsx
 │  │  │  │  ├─ openAiNode.tsx
 │  │  │  │  ├─ spawnerNode.tsx
 │  │  │  │  └─ splitterNode.tsx
@@ -92,6 +94,7 @@ neurocache-hub
 │  │  │     ├─ mapOutputIds.ts
 │  │  │     ├─ nodeSelectionState.tsx
 │  │  │     ├─ nodeUtils.ts
+│  │  │     ├─ renderCodeblocks.tsx
 │  │  │     └─ spawnerNodeUtils.ts
 │  │  └─ threejs
 │  │     ├─ controllers

@@ -1,6 +1,6 @@
 //path: src\components\react_flow\nodes\inputBox.tsx
 
-import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import { NodeProps, XYPosition, useReactFlow } from "reactflow";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";

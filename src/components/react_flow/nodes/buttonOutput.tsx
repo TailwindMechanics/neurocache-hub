@@ -1,6 +1,6 @@
 //path: src\components\react_flow\nodes\buttonOutput.tsx
 
-import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import { NodeProps, XYPosition, useReactFlow } from "reactflow";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import ButtonAtom from "@src/components/atoms/buttonAtom";
@@ -19,7 +19,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("flex-col")
 	.withStyle("text-sm")
 	.withStyle("p-1.5")
-	.withStyle("w-24")
+	.withStyle("w-32")
 	.withRounded()
 	.withShadow()
 	.withBg()

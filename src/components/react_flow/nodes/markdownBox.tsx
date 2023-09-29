@@ -1,12 +1,16 @@
-import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+//path: src\components\react_flow\nodes\markdownBox.tsx
+
+import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import { NodeProps, XYPosition, useReactFlow } from "reactflow";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
+import RenderCodeblocks from "../utils/renderCodeblocks";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
 import React, { useEffect, useState } from "react";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
+import Markdown from "react-markdown";
 
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("scrollbar-hide")
@@ -14,7 +18,6 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("max-w-[340px]")
 	.withStyle("max-h-[200px]")
 	.withStyle("font-mono")
-	.withStyle("text-sm")
 	.withStyle("p-1.5")
 	.withRounded()
 	.withShadow()
@@ -31,11 +34,15 @@ const Content = new ComponentBuilder(AtomicDiv)
 	.withStyle("prose-h4:text-aqua")
 	.withStyle("text-aqua-title")
 	.withStyle("bg-night-black")
-	.withStyle("prose-sm")
+	.withStyle("prose-pre:text-xs")
+	.withStyle("prose-code:m-0")
+	.withStyle("prose-code:p-0")
+	.withStyle("prose-pre:p-0")
+	.withStyle("prose-pre:m-0")
 	.withStyle("text-xs")
 	.withStyle("border")
 	.withStyle("prose")
-	.withStyle("p-2")
+	.withStyle("p-1.5")
 	.withRounded()
 	.build();
 
@@ -73,10 +80,18 @@ const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
 				DrawHandle(handle, thisNodeSize, index),
 			)}
 			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
-				<Content>{inputBoxText}</Content>
+				<Content>
+					<Markdown
+						components={{
+							code: RenderCodeblocks as any,
+						}}
+					>
+						{inputBoxText}
+					</Markdown>
+				</Content>
 			</Root>
 		</>
 	);
 };
 
-export default MarkdownBox;
+export default React.memo(MarkdownBox);

@@ -1,6 +1,6 @@
 //path: src\components\react_flow\nodes\spawnerNode.tsx
 
-import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import { createNode } from "@src/components/react_flow/utils/nodeUtils";
 import { getUnhiddenNodes } from "@src/data/customNodeTypes";
 import { Node, NodeProps, useReactFlow } from "reactflow";

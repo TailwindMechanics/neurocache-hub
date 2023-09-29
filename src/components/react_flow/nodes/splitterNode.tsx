@@ -1,6 +1,6 @@
 //path: src\components\react_flow\nodes\splitterNode.tsx
 
-import ComponentBuilder from "@src/components/builders/ComponentBuilder";
+import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import { useReactFlow, NodeProps, XYPosition } from "reactflow";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";

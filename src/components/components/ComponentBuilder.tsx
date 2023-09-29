@@ -1,4 +1,4 @@
-//path: src\components\builders\ComponentBuilder.tsx
+//path: src\components\components\ComponentBuilder.tsx
 
 import { AtomNode, AtomProps } from "@src/types/declarations";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
