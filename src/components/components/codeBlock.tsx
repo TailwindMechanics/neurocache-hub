@@ -21,8 +21,8 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
 		}, 2000);
 	};
 	return (
-		<div className="bg-night-dark">
-			<div className="-my-0.25 flex justify-between bg-night-light px-2 text-aqua">
+		<div className="rounded border border-night-light bg-night-dark">
+			<div className="-my-0.25 flex justify-between  bg-night-light px-2 text-aqua">
 				<div>{language}</div>
 				<button onClick={onClick}>
 					{isCopied ? "copied..." : "copy"}
@@ -43,4 +43,4 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
 	);
 };
 
-export default React.memo(CodeBlock);
+export default CodeBlock;
