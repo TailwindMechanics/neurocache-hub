@@ -15,7 +15,7 @@ import { NodeProps } from "reactflow";
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("scrollbar-hide")
 	.withStyle("overflow-auto")
-	.withStyle("max-w-[340px]")
+	.withStyle("max-w-[320px]")
 	.withStyle("max-h-[200px]")
 	.withStyle("font-mono")
 	.withStyle("p-1.5")

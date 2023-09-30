@@ -114,7 +114,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 			<Root className={NodeSelectionState(props.id)}>
 				<Combobox>
 					<Combobox.Input
-						placeholder="Search for a node..."
+						placeholder="..."
 						autoFocus
 						className="rounded-sm bg-night-black px-1 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
 						displayValue={(node: NodeData) => nodeLabel(node)}

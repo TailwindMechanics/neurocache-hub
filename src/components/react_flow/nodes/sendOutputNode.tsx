@@ -37,7 +37,7 @@ const SendOutputNode: React.FC<NodeProps> = (props: NodeProps) => {
 				<InputAtom
 					value={inputText}
 					onChange={(e) => setInputText(e.target.value)}
-					className="w-full rounded-sm bg-night-black px-2 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+					className="w-full rounded-sm bg-night-black px-1 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
 				/>
 				<ButtonAtom
 					onClick={() => {

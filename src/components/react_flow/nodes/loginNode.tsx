@@ -19,7 +19,6 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-xs")
 	.withStyle("p-1.5")
 	.withStyle("flex")
-	.withStyle("h-16")
 	.withStyle("w-40")
 	.withRounded()
 	.withShadow()
@@ -69,18 +68,18 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
 						<InputAtom
 							value={emailText}
 							onChange={(e) => setEmailText(e.target.value)}
-							className="h-full w-full rounded-sm bg-night-black px-1 text-center text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+							className="h-full w-full rounded-sm bg-night-black px-1 py-0.5 text-center text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
 						/>
 						<InputAtom
 							value={passwordText}
 							type="password"
 							onChange={(e) => setPasswordText(e.target.value)}
-							className="h-full w-full rounded-sm bg-night-black px-1 text-center text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+							className="h-full w-full rounded-sm bg-night-black px-1 py-0.5 text-center text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
 						/>
 					</>
 				)}
 				<ButtonAtom
-					className="h-full w-full rounded-b-lg rounded-t-sm border border-night-light bg-night text-night-title "
+					className="h-full w-full rounded-b-lg rounded-t-sm border border-night-light bg-night pb-0.5 text-night-title "
 					onClick={onClick}
 				>
 					{session ? "Logout" : "Login"}
