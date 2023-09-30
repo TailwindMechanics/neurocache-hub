@@ -3,7 +3,7 @@
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
-import { useNodeFlow } from "@src/hooks/nodeFlowContext";
+import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
 import { NodeData } from "@src/types/nodeData";

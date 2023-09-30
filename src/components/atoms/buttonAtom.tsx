@@ -1,3 +1,5 @@
+//path: src\components\atoms\buttonAtom.tsx
+
 import { motion, useAnimation } from "framer-motion";
 import colors from "@src/data/colors";
 import React, { useEffect, useRef } from "react";

@@ -3,9 +3,9 @@
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
-import { useNodeFlow } from "@src/hooks/nodeFlowContext";
+import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
-import { useOpenAI } from "@src/hooks/openAiContext";
+import { useOpenAI } from "@src/hooks/useOpenAI";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import React, { useEffect } from "react";

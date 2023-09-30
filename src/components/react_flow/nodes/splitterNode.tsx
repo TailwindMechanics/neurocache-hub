@@ -2,7 +2,7 @@
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import NodeSelectionState from "../utils/nodeSelectionState";
-import { useNodeFlow } from "@src/hooks/nodeFlowContext";
+import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import MapOutputIds from "../utils/mapOutputIds";
 import { NodeData } from "@src/types/nodeData";

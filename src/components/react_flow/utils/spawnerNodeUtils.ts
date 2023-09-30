@@ -7,8 +7,6 @@ export const spawnSpawnerNode = (
 	mouseCoords: XYPosition,
 	customNodeDefaults: NodeData[],
 ): Node => {
-	console.log("Spawning spawner node");
-
 	let newPos = { ...mouseCoords };
 	newPos.x -= 20;
 	newPos.y -= 20;

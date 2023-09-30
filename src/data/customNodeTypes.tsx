@@ -28,7 +28,7 @@ export const customNodeDefaults = [
 	{
 		nodeType: "splitter",
 		nodeName: "Splitter",
-		category: "Utilities",
+		category: "Utils",
 		nodeId: "splitter_60e9b8e9a7f1d8c7c7f9",
 		body: "This node is used to split the flow.",
 		handles: [
@@ -56,7 +56,7 @@ export const customNodeDefaults = [
 	{
 		nodeType: "send_output",
 		nodeName: "Send Output",
-		category: "Debug",
+		category: "Utils",
 		nodeId: "node_button_output_60e9b8e9a7f1d8c7c7f6",
 		body: "This node outputs the InputField text when the Button is clicked.",
 		handles: [
@@ -78,7 +78,7 @@ export const customNodeDefaults = [
 	{
 		nodeType: "input_box",
 		nodeName: "Input Box",
-		category: "Debug",
+		category: "Utils",
 		nodeId: "node_input_box_60e9b8e9a7f1d8c7c7f7",
 		body: "This node displays input payload it receives.",
 		nodePosition: { x: 50, y: 0 },
@@ -98,9 +98,18 @@ export const customNodeDefaults = [
 		],
 	} as NodeData,
 	{
+		nodeType: "login",
+		nodeName: "Login",
+		category: "Utils",
+		nodeId: "node_login_1",
+		body: "This node logs a user in.",
+		handles: [],
+		nodePosition: { x: 0, y: 0 },
+	} as NodeData,
+	{
 		nodeType: "open_ai",
 		nodeName: "Gpt-4",
-		category: "OpenAi",
+		category: "AI",
 		nodeId: "node_open_ai_60e9b8e9a7f1d8c7c7f8",
 		body: "This node makes an API request to OpenAI.",
 		handles: [
@@ -129,18 +138,9 @@ export const customNodeDefaults = [
 		nodePosition: { x: 200, y: 0 },
 	} as NodeData,
 	{
-		nodeType: "login",
-		nodeName: "Login",
-		category: "UnHidden",
-		nodeId: "node_login_1",
-		body: "This node logs a user in.",
-		handles: [],
-		nodePosition: { x: 0, y: 0 },
-	} as NodeData,
-	{
 		nodeType: "markdown_box",
 		nodeName: "Markdown Box",
-		category: "Content",
+		category: "UI",
 		nodeId: "node_markdown_box_50e9b8e9a7f1d8c7c7f7",
 		body: "This node displays input markdown.",
 		nodePosition: { x: 50, y: 0 },

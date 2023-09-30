@@ -1,4 +1,4 @@
-//path: src\hooks\openAiContext.tsx
+//path: src\hooks\useOpenAI.tsx
 
 import React, { createContext, useContext, ReactNode } from "react";
 

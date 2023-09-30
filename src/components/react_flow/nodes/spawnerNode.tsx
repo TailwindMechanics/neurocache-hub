@@ -3,6 +3,7 @@
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import { createNode } from "@src/components/react_flow/utils/nodeUtils";
 import { getUnhiddenNodes } from "@src/data/customNodeTypes";
+import NodeSelectionState from "../utils/nodeSelectionState";
 import { Node, NodeProps, useReactFlow } from "reactflow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
@@ -24,6 +25,18 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withBg()
 	.build();
 
+const Content = new ComponentBuilder(AtomicDiv)
+	.withStyle("border-night-light")
+	.withStyle("bg-night-black")
+	.withStyle("text-aqua-dark")
+	.withStyle("rounded-b-lg")
+	.withStyle("rounded-t")
+	.withStyle("border")
+	.withStyle("py-0.5")
+	.withStyle("mt-0.5")
+	.withStyle("px-1")
+	.build();
+
 const nodeLabel = (node: NodeData) => {
 	if (!node) return "";
 	if (IsNullOrEmpty(node.nodeName)) return node.nodeName;
@@ -37,6 +50,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const [query, setQuery] = useState("");
 	const nodeData = props.data as NodeData;
 	const allNodes = getUnhiddenNodes();
+	const thisNode = reactFlowInstance?.getNode(nodeData.nodeId);
 	const filteredNodes =
 		query === ""
 			? allNodes
@@ -68,7 +82,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 		const spawnedNode: Node = {
 			id: node.nodeId,
 			type: node.nodeType,
-			position: nodeData.nodePosition,
+			position: thisNode?.position || nodeData.nodePosition,
 			data: { ...node },
 		};
 
@@ -97,29 +111,31 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root>
+			<Root className={NodeSelectionState(props.id)}>
 				<Combobox>
 					<Combobox.Input
 						placeholder="Search for a node..."
 						autoFocus
-						className="rounded-b-lg rounded-t-sm bg-night-black px-2 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+						className="rounded-sm bg-night-black px-1 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
 						displayValue={(node: NodeData) => nodeLabel(node)}
 						onChange={(event) => setQuery(event.target.value)}
 					/>
-					<Combobox.Options className={"pt-1"} static>
-						{filteredNodes.map((node: NodeData) => (
-							<Combobox.Option
-								key={node.nodeName}
-								className={"hover:text-aqua-body"}
-								value={node.nodeName}
-								onClick={() => {
-									onSelect(node);
-								}}
-							>
-								{`${node.category}/${node.nodeName}`}
-							</Combobox.Option>
-						))}
-					</Combobox.Options>
+					<Content>
+						<Combobox.Options static>
+							{filteredNodes.map((node: NodeData) => (
+								<Combobox.Option
+									key={node.nodeName}
+									className={"hover:text-aqua-body"}
+									value={node.nodeName}
+									onClick={() => {
+										onSelect(node);
+									}}
+								>
+									{`${node.category}/${node.nodeName}`}
+								</Combobox.Option>
+							))}
+						</Combobox.Options>
+					</Content>
 				</Combobox>
 			</Root>
 		</>

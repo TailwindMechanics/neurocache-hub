@@ -5,12 +5,11 @@
 import { removeSpawnerNode, spawnSpawnerNode } from "../utils/spawnerNodeUtils";
 import customNodeTypes, { customNodeDefaults } from "@src/data/customNodeTypes";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
+import { NodeFlowProvider } from "@src/hooks/useNodeFlow";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
 import { loadFlow, saveFlow } from "./flowSaveLoad";
 import { spawnNode } from "../utils/nodeSpawner";
 import ConnectionLine from "./connectionLine";
-import { supabase, useAuth } from "@src/hooks/useAuth";
 import loginNode from "../nodes/loginNode";
 import EdgeLine from "./edgeLine";
 import colors from "@data/colors";
@@ -33,33 +32,33 @@ import ReactFlow, {
 	Node,
 	Edge,
 } from "reactflow";
+import { useSession } from "@src/hooks/useSession";
 
 const flowKey = "test-flow";
 const ReactFlowCanvas: React.FC = () => {
-	const authState = useAuth();
 	StyleReactFlowLogo();
-	const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
+	let viewport = useViewport();
 	const [edgeTypes] = useState({ custom: EdgeLine });
+	const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
 	const [spawnedLoginNode, setSpawnedLoginNode] = useState<Node | undefined>(
 		undefined,
 	);
 	const [types, setTypes] = useState<NodeTypes>({});
 	const [nodes, setNodes] = useState<Node[]>([]);
 	const [edges, setEdges] = useState<Edge[]>([]);
+	const viewportRef = useRef<Viewport>(viewport);
 	const [isSaved, setIsSaved] = useState(false);
 	const mouseCoordsRef = useRef({ x: 0, y: 0 });
 	const [canZoom, setCanZoom] = useState(true);
 	const reactFlowInstance = useReactFlow();
-	let viewport = useViewport();
-	const viewportRef = useRef<Viewport>(viewport);
+	const session = useSession();
 
 	useEffect(() => {
-		// Check if the viewport is initialized and the user is logged in
 		if (!reactFlowInstance.viewportInitialized) {
 			return;
 		}
 
-		if (!authState) {
+		if (!session) {
 			spawnLoginNode();
 			setCanZoom(true);
 			return;
@@ -71,7 +70,7 @@ const ReactFlowCanvas: React.FC = () => {
 		viewportRef.current = viewport;
 
 		setTypes({ ...customNodeTypes });
-	}, [reactFlowInstance.viewportInitialized, authState]);
+	}, [reactFlowInstance.viewportInitialized, session]);
 
 	useEffect(() => {
 		viewportRef.current = viewport;
@@ -82,12 +81,11 @@ const ReactFlowCanvas: React.FC = () => {
 		return () => {
 			window.removeEventListener("keydown", handleKeyDown);
 		};
-	}, []);
+	}, [session]);
 
 	const spawnLoginNode = () => {
 		if (spawnedLoginNode) return;
 
-		console.log("Spawn the login node");
 		setTypes({ login: loginNode });
 		const spawnedLogin = spawnNode("login", reactFlowInstance);
 		setSpawnedLoginNode(spawnedLogin);
@@ -102,14 +100,14 @@ const ReactFlowCanvas: React.FC = () => {
 		mouseCoordsRef.current = reactFlowCoords;
 	};
 
-	const handleMouseDown = (event: React.MouseEvent) => {
-		const isSpawner = (event.target as HTMLElement).closest(
-			'[data-type="spawner-node"]',
-		);
-		if (!isSpawner) {
-			setNodes((prevNodes: Node[]) => removeSpawnerNode(prevNodes));
-		}
-	};
+	// const handleMouseDown = (event: React.MouseEvent) => {
+	// 	const isSpawner = (event.target as HTMLElement).closest(
+	// 		'[data-type="spawner-node"]',
+	// 	);
+	// 	if (!isSpawner) {
+	// 		setNodes((prevNodes: Node[]) => removeSpawnerNode(prevNodes));
+	// 	}
+	// };
 
 	const onNodesChange = useCallback(
 		(changes: NodeChange[]) => {
@@ -139,8 +137,8 @@ const ReactFlowCanvas: React.FC = () => {
 	const handleKeyDown = (event: KeyboardEvent) => {
 		if (event.code === "KeyS" && (event.metaKey || event.ctrlKey)) {
 			event.preventDefault();
-			console.log(authState);
-			if (!authState) return;
+
+			if (!session) return;
 
 			saveFlow(
 				reactFlowInstance,
@@ -156,9 +154,8 @@ const ReactFlowCanvas: React.FC = () => {
 	const handleRightClick = (event: React.MouseEvent) => {
 		event.preventDefault();
 		setCanZoom(true);
-		console.log(authState);
 
-		if (!authState) return;
+		if (!session) return;
 
 		const spawnerNode = spawnSpawnerNode(
 			mouseCoordsRef.current,
@@ -207,7 +204,6 @@ const ReactFlowCanvas: React.FC = () => {
 					onConnect={onConnect}
 					onContextMenu={handleRightClick}
 					onEdgesChange={onEdgesChange}
-					onMouseDownCapture={handleMouseDown}
 					onMouseMove={handleMouseMove}
 					onNodeMouseEnter={handleNodeMouseEnter}
 					onNodeMouseLeave={handleNodeMouseLeave}

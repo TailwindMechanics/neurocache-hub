@@ -2,11 +2,11 @@
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import NodeSelectionState from "../utils/nodeSelectionState";
-import { useNodeFlow } from "@src/hooks/nodeFlowContext";
+import React, { useEffect, useMemo, useState } from "react";
+import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import RenderCodeblocks from "../utils/renderCodeblocks";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
-import React, { useEffect, useState } from "react";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import Markdown from "react-markdown";
@@ -51,7 +51,7 @@ const Content = new ComponentBuilder(AtomicDiv)
 	.build();
 
 const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
-	const [inputBoxText, setinputLabelText] = useState("## *Markdown box*");
+	const [markdownText, setMarkdownText] = useState("## *Markdown box*");
 	const { nodeFlowValue } = useNodeFlow();
 	const nodeData = props.data as NodeData;
 
@@ -67,9 +67,21 @@ const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
 				? (nodeFlowValue.payload as string)
 				: "Input box";
 
-			setinputLabelText(displayText);
+			setMarkdownText(displayText);
 		}
 	}, [nodeFlowValue]);
+
+	const memoizedMarkdown = useMemo(() => {
+		return (
+			<Markdown
+				components={{
+					code: RenderCodeblocks as any,
+				}}
+			>
+				{markdownText}
+			</Markdown>
+		);
+	}, [markdownText]);
 
 	return (
 		<>
@@ -77,15 +89,7 @@ const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
 				DrawHandle({ handle, nodeData, index }),
 			)}
 			<Root className={NodeSelectionState(props.id)}>
-				<Content>
-					<Markdown
-						components={{
-							code: RenderCodeblocks as any,
-						}}
-					>
-						{inputBoxText}
-					</Markdown>
-				</Content>
+				<Content>{memoizedMarkdown}</Content>
 			</Root>
 		</>
 	);
