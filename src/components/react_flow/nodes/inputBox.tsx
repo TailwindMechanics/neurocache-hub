@@ -1,7 +1,6 @@
 //path: src\components\react_flow\nodes\inputBox.tsx
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
-import { NodeProps, XYPosition, useReactFlow } from "reactflow";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
@@ -10,6 +9,8 @@ import { IsNullOrEmpty } from "@src/utils/stringUtils";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import { useEffect, useState } from "react";
+import { NodeProps } from "reactflow";
+import React from "react";
 
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("scrollbar-hide")
@@ -27,18 +28,11 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 	const [inputBoxText, setinputLabelText] = useState("Text box");
-	const reactFlowInstance = useReactFlow();
 	const { nodeFlowValue } = useNodeFlow();
-	const config = props.data as NodeData;
-
-	const thisNode = reactFlowInstance?.getNode(config.nodeId);
-	const thisNodeSize: XYPosition = {
-		x: thisNode?.width as number,
-		y: thisNode?.height as number,
-	};
+	const nodeData = props.data as NodeData;
 
 	useEffect(() => {
-		const anyInputIncluded = config.handles.some((input) => {
+		const anyInputIncluded = nodeData.handles.some((input) => {
 			return (
 				input.type === "target" && nodeFlowValue.ids.includes(input.id)
 			);
@@ -55,10 +49,10 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			{config.handles?.map((handle, index) =>
-				DrawHandle(handle, thisNodeSize, index),
+			{nodeData.handles?.map((handle, index) =>
+				DrawHandle({ handle, nodeData, index }),
 			)}
-			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
+			<Root className={NodeSelectionState(props.id)}>
 				<TextBoxAtom
 					className={
 						"prose rounded-b-lg rounded-t-sm bg-night-dark px-2 text-sm text-aqua-light ring-1 ring-night-light prose-code:text-aqua-body prose-pre:bg-night prose-pre:scrollbar-hide"
@@ -70,4 +64,4 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 	);
 };
 
-export default InputBox;
+export default React.memo(InputBox);

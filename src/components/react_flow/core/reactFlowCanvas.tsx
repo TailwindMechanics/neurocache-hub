@@ -8,7 +8,10 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { NodeFlowProvider } from "@src/hooks/nodeFlowContext";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
 import { loadFlow, saveFlow } from "./flowSaveLoad";
+import { spawnNode } from "../utils/nodeSpawner";
 import ConnectionLine from "./connectionLine";
+import { supabase, useAuth } from "@src/hooks/useAuth";
+import loginNode from "../nodes/loginNode";
 import EdgeLine from "./edgeLine";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
@@ -33,30 +36,42 @@ import ReactFlow, {
 
 const flowKey = "test-flow";
 const ReactFlowCanvas: React.FC = () => {
+	const authState = useAuth();
 	StyleReactFlowLogo();
-	let viewport = useViewport();
+	const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
 	const [edgeTypes] = useState({ custom: EdgeLine });
+	const [spawnedLoginNode, setSpawnedLoginNode] = useState<Node | undefined>(
+		undefined,
+	);
 	const [types, setTypes] = useState<NodeTypes>({});
 	const [nodes, setNodes] = useState<Node[]>([]);
 	const [edges, setEdges] = useState<Edge[]>([]);
-	const viewportRef = useRef<Viewport>(viewport);
 	const [isSaved, setIsSaved] = useState(false);
 	const mouseCoordsRef = useRef({ x: 0, y: 0 });
-	const reactFlowInstance = useReactFlow();
-	const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
 	const [canZoom, setCanZoom] = useState(true);
+	const reactFlowInstance = useReactFlow();
+	let viewport = useViewport();
+	const viewportRef = useRef<Viewport>(viewport);
 
 	useEffect(() => {
+		// Check if the viewport is initialized and the user is logged in
 		if (!reactFlowInstance.viewportInitialized) {
 			return;
 		}
 
+		if (!authState) {
+			spawnLoginNode();
+			setCanZoom(true);
+			return;
+		}
+
+		// Restore users most recent graph
 		viewport = loadFlow(flowKey, setNodes, setEdges) as Viewport;
 		reactFlowInstance.setViewport(viewport);
 		viewportRef.current = viewport;
 
 		setTypes({ ...customNodeTypes });
-	}, [reactFlowInstance.viewportInitialized]);
+	}, [reactFlowInstance.viewportInitialized, authState]);
 
 	useEffect(() => {
 		viewportRef.current = viewport;
@@ -68,6 +83,15 @@ const ReactFlowCanvas: React.FC = () => {
 			window.removeEventListener("keydown", handleKeyDown);
 		};
 	}, []);
+
+	const spawnLoginNode = () => {
+		if (spawnedLoginNode) return;
+
+		console.log("Spawn the login node");
+		setTypes({ login: loginNode });
+		const spawnedLogin = spawnNode("login", reactFlowInstance);
+		setSpawnedLoginNode(spawnedLogin);
+	};
 
 	const handleMouseMove = (event: React.MouseEvent) => {
 		const reactFlowCoords = reactFlowInstance.project({
@@ -115,6 +139,9 @@ const ReactFlowCanvas: React.FC = () => {
 	const handleKeyDown = (event: KeyboardEvent) => {
 		if (event.code === "KeyS" && (event.metaKey || event.ctrlKey)) {
 			event.preventDefault();
+			console.log(authState);
+			if (!authState) return;
+
 			saveFlow(
 				reactFlowInstance,
 				setNodes,
@@ -128,10 +155,16 @@ const ReactFlowCanvas: React.FC = () => {
 
 	const handleRightClick = (event: React.MouseEvent) => {
 		event.preventDefault();
+		setCanZoom(true);
+		console.log(authState);
+
+		if (!authState) return;
+
 		const spawnerNode = spawnSpawnerNode(
 			mouseCoordsRef.current,
 			customNodeDefaults,
 		);
+
 		setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
 	};
 
@@ -190,6 +223,8 @@ const ReactFlowCanvas: React.FC = () => {
 					maxZoom={10}
 					minZoom={0.2}
 					preventScrolling={canZoom}
+					fitView={true}
+					fitViewOptions={{ padding: 1.7 }}
 				>
 					<Background
 						variant={BackgroundVariant.Dots}

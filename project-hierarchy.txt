@@ -81,11 +81,12 @@ neurocache-hub
 │  │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  ├─ nodes
-│  │  │  │  ├─ buttonOutput.tsx
+│  │  │  │  ├─ googleLoginNode.tsx
 │  │  │  │  ├─ inputBox.tsx
 │  │  │  │  ├─ loginNode.tsx
 │  │  │  │  ├─ markdownBox.tsx
 │  │  │  │  ├─ openAiNode.tsx
+│  │  │  │  ├─ sendOutputNode.tsx
 │  │  │  │  ├─ spawnerNode.tsx
 │  │  │  │  └─ splitterNode.tsx
 │  │  │  └─ utils
@@ -93,6 +94,7 @@ neurocache-hub
 │  │  │     ├─ handleUtils.ts
 │  │  │     ├─ mapOutputIds.ts
 │  │  │     ├─ nodeSelectionState.tsx
+│  │  │     ├─ nodeSpawner.tsx
 │  │  │     ├─ nodeUtils.ts
 │  │  │     ├─ renderCodeblocks.tsx
 │  │  │     └─ spawnerNodeUtils.ts
@@ -131,6 +133,7 @@ neurocache-hub
 │  │  ├─ apiContextWrapper.tsx
 │  │  ├─ nodeFlowContext.tsx
 │  │  ├─ openAiContext.tsx
+│  │  ├─ useAuth.tsx
 │  │  ├─ useKeyPress.tsx
 │  │  └─ useNodeHandle.tsx
 │  ├─ services

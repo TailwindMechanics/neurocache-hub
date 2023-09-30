@@ -1,46 +1,55 @@
-//path: src\components\atoms\buttonAtom.tsx
-
-import React from "react";
-import {
-	TargetAndTransition,
-	AnimationControls,
-	VariantLabels,
-	EventInfo,
-	motion,
-} from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import colors from "@src/data/colors";
+import React, { useEffect, useRef } from "react";
 
 interface ButtonAtomProps {
-	onClick: () => void;
 	children: React.ReactNode;
+	onClick: () => void;
 	className?: string;
-	whileTap?: VariantLabels | TargetAndTransition;
-	whileHover?: VariantLabels | TargetAndTransition;
-	animate?: TargetAndTransition | VariantLabels | AnimationControls;
-	onHoverStart?(event: MouseEvent, info: EventInfo): void;
-	onHoverEnd?(event: MouseEvent, info: EventInfo): void;
 }
 
-const ButtonAtom: React.FC<ButtonAtomProps> = ({
-	onClick,
-	children,
-	className,
-	whileTap,
-	whileHover,
-	animate,
-	onHoverStart,
-	onHoverEnd,
-}) => {
+const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
+	const controls = useAnimation();
+	const isMounted = useRef(true);
+
+	useEffect(() => {
+		isMounted.current = true;
+		return () => {
+			isMounted.current = false;
+		};
+	}, []);
+
+	const onHoverStart = () => {
+		if (isMounted.current) {
+			controls.start({
+				color: colors["aqua-title"],
+				borderColor: colors["aqua-title"],
+			});
+		}
+	};
+
+	const onHoverEnd = () => {
+		if (isMounted.current) {
+			controls.start({
+				color: colors["night-title"],
+				borderColor: colors["night-light"],
+			});
+		}
+	};
+
 	return (
 		<motion.button
-			onClick={onClick}
-			className={className}
-			whileTap={whileTap}
-			whileHover={whileHover}
-			animate={animate}
+			onClick={props.onClick}
+			className={props.className}
+			animate={controls}
+			whileTap={{
+				scale: 0.97,
+				transition: { duration: 0.15, ease: "linear" },
+			}}
 			onHoverStart={onHoverStart}
 			onHoverEnd={onHoverEnd}
 		>
-			{children}
+			{props.children}
 		</motion.button>
 	);
 };

@@ -2,76 +2,24 @@
 Use this after the demo https://youtu.be/AAMJZTEH_h4
 https://youtu.be/aD-u0gl93wM
 
+
 # Todo
----===---
-- Create login node
-- Create login flow
-- Restore graph from db
-- 
-- Organise office
-- Fix headset
-- 
-- Clean laptop
-- Apply to jobs
----===---
-
-https://www.codedaily.io/tutorials/Markdown-Syntax-Highlighting-with-PrismJS-using-Unified-Remark-and-Rehype
- 
-1. Install Required Packages: Install Unified, Remark, Rehype, and any other necessary libraries.
-
-2. Import Core Modules: Import refractor/core and the languages you wish to support (e.g., JavaScript, CSS, etc.).
-
-3. Register Languages: Use refractor.register() to register the languages you imported.
-
-4. Alias Languages: (Optional) Use refractor.alias() to alias languages, such as associating 'js' with 'jsx'.
-
-5. Create Custom Highlighter: Define a custom Prism highlighter using Refractor. This will involve writing a function that processes the AST generated for the Markdown text and applies Prism-based syntax highlighting to code blocks.
-
-6. Create Unified Processor: Use Unified's .use() method to chain together Remark for Markdown parsing, Rehype for HTML transformation, and your custom highlighter.
-
-7. Create React Markdown Component: Create a React component that takes Markdown text as a prop (source), processes it through the Unified pipeline, and renders it as React elements.
-
-8. Apply Themes: Optionally, apply a PrismJS theme for the syntax highlighting by linking to it in your HTML. The tutorial suggests using a theme from CloudFlare CDN.
-
-9. Test the Component: Use the Markdown rendering React component in your application, passing Markdown text to it and verifying that it renders correctly with syntax highlighting.
-
-10. Optimize: Check for performance and bundle size, and tweak as necessary.
-
-
-
-
-
-
-
-
-
-  
-# Neurocache tasks
-- Base node refactor:
-  - Move BaseNode functionality into node components
-  - Remove BaseNode hoc
-  - Test custom handle placement
-- Anchor has 4 inputs to start with
-  - When you assign an input other 3 are disabled 
-  - And 3 outputs are enabled
-  - When you assign an output the other two handles are disabled
-- Highlight edges when selected
+- Sign in
+  - Create login flow
+  - Restore graph from db
+- Undo support
+- Persist node content data
+- Display active state of graph
 - In node flow provider kill signal flow: 
   - if N of the same payload arrive in X time
-
-
-
 
 # Objective
 - Demonstrate how you can compose an agent to accomplish the task of finding your dream job.
 
-# Steps
-1. Style UI in a way that makes better use of space
-2. Create core interaction for creating/deleting nodes
-3. Create Persona node
-4. Create Chat node
-
 # Required Nodes
+# 0. Login: 
+  - For authentication and access control.
+  - Later will be many types, initially email/password.
 # 1. Persona: 
   - Choose which model to use for the agent's persona.
   - UI configs temperature, max tokens, top p, and frequency of persona prompts.

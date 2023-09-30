@@ -10,6 +10,7 @@ import useKeyPress from "@src/hooks/useKeyPress";
 import { NodeData } from "@src/types/nodeData";
 import { Combobox } from "@headlessui/react";
 import { useState } from "react";
+import React from "react";
 
 const Root = new ComponentBuilder(AtomicDiv)
 	.withData("type", "spawner-node")
@@ -34,7 +35,7 @@ const nodeLabel = (node: NodeData) => {
 const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const reactFlowInstance = useReactFlow();
 	const [query, setQuery] = useState("");
-	const config = props.data as NodeData;
+	const nodeData = props.data as NodeData;
 	const allNodes = getUnhiddenNodes();
 	const filteredNodes =
 		query === ""
@@ -67,13 +68,13 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 		const spawnedNode: Node = {
 			id: node.nodeId,
 			type: node.nodeType,
-			position: config.nodePosition,
+			position: nodeData.nodePosition,
 			data: { ...node },
 		};
 
 		const prevNodes = deselectAll(reactFlowInstance.getNodes());
 		let newNodes = prevNodes.filter(
-			(n) => n.id !== config.nodeId,
+			(n) => n.id !== nodeData.nodeId,
 		) as Node[];
 
 		spawnedNode.selected = true;
@@ -125,4 +126,4 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 	);
 };
 
-export default SpawnerNode;
+export default React.memo(SpawnerNode);

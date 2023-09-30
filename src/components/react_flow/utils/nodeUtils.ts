@@ -2,6 +2,7 @@
 
 import { NodeData, PositionId } from "@src/types/nodeData";
 import { Uid } from "../../../utils/stringUtils";
+import { Node } from "reactflow";
 
 interface CreateNodeProps {
 	type: string;
@@ -10,6 +11,13 @@ interface CreateNodeProps {
 	handles?: PositionId[];
 	pos: { x: number; y: number };
 }
+
+export const deselectAllNodes = (nodes: Node[]) => {
+	return nodes.map((node) => ({
+		...node,
+		selected: false,
+	}));
+};
 
 export const createNode = (props: CreateNodeProps) => {
 	const uid = Uid();

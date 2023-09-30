@@ -1,8 +1,9 @@
 //path: src\components\react_flow\utils\nodeSelectionState.tsx
 
-import { ReactFlowInstance } from "reactflow";
+import { useReactFlow } from "reactflow";
 
-const NodeSelectionState = (flow: ReactFlowInstance, id: string) => {
+const NodeSelectionState = (id: string) => {
+	const flow = useReactFlow();
 	const selectedElements = flow.getNodes().filter((node) => node.selected);
 	const isSelected = selectedElements.some((element) => element.id === id);
 	const selectedStyles = isSelected

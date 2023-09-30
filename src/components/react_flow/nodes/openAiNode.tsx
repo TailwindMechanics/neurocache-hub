@@ -1,7 +1,6 @@
 //path: src\components\react_flow\nodes\openAiNode.tsx
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
-import { NodeProps, XYPosition, useReactFlow } from "reactflow";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import TextBoxAtom from "@src/components/atoms/textBoxAtom";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
@@ -10,6 +9,7 @@ import { useOpenAI } from "@src/hooks/openAiContext";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import React, { useEffect } from "react";
+import { NodeProps } from "reactflow";
 
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
@@ -23,19 +23,12 @@ const Root = new ComponentBuilder(AtomicDiv)
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
-	const reactFlowInstance = useReactFlow();
-	const config = props.data as NodeData;
+	const nodeData = props.data as NodeData;
 	const openAI = useOpenAI();
-
-	const thisNode = reactFlowInstance?.getNode(config.nodeId);
-	const thisNodeSize: XYPosition = {
-		x: thisNode?.width as number,
-		y: thisNode?.height as number,
-	};
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const anyInputIncluded = config.handles.some((input) => {
+			const anyInputIncluded = nodeData.handles.some((input) => {
 				return (
 					input.type === "target" &&
 					nodeFlowValue.ids.includes(input.id)
@@ -49,7 +42,7 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 				];
 
 				const reply = await openAI.chat(messages);
-				const sourceIds = config.handles
+				const sourceIds = nodeData.handles
 					.filter((handle) => handle.type === "source")
 					.map((handle) => handle.id);
 				setNodeFlowValue({
@@ -64,19 +57,19 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			{config.handles?.map((handle, index) =>
-				DrawHandle(handle, thisNodeSize, index),
+			{nodeData.handles?.map((handle, index) =>
+				DrawHandle({ handle, nodeData, index }),
 			)}
-			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
+			<Root className={NodeSelectionState(props.id)}>
 				<TextBoxAtom
 					className={
 						"m-0 rounded-b-lg rounded-t-sm bg-night-dark p-0 px-1 text-aqua-light ring-1 ring-night-light"
 					}
-					value={config.nodeName}
+					value={nodeData.nodeName}
 				/>
 			</Root>
 		</>
 	);
 };
 
-export default OpenAiNode;
+export default React.memo(OpenAiNode);

@@ -1,19 +1,19 @@
 //path: src\data\customNodeTypes.tsx
 
+import SendOutputNode from "@src/components/react_flow/nodes/sendOutputNode";
 import SplitterNode from "@src/components/react_flow/nodes/splitterNode";
-import ButtonOutput from "@src/components/react_flow/nodes/buttonOutput";
 import SpawnerNode from "@src/components/react_flow/nodes/spawnerNode";
+import MarkdownBox from "@src/components/react_flow/nodes/markdownBox";
 import OpenAiNode from "@src/components/react_flow/nodes/openAiNode";
 import LoginNode from "@src/components/react_flow/nodes/loginNode";
 import InputBox from "@src/components/react_flow/nodes/inputBox";
 import { NodeData } from "@src/types/nodeData";
 import { NodeTypes } from "reactflow";
-import MarkdownBox from "@src/components/react_flow/nodes/markdownBox";
 
 const customNodeTypes: NodeTypes = {
 	splitter: SplitterNode,
 	input_box: InputBox,
-	button_output: ButtonOutput,
+	send_output: SendOutputNode,
 	open_ai: OpenAiNode,
 	spawner: SpawnerNode,
 	login: LoginNode,
@@ -54,8 +54,8 @@ export const customNodeDefaults = [
 		nodePosition: { x: 150, y: 0 },
 	} as NodeData,
 	{
-		nodeType: "button_output",
-		nodeName: "Output Button",
+		nodeType: "send_output",
+		nodeName: "Send Output",
 		category: "Debug",
 		nodeId: "node_button_output_60e9b8e9a7f1d8c7c7f6",
 		body: "This node outputs the InputField text when the Button is clicked.",

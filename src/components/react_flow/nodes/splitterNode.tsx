@@ -1,7 +1,6 @@
 //path: src\components\react_flow\nodes\splitterNode.tsx
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
-import { useReactFlow, NodeProps, XYPosition } from "reactflow";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
@@ -10,6 +9,7 @@ import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import { Splitter } from "@src/data/icons";
 import React, { useEffect } from "react";
+import { NodeProps } from "reactflow";
 
 const Build = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
@@ -22,21 +22,14 @@ const Build = new ComponentBuilder(AtomicDiv)
 
 const SplitterNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
-	const reactFlowInstance = useReactFlow();
-	const config = props.data as NodeData;
-
-	const thisNode = reactFlowInstance?.getNode(config.nodeId);
-	const thisNodeSize: XYPosition = {
-		x: thisNode?.width as number,
-		y: thisNode?.height as number,
-	};
+	const nodeData = props.data as NodeData;
 
 	useEffect(() => {
 		updateNodeFlowOutputs();
 	}, [nodeFlowValue]);
 
 	const updateNodeFlowOutputs = () => {
-		const outputs = MapOutputIds(nodeFlowValue.ids, config.handles);
+		const outputs = MapOutputIds(nodeFlowValue.ids, nodeData.handles);
 		if (outputs && outputs.length > 0) {
 			setNodeFlowValue({
 				ids: outputs,
@@ -47,10 +40,10 @@ const SplitterNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			{config.handles?.map((handle, index) =>
-				DrawHandle(handle, thisNodeSize, index),
+			{nodeData.handles?.map((handle, index) =>
+				DrawHandle({ handle, nodeData, index }),
 			)}
-			<Build className={NodeSelectionState(reactFlowInstance, props.id)}>
+			<Build className={NodeSelectionState(props.id)}>
 				<Splitter className="stroke-fill-none h-5 w-4 stroke-aqua-dark text-aqua" />
 			</Build>
 		</>

@@ -23,7 +23,7 @@ export const spawnSpawnerNode = (
 		type: nodeConfig.nodeType,
 		position: nodeConfig.nodePosition,
 		data: nodeConfig,
-		selected: true,
+		selected: false,
 	};
 
 	return spawnerNode;

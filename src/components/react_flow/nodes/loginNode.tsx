@@ -1,17 +1,15 @@
 //path: src\components\react_flow\nodes\loginNode.tsx
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
-import { NodeProps, XYPosition, useReactFlow } from "reactflow";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import ButtonAtom from "@src/components/atoms/buttonAtom";
-import { useNodeFlow } from "@src/hooks/nodeFlowContext";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import InputAtom from "@src/components/atoms/inputAtom";
+import { supabase, useAuth } from "@src/hooks/useAuth";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
-import { useAnimation } from "framer-motion";
 import React, { useState } from "react";
-import colors from "@src/data/colors";
+import { NodeProps } from "reactflow";
 
 const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("font-mono")
@@ -21,79 +19,72 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("p-1.5")
 	.withStyle("flex")
 	.withStyle("h-16")
-	.withStyle("w-48")
+	.withStyle("w-40")
 	.withRounded()
 	.withShadow()
 	.withBg()
 	.build();
 
+const Content = new ComponentBuilder(AtomicDiv)
+	.withStyle("border-night-light")
+	.withStyle("bg-night-dark")
+	.withStyle("text-aqua")
+	.withStyle("text-center")
+	.withStyle("rounded")
+	.withStyle("border")
+	.withStyle("px-2")
+	.build();
+
 const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const [passwordText, setPasswordText] = useState("");
 	const [emailText, setEmailText] = useState("");
-	const { setNodeFlowValue } = useNodeFlow();
-	const reactFlowInstance = useReactFlow();
-	const config = props.data as NodeData;
-	const controls = useAnimation();
+	const nodeData = props.data as NodeData;
+	const authState = useAuth();
 
-	const thisNode = reactFlowInstance?.getNode(config.nodeId);
-	const thisNodeSize: XYPosition = {
-		x: thisNode?.width as number,
-		y: thisNode?.height as number,
-	};
-	const handleHoverStart = () => {
-		controls.start({
-			color: colors["aqua-title"],
-			borderColor: colors["aqua-title"],
-		});
-	};
-
-	const handleHoverEnd = () => {
-		controls.start({
-			color: colors["night-title"],
-			borderColor: colors["night-light"],
-		});
+	const onClick = async () => {
+		if (!authState) {
+			await supabase.auth.signInWithPassword({
+				email: emailText,
+				password: passwordText,
+			});
+		} else {
+			supabase.auth.signOut();
+		}
 	};
 
 	return (
 		<>
-			{config.handles?.map((handle, index) =>
-				DrawHandle(handle, thisNodeSize, index),
+			{nodeData.handles?.map((handle, index) =>
+				DrawHandle({ handle, nodeData, index }),
 			)}
-			<Root className={NodeSelectionState(reactFlowInstance, props.id)}>
-				<InputAtom
-					value={emailText}
-					onChange={(e) => setEmailText(e.target.value)}
-					className="h-full w-full rounded-sm bg-night-black px-1 text-center text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
-				/>
-				<InputAtom
-					value={passwordText}
-					type="password"
-					onChange={(e) => setPasswordText(e.target.value)}
-					className="h-full w-full rounded-sm bg-night-black px-1 text-center text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
-				/>
+			<Root className={NodeSelectionState(props.id)}>
+				{authState ? (
+					<Content>{authState.user?.email}</Content>
+				) : (
+					<>
+						<InputAtom
+							value={emailText}
+							onChange={(e) => setEmailText(e.target.value)}
+							className="h-full w-full rounded-sm bg-night-black px-1 text-center text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+						/>
+						<InputAtom
+							value={passwordText}
+							type="password"
+							onChange={(e) => setPasswordText(e.target.value)}
+							className="h-full w-full rounded-sm bg-night-black px-1 text-center text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
+						/>
+					</>
+				)}
+
 				<ButtonAtom
 					className="h-full w-full rounded-b-lg rounded-t-sm border border-night-light bg-night text-night-title "
-					whileTap={{
-						scale: 0.97,
-						transition: { duration: 0.15, ease: "linear" },
-					}}
-					animate={controls}
-					onHoverStart={handleHoverStart}
-					onHoverEnd={handleHoverEnd}
-					onClick={() => {
-						console.log(
-							"Email: ",
-							emailText,
-							"Password",
-							passwordText,
-						);
-					}}
+					onClick={onClick}
 				>
-					Login
+					{authState ? "Logout" : "Login"}
 				</ButtonAtom>
 			</Root>
 		</>
 	);
 };
 
-export default LoginNode;
+export default React.memo(LoginNode);
