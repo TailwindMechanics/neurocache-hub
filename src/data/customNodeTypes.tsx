@@ -55,7 +55,7 @@ export const customNodeDefaults = [
 	} as NodeData,
 	{
 		nodeType: "send_output",
-		nodeName: "Send Output",
+		nodeName: "Send Button",
 		category: "Utils",
 		nodeId: "node_button_output_60e9b8e9a7f1d8c7c7f6",
 		body: "This node outputs the InputField text when the Button is clicked.",
@@ -77,7 +77,7 @@ export const customNodeDefaults = [
 	} as NodeData,
 	{
 		nodeType: "input_box",
-		nodeName: "Input Box",
+		nodeName: "Text",
 		category: "Utils",
 		nodeId: "node_input_box_60e9b8e9a7f1d8c7c7f7",
 		body: "This node displays input payload it receives.",
@@ -139,7 +139,7 @@ export const customNodeDefaults = [
 	} as NodeData,
 	{
 		nodeType: "markdown_box",
-		nodeName: "Markdown Box",
+		nodeName: "Markdown",
 		category: "UI",
 		nodeId: "node_markdown_box_50e9b8e9a7f1d8c7c7f7",
 		body: "This node displays input markdown.",

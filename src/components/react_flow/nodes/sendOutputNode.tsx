@@ -3,24 +3,51 @@
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import ButtonAtom from "@src/components/atoms/buttonAtom";
-import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import InputAtom from "@src/components/atoms/inputAtom";
+import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import React, { useState } from "react";
 import { NodeProps } from "reactflow";
 
 const Root = new ComponentBuilder(AtomicDiv)
-	.withStyle("space-y-1")
+	.withStyle("space-y-0.5")
 	.withStyle("font-mono")
 	.withStyle("flex-col")
-	.withStyle("text-sm")
+	.withStyle("text-xs")
 	.withStyle("p-1.5")
-	.withStyle("w-40")
-	.withRounded()
+	.withStyle("flex")
+	.withRoundedFrame()
 	.withShadow()
 	.withBg()
+	.build();
+
+const Button = new ComponentBuilder(ButtonAtom)
+	.withStyle("border-night-light")
+	.withStyle("text-night-title")
+	.withStyle("bg-night")
+	.withStyle("text-aqua")
+	.withStyle("font-bold")
+	.withStyle("border")
+	.withStyle("w-full")
+	.withRoundedButton()
+	.build();
+
+const Input = new ComponentBuilder(InputAtom)
+	.withStyle("focus:border-aqua-light")
+	.withStyle("border-night-light")
+	.withStyle("text-aqua-light")
+	.withStyle("bg-night-black")
+	.withStyle("text-center")
+	.withStyle("outline-none")
+	.withStyle("ring-none")
+	.withStyle("border")
+	.withStyle("py-0.5")
+	.withStyle("w-full")
+	.withStyle("h-full")
+	.withStyle("px-1")
+	.withRoundedElement()
 	.build();
 
 const SendOutputNode: React.FC<NodeProps> = (props: NodeProps) => {
@@ -34,12 +61,11 @@ const SendOutputNode: React.FC<NodeProps> = (props: NodeProps) => {
 				DrawHandle({ handle, nodeData, index }),
 			)}
 			<Root className={NodeSelectionState(props.id)}>
-				<InputAtom
+				<Input
 					value={inputText}
 					onChange={(e) => setInputText(e.target.value)}
-					className="w-full rounded-sm bg-night-black px-1 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
 				/>
-				<ButtonAtom
+				<Button
 					onClick={() => {
 						const sourceIds = nodeData.handles
 							.filter((handle) => handle.type === "source")
@@ -50,10 +76,9 @@ const SendOutputNode: React.FC<NodeProps> = (props: NodeProps) => {
 							payload: inputText,
 						});
 					}}
-					className="w-full rounded-b-lg rounded-t-sm border border-night-light bg-night text-night-title "
 				>
-					Send Output
-				</ButtonAtom>
+					Send
+				</Button>
 			</Root>
 		</>
 	);

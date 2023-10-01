@@ -2,8 +2,8 @@
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import NodeSelectionState from "../utils/nodeSelectionState";
-import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
+import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import MapOutputIds from "../utils/mapOutputIds";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
@@ -15,7 +15,7 @@ const Build = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
 	.withStyle("font-mono")
 	.withStyle("px-1")
-	.withRounded()
+	.withRoundedFrame()
 	.withShadow()
 	.withBg()
 	.build();

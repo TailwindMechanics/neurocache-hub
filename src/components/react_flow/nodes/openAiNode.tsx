@@ -2,9 +2,8 @@
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import NodeSelectionState from "../utils/nodeSelectionState";
-import TextBoxAtom from "@src/components/atoms/textBoxAtom";
-import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
+import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import { useOpenAI } from "@src/hooks/useOpenAI";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
@@ -15,10 +14,21 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-title")
 	.withStyle("font-mono")
 	.withStyle("text-sm")
-	.withStyle("p-1.5")
-	.withRounded()
+	.withStyle("p-1")
+	.withRoundedFrame()
 	.withShadow()
 	.withBg()
+	.build();
+
+const Content = new ComponentBuilder(AtomicDiv)
+	.withStyle("border-night-light")
+	.withStyle("text-aqua-dark")
+	.withStyle("bg-night-black")
+	.withStyle("font-semibold")
+	.withStyle("rounded-b-lg")
+	.withStyle("rounded-t")
+	.withStyle("border")
+	.withStyle("px-1")
 	.build();
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
@@ -61,12 +71,7 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 				DrawHandle({ handle, nodeData, index }),
 			)}
 			<Root className={NodeSelectionState(props.id)}>
-				<TextBoxAtom
-					className={
-						"m-0 rounded-b-lg rounded-t-sm bg-night-dark p-0 px-1 text-aqua-light ring-1 ring-night-light"
-					}
-					value={nodeData.nodeName}
-				/>
+				<Content>{nodeData.nodeName}</Content>
 			</Root>
 		</>
 	);

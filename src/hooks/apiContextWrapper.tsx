@@ -2,12 +2,9 @@
 
 "use client";
 
-import { SupabaseProvider, initSupabase } from "./useSupabase";
 import { OpenAIContextProvider } from "@src/hooks/useOpenAI";
-import { SessionProvider } from "./useSession";
 import React, { FC, ReactNode } from "react";
-
-const supabase = initSupabase();
+import { SessionProvider } from "./useSession";
 
 type ApiContextWrapperProps = {
 	children: ReactNode;
@@ -16,11 +13,9 @@ type ApiContextWrapperProps = {
 const ApiContextWrapper: FC<ApiContextWrapperProps> = ({ children }) => {
 	return (
 		<>
-			<SupabaseProvider supabase={supabase}>
-				<SessionProvider>
-					<OpenAIContextProvider>{children}</OpenAIContextProvider>
-				</SessionProvider>
-			</SupabaseProvider>
+			<SessionProvider>
+				<OpenAIContextProvider>{children}</OpenAIContextProvider>
+			</SessionProvider>
 		</>
 	);
 };

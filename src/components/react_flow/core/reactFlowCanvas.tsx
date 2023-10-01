@@ -2,12 +2,13 @@
 
 "use client";
 
-import { removeSpawnerNode, spawnSpawnerNode } from "../utils/spawnerNodeUtils";
 import customNodeTypes, { customNodeDefaults } from "@src/data/customNodeTypes";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { spawnSpawnerNode } from "../utils/spawnerNodeUtils";
 import { NodeFlowProvider } from "@src/hooks/useNodeFlow";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
 import { loadFlow, saveFlow } from "./flowSaveLoad";
+import { useSession } from "@src/hooks/useSession";
 import { spawnNode } from "../utils/nodeSpawner";
 import ConnectionLine from "./connectionLine";
 import loginNode from "../nodes/loginNode";
@@ -32,7 +33,6 @@ import ReactFlow, {
 	Node,
 	Edge,
 } from "reactflow";
-import { useSession } from "@src/hooks/useSession";
 
 const flowKey = "test-flow";
 const ReactFlowCanvas: React.FC = () => {
@@ -57,6 +57,8 @@ const ReactFlowCanvas: React.FC = () => {
 		if (!reactFlowInstance.viewportInitialized) {
 			return;
 		}
+
+		console.log(session);
 
 		if (!session) {
 			spawnLoginNode();
@@ -99,15 +101,6 @@ const ReactFlowCanvas: React.FC = () => {
 
 		mouseCoordsRef.current = reactFlowCoords;
 	};
-
-	// const handleMouseDown = (event: React.MouseEvent) => {
-	// 	const isSpawner = (event.target as HTMLElement).closest(
-	// 		'[data-type="spawner-node"]',
-	// 	);
-	// 	if (!isSpawner) {
-	// 		setNodes((prevNodes: Node[]) => removeSpawnerNode(prevNodes));
-	// 	}
-	// };
 
 	const onNodesChange = useCallback(
 		(changes: NodeChange[]) => {

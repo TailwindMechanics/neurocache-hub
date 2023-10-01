@@ -23,6 +23,9 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			borderRadius: {
+				ms: "0.2rem",
+			},
 			strokeWidth: {
 				0.5: "0.5px",
 				1: "1px",

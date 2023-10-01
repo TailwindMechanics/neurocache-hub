@@ -1,16 +1,11 @@
 //path: src\components\atoms\buttonAtom.tsx
 
 import { motion, useAnimation } from "framer-motion";
-import colors from "@src/data/colors";
+import { AtomProps } from "@src/types/declarations";
 import React, { useEffect, useRef } from "react";
+import colors from "@src/data/colors";
 
-interface ButtonAtomProps {
-	children: React.ReactNode;
-	onClick: () => void;
-	className?: string;
-}
-
-const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
+const ButtonAtom: React.FC<AtomProps> = (props) => {
 	const controls = useAnimation();
 	const isMounted = useRef(true);
 
@@ -25,7 +20,7 @@ const ButtonAtom: React.FC<ButtonAtomProps> = (props) => {
 		if (isMounted.current) {
 			controls.start({
 				color: colors["aqua-title"],
-				borderColor: colors["aqua-title"],
+				borderColor: colors["aqua-light"],
 			});
 		}
 	};

@@ -20,7 +20,7 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-xs")
 	.withStyle("p-1.5")
 	.withStyle("w-50")
-	.withRounded()
+	.withRoundedFrame()
 	.withShadow()
 	.withBg()
 	.build();

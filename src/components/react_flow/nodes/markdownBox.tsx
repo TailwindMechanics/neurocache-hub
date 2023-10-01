@@ -3,10 +3,10 @@
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import React, { useEffect, useMemo, useState } from "react";
-import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import RenderCodeblocks from "../utils/renderCodeblocks";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
+import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import Markdown from "react-markdown";
@@ -18,8 +18,8 @@ const Root = new ComponentBuilder(AtomicDiv)
 	.withStyle("max-w-[320px]")
 	.withStyle("max-h-[200px]")
 	.withStyle("font-mono")
-	.withStyle("p-1.5")
-	.withRounded()
+	.withStyle("p-1")
+	.withRoundedFrame()
 	.withShadow()
 	.withBg()
 	.build();
@@ -30,7 +30,7 @@ const Content = new ComponentBuilder(AtomicDiv)
 	.withStyle("prose-pre:scrollbar-hide")
 	.withStyle("border-night-light")
 	.withStyle("prose-h1:text-aqua")
-	.withStyle("prose-h2:text-aqua")
+	.withStyle("prose-h2:text-aqua-dark")
 	.withStyle("prose-h3:text-aqua")
 	.withStyle("prose-h4:text-aqua")
 	.withStyle("text-aqua-title")
@@ -42,16 +42,14 @@ const Content = new ComponentBuilder(AtomicDiv)
 	.withStyle("prose-pre:m-0")
 	.withStyle("prose-pre:p-0")
 	.withStyle("text-xs")
-	.withStyle("pt-0.5")
-	.withStyle("pb-1.5")
 	.withStyle("px-1.5")
 	.withStyle("border")
 	.withStyle("prose")
-	.withRounded()
+	.withRoundedContent()
 	.build();
 
 const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
-	const [markdownText, setMarkdownText] = useState("## *Markdown box*");
+	const [markdownText, setMarkdownText] = useState("## *Markdown*");
 	const { nodeFlowValue } = useNodeFlow();
 	const nodeData = props.data as NodeData;
 

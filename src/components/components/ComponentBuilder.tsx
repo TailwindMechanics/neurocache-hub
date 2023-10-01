@@ -38,8 +38,23 @@ export default class ComponentBuilder {
 		return this;
 	}
 
-	withRounded(): ComponentBuilder {
+	withRoundedFrame(): ComponentBuilder {
 		this.push("rounded-t-md rounded-b-xl");
+		return this;
+	}
+
+	withRoundedContent(): ComponentBuilder {
+		this.push("rounded-t rounded-b-lg");
+		return this;
+	}
+
+	withRoundedElement(): ComponentBuilder {
+		this.push("rounded");
+		return this;
+	}
+
+	withRoundedButton(): ComponentBuilder {
+		this.push("rounded-t-ms rounded-b-lg");
 		return this;
 	}
 

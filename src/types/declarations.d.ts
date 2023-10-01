@@ -12,7 +12,10 @@ interface AtomProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>{
 	className?: string;
 	disabled?: boolean;
 	label?: string;
+	value?: string;
+	type?: HTMLInputTypeAttribute;
 	onClick?: () => void;
+	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export type NodeFlowValue = {

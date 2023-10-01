@@ -1,7 +1,7 @@
 //path: src\hooks\useSession.tsx
 
+import { supabase } from "@src/services/supabaseClient";
 import { Session } from "@supabase/supabase-js";
-import { useSupabase } from "./useSupabase";
 import {
 	createContext,
 	useContext,
@@ -23,7 +23,6 @@ const useSession = () => {
 
 const SessionProvider = (props: SessionProviderProps) => {
 	const [session, setSession] = useState<Session | null>(null);
-	const supabase = useSupabase();
 
 	useEffect(() => {
 		if (!supabase) return;
