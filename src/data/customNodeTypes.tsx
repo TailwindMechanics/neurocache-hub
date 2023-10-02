@@ -7,6 +7,7 @@ import MarkdownBox from "@src/components/react_flow/nodes/markdownBox";
 import OpenAiNode from "@src/components/react_flow/nodes/openAiNode";
 import LoginNode from "@src/components/react_flow/nodes/loginNode";
 import InputBox from "@src/components/react_flow/nodes/inputBox";
+import TestBox from "@src/components/react_flow/nodes/testBox";
 import { NodeData } from "@src/types/nodeData";
 import { NodeTypes } from "reactflow";
 
@@ -18,6 +19,7 @@ const customNodeTypes: NodeTypes = {
 	spawner: SpawnerNode,
 	login: LoginNode,
 	markdown_box: MarkdownBox,
+	test_box: TestBox,
 };
 
 export const getUnhiddenNodes = () => {
@@ -158,6 +160,15 @@ export const customNodeDefaults = [
 				angle: 90,
 			},
 		],
+	} as NodeData,
+	{
+		nodeType: "test_box",
+		nodeName: "Test",
+		category: "Unhidden",
+		nodeId: "test_box_1",
+		body: "This is for testing.",
+		handles: [],
+		nodePosition: { x: 100, y: 0 },
 	} as NodeData,
 ];
 

@@ -2,7 +2,8 @@
 
 "use client";
 
-import useGraphSessionReady from "@src/hooks/useGraphSessionReady";
+import { useGuestGraphReady } from "@src/hooks/useGuestGraphReady";
+import { useUserGraphReady } from "@src/hooks/useUserGraphReady";
 import { useSession, User } from "@supabase/auth-helpers-react";
 import { loadGuestGraph, loadUserGraph } from "./flowSaveLoad";
 import React, { useEffect, useRef, useState } from "react";
@@ -37,13 +38,11 @@ const ReactFlowCanvas: React.FC = () => {
 	const reactFlowInstance = useReactFlow();
 	const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
 	const { mouseCoordsRef, handleMouseMove } = useMouseCoords();
-	const [statusText, setStatusText] = useState<string>("");
 	const [edgeTypes] = useState({ custom: EdgeLine });
 	const [types, setTypes] = useState<NodeTypes>({});
 	const [nodes, setNodes] = useState<Node[]>([]);
 	const [edges, setEdges] = useState<Edge[]>([]);
 	const viewportRef = useRef<Viewport>(viewport);
-	const [isSaved, setIsSaved] = useState(false);
 	const [canZoom, setCanZoom] = useState(true);
 
 	useEffect(() => {
@@ -54,36 +53,20 @@ const ReactFlowCanvas: React.FC = () => {
 		loadGuestGraph(nodes, setNodes, setTypes);
 	};
 
-	const loadUser = (user: User) => {
+	const loadUser = (user: User | undefined) => {
+		if (!user) return;
 		viewport = loadUserGraph(user, flowKey, setNodes, setEdges, setTypes);
 		reactFlowInstance.setViewport(viewport);
 		viewportRef.current = viewport;
 	};
 
-	useEffect(() => {
-		if (isSaved) {
-			setStatusText("saving...");
-		} else {
-			setStatusText(session?.user?.email ?? "");
-		}
-	}, [isSaved, session]);
-
-	useGraphSessionReady(() => {
-		if (session?.user) {
-			loadUser(session.user);
-		} else {
-			loadGuest();
-		}
-	});
-
+	useGuestGraphReady(loadGuest);
+	useUserGraphReady(loadUser);
 	useLoggedOut(loadGuest);
 	useLoggedIn(loadUser);
 
 	return (
 		<div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">
-			<div className="absolute bottom-1 left-3 z-10 select-none font-mono text-sm font-semibold text-rose-light">
-				{statusText}
-			</div>
 			<NodeFlowProvider edges={edges}>
 				<NodeEvents
 					nodes={nodes}
@@ -108,7 +91,6 @@ const ReactFlowCanvas: React.FC = () => {
 							flowKey={flowKey}
 							setNodes={setNodes}
 							setEdges={setEdges}
-							setIsSaved={setIsSaved}
 							viewportRef={viewportRef}
 						/>
 						<Background

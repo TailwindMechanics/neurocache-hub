@@ -1,10 +1,13 @@
 //path: src\hooks\useGraphSessionReady.tsx
 
-import { useSession } from "@supabase/auth-helpers-react";
+import { useSession, User } from "@supabase/auth-helpers-react";
 import { useEffect, useState } from "react";
 import { useReactFlow } from "reactflow";
 
-const useGraphSessionReady = (callback: () => void) => {
+export const useGraphSessionReady = (
+	userReady: (user?: User) => void,
+	guestReady: () => void,
+) => {
 	const [isReady, setIsReady] = useState<boolean>(false);
 	const reactFlowInstance = useReactFlow();
 	const session = useSession();
@@ -17,7 +20,8 @@ const useGraphSessionReady = (callback: () => void) => {
 
 	useEffect(() => {
 		if (isReady) {
-			callback();
+			if (session?.user) userReady(session.user);
+			else guestReady();
 		}
 	}, [isReady]);
 };

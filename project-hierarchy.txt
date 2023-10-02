@@ -40,7 +40,7 @@ neurocache-hub
 ├─ prettier.config.js
 ├─ project-hierarchy.txt
 ├─ public
-│  ├─ favicon.ico
+│  ├─ favicon.svg
 │  ├─ images
 │  │  ├─ bird80px.png
 │  │  ├─ neurocache.png
@@ -140,13 +140,15 @@ neurocache-hub
 │  ├─ hooks
 │  │  ├─ apiContextWrapper.tsx
 │  │  ├─ useGraphSessionReady.tsx
+│  │  ├─ useGuestGraphReady.tsx
 │  │  ├─ useKeyPress.tsx
 │  │  ├─ useLoggedIn.tsx
 │  │  ├─ useLoggedOut.tsx
 │  │  ├─ useMouseCoords.tsx
 │  │  ├─ useNodeFlow.tsx
 │  │  ├─ useNodeHandle.tsx
-│  │  └─ useOpenAI.tsx
+│  │  ├─ useOpenAI.tsx
+│  │  └─ useUserGraphReady.tsx
 │  ├─ services
 │  │  └─ supabaseClient.ts
 │  ├─ types

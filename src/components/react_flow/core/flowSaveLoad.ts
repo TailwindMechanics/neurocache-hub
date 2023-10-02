@@ -1,9 +1,9 @@
 //path: src\components\react_flow\core\flowSaveLoad.ts
 
-import customNodeTypes from "@src/data/customNodeTypes";
-import { User } from "@supabase/supabase-js";
 import { Edge, Node, NodeTypes, ReactFlowInstance, Viewport } from "reactflow";
+import customNodeTypes from "@src/data/customNodeTypes";
 import { spawnLoginNode } from "../utils/nodeSpawner";
+import { User } from "@supabase/supabase-js";
 
 export const loadGuestGraph = (
 	nodes: Node[],
@@ -14,19 +14,12 @@ export const loadGuestGraph = (
 };
 
 export const loadUserGraph = (
-	currentUser: User,
+	user: User,
 	flowKey: string,
 	setNodes: React.Dispatch<React.SetStateAction<Node[]>>,
 	setEdges: React.Dispatch<React.SetStateAction<Edge[]>>,
 	setTypes: React.Dispatch<React.SetStateAction<NodeTypes>>,
 ) => {
-	console.log(
-		"%c>>> User Loaded: %c" + currentUser.email,
-		"color: #c98289; font-weight: bold",
-		"color: #8cd7ce; font-weight: bold",
-	);
-		
-	//
 	const flowData = localStorage.getItem(flowKey);
 	if (!flowData) return { x: 0, y: 0, zoom: 1 } as Viewport;
 
@@ -61,7 +54,6 @@ export const saveFlow = (
 	reactFlowInstance: ReactFlowInstance,
 	setNodes: React.Dispatch<React.SetStateAction<Node[]>>,
 	setEdges: React.Dispatch<React.SetStateAction<Edge[]>>,
-	setIsSaved: React.Dispatch<React.SetStateAction<boolean>>,
 	flowKey: string,
 	viewport: Viewport,
 ) => {
@@ -73,11 +65,5 @@ export const saveFlow = (
 	setEdges(edges);
 
 	const flowString = JSON.stringify({ nodes, edges, viewport });
-
-	console.log("%c>>> Saving flow", "color: #d1be7d; font-weight: bold");
-
 	localStorage.setItem(flowKey, flowString);
-
-	setIsSaved(true);
-	setTimeout(() => setIsSaved(false), 2000);
 };
