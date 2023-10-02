@@ -5,6 +5,7 @@ import { useEffect } from "react";
 const useKeyPress = (targetKey: string, callback: () => void) => {
 	const keyPressHandler = (e: KeyboardEvent) => {
 		if (e.code === targetKey) {
+			e.preventDefault();
 			callback();
 		}
 	};

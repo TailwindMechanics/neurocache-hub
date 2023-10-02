@@ -10,8 +10,6 @@ export const loadGuestGraph = (
 	setNodes: React.Dispatch<React.SetStateAction<Node[]>>,
 	setTypes: React.Dispatch<React.SetStateAction<NodeTypes>>,
 ) => {
-	console.log("%c>>> Guest Loaded", "color: #c98289; font-weight: bold");
-
 	spawnLoginNode(nodes, setNodes, setTypes);
 };
 
@@ -27,7 +25,7 @@ export const loadUserGraph = (
 		"color: #c98289; font-weight: bold",
 		"color: #8cd7ce; font-weight: bold",
 	);
-
+		
 	//
 	const flowData = localStorage.getItem(flowKey);
 	if (!flowData) return { x: 0, y: 0, zoom: 1 } as Viewport;

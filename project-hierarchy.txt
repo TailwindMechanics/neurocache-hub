@@ -81,6 +81,7 @@ neurocache-hub
 │  │  │  │  ├─ nodeEvents.tsx
 │  │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  │  ├─ reactflowConfig.ts
+│  │  │  │  ├─ saveGraph.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  ├─ nodes
 │  │  │  │  ├─ inputBox.tsx
@@ -135,6 +136,8 @@ neurocache-hub
 │  │  ├─ apiContextWrapper.tsx
 │  │  ├─ useGraphSessionReady.tsx
 │  │  ├─ useKeyPress.tsx
+│  │  ├─ useLoggedIn.tsx
+│  │  ├─ useLoggedOut.tsx
 │  │  ├─ useMouseCoords.tsx
 │  │  ├─ useNodeFlow.tsx
 │  │  ├─ useNodeHandle.tsx

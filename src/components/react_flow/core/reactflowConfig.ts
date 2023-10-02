@@ -10,6 +10,5 @@ export const reactFlowSettingsProps: Partial<ReactFlowProps> = {
 	connectionRadius: 9,
 	maxZoom: 10,
 	minZoom: 0.2,
-	fitView: true,
 	fitViewOptions: { padding: 1.7 },
 };

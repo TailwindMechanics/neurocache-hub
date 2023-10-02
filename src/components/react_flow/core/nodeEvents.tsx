@@ -1,3 +1,5 @@
+//path: src\components\react_flow\core\nodeEvents.tsx
+
 import { customNodeDefaults } from "@src/data/customNodeTypes";
 import { spawnSpawnerNode } from "../utils/spawnerNodeUtils";
 import { useSession } from "@supabase/auth-helpers-react";

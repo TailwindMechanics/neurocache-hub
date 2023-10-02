@@ -1,22 +1,25 @@
 //path: src\hooks\useGraphSessionReady.tsx
 
-import { Session } from "@supabase/supabase-js";
+import { useSession } from "@supabase/auth-helpers-react";
 import { useEffect, useState } from "react";
-import { ReactFlowInstance } from "reactflow";
+import { useReactFlow } from "reactflow";
 
-const useGraphSessionReady = (
-	reactFlowInstance: ReactFlowInstance,
-	session: Session | null,
-): boolean => {
-	const [isInitialized, setIsInitialized] = useState<boolean>(false);
+const useGraphSessionReady = (callback: () => void) => {
+	const [isReady, setIsReady] = useState<boolean>(false);
+	const reactFlowInstance = useReactFlow();
+	const session = useSession();
 
 	useEffect(() => {
 		if (reactFlowInstance.viewportInitialized && session !== undefined) {
-			setIsInitialized(true);
+			setIsReady(true);
 		}
 	}, [reactFlowInstance.viewportInitialized, session]);
 
-	return isInitialized;
+	useEffect(() => {
+		if (isReady) {
+			callback();
+		}
+	}, [isReady]);
 };
 
 export default useGraphSessionReady;
