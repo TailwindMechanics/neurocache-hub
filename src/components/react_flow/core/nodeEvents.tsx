@@ -1,7 +1,7 @@
 //path: src\components\react_flow\core\nodeEvents.tsx
 
 import { customNodeDefaults } from "@src/data/customNodeTypes";
-import { spawnSpawnerNode } from "../utils/spawnerNodeUtils";
+import { removeSpawnerNode, spawnSpawnerNode } from "../utils/spawnerNodeUtils";
 import { useSession } from "@supabase/auth-helpers-react";
 import React, { ReactNode, FC } from "react";
 import ReactFlow, {
@@ -16,6 +16,8 @@ import ReactFlow, {
 	Node,
 	Edge,
 } from "reactflow";
+import useCtrlS from "@src/hooks/useCtrlS";
+import useKeyPress from "@src/hooks/useKeyPress";
 
 type NodeEventsProps = {
 	handleMouseMove: (event: React.MouseEvent<Element, MouseEvent>) => void;
@@ -39,7 +41,22 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
 		},
 	});
 
+	useKeyPress("Escape", () => {
+		props.setNodes((prevNodes: Node[]) => removeSpawnerNode(prevNodes));
+	});
+
 	const eventHandlers = {
+		onMouseDownCapture: (event: React.MouseEvent) => {
+			const isSpawner = (event.target as HTMLElement).closest(
+				'[data-type="spawner-node"]',
+			);
+			if (!isSpawner) {
+				props.setNodes((prevNodes: Node[]) =>
+					removeSpawnerNode(prevNodes),
+				);
+			}
+		},
+
 		onConnect: (connection: Edge | Connection) => {
 			const newConnection = { ...connection, type: "custom" };
 			const newEdges = addEdge(newConnection, props.edges);

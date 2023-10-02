@@ -25,10 +25,9 @@ const Content = new ComponentBuilder(AtomicDiv)
 	.withStyle("border-night-light")
 	.withStyle("text-aqua-dark")
 	.withStyle("bg-night-black")
-	.withStyle("font-semibold")
 	.withStyle("rounded-b-lg")
 	.withStyle("rounded-t")
-	.withStyle("text-sm")
+	.withStyle("text-xs")
 	.withStyle("border")
 	.withStyle("px-1")
 	.build();
@@ -50,7 +49,7 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
 				DrawHandle({ handle, nodeData, index }),
 			)}
 			<Root className={NodeSelectionState(props.id)}>
-				<Content></Content>
+				<Content>Test</Content>
 			</Root>
 		</>
 	);

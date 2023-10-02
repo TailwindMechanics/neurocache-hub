@@ -2,8 +2,8 @@
 
 import { Edge, Node, Viewport, useReactFlow } from "reactflow";
 import { useSession } from "@supabase/auth-helpers-react";
-import useKeyPress from "@src/hooks/useKeyPress";
 import { FC, useState, useEffect } from "react";
+import useCtrlS from "@src/hooks/useCtrlS";
 import { saveFlow } from "./flowSaveLoad";
 
 interface SaveGraphProps {
@@ -22,7 +22,7 @@ const SaveGraph: FC<SaveGraphProps> = (props) => {
 		setStatusText(session?.user?.email ?? "");
 	}, [session]);
 
-	useKeyPress("control_s", async () => {
+	useCtrlS(async () => {
 		if (!session) return;
 
 		setStatusText("saving...");
