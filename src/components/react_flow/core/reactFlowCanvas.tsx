@@ -2,16 +2,16 @@
 
 "use client";
 
-import customNodeTypes, { customNodeDefaults } from "@src/data/customNodeTypes";
+import { loadGuestGraph, loadUserGraph, saveFlow } from "./flowSaveLoad";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import useGraphSessionReady from "@src/hooks/useGraphSessionReady";
+import { customNodeDefaults } from "@src/data/customNodeTypes";
 import { spawnSpawnerNode } from "../utils/spawnerNodeUtils";
+import { reactFlowSettingsProps } from "./reactflowConfig";
+import useMousePosition from "@src/hooks/useMousePosition";
 import { NodeFlowProvider } from "@src/hooks/useNodeFlow";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
-import { loadFlow, saveFlow } from "./flowSaveLoad";
-import { useSession } from "@src/hooks/useSession";
-import { spawnNode } from "../utils/nodeSpawner";
 import ConnectionLine from "./connectionLine";
-import loginNode from "../nodes/loginNode";
 import EdgeLine from "./edgeLine";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
@@ -22,6 +22,7 @@ import ReactFlow, {
 	applyNodeChanges,
 	NodeMouseHandler,
 	useReactFlow,
+	useKeyPress,
 	useViewport,
 	Background,
 	Connection,
@@ -33,73 +34,89 @@ import ReactFlow, {
 	Node,
 	Edge,
 } from "reactflow";
+import {
+	useSupabaseClient,
+	useSession,
+	User,
+} from "@supabase/auth-helpers-react";
 
 const flowKey = "test-flow";
 const ReactFlowCanvas: React.FC = () => {
 	StyleReactFlowLogo();
 	let viewport = useViewport();
-	const [edgeTypes] = useState({ custom: EdgeLine });
 	const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
-	const [spawnedLoginNode, setSpawnedLoginNode] = useState<Node | undefined>(
-		undefined,
-	);
+	const [edgeTypes] = useState({ custom: EdgeLine });
 	const [types, setTypes] = useState<NodeTypes>({});
 	const [nodes, setNodes] = useState<Node[]>([]);
 	const [edges, setEdges] = useState<Edge[]>([]);
 	const viewportRef = useRef<Viewport>(viewport);
 	const [isSaved, setIsSaved] = useState(false);
-	const mouseCoordsRef = useRef({ x: 0, y: 0 });
 	const [canZoom, setCanZoom] = useState(true);
 	const reactFlowInstance = useReactFlow();
+	const supabase = useSupabaseClient();
 	const session = useSession();
 
+	const graphIsReady = useGraphSessionReady(reactFlowInstance, session);
+	const { mouseCoordsRef, handleMouseMove } = useMousePosition();
+
 	useEffect(() => {
-		if (!reactFlowInstance.viewportInitialized) {
-			return;
+		if (graphIsReady) {
+			if (session?.user) {
+				loadUser(session.user);
+			} else {
+				loadGuest();
+			}
 		}
+	}, [graphIsReady]);
 
-		console.log(session);
+	useEffect(() => {
+		const { data: authListener } = supabase.auth.onAuthStateChange(
+			async (event, newSession) => {
+				if (event === "SIGNED_IN" && !session && newSession) {
+					loadUser(newSession.user);
+				} else if (event === "SIGNED_OUT") {
+					loadGuest();
+				}
+			},
+		);
 
-		if (!session) {
-			spawnLoginNode();
-			setCanZoom(true);
-			return;
-		}
-
-		// Restore users most recent graph
-		viewport = loadFlow(flowKey, setNodes, setEdges) as Viewport;
-		reactFlowInstance.setViewport(viewport);
-		viewportRef.current = viewport;
-
-		setTypes({ ...customNodeTypes });
-	}, [reactFlowInstance.viewportInitialized, session]);
+		return () => {
+			authListener.subscription.unsubscribe();
+		};
+	}, [session, reactFlowInstance.viewportInitialized]);
 
 	useEffect(() => {
 		viewportRef.current = viewport;
 	}, [viewport]);
 
+	const cmdAndSPressed = useKeyPress(["Meta+s", "Strg+s"]);
 	useEffect(() => {
-		window.addEventListener("keydown", handleKeyDown);
-		return () => {
-			window.removeEventListener("keydown", handleKeyDown);
-		};
-	}, [session]);
+		if (!cmdAndSPressed || !session) return;
 
-	const spawnLoginNode = () => {
-		if (spawnedLoginNode) return;
+		saveFlow(
+			reactFlowInstance,
+			setNodes,
+			setEdges,
+			setIsSaved,
+			flowKey,
+			viewportRef.current,
+		);
+	}, [cmdAndSPressed]);
 
-		setTypes({ login: loginNode });
-		const spawnedLogin = spawnNode("login", reactFlowInstance);
-		setSpawnedLoginNode(spawnedLogin);
+	const loadGuest = () => {
+		loadGuestGraph(reactFlowInstance, setTypes);
 	};
 
-	const handleMouseMove = (event: React.MouseEvent) => {
-		const reactFlowCoords = reactFlowInstance.project({
-			x: event.clientX,
-			y: event.clientY,
-		});
-
-		mouseCoordsRef.current = reactFlowCoords;
+	const loadUser = (currentUser: User) => {
+		viewport = loadUserGraph(
+			currentUser,
+			flowKey,
+			setNodes,
+			setEdges,
+			setTypes,
+		);
+		reactFlowInstance.setViewport(viewport);
+		viewportRef.current = viewport;
 	};
 
 	const onNodesChange = useCallback(
@@ -126,23 +143,6 @@ const ReactFlowCanvas: React.FC = () => {
 		},
 		[edges],
 	);
-
-	const handleKeyDown = (event: KeyboardEvent) => {
-		if (event.code === "KeyS" && (event.metaKey || event.ctrlKey)) {
-			event.preventDefault();
-
-			if (!session) return;
-
-			saveFlow(
-				reactFlowInstance,
-				setNodes,
-				setEdges,
-				setIsSaved,
-				flowKey,
-				viewportRef.current,
-			);
-		}
-	};
 
 	const handleRightClick = (event: React.MouseEvent) => {
 		event.preventDefault();
@@ -188,6 +188,8 @@ const ReactFlowCanvas: React.FC = () => {
 			)}
 			<NodeFlowProvider edges={edges}>
 				<ReactFlow
+					preventScrolling={canZoom}
+					connectionLineComponent={ConnectionLine}
 					// Element and Data Related Props
 					nodes={nodes}
 					edges={edges}
@@ -201,19 +203,7 @@ const ReactFlowCanvas: React.FC = () => {
 					onNodeMouseEnter={handleNodeMouseEnter}
 					onNodeMouseLeave={handleNodeMouseLeave}
 					onNodesChange={onNodesChange}
-					// Styling and UI Props
-					attributionPosition="bottom-right"
-					connectionLineComponent={ConnectionLine}
-					defaultEdgeOptions={{ type: "custom", zIndex: -100 }}
-					// Zoom and Pan Props
-					autoPanOnConnect={false}
-					autoPanOnNodeDrag={false}
-					connectionRadius={9}
-					maxZoom={10}
-					minZoom={0.2}
-					preventScrolling={canZoom}
-					fitView={true}
-					fitViewOptions={{ padding: 1.7 }}
+					{...reactFlowSettingsProps}
 				>
 					<Background
 						variant={BackgroundVariant.Dots}

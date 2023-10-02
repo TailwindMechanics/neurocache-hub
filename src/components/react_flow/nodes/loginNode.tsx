@@ -5,8 +5,7 @@ import NodeSelectionState from "../utils/nodeSelectionState";
 import ButtonAtom from "@src/components/atoms/buttonAtom";
 import AtomicDiv from "@src/components/atoms/atomicDiv";
 import InputAtom from "@src/components/atoms/inputAtom";
-import { supabase } from "@src/services/supabaseClient";
-import { useSession } from "@src/hooks/useSession";
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import React, { useState } from "react";
 import { NodeProps } from "reactflow";
 
@@ -62,12 +61,13 @@ const Input = new ComponentBuilder(InputAtom)
 const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const [passwordText, setPasswordText] = useState("");
 	const [emailText, setEmailText] = useState("");
-	const session = useSession();
+	const supabase = useSupabaseClient();
+	const user = useUser();
 
 	const onClick = async () => {
 		if (!supabase) return;
 
-		if (!session) {
+		if (!user) {
 			await supabase.auth.signInWithPassword({
 				email: emailText,
 				password: passwordText,
@@ -80,8 +80,8 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
 	return (
 		<>
 			<Root className={NodeSelectionState(props.id)}>
-				{session ? (
-					<Content>{session.user.email}</Content>
+				{user ? (
+					<Content>{user.email}</Content>
 				) : (
 					<>
 						<Input
@@ -96,9 +96,7 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
 						/>
 					</>
 				)}
-				<Button onClick={onClick}>
-					{session ? "Logout" : "Login"}
-				</Button>
+				<Button onClick={onClick}>{user ? "Logout" : "Login"}</Button>
 			</Root>
 		</>
 	);
