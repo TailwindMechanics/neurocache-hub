@@ -1,3 +1,5 @@
+//path: src\components\react_flow\core\reactflowConfig.ts
+
 import { ReactFlowProps } from "reactflow";
 
 export const reactFlowSettingsProps: Partial<ReactFlowProps> = {

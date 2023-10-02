@@ -1,21 +1,23 @@
 //path: src\components\react_flow\utils\nodeSpawner.tsx
 
 import { customNodeDefaults } from "@src/data/customNodeTypes";
-import { Node, NodeTypes, ReactFlowInstance } from "reactflow";
 import { createNode, deselectAllNodes } from "./nodeUtils";
+import { Node, NodeTypes } from "reactflow";
 import loginNode from "../nodes/loginNode";
 
 export const spawnLoginNode = (
-	reactFlowInstance: ReactFlowInstance,
+	nodes: Node[],
+	setNodes: React.Dispatch<React.SetStateAction<Node[]>>,
 	setTypes: React.Dispatch<React.SetStateAction<NodeTypes>>,
 ) => {
 	setTypes({ login: loginNode });
-	spawnNode("login", reactFlowInstance, true);
+	spawnNode("login", nodes, setNodes, true);
 };
 
 export const spawnNode = (
 	nodeType: string,
-	reactFlowInstance: ReactFlowInstance,
+	nodes: Node[],
+	setNodes: React.Dispatch<React.SetStateAction<Node[]>>,
 	clearGraph?: boolean,
 ) => {
 	const nodeDataDefaults = customNodeDefaults.find(
@@ -37,13 +39,12 @@ export const spawnNode = (
 		data: { ...newNodeData },
 	};
 
-	const prevNodes = deselectAllNodes(reactFlowInstance.getNodes());
+	const prevNodes = deselectAllNodes(nodes);
 	let newNodes = prevNodes.filter((n) => n.id !== newNode.id) as Node[];
 
 	newNode.selected = true;
 	if (clearGraph) newNodes = [];
-	newNodes.push(newNode);
-	reactFlowInstance.setNodes(newNodes);
 
-	return newNode;
+	newNodes.push(newNode);
+	setNodes(newNodes);
 };

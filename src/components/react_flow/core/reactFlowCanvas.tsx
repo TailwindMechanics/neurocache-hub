@@ -3,34 +3,24 @@
 "use client";
 
 import { loadGuestGraph, loadUserGraph, saveFlow } from "./flowSaveLoad";
-import React, { useCallback, useEffect, useRef, useState } from "react";
 import useGraphSessionReady from "@src/hooks/useGraphSessionReady";
-import { customNodeDefaults } from "@src/data/customNodeTypes";
-import { spawnSpawnerNode } from "../utils/spawnerNodeUtils";
+import React, { useEffect, useRef, useState } from "react";
 import { reactFlowSettingsProps } from "./reactflowConfig";
-import useMousePosition from "@src/hooks/useMousePosition";
 import { NodeFlowProvider } from "@src/hooks/useNodeFlow";
+import useMouseCoords from "@src/hooks/useMouseCoords";
 import StyleReactFlowLogo from "./styleReactFlowLogo";
 import ConnectionLine from "./connectionLine";
 import EdgeLine from "./edgeLine";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
 import ReactFlow, {
-	useOnSelectionChange,
 	BackgroundVariant,
-	applyEdgeChanges,
-	applyNodeChanges,
-	NodeMouseHandler,
 	useReactFlow,
 	useKeyPress,
 	useViewport,
 	Background,
-	Connection,
-	EdgeChange,
-	NodeChange,
 	NodeTypes,
 	Viewport,
-	addEdge,
 	Node,
 	Edge,
 } from "reactflow";
@@ -39,25 +29,28 @@ import {
 	useSession,
 	User,
 } from "@supabase/auth-helpers-react";
+import { NodeEvents } from "./nodeEvents";
 
 const flowKey = "test-flow";
 const ReactFlowCanvas: React.FC = () => {
 	StyleReactFlowLogo();
-	let viewport = useViewport();
+	const { mouseCoordsRef, handleMouseMove } = useMouseCoords();
 	const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
 	const [edgeTypes] = useState({ custom: EdgeLine });
 	const [types, setTypes] = useState<NodeTypes>({});
 	const [nodes, setNodes] = useState<Node[]>([]);
 	const [edges, setEdges] = useState<Edge[]>([]);
-	const viewportRef = useRef<Viewport>(viewport);
 	const [isSaved, setIsSaved] = useState(false);
 	const [canZoom, setCanZoom] = useState(true);
 	const reactFlowInstance = useReactFlow();
 	const supabase = useSupabaseClient();
 	const session = useSession();
 
+	let viewport = useViewport();
+
 	const graphIsReady = useGraphSessionReady(reactFlowInstance, session);
-	const { mouseCoordsRef, handleMouseMove } = useMousePosition();
+	const cmdAndSPressed = useKeyPress(["Meta+s", "Strg+s"]);
+	const viewportRef = useRef<Viewport>(viewport);
 
 	useEffect(() => {
 		if (graphIsReady) {
@@ -89,9 +82,10 @@ const ReactFlowCanvas: React.FC = () => {
 		viewportRef.current = viewport;
 	}, [viewport]);
 
-	const cmdAndSPressed = useKeyPress(["Meta+s", "Strg+s"]);
 	useEffect(() => {
 		if (!cmdAndSPressed || !session) return;
+
+		console.log(viewport);
 
 		saveFlow(
 			reactFlowInstance,
@@ -104,7 +98,7 @@ const ReactFlowCanvas: React.FC = () => {
 	}, [cmdAndSPressed]);
 
 	const loadGuest = () => {
-		loadGuestGraph(reactFlowInstance, setTypes);
+		loadGuestGraph(nodes, setNodes, setTypes);
 	};
 
 	const loadUser = (currentUser: User) => {
@@ -119,66 +113,6 @@ const ReactFlowCanvas: React.FC = () => {
 		viewportRef.current = viewport;
 	};
 
-	const onNodesChange = useCallback(
-		(changes: NodeChange[]) => {
-			const updatedNodes = applyNodeChanges(changes, nodes);
-			setNodes(updatedNodes);
-		},
-		[nodes],
-	);
-
-	const onEdgesChange = useCallback(
-		(changes: EdgeChange[]) => {
-			const updatedEdges = applyEdgeChanges(changes, edges);
-			setEdges(updatedEdges);
-		},
-		[edges],
-	);
-
-	const onConnect = useCallback(
-		(connection: Edge | Connection) => {
-			const newConnection = { ...connection, type: "custom" };
-			const newEdges = addEdge(newConnection, edges);
-			setEdges(newEdges);
-		},
-		[edges],
-	);
-
-	const handleRightClick = (event: React.MouseEvent) => {
-		event.preventDefault();
-		setCanZoom(true);
-
-		if (!session) return;
-
-		const spawnerNode = spawnSpawnerNode(
-			mouseCoordsRef.current,
-			customNodeDefaults,
-		);
-
-		setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
-	};
-
-	const handleNodeMouseEnter = useCallback<NodeMouseHandler>(
-		(event: React.MouseEvent, node: Node) => {
-			const cursorOverSelected = selectedNodes.find(
-				(selectedNode) => selectedNode.id === node.id,
-			);
-			setCanZoom(!cursorOverSelected);
-		},
-		[selectedNodes],
-	);
-
-	const handleNodeMouseLeave = useCallback(() => {
-		setCanZoom(true);
-	}, []);
-
-	useOnSelectionChange({
-		onChange: ({ nodes, edges }) => {
-			setSelectedNodes(nodes);
-			setCanZoom(!nodes.length);
-		},
-	});
-
 	return (
 		<div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">
 			{isSaved && (
@@ -187,29 +121,30 @@ const ReactFlowCanvas: React.FC = () => {
 				</div>
 			)}
 			<NodeFlowProvider edges={edges}>
-				<ReactFlow
-					preventScrolling={canZoom}
-					connectionLineComponent={ConnectionLine}
-					// Element and Data Related Props
+				<NodeEvents
 					nodes={nodes}
 					edges={edges}
-					nodeTypes={types}
-					edgeTypes={edgeTypes}
-					// Event Handler Props
-					onConnect={onConnect}
-					onContextMenu={handleRightClick}
-					onEdgesChange={onEdgesChange}
-					onMouseMove={handleMouseMove}
-					onNodeMouseEnter={handleNodeMouseEnter}
-					onNodeMouseLeave={handleNodeMouseLeave}
-					onNodesChange={onNodesChange}
-					{...reactFlowSettingsProps}
+					setNodes={setNodes}
+					setEdges={setEdges}
+					setCanZoom={setCanZoom}
+					selectedNodes={selectedNodes}
+					mouseCoordsRef={mouseCoordsRef}
+					handleMouseMove={handleMouseMove}
+					setSelectedNodes={setSelectedNodes}
 				>
-					<Background
-						variant={BackgroundVariant.Dots}
-						color={colors["rose-dark"]}
-					/>
-				</ReactFlow>
+					<ReactFlow
+						connectionLineComponent={ConnectionLine}
+						nodeTypes={types}
+						edgeTypes={edgeTypes}
+						preventScrolling={canZoom}
+						{...reactFlowSettingsProps}
+					>
+						<Background
+							variant={BackgroundVariant.Dots}
+							color={colors["rose-dark"]}
+						/>
+					</ReactFlow>
+				</NodeEvents>
 			</NodeFlowProvider>
 		</div>
 	);

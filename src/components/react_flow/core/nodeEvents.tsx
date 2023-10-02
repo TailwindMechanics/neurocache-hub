@@ -1,11 +1,12 @@
 import { customNodeDefaults } from "@src/data/customNodeTypes";
 import { spawnSpawnerNode } from "../utils/spawnerNodeUtils";
-import useMousePosition from "@src/hooks/useMousePosition";
 import { useSession } from "@supabase/auth-helpers-react";
-import React, { FC, ReactNode, useState } from "react";
-import {
+import React, { ReactNode, FC } from "react";
+import ReactFlow, {
+	useOnSelectionChange,
 	applyEdgeChanges,
 	applyNodeChanges,
+	ReactFlowProps,
 	Connection,
 	EdgeChange,
 	NodeChange,
@@ -15,64 +16,86 @@ import {
 } from "reactflow";
 
 type NodeEventsProps = {
+	handleMouseMove: (event: React.MouseEvent<Element, MouseEvent>) => void;
+	mouseCoordsRef: React.MutableRefObject<{ x: number; y: number }>;
+	setSelectedNodes: React.Dispatch<React.SetStateAction<Node[]>>;
+	setCanZoom: React.Dispatch<React.SetStateAction<boolean>>;
+	setNodes: React.Dispatch<React.SetStateAction<Node[]>>;
+	setEdges: React.Dispatch<React.SetStateAction<Edge[]>>;
+	selectedNodes: Node[];
 	children: ReactNode;
+	edges: Edge[];
+	nodes: Node[];
 };
 
-const NodeEvents: FC<NodeEventsProps> = ({ children }) => {
-	const { mouseCoordsRef } = useMousePosition();
-	const [selectedNodes] = useState<Node[]>([]);
-	const [nodes, setNodes] = useState<Node[]>([]);
-	const [edges, setEdges] = useState<Edge[]>([]);
-	const [canZoom, setCanZoom] = useState(true);
+export const NodeEvents: FC<NodeEventsProps> = (props) => {
 	const session = useSession();
+	useOnSelectionChange({
+		onChange: ({ nodes, edges }) => {
+			props.setSelectedNodes(nodes);
+			props.setCanZoom(!nodes.length);
+		},
+	});
 
 	const eventHandlers = {
 		onConnect: (connection: Edge | Connection) => {
 			const newConnection = { ...connection, type: "custom" };
-			const newEdges = addEdge(newConnection, edges);
-			setEdges(newEdges);
+			const newEdges = addEdge(newConnection, props.edges);
+			props.setEdges(newEdges);
 		},
+
 		onContextMenu: (event: React.MouseEvent) => {
 			event.preventDefault();
-			setCanZoom(true);
+			props.setCanZoom(true);
 
 			if (!session) return;
 
 			const spawnerNode = spawnSpawnerNode(
-				mouseCoordsRef.current,
+				props.mouseCoordsRef.current,
 				customNodeDefaults,
 			);
 
-			setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
+			props.setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
 		},
+
 		onEdgesChange: (changes: EdgeChange[]) => {
-			const updatedEdges = applyEdgeChanges(changes, edges);
-			setEdges(updatedEdges);
+			const updatedEdges = applyEdgeChanges(changes, props.edges);
+			props.setEdges(updatedEdges);
 		},
+
 		onNodeMouseEnter: (event: React.MouseEvent, node: Node) => {
-			const cursorOverSelected = selectedNodes.find(
+			const cursorOverSelected = props.selectedNodes.find(
 				(selectedNode) => selectedNode.id === node.id,
 			);
-			setCanZoom(!cursorOverSelected);
+			props.setCanZoom(!cursorOverSelected);
 		},
+
 		onNodeMouseLeave: () => {
-			setCanZoom(true);
+			props.setCanZoom(true);
 		},
+
 		onNodesChange: (changes: NodeChange[]) => {
-			const updatedNodes = applyNodeChanges(changes, nodes);
-			setNodes(updatedNodes);
+			const updatedNodes = applyNodeChanges(changes, props.nodes);
+			props.setNodes(updatedNodes);
 		},
+
+		onMouseMove: (event: React.MouseEvent) => props.handleMouseMove(event),
 	};
 
-	// Inject event handlers directly into ReactFlow as props
-	const childrenWithProps = React.Children.map(children, (child) => {
-		if (React.isValidElement(child) && child.type === "ReactFlow") {
-			return React.cloneElement(child, eventHandlers);
+	const newProps: ReactFlowProps = {
+		...eventHandlers,
+		nodes: props.nodes,
+		edges: props.edges,
+	};
+
+	const childrenWithProps = React.Children.map(props.children, (child) => {
+		if (React.isValidElement(child) && child.type === ReactFlow) {
+			return React.cloneElement(child, {
+				...newProps,
+			});
 		}
 		return child;
 	});
 
 	return <>{childrenWithProps}</>;
 };
-
-export default NodeEvents;

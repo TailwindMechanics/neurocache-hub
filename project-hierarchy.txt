@@ -78,7 +78,9 @@ neurocache-hub
 │  │  │  │  ├─ edgeLine.tsx
 │  │  │  │  ├─ flowSaveLoad.ts
 │  │  │  │  ├─ flowWithProvider.tsx
+│  │  │  │  ├─ nodeEvents.tsx
 │  │  │  │  ├─ reactFlowCanvas.tsx
+│  │  │  │  ├─ reactflowConfig.ts
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  ├─ nodes
 │  │  │  │  ├─ inputBox.tsx
@@ -92,6 +94,7 @@ neurocache-hub
 │  │  │     ├─ drawHandle.tsx
 │  │  │     ├─ handleUtils.ts
 │  │  │     ├─ mapOutputIds.ts
+│  │  │     ├─ nodeFlowUtils.ts
 │  │  │     ├─ nodeSelectionState.tsx
 │  │  │     ├─ nodeSpawner.tsx
 │  │  │     ├─ nodeUtils.ts
@@ -130,11 +133,14 @@ neurocache-hub
 │  │     └─ devShortcuts.tsx
 │  ├─ hooks
 │  │  ├─ apiContextWrapper.tsx
+│  │  ├─ useGraphSessionReady.tsx
 │  │  ├─ useKeyPress.tsx
+│  │  ├─ useMouseCoords.tsx
 │  │  ├─ useNodeFlow.tsx
 │  │  ├─ useNodeHandle.tsx
-│  │  ├─ useOpenAI.tsx
-│  │  └─ useSession.tsx
+│  │  └─ useOpenAI.tsx
+│  ├─ services
+│  │  └─ supabaseClient.ts
 │  ├─ types
 │  │  ├─ declarations.d.ts
 │  │  ├─ index.ts

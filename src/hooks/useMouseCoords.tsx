@@ -1,7 +1,9 @@
+//path: src\hooks\useMouseCoords.tsx
+
 import { useReactFlow } from "reactflow";
 import { useRef } from "react";
 
-const useMousePosition = () => {
+const useMouseCoords = () => {
 	const mouseCoordsRef = useRef({ x: 0, y: 0 });
 	const reactFlowInstance = useReactFlow();
 	const handleMouseMove = (event: React.MouseEvent) => {
@@ -16,4 +18,4 @@ const useMousePosition = () => {
 	return { mouseCoordsRef, handleMouseMove };
 };
 
-export default useMousePosition;
+export default useMouseCoords;

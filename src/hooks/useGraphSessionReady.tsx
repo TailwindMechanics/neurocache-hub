@@ -1,3 +1,5 @@
+//path: src\hooks\useGraphSessionReady.tsx
+
 import { Session } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { ReactFlowInstance } from "reactflow";

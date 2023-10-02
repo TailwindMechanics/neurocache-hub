@@ -6,12 +6,13 @@ import { Edge, Node, NodeTypes, ReactFlowInstance, Viewport } from "reactflow";
 import { spawnLoginNode } from "../utils/nodeSpawner";
 
 export const loadGuestGraph = (
-	reactFlowInstance: ReactFlowInstance,
+	nodes: Node[],
+	setNodes: React.Dispatch<React.SetStateAction<Node[]>>,
 	setTypes: React.Dispatch<React.SetStateAction<NodeTypes>>,
 ) => {
 	console.log("%c>>> Guest Loaded", "color: #c98289; font-weight: bold");
 
-	spawnLoginNode(reactFlowInstance, setTypes);
+	spawnLoginNode(nodes, setNodes, setTypes);
 };
 
 export const loadUserGraph = (

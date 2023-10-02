@@ -7,10 +7,11 @@ import colors from "@src/data/colors";
 
 const ButtonAtom: React.FC<AtomProps> = (props) => {
 	const controls = useAnimation();
-	const isMounted = useRef(true);
+	const isMounted = useRef(false);
 
 	useEffect(() => {
 		isMounted.current = true;
+
 		return () => {
 			isMounted.current = false;
 		};

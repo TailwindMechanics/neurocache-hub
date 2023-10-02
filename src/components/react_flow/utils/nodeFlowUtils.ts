@@ -1,3 +1,5 @@
+//path: src\components\react_flow\utils\nodeFlowUtils.ts
+
 import { NodeFlowValue } from "@src/types/declarations";
 import { NodeData } from "@src/types/nodeData";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
