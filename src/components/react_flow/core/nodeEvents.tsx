@@ -1,8 +1,9 @@
 //path: src\components\react_flow\core\nodeEvents.tsx
 
-import { customNodeDefaults } from "@src/data/customNodeTypes";
 import { removeSpawnerNode, spawnSpawnerNode } from "../utils/spawnerNodeUtils";
+import { customNodeDefaults } from "@src/data/customNodeTypes";
 import { useSession } from "@supabase/auth-helpers-react";
+import useKeyPress from "@src/hooks/useKeyPress";
 import React, { ReactNode, FC } from "react";
 import ReactFlow, {
 	useOnSelectionChange,
@@ -16,8 +17,6 @@ import ReactFlow, {
 	Node,
 	Edge,
 } from "reactflow";
-import useCtrlS from "@src/hooks/useCtrlS";
-import useKeyPress from "@src/hooks/useKeyPress";
 
 type NodeEventsProps = {
 	handleMouseMove: (event: React.MouseEvent<Element, MouseEvent>) => void;

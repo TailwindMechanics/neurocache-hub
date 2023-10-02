@@ -15,7 +15,7 @@ import useLoggedOut from "@src/hooks/useLoggedOut";
 import useLoggedIn from "@src/hooks/useLoggedIn";
 import ConnectionLine from "./connectionLine";
 import { NodeEvents } from "./nodeEvents";
-import SaveGraph from "./saveGraph";
+import SaveGraph from "../../components/saveGraph";
 import EdgeLine from "./edgeLine";
 import colors from "@data/colors";
 import "reactflow/dist/style.css";
@@ -55,7 +55,7 @@ const ReactFlowCanvas: React.FC = () => {
 
 	const loadUser = (user: User | undefined) => {
 		if (!user) return;
-		viewport = loadUserGraph(user, flowKey, setNodes, setEdges, setTypes);
+		viewport = loadUserGraph("graph", setNodes, setEdges, setTypes);
 		reactFlowInstance.setViewport(viewport);
 		viewportRef.current = viewport;
 	};

@@ -14,7 +14,6 @@ export const loadGuestGraph = (
 };
 
 export const loadUserGraph = (
-	user: User,
 	flowKey: string,
 	setNodes: React.Dispatch<React.SetStateAction<Node[]>>,
 	setEdges: React.Dispatch<React.SetStateAction<Edge[]>>,

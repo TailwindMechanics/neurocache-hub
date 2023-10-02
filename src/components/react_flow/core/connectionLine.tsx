@@ -3,7 +3,7 @@
 import { AnimationDefinition, useAnimation } from "framer-motion";
 import { ConnectionLineComponentProps } from "reactflow";
 import useNodeHandle from "@src/hooks/useNodeHandle";
-import ColouredLine from "./colouredLine";
+import ColouredLine from "../../components/colouredLine";
 import React, { FC } from "react";
 
 const ConnectionLine: FC<ConnectionLineComponentProps> = (props) => {

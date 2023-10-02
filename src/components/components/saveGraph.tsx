@@ -2,9 +2,9 @@
 
 import { Edge, Node, Viewport, useReactFlow } from "reactflow";
 import { useSession } from "@supabase/auth-helpers-react";
+import { saveFlow } from "../react_flow/core/flowSaveLoad";
 import { FC, useState, useEffect } from "react";
 import useCtrlS from "@src/hooks/useCtrlS";
-import { saveFlow } from "./flowSaveLoad";
 
 interface SaveGraphProps {
 	flowKey: string;
@@ -30,7 +30,7 @@ const SaveGraph: FC<SaveGraphProps> = (props) => {
 			reactFlowInstance,
 			props.setNodes,
 			props.setEdges,
-			props.flowKey,
+			"graph",
 			props.viewportRef.current,
 		);
 

@@ -2,7 +2,7 @@
 
 import { AnimationDefinition, useAnimation } from "framer-motion";
 import useNodeHandle from "@src/hooks/useNodeHandle";
-import ColouredLine from "./colouredLine";
+import ColouredLine from "../../components/colouredLine";
 import { EdgeProps } from "reactflow";
 import React, { FC, useEffect } from "react";
 

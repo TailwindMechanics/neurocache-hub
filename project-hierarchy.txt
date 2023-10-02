@@ -56,7 +56,7 @@ neurocache-hub
 ├─ src
 │  ├─ app
 │  │  ├─ api
-│  │  │  ├─ graph
+│  │  │  ├─ agent-graphs
 │  │  │  │  ├─ load
 │  │  │  │  │  └─ route.ts
 │  │  │  │  └─ save
@@ -95,7 +95,8 @@ neurocache-hub
 │  │  │  │  ├─ openAiNode.tsx
 │  │  │  │  ├─ sendOutputNode.tsx
 │  │  │  │  ├─ spawnerNode.tsx
-│  │  │  │  └─ splitterNode.tsx
+│  │  │  │  ├─ splitterNode.tsx
+│  │  │  │  └─ testBox.tsx
 │  │  │  └─ utils
 │  │  │     ├─ drawHandle.tsx
 │  │  │     ├─ handleUtils.ts
@@ -139,6 +140,8 @@ neurocache-hub
 │  │     └─ devShortcuts.tsx
 │  ├─ hooks
 │  │  ├─ apiContextWrapper.tsx
+│  │  ├─ useAgentGraphs.tsx
+│  │  ├─ useCtrlS.tsx
 │  │  ├─ useGraphSessionReady.tsx
 │  │  ├─ useGuestGraphReady.tsx
 │  │  ├─ useKeyPress.tsx

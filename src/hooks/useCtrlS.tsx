@@ -1,3 +1,5 @@
+//path: src\hooks\useCtrlS.tsx
+
 import { useEffect } from "react";
 
 const useCtrlS = (callback: () => void) => {
