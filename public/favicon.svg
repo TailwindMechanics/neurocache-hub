@@ -1,0 +1,20 @@
+<svg
+	class="scene-svg bg-editor-bg absolute appearance-none"
+	viewBox="0 0 280 270"
+	width="280"
+	height="270"
+	style="left: 50%; top: 50%; transform: translate(-50%, -50%) scale(1.31649, 1.31649);"
+>
+	<defs>
+		<pattern
+			id="dots"
+			viewBox="0 0 50 50"
+			width="25"
+			height="25"
+			patternUnits="userSpaceOnUse"
+		>
+			<circle cx="25" cy="25" r="2" fill="#77cabf"></circle>
+		</pattern>
+	</defs>
+	<rect fill="url(#dots)" x="0" width="280" height="270"></rect>
+</svg>;

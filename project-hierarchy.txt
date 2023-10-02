@@ -56,6 +56,11 @@ neurocache-hub
 ├─ src
 │  ├─ app
 │  │  ├─ api
+│  │  │  ├─ graph
+│  │  │  │  ├─ load
+│  │  │  │  │  └─ route.ts
+│  │  │  │  └─ save
+│  │  │  │     └─ route.ts
 │  │  │  └─ open-ai
 │  │  │     └─ chat
 │  │  │        └─ route.ts

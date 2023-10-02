@@ -25,6 +25,7 @@ export default function RootLayout({
 				<head>
 					<title>{title}</title>
 					<meta name="description" content={metadata.description} />
+					<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 				</head>
 				<body className={`${inter.className} dark`}>
 					{children}
