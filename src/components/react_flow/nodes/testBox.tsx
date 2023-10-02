@@ -12,14 +12,17 @@ import { NodeProps } from "reactflow";
 import React from "react";
 import ButtonAtom from "@src/components/atoms/buttonAtom";
 import InputAtom from "@src/components/atoms/inputAtom";
+import { useAgentGraphs } from "@src/hooks/useAgentGraphs";
 
 const Root = new ComponentBuilder(AtomicDiv)
-	.withStyle("space-y-0.5")
+	.withStyle("scrollbar-hide")
+	.withStyle("overflow-auto")
+	.withStyle("max-w-[350px]")
+	.withStyle("max-h-[350px]")
+	.withStyle("text-sm")
 	.withStyle("font-mono")
-	.withStyle("flex-col")
-	.withStyle("text-xs")
-	.withStyle("p-1.5")
-	.withStyle("flex")
+	.withStyle("space-y-1")
+	.withStyle("p-1")
 	.withRoundedFrame()
 	.withShadow()
 	.withBg()
@@ -28,13 +31,15 @@ const Root = new ComponentBuilder(AtomicDiv)
 const Input = new ComponentBuilder(InputAtom)
 	.withStyle("focus:border-aqua-light")
 	.withStyle("border-night-light")
-	.withStyle("text-aqua-light")
+	.withStyle("text-aqua")
 	.withStyle("bg-night-black")
+	.withStyle("text-md")
+	.withStyle("font-bold")
 	.withStyle("text-center")
 	.withStyle("outline-none")
 	.withStyle("ring-none")
 	.withStyle("border")
-	.withStyle("py-0.5")
+	.withStyle("py-2")
 	.withStyle("w-full")
 	.withStyle("h-full")
 	.withStyle("px-1")
@@ -57,25 +62,34 @@ const Content = new ComponentBuilder(AtomicDiv)
 	.withStyle("text-aqua-dark")
 	.withStyle("bg-night-black")
 	.withStyle("font-semibold")
-	.withStyle("text-sm")
+	.withStyle("overflow-auto")
+	.withStyle("scrollbar-hide")
+	.withStyle("text-xs")
 	.withStyle("border")
-	.withStyle("p-10")
+	.withStyle("p-1")
 	.withRoundedButton()
 	.build();
 
 const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
 	const [inputBoxText, setinputLabelText] = useState("Text");
+	const [contentText, setContentText] = useState("Content");
 	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
 	const nodeData = props.data as NodeData;
+	const agentGraphs = useAgentGraphs();
 
-	const onClick = () => {
-		console.log("clicked");
+	const onClick = async () => {
+		setContentText(inputBoxText);
+		const response = await agentGraphs.save(inputBoxText);
+		console.log(response);
+
+		setContentText(response.error.details);
 	};
-	useEffect(() => {
-		sendOutput(nodeData, nodeFlowValue, setNodeFlowValue);
-		const input = extractInput(nodeData, nodeFlowValue);
-		if (input) setinputLabelText(input);
-	}, [nodeFlowValue]);
+
+	// useEffect(() => {
+	// 	sendOutput(nodeData, nodeFlowValue, setNodeFlowValue);
+	// 	const input = extractInput(nodeData, nodeFlowValue);
+	// 	if (input) setinputLabelText(input);
+	// }, [nodeFlowValue]);
 
 	return (
 		<>
@@ -88,7 +102,7 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
 					onChange={(e) => setinputLabelText(e.target.value)}
 				></Input>
 				<Button onClick={onClick}>Test</Button>
-				<Content></Content>
+				<Content>{contentText}</Content>
 			</Root>
 		</>
 	);

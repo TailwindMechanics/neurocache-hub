@@ -28,28 +28,32 @@ export async function POST(req: NextRequest, res: NextResponse) {
 	);
 
 	const token = req.headers.get("Authorization")?.split(" ")[1];
-	if (!token) {
-		return new Response("No Authorization token found", { status: 401 });
-	}
+	// if (!token) {
+	// 	return new Response("No Authorization token found", { status: 401 });
+	// }
 
-	const user = await supabase.auth.getUser(token);
-	const { data: session, error: sessionError } = user;
-	if (sessionError || !session) {
-		return new Response(sessionError?.message || "Invalid session", {
-			status: 401,
-		});
-	}
+	// const user = await supabase.auth.getUser(token);
+	// const { data: session, error: sessionError } = user;
+	// if (sessionError || !session) {
+	// 	return new Response(sessionError?.message || "Invalid session", {
+	// 		status: 401,
+	// 	});
+	// }
 
-	const json = await req.json();
+	// let thing = await supabase.from("agent_graphs").select("*");
+
+	let poop = await supabase.from("agent_graphs").select("graph_data");
+
 	// const { parsedGraph } = graphValidator.parse(json);
-	const { data, error } = await supabase
-		.from("agent_graphs")
-		.insert({ user_id: user, graph_data: json })
-		.select();
+	// const { data, error } = await supabase
+	// 	.from("agent_graphs")
+	// 	.insert({ user_id: user, graph_data: json })
+	// 	.select();
 
-	if (error) {
-		return new Response(error.message, { status: 400 });
-	}
+	console.log(poop);
 
-	return new Response(JSON.stringify(data), { status: 200 });
+	const json = JSON.stringify(poop);
+	console.log("json:", json);
+
+	return new Response(json, { status: 200 });
 }
