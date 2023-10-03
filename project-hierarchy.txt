@@ -70,6 +70,7 @@ neurocache-hub
 │  ├─ components
 │  │  ├─ atoms
 │  │  │  ├─ buttonAtom.tsx
+│  │  │  ├─ cardAtom.tsx
 │  │  │  ├─ comboInputAtom.tsx
 │  │  │  ├─ divAtom.tsx
 │  │  │  ├─ inputAtom.tsx

@@ -47,7 +47,7 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
 	const eventHandlers = {
 		onMouseDownCapture: (event: React.MouseEvent) => {
 			const isSpawner = (event.target as HTMLElement).closest(
-				'[data-type="spawner-node"]',
+				'[data-type="atom-node"]',
 			);
 			if (!isSpawner) {
 				props.setNodes((prevNodes: Node[]) =>

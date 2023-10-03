@@ -11,7 +11,7 @@ export default function StyleReactFlowLogo() {
 			// Change the link color to suit your color scheme
 			const linkElement = attributionElement.querySelector("a");
 			if (linkElement) {
-				linkElement.textContent = "reactflow";
+				linkElement.textContent = "neurocache";
 				linkElement.style.color = "#f5cdc1";
 				linkElement.classList.add(
 					"underline",

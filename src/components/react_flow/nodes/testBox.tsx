@@ -23,7 +23,7 @@ const Content = new ComponentBuilder(ContentPreset)
 	.withStyle("bg-night-light")
 	.withStyle("break-words")
 	.withStyle("text-xs")
-	.withStyle("w-80")
+	.withStyle("w-64")
 	.withStyle("h-60")
 	.withRoundedButton()
 	.build();
@@ -79,7 +79,7 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
 					<TextBlockFormatter
 						className="bg-night-light"
 						separator={/\.js:\d+:\d+\)\s/g}
-						itemClassName="px-1 mb-0.5 bg-night-black rounded"
+						itemClassName="px-1 py-0.5 mb-0.5 bg-night-black rounded"
 						text={contentText}
 					/>
 				</Content>

@@ -3,7 +3,6 @@
 import { Edge, Node, NodeTypes, ReactFlowInstance, Viewport } from "reactflow";
 import customNodeTypes from "@src/data/customNodeTypes";
 import { spawnLoginNode } from "../utils/nodeSpawner";
-import { User } from "@supabase/supabase-js";
 
 export const loadGuestGraph = (
 	nodes: Node[],

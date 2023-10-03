@@ -23,6 +23,16 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			outlineWidth: {
+				"0.04rem": "0.04rem",
+				"0.05rem": "0.05rem",
+				"0.1rem": "0.1rem",
+			},
+			outlineOffset: {
+				"0.04rem": "0.04rem",
+				"0.05rem": "0.05rem",
+				"0.1rem": "0.1rem",
+			},
 			borderRadius: {
 				ms: "0.2rem",
 			},

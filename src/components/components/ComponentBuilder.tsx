@@ -76,7 +76,12 @@ export default class ComponentBuilder {
 	}
 
 	withShadow(): ComponentBuilder {
-		this.push(`drop-shadow-[-4px_10px_1px_rgba(0,0,20,.72)]`);
+		this.push(`drop-shadow-[-2px_5px_0.5px_rgba(0,0,20,.72)]`);
+		return this;
+	}
+
+	withHoverShadow(): ComponentBuilder {
+		this.push(`hover:drop-shadow-[-2px_5px_0.25px_rgba(0,0,20,.72)]`);
 		return this;
 	}
 

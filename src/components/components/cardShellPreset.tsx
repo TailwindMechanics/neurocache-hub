@@ -1,13 +1,12 @@
 //path: src\components\components\cardShellPreset.tsx
 
 import ComponentBuilder from "./ComponentBuilder";
-import DivAtom from "../atoms/divAtom";
+import CardAtom from "../atoms/cardAtom";
 
-const CardShellPreset = new ComponentBuilder(DivAtom)
+const CardShellPreset = new ComponentBuilder(CardAtom)
 	.withStyle("flex-col")
 	.withStyle("flex")
 	.withRoundedFrame()
-	.withShadow()
 	.withBg()
 	.build();
 
