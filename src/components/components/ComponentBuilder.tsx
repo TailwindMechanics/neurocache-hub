@@ -76,7 +76,7 @@ export default class ComponentBuilder {
 	}
 
 	withShadow(): ComponentBuilder {
-		this.push(`drop-shadow-[-2px_5px_0.25px_rgba(0,0,20,.72)]`);
+		this.push(`drop-shadow-[-1.5px_4px_0.3px_rgba(0,0,20,.72)]`);
 		return this;
 	}
 
