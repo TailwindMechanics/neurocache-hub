@@ -1,60 +1,29 @@
 //path: src\components\react_flow\nodes\loginNode.tsx
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
-import NodeSelectionState from "../utils/nodeSelectionState";
-import ButtonAtom from "@src/components/atoms/buttonAtom";
-import AtomicDiv from "@src/components/atoms/atomicDiv";
-import InputAtom from "@src/components/atoms/inputAtom";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import ContentPreset from "@src/components/components/contentPreset";
+import ButtonPreset from "@src/components/components/buttonPreset";
+import InputPreset from "@src/components/components/inputPreset";
+import CardPreset from "@src/components/components/cardPreset";
+import NodeSelectionState from "../utils/nodeSelectionState";
 import React, { useState } from "react";
 import { NodeProps } from "reactflow";
 
-const Root = new ComponentBuilder(AtomicDiv)
-	.withStyle("space-y-0.5")
-	.withStyle("font-mono")
-	.withStyle("flex-col")
-	.withStyle("text-xs")
-	.withStyle("p-1.5")
-	.withStyle("flex")
-	.withRoundedFrame()
-	.withShadow()
-	.withBg()
-	.build();
-
-const Content = new ComponentBuilder(AtomicDiv)
-	.withStyle("border-night-light")
+const Content = new ComponentBuilder(ContentPreset)
 	.withStyle("text-night-title")
-	.withStyle("bg-night-black")
-	.withStyle("text-center")
-	.withStyle("border")
+	.withStyle("text-sm")
 	.withStyle("px-1")
 	.withRoundedElement()
 	.build();
 
-const Button = new ComponentBuilder(ButtonAtom)
-	.withStyle("border-night-light")
-	.withStyle("text-night-title")
-	.withStyle("bg-night")
-	.withStyle("text-aqua")
-	.withStyle("font-bold")
-	.withStyle("border")
-	.withStyle("w-full")
+const Button = new ComponentBuilder(ButtonPreset)
+	.withStyle("text-sm")
 	.withRoundedButton()
 	.build();
 
-const Input = new ComponentBuilder(InputAtom)
-	.withStyle("focus:border-aqua-light")
-	.withStyle("border-night-light")
-	.withStyle("text-aqua-light")
-	.withStyle("bg-night-black")
+const Input = new ComponentBuilder(InputPreset)
 	.withStyle("text-center")
-	.withStyle("outline-none")
-	.withStyle("ring-none")
-	.withStyle("border")
-	.withStyle("py-0.5")
-	.withStyle("w-full")
-	.withStyle("h-full")
-	.withStyle("px-1")
 	.withRoundedElement()
 	.build();
 
@@ -79,7 +48,7 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root className={NodeSelectionState(props.id)}>
+			<CardPreset className={NodeSelectionState(props.id)}>
 				{user ? (
 					<Content>{user.email}</Content>
 				) : (
@@ -97,7 +66,7 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
 					</>
 				)}
 				<Button onClick={onClick}>{user ? "Logout" : "Login"}</Button>
-			</Root>
+			</CardPreset>
 		</>
 	);
 };

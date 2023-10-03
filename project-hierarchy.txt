@@ -69,16 +69,26 @@ neurocache-hub
 │  │  └─ page.tsx
 │  ├─ components
 │  │  ├─ atoms
-│  │  │  ├─ atomicDiv.tsx
 │  │  │  ├─ buttonAtom.tsx
+│  │  │  ├─ comboInputAtom.tsx
+│  │  │  ├─ divAtom.tsx
 │  │  │  ├─ inputAtom.tsx
 │  │  │  └─ textBoxAtom.tsx
 │  │  ├─ components
+│  │  │  ├─ buttonPreset.tsx
+│  │  │  ├─ cardPreset.tsx
+│  │  │  ├─ cardShellPreset.tsx
 │  │  │  ├─ codeBlock.tsx
-│  │  │  └─ ComponentBuilder.tsx
+│  │  │  ├─ colouredLine.tsx
+│  │  │  ├─ comboInputPreset.tsx
+│  │  │  ├─ ComponentBuilder.tsx
+│  │  │  ├─ contentPreset.tsx
+│  │  │  ├─ inputPreset.tsx
+│  │  │  ├─ prosePreset.tsx
+│  │  │  ├─ saveGraph.tsx
+│  │  │  └─ textBlockFormatter.tsx
 │  │  ├─ react_flow
 │  │  │  ├─ core
-│  │  │  │  ├─ colouredLine.tsx
 │  │  │  │  ├─ connectionLine.tsx
 │  │  │  │  ├─ edgeLine.tsx
 │  │  │  │  ├─ flowSaveLoad.ts
@@ -86,7 +96,6 @@ neurocache-hub
 │  │  │  │  ├─ nodeEvents.tsx
 │  │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  │  ├─ reactflowConfig.ts
-│  │  │  │  ├─ saveGraph.tsx
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  ├─ nodes
 │  │  │  │  ├─ inputBox.tsx

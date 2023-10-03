@@ -1,4 +1,4 @@
-//path: src\components\react_flow\core\saveGraph.tsx
+//path: src\components\components\saveGraph.tsx
 
 import { Edge, Node, Viewport, useReactFlow } from "reactflow";
 import { useSession } from "@supabase/auth-helpers-react";

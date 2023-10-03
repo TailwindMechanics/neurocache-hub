@@ -1,11 +1,13 @@
 //path: src\components\react_flow\nodes\spawnerNode.tsx
 
+import ComboInputPreset from "@src/components/components/comboInputPreset";
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import { createNode } from "@src/components/react_flow/utils/nodeUtils";
+import ContentPreset from "@src/components/components/contentPreset";
+import CardPreset from "@src/components/components/cardPreset";
 import { getUnhiddenNodes } from "@src/data/customNodeTypes";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import { Node, NodeProps, useReactFlow } from "reactflow";
-import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
 import useKeyPress from "@src/hooks/useKeyPress";
 import { NodeData } from "@src/types/nodeData";
@@ -13,28 +15,14 @@ import { Combobox } from "@headlessui/react";
 import { useState } from "react";
 import React from "react";
 
-const Root = new ComponentBuilder(AtomicDiv)
+const Card = new ComponentBuilder(CardPreset)
 	.withData("type", "spawner-node")
-	.withStyle("text-aqua-title")
-	.withStyle("font-mono")
-	.withStyle("text-xs")
-	.withStyle("p-1.5")
-	.withStyle("w-50")
-	.withRoundedFrame()
-	.withShadow()
-	.withBg()
 	.build();
 
-const Content = new ComponentBuilder(AtomicDiv)
-	.withStyle("border-night-light")
-	.withStyle("bg-night-black")
-	.withStyle("text-aqua-dark")
-	.withStyle("rounded-b-lg")
-	.withStyle("rounded-t")
-	.withStyle("border")
+const Content = new ComponentBuilder(ContentPreset)
 	.withStyle("py-0.5")
-	.withStyle("mt-0.5")
 	.withStyle("px-1")
+	.withRoundedButton()
 	.build();
 
 const nodeLabel = (node: NodeData) => {
@@ -111,12 +99,11 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 
 	return (
 		<>
-			<Root className={NodeSelectionState(props.id)}>
+			<Card className={NodeSelectionState(props.id)}>
 				<Combobox>
-					<Combobox.Input
+					<ComboInputPreset
 						placeholder="..."
 						autoFocus
-						className="rounded-sm bg-night-black px-1 text-aqua-light ring-1 ring-night-light focus:outline-none focus:ring-aqua-light"
 						displayValue={(node: NodeData) => nodeLabel(node)}
 						onChange={(event) => setQuery(event.target.value)}
 					/>
@@ -137,7 +124,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 						</Combobox.Options>
 					</Content>
 				</Combobox>
-			</Root>
+			</Card>
 		</>
 	);
 };

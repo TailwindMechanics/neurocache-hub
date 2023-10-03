@@ -1,9 +1,10 @@
 //path: src\components\react_flow\nodes\inputBox.tsx
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
+import ContentPreset from "@src/components/components/contentPreset";
 import { extractInput, sendOutput } from "../utils/nodeFlowUtils";
+import CardPreset from "@src/components/components/cardPreset";
 import NodeSelectionState from "../utils/nodeSelectionState";
-import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
@@ -11,28 +12,11 @@ import { useEffect, useState } from "react";
 import { NodeProps } from "reactflow";
 import React from "react";
 
-const Root = new ComponentBuilder(AtomicDiv)
-	.withStyle("scrollbar-hide")
-	.withStyle("overflow-auto")
-	.withStyle("max-w-[200px]")
-	.withStyle("max-h-[200px]")
-	.withStyle("font-mono")
-	.withStyle("p-1")
-	.withRoundedFrame()
-	.withShadow()
-	.withBg()
-	.build();
-
-const Content = new ComponentBuilder(AtomicDiv)
-	.withStyle("border-night-light")
-	.withStyle("text-aqua-dark")
-	.withStyle("bg-night-black")
-	.withStyle("font-semibold")
-	.withStyle("rounded-b-lg")
-	.withStyle("rounded-t")
+const Content = new ComponentBuilder(ContentPreset)
+	.withStyle("text-night-body")
 	.withStyle("text-sm")
-	.withStyle("border")
 	.withStyle("px-1")
+	.withRoundedButton()
 	.build();
 
 const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
@@ -51,9 +35,9 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 			{nodeData.handles?.map((handle, index) =>
 				DrawHandle({ handle, nodeData, index }),
 			)}
-			<Root className={NodeSelectionState(props.id)}>
+			<CardPreset className={NodeSelectionState(props.id)}>
 				<Content>{inputBoxText}</Content>
-			</Root>
+			</CardPreset>
 		</>
 	);
 };

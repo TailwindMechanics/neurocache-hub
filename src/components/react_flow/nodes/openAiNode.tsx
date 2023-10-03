@@ -1,8 +1,9 @@
 //path: src\components\react_flow\nodes\openAiNode.tsx
 
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
+import ContentPreset from "@src/components/components/contentPreset";
+import CardPreset from "@src/components/components/cardPreset";
 import NodeSelectionState from "../utils/nodeSelectionState";
-import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import { useOpenAI } from "@src/hooks/useOpenAI";
 import { NodeData } from "@src/types/nodeData";
@@ -10,25 +11,10 @@ import DrawHandle from "../utils/drawHandle";
 import React, { useEffect } from "react";
 import { NodeProps } from "reactflow";
 
-const Root = new ComponentBuilder(AtomicDiv)
-	.withStyle("text-aqua-title")
-	.withStyle("font-mono")
+const Content = new ComponentBuilder(ContentPreset)
 	.withStyle("text-sm")
-	.withStyle("p-1")
-	.withRoundedFrame()
-	.withShadow()
-	.withBg()
-	.build();
-
-const Content = new ComponentBuilder(AtomicDiv)
-	.withStyle("border-night-light")
-	.withStyle("text-aqua-dark")
-	.withStyle("bg-night-black")
-	.withStyle("font-semibold")
-	.withStyle("rounded-b-lg")
-	.withStyle("rounded-t")
-	.withStyle("border")
 	.withStyle("px-1")
+	.withRoundedButton()
 	.build();
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
@@ -70,9 +56,9 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 			{nodeData.handles?.map((handle, index) =>
 				DrawHandle({ handle, nodeData, index }),
 			)}
-			<Root className={NodeSelectionState(props.id)}>
+			<CardPreset className={NodeSelectionState(props.id)}>
 				<Content>{nodeData.nodeName}</Content>
-			</Root>
+			</CardPreset>
 		</>
 	);
 };

@@ -1,10 +1,10 @@
 //path: src\components\components\ComponentBuilder.tsx
 
-import { AtomNode, AtomProps } from "@src/types/declarations";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
+import { AtomProps } from "@src/types/declarations";
 import { Atom } from "@src/data/icons";
+import React, { FC } from "react";
 import Image from "next/image";
-import React from "react";
 
 export default class ComponentBuilder {
 	private dataProps: { [key: string]: string | boolean | number } = {};
@@ -14,9 +14,9 @@ export default class ComponentBuilder {
 	private styles: string[] = [];
 	private animationProps = {};
 	private label: string = "";
-	private node: AtomNode;
+	private node: FC<AtomProps>;
 
-	constructor(atom: AtomNode) {
+	constructor(atom: FC<AtomProps>) {
 		this.node = atom;
 	}
 
@@ -196,7 +196,7 @@ export default class ComponentBuilder {
 		return this;
 	}
 
-	build(): AtomNode {
+	build(): FC<AtomProps> {
 		const styles = this.styles.join(" ");
 		return (props: AtomProps) => {
 			let newClassName = `${props.className ?? ""} ${styles}`.trim();

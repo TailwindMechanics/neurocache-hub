@@ -1,52 +1,16 @@
 //path: src\components\react_flow\nodes\markdownBox.tsx
 
-import ComponentBuilder from "@src/components/components/ComponentBuilder";
+import ProsePreset from "@src/components/components/prosePreset";
+import CardPreset from "@src/components/components/cardPreset";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import React, { useEffect, useMemo, useState } from "react";
 import RenderCodeblocks from "../utils/renderCodeblocks";
-import AtomicDiv from "@src/components/atoms/atomicDiv";
 import { IsNullOrEmpty } from "@src/utils/stringUtils";
 import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import Markdown from "react-markdown";
 import { NodeProps } from "reactflow";
-
-const Root = new ComponentBuilder(AtomicDiv)
-	.withStyle("scrollbar-hide")
-	.withStyle("overflow-auto")
-	.withStyle("max-w-[320px]")
-	.withStyle("max-h-[200px]")
-	.withStyle("font-mono")
-	.withStyle("p-1")
-	.withRoundedFrame()
-	.withShadow()
-	.withBg()
-	.build();
-
-const Content = new ComponentBuilder(AtomicDiv)
-	.withStyle("prose-code:text-aqua-body")
-	.withStyle("prose-strong:text-aqua")
-	.withStyle("prose-pre:scrollbar-hide")
-	.withStyle("border-night-light")
-	.withStyle("prose-h1:text-aqua")
-	.withStyle("prose-h2:text-aqua-dark")
-	.withStyle("prose-h3:text-aqua")
-	.withStyle("prose-h4:text-aqua")
-	.withStyle("text-aqua-title")
-	.withStyle("prose-pre:text-xs")
-	.withStyle("prose-pre:rounded")
-	.withStyle("bg-night-black")
-	.withStyle("prose-code:m-0")
-	.withStyle("prose-code:p-0")
-	.withStyle("prose-pre:m-0")
-	.withStyle("prose-pre:p-0")
-	.withStyle("text-xs")
-	.withStyle("px-1.5")
-	.withStyle("border")
-	.withStyle("prose")
-	.withRoundedContent()
-	.build();
 
 const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
 	const [markdownText, setMarkdownText] = useState("## *Markdown*");
@@ -86,9 +50,9 @@ const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
 			{nodeData.handles?.map((handle, index) =>
 				DrawHandle({ handle, nodeData, index }),
 			)}
-			<Root className={NodeSelectionState(props.id)}>
-				<Content>{memoizedMarkdown}</Content>
-			</Root>
+			<CardPreset className={NodeSelectionState(props.id)}>
+				<ProsePreset>{memoizedMarkdown}</ProsePreset>
+			</CardPreset>
 		</>
 	);
 };
