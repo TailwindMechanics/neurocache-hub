@@ -6,9 +6,8 @@ import DivAtom from "./divAtom";
 import React from "react";
 
 const Root = new ComponentBuilder(DivAtom)
-	.withStyle("hover:outline-night-black")
 	.withStyle("-outline-offset-0.04rem")
-	.withStyle("outline-night-dark")
+	.withStyle("outline-night-black")
 	.withData("type", "atom-node")
 	.withStyle("outline-0.04rem")
 	.withStyle("transition-all")
@@ -16,7 +15,6 @@ const Root = new ComponentBuilder(DivAtom)
 	.withStyle("ease-in-out")
 	.withStyle("outline")
 	.withRoundedFrame()
-	.withHoverShadow()
 	.withStyle("z-0")
 	.withShadow()
 	.build();

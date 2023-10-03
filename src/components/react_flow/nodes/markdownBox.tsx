@@ -1,5 +1,6 @@
 //path: src\components\react_flow\nodes\markdownBox.tsx
 
+import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import ProsePreset from "@src/components/components/prosePreset";
 import CardPreset from "@src/components/components/cardPreset";
 import NodeSelectionState from "../utils/nodeSelectionState";
@@ -11,6 +12,15 @@ import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import Markdown from "react-markdown";
 import { NodeProps } from "reactflow";
+
+const Card = new ComponentBuilder(CardPreset)
+	.withStyle("scrollbar-hide")
+	.withStyle("overflow-auto")
+	.withStyle("max-h-44")
+	.withStyle("max-w-60")
+	.build();
+
+const Prose = new ComponentBuilder(ProsePreset).withStyle("px-1").build();
 
 const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
 	const [markdownText, setMarkdownText] = useState("## *Markdown*");
@@ -50,9 +60,9 @@ const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
 			{nodeData.handles?.map((handle, index) =>
 				DrawHandle({ handle, nodeData, index }),
 			)}
-			<CardPreset className={NodeSelectionState(props.id)}>
-				<ProsePreset>{memoizedMarkdown}</ProsePreset>
-			</CardPreset>
+			<Card className={NodeSelectionState(props.id)}>
+				<Prose>{memoizedMarkdown}</Prose>
+			</Card>
 		</>
 	);
 };

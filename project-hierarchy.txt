@@ -165,6 +165,7 @@ neurocache-hub
 │  ├─ services
 │  │  └─ supabaseClient.ts
 │  ├─ types
+│  │  ├─ api.d.ts
 │  │  ├─ declarations.d.ts
 │  │  ├─ index.ts
 │  │  └─ nodeData.d.ts

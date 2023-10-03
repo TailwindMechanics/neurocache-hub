@@ -10,5 +10,13 @@ module.exports = {
 				useTabs: false,
 			},
 		},
+		{
+			files: ["*.d.ts"],
+			options: {
+				// Your specific options for .d.ts files
+				tabWidth: 4,
+				useTabs: true,
+			},
+		},
 	],
 };

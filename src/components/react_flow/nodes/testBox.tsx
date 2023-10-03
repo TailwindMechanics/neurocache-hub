@@ -1,31 +1,36 @@
 //path: src\components\react_flow\nodes\testBox.tsx
 
-import TextBlockFormatter from "@src/components/components/textBlockFormatter";
 import ComponentBuilder from "@src/components/components/ComponentBuilder";
 import ContentPreset from "@src/components/components/contentPreset";
 import ButtonPreset from "@src/components/components/buttonPreset";
-import { extractInput, sendOutput } from "../utils/nodeFlowUtils";
-import InputPreset from "@src/components/components/inputPreset";
 import CardPreset from "@src/components/components/cardPreset";
 import NodeSelectionState from "../utils/nodeSelectionState";
-import { useAgentGraphs } from "@src/hooks/useAgentGraphs";
+import { supabase } from "@src/services/supabaseClient";
+import { useUser } from "@supabase/auth-helpers-react";
 import { useNodeFlow } from "@src/hooks/useNodeFlow";
+import { NodeProps, useReactFlow } from "reactflow";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
 import { useEffect, useState } from "react";
-import { NodeProps } from "reactflow";
+import { AgentGraph } from "@src/types/api";
 import React from "react";
+
+const Header = new ComponentBuilder(ContentPreset)
+	.withStyle("text-aqua")
+	.withStyle("text-center")
+	.withStyle("w-20")
+	.withRoundedElement()
+	.build();
 
 const Card = new ComponentBuilder(CardPreset).withRoundedFrame().build();
 
 const Content = new ComponentBuilder(ContentPreset)
 	.withStyle("text-night-body")
-	.withStyle("bg-night-light")
 	.withStyle("break-words")
 	.withStyle("text-xs")
-	.withStyle("w-64")
-	.withStyle("h-60")
-	.withRoundedButton()
+	.withStyle("py-0.5")
+	.withStyle("px-1")
+	.withRoundedContent()
 	.build();
 
 const Button = new ComponentBuilder(ButtonPreset)
@@ -33,36 +38,75 @@ const Button = new ComponentBuilder(ButtonPreset)
 	.withRoundedElement()
 	.build();
 
-const Input = new ComponentBuilder(InputPreset)
-	.withStyle("text-center")
-	.withRoundedElement()
-	.build();
-
 const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
-	const [inputBoxText, setinputLabelText] = useState("Text");
-	const [contentText, setContentText] = useState("Content");
-	const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
+	const { setNodeFlowValue } = useNodeFlow();
 	const nodeData = props.data as NodeData;
-	const agentGraphs = useAgentGraphs();
+	const reactFlowInstance = useReactFlow();
+	const user = useUser();
 
-	const onClick = async () => {
-		setContentText(inputBoxText);
-		const response = await agentGraphs.save(inputBoxText);
-		console.log(response);
+	const [isLoading, setIsLoading] = useState({
+		loading: false,
+		message: "idle",
+		detail: "",
+	});
 
-		// @ts-ignore
-		setContentText(response.error.details);
+	const saveAgentGraph = async (agentGraph: AgentGraph) => {
+		try {
+			setIsLoading({
+				loading: true,
+				message: "Saving...",
+				detail: "",
+			});
+			const response = await supabase
+				.from("agent_graphs")
+				.upsert(agentGraph)
+				.select();
+
+			if (response.data) {
+				setIsLoading({
+					loading: false,
+					message: "Saved!",
+					detail: `${response.status} ${response.statusText}`,
+				});
+				return {
+					payload: JSON.stringify(response.data),
+					erorr: JSON.stringify(response.error),
+				};
+			}
+		} catch (error: any) {
+			setIsLoading({
+				loading: false,
+				message: error,
+				detail: error.detail,
+			});
+			console.log(error);
+		} finally {
+			setIsLoading({ loading: false, message: "idle", detail: "" });
+		}
 	};
 
-	useEffect(() => {
-		console.log(contentText);
-	}, [contentText]);
+	const onClick = async () => {
+		if (!user) return;
 
-	useEffect(() => {
-		sendOutput(nodeData, nodeFlowValue, setNodeFlowValue);
-		const input = extractInput(nodeData, nodeFlowValue);
-		if (input) setinputLabelText(input);
-	}, [nodeFlowValue]);
+		const graphData = reactFlowInstance.toObject();
+		const response = await saveAgentGraph({
+			user_id: user.id,
+			graph_data: graphData,
+		});
+		if (!response?.payload) {
+			console.log("payload is empty");
+			return;
+		}
+
+		const sourceIds = nodeData.handles
+			.filter((handle) => handle.type === "source")
+			.map((handle) => handle.id);
+
+		setNodeFlowValue({
+			ids: sourceIds,
+			payload: `Could you return this as nicely formatted json in a codeblock please? ${response.payload}`,
+		});
+	};
 
 	return (
 		<>
@@ -70,19 +114,9 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
 				DrawHandle({ handle, nodeData, index }),
 			)}
 			<Card className={NodeSelectionState(props.id)}>
-				<Input
-					value={inputBoxText}
-					onChange={(e) => setinputLabelText(e.target.value)}
-				></Input>
+				<Header>{isLoading.message}</Header>
 				<Button onClick={onClick}>Test</Button>
-				<Content>
-					<TextBlockFormatter
-						className="bg-night-light"
-						separator={/\.js:\d+:\d+\)\s/g}
-						itemClassName="px-1 py-0.5 mb-0.5 bg-night-black rounded"
-						text={contentText}
-					/>
-				</Content>
+				<Content>{isLoading.detail}</Content>
 			</Card>
 		</>
 	);

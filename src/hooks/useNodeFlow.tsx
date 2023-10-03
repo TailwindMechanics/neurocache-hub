@@ -40,29 +40,20 @@ export const NodeFlowProvider: React.FC<NodeFlowProviderProps> = ({
 	const setNodeFlowValue = (newValue: NodeFlowValue) => {
 		if (IsNullOrEmpty(newValue.payload)) {
 			console.log(
-				`%c!!!!! Output id: ${newValue.ids}, payload is null or empty: ${newValue.payload}`,
+				`%c!!!!! Output id: ${newValue.ids}, payload is null or empty`,
 				"color: #e09163",
 			);
 			return;
 		}
-		console.log(
-			`%c>>>>> ${newValue.ids}, payload: ${newValue.payload}`,
-			"color: #63dce0",
-		);
+		console.log(`%cvvv ${newValue.ids}`, "color: #63dce0");
 
 		const inputIds = newValue.ids.flatMap((id) => OutputIdToInputIds(id));
 		if (inputIds.length === 0) {
-			console.log(
-				`%c!!!!! No input ids found, payload: ${newValue.payload}`,
-				"color: #e09163",
-			);
+			console.log(`%c!!!!! No input ids found`, "color: #e09163");
 			return;
 		}
 
-		console.log(
-			`%c<<<<< ${inputIds}, payload: ${newValue.payload}`,
-			"color: #d8e063",
-		);
+		console.log(`%c^^^ ${inputIds}`, "color: #d8e063");
 
 		setNodeFlowValueState({ ids: inputIds, payload: newValue.payload });
 	};
