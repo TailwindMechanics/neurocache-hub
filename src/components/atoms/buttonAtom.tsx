@@ -3,7 +3,6 @@
 import { motion, useAnimation } from "framer-motion";
 import { AtomProps } from "@src/types/declarations";
 import React, { useEffect, useRef } from "react";
-import colors from "@src/data/colors";
 
 const ButtonAtom: React.FC<AtomProps> = (props) => {
 	const controls = useAnimation();
@@ -17,24 +16,6 @@ const ButtonAtom: React.FC<AtomProps> = (props) => {
 		};
 	}, []);
 
-	const onHoverStart = () => {
-		if (isMounted.current) {
-			controls.start({
-				color: colors["aqua-title"],
-				borderColor: colors["aqua-light"],
-			});
-		}
-	};
-
-	const onHoverEnd = () => {
-		if (isMounted.current) {
-			controls.start({
-				color: colors["night-title"],
-				borderColor: colors["night-light"],
-			});
-		}
-	};
-
 	return (
 		<motion.button
 			onClick={props.onClick}
@@ -44,8 +25,6 @@ const ButtonAtom: React.FC<AtomProps> = (props) => {
 				scale: 0.97,
 				transition: { duration: 0.15, ease: "linear" },
 			}}
-			onHoverStart={onHoverStart}
-			onHoverEnd={onHoverEnd}
 		>
 			{props.children}
 		</motion.button>

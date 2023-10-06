@@ -40,7 +40,6 @@ neurocache-hub
 ├─ prettier.config.js
 ├─ project-hierarchy.txt
 ├─ public
-│  ├─ favicon.svg
 │  ├─ images
 │  │  ├─ bird80px.png
 │  │  ├─ neurocache.png
@@ -62,7 +61,9 @@ neurocache-hub
 │  │  │  │  └─ save
 │  │  │  │     └─ route.ts
 │  │  │  └─ open-ai
-│  │  │     └─ chat
+│  │  │     ├─ chat
+│  │  │     │  └─ route.ts
+│  │  │     └─ models
 │  │  │        └─ route.ts
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
@@ -99,9 +100,11 @@ neurocache-hub
 │  │  │  │  ├─ reactflowConfig.ts
 │  │  │  │  └─ styleReactFlowLogo.tsx
 │  │  │  ├─ nodes
+│  │  │  │  ├─ commentPayload.tsx
 │  │  │  │  ├─ inputBox.tsx
 │  │  │  │  ├─ loginNode.tsx
 │  │  │  │  ├─ markdownBox.tsx
+│  │  │  │  ├─ openAiModels.tsx
 │  │  │  │  ├─ openAiNode.tsx
 │  │  │  │  ├─ sendOutputNode.tsx
 │  │  │  │  ├─ spawnerNode.tsx
@@ -143,6 +146,7 @@ neurocache-hub
 │  │  ├─ content.json
 │  │  ├─ customNodeTypes.tsx
 │  │  ├─ docs.json
+│  │  ├─ favicon.svg
 │  │  └─ icons.tsx
 │  ├─ dev
 │  │  └─ shortcuts

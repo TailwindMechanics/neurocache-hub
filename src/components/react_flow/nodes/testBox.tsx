@@ -11,19 +11,17 @@ import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import { NodeProps, useReactFlow } from "reactflow";
 import { NodeData } from "@src/types/nodeData";
 import DrawHandle from "../utils/drawHandle";
-import { useEffect, useState } from "react";
 import { AgentGraph } from "@src/types/api";
+import { useState } from "react";
 import React from "react";
 
+const Card = new ComponentBuilder(CardPreset).withRoundedFrame().build();
 const Header = new ComponentBuilder(ContentPreset)
 	.withStyle("text-aqua")
 	.withStyle("text-center")
 	.withStyle("w-20")
 	.withRoundedElement()
 	.build();
-
-const Card = new ComponentBuilder(CardPreset).withRoundedFrame().build();
-
 const Content = new ComponentBuilder(ContentPreset)
 	.withStyle("text-night-body")
 	.withStyle("break-words")
@@ -32,7 +30,6 @@ const Content = new ComponentBuilder(ContentPreset)
 	.withStyle("px-1")
 	.withRoundedContent()
 	.build();
-
 const Button = new ComponentBuilder(ButtonPreset)
 	.withStyle("text-sm")
 	.withRoundedElement()

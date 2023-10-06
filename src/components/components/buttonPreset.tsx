@@ -5,7 +5,9 @@ import ButtonAtom from "../atoms/buttonAtom";
 
 const ButtonPreset = new ComponentBuilder(ButtonAtom)
 	.withStyle("border-night-light")
+	.withStyle("hover:border-aqua")
 	.withStyle("text-night-title")
+	.withStyle("hover:text-aqua")
 	.withStyle("text-aqua")
 	.withStyle("bg-night")
 	.withStyle("font-bold")

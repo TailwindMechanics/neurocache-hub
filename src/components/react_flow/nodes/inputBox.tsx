@@ -12,9 +12,14 @@ import { useEffect, useState } from "react";
 import { NodeProps } from "reactflow";
 import React from "react";
 
+const Card = new ComponentBuilder(CardPreset)
+	.withStyle("h-32")
+	.withStyle("w-44")
+	.build();
+
 const Content = new ComponentBuilder(ContentPreset)
 	.withStyle("text-night-body")
-	.withStyle("text-sm")
+	.withStyle("text-ss")
 	.withStyle("px-1")
 	.withRoundedButton()
 	.build();
@@ -35,9 +40,9 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 			{nodeData.handles?.map((handle, index) =>
 				DrawHandle({ handle, nodeData, index }),
 			)}
-			<CardPreset className={NodeSelectionState(props.id)}>
+			<Card className={NodeSelectionState(props.id)}>
 				<Content>{inputBoxText}</Content>
-			</CardPreset>
+			</Card>
 		</>
 	);
 };

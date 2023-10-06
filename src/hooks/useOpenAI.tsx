@@ -4,6 +4,7 @@ import React, { createContext, useContext, ReactNode } from "react";
 
 type OpenAIContextType = {
 	chat: (messages: any[]) => Promise<string>;
+	models: () => Promise<string>;
 } | null;
 
 type OpenAIContextProviderProps = {
@@ -47,8 +48,29 @@ export const OpenAIContextProvider: React.FC<OpenAIContextProviderProps> = ({
 		}
 	};
 
+	const models = async () => {
+		try {
+			const res = await fetch("/api/open-ai/models", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+
+			if (res.ok) {
+				const reply = await res.text();
+				return reply;
+			} else {
+				return "An error occurred";
+			}
+		} catch (error) {
+			console.error("Error in chat function:", error);
+			return "An error occurred";
+		}
+	};
+
 	return (
-		<OpenAIContext.Provider value={{ chat }}>
+		<OpenAIContext.Provider value={{ chat, models }}>
 			{children}
 		</OpenAIContext.Provider>
 	);

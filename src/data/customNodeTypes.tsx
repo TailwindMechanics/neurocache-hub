@@ -1,6 +1,8 @@
 //path: src\data\customNodeTypes.tsx
 
+import CommentPayload from "@src/components/react_flow/nodes/commentPayload";
 import SendOutputNode from "@src/components/react_flow/nodes/sendOutputNode";
+import OpenAiModels from "@src/components/react_flow/nodes/openAiModels";
 import SplitterNode from "@src/components/react_flow/nodes/splitterNode";
 import SpawnerNode from "@src/components/react_flow/nodes/spawnerNode";
 import MarkdownBox from "@src/components/react_flow/nodes/markdownBox";
@@ -20,6 +22,8 @@ const customNodeTypes: NodeTypes = {
 	login: LoginNode,
 	markdown_box: MarkdownBox,
 	test_box: TestBox,
+	openai_models: OpenAiModels,
+	comment_payload: CommentPayload,
 };
 
 export const getUnhiddenNodes = () => {
@@ -111,7 +115,7 @@ export const customNodeDefaults = [
 	{
 		nodeType: "open_ai",
 		nodeName: "Gpt-4",
-		category: "AI",
+		category: "OpenAi",
 		nodeId: "node_open_ai_60e9b8e9a7f1d8c7c7f8",
 		body: "This node makes an API request to OpenAI.",
 		handles: [
@@ -170,6 +174,44 @@ export const customNodeDefaults = [
 		handles: [
 			{
 				id: "out_test_box_60e9b8e9a7f1d8c774h2",
+				type: "source",
+				offset: { x: 100.33, y: 40 },
+				angle: 90,
+			},
+		],
+		nodePosition: { x: 100, y: 0 },
+	} as NodeData,
+	{
+		nodeType: "openai_models",
+		nodeName: "Models",
+		category: "OpenAi",
+		nodeId: "openai_models_60e9b8e9a7f1d8c7gdw3",
+		body: "This node returns the models.",
+		handles: [
+			{
+				id: "out_openai_models_60e9b8e9a7f1d8c7gdw3",
+				type: "source",
+				offset: { x: 100.33, y: 40 },
+				angle: 90,
+			},
+		],
+		nodePosition: { x: 100, y: 0 },
+	} as NodeData,
+	{
+		nodeType: "comment_payload",
+		nodeName: "Comment Payload",
+		category: "Utils",
+		nodeId: "comment_payload_60e9b8e9a7f1d8c7dsa2",
+		body: "This node returns the models.",
+		handles: [
+			{
+				id: "in_comment_payload_60e9b8e9a7f1d8c7dsa2",
+				type: "target",
+				offset: { x: -0.33, y: 40 },
+				angle: -90,
+			},
+			{
+				id: "out_comment_payload_60e9b8e9a7f1d8c7dsa2",
 				type: "source",
 				offset: { x: 100.33, y: 40 },
 				angle: 90,
