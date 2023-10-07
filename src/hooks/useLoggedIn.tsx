@@ -1,12 +1,35 @@
 //path: src\hooks\useLoggedIn.tsx
 
-import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
-import { User } from "@supabase/supabase-js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import {
+	createClientComponentClient,
+	Session,
+	User,
+} from "@supabase/auth-helpers-nextjs";
 
 const useLoggedIn = (onLoggedIn: (user: User) => void) => {
-	const supabase = useSupabaseClient();
-	const session = useSession();
+	const [session, setSession] = useState<Session>();
+	const supabase = createClientComponentClient();
+
+	useEffect(() => {
+		const fetchSession = async () => {
+			const response = await supabase.auth.getSession();
+			if (response.error) {
+				console.log(
+					`Error fetching session: ${response.error.message}`,
+				);
+				return;
+			}
+			if (!response.data.session) {
+				console.log("No session found");
+				return;
+			}
+
+			setSession(response.data.session);
+		};
+
+		fetchSession();
+	}, [supabase.auth]);
 
 	useEffect(() => {
 		const { data: authListener } = supabase.auth.onAuthStateChange(

@@ -60,6 +60,9 @@ neurocache-hub
 │  │  │  │  │  └─ route.ts
 │  │  │  │  └─ save
 │  │  │  │     └─ route.ts
+│  │  │  ├─ auth
+│  │  │  │  └─ callback
+│  │  │  │     └─ route.ts
 │  │  │  └─ open-ai
 │  │  │     ├─ chat
 │  │  │     │  └─ route.ts
@@ -79,10 +82,12 @@ neurocache-hub
 │  │  │  │  └─ textBoxAtom.tsx
 │  │  │  ├─ reactflow
 │  │  │  │  ├─ core
+│  │  │  │  │  ├─ authenticatedProvider.tsx
 │  │  │  │  │  ├─ connectionLine.tsx
 │  │  │  │  │  ├─ edgeLine.tsx
 │  │  │  │  │  ├─ flowSaveLoad.ts
-│  │  │  │  │  ├─ flowWithProvider.tsx
+│  │  │  │  │  ├─ guestCanvas.tsx
+│  │  │  │  │  ├─ guestProvider.tsx
 │  │  │  │  │  ├─ nodeEvents.tsx
 │  │  │  │  │  ├─ reactFlowCanvas.tsx
 │  │  │  │  │  ├─ reactflowConfig.ts
@@ -100,7 +105,6 @@ neurocache-hub
 │  │  │  │  │  └─ testBox.tsx
 │  │  │  │  └─ utils
 │  │  │  │     ├─ drawHandle.tsx
-│  │  │  │     ├─ handleUtils.ts
 │  │  │  │     ├─ mapOutputIds.ts
 │  │  │  │     ├─ nodeFlowUtils.ts
 │  │  │  │     ├─ nodeSelectionState.tsx
@@ -142,6 +146,9 @@ neurocache-hub
 │  │  │     ├─ saveGraph.tsx
 │  │  │     └─ textBlockFormatter.tsx
 │  │  └─ server
+│  │     └─ auth
+│  │        ├─ authenticated.tsx
+│  │        └─ unauthenticated.tsx
 │  ├─ data
 │  │  ├─ colors.json
 │  │  ├─ colors.ts
@@ -155,8 +162,6 @@ neurocache-hub
 │  │     ├─ clearConsole.tsx
 │  │     └─ devShortcuts.tsx
 │  ├─ hooks
-│  │  ├─ apiContextWrapper.tsx
-│  │  ├─ useAgentGraphs.tsx
 │  │  ├─ useCtrlS.tsx
 │  │  ├─ useGraphSessionReady.tsx
 │  │  ├─ useGuestGraphReady.tsx
@@ -168,8 +173,6 @@ neurocache-hub
 │  │  ├─ useNodeHandle.tsx
 │  │  ├─ useOpenAI.tsx
 │  │  └─ useUserGraphReady.tsx
-│  ├─ services
-│  │  └─ supabaseClient.ts
 │  ├─ types
 │  │  ├─ api.d.ts
 │  │  ├─ declarations.d.ts

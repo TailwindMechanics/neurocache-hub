@@ -2,8 +2,6 @@
 
 import NodeSelectionState from "../utils/nodeSelectionState";
 import ComponentBuilder from "../../ui/ComponentBuilder";
-import { supabase } from "@src/services/supabaseClient";
-import { useUser } from "@supabase/auth-helpers-react";
 import { useNodeFlow } from "@src/hooks/useNodeFlow";
 import { NodeProps, useReactFlow } from "reactflow";
 import ContentPreset from "../../ui/contentPreset";
@@ -39,7 +37,7 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
 	const { setNodeFlowValue } = useNodeFlow();
 	const nodeData = props.data as NodeData;
 	const reactFlowInstance = useReactFlow();
-	const user = useUser();
+	// const user = useUser();
 
 	const [isLoading, setIsLoading] = useState({
 		loading: false,
@@ -54,22 +52,22 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
 				message: "Saving...",
 				detail: "",
 			});
-			const response = await supabase
-				.from("agent_graphs")
-				.upsert(agentGraph)
-				.select();
+			// const response = await supabase
+			// 	.from("agent_graphs")
+			// 	.upsert(agentGraph)
+			// 	.select();
 
-			if (response.data) {
-				setIsLoading({
-					loading: false,
-					message: "Saved!",
-					detail: `${response.status} ${response.statusText}`,
-				});
-				return {
-					payload: JSON.stringify(response.data),
-					erorr: JSON.stringify(response.error),
-				};
-			}
+			// if (response.data) {
+			// 	setIsLoading({
+			// 		loading: false,
+			// 		message: "Saved!",
+			// 		detail: `${response.status} ${response.statusText}`,
+			// 	});
+			// 	return {
+			// 		payload: JSON.stringify(response.data),
+			// 		erorr: JSON.stringify(response.error),
+			// 	};
+			// }
 		} catch (error: any) {
 			setIsLoading({
 				loading: false,
@@ -82,28 +80,28 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
 		}
 	};
 
-	const onClick = async () => {
-		if (!user) return;
+	// const onClick = async () => {
+	// 	if (!user) return;
 
-		const graphData = reactFlowInstance.toObject();
-		const response = await saveAgentGraph({
-			user_id: user.id,
-			graph_data: graphData,
-		});
-		if (!response?.payload) {
-			console.log("payload is empty");
-			return;
-		}
+	// 	const graphData = reactFlowInstance.toObject();
+	// 	const response = await saveAgentGraph({
+	// 		user_id: user.id,
+	// 		graph_data: graphData,
+	// 	});
+	// 	if (!response?.payload) {
+	// 		console.log("payload is empty");
+	// 		return;
+	// 	}
 
-		const sourceIds = nodeData.handles
-			.filter((handle) => handle.type === "source")
-			.map((handle) => handle.id);
+	// 	const sourceIds = nodeData.handles
+	// 		.filter((handle) => handle.type === "source")
+	// 		.map((handle) => handle.id);
 
-		setNodeFlowValue({
-			ids: sourceIds,
-			payload: `Could you return this as nicely formatted json in a codeblock please? ${response.payload}`,
-		});
-	};
+	// 	setNodeFlowValue({
+	// 		ids: sourceIds,
+	// 		payload: `Could you return this as nicely formatted json in a codeblock please? ${response.payload}`,
+	// 	});
+	// };
 
 	return (
 		<>
@@ -112,7 +110,11 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
 			)}
 			<Card className={NodeSelectionState(props.id)}>
 				<Header>{isLoading.message}</Header>
-				<Button onClick={onClick}>Test</Button>
+				<Button
+				// onClick={onClick}
+				>
+					Test
+				</Button>
 				<Content>{isLoading.detail}</Content>
 			</Card>
 		</>

@@ -1,14 +1,17 @@
 //path: src\components\client\reactflow\nodes\loginNode.tsx
 
-import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import NodeSelectionState from "../utils/nodeSelectionState";
 import ComponentBuilder from "../../ui/ComponentBuilder";
+import React, { useEffect, useState } from "react";
 import ContentPreset from "../../ui/contentPreset";
 import ButtonPreset from "../../ui/buttonPreset";
 import InputPreset from "../../ui/inputPreset";
 import CardPreset from "../../ui/cardPreset";
-import React, { useState } from "react";
 import { NodeProps } from "reactflow";
+import {
+	createClientComponentClient,
+	User,
+} from "@supabase/auth-helpers-nextjs";
 
 const Content = new ComponentBuilder(ContentPreset)
 	.withStyle("text-night-title")
@@ -16,12 +19,10 @@ const Content = new ComponentBuilder(ContentPreset)
 	.withStyle("px-1")
 	.withRoundedElement()
 	.build();
-
 const Button = new ComponentBuilder(ButtonPreset)
 	.withStyle("text-sm")
 	.withRoundedButton()
 	.build();
-
 const Input = new ComponentBuilder(InputPreset)
 	.withStyle("text-center")
 	.withRoundedElement()
@@ -30,12 +31,24 @@ const Input = new ComponentBuilder(InputPreset)
 const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
 	const [passwordText, setPasswordText] = useState("");
 	const [emailText, setEmailText] = useState("");
-	const supabase = useSupabaseClient();
-	const user = useUser();
+	const supabase = createClientComponentClient();
+	const [user, setUser] = useState<User>();
+
+	useEffect(() => {
+		const fetchUser = async () => {
+			const sessionResponse = await supabase.auth.getSession();
+			if (!sessionResponse.data.session) return;
+
+			const response = await supabase.auth.getUser();
+			if (response.error) return;
+
+			setUser(response.data.user);
+		};
+
+		fetchUser();
+	}, [supabase.auth]);
 
 	const onClick = async () => {
-		if (!supabase) return;
-
 		if (!user) {
 			await supabase.auth.signInWithPassword({
 				email: emailText,

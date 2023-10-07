@@ -1,7 +1,5 @@
 //path: src\components\client\reactflow\core\reactFlowCanvas.tsx
 
-"use client";
-
 import { useGuestGraphReady } from "@src/hooks/useGuestGraphReady";
 import { useUserGraphReady } from "@src/hooks/useUserGraphReady";
 import { useSession, User } from "@supabase/auth-helpers-react";
