@@ -2,7 +2,7 @@
 
 "use client";
 
-import FlowWithProvider from "@src/components/react_flow/core/flowWithProvider";
+import FlowWithProvider from "@src/components/client/reactflow/core/flowWithProvider";
 import DevShortcutsWrapper from "@src/dev/shortcuts/devShortcuts";
 import ApiContextWrapper from "@src/hooks/apiContextWrapper";
 import { FC } from "react";

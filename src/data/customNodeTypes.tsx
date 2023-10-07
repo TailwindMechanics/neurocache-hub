@@ -1,15 +1,15 @@
 //path: src\data\customNodeTypes.tsx
 
-import CommentPayload from "@src/components/react_flow/nodes/commentPayload";
-import SendOutputNode from "@src/components/react_flow/nodes/sendOutputNode";
-import OpenAiModels from "@src/components/react_flow/nodes/openAiModels";
-import SplitterNode from "@src/components/react_flow/nodes/splitterNode";
-import SpawnerNode from "@src/components/react_flow/nodes/spawnerNode";
-import MarkdownBox from "@src/components/react_flow/nodes/markdownBox";
-import OpenAiNode from "@src/components/react_flow/nodes/openAiNode";
-import LoginNode from "@src/components/react_flow/nodes/loginNode";
-import InputBox from "@src/components/react_flow/nodes/inputBox";
-import TestBox from "@src/components/react_flow/nodes/testBox";
+import CommentPayload from "@src/components/client/reactflow/nodes/commentPayload";
+import SendOutputNode from "@src/components/client/reactflow/nodes/sendOutputNode";
+import OpenAiModels from "@src/components/client/reactflow/nodes/openAiModels";
+import SplitterNode from "@src/components/client/reactflow/nodes/splitterNode";
+import SpawnerNode from "@src/components/client/reactflow/nodes/spawnerNode";
+import MarkdownBox from "@src/components/client/reactflow/nodes/markdownBox";
+import OpenAiNode from "@src/components/client/reactflow/nodes/openAiNode";
+import LoginNode from "@src/components/client/reactflow/nodes/loginNode";
+import InputBox from "@src/components/client/reactflow/nodes/inputBox";
+import TestBox from "@src/components/client/reactflow/nodes/testBox";
 import { NodeData } from "@src/types/nodeData";
 import { NodeTypes } from "reactflow";
 

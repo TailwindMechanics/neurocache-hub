@@ -1,0 +1,22 @@
+//path: src\components\client\threejs\geometry\road.tsx
+
+"use client";
+
+import colors from "@src/data/colors.json";
+import PlaneGeo from "./planeGeo";
+import React from "react";
+
+interface RoadProps {
+	width?: number;
+	length?: number;
+}
+
+export default function Road({ width = 50, length = 1000 }: RoadProps) {
+	return (
+		<>
+			<PlaneGeo pos={[0, 0, -length / 2]} scale={[width, length, 1]}>
+				<meshStandardMaterial color={colors.night.DEFAULT} />
+			</PlaneGeo>
+		</>
+	);
+}
