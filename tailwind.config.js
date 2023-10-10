@@ -1,13 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("./src/data/colors.json");
-
-import flatColors from "./src/data/colors.ts";
+const colors = require("./src/shared/data/colors.json");
+import { FlatColors } from "./src/shared/data/colors.ts";
 
 let colorUtilities = {};
-for (let colorName in flatColors) {
-	if (flatColors.hasOwnProperty(colorName)) {
+for (let colorName in FlatColors) {
+	if (FlatColors.hasOwnProperty(colorName)) {
 		colorUtilities["." + colorName] = {
-			color: flatColors[colorName],
+			color: FlatColors[colorName],
 		};
 	}
 }

@@ -1,11 +1,10 @@
 //path: src\app\page.tsx
 
-import AuthenticatedProvider from "@src/components/client/reactflow/core/authenticatedProvider";
-import GuestProvider from "@src/components/client/reactflow/core/guestProvider";
-import Unauthenticated from "@src/components/server/auth/unauthenticated";
-import Authenticated from "@src/components/server/auth/authenticated";
 import { FC } from "react";
 import React from "react";
+
+import { AuthenticatedProvider, GuestProvider } from "@client/hooks";
+import { Authenticated, Unauthenticated } from "@server/components";
 
 const page: FC = () => {
 	return (

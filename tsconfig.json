@@ -21,15 +21,18 @@
 		],
 		"baseUrl": ".",
 		"paths": {
-			"@src/*": ["src/*"],
-			"@root/*": ["./*"],
-			"@data/*": ["src/data/*"],
-			"@hooks/*": ["src/hooks/*"],
-			"@services/*": ["src/services/*"],
-			"@contexts/*": ["src/contexts/*"],
-			"@styles/*": ["src/styles/*"]
+			// "@root/*": ["./*"],
+			"@client/*": ["src/client/*"],
+			"@shared/*": ["src/shared/*"],
+			"@server/*": ["src/server/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"tailwind.config.ts"
+	],
 	"exclude": ["node_modules"]
 }

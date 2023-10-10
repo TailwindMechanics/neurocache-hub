@@ -32,6 +32,7 @@ neurocache-hub
 ├─ jest.config.js
 ├─ jest.setup.js
 ├─ junit.xml
+├─ middleware.ts
 ├─ next-env.d.ts
 ├─ next.config.js
 ├─ package.json
@@ -40,6 +41,7 @@ neurocache-hub
 ├─ prettier.config.js
 ├─ project-hierarchy.txt
 ├─ public
+│  ├─ favicon.svg
 │  ├─ images
 │  │  ├─ bird80px.png
 │  │  ├─ neurocache.png
@@ -71,115 +73,133 @@ neurocache-hub
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
 │  │  └─ page.tsx
-│  ├─ components
-│  │  ├─ client
-│  │  │  ├─ atoms
-│  │  │  │  ├─ buttonAtom.tsx
-│  │  │  │  ├─ cardAtom.tsx
-│  │  │  │  ├─ comboInputAtom.tsx
-│  │  │  │  ├─ divAtom.tsx
-│  │  │  │  ├─ inputAtom.tsx
-│  │  │  │  └─ textBoxAtom.tsx
-│  │  │  ├─ reactflow
-│  │  │  │  ├─ core
-│  │  │  │  │  ├─ authenticatedProvider.tsx
-│  │  │  │  │  ├─ connectionLine.tsx
-│  │  │  │  │  ├─ edgeLine.tsx
-│  │  │  │  │  ├─ flowSaveLoad.ts
-│  │  │  │  │  ├─ guestCanvas.tsx
-│  │  │  │  │  ├─ guestProvider.tsx
-│  │  │  │  │  ├─ nodeEvents.tsx
-│  │  │  │  │  ├─ reactFlowCanvas.tsx
-│  │  │  │  │  ├─ reactflowConfig.ts
-│  │  │  │  │  └─ styleReactFlowLogo.tsx
-│  │  │  │  ├─ nodes
-│  │  │  │  │  ├─ commentPayload.tsx
-│  │  │  │  │  ├─ inputBox.tsx
-│  │  │  │  │  ├─ loginNode.tsx
-│  │  │  │  │  ├─ markdownBox.tsx
-│  │  │  │  │  ├─ openAiModels.tsx
-│  │  │  │  │  ├─ openAiNode.tsx
-│  │  │  │  │  ├─ sendOutputNode.tsx
-│  │  │  │  │  ├─ spawnerNode.tsx
-│  │  │  │  │  ├─ splitterNode.tsx
-│  │  │  │  │  └─ testBox.tsx
-│  │  │  │  └─ utils
-│  │  │  │     ├─ drawHandle.tsx
-│  │  │  │     ├─ mapOutputIds.ts
-│  │  │  │     ├─ nodeFlowUtils.ts
-│  │  │  │     ├─ nodeSelectionState.tsx
-│  │  │  │     ├─ nodeSpawner.tsx
-│  │  │  │     ├─ nodeUtils.ts
-│  │  │  │     ├─ renderCodeblocks.tsx
-│  │  │  │     └─ spawnerNodeUtils.ts
-│  │  │  ├─ threejs
-│  │  │  │  ├─ controllers
-│  │  │  │  │  ├─ cameraLook.tsx
-│  │  │  │  │  └─ freeFlyControls.tsx
-│  │  │  │  ├─ generic
-│  │  │  │  │  ├─ cameraSetup.tsx
-│  │  │  │  │  ├─ setBgColour.tsx
-│  │  │  │  │  ├─ threeCanvas.tsx
-│  │  │  │  │  └─ wasdControls.ts
-│  │  │  │  ├─ geometry
-│  │  │  │  │  ├─ planeGeo.tsx
-│  │  │  │  │  └─ road.tsx
-│  │  │  │  ├─ materials
-│  │  │  │  │  ├─ mappedMetalMat.tsx
-│  │  │  │  │  └─ metalMat.tsx
-│  │  │  │  └─ virtualBackground
-│  │  │  │     ├─ building.tsx
-│  │  │  │     ├─ buildings.tsx
-│  │  │  │     ├─ cityBackground.tsx
-│  │  │  │     └─ lights.tsx
-│  │  │  └─ ui
-│  │  │     ├─ buttonPreset.tsx
-│  │  │     ├─ cardPreset.tsx
-│  │  │     ├─ cardShellPreset.tsx
-│  │  │     ├─ codeBlock.tsx
-│  │  │     ├─ colouredLine.tsx
-│  │  │     ├─ comboInputPreset.tsx
-│  │  │     ├─ ComponentBuilder.tsx
-│  │  │     ├─ contentPreset.tsx
-│  │  │     ├─ inputPreset.tsx
-│  │  │     ├─ prosePreset.tsx
-│  │  │     ├─ saveGraph.tsx
-│  │  │     └─ textBlockFormatter.tsx
-│  │  └─ server
-│  │     └─ auth
-│  │        ├─ authenticated.tsx
-│  │        └─ unauthenticated.tsx
-│  ├─ data
-│  │  ├─ colors.json
-│  │  ├─ colors.ts
-│  │  ├─ content.json
-│  │  ├─ customNodeTypes.tsx
-│  │  ├─ docs.json
-│  │  ├─ favicon.svg
-│  │  └─ icons.tsx
-│  ├─ dev
-│  │  └─ shortcuts
-│  │     ├─ clearConsole.tsx
-│  │     └─ devShortcuts.tsx
-│  ├─ hooks
-│  │  ├─ useCtrlS.tsx
-│  │  ├─ useGraphSessionReady.tsx
-│  │  ├─ useGuestGraphReady.tsx
-│  │  ├─ useKeyPress.tsx
-│  │  ├─ useLoggedIn.tsx
-│  │  ├─ useLoggedOut.tsx
-│  │  ├─ useMouseCoords.tsx
-│  │  ├─ useNodeFlow.tsx
-│  │  ├─ useNodeHandle.tsx
-│  │  ├─ useOpenAI.tsx
-│  │  └─ useUserGraphReady.tsx
-│  ├─ types
-│  │  ├─ api.d.ts
-│  │  ├─ declarations.d.ts
-│  │  ├─ index.ts
-│  │  └─ nodeData.d.ts
-│  └─ utils
-│     └─ stringUtils.ts
+│  └─ modules
+│     ├─ Auth
+│     │  ├─ authenticated.tsx
+│     │  ├─ External
+│     │  ├─ Internal
+│     │  └─ unauthenticated.tsx
+│     ├─ Colors
+│     │  ├─ colors.json
+│     │  ├─ colors.ts
+│     │  ├─ External
+│     │  └─ Internal
+│     ├─ Composer
+│     │  ├─ atoms
+│     │  │  ├─ button.tsx
+│     │  │  ├─ card.tsx
+│     │  │  ├─ comboInput.tsx
+│     │  │  ├─ div.tsx
+│     │  │  ├─ form.tsx
+│     │  │  └─ input.tsx
+│     │  ├─ codeBlock.tsx
+│     │  ├─ colouredLine.tsx
+│     │  ├─ ComponentBuilder.tsx
+│     │  ├─ External
+│     │  │  └─ index.d.ts
+│     │  ├─ index.tsx
+│     │  ├─ Internal
+│     │  ├─ presets
+│     │  │  ├─ button.tsx
+│     │  │  ├─ card.tsx
+│     │  │  ├─ comboInput.tsx
+│     │  │  ├─ content.tsx
+│     │  │  ├─ form.tsx
+│     │  │  ├─ input.tsx
+│     │  │  ├─ prose.tsx
+│     │  │  └─ shell.tsx
+│     │  └─ textBlockFormatter.tsx
+│     ├─ DevTools
+│     │  ├─ clearConsole.tsx
+│     │  ├─ devShortcuts.tsx
+│     │  ├─ External
+│     │  ├─ index.tsx
+│     │  └─ Internal
+│     ├─ hooks
+│     │  ├─ authenticatedProvider.tsx
+│     │  ├─ guestProvider.tsx
+│     │  ├─ index.tsx
+│     │  ├─ useCtrlS.tsx
+│     │  ├─ useGraphSessionReady.tsx
+│     │  ├─ useGuestGraphReady.tsx
+│     │  ├─ useKeyPress.tsx
+│     │  ├─ useLoggedIn.tsx
+│     │  ├─ useLoggedOut.tsx
+│     │  ├─ useMouseCoords.tsx
+│     │  ├─ useNodeFlow.tsx
+│     │  ├─ useNodeHandle.tsx
+│     │  ├─ useOpenAI.tsx
+│     │  └─ useUserGraphReady.tsx
+│     ├─ Icons
+│     │  ├─ External
+│     │  ├─ icons.tsx
+│     │  └─ Internal
+│     ├─ NeuroGraph
+│     │  ├─ core
+│     │  │  ├─ connectionLine.tsx
+│     │  │  ├─ edgeLine.tsx
+│     │  │  ├─ flowSaveLoad.ts
+│     │  │  ├─ guestCanvas.tsx
+│     │  │  ├─ nodeEvents.tsx
+│     │  │  ├─ reactFlowCanvas.tsx
+│     │  │  ├─ reactflowConfig.ts
+│     │  │  ├─ saveGraph.tsx
+│     │  │  └─ styleReactFlowLogo.tsx
+│     │  ├─ External
+│     │  │  └─ index.d.ts
+│     │  ├─ index.tsx
+│     │  ├─ Internal
+│     │  ├─ nodes
+│     │  │  ├─ commentPayload.tsx
+│     │  │  ├─ inputBox.tsx
+│     │  │  ├─ loginNode.tsx
+│     │  │  ├─ markdownBox.tsx
+│     │  │  ├─ nodePresets.tsx
+│     │  │  ├─ openAiModels.tsx
+│     │  │  ├─ openAiNode.tsx
+│     │  │  ├─ sendOutputNode.tsx
+│     │  │  ├─ spawnerNode.tsx
+│     │  │  ├─ splitterNode.tsx
+│     │  │  └─ testBox.tsx
+│     │  └─ utils
+│     │     ├─ drawHandle.tsx
+│     │     ├─ mapOutputIds.ts
+│     │     ├─ nodeFlowUtils.ts
+│     │     ├─ nodeSelectionState.tsx
+│     │     ├─ nodeSpawner.tsx
+│     │     ├─ nodeUtils.ts
+│     │     ├─ renderCodeblocks.tsx
+│     │     └─ spawnerNodeUtils.ts
+│     ├─ ThreeFiber
+│     │  ├─ controllers
+│     │  │  ├─ cameraLook.tsx
+│     │  │  └─ freeFlyControls.tsx
+│     │  ├─ External
+│     │  ├─ generic
+│     │  │  ├─ cameraSetup.tsx
+│     │  │  ├─ setBgColour.tsx
+│     │  │  ├─ threeCanvas.tsx
+│     │  │  └─ wasdControls.ts
+│     │  ├─ geometry
+│     │  │  ├─ planeGeo.tsx
+│     │  │  └─ road.tsx
+│     │  ├─ index.tsx
+│     │  ├─ Internal
+│     │  ├─ materials
+│     │  │  ├─ mappedMetalMat.tsx
+│     │  │  └─ metalMat.tsx
+│     │  └─ virtualBackground
+│     │     ├─ building.tsx
+│     │     ├─ buildings.tsx
+│     │     ├─ cityBackground.tsx
+│     │     └─ lights.tsx
+│     ├─ types
+│     │  └─ index.d.ts
+│     └─ Utilities
+│        ├─ External
+│        ├─ index.tsx
+│        ├─ Internal
+│        └─ stringUtils.ts
 ├─ tailwind.config.js
 ├─ tsconfig.json
 └─ __mocks__

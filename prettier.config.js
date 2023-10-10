@@ -2,6 +2,7 @@ module.exports = {
 	plugins: ["prettier-plugin-tailwindcss"],
 	tabWidth: 4,
 	useTabs: true,
+	endOfLine: "crlf",
 	overrides: [
 		{
 			files: ["*.yaml", "*.yml"],
@@ -13,7 +14,6 @@ module.exports = {
 		{
 			files: ["*.d.ts"],
 			options: {
-				// Your specific options for .d.ts files
 				tabWidth: 4,
 				useTabs: true,
 			},

@@ -2,11 +2,10 @@
 
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../app/globals.css";
 
+const tagLine = "Create and craft specialized AI Agents.";
 const title = "Neurocache";
-const tagLine =
-	"Leverage the power of Neurocache Hub to create, customize, and hand-craft your own AI agents trained your way then deploy seamlessly using our lightweight Neurocache Api.";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
