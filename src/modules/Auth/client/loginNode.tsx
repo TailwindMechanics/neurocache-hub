@@ -1,4 +1,4 @@
-//path: src\modules\Graph\Internal\components\loginNode.tsx
+//path: src\modules\Auth\client\loginNode.tsx
 
 import React, { useEffect, useState } from "react";
 import { NodeProps } from "reactflow";

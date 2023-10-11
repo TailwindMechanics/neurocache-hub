@@ -1,13 +1,12 @@
-//path: src\modules\Auth\Internal\hooks\useLoggedIn.tsx
+//path: src\modules\Auth\client\hooks\useLoggedOut.tsx
 
 import { useEffect, useState } from "react";
 import {
     createClientComponentClient,
     Session,
-    User,
 } from "@supabase/auth-helpers-nextjs";
 
-const useLoggedIn = (onLoggedIn: (user: User) => void) => {
+const useLoggedOut = (onLoggedOut: () => void) => {
     const [session, setSession] = useState<Session>();
     const supabase = createClientComponentClient();
 
@@ -33,9 +32,9 @@ const useLoggedIn = (onLoggedIn: (user: User) => void) => {
 
     useEffect(() => {
         const { data: authListener } = supabase.auth.onAuthStateChange(
-            (event, newSession) => {
-                if (event === "SIGNED_IN" && !session && newSession) {
-                    onLoggedIn(newSession.user);
+            (event) => {
+                if (event === "SIGNED_OUT") {
+                    onLoggedOut();
                 }
             },
         );
@@ -43,7 +42,7 @@ const useLoggedIn = (onLoggedIn: (user: User) => void) => {
         return () => {
             authListener.subscription.unsubscribe();
         };
-    }, [onLoggedIn, session, supabase.auth]);
+    }, [onLoggedOut, session, supabase.auth]);
 };
 
-export default useLoggedIn;
+export default useLoggedOut;

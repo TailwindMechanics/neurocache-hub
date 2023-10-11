@@ -1,4 +1,4 @@
-//path: src\modules\Composer\index.tsx
+//path: src\modules\Composer\Internal\index.tsx
 
 import { FC } from "react";
 

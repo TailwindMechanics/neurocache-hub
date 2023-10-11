@@ -1,4 +1,4 @@
-//path: src\modules\Auth\Internal\hooks\authenticatedProvider.tsx
+//path: src\modules\Auth\client\hooks\authenticatedProvider.tsx
 
 "use client";
 

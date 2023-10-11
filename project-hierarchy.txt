@@ -76,14 +76,17 @@ neurocache-hub
 │  │  └─ page.tsx
 │  └─ modules
 │     ├─ Auth
-│     │  ├─ index.tsx
-│     │  ├─ Internal
-│     │  │  ├─ authenticated.tsx
+│     │  ├─ client
 │     │  │  ├─ hooks
 │     │  │  │  ├─ authenticatedProvider.tsx
 │     │  │  │  ├─ guestProvider.tsx
 │     │  │  │  ├─ useLoggedIn.tsx
 │     │  │  │  └─ useLoggedOut.tsx
+│     │  │  ├─ index.tsx
+│     │  │  └─ loginNode.tsx
+│     │  ├─ server
+│     │  │  ├─ authenticated.tsx
+│     │  │  ├─ index.tsx
 │     │  │  └─ unauthenticated.tsx
 │     │  └─ types.tsx
 │     ├─ Colors
@@ -101,19 +104,21 @@ neurocache-hub
 │     │  │  │  ├─ div.tsx
 │     │  │  │  ├─ form.tsx
 │     │  │  │  └─ input.tsx
-│     │  │  ├─ codeBlock.tsx
-│     │  │  ├─ colouredLine.tsx
-│     │  │  ├─ ComponentBuilder.tsx
-│     │  │  ├─ presets
-│     │  │  │  ├─ button.tsx
-│     │  │  │  ├─ card.tsx
-│     │  │  │  ├─ comboInput.tsx
-│     │  │  │  ├─ content.tsx
-│     │  │  │  ├─ form.tsx
-│     │  │  │  ├─ input.tsx
-│     │  │  │  ├─ prose.tsx
-│     │  │  │  └─ shell.tsx
-│     │  │  └─ textBlockFormatter.tsx
+│     │  │  ├─ components
+│     │  │  │  ├─ codeBlock.tsx
+│     │  │  │  ├─ colouredLine.tsx
+│     │  │  │  ├─ ComponentBuilder.tsx
+│     │  │  │  └─ textBlockFormatter.tsx
+│     │  │  ├─ index.tsx
+│     │  │  └─ presets
+│     │  │     ├─ button.tsx
+│     │  │     ├─ card.tsx
+│     │  │     ├─ comboInput.tsx
+│     │  │     ├─ content.tsx
+│     │  │     ├─ form.tsx
+│     │  │     ├─ input.tsx
+│     │  │     ├─ prose.tsx
+│     │  │     └─ shell.tsx
 │     │  └─ types.tsx
 │     ├─ Dev
 │     │  ├─ index.tsx
@@ -136,7 +141,6 @@ neurocache-hub
 │     │  │  ├─ components
 │     │  │  │  ├─ commentPayload.tsx
 │     │  │  │  ├─ inputBox.tsx
-│     │  │  │  ├─ loginNode.tsx
 │     │  │  │  ├─ markdownBox.tsx
 │     │  │  │  ├─ nodePresets.tsx
 │     │  │  │  ├─ sendOutputNode.tsx
@@ -161,8 +165,9 @@ neurocache-hub
 │     │  │     └─ spawnerNodeUtils.ts
 │     │  └─ types.tsx
 │     ├─ Icons
-│     │  └─ External
-│     │     └─ icons.tsx
+│     │  ├─ External
+│     │  │  └─ icons.tsx
+│     │  └─ index.tsx
 │     ├─ OpenAi
 │     │  ├─ index.tsx
 │     │  ├─ Internal

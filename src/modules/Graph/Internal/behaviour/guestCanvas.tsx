@@ -8,7 +8,7 @@ import { reactFlowSettingsProps } from "./reactflowConfig";
 import { StyleReactFlowLogo } from "./styleReactFlowLogo";
 import { createNode } from "../utils/nodeUtils";
 import IColors from "@modules/Colors";
-import IAuth from "@modules/Auth";
+import IAuth from "@modules/Auth/client";
 
 const GuestCanvas: React.FC = () => {
     StyleReactFlowLogo();

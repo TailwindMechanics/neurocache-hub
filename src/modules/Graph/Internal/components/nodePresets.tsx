@@ -10,7 +10,7 @@ import spawnerNode from "./spawnerNode";
 import { NodeData } from "../../types";
 import IOpenAi from "@modules/OpenAi";
 import inputBox from "./inputBox";
-import IAuth from "@modules/Auth";
+import IAuth from "@modules/Auth/client";
 import testBox from "./testBox";
 
 export const nodeTypes: NodeTypes = {

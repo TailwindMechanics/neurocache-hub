@@ -1,4 +1,4 @@
-//path: src\modules\Composer\Internal\textBlockFormatter.tsx
+//path: src\modules\Composer\Internal\components\textBlockFormatter.tsx
 
 import React from "react";
 

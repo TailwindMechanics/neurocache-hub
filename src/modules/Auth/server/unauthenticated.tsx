@@ -1,4 +1,4 @@
-//path: src\modules\Auth\Internal\unauthenticated.tsx
+//path: src\modules\Auth\server\unauthenticated.tsx
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";

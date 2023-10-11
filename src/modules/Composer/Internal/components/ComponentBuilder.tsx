@@ -1,4 +1,4 @@
-//path: src\modules\Composer\Internal\ComponentBuilder.tsx
+//path: src\modules\Composer\Internal\components\ComponentBuilder.tsx
 
 import React, { FC } from "react";
 

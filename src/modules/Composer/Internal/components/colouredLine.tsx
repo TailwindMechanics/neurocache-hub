@@ -1,4 +1,4 @@
-//path: src\modules\Composer\Internal\colouredLine.tsx
+//path: src\modules\Composer\Internal\components\colouredLine.tsx
 
 import { AnimationControls, motion } from "framer-motion";
 import React, { FC } from "react";

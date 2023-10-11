@@ -1,3 +1,5 @@
+//path: src\modules\Icons\index.tsx
+
 import { Splitter } from "./External/icons";
 
 interface Icons {

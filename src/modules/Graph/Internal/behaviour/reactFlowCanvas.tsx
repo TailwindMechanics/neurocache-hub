@@ -26,7 +26,7 @@ import { NodeEvents } from "./nodeEvents";
 import { SaveGraph } from "./saveGraph";
 import { EdgeLine } from "./edgeLine";
 import IColors from "@modules/Colors";
-import IAuth from "@modules/Auth";
+import IAuth from "@modules/Auth/client";
 
 const ReactFlowCanvas: React.FC = () => {
     StyleReactFlowLogo();

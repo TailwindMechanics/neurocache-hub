@@ -4,7 +4,7 @@ import { Node, NodeTypes } from "reactflow";
 
 import { createNode, deselectAllNodes } from "./nodeUtils";
 import { nodePresets } from "../components/nodePresets";
-import IAuth from "@modules/Auth";
+import IAuth from "@modules/Auth/client";
 
 export const spawnLoginNode = (
     nodes: Node[],

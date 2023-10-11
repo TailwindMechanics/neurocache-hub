@@ -1,4 +1,4 @@
-//path: src\modules\Composer\Internal\codeBlock.tsx
+//path: src\modules\Composer\Internal\components\codeBlock.tsx
 
 import { monokaiSublime } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import SyntaxHighlighter from "react-syntax-highlighter";

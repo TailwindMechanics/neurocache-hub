@@ -3,18 +3,18 @@
 import { FC } from "react";
 import React from "react";
 
-import { AuthenticatedProvider, GuestProvider } from "@client/hooks";
-import { Authenticated, Unauthenticated } from "@server/components";
+import IAuthClient from "@modules/Auth/client";
+import IAuthServer from "@modules/Auth/server";
 
 const page: FC = () => {
     return (
         <>
-            <Authenticated>
-                <AuthenticatedProvider />
-            </Authenticated>
-            <Unauthenticated>
-                <GuestProvider />
-            </Unauthenticated>
+            <IAuthServer.Authenticated>
+                <IAuthClient.AuthenticatedProvider />
+            </IAuthServer.Authenticated>
+            <IAuthServer.Unauthenticated>
+                <IAuthClient.GuestProvider />
+            </IAuthServer.Unauthenticated>
         </>
     );
 };
