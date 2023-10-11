@@ -3,15 +3,15 @@
 import Dev from ".";
 
 const DevShortcuts = () => {
-	if (process.env.NODE_ENV !== "development") {
-		return <></>;
-	}
+    if (process.env.NODE_ENV !== "development") {
+        return <></>;
+    }
 
-	return (
-		<>
-			<Dev.ClearConsole />
-		</>
-	);
+    return (
+        <>
+            <Dev.ClearConsole />
+        </>
+    );
 };
 
 export default DevShortcuts;

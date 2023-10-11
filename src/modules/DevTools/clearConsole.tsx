@@ -3,22 +3,22 @@
 import { useEffect } from "react";
 
 const ClearConsole = () => {
-	useEffect(() => {
-		const handleKeydown = (e: KeyboardEvent) => {
-			if (e.ctrlKey && e.altKey && e.key === "c") {
-				e.preventDefault();
-				console.clear();
-			}
-		};
+    useEffect(() => {
+        const handleKeydown = (e: KeyboardEvent) => {
+            if (e.ctrlKey && e.altKey && e.key === "c") {
+                e.preventDefault();
+                console.clear();
+            }
+        };
 
-		document.addEventListener("keydown", handleKeydown);
+        document.addEventListener("keydown", handleKeydown);
 
-		return () => {
-			document.removeEventListener("keydown", handleKeydown);
-		};
-	}, []);
+        return () => {
+            document.removeEventListener("keydown", handleKeydown);
+        };
+    }, []);
 
-	return <></>;
+    return <></>;
 };
 
 export default ClearConsole;

@@ -8,43 +8,43 @@ import Use from "@client/hooks";
 import Graph from "../../External";
 
 interface SaveGraphProps {
-	flowKey: string;
-	setNodes: React.Dispatch<React.SetStateAction<Node[]>>;
-	setEdges: React.Dispatch<React.SetStateAction<Edge[]>>;
-	viewportRef: React.MutableRefObject<Viewport>;
+    flowKey: string;
+    setNodes: React.Dispatch<React.SetStateAction<Node[]>>;
+    setEdges: React.Dispatch<React.SetStateAction<Edge[]>>;
+    viewportRef: React.MutableRefObject<Viewport>;
 }
 
 const SaveGraph: FC<SaveGraphProps> = (props) => {
-	const [statusText, setStatusText] = useState<string>("");
-	const reactFlowInstance = useReactFlow();
-	const session = useSession();
+    const [statusText, setStatusText] = useState<string>("");
+    const reactFlowInstance = useReactFlow();
+    const session = useSession();
 
-	useEffect(() => {
-		setStatusText(session?.user?.email ?? "");
-	}, [session]);
+    useEffect(() => {
+        setStatusText(session?.user?.email ?? "");
+    }, [session]);
 
-	Use.CtrlS(async () => {
-		if (!session) return;
+    Use.CtrlS(async () => {
+        if (!session) return;
 
-		setStatusText("saving...");
-		Graph.Save(
-			reactFlowInstance,
-			props.setNodes,
-			props.setEdges,
-			"graph",
-			props.viewportRef.current,
-		);
+        setStatusText("saving...");
+        Graph.Save(
+            reactFlowInstance,
+            props.setNodes,
+            props.setEdges,
+            "graph",
+            props.viewportRef.current,
+        );
 
-		setTimeout(() => {
-			setStatusText(session?.user?.email ?? "");
-		}, 1500);
-	});
+        setTimeout(() => {
+            setStatusText(session?.user?.email ?? "");
+        }, 1500);
+    });
 
-	return (
-		<div className="absolute bottom-1 left-3 z-10 select-none font-mono text-sm font-semibold text-rose-light">
-			{statusText}
-		</div>
-	);
+    return (
+        <div className="absolute bottom-1 left-3 z-10 select-none font-mono text-sm font-semibold text-rose-light">
+            {statusText}
+        </div>
+    );
 };
 
 export { SaveGraph };

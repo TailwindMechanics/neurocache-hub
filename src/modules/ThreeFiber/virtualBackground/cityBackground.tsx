@@ -4,23 +4,23 @@
 
 import Data from "@shared/data";
 import {
-	FreeFlyControls,
-	SetupCamera,
-	SetBgColor,
-	Buildings,
-	Lights,
-	Road,
+    FreeFlyControls,
+    SetupCamera,
+    SetBgColor,
+    Buildings,
+    Lights,
+    Road,
 } from "..";
 
 export default function CityBackground() {
-	return (
-		<>
-			<SetBgColor color={Data.Colors.night} />
-			<SetupCamera />
-			<FreeFlyControls />
-			<Lights />
-			<Road />
-			<Buildings />
-		</>
-	);
+    return (
+        <>
+            <SetBgColor color={Data.Colors.night} />
+            <SetupCamera />
+            <FreeFlyControls />
+            <Lights />
+            <Road />
+            <Buildings />
+        </>
+    );
 }

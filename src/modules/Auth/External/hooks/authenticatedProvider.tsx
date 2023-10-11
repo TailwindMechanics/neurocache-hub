@@ -10,14 +10,14 @@ import Dev from "@shared/dev";
 import { Contexts } from "../../../hooks";
 
 export const AuthenticatedProvider: React.FC = () => {
-	return (
-		<>
-			<Dev.Hotkeys />
-			<Contexts.OpenAIContextProvider>
-				<ReactFlowProvider>
-					<Graph.Canvas />
-				</ReactFlowProvider>
-			</Contexts.OpenAIContextProvider>
-		</>
-	);
+    return (
+        <>
+            <Dev.Hotkeys />
+            <Contexts.OpenAIContextProvider>
+                <ReactFlowProvider>
+                    <Graph.Canvas />
+                </ReactFlowProvider>
+            </Contexts.OpenAIContextProvider>
+        </>
+    );
 };

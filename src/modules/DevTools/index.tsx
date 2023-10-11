@@ -4,8 +4,8 @@ import clearConsole from "./clearConsole";
 import devShortcuts from "./devShortcuts";
 
 const Dev = {
-	Hotkeys: devShortcuts,
-	ClearConsole: clearConsole,
+    Hotkeys: devShortcuts,
+    ClearConsole: clearConsole,
 };
 
 export default Dev;

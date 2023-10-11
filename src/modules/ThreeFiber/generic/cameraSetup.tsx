@@ -7,14 +7,14 @@ import { PerspectiveCamera } from "three";
 import React from "react";
 
 export function SetupCamera() {
-	const { camera } = useThree();
-	const cam = camera as PerspectiveCamera;
+    const { camera } = useThree();
+    const cam = camera as PerspectiveCamera;
 
-	cam.position.set(0, 2, 0);
-	cam.aspect = window.innerWidth / window.innerHeight;
-	cam.fov = 60;
-	cam.far = 10000;
-	cam.near = 0.1;
+    cam.position.set(0, 2, 0);
+    cam.aspect = window.innerWidth / window.innerHeight;
+    cam.fov = 60;
+    cam.far = 10000;
+    cam.near = 0.1;
 
-	return <></>;
+    return <></>;
 }

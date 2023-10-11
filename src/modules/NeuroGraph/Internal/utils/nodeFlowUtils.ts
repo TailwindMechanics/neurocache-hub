@@ -5,37 +5,37 @@ import { IsNullOrEmpty } from "@shared/utils";
 import { MapOutputIds } from "../../External";
 
 const extractInput = (
-	nodeData: NodeData,
-	flowValue: NodeFlowValue,
-	fallback: string = "Text",
+    nodeData: NodeData,
+    flowValue: NodeFlowValue,
+    fallback: string = "Text",
 ) => {
-	const anyInputIncluded = nodeData.handles.some((input) => {
-		return input.type === "target" && flowValue.ids.includes(input.id);
-	});
+    const anyInputIncluded = nodeData.handles.some((input) => {
+        return input.type === "target" && flowValue.ids.includes(input.id);
+    });
 
-	if (anyInputIncluded) {
-		let displayText = !IsNullOrEmpty(flowValue.payload)
-			? (flowValue.payload as string)
-			: fallback;
+    if (anyInputIncluded) {
+        let displayText = !IsNullOrEmpty(flowValue.payload)
+            ? (flowValue.payload as string)
+            : fallback;
 
-		return displayText;
-	}
+        return displayText;
+    }
 
-	return null;
+    return null;
 };
 
 const sendOutput = (
-	nodeData: NodeData,
-	flowValue: NodeFlowValue,
-	setNodeFlowValue: (newValue: NodeFlowValue) => void,
+    nodeData: NodeData,
+    flowValue: NodeFlowValue,
+    setNodeFlowValue: (newValue: NodeFlowValue) => void,
 ) => {
-	const outputs = MapOutputIds(flowValue.ids, nodeData.handles);
-	if (outputs && outputs.length > 0) {
-		setNodeFlowValue({
-			ids: outputs,
-			payload: flowValue.payload,
-		});
-	}
+    const outputs = MapOutputIds(flowValue.ids, nodeData.handles);
+    if (outputs && outputs.length > 0) {
+        setNodeFlowValue({
+            ids: outputs,
+            payload: flowValue.payload,
+        });
+    }
 };
 
 export { extractInput, sendOutput };

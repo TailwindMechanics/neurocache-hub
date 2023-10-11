@@ -1,49 +1,49 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Run Dev",
-			"type": "shell",
-			"command": "start http://localhost:3000 ; pnpm run dev",
-			"problemMatcher": []
-		},
-		{
-			"label": "Generate Project Tree",
-			"type": "shell",
-			"command": "${input:generateProjectHierarchy}",
-			"dependsOn": "Auto Comment Paths",
-			"problemMatcher": []
-		},
-		// {
-		//   "label": "Run Storybook",
-		//   "type": "shell",
-		//   "command": "pnpm run storybook",
-		//   "problemMatcher": []
-		// },
-		// {
-		//   "label": "Build Storybook",
-		//   "type": "shell",
-		//   "command": "pnpm run build-storybook",
-		//   "problemMatcher": []
-		// },
-		{
-			"label": "Auto Comment Paths",
-			"type": "shell",
-			"command": "node autoCommentPath.js",
-			"problemMatcher": []
-		},
-		{
-			"label": "Group Root",
-			"type": "shell",
-			"command": "node rootGrouper.js",
-			"problemMatcher": []
-		}
-	],
-	"inputs": [
-		{
-			"id": "generateProjectHierarchy",
-			"type": "command",
-			"command": "project-hierarchy-explorer.generate"
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Dev",
+            "type": "shell",
+            "command": "start http://localhost:3000 ; pnpm run dev",
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate Project Tree",
+            "type": "shell",
+            "command": "${input:generateProjectHierarchy}",
+            "dependsOn": "Auto Comment Paths",
+            "problemMatcher": []
+        },
+        // {
+        //   "label": "Run Storybook",
+        //   "type": "shell",
+        //   "command": "pnpm run storybook",
+        //   "problemMatcher": []
+        // },
+        // {
+        //   "label": "Build Storybook",
+        //   "type": "shell",
+        //   "command": "pnpm run build-storybook",
+        //   "problemMatcher": []
+        // },
+        {
+            "label": "Auto Comment Paths",
+            "type": "shell",
+            "command": "node autoCommentPath.js",
+            "problemMatcher": []
+        },
+        {
+            "label": "Group Root",
+            "type": "shell",
+            "command": "node rootGrouper.js",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "generateProjectHierarchy",
+            "type": "command",
+            "command": "project-hierarchy-explorer.generate"
+        }
+    ]
 }

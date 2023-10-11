@@ -25,62 +25,62 @@ import { AtomProps } from "@shared/types";
 import Builder from "./ComponentBuilder";
 
 interface InputProps {
-	Default: FC<AtomProps>;
-	Combo: FC<AtomProps>;
+    Default: FC<AtomProps>;
+    Combo: FC<AtomProps>;
 }
 
 const Input: InputProps = {
-	Default: input,
-	Combo: ComboInput,
+    Default: input,
+    Combo: ComboInput,
 };
 
 const InputAtoms: InputProps = {
-	Default: inputAtom,
-	Combo: comboAtom,
+    Default: inputAtom,
+    Combo: comboAtom,
 };
 
 interface AtomsProps {
-	Button: FC<AtomProps>;
-	Input: InputProps;
-	Form: FC<AtomProps>;
-	Card: FC<AtomProps>;
-	Div: FC<AtomProps>;
+    Button: FC<AtomProps>;
+    Input: InputProps;
+    Form: FC<AtomProps>;
+    Card: FC<AtomProps>;
+    Div: FC<AtomProps>;
 }
 
 const Atoms: AtomsProps = {
-	Button: button,
-	Input: InputAtoms,
-	Form: formAtom,
-	Card: cardAtom,
-	Div: divAtom,
+    Button: button,
+    Input: InputAtoms,
+    Form: formAtom,
+    Card: cardAtom,
+    Div: divAtom,
 };
 
 interface ComponentsProps {
-	Builder: typeof ComponentBuilder;
-	Atoms: AtomsProps;
-	Button: FC<AtomProps>;
-	Card: FC<AtomProps>;
-	Content: FC<AtomProps>;
-	Shell: FC<AtomProps>;
-	Form: FC<AtomProps>;
-	Input: InputProps;
-	Prose: FC<AtomProps>;
-	Line: FC<ColouredLineProps>;
-	CodeBlock: FC<CodeBlockProps>;
+    Builder: typeof ComponentBuilder;
+    Atoms: AtomsProps;
+    Button: FC<AtomProps>;
+    Card: FC<AtomProps>;
+    Content: FC<AtomProps>;
+    Shell: FC<AtomProps>;
+    Form: FC<AtomProps>;
+    Input: InputProps;
+    Prose: FC<AtomProps>;
+    Line: FC<ColouredLineProps>;
+    CodeBlock: FC<CodeBlockProps>;
 }
 
 const Components: ComponentsProps = {
-	Builder,
-	Atoms,
-	Button,
-	Card,
-	Content,
-	Shell,
-	Form,
-	Input,
-	Prose,
-	Line: ColouredLine,
-	CodeBlock,
+    Builder,
+    Atoms,
+    Button,
+    Card,
+    Content,
+    Shell,
+    Form,
+    Input,
+    Prose,
+    Line: ColouredLine,
+    CodeBlock,
 };
 
 export default Components;

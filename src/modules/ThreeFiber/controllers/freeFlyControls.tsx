@@ -5,18 +5,18 @@
 import { CameraLook, WasdControls } from "..";
 
 interface FreeFlyControlsProps {
-	moveSpeed?: number;
-	lookSpeed?: number;
+    moveSpeed?: number;
+    lookSpeed?: number;
 }
 
 export function FreeFlyControls({
-	moveSpeed = 1,
-	lookSpeed = 1,
+    moveSpeed = 1,
+    lookSpeed = 1,
 }: FreeFlyControlsProps) {
-	return (
-		<>
-			<CameraLook speed={lookSpeed} />
-			<WasdControls speed={moveSpeed} />
-		</>
-	);
+    return (
+        <>
+            <CameraLook speed={lookSpeed} />
+            <WasdControls speed={moveSpeed} />
+        </>
+    );
 }

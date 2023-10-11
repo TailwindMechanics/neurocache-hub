@@ -13,19 +13,19 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-	border: 1px solid #77cabf;
-	-webkit-text-fill-color: #77cabf;
-	-webkit-box-shadow: 0 0 0 30px #13161f inset !important;
+    border: 1px solid #77cabf;
+    -webkit-text-fill-color: #77cabf;
+    -webkit-box-shadow: 0 0 0 30px #13161f inset !important;
 }
 
 @keyframes onAutoFillStart {
-	to {
-		font-family: monospace;
-		font-size: 0.5rem;
-	}
+    to {
+        font-family: monospace;
+        font-size: 0.5rem;
+    }
 }
 
 input:-webkit-autofill {
-	animation-name: onAutoFillStart;
-	animation-fill-mode: both;
+    animation-name: onAutoFillStart;
+    animation-fill-mode: both;
 }

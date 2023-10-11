@@ -3,13 +3,13 @@
 "use client";
 
 interface SetBgColorProps {
-	color: string;
+    color: string;
 }
 
 export function SetBgColor({ color }: SetBgColorProps) {
-	return (
-		<>
-			<color attach="background" args={[color]} />
-		</>
-	);
+    return (
+        <>
+            <color attach="background" args={[color]} />
+        </>
+    );
 }

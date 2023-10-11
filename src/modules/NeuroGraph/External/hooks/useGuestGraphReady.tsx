@@ -3,5 +3,5 @@
 import Use from "../../../hooks";
 
 export const useGuestGraphReady = (callback: () => void) => {
-	Use.GraphSessionReady(() => {}, callback);
+    Use.GraphSessionReady(() => {}, callback);
 };

@@ -3,18 +3,18 @@
 import { PositionId } from "@shared/types";
 
 export const MapOutputIds = (
-	inputs: string[],
-	toMap: PositionId[],
+    inputs: string[],
+    toMap: PositionId[],
 ): string[] | null => {
-	const anyInputIncluded = toMap?.some((handle) => {
-		return handle.type === "target" && inputs.includes(handle.id);
-	});
+    const anyInputIncluded = toMap?.some((handle) => {
+        return handle.type === "target" && inputs.includes(handle.id);
+    });
 
-	if (anyInputIncluded) {
-		return toMap
-			.filter((handle) => handle.type === "source")
-			.map((handle) => handle.id);
-	}
+    if (anyInputIncluded) {
+        return toMap
+            .filter((handle) => handle.type === "source")
+            .map((handle) => handle.id);
+    }
 
-	return null;
+    return null;
 };
