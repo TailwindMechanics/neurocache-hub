@@ -10,7 +10,7 @@
         "no-restricted-imports": [
             "warn",
             {
-                "patterns": ["/@*/**/*/", "/./", "/../", "./"]
+                "patterns": ["**/Internal/**"]
             }
         ]
     }

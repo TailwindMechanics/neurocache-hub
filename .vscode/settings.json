@@ -12,10 +12,13 @@
         "External": "Import",
         "Internal": "Export",
         "Composer": "Components",
-        "DevTools": "Tools",
-        "NeuroGraph": "Controller",
+        "Dev": "Tools",
+        "Graph": "Controller",
         "OpenAi": "Robot",
-        "ThreeFiber": "Middleware"
+        "ThreeFiber": "Middleware",
+        "atoms": "App",
+        "presets": "Middleware",
+        "behaviour": "Less"
     },
     "tailwindCSS.experimental.classRegex": [
         ["shadow: \"(.*)\","],

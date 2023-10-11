@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("./src/modules/Colors/External/colors.json");
-import { FlatColors } from "./src/modules/Colors/External/colors.ts";
+const colors = require("./src/modules/Colors/Internal/colors.json");
+import { FlatColors } from "./src/modules/Colors/Internal/colors.ts";
 
 let colorUtilities = {};
 for (let colorName in FlatColors) {

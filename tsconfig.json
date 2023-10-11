@@ -22,9 +22,7 @@
         "baseUrl": ".",
         "paths": {
             // "@root/*": ["./*"],
-            "@client/*": ["src/client/*"],
-            "@shared/*": ["src/shared/*"],
-            "@server/*": ["src/server/*"]
+            "@modules/*": ["src/modules/*"]
         }
     },
     "include": [

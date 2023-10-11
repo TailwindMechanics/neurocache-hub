@@ -1,12 +1,12 @@
 //path: src\modules\ThreeFiber\index.tsx
 
-export { FreeFlyControls } from "./controllers/freeFlyControls";
-export { Buildings } from "./virtualBackground/buildings";
-export { Building } from "./virtualBackground/building";
-export { WasdControls } from "./generic/wasdControls";
-export { CameraLook } from "./controllers/cameraLook";
-export { Lights } from "./virtualBackground/lights";
-export { SetupCamera } from "./generic/cameraSetup";
-export { SetBgColor } from "./generic/setBgColour";
-export { PlaneGeo } from "./geometry/planeGeo";
-export { Road } from "./geometry/road";
+export { FreeFlyControls } from "./Internal/controllers/freeFlyControls";
+export { Buildings } from "./Internal/virtualBackground/buildings";
+export { Building } from "./Internal/virtualBackground/building";
+export { WasdControls } from "./Internal/generic/wasdControls";
+export { CameraLook } from "./Internal/controllers/cameraLook";
+export { Lights } from "./Internal/virtualBackground/lights";
+export { SetupCamera } from "./Internal/generic/cameraSetup";
+export { SetBgColor } from "./Internal/generic/setBgColour";
+export { PlaneGeo } from "./Internal/geometry/planeGeo";
+export { Road } from "./Internal/geometry/road";

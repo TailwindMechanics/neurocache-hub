@@ -1,4 +1,4 @@
-//path: src\modules\Icons\icons.tsx
+//path: src\modules\Icons\External\icons.tsx
 
 import React, { FC } from "react";
 
