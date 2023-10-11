@@ -44,5 +44,6 @@
         "flowbite",
         "coverage",
         "storybook-static"
-    ]
+    ],
+    "svg.preview.background": "black"
 }

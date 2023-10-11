@@ -1,0 +1,15 @@
+{
+  "alias": {
+    "@modules/*": "src\\modules\\*"
+  },
+  "resolveExtensions": [
+    ".js",
+    ".jsx",
+    ".ts",
+    ".tsx",
+    ".vue",
+    ".scss",
+    ".less"
+  ],
+  "entryFilePath": "/src"
+}
