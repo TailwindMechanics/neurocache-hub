@@ -1,6 +1,7 @@
 //path: src\modules\Graph\types.tsx
 
-import { XYPosition } from "reactflow";
+import { NodeProps, XYPosition } from "reactflow";
+import { ComponentType } from "react";
 
 export interface AgentGraph {
     user_id: string;
@@ -12,7 +13,7 @@ export type NodeFlowValue = {
     payload: string | null;
 };
 
-export interface NodeData {
+export interface CustomNode {
     nodeType: string;
     nodeName: string;
     category: string;
@@ -20,6 +21,7 @@ export interface NodeData {
     body: string;
     handles: PositionId[];
     nodePosition: { x: number; y: number };
+    nodeComponent: ComponentType<NodeProps>;
 }
 
 export type PositionId = {

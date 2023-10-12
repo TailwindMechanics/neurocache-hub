@@ -1,9 +1,9 @@
-//path: src\modules\Graph\Internal\behaviour\flowSaveLoad.ts
+//path: src\modules\Graph\Internal\core\flowSaveLoad.ts
 
 import { Edge, Node, NodeTypes, ReactFlowInstance, Viewport } from "reactflow";
 
-import { nodeTypes } from "./../components/nodePresets";
 import { spawnLoginNode } from "../utils/nodeSpawner";
+import CustomNodesRepo from "./CustomNodesRepo";
 
 export const loadGuestGraph = (
     nodes: Node[],
@@ -27,7 +27,7 @@ export const loadUserGraph = (
 
     setNodes(flow.nodes as Node[]);
     setEdges(flow.edges as Edge[]);
-    setTypes({ ...nodeTypes });
+    setTypes(CustomNodesRepo.instance.getNodeTypes());
 
     return flow.viewport as Viewport;
 };

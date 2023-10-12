@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { NodeProps } from "reactflow";
 
-import { NodeData } from "@modules/Graph/types";
+import { CustomNode } from "@modules/Graph/types";
 import IComposer from "@modules/Composer";
 import IOpenAi from "@modules/OpenAi";
 import IGraph from "@modules/Graph";
@@ -16,7 +16,7 @@ const Content = new IComposer.Builder(IComposer.Components.Content)
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
     const { nodeFlowValue, setNodeFlowValue } = IGraph.useNodeFlow();
-    const nodeData = props.data as NodeData;
+    const nodeData = props.data as CustomNode;
     const openAI = IOpenAi.useOpenAi();
 
     useEffect(() => {
@@ -60,5 +60,30 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
         </>
     );
 };
+
+const nodeData = {
+    nodeType: "open_ai",
+    nodeName: "Gpt-4",
+    category: "OpenAi",
+    nodeId: "node_open_ai_60e9b8e9a7f1d8c7c7f8",
+    body: "This node makes an API request to OpenAI.",
+    handles: [
+        {
+            id: "in_open_ai_60e9b8e9a7f1d8c7c7f8",
+            type: "target",
+            offset: { x: -0.33, y: 40 },
+            angle: -90,
+        },
+        {
+            id: "out_open_ai_60e9b8e9a7f1d8c7c7f8",
+            type: "source",
+            offset: { x: 100.33, y: 40 },
+            angle: 90,
+        },
+    ],
+    nodePosition: { x: 100, y: 0 },
+} as CustomNode;
+
+IGraph.CustomNodesRepo.instance.addNode(nodeData);
 
 export default React.memo(OpenAiNode);

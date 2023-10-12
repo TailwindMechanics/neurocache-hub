@@ -5,7 +5,8 @@ import { useState } from "react";
 import React from "react";
 
 import { NodeSelectionState } from "../utils/nodeSelectionState";
-import { NodeData, AgentGraph } from "../../types";
+import CustomNodesRepo from "../core/CustomNodesRepo";
+import { CustomNode, AgentGraph } from "../../types";
 import { useNodeFlow } from "../hooks/useNodeFlow";
 import { DrawHandle } from "../utils/drawHandle";
 import IComposer from "@modules/Composer";
@@ -34,7 +35,7 @@ const Button = new IComposer.Builder(IComposer.Components.Button)
 
 const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
     const { setNodeFlowValue } = useNodeFlow();
-    const nodeData = props.data as NodeData;
+    const nodeData = props.data as CustomNode;
     const reactFlowInstance = useReactFlow();
     // const user = useUser();
 
@@ -119,5 +120,24 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
         </>
     );
 };
+
+const nodeData = {
+    nodeType: "test_box",
+    nodeName: "Test",
+    category: "Unhidden",
+    nodeId: "test_box_1",
+    body: "This is for testing.",
+    handles: [
+        {
+            id: "out_test_box_60e9b8e9a7f1d8c774h2",
+            type: "source",
+            offset: { x: 100.33, y: 40 },
+            angle: 90,
+        },
+    ],
+    nodePosition: { x: 100, y: 0 },
+} as CustomNode;
+
+CustomNodesRepo.instance.addNode(nodeData);
 
 export default React.memo(TestBox);

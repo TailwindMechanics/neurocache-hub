@@ -6,10 +6,10 @@ import { useState } from "react";
 import React from "react";
 
 import { NodeSelectionState } from "../utils/nodeSelectionState";
+import CustomNodesRepo from "../core/CustomNodesRepo";
 import { createNode } from "../utils/nodeUtils";
-import { displayNodes } from "./nodePresets";
 import IComposer from "@modules/Composer";
-import { NodeData } from "../../types";
+import { CustomNode } from "../../types";
 import IUtils from "@modules/Utils";
 
 const Card = new IComposer.Builder(IComposer.Components.Card)
@@ -21,7 +21,7 @@ const Content = new IComposer.Builder(IComposer.Components.Content)
     .withRoundedButton()
     .build();
 
-const nodeLabel = (node: NodeData) => {
+const nodeLabel = (node: CustomNode) => {
     if (!node) return "";
     if (IUtils.IsNullOrEmpty(node.nodeName)) return node.nodeName;
 
@@ -30,10 +30,10 @@ const nodeLabel = (node: NodeData) => {
 };
 
 const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
-    const reactFlowInstance = useReactFlow();
     const [query, setQuery] = useState("");
-    const nodeData = props.data as NodeData;
-    const allNodes = displayNodes();
+    const reactFlowInstance = useReactFlow();
+    const allNodes = CustomNodesRepo.instance.getUnhiddenNodes();
+
     const thisNode = reactFlowInstance?.getNode(nodeData.nodeId);
     const filteredNodes =
         query === ""
@@ -62,7 +62,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
         }));
     };
 
-    const spawnNode = (node: NodeData) => {
+    const spawnNode = (node: CustomNode) => {
         const spawnedNode: Node = {
             id: node.nodeId,
             type: node.nodeType,
@@ -80,7 +80,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
         reactFlowInstance.setNodes(newNodes);
     };
 
-    const onSelect = (node: NodeData) => {
+    const onSelect = (node: CustomNode) => {
         if (node) {
             const newNode = createNode({
                 type: node.nodeType,
@@ -100,12 +100,12 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
                     <IComposer.Components.Input.Combo
                         placeholder="..."
                         autoFocus
-                        displayValue={(node: NodeData) => nodeLabel(node)}
+                        displayValue={(node: CustomNode) => nodeLabel(node)}
                         onChange={(event) => setQuery(event.target.value)}
                     />
                     <Content>
                         <Combobox.Options static>
-                            {filteredNodes.map((node: NodeData) => (
+                            {filteredNodes.map((node: CustomNode) => (
                                 <Combobox.Option
                                     key={node.nodeName}
                                     className={"hover:text-aqua-body"}
@@ -124,4 +124,18 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
     );
 };
 
+const nodeData = {
+    nodeType: "spawner",
+    nodeName: "Spawner",
+    category: "Hidden",
+    nodeId: "node_spawner_1",
+    body: "This node spawns other nodes.",
+    handles: [],
+    nodePosition: { x: 200, y: 0 },
+    nodeComponent: SpawnerNode,
+} as CustomNode;
+
+CustomNodesRepo.instance.addNode(nodeData);
+
+export { nodeData as SpawnerNodeData };
 export default React.memo(SpawnerNode);

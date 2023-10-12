@@ -1,4 +1,4 @@
-//path: src\modules\Graph\Internal\behaviour\reactFlowCanvas.tsx
+//path: src\modules\Graph\Internal\core\reactFlowCanvas.tsx
 
 import { useSession, User } from "@supabase/auth-helpers-react";
 import React, { useEffect, useRef, useState } from "react";
@@ -23,10 +23,10 @@ import { NodeFlowProvider } from "../hooks/useNodeFlow";
 import useMouseCoords from "../hooks/useMouseCoords";
 import { ConnectionLine } from "./connectionLine";
 import { NodeEvents } from "./nodeEvents";
+import IAuth from "@modules/Auth/client";
 import { SaveGraph } from "./saveGraph";
 import { EdgeLine } from "./edgeLine";
 import IColors from "@modules/Colors";
-import IAuth from "@modules/Auth/client";
 
 const ReactFlowCanvas: React.FC = () => {
     StyleReactFlowLogo();

@@ -2,21 +2,15 @@
 
 import { Node, XYPosition } from "reactflow";
 
-import { NodeData } from "../../types";
+import { SpawnerNodeData } from "../components/spawnerNode";
 
-export const spawnSpawnerNode = (
-    mouseCoords: XYPosition,
-    customNodeDefaults: NodeData[],
-): Node => {
+export const spawnSpawnerNode = (mouseCoords: XYPosition): Node => {
     let newPos = { ...mouseCoords };
     newPos.x -= 20;
     newPos.y -= 20;
 
-    const nodeConfig = customNodeDefaults.find(
-        (item) => item.nodeType === "spawner",
-    ) as NodeData;
+    const nodeConfig = SpawnerNodeData;
     nodeConfig.nodePosition = newPos;
-
     const spawnerNode: Node = {
         id: nodeConfig.nodeId,
         type: nodeConfig.nodeType,

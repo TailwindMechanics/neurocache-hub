@@ -1,4 +1,4 @@
-//path: src\modules\Graph\Internal\behaviour\edgeLine.tsx
+//path: src\modules\Graph\Internal\core\edgeLine.tsx
 
 import { AnimationDefinition, useAnimation } from "framer-motion";
 import { EdgeProps } from "reactflow";

@@ -2,7 +2,7 @@
 
 import { Node } from "reactflow";
 
-import { NodeData, PositionId } from "../../types";
+import { CustomNode, PositionId } from "../../types";
 import IUtils from "@modules/Utils";
 
 interface CreateNodeProps {
@@ -38,5 +38,5 @@ export const createNode = (props: CreateNodeProps) => {
         body: props.body,
         handles: handles,
         nodePosition: props.pos,
-    } as NodeData;
+    } as CustomNode;
 };

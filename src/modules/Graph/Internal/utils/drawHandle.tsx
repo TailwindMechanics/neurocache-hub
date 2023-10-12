@@ -2,11 +2,11 @@
 
 import { Handle, Position, XYPosition, useReactFlow } from "reactflow";
 
-import { PositionId, NodeData } from "../../types";
+import { PositionId, CustomNode } from "../../types";
 
 interface DrawHandleProps {
     handle: PositionId;
-    nodeData: NodeData;
+    nodeData: CustomNode;
     index: number;
 }
 

@@ -2,7 +2,7 @@
 
 import { Node, XYPosition, useReactFlow } from "reactflow";
 
-import { NodeData } from "../../types";
+import { CustomNode } from "../../types";
 
 const useNodeHandle = (handleId: string) => {
     const reactFlowInstance = useReactFlow();
@@ -10,11 +10,11 @@ const useNodeHandle = (handleId: string) => {
 
     // select all node datas
     const allNodeDatas = allNodes.map((node: Node) => {
-        return node.data as NodeData;
+        return node.data as CustomNode;
     });
 
     // select the node data whose handles contains this handle id
-    const nodeData = allNodeDatas.find((nodeData: NodeData) => {
+    const nodeData = allNodeDatas.find((nodeData: CustomNode) => {
         return nodeData.handles.some((handle) => {
             return handle.id === handleId;
         });
@@ -29,7 +29,7 @@ const useNodeHandle = (handleId: string) => {
     if (!parentNode.width || !parentNode.height) return null;
 
     // Get the parent node data
-    const parentData = parentNode.data as NodeData;
+    const parentData = parentNode.data as CustomNode;
     const parentPosition = parentNode.position as XYPosition;
 
     // Get the dimensions of the parent node

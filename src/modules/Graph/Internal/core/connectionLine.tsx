@@ -1,4 +1,4 @@
-//path: src\modules\Graph\Internal\behaviour\connectionLine.tsx
+//path: src\modules\Graph\Internal\core\connectionLine.tsx
 
 import { AnimationDefinition, useAnimation } from "framer-motion";
 import { ConnectionLineComponentProps } from "reactflow";

@@ -1,4 +1,4 @@
-//path: src\modules\Graph\Internal\behaviour\reactflowConfig.ts
+//path: src\modules\Graph\Internal\core\reactflowConfig.ts
 
 import { ReactFlowProps } from "reactflow";
 

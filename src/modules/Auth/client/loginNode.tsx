@@ -7,6 +7,7 @@ import {
     User,
 } from "@supabase/auth-helpers-nextjs";
 
+import { CustomNode } from "@modules/Graph/types";
 import IComposer from "@modules/Composer";
 import IGraph from "@modules/Graph";
 
@@ -91,5 +92,18 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
         </>
     );
 };
+
+const nodeData = {
+    nodeType: "login",
+    nodeName: "Login",
+    category: "Utils",
+    nodeId: "node_login_1",
+    body: "This node logs a user in.",
+    handles: [],
+    nodePosition: { x: 0, y: 0 },
+    nodeComponent: LoginNode,
+} as CustomNode;
+
+IGraph.CustomNodesRepo.instance.addNode(nodeData);
 
 export default React.memo(LoginNode);

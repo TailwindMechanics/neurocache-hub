@@ -4,7 +4,7 @@ import { NodeProps } from "reactflow";
 import { useState } from "react";
 import React from "react";
 
-import { NodeData } from "@modules/Graph/types";
+import { CustomNode } from "@modules/Graph/types";
 import IComposer from "@modules/Composer";
 import IOpenAi from "@modules/OpenAi";
 import IGraph from "@modules/Graph";
@@ -25,7 +25,7 @@ const Button = new IComposer.Builder(IComposer.Components.Button)
 
 const OpenAiModels: React.FC<NodeProps> = (props: NodeProps) => {
     const { setNodeFlowValue } = IGraph.useNodeFlow();
-    const nodeData = props.data as NodeData;
+    const nodeData = props.data as CustomNode;
     const openAI = IOpenAi.useOpenAi();
 
     const [isLoading, setIsLoading] = useState({
@@ -80,3 +80,20 @@ const OpenAiModels: React.FC<NodeProps> = (props: NodeProps) => {
 };
 
 export default React.memo(OpenAiModels);
+
+const nodeData = {
+    nodeType: "openai_models",
+    nodeName: "Models",
+    category: "OpenAi",
+    nodeId: "openai_models_60e9b8e9a7f1d8c7gdw3",
+    body: "This node returns the models.",
+    handles: [
+        {
+            id: "out_openai_models_60e9b8e9a7f1d8c7gdw3",
+            type: "source",
+            offset: { x: 100.33, y: 40 },
+            angle: 90,
+        },
+    ],
+    nodePosition: { x: 100, y: 0 },
+} as CustomNode;

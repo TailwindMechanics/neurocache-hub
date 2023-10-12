@@ -1,4 +1,4 @@
-//path: src\modules\Graph\Internal\behaviour\guestCanvas.tsx
+//path: src\modules\Graph\Internal\core\guestCanvas.tsx
 
 import ReactFlow, { BackgroundVariant, Background, Node } from "reactflow";
 import "reactflow/dist/style.css";

@@ -1,4 +1,4 @@
-//path: src\modules\Graph\Internal\behaviour\nodeEvents.tsx
+//path: src\modules\Graph\Internal\core\nodeEvents.tsx
 
 import { useSession } from "@supabase/auth-helpers-react";
 import React, { ReactNode, FC } from "react";
@@ -16,7 +16,6 @@ import ReactFlow, {
 } from "reactflow";
 
 import { removeSpawnerNode, spawnSpawnerNode } from "../utils/spawnerNodeUtils";
-import { nodePresets } from "../components/nodePresets";
 import IUtils from "@modules/Utils";
 
 type NodeEventsProps = {
@@ -69,11 +68,7 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
 
             if (!session) return;
 
-            const spawnerNode = spawnSpawnerNode(
-                props.mouseCoordsRef.current,
-                nodePresets,
-            );
-
+            const spawnerNode = spawnSpawnerNode(props.mouseCoordsRef.current);
             props.setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
         },
 

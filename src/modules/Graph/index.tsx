@@ -1,10 +1,11 @@
 //path: src\modules\Graph\index.tsx
 
 import { NodeSelectionState } from "./Internal/utils/nodeSelectionState";
-import ReactFlowCanvas from "./Internal/behaviour/reactFlowCanvas";
-import GuestCanvas from "./Internal/behaviour/guestCanvas";
+import CustomNodesRepo from "./Internal/core/CustomNodesRepo";
+import ReactFlowCanvas from "./Internal/core/reactFlowCanvas";
 import { useNodeFlow } from "./Internal/hooks/useNodeFlow";
 import { DrawHandle } from "./Internal/utils/drawHandle";
+import GuestCanvas from "./Internal/core/guestCanvas";
 
 interface Graph {
     Canvas: typeof ReactFlowCanvas;
@@ -12,6 +13,7 @@ interface Graph {
     NodeSelectionState: typeof NodeSelectionState;
     useNodeFlow: typeof useNodeFlow;
     DrawHandle: typeof DrawHandle;
+    CustomNodesRepo: typeof CustomNodesRepo;
 }
 
 const IGraph: Graph = {
@@ -20,6 +22,7 @@ const IGraph: Graph = {
     NodeSelectionState: NodeSelectionState,
     useNodeFlow: useNodeFlow,
     DrawHandle: DrawHandle,
+    CustomNodesRepo: CustomNodesRepo,
 };
 
 export default IGraph;

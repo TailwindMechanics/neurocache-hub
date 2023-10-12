@@ -1,11 +1,11 @@
 //path: src\modules\Graph\Internal\utils\nodeFlowUtils.ts
 
-import { NodeData, NodeFlowValue } from "../../types";
+import { CustomNode, NodeFlowValue } from "../../types";
 import { MapOutputIds } from "./mapOutputIds";
 import IUtils from "@modules/Utils";
 
 const extractInput = (
-    nodeData: NodeData,
+    nodeData: CustomNode,
     flowValue: NodeFlowValue,
     fallback: string = "Text",
 ) => {
@@ -25,7 +25,7 @@ const extractInput = (
 };
 
 const sendOutput = (
-    nodeData: NodeData,
+    nodeData: CustomNode,
     flowValue: NodeFlowValue,
     setNodeFlowValue: (newValue: NodeFlowValue) => void,
 ) => {

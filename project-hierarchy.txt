@@ -1,4 +1,6 @@
 neurocache-hub
+├─ .dependencygraph
+│  └─ setting.json
 ├─ .editorconfig
 ├─ .env.local
 ├─ .eslintignore
@@ -31,6 +33,7 @@ neurocache-hub
 │  └─ templates
 │     ├─ template.stories.tsx.md
 │     └─ template.test.tsx.md
+├─ graph.svg
 ├─ jest.config.js
 ├─ jest.setup.js
 ├─ junit.xml
@@ -128,8 +131,17 @@ neurocache-hub
 │     ├─ Graph
 │     │  ├─ index.tsx
 │     │  ├─ Internal
-│     │  │  ├─ behaviour
+│     │  │  ├─ components
+│     │  │  │  ├─ commentPayload.tsx
+│     │  │  │  ├─ inputBox.tsx
+│     │  │  │  ├─ markdownBox.tsx
+│     │  │  │  ├─ sendOutputNode.tsx
+│     │  │  │  ├─ spawnerNode.tsx
+│     │  │  │  ├─ splitterNode.tsx
+│     │  │  │  └─ testBox.tsx
+│     │  │  ├─ core
 │     │  │  │  ├─ connectionLine.tsx
+│     │  │  │  ├─ CustomNodesRepo.tsx
 │     │  │  │  ├─ edgeLine.tsx
 │     │  │  │  ├─ flowSaveLoad.ts
 │     │  │  │  ├─ guestCanvas.tsx
@@ -138,15 +150,6 @@ neurocache-hub
 │     │  │  │  ├─ reactflowConfig.ts
 │     │  │  │  ├─ saveGraph.tsx
 │     │  │  │  └─ styleReactFlowLogo.tsx
-│     │  │  ├─ components
-│     │  │  │  ├─ commentPayload.tsx
-│     │  │  │  ├─ inputBox.tsx
-│     │  │  │  ├─ markdownBox.tsx
-│     │  │  │  ├─ nodePresets.tsx
-│     │  │  │  ├─ sendOutputNode.tsx
-│     │  │  │  ├─ spawnerNode.tsx
-│     │  │  │  ├─ splitterNode.tsx
-│     │  │  │  └─ testBox.tsx
 │     │  │  ├─ hooks
 │     │  │  │  ├─ useGraphSessionReady.tsx
 │     │  │  │  ├─ useGuestGraphReady.tsx
@@ -177,28 +180,6 @@ neurocache-hub
 │     │  │  └─ hooks
 │     │  │     └─ useOpenAI.tsx
 │     │  └─ types.tsx
-│     ├─ ThreeFiber
-│     │  ├─ index.tsx
-│     │  └─ Internal
-│     │     ├─ controllers
-│     │     │  ├─ cameraLook.tsx
-│     │     │  └─ freeFlyControls.tsx
-│     │     ├─ generic
-│     │     │  ├─ cameraSetup.tsx
-│     │     │  ├─ setBgColour.tsx
-│     │     │  ├─ threeCanvas.tsx
-│     │     │  └─ wasdControls.ts
-│     │     ├─ geometry
-│     │     │  ├─ planeGeo.tsx
-│     │     │  └─ road.tsx
-│     │     ├─ materials
-│     │     │  ├─ mappedMetalMat.tsx
-│     │     │  └─ metalMat.tsx
-│     │     └─ virtualBackground
-│     │        ├─ building.tsx
-│     │        ├─ buildings.tsx
-│     │        ├─ cityBackground.tsx
-│     │        └─ lights.tsx
 │     └─ Utils
 │        ├─ index.tsx
 │        └─ Internal
