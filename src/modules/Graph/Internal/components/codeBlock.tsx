@@ -1,11 +1,11 @@
-//path: src\modules\Composer\Internal\components\codeBlock.tsx
+//path: src\modules\Graph\Internal\components\codeBlock.tsx
 
 import { monokaiSublime } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { useState } from "react";
 import React from "react";
 
-import { CodeBlockProps } from "../../types";
+import { CodeBlockProps } from "../../../Composer/types";
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
     const [isCopied, setIsCopied] = useState(false);

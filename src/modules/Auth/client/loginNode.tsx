@@ -11,17 +11,23 @@ import { CustomNode } from "@modules/Graph/types";
 import IComposer from "@modules/Composer";
 import IGraph from "@modules/Graph";
 
-const Content = new IComposer.Builder(IComposer.Components.Content)
+const Content = new IComposer.Builder(
+    "LoginContent",
+    IComposer.Components.Content,
+)
     .withStyle("text-night-title")
     .withStyle("text-sm")
     .withStyle("px-1")
     .withRoundedElement()
     .build();
-const Button = new IComposer.Builder(IComposer.Components.Button)
+const Button = new IComposer.Builder("LoginButton", IComposer.Components.Button)
     .withStyle("text-sm")
     .withRoundedButton()
     .build();
-const Input = new IComposer.Builder(IComposer.Components.Input.Default)
+const Input = new IComposer.Builder(
+    "LoginInput",
+    IComposer.Components.Input.Default,
+)
     .withStyle("text-center")
     .withRoundedElement()
     .build();

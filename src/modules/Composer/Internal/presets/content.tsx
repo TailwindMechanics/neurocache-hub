@@ -1,8 +1,9 @@
 //path: src\modules\Composer\Internal\presets\content.tsx
 
-import { Composer } from "..";
+import ComponentBuilder from "../components/ComponentBuilder";
+import Div from "../atoms/div";
 
-const Content = new Composer.Builder(Composer.Atoms.Div)
+const Content = new ComponentBuilder("ContentPreset", Div)
     .withStyle("border-night-light")
     .withStyle("text-aqua-dark")
     .withStyle("bg-night-black")

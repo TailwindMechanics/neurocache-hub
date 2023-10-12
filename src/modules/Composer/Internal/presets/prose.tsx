@@ -1,8 +1,9 @@
 //path: src\modules\Composer\Internal\presets\prose.tsx
 
-import { Composer } from "..";
+import ComponentBuilder from "../components/ComponentBuilder";
+import DivAtom from "../atoms/div";
 
-const Prose = new Composer.Builder(Composer.Atoms.Div)
+const Prose = new ComponentBuilder("ProsePreset", DivAtom)
     .withStyle("prose-code:text-aqua-body")
     .withStyle("prose-h2:text-aqua-dark")
     .withStyle("prose-strong:text-aqua")

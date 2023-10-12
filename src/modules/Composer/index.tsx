@@ -3,8 +3,8 @@
 import { FC } from "react";
 
 import ComponentBuilder from "./Internal/components/ComponentBuilder";
-import ColouredLine from "./Internal/components/colouredLine";
-import CodeBlock from "./Internal/components/codeBlock";
+import ColouredLine from "../Graph/Internal/components/colouredLine";
+import CodeBlock from "../Graph/Internal/components/codeBlock";
 import ComboInput from "./Internal/presets/comboInput";
 import { AtomProps, CodeBlockProps } from "./types";
 import Content from "./Internal/presets/content";

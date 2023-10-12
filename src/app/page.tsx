@@ -3,17 +3,17 @@
 import { FC } from "react";
 import React from "react";
 
-import IAuthClient from "@modules/Auth/client";
+import { AuthenticatedProvider, GuestProvider } from "@modules/Auth/client";
 import IAuthServer from "@modules/Auth/server";
 
 const page: FC = () => {
     return (
         <>
             <IAuthServer.Authenticated>
-                <IAuthClient.AuthenticatedProvider />
+                <AuthenticatedProvider />
             </IAuthServer.Authenticated>
             <IAuthServer.Unauthenticated>
-                <IAuthClient.GuestProvider />
+                <GuestProvider />
             </IAuthServer.Unauthenticated>
         </>
     );

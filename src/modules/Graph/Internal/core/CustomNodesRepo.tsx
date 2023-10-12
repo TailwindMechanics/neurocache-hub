@@ -20,6 +20,10 @@ class CustomNodesRepo {
         this.customNodes.set(nodeData.nodeType, nodeData);
     }
 
+    public getNode(nodeType: string) {
+        return this.customNodes.get(nodeType);
+    }
+
     public getNodes = () => {
         return Array.from(this.customNodes.values());
     };

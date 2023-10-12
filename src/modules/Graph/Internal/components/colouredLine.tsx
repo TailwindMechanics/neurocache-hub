@@ -1,9 +1,9 @@
-//path: src\modules\Composer\Internal\components\colouredLine.tsx
+//path: src\modules\Graph\Internal\components\colouredLine.tsx
 
-import { AnimationControls, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { FC } from "react";
 
-import { ColouredLineProps } from "../../types";
+import { ColouredLineProps } from "../../../Composer/types";
 import IColors from "@modules/Colors";
 
 const ColouredLine: FC<ColouredLineProps> = (props) => {

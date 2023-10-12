@@ -33,7 +33,6 @@ neurocache-hub
 │  └─ templates
 │     ├─ template.stories.tsx.md
 │     └─ template.test.tsx.md
-├─ graph.svg
 ├─ jest.config.js
 ├─ jest.setup.js
 ├─ junit.xml
@@ -108,11 +107,7 @@ neurocache-hub
 │     │  │  │  ├─ form.tsx
 │     │  │  │  └─ input.tsx
 │     │  │  ├─ components
-│     │  │  │  ├─ codeBlock.tsx
-│     │  │  │  ├─ colouredLine.tsx
-│     │  │  │  ├─ ComponentBuilder.tsx
-│     │  │  │  └─ textBlockFormatter.tsx
-│     │  │  ├─ index.tsx
+│     │  │  │  └─ ComponentBuilder.tsx
 │     │  │  └─ presets
 │     │  │     ├─ button.tsx
 │     │  │     ├─ card.tsx
@@ -132,13 +127,16 @@ neurocache-hub
 │     │  ├─ index.tsx
 │     │  ├─ Internal
 │     │  │  ├─ components
+│     │  │  │  ├─ codeBlock.tsx
+│     │  │  │  ├─ colouredLine.tsx
 │     │  │  │  ├─ commentPayload.tsx
 │     │  │  │  ├─ inputBox.tsx
 │     │  │  │  ├─ markdownBox.tsx
 │     │  │  │  ├─ sendOutputNode.tsx
 │     │  │  │  ├─ spawnerNode.tsx
 │     │  │  │  ├─ splitterNode.tsx
-│     │  │  │  └─ testBox.tsx
+│     │  │  │  ├─ testBox.tsx
+│     │  │  │  └─ textBlockFormatter.tsx
 │     │  │  ├─ core
 │     │  │  │  ├─ connectionLine.tsx
 │     │  │  │  ├─ CustomNodesRepo.tsx

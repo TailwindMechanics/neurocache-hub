@@ -2,10 +2,11 @@
 
 import React, { FC } from "react";
 
+import ComponentBuilder from "../components/ComponentBuilder";
 import { AtomProps } from "../../types";
-import { Composer } from "..";
+import DivAtom from "./div";
 
-const Root = new Composer.Builder(Composer.Atoms.Div)
+const Root = new ComponentBuilder("CardAtom", DivAtom)
     .withStyle("-outline-offset-0.05rem")
     .withStyle("outline-night-black")
     .withData("type", "atom-node")

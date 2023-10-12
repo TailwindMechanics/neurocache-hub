@@ -3,7 +3,7 @@
 import { Node, NodeTypes } from "reactflow";
 
 import { createNode, deselectAllNodes } from "./nodeUtils";
-import { nodePresets } from "../components/nodePresets";
+import CustomNodesRepo from "../core/CustomNodesRepo";
 import IAuth from "@modules/Auth/client";
 
 export const spawnLoginNode = (
@@ -21,7 +21,7 @@ export const spawnNode = (
     setNodes: React.Dispatch<React.SetStateAction<Node[]>>,
     clearGraph?: boolean,
 ) => {
-    const nodeDataDefaults = nodePresets.find((n) => n.nodeType === nodeType);
+    const nodeDataDefaults = CustomNodesRepo.instance.getNode(nodeType);
     if (!nodeDataDefaults) return;
 
     const newNodeData = createNode({

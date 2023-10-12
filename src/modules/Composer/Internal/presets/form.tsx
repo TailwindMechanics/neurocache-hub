@@ -1,8 +1,9 @@
 //path: src\modules\Composer\Internal\presets\form.tsx
 
-import { Composer } from "..";
+import ComponentBuilder from "../components/ComponentBuilder";
+import FormAtom from "../atoms/form";
 
-const Form = new Composer.Builder(Composer.Atoms.Form)
+const Form = new ComponentBuilder("FormPreset", FormAtom)
     .withStyle("border-none ")
     .withStyle("space-y-0.5")
     .withStyle("m-0")

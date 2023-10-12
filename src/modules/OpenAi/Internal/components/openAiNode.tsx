@@ -8,7 +8,10 @@ import IComposer from "@modules/Composer";
 import IOpenAi from "@modules/OpenAi";
 import IGraph from "@modules/Graph";
 
-const Content = new IComposer.Builder(IComposer.Components.Content)
+const Content = new IComposer.Builder(
+    "OpenAiNodeContent",
+    IComposer.Components.Content,
+)
     .withStyle("text-sm")
     .withStyle("px-1")
     .withRoundedButton()

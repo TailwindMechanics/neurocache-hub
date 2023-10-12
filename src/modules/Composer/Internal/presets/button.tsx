@@ -1,8 +1,9 @@
 //path: src\modules\Composer\Internal\presets\button.tsx
 
-import { Composer } from "..";
+import ComponentBuilder from "../components/ComponentBuilder";
+import ButtonAtom from "../atoms/button";
 
-const Button = new Composer.Builder(Composer.Atoms.Button)
+const Button = new ComponentBuilder("ButtonPreset", ButtonAtom)
     .withStyle("border-night-light")
     .withStyle("hover:border-aqua")
     .withStyle("text-night-title")

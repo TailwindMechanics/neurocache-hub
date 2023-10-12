@@ -12,10 +12,13 @@ import IComposer from "@modules/Composer";
 import { CustomNode } from "../../types";
 import IUtils from "@modules/Utils";
 
-const Card = new IComposer.Builder(IComposer.Components.Card)
+const Card = new IComposer.Builder("SpawnerCard", IComposer.Components.Card)
     .withData("type", "spawner-node")
     .build();
-const Content = new IComposer.Builder(IComposer.Components.Content)
+const Content = new IComposer.Builder(
+    "SpawneContent",
+    IComposer.Components.Content,
+)
     .withStyle("py-0.5")
     .withStyle("px-1")
     .withRoundedButton()

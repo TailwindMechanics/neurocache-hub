@@ -9,16 +9,25 @@ import IComposer from "@modules/Composer";
 import IOpenAi from "@modules/OpenAi";
 import IGraph from "@modules/Graph";
 
-const Card = new IComposer.Builder(IComposer.Components.Card)
+const Card = new IComposer.Builder(
+    "OpenAiModelsCard",
+    IComposer.Components.Card,
+)
     .withRoundedFrame()
     .build();
-const Header = new IComposer.Builder(IComposer.Components.Content)
+const Header = new IComposer.Builder(
+    "OpenAiModelsHeader",
+    IComposer.Components.Content,
+)
     .withStyle("text-aqua")
     .withStyle("text-center")
     .withStyle("w-20")
     .withRoundedElement()
     .build();
-const Button = new IComposer.Builder(IComposer.Components.Button)
+const Button = new IComposer.Builder(
+    "OpenAiModelsButton",
+    IComposer.Components.Button,
+)
     .withStyle("text-sm")
     .withRoundedButton()
     .build();

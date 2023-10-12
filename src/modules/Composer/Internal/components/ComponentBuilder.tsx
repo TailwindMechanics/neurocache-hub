@@ -9,9 +9,15 @@ export default class ComponentBuilder {
     private dataProps: { [key: string]: string | boolean | number } = {};
     private styles: string[] = [];
     private node: FC<AtomProps>;
+    private displayName: string = "Built Component";
 
-    constructor(atom: FC<AtomProps>) {
+    constructor(name: string, atom: FC<AtomProps>) {
+        if (!atom) throw new Error(`Atom is ${atom}`);
+        if (IUtils.IsNullOrEmpty(name))
+            throw new Error("Component name is required");
+
         this.node = atom;
+        this.displayName = name;
     }
 
     private push = (style: string) => {
@@ -73,8 +79,8 @@ export default class ComponentBuilder {
             };
             return <this.node {...newProps}>{props.children}</this.node>;
         };
-        Component.displayName =
-            Component.defaultProps?.title ?? "Builder Component";
+
+        Component.displayName = this.displayName;
         return Component;
     }
 }
