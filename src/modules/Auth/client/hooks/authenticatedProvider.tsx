@@ -6,8 +6,10 @@ import { ReactFlowProvider } from "reactflow";
 import React from "react";
 
 import IOpenAi from "@modules/OpenAi";
-import IGraph from "@modules/Graph";
 import IDev from "@modules/Dev";
+
+import Graph from "@modules/Graph";
+const IGraph = Graph.resolve("IGraph");
 
 const AuthenticatedProvider: React.FC = () => {
     return (

@@ -6,7 +6,9 @@ import { NodeProps } from "reactflow";
 import { CustomNode } from "@modules/Graph/types";
 import IComposer from "@modules/Composer";
 import IOpenAi from "@modules/OpenAi";
-import IGraph from "@modules/Graph";
+
+import Graph from "@modules/Graph";
+const IGraph = Graph.resolve("IGraph");
 
 const Content = new IComposer.Builder(
     "OpenAiNodeContent",

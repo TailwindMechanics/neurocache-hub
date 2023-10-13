@@ -3,7 +3,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import "../app/globals.css";
-import InitModules from "./initModules";
 
 const tagLine = "Create and craft specialized AI Agents.";
 const title = "Neurocache";

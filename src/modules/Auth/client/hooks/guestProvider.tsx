@@ -5,8 +5,10 @@
 import { ReactFlowProvider } from "reactflow";
 import React from "react";
 
-import IGraph from "src/modules/Graph";
 import IDev from "@modules/Dev";
+
+import Graph from "@modules/Graph";
+const IGraph = Graph.resolve("IGraph");
 
 const GuestProvider: React.FC = () => {
     return (
