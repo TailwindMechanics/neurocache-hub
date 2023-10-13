@@ -1,4 +1,4 @@
-//path: src\modules\Graph\Internal\utils\renderCodeblocks.tsx
+//path: src\modules\Graph\Internal\components\renderCodeblocks.tsx
 
 import React from "react";
 

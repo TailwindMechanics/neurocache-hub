@@ -15,7 +15,7 @@ import ReactFlow, {
     Edge,
 } from "reactflow";
 
-import { removeSpawnerNode, spawnSpawnerNode } from "../utils/spawnerNodeUtils";
+import useNodeSpawner from "../hooks/useNodeSpawner";
 import IUtils from "@modules/Utils";
 
 type NodeEventsProps = {
@@ -32,7 +32,9 @@ type NodeEventsProps = {
 };
 
 export const NodeEvents: FC<NodeEventsProps> = (props) => {
+    const nodeSpawner = useNodeSpawner();
     const session = useSession();
+
     useOnSelectionChange({
         onChange: ({ nodes, edges }) => {
             props.setSelectedNodes(nodes);
@@ -40,19 +42,25 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
         },
     });
 
+    const removeSpawnerNode = () => {
+        const filteredNodes = nodeSpawner.despawn(
+            "spawner_node_1",
+            props.nodes,
+        );
+        props.setNodes(filteredNodes);
+    };
+
     IUtils.useKeyPress("Escape", () => {
-        props.setNodes((prevNodes: Node[]) => removeSpawnerNode(prevNodes));
+        removeSpawnerNode();
     });
 
     const eventHandlers = {
         onMouseDownCapture: (event: React.MouseEvent) => {
-            const isSpawner = (event.target as HTMLElement).closest(
+            const clickedSpawnerNode = (event.target as HTMLElement).closest(
                 '[data-type="atom-node"]',
             );
-            if (!isSpawner) {
-                props.setNodes((prevNodes: Node[]) =>
-                    removeSpawnerNode(prevNodes),
-                );
+            if (!clickedSpawnerNode) {
+                removeSpawnerNode();
             }
         },
 
@@ -68,8 +76,17 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
 
             if (!session) return;
 
-            const spawnerNode = spawnSpawnerNode(props.mouseCoordsRef.current);
-            props.setNodes((prevNodes: Node[]) => [...prevNodes, spawnerNode]);
+            let newPos = { ...props.mouseCoordsRef.current };
+            newPos.x -= 20;
+            newPos.y -= 20;
+            const spawnerNode = nodeSpawner.spawn("spawner");
+            if (spawnerNode) {
+                spawnerNode.position = newPos;
+                props.setNodes((prevNodes: Node[]) => [
+                    ...prevNodes,
+                    spawnerNode,
+                ]);
+            }
         },
 
         onEdgesChange: (changes: EdgeChange[]) => {

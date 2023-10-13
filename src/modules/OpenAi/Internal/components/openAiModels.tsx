@@ -88,8 +88,6 @@ const OpenAiModels: React.FC<NodeProps> = (props: NodeProps) => {
     );
 };
 
-export default React.memo(OpenAiModels);
-
 const nodeData = {
     nodeType: "openai_models",
     nodeName: "Models",
@@ -106,3 +104,7 @@ const nodeData = {
     ],
     nodePosition: { x: 100, y: 0 },
 } as CustomNode;
+
+IGraph.CustomNodesRepo.instance.register(nodeData);
+
+export default React.memo(OpenAiModels);

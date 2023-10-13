@@ -5,10 +5,10 @@
 import { ReactFlowProvider } from "reactflow";
 import React from "react";
 
-import IGraph from "@modules/Graph";
+import IGraph from "src/modules/Graph";
 import IDev from "@modules/Dev";
 
-export const GuestProvider: React.FC = () => {
+const GuestProvider: React.FC = () => {
     return (
         <>
             <IDev.Hotkeys />
@@ -18,3 +18,5 @@ export const GuestProvider: React.FC = () => {
         </>
     );
 };
+
+export default GuestProvider;

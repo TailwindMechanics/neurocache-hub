@@ -7,15 +7,15 @@ import React, { FC } from "react";
 import useNodeHandle from "../hooks/useNodeHandle";
 import IComposer from "@modules/Composer";
 
-const animation = {
-    strokeDashoffset: [0, 100],
-    transition: {
-        repeat: Infinity,
-        repeatType: "loop",
-        ease: "linear",
-        duration: 10,
-    },
-} as AnimationDefinition;
+// const animation = {
+//     strokeDashoffset: [0, 100],
+//     transition: {
+//         repeat: Infinity,
+//         repeatType: "loop",
+//         ease: "linear",
+//         duration: 10,
+//     },
+// } as AnimationDefinition;
 
 const EdgeLine: FC<EdgeProps> = (props) => {
     const fromHandleId = props.sourceHandleId;
@@ -33,13 +33,13 @@ const EdgeLine: FC<EdgeProps> = (props) => {
     const toAngle = toHandle.handleData.angle;
     const toXy = toHandle.handleXy;
 
-    const playAnimation = () => {
-        controls.start(animation);
-    };
+    // const playAnimation = () => {
+    //     controls.start(animation);
+    // };
 
-    const stopAnimation = () => {
-        controls.stop();
-    };
+    // const stopAnimation = () => {
+    //     controls.stop();
+    // };
 
     // useEffect(() => {
     // 	playAnimation();

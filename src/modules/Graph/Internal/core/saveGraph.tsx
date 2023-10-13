@@ -1,16 +1,14 @@
 //path: src\modules\Graph\Internal\core\saveGraph.tsx
 
-import { Edge, Node, Viewport, useReactFlow } from "reactflow";
 import { useSession } from "@supabase/auth-helpers-react";
+import { Viewport, useReactFlow } from "reactflow";
 import { FC, useState, useEffect } from "react";
 
-import { saveFlow } from "./flowSaveLoad";
+import { saveGraph } from "./nodeSerializer";
 import IUtils from "@modules/Utils";
 
 interface SaveGraphProps {
     flowKey: string;
-    setNodes: React.Dispatch<React.SetStateAction<Node[]>>;
-    setEdges: React.Dispatch<React.SetStateAction<Edge[]>>;
     viewportRef: React.MutableRefObject<Viewport>;
 }
 
@@ -27,10 +25,9 @@ const SaveGraph: FC<SaveGraphProps> = (props) => {
         if (!session) return;
 
         setStatusText("saving...");
-        saveFlow(
-            reactFlowInstance,
-            props.setNodes,
-            props.setEdges,
+        saveGraph(
+            reactFlowInstance.getNodes(),
+            reactFlowInstance.getEdges(),
             "graph",
             props.viewportRef.current,
         );

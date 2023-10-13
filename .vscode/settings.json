@@ -18,7 +18,8 @@
         "ThreeFiber": "Middleware",
         "atoms": "App",
         "presets": "Middleware",
-        "behaviour": "Less"
+        "behaviour": "Less",
+        "nodes": "Public"
     },
     "tailwindCSS.experimental.classRegex": [
         ["shadow: \"(.*)\","],

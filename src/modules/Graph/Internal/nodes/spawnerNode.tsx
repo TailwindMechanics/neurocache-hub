@@ -1,13 +1,14 @@
-//path: src\modules\Graph\Internal\components\spawnerNode.tsx
+//path: src\modules\Graph\Internal\nodes\spawnerNode.tsx
 
-import { Node, NodeProps, useReactFlow } from "reactflow";
+import { NodeProps, useReactFlow } from "reactflow";
 import { Combobox } from "@headlessui/react";
 import { useState } from "react";
 import React from "react";
 
-import { NodeSelectionState } from "../utils/nodeSelectionState";
+import { NodeSelectionState } from "../components/nodeSelectionState";
+import { deselectAllNodes } from "../utils/nodeUtils";
 import CustomNodesRepo from "../core/CustomNodesRepo";
-import { createNode } from "../utils/nodeUtils";
+import useNodeSpawner from "../hooks/useNodeSpawner";
 import IComposer from "@modules/Composer";
 import { CustomNode } from "../../types";
 import IUtils from "@modules/Utils";
@@ -16,7 +17,7 @@ const Card = new IComposer.Builder("SpawnerCard", IComposer.Components.Card)
     .withData("type", "spawner-node")
     .build();
 const Content = new IComposer.Builder(
-    "SpawneContent",
+    "SpawnerContent",
     IComposer.Components.Content,
 )
     .withStyle("py-0.5")
@@ -36,8 +37,8 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
     const [query, setQuery] = useState("");
     const reactFlowInstance = useReactFlow();
     const allNodes = CustomNodesRepo.instance.getUnhiddenNodes();
+    const nodeSpawner = useNodeSpawner();
 
-    const thisNode = reactFlowInstance?.getNode(nodeData.nodeId);
     const filteredNodes =
         query === ""
             ? allNodes
@@ -58,41 +59,17 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
     IUtils.useKeyPress("Enter", handleEnterPress);
     IUtils.useKeyPress("Return", handleEnterPress);
 
-    const deselectAll = (nodes: Node[]) => {
-        return nodes.map((node) => ({
-            ...node,
-            selected: false,
-        }));
-    };
-
-    const spawnNode = (node: CustomNode) => {
-        const spawnedNode: Node = {
-            id: node.nodeId,
-            type: node.nodeType,
-            position: thisNode?.position || nodeData.nodePosition,
-            data: { ...node },
-        };
-
-        const prevNodes = deselectAll(reactFlowInstance.getNodes());
-        let newNodes = prevNodes.filter(
-            (n) => n.id !== nodeData.nodeId,
-        ) as Node[];
-
-        spawnedNode.selected = true;
-        newNodes.push(spawnedNode);
-        reactFlowInstance.setNodes(newNodes);
+    const spawnNode = (nodeType: string) => {
+        deselectAllNodes(reactFlowInstance.getNodes());
+        const spawnedNode = nodeSpawner.spawn(nodeType, true);
+        if (spawnedNode) {
+            reactFlowInstance.addNodes(spawnedNode);
+        }
     };
 
     const onSelect = (node: CustomNode) => {
         if (node) {
-            const newNode = createNode({
-                type: node.nodeType,
-                name: node.nodeName,
-                body: node.body,
-                handles: node.handles,
-                pos: { x: 0, y: 0 },
-            });
-            spawnNode(newNode);
+            spawnNode(node.nodeType);
         }
     };
 
@@ -138,7 +115,7 @@ const nodeData = {
     nodeComponent: SpawnerNode,
 } as CustomNode;
 
-CustomNodesRepo.instance.addNode(nodeData);
+CustomNodesRepo.instance.register(nodeData);
 
 export { nodeData as SpawnerNodeData };
 export default React.memo(SpawnerNode);

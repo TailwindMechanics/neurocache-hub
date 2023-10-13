@@ -1,23 +1,17 @@
 //path: src\modules\Auth\client\index.tsx
 
-"use client";
-
-export { AuthenticatedProvider } from "./hooks/authenticatedProvider";
-export { GuestProvider } from "./hooks/guestProvider";
-import useLoggedOut from "./hooks/useLoggedOut";
-import useLoggedIn from "./hooks/useLoggedIn";
+import authenticatedProvider from "./hooks/authenticatedProvider";
+import guestProvider from "./hooks/guestProvider";
+import UseLoggedOut from "./hooks/useLoggedOut";
+import UseLoggedIn from "./hooks/useLoggedIn";
 import loginNode from "./loginNode";
 
-interface Auth {
-    useLoggedIn: typeof useLoggedIn;
-    useLoggedOut: typeof useLoggedOut;
-    LoginNode: typeof loginNode;
+namespace IAuthClient {
+    export const AuthenticatedProvider = authenticatedProvider;
+    export const GuestProvider = guestProvider;
+    export const useLoggedIn = UseLoggedIn;
+    export const useLoggedOut = UseLoggedOut;
+    export const LoginNode = loginNode;
 }
 
-const IAuth: Auth = {
-    useLoggedIn: useLoggedIn,
-    useLoggedOut: useLoggedOut,
-    LoginNode: loginNode,
-};
-
-export default IAuth;
+export default IAuthClient;

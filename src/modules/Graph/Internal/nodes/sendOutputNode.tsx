@@ -1,19 +1,25 @@
-//path: src\modules\Graph\Internal\components\sendOutputNode.tsx
+//path: src\modules\Graph\Internal\nodes\sendOutputNode.tsx
 
 import React, { useState } from "react";
 import { NodeProps } from "reactflow";
 
-import { NodeSelectionState } from "../utils/nodeSelectionState";
+import { NodeSelectionState } from "../components/nodeSelectionState";
+import { DrawHandle } from "../components/drawHandle";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import { DrawHandle } from "../utils/drawHandle";
 import IComposer from "@modules/Composer";
 import { CustomNode } from "../../types";
 
-const Button = new IComposer.Builder(IComposer.Components.Button)
+const Button = new IComposer.Builder(
+    "SendOutputButton",
+    IComposer.Components.Button,
+)
     .withRoundedButton()
     .build();
-const Input = new IComposer.Builder(IComposer.Components.Input.Default)
+const Input = new IComposer.Builder(
+    "SendOutputInput",
+    IComposer.Components.Input.Default,
+)
     .withRoundedElement()
     .build();
 
@@ -74,6 +80,6 @@ const nodeData = {
     nodeComponent: SendOutputNode,
 } as CustomNode;
 
-CustomNodesRepo.instance.addNode(nodeData);
+CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(SendOutputNode);

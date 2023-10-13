@@ -1,5 +1,7 @@
 //path: src\modules\Auth\client\hooks\useLoggedOut.tsx
 
+"use client";
+
 import { useEffect, useState } from "react";
 import {
     createClientComponentClient,

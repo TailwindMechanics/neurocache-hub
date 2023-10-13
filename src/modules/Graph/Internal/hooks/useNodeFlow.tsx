@@ -1,5 +1,7 @@
 //path: src\modules\Graph\Internal\hooks\useNodeFlow.tsx
 
+"use client";
+
 import React, { ReactNode, createContext, useContext, useState } from "react";
 import { Edge } from "reactflow";
 

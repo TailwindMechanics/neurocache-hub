@@ -1,28 +1,28 @@
 //path: src\modules\Graph\index.tsx
 
-import { NodeSelectionState } from "./Internal/utils/nodeSelectionState";
-import CustomNodesRepo from "./Internal/core/CustomNodesRepo";
-import ReactFlowCanvas from "./Internal/core/reactFlowCanvas";
-import { useNodeFlow } from "./Internal/hooks/useNodeFlow";
-import { DrawHandle } from "./Internal/utils/drawHandle";
-import GuestCanvas from "./Internal/core/guestCanvas";
+"use client";
 
-interface Graph {
-    Canvas: typeof ReactFlowCanvas;
-    GuestCanvas: typeof GuestCanvas;
-    NodeSelectionState: typeof NodeSelectionState;
-    useNodeFlow: typeof useNodeFlow;
-    DrawHandle: typeof DrawHandle;
-    CustomNodesRepo: typeof CustomNodesRepo;
+import nodeSelectionState from "./Internal/components/nodeSelectionState";
+import { useNodeFlow as UseNodeFlow } from "./Internal/hooks/useNodeFlow";
+import customNodesRepo from "./Internal/core/CustomNodesRepo";
+import reactFlowCanvas from "./Internal/core/reactFlowCanvas";
+import drawHandle from "./Internal/components/drawHandle";
+import guestCanvas from "./Internal/core/guestCanvas";
+
+function init() {
+    for (const key in IGraph) {
+        // console.log(key);
+    }
 }
 
-const IGraph: Graph = {
-    Canvas: ReactFlowCanvas,
-    GuestCanvas: GuestCanvas,
-    NodeSelectionState: NodeSelectionState,
-    useNodeFlow: useNodeFlow,
-    DrawHandle: DrawHandle,
-    CustomNodesRepo: CustomNodesRepo,
-};
+namespace IGraph {
+    export const Init = init;
+    export const Canvas = reactFlowCanvas;
+    export const GuestCanvas = guestCanvas;
+    export const NodeSelectionState = nodeSelectionState;
+    export const useNodeFlow = UseNodeFlow;
+    export const DrawHandle = drawHandle;
+    export const CustomNodesRepo = customNodesRepo;
+}
 
 export default IGraph;

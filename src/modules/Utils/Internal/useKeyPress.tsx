@@ -1,5 +1,7 @@
 //path: src\modules\Utils\Internal\useKeyPress.tsx
 
+"use client";
+
 import { useEffect } from "react";
 
 const useKeyPress = (targetKey: string, callback: () => void) => {

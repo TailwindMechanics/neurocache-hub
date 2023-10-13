@@ -2,7 +2,7 @@
 
 import { Node, XYPosition } from "reactflow";
 
-import { SpawnerNodeData } from "../components/spawnerNode";
+import { SpawnerNodeData } from "../nodes/spawnerNode";
 
 export const spawnSpawnerNode = (mouseCoords: XYPosition): Node => {
     let newPos = { ...mouseCoords };

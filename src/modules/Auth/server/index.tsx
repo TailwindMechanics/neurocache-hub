@@ -1,16 +1,13 @@
 //path: src\modules\Auth\server\index.tsx
 
-import { Unauthenticated } from "./unauthenticated";
-import { Authenticated } from "./authenticated";
+// src\modules\Auth\server\index.tsx
 
-interface Auth {
-    Authenticated: React.FC<ChildProps>;
-    Unauthenticated: React.FC<ChildProps>;
+import unauthenticated from "./unauthenticated";
+import authenticated from "./authenticated";
+
+namespace IAuthServer {
+    export const Unauthenticated = unauthenticated;
+    export const Authenticated = authenticated;
 }
 
-const IAuth: Auth = {
-    Authenticated,
-    Unauthenticated,
-};
-
-export default IAuth;
+export default IAuthServer;

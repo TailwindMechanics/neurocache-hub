@@ -1,26 +1,25 @@
-//path: src\modules\Graph\Internal\components\markdownBox.tsx
+//path: src\modules\Graph\Internal\nodes\markdownBox.tsx
 
 import React, { useEffect, useMemo, useState } from "react";
 import Markdown from "react-markdown";
 import { NodeProps } from "reactflow";
 
-import { NodeSelectionState } from "../utils/nodeSelectionState";
-import { RenderCodeblocks } from "../utils/renderCodeblocks";
+import { NodeSelectionState } from "../components/nodeSelectionState";
+import { RenderCodeblocks } from "../components/renderCodeblocks";
+import { DrawHandle } from "../components/drawHandle";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { useNodeFlow } from "../hooks/useNodeFlow";
 import { CustomNode } from "@modules/Graph/types";
-import { DrawHandle } from "../utils/drawHandle";
 import IComposer from "@modules/Composer";
 import IUtils from "@modules/Utils";
 
-const Card = new IComposer.Builder(IComposer.Components.Card)
+const Card = new IComposer.Builder("MarkdownCard", IComposer.Components.Card)
     .withStyle("scrollbar-hide")
     .withStyle("overflow-auto")
     .withStyle("max-h-44")
     .withStyle("max-w-60")
     .build();
-
-const Prose = new IComposer.Builder(IComposer.Components.Prose)
+const Prose = new IComposer.Builder("MarkdownProse", IComposer.Components.Prose)
     .withStyle("px-1")
     .build();
 
@@ -92,6 +91,6 @@ const nodeData = {
     nodeComponent: MarkdownBox,
 } as CustomNode;
 
-CustomNodesRepo.instance.addNode(nodeData);
+CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(MarkdownBox);

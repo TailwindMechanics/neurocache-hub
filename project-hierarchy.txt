@@ -74,6 +74,7 @@ neurocache-hub
 │  │  │     └─ models
 │  │  │        └─ route.ts
 │  │  ├─ globals.css
+│  │  ├─ initModules.tsx
 │  │  ├─ layout.tsx
 │  │  └─ page.tsx
 │  └─ modules
@@ -129,21 +130,17 @@ neurocache-hub
 │     │  │  ├─ components
 │     │  │  │  ├─ codeBlock.tsx
 │     │  │  │  ├─ colouredLine.tsx
-│     │  │  │  ├─ commentPayload.tsx
-│     │  │  │  ├─ inputBox.tsx
-│     │  │  │  ├─ markdownBox.tsx
-│     │  │  │  ├─ sendOutputNode.tsx
-│     │  │  │  ├─ spawnerNode.tsx
-│     │  │  │  ├─ splitterNode.tsx
-│     │  │  │  ├─ testBox.tsx
+│     │  │  │  ├─ drawHandle.tsx
+│     │  │  │  ├─ nodeSelectionState.tsx
+│     │  │  │  ├─ renderCodeblocks.tsx
 │     │  │  │  └─ textBlockFormatter.tsx
 │     │  │  ├─ core
 │     │  │  │  ├─ connectionLine.tsx
 │     │  │  │  ├─ CustomNodesRepo.tsx
 │     │  │  │  ├─ edgeLine.tsx
-│     │  │  │  ├─ flowSaveLoad.ts
 │     │  │  │  ├─ guestCanvas.tsx
 │     │  │  │  ├─ nodeEvents.tsx
+│     │  │  │  ├─ nodeSerializer.ts
 │     │  │  │  ├─ reactFlowCanvas.tsx
 │     │  │  │  ├─ reactflowConfig.ts
 │     │  │  │  ├─ saveGraph.tsx
@@ -154,15 +151,20 @@ neurocache-hub
 │     │  │  │  ├─ useMouseCoords.tsx
 │     │  │  │  ├─ useNodeFlow.tsx
 │     │  │  │  ├─ useNodeHandle.tsx
+│     │  │  │  ├─ useNodeSpawner.tsx
 │     │  │  │  └─ useUserGraphReady.tsx
+│     │  │  ├─ nodes
+│     │  │  │  ├─ commentPayload.tsx
+│     │  │  │  ├─ inputBox.tsx
+│     │  │  │  ├─ markdownBox.tsx
+│     │  │  │  ├─ sendOutputNode.tsx
+│     │  │  │  ├─ spawnerNode.tsx
+│     │  │  │  ├─ splitterNode.tsx
+│     │  │  │  └─ testBox.tsx
 │     │  │  └─ utils
-│     │  │     ├─ drawHandle.tsx
 │     │  │     ├─ mapOutputIds.ts
 │     │  │     ├─ nodeFlowUtils.ts
-│     │  │     ├─ nodeSelectionState.tsx
-│     │  │     ├─ nodeSpawner.tsx
 │     │  │     ├─ nodeUtils.ts
-│     │  │     ├─ renderCodeblocks.tsx
 │     │  │     └─ spawnerNodeUtils.ts
 │     │  └─ types.tsx
 │     ├─ Icons

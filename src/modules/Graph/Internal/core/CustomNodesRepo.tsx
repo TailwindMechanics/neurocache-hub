@@ -16,7 +16,7 @@ class CustomNodesRepo {
         return CustomNodesRepo._instance;
     }
 
-    public addNode(nodeData: CustomNode) {
+    public register(nodeData: CustomNode) {
         this.customNodes.set(nodeData.nodeType, nodeData);
     }
 

@@ -1,5 +1,7 @@
 //path: src\modules\Graph\Internal\core\reactFlowCanvas.tsx
 
+"use client";
+
 import { useSession, User } from "@supabase/auth-helpers-react";
 import React, { useEffect, useRef, useState } from "react";
 import "reactflow/dist/style.css";
@@ -15,18 +17,23 @@ import ReactFlow, {
 } from "reactflow";
 
 import { useGuestGraphReady } from "../hooks/useGuestGraphReady";
-import { loadGuestGraph, loadUserGraph } from "./flowSaveLoad";
 import { useUserGraphReady } from "../hooks/useUserGraphReady";
 import { reactFlowSettingsProps } from "./reactflowConfig";
 import { StyleReactFlowLogo } from "./styleReactFlowLogo";
 import { NodeFlowProvider } from "../hooks/useNodeFlow";
+import useNodeSpawner from "../hooks/useNodeSpawner";
 import useMouseCoords from "../hooks/useMouseCoords";
 import { ConnectionLine } from "./connectionLine";
+import { loadUserGraph } from "./nodeSerializer";
+import CustomNodesRepo from "./CustomNodesRepo";
+import IAuthClient from "@modules/Auth/client";
 import { NodeEvents } from "./nodeEvents";
-import IAuth from "@modules/Auth/client";
 import { SaveGraph } from "./saveGraph";
 import { EdgeLine } from "./edgeLine";
 import IColors from "@modules/Colors";
+
+const customNodeTypes = CustomNodesRepo.instance.getNodeTypes();
+const customEdgeTypes = { custom: EdgeLine };
 
 const ReactFlowCanvas: React.FC = () => {
     StyleReactFlowLogo();
@@ -36,32 +43,40 @@ const ReactFlowCanvas: React.FC = () => {
     const reactFlowInstance = useReactFlow();
     const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
     const { mouseCoordsRef, handleMouseMove } = useMouseCoords();
-    const [edgeTypes] = useState({ custom: EdgeLine });
     const [types, setTypes] = useState<NodeTypes>({});
     const [nodes, setNodes] = useState<Node[]>([]);
     const [edges, setEdges] = useState<Edge[]>([]);
     const viewportRef = useRef<Viewport>(viewport);
     const [canZoom, setCanZoom] = useState(true);
+    const nodeSpawner = useNodeSpawner();
 
     useEffect(() => {
         viewportRef.current = viewport;
     }, [viewport]);
 
     const loadGuest = () => {
-        loadGuestGraph(nodes, setNodes, setTypes);
+        setTypes({ login: IAuthClient.LoginNode });
+        const loginNode = nodeSpawner.spawn("login");
+        if (loginNode) {
+            setNodes([loginNode]);
+        }
     };
 
     const loadUser = (user: User | undefined) => {
         if (!user) return;
-        viewport = loadUserGraph("graph", setNodes, setEdges, setTypes);
+        const flow = loadUserGraph("graph");
+        viewport = flow.viewport;
+        setNodes(flow.nodes as Node[]);
+        setEdges(flow.edges as Edge[]);
+        setTypes(customNodeTypes);
         reactFlowInstance.setViewport(viewport);
         viewportRef.current = viewport;
     };
 
     useGuestGraphReady(loadGuest);
     useUserGraphReady(loadUser);
-    IAuth.useLoggedOut(loadGuest);
-    IAuth.useLoggedIn(loadUser);
+    IAuthClient.useLoggedOut(loadGuest);
+    IAuthClient.useLoggedIn(loadUser);
 
     return (
         <div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">
@@ -79,14 +94,12 @@ const ReactFlowCanvas: React.FC = () => {
                     <ReactFlow
                         connectionLineComponent={ConnectionLine}
                         nodeTypes={types}
-                        edgeTypes={edgeTypes}
+                        edgeTypes={customEdgeTypes}
                         preventScrolling={canZoom}
                         fitView={!session}
                         {...reactFlowSettingsProps}>
                         <SaveGraph
                             flowKey={flowKey}
-                            setNodes={setNodes}
-                            setEdges={setEdges}
                             viewportRef={viewportRef}
                         />
                         <Background

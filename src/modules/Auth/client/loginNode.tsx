@@ -1,5 +1,7 @@
 //path: src\modules\Auth\client\loginNode.tsx
 
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { NodeProps } from "reactflow";
 import {
@@ -110,6 +112,6 @@ const nodeData = {
     nodeComponent: LoginNode,
 } as CustomNode;
 
-IGraph.CustomNodesRepo.instance.addNode(nodeData);
+IGraph.CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(LoginNode);

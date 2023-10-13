@@ -1,26 +1,32 @@
-//path: src\modules\Graph\Internal\components\testBox.tsx
+//path: src\modules\Graph\Internal\nodes\testBox.tsx
 
 import { NodeProps, useReactFlow } from "reactflow";
 import { useState } from "react";
 import React from "react";
 
-import { NodeSelectionState } from "../utils/nodeSelectionState";
+import { NodeSelectionState } from "../components/nodeSelectionState";
+import { DrawHandle } from "../components/drawHandle";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { CustomNode, AgentGraph } from "../../types";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import { DrawHandle } from "../utils/drawHandle";
 import IComposer from "@modules/Composer";
 
-const Card = new IComposer.Builder(IComposer.Components.Card)
+const Card = new IComposer.Builder("TestBoxCard", IComposer.Components.Card)
     .withRoundedFrame()
     .build();
-const Header = new IComposer.Builder(IComposer.Components.Content)
+const Header = new IComposer.Builder(
+    "TestBoxHeader",
+    IComposer.Components.Content,
+)
     .withStyle("text-aqua")
     .withStyle("text-center")
     .withStyle("w-20")
     .withRoundedElement()
     .build();
-const Content = new IComposer.Builder(IComposer.Components.Content)
+const Content = new IComposer.Builder(
+    "TestBoxContent",
+    IComposer.Components.Content,
+)
     .withStyle("text-night-body")
     .withStyle("break-words")
     .withStyle("text-xs")
@@ -28,7 +34,10 @@ const Content = new IComposer.Builder(IComposer.Components.Content)
     .withStyle("px-1")
     .withRoundedContent()
     .build();
-const Button = new IComposer.Builder(IComposer.Components.Button)
+const Button = new IComposer.Builder(
+    "TestBoxButton",
+    IComposer.Components.Button,
+)
     .withStyle("text-sm")
     .withRoundedElement()
     .build();
@@ -138,6 +147,6 @@ const nodeData = {
     nodePosition: { x: 100, y: 0 },
 } as CustomNode;
 
-CustomNodesRepo.instance.addNode(nodeData);
+CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(TestBox);

@@ -87,6 +87,6 @@ const nodeData = {
     nodePosition: { x: 100, y: 0 },
 } as CustomNode;
 
-IGraph.CustomNodesRepo.instance.addNode(nodeData);
+IGraph.CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(OpenAiNode);

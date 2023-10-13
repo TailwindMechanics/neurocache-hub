@@ -13,7 +13,6 @@ const ColouredLine: FC<ColouredLineProps> = (props) => {
     );
     const dynamicDistance = Math.min(length / 2, 50);
 
-    // Adjust the starting Y coordinate by the vertical offset
     const correctedSourceAngle = props.sourceHandleRotation
         ? props.sourceHandleRotation - 90
         : -90;

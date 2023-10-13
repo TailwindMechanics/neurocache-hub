@@ -1,5 +1,7 @@
 //path: src\modules\Utils\Internal\useCtrlS.tsx
 
+"use client";
+
 import { useEffect } from "react";
 
 const useCtrlS = (callback: () => void) => {

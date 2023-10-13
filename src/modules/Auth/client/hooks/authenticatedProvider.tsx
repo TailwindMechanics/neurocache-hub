@@ -9,7 +9,7 @@ import IOpenAi from "@modules/OpenAi";
 import IGraph from "@modules/Graph";
 import IDev from "@modules/Dev";
 
-export const AuthenticatedProvider: React.FC = () => {
+const AuthenticatedProvider: React.FC = () => {
     return (
         <>
             <IDev.Hotkeys />
@@ -21,3 +21,5 @@ export const AuthenticatedProvider: React.FC = () => {
         </>
     );
 };
+
+export default AuthenticatedProvider;

@@ -1,4 +1,4 @@
-//path: src\modules\Graph\Internal\utils\drawHandle.tsx
+//path: src\modules\Graph\Internal\components\drawHandle.tsx
 
 import { Handle, Position, XYPosition, useReactFlow } from "reactflow";
 
@@ -10,7 +10,7 @@ interface DrawHandleProps {
     index: number;
 }
 
-export const DrawHandle = (props: DrawHandleProps) => {
+const DrawHandle = (props: DrawHandleProps) => {
     const reactFlowInstance = useReactFlow();
     const parentNode = reactFlowInstance?.getNode(props.nodeData.nodeId);
     const parentSize: XYPosition = {
@@ -52,3 +52,5 @@ export const DrawHandle = (props: DrawHandleProps) => {
         </Handle>
     );
 };
+
+export default DrawHandle;

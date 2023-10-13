@@ -1,18 +1,18 @@
-//path: src\modules\Graph\Internal\components\splitterNode.tsx
+//path: src\modules\Graph\Internal\nodes\splitterNode.tsx
 
 import React, { useEffect } from "react";
 import { NodeProps } from "reactflow";
 
-import { NodeSelectionState } from "../utils/nodeSelectionState";
+import { NodeSelectionState } from "../components/nodeSelectionState";
+import { DrawHandle } from "../components/drawHandle";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { MapOutputIds } from "../utils/mapOutputIds";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import { DrawHandle } from "../utils/drawHandle";
 import IComposer from "@modules/Composer";
 import { CustomNode } from "../../types";
 import IIcons from "@modules/Icons";
 
-const Card = new IComposer.Builder(IComposer.Components.Shell)
+const Card = new IComposer.Builder("SplitterCard", IComposer.Components.Shell)
     .withStyle("px-1")
     .build();
 
@@ -75,6 +75,6 @@ const nodeData = {
     nodePosition: { x: 150, y: 0 },
 } as CustomNode;
 
-CustomNodesRepo.instance.addNode(nodeData);
+CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(SplitterNode);

@@ -23,7 +23,7 @@ export const useGraphSessionReady = (
             if (session?.user) userReady(session.user);
             else guestReady();
         }
-    }, [isReady]);
+    }, [guestReady, isReady, session?.user, userReady]);
 };
 
 export default useGraphSessionReady;

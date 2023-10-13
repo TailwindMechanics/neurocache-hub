@@ -1,22 +1,25 @@
-//path: src\modules\Graph\Internal\components\inputBox.tsx
+//path: src\modules\Graph\Internal\nodes\inputBox.tsx
 
 import { useEffect, useState } from "react";
 import { NodeProps } from "reactflow";
 import React from "react";
 
+import { NodeSelectionState } from "../components/nodeSelectionState";
 import { sendOutput, extractInput } from "../utils/nodeFlowUtils";
-import { NodeSelectionState } from "../utils/nodeSelectionState";
+import { DrawHandle } from "../components/drawHandle";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import { DrawHandle } from "../utils/drawHandle";
 import IComposer from "@modules/Composer";
 import { CustomNode } from "../../types";
 
-const Card = new IComposer.Builder(IComposer.Components.Card)
+const Card = new IComposer.Builder("InputCard", IComposer.Components.Card)
     .withStyle("h-32")
     .withStyle("w-44")
     .build();
-const Content = new IComposer.Builder(IComposer.Components.Content)
+const Content = new IComposer.Builder(
+    "InputContent",
+    IComposer.Components.Content,
+)
     .withStyle("text-night-body")
     .withStyle("text-ss")
     .withStyle("px-1")
@@ -70,6 +73,6 @@ const nodeData = {
     nodeComponent: InputBox,
 } as CustomNode;
 
-CustomNodesRepo.instance.addNode(nodeData);
+CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(InputBox);

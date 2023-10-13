@@ -1,5 +1,7 @@
 //path: src\modules\Graph\Internal\core\styleReactFlowLogo.tsx
 
+"use client";
+
 import { useEffect } from "react";
 
 export function StyleReactFlowLogo() {
