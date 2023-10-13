@@ -1,13 +1,15 @@
 //path: src\modules\Colors\index.tsx
 
-import { flatColors } from './Internal/colors';
+import { flatColors } from "./Internal/colors";
 
-interface Colors {
-    Colors: typeof flatColors;
+export function IColorsInit() {
+    for (const key in IColors) {
+        console.log(key);
+    }
 }
 
-const IColors: Colors = {
-    Colors: flatColors,
-};
+namespace IColors {
+    export const Colors = flatColors;
+}
 
 export default IColors;

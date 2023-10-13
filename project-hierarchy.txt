@@ -74,7 +74,6 @@ neurocache-hub
 │  │  │     └─ models
 │  │  │        └─ route.ts
 │  │  ├─ globals.css
-│  │  ├─ initModules.tsx
 │  │  ├─ layout.tsx
 │  │  └─ page.tsx
 │  └─ modules
@@ -85,13 +84,12 @@ neurocache-hub
 │     │  │  │  ├─ guestProvider.tsx
 │     │  │  │  ├─ useLoggedIn.tsx
 │     │  │  │  └─ useLoggedOut.tsx
-│     │  │  ├─ index.tsx
+│     │  │  ├─ index.ts
 │     │  │  └─ loginNode.tsx
-│     │  ├─ server
-│     │  │  ├─ authenticated.tsx
-│     │  │  ├─ index.tsx
-│     │  │  └─ unauthenticated.tsx
-│     │  └─ types.tsx
+│     │  └─ server
+│     │     ├─ authenticated.tsx
+│     │     ├─ index.ts
+│     │     └─ unauthenticated.tsx
 │     ├─ Colors
 │     │  ├─ index.tsx
 │     │  └─ Internal

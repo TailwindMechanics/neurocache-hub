@@ -7,10 +7,13 @@ import React from "react";
 import { reactFlowSettingsProps } from "./reactflowConfig";
 import { StyleReactFlowLogo } from "./styleReactFlowLogo";
 import useNodeSpawner from "../hooks/useNodeSpawner";
-import IAuthClient from "@modules/Auth/client";
 import IColors from "@modules/Colors";
 
+import AuthClient from "@modules/Auth/client";
+const IAuthClient = AuthClient.resolve("IAuthClient");
+
 const customNodeTypes = { login: IAuthClient.LoginNode };
+
 const GuestCanvas: React.FC = () => {
     const nodeSpawner = useNodeSpawner();
     StyleReactFlowLogo();

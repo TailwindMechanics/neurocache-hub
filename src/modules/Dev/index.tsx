@@ -3,14 +3,15 @@
 import clearConsole from "./Internal/clearConsole";
 import devShortcuts from "./Internal/devShortcuts";
 
-interface Dev {
-    Hotkeys: React.FC;
-    ClearConsole: React.FC;
+export function IDevInit() {
+    for (const key in IDev) {
+        console.log(key);
+    }
 }
 
-const IDev: Dev = {
-    Hotkeys: devShortcuts,
-    ClearConsole: clearConsole,
-};
+namespace IDev {
+    export const Hotkeys = devShortcuts;
+    export const ClearConsole = clearConsole;
+}
 
 export default IDev;
