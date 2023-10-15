@@ -9,8 +9,8 @@ import {
     User,
 } from "@supabase/auth-helpers-nextjs";
 
-import { CustomNodesRepo, NodeSelection } from "@modules/Graph";
-import { CustomNode } from "@modules/Graph/types";
+import { NodeSelection } from "src/modules/Graph";
+import { CustomNode } from "src/modules/Graph/types";
 import {
     ContentPreset,
     ButtonPreset,
@@ -18,7 +18,7 @@ import {
     FormPreset,
     CardPreset,
     Composer,
-} from "@modules/Composer";
+} from "src/modules/Composer";
 
 const Content = new Composer("LoginContent", ContentPreset)
     .withStyle("text-night-title")

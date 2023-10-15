@@ -27,10 +27,10 @@ import useMouseCoords from "../hooks/useMouseCoords";
 import { ConnectionLine } from "./connectionLine";
 import { loadUserGraph } from "./nodeSerializer";
 import CustomNodesRepo from "./CustomNodesRepo";
+import Colors from "@modules/Colors/colors";
 import { NodeEvents } from "./nodeEvents";
 import { SaveGraph } from "./saveGraph";
 import { EdgeLine } from "./edgeLine";
-import IColors from "@modules/Colors";
 
 const customEdgeTypes = { custom: EdgeLine };
 
@@ -104,7 +104,7 @@ const ReactFlowCanvas: React.FC = () => {
                         />
                         <Background
                             variant={BackgroundVariant.Dots}
-                            color={IColors.Colors["rose-dark"]}
+                            color={Colors["rose-dark"]}
                         />
                     </ReactFlow>
                 </NodeEvents>

@@ -4,20 +4,15 @@ import { NodeProps } from "reactflow";
 import { useState } from "react";
 import React from "react";
 
-import { CustomNode } from "@modules/Graph/types";
+import { NodeSelection, UseNodeFlow, DrawHandle } from "src/modules/Graph";
+import { CustomNode } from "src/modules/Graph/types";
 import { useOpenAI } from "../hooks/useOpenAI";
 import {
     ContentPreset,
     ButtonPreset,
     CardPreset,
     Composer,
-} from "@modules/Composer";
-import {
-    CustomNodesRepo,
-    NodeSelection,
-    UseNodeFlow,
-    DrawHandle,
-} from "@modules/Graph";
+} from "src/modules/Composer";
 
 const Card = new Composer("OpenAiModelsCard", CardPreset)
     .withRoundedFrame()

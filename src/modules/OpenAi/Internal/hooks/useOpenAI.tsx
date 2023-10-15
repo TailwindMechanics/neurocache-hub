@@ -1,7 +1,8 @@
 //path: src\modules\OpenAi\Internal\hooks\useOpenAI.tsx
 
-import { OpenAIContextProviderProps, OpenAIContextType } from "../../types";
 import React, { createContext, useContext } from "react";
+
+import { OpenAIContextProviderProps, OpenAIContextType } from "../../types";
 
 const OpenAIContext = createContext<OpenAIContextType>(null);
 

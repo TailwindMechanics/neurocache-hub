@@ -8,15 +8,13 @@ import { reactFlowSettingsProps } from "./reactflowConfig";
 import { StyleReactFlowLogo } from "./styleReactFlowLogo";
 import useNodeSpawner from "../hooks/useNodeSpawner";
 import LoginNode from "src/modules/Auth/client/nodes/loginNode";
-import Colors from "src/modules/Colors/Internal/colors";
+import Colors from "@modules/Colors/colors";
 
 const customNodeTypes = { login: LoginNode };
 
 const GuestCanvas: React.FC = () => {
     const nodeSpawner = useNodeSpawner();
     StyleReactFlowLogo();
-
-    console.log("GuestCanvas");
 
     const newLoginNode = nodeSpawner.spawn("login");
     if (!newLoginNode) return null;

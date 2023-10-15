@@ -30,7 +30,7 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "tailwind.config.ts"
-, "src/modules/Graph/Internal/reflection/compileNodeData.js"    ],
+        "tailwind.config.js"
+    ],
     "exclude": ["node_modules"]
 }

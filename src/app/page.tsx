@@ -5,12 +5,12 @@ import React from "react";
 import { AuthenticatedProvider, GuestProvider } from "@modules/Auth/client";
 import { Authenticated, Unauthenticated } from "@modules/Auth/server";
 
-const page: React.FC = () => {
+const page = async () => {
     return (
         <>
-            {/* <Authenticated>
+            <Authenticated>
                 <AuthenticatedProvider />
-            </Authenticated> */}
+            </Authenticated>
             <Unauthenticated>
                 <GuestProvider />
             </Unauthenticated>

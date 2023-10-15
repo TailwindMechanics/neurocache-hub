@@ -1,6 +1,21 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("./src/modules/Colors/Internal/colors.json");
-import flatColors from "./src/modules/Colors/Internal/colors.ts";
+const colors = require("./src/modules/Colors/colors.json");
+
+const flatColors = {};
+Object.entries(colors).forEach(([colorName, colorValues]) => {
+    Object.entries(colorValues).forEach(([variant, value]) => {
+        const key =
+            variant === "DEFAULT" ? colorName : `${colorName}-${variant}`;
+
+        flatColors[key] = value;
+    });
+});
+
+for (let colorName in flatColors) {
+    if (colorName.endsWith("-DEFAULT")) {
+        delete flatColors[colorName];
+    }
+}
 
 let colorUtilities = {};
 for (let colorName in flatColors) {
@@ -12,6 +27,7 @@ for (let colorName in flatColors) {
 }
 
 module.exports = {
+    purge: ["./src/**/*.{js,ts,jsx,tsx}"],
     darkMode: "class",
     mode: "jit",
     content: [

@@ -3,15 +3,10 @@
 import React, { useEffect } from "react";
 import { NodeProps } from "reactflow";
 
-import { ContentPreset, Composer, CardPreset } from "@modules/Composer";
-import { CustomNode } from "@modules/Graph/types";
+import { ContentPreset, CardPreset, Composer } from "src/modules/Composer";
+import { NodeSelection, UseNodeFlow, DrawHandle } from "src/modules/Graph";
+import { CustomNode } from "src/modules/Graph/types";
 import { useOpenAI } from "../hooks/useOpenAI";
-import {
-    CustomNodesRepo,
-    NodeSelection,
-    UseNodeFlow,
-    DrawHandle,
-} from "@modules/Graph";
 
 const Content = new Composer("OpenAiNodeContent", ContentPreset)
     .withStyle("text-sm")

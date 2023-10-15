@@ -11,6 +11,8 @@ const Authenticated = async (props: ChildProps) => {
     const supabase = createServerComponentClient({ cookies });
     const response = await supabase.auth.getUser();
 
+    console.log(response.data);
+
     if (response.data.user) {
         return <>{props.children}</>;
     }

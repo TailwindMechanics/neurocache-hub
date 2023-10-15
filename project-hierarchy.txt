@@ -92,10 +92,8 @@ neurocache-hub
 │     │     ├─ index.ts
 │     │     └─ unauthenticated.tsx
 │     ├─ Colors
-│     │  ├─ index.tsx
-│     │  └─ Internal
-│     │     ├─ colors.json
-│     │     └─ colors.ts
+│     │  ├─ colors.tsx
+│     │  └─ jsonColors.json
 │     ├─ Composer
 │     │  ├─ index.tsx
 │     │  ├─ Internal

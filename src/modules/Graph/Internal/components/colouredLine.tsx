@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import React, { FC } from "react";
 
 import { ColouredLineProps } from "../../../Composer/types";
-import IColors from "@modules/Colors";
+import Colors from "@modules/Colors/colors";
 
 const ColouredLine: FC<ColouredLineProps> = (props) => {
     const length = Math.sqrt(
@@ -56,7 +56,7 @@ const ColouredLine: FC<ColouredLineProps> = (props) => {
                     cx={props.fromX}
                     cy={props.fromY}
                     r="6"
-                    stroke={IColors.Colors["aqua"]}
+                    stroke={Colors["aqua"]}
                     fill="none"
                 />
             ) : null}
@@ -65,7 +65,7 @@ const ColouredLine: FC<ColouredLineProps> = (props) => {
                     cx={props.toX}
                     cy={props.toY}
                     r="6"
-                    stroke={IColors.Colors["aqua"]}
+                    stroke={Colors["aqua"]}
                     fill="none"
                 />
             ) : null}
