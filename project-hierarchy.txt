@@ -85,7 +85,8 @@ neurocache-hub
 │     │  │  │  ├─ useLoggedIn.tsx
 │     │  │  │  └─ useLoggedOut.tsx
 │     │  │  ├─ index.ts
-│     │  │  └─ loginNode.tsx
+│     │  │  └─ nodes
+│     │  │     └─ loginNode.tsx
 │     │  └─ server
 │     │     ├─ authenticated.tsx
 │     │     ├─ index.ts
@@ -117,11 +118,6 @@ neurocache-hub
 │     │  │     ├─ prose.tsx
 │     │  │     └─ shell.tsx
 │     │  └─ types.tsx
-│     ├─ Dev
-│     │  ├─ index.tsx
-│     │  └─ Internal
-│     │     ├─ clearConsole.tsx
-│     │     └─ devShortcuts.tsx
 │     ├─ Graph
 │     │  ├─ index.tsx
 │     │  ├─ Internal
@@ -159,6 +155,9 @@ neurocache-hub
 │     │  │  │  ├─ spawnerNode.tsx
 │     │  │  │  ├─ splitterNode.tsx
 │     │  │  │  └─ testBox.tsx
+│     │  │  ├─ reflection
+│     │  │  │  ├─ allNodeData.tsx
+│     │  │  │  └─ compileNodeData.js
 │     │  │  └─ utils
 │     │  │     ├─ mapOutputIds.ts
 │     │  │     ├─ nodeFlowUtils.ts
@@ -172,11 +171,11 @@ neurocache-hub
 │     ├─ OpenAi
 │     │  ├─ index.tsx
 │     │  ├─ Internal
-│     │  │  ├─ components
-│     │  │  │  ├─ openAiModels.tsx
-│     │  │  │  └─ openAiNode.tsx
-│     │  │  └─ hooks
-│     │  │     └─ useOpenAI.tsx
+│     │  │  ├─ hooks
+│     │  │  │  └─ useOpenAI.tsx
+│     │  │  └─ nodes
+│     │  │     ├─ openAiModels.tsx
+│     │  │     └─ openAiNode.tsx
 │     │  └─ types.tsx
 │     └─ Utils
 │        ├─ index.tsx

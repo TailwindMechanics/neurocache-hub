@@ -3,23 +3,22 @@
 import React, { useState } from "react";
 import { NodeProps } from "reactflow";
 
-import { NodeSelectionState } from "../components/nodeSelectionState";
-import { DrawHandle } from "../components/drawHandle";
+import NodeSelectionState from "../components/nodeSelectionState";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import IComposer from "@modules/Composer";
+import DrawHandle from "../components/drawHandle";
 import { CustomNode } from "../../types";
+import {
+    ButtonPreset,
+    InputPreset,
+    CardPreset,
+    Composer,
+} from "@modules/Composer";
 
-const Button = new IComposer.Builder(
-    "SendOutputButton",
-    IComposer.Components.Button,
-)
+const Button = new Composer("SendOutputButton", ButtonPreset)
     .withRoundedButton()
     .build();
-const Input = new IComposer.Builder(
-    "SendOutputInput",
-    IComposer.Components.Input.Default,
-)
+const Input = new Composer("SendOutputInput", InputPreset)
     .withRoundedElement()
     .build();
 
@@ -33,7 +32,7 @@ const SendOutputNode: React.FC<NodeProps> = (props: NodeProps) => {
             {nodeData.handles?.map((handle, index) =>
                 DrawHandle({ handle, nodeData, index }),
             )}
-            <IComposer.Components.Card className={NodeSelectionState(props.id)}>
+            <CardPreset className={NodeSelectionState(props.id)}>
                 <Input
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
@@ -51,12 +50,12 @@ const SendOutputNode: React.FC<NodeProps> = (props: NodeProps) => {
                     }}>
                     Send
                 </Button>
-            </IComposer.Components.Card>
+            </CardPreset>
         </>
     );
 };
 
-const nodeData = {
+const reflect_nodeData = {
     nodeType: "send_output",
     nodeName: "Send Button",
     category: "Utils",
@@ -79,7 +78,5 @@ const nodeData = {
     nodePosition: { x: 0, y: 0 },
     nodeComponent: SendOutputNode,
 } as CustomNode;
-
-CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(SendOutputNode);

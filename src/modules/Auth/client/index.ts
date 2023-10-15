@@ -1,21 +1,7 @@
 //path: src\modules\Auth\client\index.ts
 
-import { Scope, createInjector } from "typed-inject";
-
-import authenticatedProvider from "./hooks/authenticatedProvider";
-import guestProvider from "./hooks/guestProvider";
-import loginNode from "./loginNode";
-
-class AuthClient {
-    public readonly AuthenticatedProvider = authenticatedProvider;
-    public readonly GuestProvider = guestProvider;
-    public readonly LoginNode = loginNode;
-}
-
-const Injector = createInjector().provideClass(
-    "IAuthClient",
-    AuthClient,
-    Scope.Singleton,
-);
-
-export default Injector;
+export { default as AuthenticatedProvider } from "./hooks/authenticatedProvider";
+export { default as GuestProvider } from "./hooks/guestProvider";
+export { default as UseLoggedOut } from "./hooks/useLoggedOut";
+export { default as UseLoggedIn } from "./hooks/useLoggedIn";
+export { default as LoginNode } from "./nodes/loginNode";

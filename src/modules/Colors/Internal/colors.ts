@@ -3,7 +3,7 @@
 // eslint-disable-next-line
 import Colors from "./colors.json";
 
-export const flatColors: { [key: string]: string } = {};
+const flatColors: { [key: string]: string } = {};
 
 Object.entries(Colors).forEach(([colorName, colorValues]) => {
     Object.entries(colorValues).forEach(([variant, value]) => {
@@ -19,3 +19,4 @@ for (let colorName in flatColors) {
         delete flatColors[colorName];
     }
 }
+export default flatColors;

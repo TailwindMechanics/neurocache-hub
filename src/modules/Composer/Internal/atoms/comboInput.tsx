@@ -4,7 +4,6 @@ import { Combobox } from "@headlessui/react";
 import React, { FC } from "react";
 
 import { AtomProps } from "../../types";
-import { Composer } from "..";
 
 const ComboInput: FC<AtomProps> = (props) => {
     return (

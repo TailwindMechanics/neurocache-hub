@@ -16,7 +16,7 @@ import ReactFlow, {
 } from "reactflow";
 
 import useNodeSpawner from "../hooks/useNodeSpawner";
-import IUtils from "@modules/Utils";
+import { UseKeyPress } from "@modules/Utils";
 
 type NodeEventsProps = {
     handleMouseMove: (event: React.MouseEvent<Element, MouseEvent>) => void;
@@ -50,7 +50,7 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
         props.setNodes(filteredNodes);
     };
 
-    IUtils.useKeyPress("Escape", () => {
+    UseKeyPress("Escape", () => {
         removeSpawnerNode();
     });
 

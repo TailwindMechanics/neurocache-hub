@@ -19,7 +19,8 @@
         "atoms": "App",
         "presets": "Middleware",
         "behaviour": "Less",
-        "nodes": "Public"
+        "nodes": "Public",
+        "reflection": "Decorators"
     },
     "tailwindCSS.experimental.classRegex": [
         ["shadow: \"(.*)\","],

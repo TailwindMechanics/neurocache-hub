@@ -4,22 +4,22 @@ import React, { useEffect, useMemo, useState } from "react";
 import Markdown from "react-markdown";
 import { NodeProps } from "reactflow";
 
-import { NodeSelectionState } from "../components/nodeSelectionState";
+import { CardPreset, Composer, ProsePreset } from "@modules/Composer";
 import { RenderCodeblocks } from "../components/renderCodeblocks";
-import { DrawHandle } from "../components/drawHandle";
+import NodeSelectionState from "../components/nodeSelectionState";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import { CustomNode } from "@modules/Graph/types";
-import IComposer from "@modules/Composer";
-import IUtils from "@modules/Utils";
+import DrawHandle from "../components/drawHandle";
+import { IsNullOrEmpty } from "@modules/Utils";
+import { CustomNode } from "../../types";
 
-const Card = new IComposer.Builder("MarkdownCard", IComposer.Components.Card)
+const Card = new Composer("MarkdownCard", CardPreset)
     .withStyle("scrollbar-hide")
     .withStyle("overflow-auto")
     .withStyle("max-h-44")
     .withStyle("max-w-60")
     .build();
-const Prose = new IComposer.Builder("MarkdownProse", IComposer.Components.Prose)
+const Prose = new Composer("MarkdownProse", ProsePreset)
     .withStyle("px-1")
     .build();
 
@@ -36,7 +36,7 @@ const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
         });
 
         if (anyInputIncluded && nodeFlowValue.payload) {
-            let displayText = !IUtils.IsNullOrEmpty(nodeFlowValue.payload)
+            let displayText = !IsNullOrEmpty(nodeFlowValue.payload)
                 ? (nodeFlowValue.payload as string)
                 : "Input box";
 
@@ -67,7 +67,7 @@ const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
     );
 };
 
-const nodeData = {
+const reflect_nodeData = {
     nodeType: "markdown_box",
     nodeName: "Markdown",
     category: "UI",
@@ -90,7 +90,5 @@ const nodeData = {
     ],
     nodeComponent: MarkdownBox,
 } as CustomNode;
-
-CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(MarkdownBox);

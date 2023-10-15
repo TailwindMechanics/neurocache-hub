@@ -2,8 +2,8 @@
 
 import React, { FC } from "react";
 
+import { IsNullOrEmpty } from "@modules/Utils";
 import { AtomProps } from "../../types";
-import IUtils from "@modules/Utils";
 
 export default class ComponentBuilder {
     private dataProps: { [key: string]: string | boolean | number } = {};
@@ -13,15 +13,14 @@ export default class ComponentBuilder {
 
     constructor(name: string, atom: FC<AtomProps>) {
         if (!atom) throw new Error(`Atom is ${atom}`);
-        if (IUtils.IsNullOrEmpty(name))
-            throw new Error("Component name is required");
+        if (IsNullOrEmpty(name)) throw new Error("Component name is required");
 
         this.node = atom;
         this.displayName = name;
     }
 
     private push = (style: string) => {
-        if (IUtils.IsNullOrEmpty(style)) return;
+        if (IsNullOrEmpty(style)) return;
 
         if (!this.styles.includes(style)) {
             this.styles.push(style);

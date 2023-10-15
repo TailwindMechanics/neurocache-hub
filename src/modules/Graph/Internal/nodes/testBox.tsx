@@ -4,29 +4,26 @@ import { NodeProps, useReactFlow } from "reactflow";
 import { useState } from "react";
 import React from "react";
 
-import { NodeSelectionState } from "../components/nodeSelectionState";
-import { DrawHandle } from "../components/drawHandle";
+import NodeSelectionState from "../components/nodeSelectionState";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { CustomNode, AgentGraph } from "../../types";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import IComposer from "@modules/Composer";
+import DrawHandle from "../components/drawHandle";
+import {
+    ContentPreset,
+    ButtonPreset,
+    CardPreset,
+    Composer,
+} from "@modules/Composer";
 
-const Card = new IComposer.Builder("TestBoxCard", IComposer.Components.Card)
-    .withRoundedFrame()
-    .build();
-const Header = new IComposer.Builder(
-    "TestBoxHeader",
-    IComposer.Components.Content,
-)
+const Card = new Composer("TestBoxCard", CardPreset).withRoundedFrame().build();
+const Header = new Composer("TestBoxHeader", ContentPreset)
     .withStyle("text-aqua")
     .withStyle("text-center")
     .withStyle("w-20")
     .withRoundedElement()
     .build();
-const Content = new IComposer.Builder(
-    "TestBoxContent",
-    IComposer.Components.Content,
-)
+const Content = new Composer("TestBoxContent", ContentPreset)
     .withStyle("text-night-body")
     .withStyle("break-words")
     .withStyle("text-xs")
@@ -34,10 +31,7 @@ const Content = new IComposer.Builder(
     .withStyle("px-1")
     .withRoundedContent()
     .build();
-const Button = new IComposer.Builder(
-    "TestBoxButton",
-    IComposer.Components.Button,
-)
+const Button = new Composer("TestBoxButton", ButtonPreset)
     .withStyle("text-sm")
     .withRoundedElement()
     .build();
@@ -130,7 +124,7 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
     );
 };
 
-const nodeData = {
+const reflect_nodeData = {
     nodeType: "test_box",
     nodeName: "Test",
     category: "Unhidden",
@@ -146,7 +140,5 @@ const nodeData = {
     ],
     nodePosition: { x: 100, y: 0 },
 } as CustomNode;
-
-CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(TestBox);

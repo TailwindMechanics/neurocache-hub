@@ -1,21 +1,6 @@
 //path: src\modules\OpenAi\index.tsx
 
-import { OpenAIContextProvider } from "./Internal/hooks/useOpenAI";
-import openAiModels from "./Internal/components/openAiModels";
-import openAiNode from "./Internal/components/openAiNode";
-import { useOpenAI } from "./Internal/hooks/useOpenAI";
-
-export function IOpenAiInit() {
-    for (const key in IOpenAi) {
-        console.log(key);
-    }
-}
-
-namespace IOpenAi {
-    export const Context = OpenAIContextProvider;
-    export const ChatNode = openAiNode;
-    export const ModelsNode = openAiModels;
-    export const useOpenAi = useOpenAI;
-}
-
-export default IOpenAi;
+export { OpenAIContextProvider as OpenAiContext } from "./Internal/hooks/useOpenAI";
+export { default as OpenAiModels } from "./Internal/nodes/openAiModels";
+export { default as OpenAiNode } from "./Internal/nodes/openAiNode";
+export { useOpenAI as UseOpenAi } from "./Internal/hooks/useOpenAI";

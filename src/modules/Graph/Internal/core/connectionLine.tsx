@@ -4,8 +4,8 @@ import { AnimationDefinition, useAnimation } from "framer-motion";
 import { ConnectionLineComponentProps } from "reactflow";
 import React, { FC } from "react";
 
+import ColouredLine from "../components/colouredLine";
 import useNodeHandle from "../hooks/useNodeHandle";
-import IComposer from "@modules/Composer";
 
 const animation = {
     strokeDashoffset: [0, 100],
@@ -37,7 +37,7 @@ export const ConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
 
     return (
         <>
-            <IComposer.Components.Line
+            <ColouredLine
                 controls={controls}
                 fromX={fromXy.x}
                 fromY={fromXy.y}
@@ -47,7 +47,7 @@ export const ConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
                 sourceHandleRotation={fromAngle}
                 className={"stroke-night-dark stroke-4 stroke-dash-1-3"}
             />
-            <IComposer.Components.Line
+            <ColouredLine
                 controls={controls}
                 fromX={fromXy.x}
                 fromY={fromXy.y}

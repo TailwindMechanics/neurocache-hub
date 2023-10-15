@@ -16,6 +16,7 @@ import ReactFlow, {
     Edge,
 } from "reactflow";
 
+import { LoginNode, UseLoggedOut, UseLoggedIn } from "@modules/Auth/client";
 import { useGuestGraphReady } from "../hooks/useGuestGraphReady";
 import { useUserGraphReady } from "../hooks/useUserGraphReady";
 import { reactFlowSettingsProps } from "./reactflowConfig";
@@ -26,16 +27,15 @@ import useMouseCoords from "../hooks/useMouseCoords";
 import { ConnectionLine } from "./connectionLine";
 import { loadUserGraph } from "./nodeSerializer";
 import CustomNodesRepo from "./CustomNodesRepo";
-import IAuthClient from "@modules/Auth/client";
 import { NodeEvents } from "./nodeEvents";
 import { SaveGraph } from "./saveGraph";
 import { EdgeLine } from "./edgeLine";
 import IColors from "@modules/Colors";
 
-const customNodeTypes = CustomNodesRepo.instance.getNodeTypes();
 const customEdgeTypes = { custom: EdgeLine };
 
 const ReactFlowCanvas: React.FC = () => {
+    const customNodeTypes = CustomNodesRepo.instance.getNodeTypes();
     StyleReactFlowLogo();
     const flowKey = "test-flow";
     let viewport = useViewport();
@@ -55,7 +55,7 @@ const ReactFlowCanvas: React.FC = () => {
     }, [viewport]);
 
     const loadGuest = () => {
-        setTypes({ login: IAuthClient.LoginNode });
+        setTypes({ login: LoginNode });
         const loginNode = nodeSpawner.spawn("login");
         if (loginNode) {
             setNodes([loginNode]);
@@ -75,8 +75,8 @@ const ReactFlowCanvas: React.FC = () => {
 
     useGuestGraphReady(loadGuest);
     useUserGraphReady(loadUser);
-    IAuthClient.useLoggedOut(loadGuest);
-    IAuthClient.useLoggedIn(loadUser);
+    UseLoggedOut(loadGuest);
+    UseLoggedIn(loadUser);
 
     return (
         <div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">

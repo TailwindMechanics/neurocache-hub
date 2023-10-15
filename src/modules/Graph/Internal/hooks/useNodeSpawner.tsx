@@ -4,14 +4,14 @@ import { Node } from "reactflow";
 
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { CustomNode, PositionId } from "../../types";
-import IUtils from "@modules/Utils";
+import { Uid } from "@modules/Utils";
 
 const useNodeSpawner = () => {
     const spawn = (nodeType: string, selected: boolean = false) => {
         const nodeDataDefaults = CustomNodesRepo.instance.getNode(nodeType);
         if (!nodeDataDefaults) return null;
 
-        const uid = IUtils.Uid();
+        const uid = Uid();
         const handles = nodeDataDefaults.handles
             ? nodeDataDefaults.handles.map((handle, index) => {
                   return {

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import IUtils from "@modules/Utils";
+import { IsNullOrEmpty } from "@modules/Utils";
 
 type TextBlockFormatterProps = {
     separator: string | RegExp;
@@ -24,7 +24,7 @@ const TextBlockFormatter: React.FC<TextBlockFormatterProps> = (props) => {
 
     const lines = textWithSeparator
         .split("|||")
-        .filter((line) => !IUtils.IsNullOrEmpty(line.trim()));
+        .filter((line) => !IsNullOrEmpty(line.trim()));
 
     return (
         <div className={props.className}>

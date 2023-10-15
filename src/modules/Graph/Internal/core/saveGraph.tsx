@@ -5,7 +5,7 @@ import { Viewport, useReactFlow } from "reactflow";
 import { FC, useState, useEffect } from "react";
 
 import { saveGraph } from "./nodeSerializer";
-import IUtils from "@modules/Utils";
+import { UseCtrlS } from "@modules/Utils";
 
 interface SaveGraphProps {
     flowKey: string;
@@ -21,7 +21,7 @@ const SaveGraph: FC<SaveGraphProps> = (props) => {
         setStatusText(session?.user?.email ?? "");
     }, [session]);
 
-    IUtils.useCtrlS(async () => {
+    UseCtrlS(async () => {
         if (!session) return;
 
         setStatusText("saving...");

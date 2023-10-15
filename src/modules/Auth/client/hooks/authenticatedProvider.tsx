@@ -5,21 +5,17 @@
 import { ReactFlowProvider } from "reactflow";
 import React from "react";
 
-import IOpenAi from "@modules/OpenAi";
-import IDev from "@modules/Dev";
-
-import Graph from "@modules/Graph";
-const IGraph = Graph.resolve("IGraph");
+import { OpenAiContext } from "@modules/OpenAi";
+import { FlowCanvas } from "@modules/Graph";
 
 const AuthenticatedProvider: React.FC = () => {
     return (
         <>
-            <IDev.Hotkeys />
-            <IOpenAi.Context>
+            <OpenAiContext>
                 <ReactFlowProvider>
-                    <IGraph.Canvas />
+                    <FlowCanvas />
                 </ReactFlowProvider>
-            </IOpenAi.Context>
+            </OpenAiContext>
         </>
     );
 };

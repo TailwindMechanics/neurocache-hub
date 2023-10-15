@@ -1,22 +1,19 @@
 //path: src\app\page.tsx
 
-import { FC } from "react";
 import React from "react";
 
-import AuthServer from "@modules/Auth/server";
-const IAuthServer = AuthServer.resolve("IAuthServer");
-import AuthClient from "@modules/Auth/client";
-const IAuthClient = AuthClient.resolve("IAuthClient");
+import { AuthenticatedProvider, GuestProvider } from "@modules/Auth/client";
+import { Authenticated, Unauthenticated } from "@modules/Auth/server";
 
-const page: FC = () => {
+const page: React.FC = () => {
     return (
         <>
-            <IAuthServer.Authenticated>
-                <IAuthClient.AuthenticatedProvider />
-            </IAuthServer.Authenticated>
-            <IAuthServer.Unauthenticated>
-                <IAuthClient.GuestProvider />
-            </IAuthServer.Unauthenticated>
+            {/* <Authenticated>
+                <AuthenticatedProvider />
+            </Authenticated> */}
+            <Unauthenticated>
+                <GuestProvider />
+            </Unauthenticated>
         </>
     );
 };

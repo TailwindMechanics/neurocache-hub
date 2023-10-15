@@ -5,21 +5,23 @@ import { Combobox } from "@headlessui/react";
 import { useState } from "react";
 import React from "react";
 
-import { NodeSelectionState } from "../components/nodeSelectionState";
+import NodeSelectionState from "../components/nodeSelectionState";
+import { IsNullOrEmpty, UseKeyPress } from "@modules/Utils";
 import { deselectAllNodes } from "../utils/nodeUtils";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import useNodeSpawner from "../hooks/useNodeSpawner";
-import IComposer from "@modules/Composer";
 import { CustomNode } from "../../types";
-import IUtils from "@modules/Utils";
+import {
+    ContentPreset,
+    ComboPreset,
+    CardPreset,
+    Composer,
+} from "@modules/Composer";
 
-const Card = new IComposer.Builder("SpawnerCard", IComposer.Components.Card)
+const Card = new Composer("SpawnerCard", CardPreset)
     .withData("type", "spawner-node")
     .build();
-const Content = new IComposer.Builder(
-    "SpawnerContent",
-    IComposer.Components.Content,
-)
+const Content = new Composer("SpawnerContent", ContentPreset)
     .withStyle("py-0.5")
     .withStyle("px-1")
     .withRoundedButton()
@@ -27,7 +29,7 @@ const Content = new IComposer.Builder(
 
 const nodeLabel = (node: CustomNode) => {
     if (!node) return "";
-    if (IUtils.IsNullOrEmpty(node.nodeName)) return node.nodeName;
+    if (IsNullOrEmpty(node.nodeName)) return node.nodeName;
 
     const label = node.nodeName.replace("Node", "").trim();
     return `${node.category}/${label}`;
@@ -56,8 +58,8 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
         }
     };
 
-    IUtils.useKeyPress("Enter", handleEnterPress);
-    IUtils.useKeyPress("Return", handleEnterPress);
+    UseKeyPress("Enter", handleEnterPress);
+    UseKeyPress("Return", handleEnterPress);
 
     const spawnNode = (nodeType: string) => {
         deselectAllNodes(reactFlowInstance.getNodes());
@@ -77,7 +79,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
         <>
             <Card className={NodeSelectionState(props.id)}>
                 <Combobox>
-                    <IComposer.Components.Input.Combo
+                    <ComboPreset
                         placeholder="..."
                         autoFocus
                         displayValue={(node: CustomNode) => nodeLabel(node)}
@@ -104,7 +106,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
     );
 };
 
-const nodeData = {
+const reflect_nodeData = {
     nodeType: "spawner",
     nodeName: "Spawner",
     category: "Hidden",
@@ -115,7 +117,5 @@ const nodeData = {
     nodeComponent: SpawnerNode,
 } as CustomNode;
 
-CustomNodesRepo.instance.register(nodeData);
-
-export { nodeData as SpawnerNodeData };
+export { reflect_nodeData as SpawnerNodeData };
 export default React.memo(SpawnerNode);

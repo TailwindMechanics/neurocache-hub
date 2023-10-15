@@ -4,18 +4,13 @@
 
 import { ReactFlowProvider } from "reactflow";
 import React from "react";
-
-import IDev from "@modules/Dev";
-
-import Graph from "@modules/Graph";
-const IGraph = Graph.resolve("IGraph");
+import GuestCanvas from "src/modules/Graph/Internal/core/guestCanvas";
 
 const GuestProvider: React.FC = () => {
     return (
         <>
-            <IDev.Hotkeys />
             <ReactFlowProvider>
-                <IGraph.GuestCanvas />
+                <GuestCanvas />
             </ReactFlowProvider>
         </>
     );

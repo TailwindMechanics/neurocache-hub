@@ -5,8 +5,8 @@
 import React, { ReactNode, createContext, useContext, useState } from "react";
 import { Edge } from "reactflow";
 
+import { IsNullOrEmpty } from "@modules/Utils";
 import { NodeFlowValue } from "../../types";
-import IUtils from "@modules/Utils";
 
 const NodeFlowContext = createContext<{
     nodeFlowValue: NodeFlowValue;
@@ -41,7 +41,7 @@ export const NodeFlowProvider: React.FC<NodeFlowProviderProps> = ({
     };
 
     const setNodeFlowValue = (newValue: NodeFlowValue) => {
-        if (newValue.payload && IUtils.IsNullOrEmpty(newValue.payload)) {
+        if (newValue.payload && IsNullOrEmpty(newValue.payload)) {
             console.log(
                 `%c!!!!! Output id: ${newValue.ids}, payload is null or empty`,
                 "color: #e09163",

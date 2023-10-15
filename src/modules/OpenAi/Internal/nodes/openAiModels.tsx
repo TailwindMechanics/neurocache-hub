@@ -1,49 +1,48 @@
-//path: src\modules\OpenAi\Internal\components\openAiModels.tsx
+//path: src\modules\OpenAi\Internal\nodes\openAiModels.tsx
 
 import { NodeProps } from "reactflow";
 import { useState } from "react";
 import React from "react";
 
 import { CustomNode } from "@modules/Graph/types";
-import IComposer from "@modules/Composer";
-import IOpenAi from "@modules/OpenAi";
+import { useOpenAI } from "../hooks/useOpenAI";
+import {
+    ContentPreset,
+    ButtonPreset,
+    CardPreset,
+    Composer,
+} from "@modules/Composer";
+import {
+    CustomNodesRepo,
+    NodeSelection,
+    UseNodeFlow,
+    DrawHandle,
+} from "@modules/Graph";
 
-import Graph from "@modules/Graph";
-const IGraph = Graph.resolve("IGraph");
-
-const Card = new IComposer.Builder(
-    "OpenAiModelsCard",
-    IComposer.Components.Card,
-)
+const Card = new Composer("OpenAiModelsCard", CardPreset)
     .withRoundedFrame()
     .build();
-const Header = new IComposer.Builder(
-    "OpenAiModelsHeader",
-    IComposer.Components.Content,
-)
+const Header = new Composer("OpenAiModelsHeader", ContentPreset)
     .withStyle("text-aqua")
     .withStyle("text-center")
     .withStyle("w-20")
     .withRoundedElement()
     .build();
-const Button = new IComposer.Builder(
-    "OpenAiModelsButton",
-    IComposer.Components.Button,
-)
+const Button = new Composer("OpenAiModelsButton", ButtonPreset)
     .withStyle("text-sm")
     .withRoundedButton()
     .build();
 
 const OpenAiModels: React.FC<NodeProps> = (props: NodeProps) => {
-    const { setNodeFlowValue } = IGraph.useNodeFlow();
-    const nodeData = props.data as CustomNode;
-    const openAI = IOpenAi.useOpenAi();
-
     const [isLoading, setIsLoading] = useState({
         loading: false,
         message: "idle",
         detail: "",
     });
+
+    const { setNodeFlowValue } = UseNodeFlow();
+    const nodeData = props.data as CustomNode;
+    const openAI = useOpenAI();
 
     const onClick = async () => {
         setIsLoading({
@@ -80,9 +79,9 @@ const OpenAiModels: React.FC<NodeProps> = (props: NodeProps) => {
     return (
         <>
             {nodeData.handles?.map((handle, index) =>
-                IGraph.DrawHandle({ handle, nodeData, index }),
+                DrawHandle({ handle, nodeData, index }),
             )}
-            <Card className={IGraph.NodeSelectionState(props.id)}>
+            <Card className={NodeSelection(props.id)}>
                 <Header>{isLoading.message}</Header>
                 <Button onClick={onClick}>Fetch Models</Button>
             </Card>
@@ -90,7 +89,7 @@ const OpenAiModels: React.FC<NodeProps> = (props: NodeProps) => {
     );
 };
 
-const nodeData = {
+const reflect_nodeData = {
     nodeType: "openai_models",
     nodeName: "Models",
     category: "OpenAi",
@@ -106,7 +105,5 @@ const nodeData = {
     ],
     nodePosition: { x: 100, y: 0 },
 } as CustomNode;
-
-IGraph.CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(OpenAiModels);

@@ -1,28 +1,28 @@
-//path: src\modules\OpenAi\Internal\components\openAiNode.tsx
+//path: src\modules\OpenAi\Internal\nodes\openAiNode.tsx
 
 import React, { useEffect } from "react";
 import { NodeProps } from "reactflow";
 
+import { ContentPreset, Composer, CardPreset } from "@modules/Composer";
 import { CustomNode } from "@modules/Graph/types";
-import IComposer from "@modules/Composer";
-import IOpenAi from "@modules/OpenAi";
+import { useOpenAI } from "../hooks/useOpenAI";
+import {
+    CustomNodesRepo,
+    NodeSelection,
+    UseNodeFlow,
+    DrawHandle,
+} from "@modules/Graph";
 
-import Graph from "@modules/Graph";
-const IGraph = Graph.resolve("IGraph");
-
-const Content = new IComposer.Builder(
-    "OpenAiNodeContent",
-    IComposer.Components.Content,
-)
+const Content = new Composer("OpenAiNodeContent", ContentPreset)
     .withStyle("text-sm")
     .withStyle("px-1")
     .withRoundedButton()
     .build();
 
 const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
-    const { nodeFlowValue, setNodeFlowValue } = IGraph.useNodeFlow();
+    const { nodeFlowValue, setNodeFlowValue } = UseNodeFlow();
     const nodeData = props.data as CustomNode;
-    const openAI = IOpenAi.useOpenAi();
+    const openAI = useOpenAI();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -56,17 +56,16 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
     return (
         <>
             {nodeData.handles?.map((handle, index) =>
-                IGraph.DrawHandle({ handle, nodeData, index }),
+                DrawHandle({ handle, nodeData, index }),
             )}
-            <IComposer.Components.Card
-                className={IGraph.NodeSelectionState(props.id)}>
+            <CardPreset className={NodeSelection(props.id)}>
                 <Content>{nodeData.nodeName}</Content>
-            </IComposer.Components.Card>
+            </CardPreset>
         </>
     );
 };
 
-const nodeData = {
+const reflect_nodeData = {
     nodeType: "open_ai",
     nodeName: "Gpt-4",
     category: "OpenAi",
@@ -88,7 +87,5 @@ const nodeData = {
     ],
     nodePosition: { x: 100, y: 0 },
 } as CustomNode;
-
-IGraph.CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(OpenAiNode);

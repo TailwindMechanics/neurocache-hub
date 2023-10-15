@@ -4,22 +4,19 @@ import { useEffect, useState } from "react";
 import { NodeProps } from "reactflow";
 import React from "react";
 
-import { NodeSelectionState } from "../components/nodeSelectionState";
+import { CardPreset, Composer, ContentPreset } from "@modules/Composer";
 import { sendOutput, extractInput } from "../utils/nodeFlowUtils";
-import { DrawHandle } from "../components/drawHandle";
+import NodeSelectionState from "../components/nodeSelectionState";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import IComposer from "@modules/Composer";
+import DrawHandle from "../components/drawHandle";
 import { CustomNode } from "../../types";
 
-const Card = new IComposer.Builder("InputCard", IComposer.Components.Card)
+const Card = new Composer("InputCard", CardPreset)
     .withStyle("h-32")
     .withStyle("w-44")
     .build();
-const Content = new IComposer.Builder(
-    "InputContent",
-    IComposer.Components.Content,
-)
+const Content = new Composer("InputContent", ContentPreset)
     .withStyle("text-night-body")
     .withStyle("text-ss")
     .withStyle("px-1")
@@ -49,7 +46,7 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
     );
 };
 
-const nodeData = {
+const reflect_nodeData = {
     nodeType: "input_box",
     nodeName: "Text",
     category: "Utils",
@@ -72,7 +69,5 @@ const nodeData = {
     ],
     nodeComponent: InputBox,
 } as CustomNode;
-
-CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(InputBox);

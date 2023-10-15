@@ -1,27 +1,16 @@
 //path: src\modules\Graph\index.tsx
 
-import { Scope, createInjector } from "typed-inject";
+export { default as NodeSelection } from "./Internal/components/nodeSelectionState";
+export { useNodeFlow as UseNodeFlow } from "./Internal/hooks/useNodeFlow";
+export { default as CustomNodesRepo } from "./Internal/core/CustomNodesRepo";
+export { default as FlowCanvas } from "./Internal/core/reactFlowCanvas";
+export { default as DrawHandle } from "./Internal/components/drawHandle";
+export { default as GuestCanvas } from "./Internal/core/guestCanvas";
 
-import nodeSelectionState from "./Internal/components/nodeSelectionState";
-import { useNodeFlow as UseNodeFlow } from "./Internal/hooks/useNodeFlow";
-import customNodesRepo from "./Internal/core/CustomNodesRepo";
-import reactFlowCanvas from "./Internal/core/reactFlowCanvas";
-import drawHandle from "./Internal/components/drawHandle";
-import guestCanvas from "./Internal/core/guestCanvas";
-
-class IGraph {
-    public readonly Canvas = reactFlowCanvas;
-    public readonly GuestCanvas = guestCanvas;
-    public readonly NodeSelectionState = nodeSelectionState;
-    public readonly useNodeFlow = UseNodeFlow;
-    public readonly DrawHandle = drawHandle;
-    public readonly CustomNodesRepo = customNodesRepo;
-}
-
-const Injector = createInjector().provideClass(
-    "IGraph",
-    IGraph,
-    Scope.Singleton,
-);
-
-export default Injector;
+export { default as CommentPayload } from "./Internal/nodes/commentPayload";
+export { default as TextBox } from "./Internal/nodes/inputBox";
+export { default as MarkdownBox } from "./Internal/nodes/markdownBox";
+export { default as SendButton } from "./Internal/nodes/sendOutputNode";
+export { default as Spawner } from "./Internal/nodes/spawnerNode";
+export { default as Splitter } from "./Internal/nodes/splitterNode";
+export { default as TestBox } from "./Internal/nodes/testBox";

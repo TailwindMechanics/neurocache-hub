@@ -33,6 +33,12 @@
             "problemMatcher": []
         },
         {
+            "label": "Compile Nodes",
+            "type": "shell",
+            "command": "node src/modules/Graph/Internal/reflection/compileNodeData.js",
+            "problemMatcher": []
+        },
+        {
             "label": "Group Root",
             "type": "shell",
             "command": "node rootGrouper.js",

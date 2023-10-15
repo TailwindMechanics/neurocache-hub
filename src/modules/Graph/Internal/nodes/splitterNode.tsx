@@ -3,16 +3,16 @@
 import React, { useEffect } from "react";
 import { NodeProps } from "reactflow";
 
-import { NodeSelectionState } from "../components/nodeSelectionState";
-import { DrawHandle } from "../components/drawHandle";
+import NodeSelectionState from "../components/nodeSelectionState";
+import { Composer, ShellPreset } from "@modules/Composer";
 import CustomNodesRepo from "../core/CustomNodesRepo";
 import { MapOutputIds } from "../utils/mapOutputIds";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import IComposer from "@modules/Composer";
+import DrawHandle from "../components/drawHandle";
 import { CustomNode } from "../../types";
 import IIcons from "@modules/Icons";
 
-const Card = new IComposer.Builder("SplitterCard", IComposer.Components.Shell)
+const Card = new Composer("SplitterCard", ShellPreset)
     .withStyle("px-1")
     .build();
 
@@ -46,7 +46,7 @@ const SplitterNode: React.FC<NodeProps> = (props: NodeProps) => {
     );
 };
 
-const nodeData = {
+const reflect_nodeData = {
     nodeType: "splitter",
     nodeName: "Splitter",
     category: "Utils",
@@ -74,7 +74,5 @@ const nodeData = {
     ],
     nodePosition: { x: 150, y: 0 },
 } as CustomNode;
-
-CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(SplitterNode);

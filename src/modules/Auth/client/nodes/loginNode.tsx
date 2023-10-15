@@ -1,4 +1,4 @@
-//path: src\modules\Auth\client\loginNode.tsx
+//path: src\modules\Auth\client\nodes\loginNode.tsx
 
 "use client";
 
@@ -9,29 +9,28 @@ import {
     User,
 } from "@supabase/auth-helpers-nextjs";
 
+import { CustomNodesRepo, NodeSelection } from "@modules/Graph";
 import { CustomNode } from "@modules/Graph/types";
-import IComposer from "@modules/Composer";
+import {
+    ContentPreset,
+    ButtonPreset,
+    InputPreset,
+    FormPreset,
+    CardPreset,
+    Composer,
+} from "@modules/Composer";
 
-import Graph from "@modules/Graph";
-const IGraph = Graph.resolve("IGraph");
-
-const Content = new IComposer.Builder(
-    "LoginContent",
-    IComposer.Components.Content,
-)
+const Content = new Composer("LoginContent", ContentPreset)
     .withStyle("text-night-title")
     .withStyle("text-sm")
     .withStyle("px-1")
     .withRoundedElement()
     .build();
-const Button = new IComposer.Builder("LoginButton", IComposer.Components.Button)
+const Button = new Composer("LoginButton", ButtonPreset)
     .withStyle("text-sm")
     .withRoundedButton()
     .build();
-const Input = new IComposer.Builder(
-    "LoginInput",
-    IComposer.Components.Input.Default,
-)
+const Input = new Composer("LoginInput", InputPreset)
     .withStyle("text-center")
     .withRoundedElement()
     .build();
@@ -70,9 +69,8 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
 
     return (
         <>
-            <IComposer.Components.Card
-                className={IGraph.NodeSelectionState(props.id)}>
-                <IComposer.Components.Form id="login_form" onSubmit={onSubmit}>
+            <CardPreset className={NodeSelection(props.id)}>
+                <FormPreset id="login_form" onSubmit={onSubmit}>
                     {user ? (
                         <Content>{user.email}</Content>
                     ) : (
@@ -97,13 +95,13 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
                     <Button id="login_button" type="submit">
                         {user ? "Logout" : "Login"}
                     </Button>
-                </IComposer.Components.Form>
-            </IComposer.Components.Card>
+                </FormPreset>
+            </CardPreset>
         </>
     );
 };
 
-const nodeData = {
+const reflect_nodeData = {
     nodeType: "login",
     nodeName: "Login",
     category: "Utils",
@@ -113,7 +111,5 @@ const nodeData = {
     nodePosition: { x: 0, y: 0 },
     nodeComponent: LoginNode,
 } as CustomNode;
-
-IGraph.CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(LoginNode);

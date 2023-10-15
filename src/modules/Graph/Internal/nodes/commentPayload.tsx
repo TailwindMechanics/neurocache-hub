@@ -3,47 +3,43 @@
 import React, { useEffect, useState } from "react";
 import { NodeProps } from "reactflow";
 
-import { NodeSelectionState } from "../components/nodeSelectionState";
-import CustomNodesRepo from "../core/CustomNodesRepo";
+import { CardPreset, Composer, InputPreset } from "@modules/Composer";
+import NodeSelectionState from "../components/nodeSelectionState";
 import { sendOutput } from "../utils/nodeFlowUtils";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import { DrawHandle } from "../components/drawHandle";
-import IComposer from "@modules/Composer";
+import DrawHandle from "../components/drawHandle";
 import { CustomNode } from "../../types";
 
-const Input = new IComposer.Builder(
-    "CommentInput",
-    IComposer.Components.Input.Default,
-)
+const Input = new Composer("CommentInput", InputPreset)
     .withRoundedButton()
     .build();
 
 const CommentPayload: React.FC<NodeProps> = (props: NodeProps) => {
     const [inputText, setInputText] = useState("");
     const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
-
+    const nodeData = props.data as CustomNode;
     useEffect(() => {
         const newValue = nodeFlowValue;
         newValue.payload = `${inputText}: {${nodeFlowValue.payload}}`;
         sendOutput(nodeData, newValue, setNodeFlowValue);
-    }, [inputText, nodeFlowValue, setNodeFlowValue]);
+    }, [inputText, nodeData, nodeFlowValue, setNodeFlowValue]);
 
     return (
         <>
             {nodeData.handles?.map((handle, index) =>
                 DrawHandle({ handle, nodeData, index }),
             )}
-            <IComposer.Components.Card className={NodeSelectionState(props.id)}>
+            <CardPreset className={NodeSelectionState(props.id)}>
                 <Input
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
                 />
-            </IComposer.Components.Card>
+            </CardPreset>
         </>
     );
 };
 
-const nodeData = {
+const reflect_nodeData = {
     nodeType: "comment_payload",
     nodeName: "Comment Payload",
     category: "Utils",
@@ -66,7 +62,5 @@ const nodeData = {
     nodePosition: { x: 100, y: 0 },
     nodeComponent: CommentPayload,
 } as CustomNode;
-
-CustomNodesRepo.instance.register(nodeData);
 
 export default React.memo(CommentPayload);
