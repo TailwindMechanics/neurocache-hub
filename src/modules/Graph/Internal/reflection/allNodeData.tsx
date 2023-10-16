@@ -29,10 +29,10 @@ export const allNodeData = [
     } as CustomNode,
     {
         nodeType: "comment_payload",
-        nodeName: "Comment Payload",
+        nodeName: "Prefix Payload",
         category: "Utils",
         nodeId: "comment_payload_60e9b8e9a7f1d8c7dsa2",
-        body: "This node returns the models.",
+        body: "This node prefixes the input payload.",
         handles: [
             {
                 id: "in_comment_payload_60e9b8e9a7f1d8c7dsa2",
