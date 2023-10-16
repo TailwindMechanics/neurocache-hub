@@ -1,6 +1,7 @@
 # readme.md
 # Neurocache: Project Overview
 Neurocache consists of two standalone web applications: **Neurocache Hub** and **Neurocache Api**.
+This is a work in progress and an _experimental_ codebase.
 
 ## Neurocache Hub (this repo)
 - Neurocache Hub is a full-stack web application that provides a platform for users to create, train, and customize their own AI agents to perform tasks tailored to their needs. Tasks may include deep web searching, image and video analysis, or even transforming into a subject matter expert trained on custom datasets.
@@ -21,22 +22,22 @@ Neurocache consists of two standalone web applications: **Neurocache Hub** and *
 - api.neurocache.ai: The Api, accessible only with a valid key.
 
 ### Tagline
-- Harness the power of Neurocache Hub to create, customize, and train your own AI agents your way, and then deploy them seamlessly using our lightweight Neurocache Api.
+- Create and craft specialized AI Agents.
 
 ### Neurocache Hub tech stack
+- Dependency Management: Pnpm
 - Framework: Next.js
 - Language: TypeScript
-- User Authentication: Supabase
-- Routing: Built-in with Next.js
+- Authentication: Supabase
+- Routing: Built-in with Next.js (later server components/actions)
 - Fetching: Axios
-- State: React Query, MobX
+- State: Rxjs
 - Database: Supabase Postgres
 - ORM: Supabase
 - Caching: Upstash Redis
 - Redis IO: Upstash
 - Realtime: Socket.io
 - Testing: React Testing Library, Jest, Cypress
-- Dependency Management: Pnpm
 - CI/CD: Vercel
 - Hosting: Vercel
 - Styles: Tailwind

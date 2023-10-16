@@ -105,7 +105,9 @@ neurocache-hub
 │     │  │  │  ├─ comboInput.tsx
 │     │  │  │  ├─ div.tsx
 │     │  │  │  ├─ form.tsx
-│     │  │  │  └─ input.tsx
+│     │  │  │  ├─ input.tsx
+│     │  │  │  ├─ tab.tsx
+│     │  │  │  └─ tabList.tsx
 │     │  │  ├─ components
 │     │  │  │  └─ ComponentBuilder.tsx
 │     │  │  └─ presets
@@ -116,7 +118,9 @@ neurocache-hub
 │     │  │     ├─ form.tsx
 │     │  │     ├─ input.tsx
 │     │  │     ├─ prose.tsx
-│     │  │     └─ shell.tsx
+│     │  │     ├─ shell.tsx
+│     │  │     ├─ tab.tsx
+│     │  │     └─ tabList.tsx
 │     │  └─ types.tsx
 │     ├─ Graph
 │     │  ├─ index.tsx

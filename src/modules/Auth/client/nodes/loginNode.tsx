@@ -3,16 +3,18 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Tab } from "@headlessui/react";
 import { NodeProps } from "reactflow";
 import {
     createClientComponentClient,
     User,
 } from "@supabase/auth-helpers-nextjs";
 
-import { NodeSelection } from "src/modules/Graph";
 import { CustomNode } from "src/modules/Graph/types";
+import { NodeSelection } from "src/modules/Graph";
+import { TabPreset } from "@modules/Composer";
+import { Tab } from "@headlessui/react";
 import {
+    TabListPreset,
     ContentPreset,
     ButtonPreset,
     InputPreset,
@@ -26,14 +28,6 @@ const Card = new Composer("LoginContent", CardPreset)
     .withStyle("flex")
     .withRoundedFrame()
     .build();
-const Content = new Composer("LoginContent", ContentPreset)
-    .withStyle("text-night-title")
-    .withStyle("bg-night-dark")
-    .withStyle("text-center")
-    .withStyle("text-sm")
-    .withStyle("px-1")
-    .withRoundedContent()
-    .build();
 const Button = new Composer("LoginButton", ButtonPreset)
     .withStyle("text-sm")
     .withRoundedButton()
@@ -42,8 +36,12 @@ const Input = new Composer("LoginInput", InputPreset)
     .withStyle("text-center")
     .withRoundedElement()
     .build();
-const Toggle = new Composer("LoginButton", ButtonPreset)
+const Content = new Composer("LoginContent", ContentPreset)
+    .withStyle("text-night-title")
+    .withStyle("bg-night-dark")
+    .withStyle("text-center")
     .withStyle("text-sm")
+    .withStyle("px-1")
     .withRoundedElement()
     .build();
 
@@ -108,32 +106,23 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
         <>
             <Card className={NodeSelection(props.id)}>
                 {user ? (
-                    <Button type="button" onClick={onLogout}>
-                        Logout
-                    </Button>
+                    <>
+                        <Content>{user.email}</Content>
+                        <Button type="button" onClick={onLogout}>
+                            Logout
+                        </Button>
+                    </>
                 ) : (
                     <Tab.Group>
-                        <Tab.List className="flex space-x-1 bg-blue-900 p-1">
-                            <Tab
-                                className={({ selected }) =>
-                                    selected
-                                        ? "w-full bg-blue-600 py-2.5 text-sm font-medium text-white"
-                                        : "w-full py-2.5 text-sm font-medium text-white"
-                                }
-                                onClick={() => setIsSignUp(false)}>
+                        <TabListPreset>
+                            <TabPreset onClick={() => setIsSignUp(false)}>
                                 Login
-                            </Tab>
-                            <Tab
-                                className={({ selected }) =>
-                                    selected
-                                        ? "w-full bg-blue-600 py-2.5 text-sm font-medium text-white"
-                                        : "w-full py-2.5 text-sm font-medium text-white"
-                                }
-                                onClick={() => setIsSignUp(true)}>
+                            </TabPreset>
+                            <TabPreset onClick={() => setIsSignUp(true)}>
                                 Signup
-                            </Tab>
-                        </Tab.List>
-                        <Tab.Panels className="mt-2">
+                            </TabPreset>
+                        </TabListPreset>
+                        <Tab.Panels>
                             <Tab.Panel>
                                 <FormPreset id="login_form" onSubmit={onSubmit}>
                                     <Input
