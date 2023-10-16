@@ -6,11 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint",
-        "storybook": "storybook dev",
-        "build-storybook": "storybook build",
-        "test:generate-output": "jest --ci --reporters=default --reporters=jest-junit",
-        "test": "jest"
+        "lint": "next lint"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.17",
