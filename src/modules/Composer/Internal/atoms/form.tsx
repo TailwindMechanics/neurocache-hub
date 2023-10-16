@@ -9,7 +9,12 @@ const Form: FC<AtomProps> = (props) => {
         <form
             id={props.id}
             className={props.className}
-            onSubmit={() => props.onSubmit}>
+            onSubmit={(e) => {
+                e.preventDefault();
+                if (props.onSubmit) {
+                    props.onSubmit();
+                }
+            }}>
             {props.children}
         </form>
     );

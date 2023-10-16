@@ -1,11 +1,11 @@
 //path: src\modules\Graph\Internal\core\saveGraph.tsx
 
-import { useSession } from "@supabase/auth-helpers-react";
 import { Viewport, useReactFlow } from "reactflow";
 import { FC, useState, useEffect } from "react";
 
 import { saveGraph } from "./nodeSerializer";
 import { UseCtrlS } from "@modules/Utils";
+import useAuth from "../hooks/useAuth";
 
 interface SaveGraphProps {
     flowKey: string;
@@ -15,14 +15,14 @@ interface SaveGraphProps {
 const SaveGraph: FC<SaveGraphProps> = (props) => {
     const [statusText, setStatusText] = useState<string>("");
     const reactFlowInstance = useReactFlow();
-    const session = useSession();
+    const user = useAuth().user;
 
     useEffect(() => {
-        setStatusText(session?.user?.email ?? "");
-    }, [session]);
+        setStatusText(user?.email ?? "");
+    }, [user]);
 
     UseCtrlS(async () => {
-        if (!session) return;
+        if (!user) return;
 
         setStatusText("saving...");
         saveGraph(
@@ -33,7 +33,7 @@ const SaveGraph: FC<SaveGraphProps> = (props) => {
         );
 
         setTimeout(() => {
-            setStatusText(session?.user?.email ?? "");
+            setStatusText(user.email ?? "");
         }, 1500);
     });
 

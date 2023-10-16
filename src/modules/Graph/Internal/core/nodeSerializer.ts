@@ -2,10 +2,22 @@
 
 import { Edge, Node, Viewport } from "reactflow";
 
-export const loadUserGraph = (flowKey: string) => {
+interface GraphData {
+    nodes: Node[];
+    edges: Edge[];
+    viewport: Viewport;
+}
+
+export const loadUserGraph = (flowKey: string): GraphData => {
+    const result: GraphData = {
+        nodes: [],
+        edges: [],
+        viewport: { x: 0, y: 0, zoom: 2.5 },
+    };
     const flowData = localStorage.getItem(flowKey);
-    if (!flowData) return null;
-    const flow = JSON.parse(flowData);
+    if (!flowData) return result;
+    const flow = JSON.parse(flowData) as GraphData;
+    if (!flow) return result;
     return flow;
 };
 

@@ -1,6 +1,5 @@
 //path: src\modules\Graph\Internal\core\nodeEvents.tsx
 
-import { useSession } from "@supabase/auth-helpers-react";
 import React, { ReactNode, FC } from "react";
 import ReactFlow, {
     useOnSelectionChange,
@@ -33,7 +32,13 @@ type NodeEventsProps = {
 
 export const NodeEvents: FC<NodeEventsProps> = (props) => {
     const nodeSpawner = useNodeSpawner();
-    const session = useSession();
+
+    if (!props.nodes.find((node) => node.type == "login")) {
+        const loginNode = nodeSpawner.spawn("login", false, "1");
+        if (loginNode) {
+            props.setNodes([...props.nodes, loginNode]);
+        }
+    }
 
     useOnSelectionChange({
         onChange: ({ nodes, edges }) => {
@@ -44,9 +49,10 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
 
     const removeSpawnerNode = () => {
         const filteredNodes = nodeSpawner.despawn(
-            "spawner_node_1",
+            "node_spawner_1",
             props.nodes,
         );
+
         props.setNodes(filteredNodes);
     };
 
@@ -74,12 +80,10 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
             event.preventDefault();
             props.setCanZoom(true);
 
-            if (!session) return;
-
             let newPos = { ...props.mouseCoordsRef.current };
             newPos.x -= 20;
             newPos.y -= 20;
-            const spawnerNode = nodeSpawner.spawn("spawner");
+            const spawnerNode = nodeSpawner.spawn("spawner", false, "1");
             if (spawnerNode) {
                 spawnerNode.position = newPos;
                 props.setNodes((prevNodes: Node[]) => [

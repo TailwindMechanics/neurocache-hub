@@ -7,11 +7,16 @@ import { CustomNode, PositionId } from "../../types";
 import { Uid } from "@modules/Utils";
 
 const useNodeSpawner = () => {
-    const spawn = (nodeType: string, selected: boolean = false) => {
+    const spawn = (
+        nodeType: string,
+        selected: boolean = false,
+        overrideId: string | null = null,
+    ) => {
         const nodeDataDefaults = CustomNodesRepo.instance.getNode(nodeType);
+
         if (!nodeDataDefaults) return null;
 
-        const uid = Uid();
+        const uid = overrideId ?? Uid();
         const handles = nodeDataDefaults.handles
             ? nodeDataDefaults.handles.map((handle, index) => {
                   return {

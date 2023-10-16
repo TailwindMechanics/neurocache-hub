@@ -92,8 +92,10 @@ neurocache-hub
 │     │     ├─ index.ts
 │     │     └─ unauthenticated.tsx
 │     ├─ Colors
+│     │  ├─ colors.json
 │     │  ├─ colors.tsx
-│     │  └─ jsonColors.json
+│     │  └─ Internal
+│     │     └─ colors.ts
 │     ├─ Composer
 │     │  ├─ index.tsx
 │     │  ├─ Internal
@@ -138,6 +140,7 @@ neurocache-hub
 │     │  │  │  ├─ saveGraph.tsx
 │     │  │  │  └─ styleReactFlowLogo.tsx
 │     │  │  ├─ hooks
+│     │  │  │  ├─ useAuth.tsx
 │     │  │  │  ├─ useGraphSessionReady.tsx
 │     │  │  │  ├─ useGuestGraphReady.tsx
 │     │  │  │  ├─ useMouseCoords.tsx
@@ -180,7 +183,8 @@ neurocache-hub
 │        └─ Internal
 │           ├─ stringUtils.ts
 │           ├─ useCtrlS.tsx
-│           └─ useKeyPress.tsx
+│           ├─ useKeyPress.tsx
+│           └─ useStart.tsx
 ├─ tailwind.config.js
 ├─ tsconfig.json
 └─ __mocks__

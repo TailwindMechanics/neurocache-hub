@@ -3,14 +3,16 @@
 import { CustomNode } from "src/modules/Graph/types";
 
 import CommentPayload from "../nodes/commentPayload";
-import TextBox from "../nodes/inputBox";
 import MarkdownBox from "../nodes/markdownBox";
 import SendButton from "../nodes/sendOutputNode";
 import Spawner from "../nodes/spawnerNode";
+import TextBox from "../nodes/inputBox";
 import Splitter from "../nodes/splitterNode";
 import TestBox from "../nodes/testBox";
 
 import LoginNode from "src/modules/Auth/client/nodes/loginNode";
+
+// todo fix these imports, should not be reaching into another module
 import OpenAiModels from "src/modules/OpenAi/Internal/nodes/openAiModels";
 import OpenAiNode from "src/modules/OpenAi/Internal/nodes/openAiNode";
 

@@ -10,6 +10,7 @@ import {
     CSSProperties,
     ChangeEvent,
     ReactNode,
+    FormEvent,
 } from "react";
 
 export interface CodeBlockProps {
@@ -32,7 +33,7 @@ export interface ColouredLineProps {
 
 export interface AtomProps {
     onKeyDown?: KeyboardEventHandler<HTMLInputElement> | undefined;
-    onSubmit?: FormEventHandler<HTMLInputElement> | undefined;
+    onSubmit?: () => void;
     onFocus?: FocusEventHandler<HTMLInputElement> | undefined;
     onBlur?: FocusEventHandler<HTMLInputElement> | undefined;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;

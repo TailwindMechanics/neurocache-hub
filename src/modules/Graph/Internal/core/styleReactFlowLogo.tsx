@@ -13,6 +13,8 @@ export function StyleReactFlowLogo() {
             // Change the link color to suit your color scheme
             const linkElement = attributionElement.querySelector("a");
             if (linkElement) {
+                // todo set reactflow text if this ever goes public
+                // linkElement.textContent = "React Flow";
                 linkElement.textContent = "neurocache";
                 linkElement.style.color = "#f5cdc1";
                 linkElement.classList.add(

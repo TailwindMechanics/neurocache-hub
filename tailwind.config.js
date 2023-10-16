@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("./src/modules/Colors/colors.json");
 
+//
 const flatColors = {};
 Object.entries(colors).forEach(([colorName, colorValues]) => {
     Object.entries(colorValues).forEach(([variant, value]) => {
