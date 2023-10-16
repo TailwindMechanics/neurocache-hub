@@ -20,7 +20,7 @@ export const allNodeData = [
     {
         nodeType: "login",
         nodeName: "Login",
-        category: "Utils",
+        category: "Hidden",
         nodeId: "node_login_1",
         body: "This node logs a user in.",
         handles: [],
@@ -53,7 +53,7 @@ export const allNodeData = [
     {
         nodeType: "input_box",
         nodeName: "Text",
-        category: "Utils",
+        category: "Hidden",
         nodeId: "node_input_box_60e9b8e9a7f1d8c7c7f7",
         body: "This node displays input payload it receives.",
         nodePosition: { x: 50, y: 0 },
@@ -161,7 +161,7 @@ export const allNodeData = [
     {
         nodeType: "test_box",
         nodeName: "Test",
-        category: "Unhidden",
+        category: "Hidden",
         nodeId: "test_box_1",
         body: "This is for testing.",
         handles: [
@@ -178,7 +178,7 @@ export const allNodeData = [
     {
         nodeType: "openai_models",
         nodeName: "Models",
-        category: "OpenAi",
+        category: "Hidden",
         nodeId: "openai_models_60e9b8e9a7f1d8c7gdw3",
         body: "This node returns the models.",
         handles: [

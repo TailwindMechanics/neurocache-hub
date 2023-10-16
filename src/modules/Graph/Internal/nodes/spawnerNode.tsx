@@ -6,6 +6,7 @@ import { useState } from "react";
 import React from "react";
 
 import NodeSelectionState from "../components/nodeSelectionState";
+import { removeSpawnerNode } from "../utils/spawnerNodeUtils";
 import { IsNullOrEmpty, UseKeyPress } from "@modules/Utils";
 import { deselectAllNodes } from "../utils/nodeUtils";
 import CustomNodesRepo from "../core/CustomNodesRepo";
@@ -64,9 +65,12 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
     const spawnNode = (nodeType: string) => {
         deselectAllNodes(reactFlowInstance.getNodes());
         const spawnedNode = nodeSpawner.spawn(nodeType, true);
-        if (spawnedNode) {
-            reactFlowInstance.addNodes(spawnedNode);
-        }
+        if (!spawnedNode) return;
+
+        spawnedNode.position = { x: props.xPos, y: props.yPos };
+        const nodes = reactFlowInstance.getNodes();
+        const filteredNodes = removeSpawnerNode(nodes);
+        reactFlowInstance.setNodes([...filteredNodes, spawnedNode]);
     };
 
     const onSelect = (node: CustomNode) => {
