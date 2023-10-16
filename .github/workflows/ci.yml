@@ -13,7 +13,7 @@ jobs:
 
         strategy:
             matrix:
-                node-version: [18.x]
+                node-version: [19.x]
 
         steps:
             - uses: actions/checkout@v2
@@ -21,9 +21,12 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
+
             - name: Install pnpm
               run: npm install -g pnpm
+
             - name: Log pnpm version
               run: npx pnpm --version
+
             - name: Install dependencies
               run: npx pnpm install
