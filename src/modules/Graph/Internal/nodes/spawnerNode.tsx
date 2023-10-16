@@ -9,8 +9,8 @@ import NodeSelectionState from "../components/nodeSelectionState";
 import { removeSpawnerNode } from "../utils/spawnerNodeUtils";
 import { IsNullOrEmpty, UseKeyPress } from "@modules/Utils";
 import { deselectAllNodes } from "../utils/nodeUtils";
-import CustomNodesRepo from "../core/CustomNodesRepo";
 import useNodeSpawner from "../hooks/useNodeSpawner";
+import CustomNodesRepo from "../../External/CustomNodesRepo";
 import { CustomNode } from "../../types";
 import {
     ContentPreset,

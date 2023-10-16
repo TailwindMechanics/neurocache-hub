@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { NodeProps } from "reactflow";
 
 import NodeSelectionState from "../components/nodeSelectionState";
-import CustomNodesRepo from "../core/CustomNodesRepo";
 import { useNodeFlow } from "../hooks/useNodeFlow";
 import DrawHandle from "../components/drawHandle";
 import { CustomNode } from "../../types";

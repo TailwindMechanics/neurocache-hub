@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("./src/modules/Colors/colors.json");
 
-//
 const flatColors = {};
 Object.entries(colors).forEach(([colorName, colorValues]) => {
     Object.entries(colorValues).forEach(([variant, value]) => {
@@ -28,10 +27,10 @@ for (let colorName in flatColors) {
 }
 
 module.exports = {
-    purge: ["./src/**/*.{js,ts,jsx,tsx}"],
     darkMode: "class",
     mode: "jit",
     content: [
+        "./src/**/*.{js,ts,jsx,tsx}",
         "./node_modules/flowbite-react/**/*.js",
         "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/components/**/*.{js,ts,jsx,tsx,mdx}",

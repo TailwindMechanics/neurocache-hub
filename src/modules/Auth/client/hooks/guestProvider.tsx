@@ -4,7 +4,8 @@
 
 import { ReactFlowProvider } from "reactflow";
 import React from "react";
-import GuestCanvas from "src/modules/Graph/Internal/core/guestCanvas";
+
+import { GuestCanvas } from "@modules/Graph";
 
 const GuestProvider: React.FC = () => {
     return (

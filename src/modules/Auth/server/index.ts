@@ -1,4 +1,10 @@
 //path: src\modules\Auth\server\index.ts
 
-export { default as Unauthenticated } from "./unauthenticated";
-export { default as Authenticated } from "./authenticated";
+// path: src\modules\Auth\server\index.ts
+
+"use server";
+
+export const authenticated = async () =>
+    (await import("./authenticated")).default;
+export const unauthenticated = async () =>
+    (await import("./unauthenticated")).default;

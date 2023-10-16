@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { NodeProps } from "reactflow";
 
 import { CardPreset, Composer, InputPreset } from "@modules/Composer";
-import NodeSelectionState from "../components/nodeSelectionState";
+import { NodeSelectionState } from "../components/nodeSelectionState";
 import { sendOutput } from "../utils/nodeFlowUtils";
 import { useNodeFlow } from "../hooks/useNodeFlow";
 import DrawHandle from "../components/drawHandle";
@@ -14,7 +14,7 @@ const Input = new Composer("CommentInput", InputPreset)
     .withRoundedButton()
     .build();
 
-const CommentPayload: React.FC<NodeProps> = (props: NodeProps) => {
+export const CommentPayload: React.FC<NodeProps> = (props: NodeProps) => {
     const [inputText, setInputText] = useState("");
     const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
     const nodeData = props.data as CustomNode;
@@ -62,5 +62,3 @@ const reflect_nodeData = {
     nodePosition: { x: 100, y: 0 },
     nodeComponent: CommentPayload,
 } as CustomNode;
-
-export default React.memo(CommentPayload);

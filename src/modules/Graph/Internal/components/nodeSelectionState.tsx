@@ -2,7 +2,7 @@
 
 import { useReactFlow } from "reactflow";
 
-const NodeSelectionState = (id: string) => {
+export const NodeSelectionState = (id: string) => {
     const flow = useReactFlow();
     const selectedElements = flow.getNodes().filter((node) => node.selected);
     const isSelected = selectedElements.some((element) => element.id === id);
@@ -12,5 +12,3 @@ const NodeSelectionState = (id: string) => {
 
     return selectedStyles;
 };
-
-export default NodeSelectionState;

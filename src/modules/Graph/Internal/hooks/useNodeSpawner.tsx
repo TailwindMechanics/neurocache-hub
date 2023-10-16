@@ -2,8 +2,8 @@
 
 import { Node } from "reactflow";
 
-import CustomNodesRepo from "../core/CustomNodesRepo";
 import { CustomNode, PositionId } from "../../types";
+import CustomNodesRepo from "../../External/CustomNodesRepo";
 import { Uid } from "@modules/Utils";
 
 const useNodeSpawner = () => {

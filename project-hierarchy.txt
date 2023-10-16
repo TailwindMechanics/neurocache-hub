@@ -2,6 +2,7 @@ neurocache-hub
 ├─ .dependencygraph
 │  └─ setting.json
 ├─ .editorconfig
+├─ .env.example
 ├─ .env.local
 ├─ .eslintignore
 ├─ .eslintrc.json
@@ -60,11 +61,6 @@ neurocache-hub
 ├─ src
 │  ├─ app
 │  │  ├─ api
-│  │  │  ├─ agent-graphs
-│  │  │  │  ├─ load
-│  │  │  │  │  └─ route.ts
-│  │  │  │  └─ save
-│  │  │  │     └─ route.ts
 │  │  │  ├─ auth
 │  │  │  │  └─ callback
 │  │  │  │     └─ route.ts
@@ -123,6 +119,9 @@ neurocache-hub
 │     │  │     └─ tabList.tsx
 │     │  └─ types.tsx
 │     ├─ Graph
+│     │  ├─ External
+│     │  │  ├─ allNodeData.tsx
+│     │  │  └─ CustomNodesRepo.tsx
 │     │  ├─ index.tsx
 │     │  ├─ Internal
 │     │  │  ├─ components
@@ -134,7 +133,6 @@ neurocache-hub
 │     │  │  │  └─ textBlockFormatter.tsx
 │     │  │  ├─ core
 │     │  │  │  ├─ connectionLine.tsx
-│     │  │  │  ├─ CustomNodesRepo.tsx
 │     │  │  │  ├─ edgeLine.tsx
 │     │  │  │  ├─ guestCanvas.tsx
 │     │  │  │  ├─ nodeEvents.tsx
@@ -161,7 +159,6 @@ neurocache-hub
 │     │  │  │  ├─ splitterNode.tsx
 │     │  │  │  └─ testBox.tsx
 │     │  │  ├─ reflection
-│     │  │  │  ├─ allNodeData.tsx
 │     │  │  │  └─ compileNodeData.js
 │     │  │  └─ utils
 │     │  │     ├─ mapOutputIds.ts

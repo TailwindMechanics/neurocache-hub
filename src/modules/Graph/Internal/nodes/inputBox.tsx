@@ -7,7 +7,6 @@ import React from "react";
 import { CardPreset, Composer, ContentPreset } from "@modules/Composer";
 import { sendOutput, extractInput } from "../utils/nodeFlowUtils";
 import NodeSelectionState from "../components/nodeSelectionState";
-import CustomNodesRepo from "../core/CustomNodesRepo";
 import { useNodeFlow } from "../hooks/useNodeFlow";
 import DrawHandle from "../components/drawHandle";
 import { CustomNode } from "../../types";

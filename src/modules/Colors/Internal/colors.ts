@@ -1,7 +1,6 @@
 //path: src\modules\Colors\Internal\colors.ts
 
-// eslint-disable-next-line
-import Colors from "./colors.json";
+import Colors from "../colors.json";
 
 const flatColors: { [key: string]: string } = {};
 

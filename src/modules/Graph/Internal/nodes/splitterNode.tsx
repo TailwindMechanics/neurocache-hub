@@ -5,7 +5,6 @@ import { NodeProps } from "reactflow";
 
 import NodeSelectionState from "../components/nodeSelectionState";
 import { Composer, ShellPreset } from "@modules/Composer";
-import CustomNodesRepo from "../core/CustomNodesRepo";
 import { MapOutputIds } from "../utils/mapOutputIds";
 import { useNodeFlow } from "../hooks/useNodeFlow";
 import DrawHandle from "../components/drawHandle";

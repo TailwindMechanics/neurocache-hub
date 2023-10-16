@@ -1,9 +1,9 @@
-//path: src\modules\Graph\Internal\core\CustomNodesRepo.tsx
+//path: src\modules\Graph\External\CustomNodesRepo.tsx
 
 import { NodeTypes } from "reactflow";
 
-import { allNodeData } from "../reflection/allNodeData";
-import { CustomNode } from "../../types";
+import { allNodeData } from "./allNodeData";
+import { CustomNode } from "../types";
 
 class CustomNodesRepo {
     private static _instance: CustomNodesRepo;

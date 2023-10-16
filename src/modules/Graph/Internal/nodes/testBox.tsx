@@ -5,7 +5,6 @@ import { useState } from "react";
 import React from "react";
 
 import NodeSelectionState from "../components/nodeSelectionState";
-import CustomNodesRepo from "../core/CustomNodesRepo";
 import { CustomNode, AgentGraph } from "../../types";
 import { useNodeFlow } from "../hooks/useNodeFlow";
 import DrawHandle from "../components/drawHandle";
