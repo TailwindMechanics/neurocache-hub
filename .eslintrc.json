@@ -1,13 +1,17 @@
 {
- "extends": [
-  "next/core-web-vitals",
-  "plugin:prettier/recommended",
-  "plugin:storybook/recommended"
- ],
- "plugins": [
-  "prettier"
- ],
- "rules": {
-  "prettier/prettier": "error"
- }
+    "extends": [
+        "next/core-web-vitals",
+        "plugin:prettier/recommended",
+        "plugin:storybook/recommended"
+    ],
+    "plugins": ["prettier", "import"],
+    "rules": {
+        "prettier/prettier": "error",
+        "no-restricted-imports": [
+            "warn",
+            {
+                "patterns": ["**/Internal/**"]
+            }
+        ]
+    }
 }

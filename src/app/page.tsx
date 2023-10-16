@@ -1,13 +1,21 @@
 //path: src\app\page.tsx
 
-"use client";
-
-import ReactFlowCanvas from "@src/components/react_flow/core/reactFlowCanvas";
-import { FC } from "react";
 import React from "react";
 
-const page: FC = () => {
-	return <ReactFlowCanvas />;
+import { AuthenticatedProvider, GuestProvider } from "@modules/Auth/client";
+import { Authenticated, Unauthenticated } from "@modules/Auth/server";
+
+const page = async () => {
+    return (
+        <>
+            <Authenticated>
+                <AuthenticatedProvider />
+            </Authenticated>
+            <Unauthenticated>
+                <GuestProvider />
+            </Unauthenticated>
+        </>
+    );
 };
 
 export default page;
