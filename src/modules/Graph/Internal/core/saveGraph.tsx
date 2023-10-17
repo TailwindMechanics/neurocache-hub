@@ -13,17 +13,15 @@ interface SaveGraphProps {
 }
 
 const SaveGraph: FC<SaveGraphProps> = (props) => {
-    const [statusText, setStatusText] = useState<string>("");
+    const [statusText, setStatusText] = useState<string>("not logged in");
     const reactFlowInstance = useReactFlow();
     const user = useAuth().user;
 
     useEffect(() => {
-        setStatusText(user?.email ?? "");
+        setStatusText(user?.email ?? "not logged in");
     }, [user]);
 
     UseCtrlS(async () => {
-        if (!user) return;
-
         setStatusText("saving...");
         saveGraph(
             reactFlowInstance.getNodes(),
@@ -33,7 +31,7 @@ const SaveGraph: FC<SaveGraphProps> = (props) => {
         );
 
         setTimeout(() => {
-            setStatusText(user.email ?? "");
+            setStatusText(user?.email ?? "not logged in");
         }, 1500);
     });
 

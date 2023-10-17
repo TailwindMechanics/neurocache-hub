@@ -15,12 +15,12 @@ const { Unauthenticated } = await import(
 export default async function Page() {
     return (
         <>
-            <Authenticated>
-                <AuthenticatedProvider />
+            <AuthenticatedProvider />
+            {/* <Authenticated>
             </Authenticated>
             <Unauthenticated>
                 <GuestProvider />
-            </Unauthenticated>
+            </Unauthenticated> */}
         </>
     );
 }
