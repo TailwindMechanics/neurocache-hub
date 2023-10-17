@@ -1,30 +1,36 @@
 //path: src\app\layout.tsx
 
-import { Analytics } from '@vercel/analytics/react';
-import { Inter } from 'next/font/google'
-import './globals.css'
+import { Analytics } from "@vercel/analytics/react";
+import { Inter } from "next/font/google";
+import "../app/globals.css";
 
-
+const tagLine = "Create and craft specialized AI Agents.";
 const title = "Neurocache";
-const tagLine = "Leverage the power of Neurocache Hub to create, customize, and hand-craft your own AI agents trained your way then deploy seamlessly using our lightweight Neurocache Api.";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
-	title: title,
-	description: tagLine,
-}
+    title: title,
+    description: tagLine,
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode; }) {
-	return <>
-		<html lang="en">
-			<head>
-				<title>{title}</title>
-				<meta name="description" content={metadata.description} />
-			</head>
-			<body className={`${inter.className} dark`}>
-				{children}
-				<Analytics />
-			</body>
-		</html>
-	</>
+export default function RootLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    return (
+        <>
+            <html lang="en">
+                <head>
+                    <title>{title}</title>
+                    <meta name="description" content="{metadata.description}" />
+                    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+                </head>
+                <body className={`${inter.className} dark`}>
+                    {children}
+                    <Analytics debug={false} />
+                </body>
+            </html>
+        </>
+    );
 }

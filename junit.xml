@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="16" failures="0" errors="0" time="3.478">
+  <testsuite name="TypographyBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="1.418" tests="1">
+    <testcase classname="TypographyBuilder adds typography styles correctly" name="TypographyBuilder adds typography styles correctly" time="0.043">
+    </testcase>
+  </testsuite>
+  <testsuite name="StyleBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="1.428" tests="1">
+    <testcase classname="StyleBuilder adds styles correctly" name="StyleBuilder adds styles correctly" time="0.041">
+    </testcase>
+  </testsuite>
+  <testsuite name="ButtonComponent" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="1.501" tests="2">
+    <testcase classname="ButtonComponent renders without error" name="ButtonComponent renders without error" time="0.084">
+    </testcase>
+    <testcase classname="ButtonComponent has correct styles" name="ButtonComponent has correct styles" time="0.01">
+    </testcase>
+  </testsuite>
+  <testsuite name="ReactFlowBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="1.516" tests="4">
+    <testcase classname="ReactFlowBuilder adds top handle when withTopHandle is used" name="ReactFlowBuilder adds top handle when withTopHandle is used" time="0.04">
+    </testcase>
+    <testcase classname="ReactFlowBuilder adds bottom handle when withBottomHandle is used" name="ReactFlowBuilder adds bottom handle when withBottomHandle is used" time="0.008">
+    </testcase>
+    <testcase classname="ReactFlowBuilder adds NodeResizer when withResizer is used" name="ReactFlowBuilder adds NodeResizer when withResizer is used" time="0.013">
+    </testcase>
+    <testcase classname="ReactFlowBuilder buildComponent returns a valid React component" name="ReactFlowBuilder buildComponent returns a valid React component" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="BehaviourBuilder" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="1.569" tests="4">
+    <testcase classname="BehaviourBuilder invokes click handler correctly" name="BehaviourBuilder invokes click handler correctly" time="0.075">
+    </testcase>
+    <testcase classname="BehaviourBuilder prevents click handler when disabled" name="BehaviourBuilder prevents click handler when disabled" time="0.004">
+    </testcase>
+    <testcase classname="BehaviourBuilder invokes keyboard navigation correctly when enabled" name="BehaviourBuilder invokes keyboard navigation correctly when enabled" time="0.004">
+    </testcase>
+    <testcase classname="BehaviourBuilder prevents keyboard navigation when disabled" name="BehaviourBuilder prevents keyboard navigation when disabled" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="Storyshots" errors="0" failures="0" skipped="0" timestamp="2023-07-24T18:54:55" time="2.19" tests="4">
+    <testcase classname="Storyshots Buttons/ButtonComponent Overt" name="Storyshots Buttons/ButtonComponent Overt" time="0.016">
+    </testcase>
+    <testcase classname="Storyshots Buttons/ButtonComponent Calm" name="Storyshots Buttons/ButtonComponent Calm" time="0.002">
+    </testcase>
+    <testcase classname="Storyshots Buttons/ButtonComponent Alert" name="Storyshots Buttons/ButtonComponent Alert" time="0.002">
+    </testcase>
+    <testcase classname="Storyshots Buttons/ButtonComponent Subtle" name="Storyshots Buttons/ButtonComponent Subtle" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>

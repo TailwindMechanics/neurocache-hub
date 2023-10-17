@@ -1,15 +1,43 @@
 neurocache-hub
-├─ .env.development.local
+├─ .dependencygraph
+│  └─ setting.json
+├─ .editorconfig
+├─ .env.example
+├─ .env.local
 ├─ .eslintignore
 ├─ .eslintrc.json
+├─ .github
+│  └─ workflows
+│     └─ ci.yml
 ├─ .gitignore
-├─ .vercel
-│  ├─ project.json
-│  └─ README.txt
+├─ .jest-test-results.json
+├─ .prettierignore
+├─ .prettierrc
+├─ .storybook
+│  ├─ favicon.png
+│  ├─ main.js
+│  ├─ manager-head.html
+│  └─ preview.js
+├─ .swc
+│  └─ plugins
+│     └─ v7_windows_x86_64_0.97.9
 ├─ .vscode
 │  ├─ settings.json
 │  └─ tasks.json
 ├─ autoCommentPath.js
+├─ docs
+│  ├─ demo
+│  │  └─ demo.md
+│  ├─ stories
+│  │  ├─ apiStory.md
+│  │  └─ hubStory.md
+│  └─ templates
+│     ├─ template.stories.tsx.md
+│     └─ template.test.tsx.md
+├─ jest.config.js
+├─ jest.setup.js
+├─ junit.xml
+├─ middleware.ts
 ├─ next-env.d.ts
 ├─ next.config.js
 ├─ package.json
@@ -17,147 +45,145 @@ neurocache-hub
 ├─ postcss.config.js
 ├─ project-hierarchy.txt
 ├─ public
-│  ├─ favicon.ico
+│  ├─ favicon.svg
 │  ├─ images
 │  │  ├─ bird80px.png
 │  │  ├─ neurocache.png
-│  │  └─ users
-│  │     ├─ bonnie-green-2x.png
-│  │     ├─ bonnie-green.png
-│  │     ├─ helene-engels.png
-│  │     ├─ jese-leos-2x.png
-│  │     ├─ jese-leos.png
-│  │     ├─ joseph-mcfall.png
-│  │     ├─ lana-byrd.png
-│  │     ├─ leslie-livingston.png
-│  │     ├─ michael-gough.png
-│  │     ├─ neil-sims.png
-│  │     ├─ robert-brown.png
-│  │     ├─ roberta-casas-2x.png
-│  │     ├─ roberta-casas.png
-│  │     └─ thomas-lean.png
+│  │  └─ openai.svg
 │  ├─ robots.txt
 │  └─ textures
 │     ├─ grid-texture.png
 │     ├─ terrain-normal.jpg
 │     └─ terrain-roughness.jpg
 ├─ README.md
+├─ root
+├─ rootGrouper.js
 ├─ src
 │  ├─ app
-│  │  ├─ agents
-│  │  │  └─ page.tsx
 │  │  ├─ api
-│  │  │  └─ book-library
-│  │  │     ├─ add
+│  │  │  ├─ auth
+│  │  │  │  └─ callback
+│  │  │  │     └─ route.ts
+│  │  │  └─ open-ai
+│  │  │     ├─ chat
 │  │  │     │  └─ route.ts
-│  │  │     └─ get-by-id
+│  │  │     └─ models
 │  │  │        └─ route.ts
-│  │  ├─ chat
-│  │  │  └─ page.tsx
-│  │  ├─ docs
-│  │  │  └─ page.tsx
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
-│  │  ├─ manage-api
-│  │  │  └─ page.tsx
-│  │  ├─ page.tsx
-│  │  └─ profile
-│  │     └─ page.tsx
-│  ├─ components
-│  │  ├─ charts
-│  │  │  ├─ acquisitionChart.tsx
-│  │  │  ├─ bubbleChart.tsx
-│  │  │  ├─ newProductsChart.tsx
-│  │  │  ├─ salesChart.tsx
-│  │  │  ├─ userSignupsChart.tsx
-│  │  │  └─ visitorsChart.tsx
-│  │  ├─ chat
-│  │  │  ├─ autoResizingTextArea.tsx
-│  │  │  ├─ chatHistory.tsx
-│  │  │  ├─ chatInput.tsx
-│  │  │  └─ messageBox.tsx
-│  │  ├─ dashboard
-│  │  │  ├─ acquisitionOverview.tsx
-│  │  │  ├─ dashboard.tsx
-│  │  │  ├─ datepicker.tsx
-│  │  │  ├─ latestCustomers.tsx
-│  │  │  ├─ newProductsThisWeek.tsx
-│  │  │  ├─ salesThisWeek.tsx
-│  │  │  ├─ sessionsByCountry.tsx
-│  │  │  ├─ transactions.tsx
-│  │  │  ├─ userSignupsThisWeek.tsx
-│  │  │  └─ visitorsThisWeek.tsx
-│  │  ├─ docs
-│  │  │  ├─ docsBlock.tsx
-│  │  │  └─ docSection.tsx
-│  │  ├─ drawer
-│  │  │  ├─ profileDrawer.tsx
-│  │  │  ├─ sideDrawer.tsx
-│  │  │  └─ signupDrawer.tsx
-│  │  ├─ generic
-│  │  │  ├─ block.tsx
-│  │  │  ├─ btn.tsx
-│  │  │  ├─ dataTable.tsx
-│  │  │  ├─ divider.tsx
-│  │  │  ├─ livePanel.tsx
-│  │  │  ├─ loadingSpinner.tsx
-│  │  │  ├─ loggedInRedirect.tsx
-│  │  │  ├─ loggedOutRedirect.tsx
-│  │  │  ├─ loginForm.tsx
-│  │  │  ├─ modal.tsx
-│  │  │  ├─ redirectToDashboard.tsx
-│  │  │  ├─ redirectToLanding.tsx
-│  │  │  ├─ routeGuard.tsx
-│  │  │  ├─ signedIn.tsx
-│  │  │  ├─ signedOut.tsx
-│  │  │  ├─ uiCanvas.tsx
-│  │  │  └─ userBadge.tsx
-│  │  └─ hub
-│  │     ├─ header.tsx
-│  │     ├─ hubLayout.tsx
-│  │     ├─ leftSideBar.tsx
-│  │     ├─ mainContent.tsx
-│  │     └─ menuItem.tsx
-│  ├─ data
-│  │  ├─ colors.json
-│  │  ├─ content.json
-│  │  ├─ docs.json
-│  │  ├─ icons.tsx
-│  │  └─ shorthand.tsx
-│  ├─ lib
-│  │  └─ supabase.ts
-│  ├─ stores
-│  │  ├─ ChannelStore.ts
-│  │  ├─ DrawerStore.ts
-│  │  ├─ index.ts
-│  │  ├─ MessageStore.ts
-│  │  ├─ SidebarStore.ts
-│  │  └─ UserStore.ts
-│  ├─ threeComponents
-│  │  ├─ cameraLook.tsx
-│  │  ├─ cameraSetup.tsx
-│  │  ├─ freeFlyControls.tsx
-│  │  ├─ geometry
-│  │  │  ├─ planeGeo.tsx
-│  │  │  └─ road.tsx
-│  │  ├─ materials
-│  │  │  ├─ mappedMetalMat.tsx
-│  │  │  └─ metalMat.tsx
-│  │  ├─ setBgColour.tsx
-│  │  ├─ threeCanvas.tsx
-│  │  ├─ virtualBackground
-│  │  │  ├─ building.tsx
-│  │  │  ├─ buildings.tsx
-│  │  │  ├─ cityBackground.tsx
-│  │  │  ├─ lights.tsx
-│  │  │  └─ test.md
-│  │  └─ wasdControls.ts
-│  ├─ types
-│  │  ├─ declarations.d.ts
-│  │  └─ index.ts
-│  └─ utils
-│     ├─ globalConstantUtil.ts
-│     ├─ mathUtils.ts
-│     └─ path.ts
+│  │  └─ page.tsx
+│  └─ modules
+│     ├─ Auth
+│     │  ├─ External
+│     │  │  └─ server
+│     │  │     ├─ authenticated.tsx
+│     │  │     └─ unauthenticated.tsx
+│     │  ├─ index.tsx
+│     │  └─ Internal
+│     │     └─ client
+│     │        ├─ hooks
+│     │        │  ├─ useLoggedIn.tsx
+│     │        │  └─ useLoggedOut.tsx
+│     │        └─ nodes
+│     │           └─ loginNode.tsx
+│     ├─ Colors
+│     │  ├─ colors.json
+│     │  └─ colors.tsx
+│     ├─ Composer
+│     │  ├─ index.tsx
+│     │  ├─ Internal
+│     │  │  ├─ atoms
+│     │  │  │  ├─ button.tsx
+│     │  │  │  ├─ card.tsx
+│     │  │  │  ├─ comboInput.tsx
+│     │  │  │  ├─ div.tsx
+│     │  │  │  ├─ form.tsx
+│     │  │  │  ├─ input.tsx
+│     │  │  │  ├─ tab.tsx
+│     │  │  │  └─ tabList.tsx
+│     │  │  ├─ components
+│     │  │  │  └─ ComponentBuilder.tsx
+│     │  │  └─ presets
+│     │  │     ├─ button.tsx
+│     │  │     ├─ card.tsx
+│     │  │     ├─ comboInput.tsx
+│     │  │     ├─ content.tsx
+│     │  │     ├─ form.tsx
+│     │  │     ├─ input.tsx
+│     │  │     ├─ prose.tsx
+│     │  │     ├─ shell.tsx
+│     │  │     ├─ tab.tsx
+│     │  │     └─ tabList.tsx
+│     │  └─ types.tsx
+│     ├─ Graph
+│     │  ├─ External
+│     │  │  ├─ allNodeData.tsx
+│     │  │  └─ CustomNodesRepo.tsx
+│     │  ├─ index.tsx
+│     │  ├─ Internal
+│     │  │  ├─ components
+│     │  │  │  ├─ codeBlock.tsx
+│     │  │  │  ├─ colouredLine.tsx
+│     │  │  │  ├─ drawHandle.tsx
+│     │  │  │  ├─ nodeSelectionState.tsx
+│     │  │  │  ├─ renderCodeblocks.tsx
+│     │  │  │  └─ textBlockFormatter.tsx
+│     │  │  ├─ core
+│     │  │  │  ├─ connectionLine.tsx
+│     │  │  │  ├─ edgeLine.tsx
+│     │  │  │  ├─ guestCanvas.tsx
+│     │  │  │  ├─ nodeEvents.tsx
+│     │  │  │  ├─ nodeSerializer.tsx
+│     │  │  │  ├─ reactFlowCanvas.tsx
+│     │  │  │  ├─ reactflowConfig.ts
+│     │  │  │  ├─ saveGraph.tsx
+│     │  │  │  └─ styleReactFlowLogo.tsx
+│     │  │  ├─ hooks
+│     │  │  │  ├─ useAuth.tsx
+│     │  │  │  ├─ useMouseCoords.tsx
+│     │  │  │  ├─ useNodeFlow.tsx
+│     │  │  │  ├─ useNodeHandle.tsx
+│     │  │  │  └─ useNodeSpawner.tsx
+│     │  │  ├─ nodes
+│     │  │  │  ├─ commentPayload.tsx
+│     │  │  │  ├─ inputBox.tsx
+│     │  │  │  ├─ markdownBox.tsx
+│     │  │  │  ├─ sendOutputNode.tsx
+│     │  │  │  ├─ spawnerNode.tsx
+│     │  │  │  ├─ splitterNode.tsx
+│     │  │  │  └─ testBox.tsx
+│     │  │  ├─ providers
+│     │  │  │  ├─ authenticatedProvider.tsx
+│     │  │  │  └─ guestProvider.tsx
+│     │  │  ├─ reflection
+│     │  │  │  └─ compileNodeData.js
+│     │  │  └─ utils
+│     │  │     ├─ mapOutputIds.ts
+│     │  │     ├─ nodeFlowUtils.ts
+│     │  │     ├─ nodeUtils.ts
+│     │  │     └─ spawnerNodeUtils.ts
+│     │  └─ types.tsx
+│     ├─ Icons
+│     │  ├─ External
+│     │  │  └─ icons.tsx
+│     │  └─ index.tsx
+│     ├─ OpenAi
+│     │  ├─ index.tsx
+│     │  ├─ Internal
+│     │  │  ├─ hooks
+│     │  │  │  └─ useOpenAI.tsx
+│     │  │  └─ nodes
+│     │  │     ├─ openAiModels.tsx
+│     │  │     └─ openAiNode.tsx
+│     │  └─ types.tsx
+│     └─ Utils
+│        ├─ index.tsx
+│        └─ Internal
+│           ├─ stringUtils.ts
+│           ├─ useCtrlS.tsx
+│           ├─ useKeyPress.tsx
+│           └─ useStart.tsx
 ├─ tailwind.config.js
-└─ tsconfig.json
+├─ tsconfig.json
+└─ __mocks__
+   └─ framer-motion.js

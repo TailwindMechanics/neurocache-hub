@@ -1,26 +1,26 @@
 //path: src\app\page.tsx
 
-"use client"
+"use server";
 
-import Dashboard from '@/components/dashboard/dashboard';
-import LoginForm from '@/components/generic/loginForm';
-import HubLayout from '@/components/hub/hubLayout';
-import { storesContext } from '@/stores';
-import { FC, useContext } from 'react';
-import { observer } from 'mobx-react';
+import React from "react";
 
+import { AuthenticatedProvider, GuestProvider } from "@modules/Graph";
+const { Authenticated } = await import(
+    "@modules/Auth/External/server/authenticated"
+);
+const { Unauthenticated } = await import(
+    "@modules/Auth/External/server/unauthenticated"
+);
 
-const page: FC = observer(() => {
-	const { userStore } = useContext(storesContext);
-	return <>
-		<HubLayout headerText={'Dashboard'}>
-			{!userStore.isLoggedIn ? (
-				<LoginForm />
-			) : (
-				<Dashboard />
-			)}
-		</HubLayout>
-	</>
-});
-
-export default page;
+export default async function Page() {
+    return (
+        <>
+            <Authenticated>
+                <AuthenticatedProvider />
+            </Authenticated>
+            <Unauthenticated>
+                <GuestProvider />
+            </Unauthenticated>
+        </>
+    );
+}
