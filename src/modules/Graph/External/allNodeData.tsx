@@ -7,7 +7,7 @@ import { CustomNode } from "src/modules/Graph/types";
 import { LoginNode } from "@modules/Auth";
 import { CommentPayload } from "../Internal/nodes/commentPayload";
 import { InputBox } from "../Internal/nodes/inputBox";
-import { Splitter } from "@modules/Icons/External/icons";
+import { SplitterNode } from "../Internal/nodes/splitterNode";
 import { MarkdownBox } from "../Internal/nodes/markdownBox";
 import { TestBox } from "../Internal/nodes/testBox";
 import { SendOutputNode } from "../Internal/nodes/sendOutputNode";
@@ -27,7 +27,7 @@ export const allNodeData = [
     {
         nodeType: "comment_payload",
         nodeName: "Prefix Payload",
-        category: "Utils",
+        category: "Hidden",
         nodeId: "comment_payload_60e9b8e9a7f1d8c7dsa2",
         body: "This node prefixes the input payload.",
         handles: [
@@ -153,7 +153,7 @@ export const allNodeData = [
             },
         ],
         nodePosition: { x: 150, y: 0 },
-        nodeComponent: Splitter,
+        nodeComponent: SplitterNode,
     } as CustomNode,
     {
         nodeType: "test_box",

@@ -72,10 +72,12 @@ const LoginNode = React.memo((props: NodeProps) => {
         if (!user) {
             if (isSignUp) {
                 if (passwordText === confirmPasswordText) {
-                    const response = await supabase.auth.signUp({
+                    const response = await supabase.auth.admin.createUser({
                         email: emailText,
                         password: passwordText,
+                        email_confirm: true,
                     });
+
                     if (response.data.user) {
                         window.location.reload();
                     }
@@ -127,7 +129,9 @@ const LoginNode = React.memo((props: NodeProps) => {
                             <Tab.Panel>
                                 <FormPreset id="login_form" onSubmit={onSubmit}>
                                     <Input
+                                        type="email"
                                         id="login_email"
+                                        placeholder="email"
                                         className="font-mono text-xs"
                                         value={emailText}
                                         onChange={(e) =>
@@ -138,6 +142,7 @@ const LoginNode = React.memo((props: NodeProps) => {
                                         id="login_password"
                                         className="font-mono text-xs"
                                         value={passwordText}
+                                        placeholder="password"
                                         type="password"
                                         onChange={(e) =>
                                             setPasswordText(e.target.value)
@@ -154,6 +159,8 @@ const LoginNode = React.memo((props: NodeProps) => {
                                     onSubmit={onSubmit}>
                                     <Input
                                         id="signup_email"
+                                        type="email"
+                                        placeholder="email"
                                         className="font-mono text-xs"
                                         value={emailText}
                                         onChange={(e) =>
@@ -164,6 +171,7 @@ const LoginNode = React.memo((props: NodeProps) => {
                                         id="signup_password"
                                         className="font-mono text-xs"
                                         value={passwordText}
+                                        placeholder="password"
                                         type="password"
                                         onChange={(e) =>
                                             setPasswordText(e.target.value)
