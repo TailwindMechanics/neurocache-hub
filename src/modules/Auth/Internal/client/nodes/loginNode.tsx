@@ -72,12 +72,10 @@ const LoginNode = React.memo((props: NodeProps) => {
         if (!user) {
             if (isSignUp) {
                 if (passwordText === confirmPasswordText) {
-                    const response = await supabase.auth.admin.createUser({
+                    const response = await supabase.auth.signUp({
                         email: emailText,
                         password: passwordText,
-                        email_confirm: true,
                     });
-
                     if (response.data.user) {
                         window.location.reload();
                     }
