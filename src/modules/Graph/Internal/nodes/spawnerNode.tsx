@@ -1,16 +1,18 @@
 //path: src\modules\Graph\Internal\nodes\spawnerNode.tsx
 
+"use client";
+
 import { NodeProps, useReactFlow } from "reactflow";
 import { Combobox } from "@headlessui/react";
 import { useState } from "react";
 import React from "react";
 
-import NodeSelectionState from "../components/nodeSelectionState";
+import { NodeSelectionState } from "../components/nodeSelectionState";
+import { CustomNodesRepo } from "../../External/CustomNodesRepo";
 import { removeSpawnerNode } from "../utils/spawnerNodeUtils";
 import { IsNullOrEmpty, UseKeyPress } from "@modules/Utils";
+import { useNodeSpawner } from "../hooks/useNodeSpawner";
 import { deselectAllNodes } from "../utils/nodeUtils";
-import useNodeSpawner from "../hooks/useNodeSpawner";
-import CustomNodesRepo from "../../External/CustomNodesRepo";
 import { CustomNode } from "../../types";
 import {
     ContentPreset,
@@ -36,16 +38,17 @@ const nodeLabel = (node: CustomNode) => {
     return `${node.category}/${label}`;
 };
 
-const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
+const SpawnerNode = React.memo((props: NodeProps) => {
     const [query, setQuery] = useState("");
     const reactFlowInstance = useReactFlow();
-    const allNodes = CustomNodesRepo.instance.getUnhiddenNodes();
+    const allNodeTypes = CustomNodesRepo.instance.getUnhiddenNodes();
     const nodeSpawner = useNodeSpawner();
+    const allNodes = useReactFlow().getNodes();
 
     const filteredNodes =
         query === ""
-            ? allNodes
-            : allNodes.filter((node) =>
+            ? allNodeTypes
+            : allNodeTypes.filter((node) =>
                   nodeLabel(node)
                       .toLowerCase()
                       .replace(/\s+/g, "")
@@ -81,7 +84,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
 
     return (
         <>
-            <Card className={NodeSelectionState(props.id)}>
+            <Card className={NodeSelectionState(props.id, allNodes)}>
                 <Combobox>
                     <ComboPreset
                         placeholder="..."
@@ -108,7 +111,7 @@ const SpawnerNode: React.FC<NodeProps> = (props: NodeProps) => {
             </Card>
         </>
     );
-};
+});
 
 const reflect_nodeData = {
     nodeType: "spawner",
@@ -122,4 +125,6 @@ const reflect_nodeData = {
 } as CustomNode;
 
 export { reflect_nodeData as SpawnerNodeData };
-export default React.memo(SpawnerNode);
+
+SpawnerNode.displayName = "SpawnerNode";
+export { SpawnerNode };

@@ -1,14 +1,16 @@
 //path: src\modules\Graph\Internal\nodes\inputBox.tsx
 
+"use client";
+
+import { NodeProps, useReactFlow } from "reactflow";
 import { useEffect, useState } from "react";
-import { NodeProps } from "reactflow";
 import React from "react";
 
 import { CardPreset, Composer, ContentPreset } from "@modules/Composer";
+import { NodeSelectionState } from "../components/nodeSelectionState";
 import { sendOutput, extractInput } from "../utils/nodeFlowUtils";
-import NodeSelectionState from "../components/nodeSelectionState";
+import { DrawHandle } from "../components/drawHandle";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import DrawHandle from "../components/drawHandle";
 import { CustomNode } from "../../types";
 
 const Card = new Composer("InputCard", CardPreset)
@@ -22,10 +24,11 @@ const Content = new Composer("InputContent", ContentPreset)
     .withRoundedButton()
     .build();
 
-const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
+const InputBox = React.memo((props: NodeProps) => {
     const [inputBoxText, setinputLabelText] = useState("Text");
     const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
     const nodeData = props.data as CustomNode;
+    const allNodes = useReactFlow().getNodes();
 
     useEffect(() => {
         sendOutput(nodeData, nodeFlowValue, setNodeFlowValue);
@@ -35,15 +38,20 @@ const InputBox: React.FC<NodeProps> = (props: NodeProps) => {
 
     return (
         <>
-            {nodeData.handles?.map((handle, index) =>
-                DrawHandle({ handle, nodeData, index }),
-            )}
-            <Card className={NodeSelectionState(props.id)}>
+            {nodeData.handles?.map((handle, index) => (
+                <DrawHandle
+                    key={index}
+                    handle={handle}
+                    nodeData={nodeData}
+                    index={index}
+                />
+            ))}
+            <Card className={NodeSelectionState(props.id, allNodes)}>
                 <Content>{inputBoxText}</Content>
             </Card>
         </>
     );
-};
+});
 
 const reflect_nodeData = {
     nodeType: "input_box",
@@ -69,4 +77,5 @@ const reflect_nodeData = {
     nodeComponent: InputBox,
 } as CustomNode;
 
-export default React.memo(InputBox);
+InputBox.displayName = "InputBox";
+export { InputBox };

@@ -1,9 +1,9 @@
 //path: src\modules\Composer\Internal\presets\comboInput.tsx
 
-import ComponentBuilder from "../components/ComponentBuilder";
-import ComboAtom from "../atoms/comboInput";
+import { ComponentBuilder } from "../components/ComponentBuilder";
+import { ComboInput as ComboAtom } from "../atoms/comboInput";
 
-const ComboInput = new ComponentBuilder("ComboPreset", ComboAtom)
+export const ComboInput = new ComponentBuilder("ComboPreset", ComboAtom)
     .withStyle("focus:border-aqua-light")
     .withStyle("border-night-light")
     .withStyle("text-aqua-light")
@@ -18,5 +18,3 @@ const ComboInput = new ComponentBuilder("ComboPreset", ComboAtom)
     .withStyle("px-1")
     .withRoundedElement()
     .build();
-
-export default ComboInput;

@@ -1,15 +1,12 @@
 //path: src\modules\Graph\index.tsx
 
-export { NodeSelectionState as NodeSelection } from "./Internal/components/nodeSelectionState";
-export { useNodeFlow as UseNodeFlow } from "./Internal/hooks/useNodeFlow";
-export { default as FlowCanvas } from "./Internal/core/reactFlowCanvas";
-export { default as DrawHandle } from "./Internal/components/drawHandle";
-export { default as GuestCanvas } from "./Internal/core/guestCanvas";
+"use client";
 
-export { CommentPayload as CommentPayload } from "./Internal/nodes/commentPayload";
-export { default as TextBox } from "./Internal/nodes/inputBox";
-export { default as MarkdownBox } from "./Internal/nodes/markdownBox";
-export { default as SendButton } from "./Internal/nodes/sendOutputNode";
-export { default as Spawner } from "./Internal/nodes/spawnerNode";
-export { default as Splitter } from "./Internal/nodes/splitterNode";
-export { default as TestBox } from "./Internal/nodes/testBox";
+export { NodeSelectionState as NodeSelection } from "./Internal/components/nodeSelectionState";
+export { ReactFlowCanvas as FlowCanvas } from "./Internal/core/reactFlowCanvas";
+export { DrawHandle as DrawHandle } from "./Internal/components/drawHandle";
+export { useNodeFlow as UseNodeFlow } from "./Internal/hooks/useNodeFlow";
+export { GuestCanvas as GuestCanvas } from "./Internal/core/guestCanvas";
+
+export { AuthenticatedProvider as AuthenticatedProvider } from "./Internal/providers/authenticatedProvider";
+export { GuestProvider as GuestProvider } from "./Internal/providers/guestProvider";

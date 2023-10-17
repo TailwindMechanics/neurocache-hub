@@ -1,11 +1,11 @@
 //path: src\modules\Graph\Internal\core\edgeLine.tsx
 
-import { AnimationDefinition, useAnimation } from "framer-motion";
+import { useAnimation } from "framer-motion";
 import { EdgeProps } from "reactflow";
 import React, { FC } from "react";
 
-import ColouredLine from "../components/colouredLine";
-import useNodeHandle from "../hooks/useNodeHandle";
+import { ColouredLine } from "../components/colouredLine";
+import { useNodeHandle } from "../hooks/useNodeHandle";
 
 // const animation = {
 //     strokeDashoffset: [0, 100],

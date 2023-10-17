@@ -5,7 +5,7 @@ import React, { FC } from "react";
 import { IsNullOrEmpty } from "@modules/Utils";
 import { AtomProps } from "../../types";
 
-export default class ComponentBuilder {
+export class ComponentBuilder {
     private dataProps: { [key: string]: string | boolean | number } = {};
     private styles: string[] = [];
     private node: FC<AtomProps>;
@@ -69,7 +69,7 @@ export default class ComponentBuilder {
 
     build(): FC<AtomProps> {
         const styles = this.styles.join(" ");
-        const Component: FC<AtomProps> = (props: AtomProps) => {
+        const Component = React.memo((props: AtomProps) => {
             let newClassName = `${props.className ?? ""} ${styles}`.trim();
             const newProps = {
                 ...props,
@@ -77,8 +77,7 @@ export default class ComponentBuilder {
                 ...this.dataProps,
             };
             return <this.node {...newProps}>{props.children}</this.node>;
-        };
-
+        });
         Component.displayName = this.displayName;
         return Component;
     }

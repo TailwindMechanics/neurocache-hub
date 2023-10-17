@@ -1,14 +1,16 @@
 //path: src\modules\Graph\Internal\nodes\markdownBox.tsx
 
-import React, { useEffect, useMemo, useState } from "react";
-import Markdown from "react-markdown";
-import { NodeProps } from "reactflow";
+"use client";
 
+import React, { useEffect, useMemo, useState } from "react";
+import { NodeProps, useReactFlow } from "reactflow";
+import Markdown from "react-markdown";
+
+import { NodeSelectionState } from "../components/nodeSelectionState";
 import { CardPreset, Composer, ProsePreset } from "@modules/Composer";
 import { RenderCodeblocks } from "../components/renderCodeblocks";
-import NodeSelectionState from "../components/nodeSelectionState";
+import { DrawHandle } from "../components/drawHandle";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import DrawHandle from "../components/drawHandle";
 import { IsNullOrEmpty } from "@modules/Utils";
 import { CustomNode } from "../../types";
 
@@ -22,10 +24,11 @@ const Prose = new Composer("MarkdownProse", ProsePreset)
     .withStyle("px-1")
     .build();
 
-const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
+const MarkdownBox = React.memo((props: NodeProps) => {
     const [markdownText, setMarkdownText] = useState("## *Markdown*");
     const { nodeFlowValue } = useNodeFlow();
     const nodeData = props.data as CustomNode;
+    const allNodes = useReactFlow().getNodes();
 
     useEffect(() => {
         const anyInputIncluded = nodeData.handles.some((input) => {
@@ -56,15 +59,20 @@ const MarkdownBox: React.FC<NodeProps> = (props: NodeProps) => {
 
     return (
         <>
-            {nodeData.handles?.map((handle, index) =>
-                DrawHandle({ handle, nodeData, index }),
-            )}
-            <Card className={NodeSelectionState(props.id)}>
+            {nodeData.handles?.map((handle, index) => (
+                <DrawHandle
+                    key={index}
+                    handle={handle}
+                    nodeData={nodeData}
+                    index={index}
+                />
+            ))}
+            <Card className={NodeSelectionState(props.id, allNodes)}>
                 <Prose>{memoizedMarkdown}</Prose>
             </Card>
         </>
     );
-};
+});
 
 const reflect_nodeData = {
     nodeType: "markdown_box",
@@ -90,4 +98,5 @@ const reflect_nodeData = {
     nodeComponent: MarkdownBox,
 } as CustomNode;
 
-export default React.memo(MarkdownBox);
+MarkdownBox.displayName = "MarkdownBox";
+export { MarkdownBox };

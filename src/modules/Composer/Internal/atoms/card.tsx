@@ -2,9 +2,9 @@
 
 import React, { FC } from "react";
 
-import ComponentBuilder from "../components/ComponentBuilder";
+import { ComponentBuilder } from "../components/ComponentBuilder";
 import { AtomProps } from "../../types";
-import DivAtom from "./div";
+import { Div as DivAtom } from "./div";
 
 const Root = new ComponentBuilder("CardAtom", DivAtom)
     .withStyle("-outline-offset-0.05rem")
@@ -17,12 +17,10 @@ const Root = new ComponentBuilder("CardAtom", DivAtom)
     .withShadow()
     .build();
 
-const Card: FC<AtomProps> = (props) => {
+export const Card: FC<AtomProps> = (props) => {
     return (
         <Root>
             <div className={props.className}>{props.children}</div>
         </Root>
     );
 };
-
-export default Card;

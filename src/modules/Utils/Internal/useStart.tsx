@@ -2,10 +2,8 @@
 
 import { useEffect } from "react";
 
-const useStart = (callback: () => void) => {
+export const useStart = (callback: () => void) => {
     useEffect(() => {
         callback();
     }, [callback]);
 };
-
-export default useStart;

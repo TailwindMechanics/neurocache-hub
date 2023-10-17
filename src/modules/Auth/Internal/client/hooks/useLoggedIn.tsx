@@ -1,4 +1,4 @@
-//path: src\modules\Auth\client\hooks\useLoggedIn.tsx
+//path: src\modules\Auth\Internal\client\hooks\useLoggedIn.tsx
 
 "use client";
 
@@ -9,7 +9,7 @@ import {
     User,
 } from "@supabase/auth-helpers-nextjs";
 
-const useLoggedIn = (onLoggedIn: (user: User) => void) => {
+export const useLoggedIn = (onLoggedIn: (user: User) => void) => {
     const [session, setSession] = useState<Session>();
     const supabase = createClientComponentClient();
 
@@ -47,5 +47,3 @@ const useLoggedIn = (onLoggedIn: (user: User) => void) => {
         };
     }, [onLoggedIn, session, supabase.auth]);
 };
-
-export default useLoggedIn;

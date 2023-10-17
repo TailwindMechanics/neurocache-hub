@@ -4,7 +4,7 @@ import React, { FC } from "react";
 
 import { AtomProps } from "../../types";
 
-const Div: FC<AtomProps> = (props) => {
+export const Div: FC<AtomProps> = (props) => {
     return (
         <>
             <div className={props.className} data-testid="div-atom" {...props}>
@@ -13,5 +13,3 @@ const Div: FC<AtomProps> = (props) => {
         </>
     );
 };
-
-export default Div;

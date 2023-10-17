@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import React, { FC } from "react";
 
 import { ColouredLineProps } from "../../../Composer/types";
-import Colors from "@modules/Colors/colors";
+import { Colors } from "@modules/Colors/colors";
 
-const ColouredLine: FC<ColouredLineProps> = (props) => {
+export const ColouredLine: FC<ColouredLineProps> = (props) => {
     const length = Math.sqrt(
         Math.pow(props.toX - props.fromX, 2) +
             Math.pow(props.toY - props.fromY, 2),
@@ -79,5 +79,3 @@ const ColouredLine: FC<ColouredLineProps> = (props) => {
         </g>
     );
 };
-
-export default ColouredLine;

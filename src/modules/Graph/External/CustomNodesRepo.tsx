@@ -45,4 +45,4 @@ class CustomNodesRepo {
     };
 }
 
-export default CustomNodesRepo;
+export { CustomNodesRepo };

@@ -5,7 +5,7 @@ import React, { FC } from "react";
 
 import { AtomProps } from "../../types";
 
-const Tab: FC<AtomProps> = (props) => {
+export const TabList: FC<AtomProps> = (props) => {
     return (
         <>
             <HeadlessTab.List className={props.className}>
@@ -14,5 +14,3 @@ const Tab: FC<AtomProps> = (props) => {
         </>
     );
 };
-
-export default Tab;

@@ -4,7 +4,7 @@ import React, { FC } from "react";
 
 import { AtomProps } from "../../types";
 
-const Input: FC<AtomProps> = (props) => {
+export const Input: FC<AtomProps> = (props) => {
     return (
         <input
             id={props.id}
@@ -15,5 +15,3 @@ const Input: FC<AtomProps> = (props) => {
         />
     );
 };
-
-export default Input;

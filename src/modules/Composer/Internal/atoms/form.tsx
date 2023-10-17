@@ -4,7 +4,7 @@ import { FC } from "react";
 
 import { AtomProps } from "../../types";
 
-const Form: FC<AtomProps> = (props) => {
+export const Form: FC<AtomProps> = (props) => {
     return (
         <form
             id={props.id}
@@ -19,5 +19,3 @@ const Form: FC<AtomProps> = (props) => {
         </form>
     );
 };
-
-export default Form;

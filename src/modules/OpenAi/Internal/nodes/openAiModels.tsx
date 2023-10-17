@@ -1,6 +1,8 @@
 //path: src\modules\OpenAi\Internal\nodes\openAiModels.tsx
 
-import { NodeProps } from "reactflow";
+"use client";
+
+import { NodeProps, useReactFlow } from "reactflow";
 import { useState } from "react";
 import React from "react";
 
@@ -28,7 +30,7 @@ const Button = new Composer("OpenAiModelsButton", ButtonPreset)
     .withRoundedButton()
     .build();
 
-const OpenAiModels: React.FC<NodeProps> = (props: NodeProps) => {
+const OpenAiModels = React.memo((props: NodeProps) => {
     const [isLoading, setIsLoading] = useState({
         loading: false,
         message: "idle",
@@ -38,6 +40,7 @@ const OpenAiModels: React.FC<NodeProps> = (props: NodeProps) => {
     const { setNodeFlowValue } = UseNodeFlow();
     const nodeData = props.data as CustomNode;
     const openAI = useOpenAI();
+    const allNodes = useReactFlow().getNodes();
 
     const onClick = async () => {
         setIsLoading({
@@ -73,16 +76,21 @@ const OpenAiModels: React.FC<NodeProps> = (props: NodeProps) => {
 
     return (
         <>
-            {nodeData.handles?.map((handle, index) =>
-                DrawHandle({ handle, nodeData, index }),
-            )}
-            <Card className={NodeSelection(props.id)}>
+            {nodeData.handles?.map((handle, index) => (
+                <DrawHandle
+                    key={index}
+                    handle={handle}
+                    nodeData={nodeData}
+                    index={index}
+                />
+            ))}
+            <Card className={NodeSelection(props.id, allNodes)}>
                 <Header>{isLoading.message}</Header>
                 <Button onClick={onClick}>Fetch Models</Button>
             </Card>
         </>
     );
-};
+});
 
 const reflect_nodeData = {
     nodeType: "openai_models",
@@ -101,4 +109,5 @@ const reflect_nodeData = {
     nodePosition: { x: 100, y: 0 },
 } as CustomNode;
 
-export default React.memo(OpenAiModels);
+OpenAiModels.displayName = "OpenAiModels";
+export { OpenAiModels };

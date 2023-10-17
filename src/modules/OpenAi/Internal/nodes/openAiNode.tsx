@@ -1,7 +1,9 @@
 //path: src\modules\OpenAi\Internal\nodes\openAiNode.tsx
 
+"use client";
+
+import { NodeProps, useReactFlow } from "reactflow";
 import React, { useEffect } from "react";
-import { NodeProps } from "reactflow";
 
 import { ContentPreset, CardPreset, Composer } from "src/modules/Composer";
 import { NodeSelection, UseNodeFlow, DrawHandle } from "src/modules/Graph";
@@ -14,10 +16,11 @@ const Content = new Composer("OpenAiNodeContent", ContentPreset)
     .withRoundedButton()
     .build();
 
-const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
+const OpenAiNode = React.memo((props: NodeProps) => {
     const { nodeFlowValue, setNodeFlowValue } = UseNodeFlow();
     const nodeData = props.data as CustomNode;
     const openAI = useOpenAI();
+    const allNodes = useReactFlow().getNodes();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -50,15 +53,20 @@ const OpenAiNode: React.FC<NodeProps> = (props: NodeProps) => {
 
     return (
         <>
-            {nodeData.handles?.map((handle, index) =>
-                DrawHandle({ handle, nodeData, index }),
-            )}
-            <CardPreset className={NodeSelection(props.id)}>
+            {nodeData.handles?.map((handle, index) => (
+                <DrawHandle
+                    key={index}
+                    handle={handle}
+                    nodeData={nodeData}
+                    index={index}
+                />
+            ))}
+            <CardPreset className={NodeSelection(props.id, allNodes)}>
                 <Content>{nodeData.nodeName}</Content>
             </CardPreset>
         </>
     );
-};
+});
 
 const reflect_nodeData = {
     nodeType: "open_ai",
@@ -83,4 +91,5 @@ const reflect_nodeData = {
     nodePosition: { x: 100, y: 0 },
 } as CustomNode;
 
-export default React.memo(OpenAiNode);
+OpenAiNode.displayName = "OpenAiNode";
+export { OpenAiNode };

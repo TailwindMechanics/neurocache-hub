@@ -1,9 +1,9 @@
 //path: src\modules\Composer\Internal\presets\prose.tsx
 
-import ComponentBuilder from "../components/ComponentBuilder";
-import DivAtom from "../atoms/div";
+import { ComponentBuilder } from "../components/ComponentBuilder";
+import { Div as DivAtom } from "../atoms/div";
 
-const Prose = new ComponentBuilder("ProsePreset", DivAtom)
+export const Prose = new ComponentBuilder("ProsePreset", DivAtom)
     .withStyle("prose-code:text-aqua-body")
     .withStyle("prose-h2:text-aqua-dark")
     .withStyle("prose-strong:text-aqua")
@@ -26,5 +26,3 @@ const Prose = new ComponentBuilder("ProsePreset", DivAtom)
     .withStyle("prose")
     .withRoundedContent()
     .build();
-
-export default Prose;

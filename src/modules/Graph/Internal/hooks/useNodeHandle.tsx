@@ -4,7 +4,7 @@ import { Node, XYPosition, useReactFlow } from "reactflow";
 
 import { CustomNode } from "../../types";
 
-const useNodeHandle = (handleId: string) => {
+export const useNodeHandle = (handleId: string) => {
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
 
@@ -43,5 +43,3 @@ const useNodeHandle = (handleId: string) => {
 
     return { handleData, handleXy };
 };
-
-export default useNodeHandle;

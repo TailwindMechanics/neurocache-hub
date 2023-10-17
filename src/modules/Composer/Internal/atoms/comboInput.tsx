@@ -5,7 +5,7 @@ import React, { FC } from "react";
 
 import { AtomProps } from "../../types";
 
-const ComboInput: FC<AtomProps> = (props) => {
+export const ComboInput: FC<AtomProps> = (props) => {
     return (
         <Combobox.Input
             type={props.type || "text"}
@@ -15,5 +15,3 @@ const ComboInput: FC<AtomProps> = (props) => {
         />
     );
 };
-
-export default ComboInput;

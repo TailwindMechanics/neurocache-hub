@@ -1,7 +1,8 @@
 //path: src\modules\Graph\Internal\components\renderCodeblocks.tsx
 
-import CodeBlock from "./codeBlock";
 import React from "react";
+
+import { CodeBlock } from "./codeBlock";
 
 interface CodeProps {
     inline?: boolean;
@@ -9,7 +10,7 @@ interface CodeProps {
     [key: string]: any;
 }
 
-export const RenderCodeblocks: React.FC<CodeProps> = (props) => {
+const RenderCodeblocks = React.memo((props: CodeProps) => {
     const match = /language-(\w+)/.exec(props.className ?? "");
     return !props.inline && match ? (
         <CodeBlock
@@ -20,4 +21,7 @@ export const RenderCodeblocks: React.FC<CodeProps> = (props) => {
     ) : (
         <code {...props}>{props.children}</code>
     );
-};
+});
+
+RenderCodeblocks.displayName = "RenderCodeblocks";
+export { RenderCodeblocks };

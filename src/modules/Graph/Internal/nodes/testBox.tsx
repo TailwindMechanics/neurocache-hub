@@ -1,13 +1,15 @@
 //path: src\modules\Graph\Internal\nodes\testBox.tsx
 
+"use client";
+
 import { NodeProps, useReactFlow } from "reactflow";
 import { useState } from "react";
 import React from "react";
 
-import NodeSelectionState from "../components/nodeSelectionState";
+import { NodeSelectionState } from "../components/nodeSelectionState";
+import { DrawHandle } from "../components/drawHandle";
 import { CustomNode, AgentGraph } from "../../types";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import DrawHandle from "../components/drawHandle";
 import {
     ContentPreset,
     ButtonPreset,
@@ -35,11 +37,10 @@ const Button = new Composer("TestBoxButton", ButtonPreset)
     .withRoundedElement()
     .build();
 
-const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
+const TestBox = React.memo((props: NodeProps) => {
     const { setNodeFlowValue } = useNodeFlow();
     const nodeData = props.data as CustomNode;
-    const reactFlowInstance = useReactFlow();
-    // const user = useUser();
+    const allNodes = useReactFlow().getNodes();
 
     const [isLoading, setIsLoading] = useState({
         loading: false,
@@ -107,10 +108,15 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
 
     return (
         <>
-            {nodeData.handles?.map((handle, index) =>
-                DrawHandle({ handle, nodeData, index }),
-            )}
-            <Card className={NodeSelectionState(props.id)}>
+            {nodeData.handles?.map((handle, index) => (
+                <DrawHandle
+                    key={index}
+                    handle={handle}
+                    nodeData={nodeData}
+                    index={index}
+                />
+            ))}
+            <Card className={NodeSelectionState(props.id, allNodes)}>
                 <Header>{isLoading.message}</Header>
                 <Button
                 // onClick={onClick}
@@ -121,7 +127,7 @@ const TestBox: React.FC<NodeProps> = (props: NodeProps) => {
             </Card>
         </>
     );
-};
+});
 
 const reflect_nodeData = {
     nodeType: "test_box",
@@ -140,4 +146,5 @@ const reflect_nodeData = {
     nodePosition: { x: 100, y: 0 },
 } as CustomNode;
 
-export default React.memo(TestBox);
+TestBox.displayName = "TestBox";
+export { TestBox };

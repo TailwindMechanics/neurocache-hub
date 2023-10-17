@@ -1,18 +1,18 @@
 //path: src\modules\Graph\Internal\core\guestCanvas.tsx
 
+"use client";
+
 import ReactFlow, { BackgroundVariant, Background } from "reactflow";
 import "reactflow/dist/style.css";
 import React from "react";
 
+import { LoginNode } from "@modules/Auth/Internal/client/nodes/loginNode";
 import { reactFlowSettingsProps } from "./reactflowConfig";
 import { StyleReactFlowLogo } from "./styleReactFlowLogo";
-import useNodeSpawner from "../hooks/useNodeSpawner";
-import LoginNode from "src/modules/Auth/client/nodes/loginNode";
-import Colors from "@modules/Colors/colors";
+import { useNodeSpawner } from "../hooks/useNodeSpawner";
+import { Colors } from "@modules/Colors/colors";
 
-const customNodeTypes = { login: LoginNode };
-
-const GuestCanvas: React.FC = () => {
+const GuestCanvas = React.memo(() => {
     const nodeSpawner = useNodeSpawner();
     StyleReactFlowLogo();
 
@@ -23,7 +23,7 @@ const GuestCanvas: React.FC = () => {
         <div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">
             <ReactFlow
                 nodes={[newLoginNode]}
-                nodeTypes={customNodeTypes}
+                nodeTypes={{ login: LoginNode }}
                 fitView={true}
                 {...reactFlowSettingsProps}>
                 <Background
@@ -33,6 +33,7 @@ const GuestCanvas: React.FC = () => {
             </ReactFlow>
         </div>
     );
-};
+});
 
-export default GuestCanvas;
+GuestCanvas.displayName = "GuestCanvas";
+export { GuestCanvas };

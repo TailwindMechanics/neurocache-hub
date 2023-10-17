@@ -1,7 +1,5 @@
 //path: src\modules\Graph\Internal\hooks\useAuth.tsx
 
-// path: src\modules\Auth\client\hooks\useAuth.tsx
-
 import { useState, useEffect, useCallback } from "react";
 import {
     createClientComponentClient,
@@ -10,7 +8,7 @@ import {
 
 type AuthError = Error | null;
 
-const useAuth = () => {
+export const useAuth = () => {
     const supabase = createClientComponentClient();
     const [user, setUser] = useState<User | null>(null);
     const [error, setError] = useState<AuthError>(null);
@@ -84,5 +82,3 @@ const useAuth = () => {
         signOut,
     };
 };
-
-export default useAuth;

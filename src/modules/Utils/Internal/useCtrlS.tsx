@@ -4,7 +4,7 @@
 
 import { useEffect } from "react";
 
-const useCtrlS = (callback: () => void) => {
+export const useCtrlS = (callback: () => void) => {
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.ctrlKey && event.key === "s") {
@@ -20,5 +20,3 @@ const useCtrlS = (callback: () => void) => {
         };
     }, [callback]);
 };
-
-export default useCtrlS;

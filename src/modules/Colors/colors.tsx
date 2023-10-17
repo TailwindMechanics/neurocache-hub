@@ -17,4 +17,4 @@ for (let colorName in flatColors) {
         delete flatColors[colorName];
     }
 }
-export default flatColors;
+export { flatColors as Colors };

@@ -1,11 +1,13 @@
 //path: src\modules\Graph\Internal\nodes\sendOutputNode.tsx
 
-import React, { useState } from "react";
-import { NodeProps } from "reactflow";
+"use client";
 
-import NodeSelectionState from "../components/nodeSelectionState";
+import { NodeProps, useReactFlow } from "reactflow";
+import React, { useState } from "react";
+
+import { NodeSelectionState } from "../components/nodeSelectionState";
+import { DrawHandle } from "../components/drawHandle";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import DrawHandle from "../components/drawHandle";
 import { CustomNode } from "../../types";
 import {
     ButtonPreset,
@@ -21,17 +23,23 @@ const Input = new Composer("SendOutputInput", InputPreset)
     .withRoundedElement()
     .build();
 
-const SendOutputNode: React.FC<NodeProps> = (props: NodeProps) => {
+const SendOutputNode = React.memo((props: NodeProps) => {
     const [inputText, setInputText] = useState("");
     const { setNodeFlowValue } = useNodeFlow();
     const nodeData = props.data as CustomNode;
+    const allNodes = useReactFlow().getNodes();
 
     return (
         <>
-            {nodeData.handles?.map((handle, index) =>
-                DrawHandle({ handle, nodeData, index }),
-            )}
-            <CardPreset className={NodeSelectionState(props.id)}>
+            {nodeData.handles?.map((handle, index) => (
+                <DrawHandle
+                    key={index}
+                    handle={handle}
+                    nodeData={nodeData}
+                    index={index}
+                />
+            ))}
+            <CardPreset className={NodeSelectionState(props.id, allNodes)}>
                 <Input
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
@@ -52,7 +60,7 @@ const SendOutputNode: React.FC<NodeProps> = (props: NodeProps) => {
             </CardPreset>
         </>
     );
-};
+});
 
 const reflect_nodeData = {
     nodeType: "send_output",
@@ -78,4 +86,5 @@ const reflect_nodeData = {
     nodeComponent: SendOutputNode,
 } as CustomNode;
 
-export default React.memo(SendOutputNode);
+SendOutputNode.displayName = "SendOutputNode";
+export { SendOutputNode };

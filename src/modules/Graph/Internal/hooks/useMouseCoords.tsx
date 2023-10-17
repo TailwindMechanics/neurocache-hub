@@ -3,7 +3,7 @@
 import { useReactFlow } from "reactflow";
 import { useRef } from "react";
 
-const useMouseCoords = () => {
+export const useMouseCoords = () => {
     const mouseCoordsRef = useRef({ x: 0, y: 0 });
     const reactFlowInstance = useReactFlow();
     const handleMouseMove = (event: React.MouseEvent) => {
@@ -17,5 +17,3 @@ const useMouseCoords = () => {
 
     return { mouseCoordsRef, handleMouseMove };
 };
-
-export default useMouseCoords;

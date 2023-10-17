@@ -1,9 +1,9 @@
 //path: src\modules\Composer\Internal\presets\content.tsx
 
-import ComponentBuilder from "../components/ComponentBuilder";
-import Div from "../atoms/div";
+import { ComponentBuilder } from "../components/ComponentBuilder";
+import { Div as DivAtom } from "../atoms/div";
 
-const Content = new ComponentBuilder("ContentPreset", Div)
+export const Content = new ComponentBuilder("ContentPreset", DivAtom)
     .withStyle("border-night-light")
     .withStyle("text-aqua-dark")
     .withStyle("bg-night-black")
@@ -12,5 +12,3 @@ const Content = new ComponentBuilder("ContentPreset", Div)
     .withStyle("overflow-auto")
     .withStyle("border")
     .build();
-
-export default Content;

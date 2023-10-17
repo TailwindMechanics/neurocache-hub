@@ -1,9 +1,9 @@
-//path: src\modules\Auth\client\nodes\loginNode.tsx
+//path: src\modules\Auth\Internal\client\nodes\loginNode.tsx
 
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { NodeProps } from "reactflow";
+import { NodeProps, useReactFlow } from "reactflow";
 import {
     createClientComponentClient,
     User,
@@ -45,13 +45,14 @@ const Content = new Composer("LoginContent", ContentPreset)
     .withRoundedElement()
     .build();
 
-const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
-    const [passwordText, setPasswordText] = useState("");
+const LoginNode = React.memo((props: NodeProps) => {
     const [confirmPasswordText, setConfirmPasswordText] = useState("");
+    const [passwordText, setPasswordText] = useState("");
     const [emailText, setEmailText] = useState("");
     const [isSignUp, setIsSignUp] = useState(false);
     const supabase = createClientComponentClient();
     const [user, setUser] = useState<User>();
+    const allNodes = useReactFlow().getNodes();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -104,7 +105,7 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
 
     return (
         <>
-            <Card className={NodeSelection(props.id)}>
+            <Card className={NodeSelection(props.id, allNodes)}>
                 {user ? (
                     <>
                         <Content>{user.email}</Content>
@@ -191,7 +192,7 @@ const LoginNode: React.FC<NodeProps> = (props: NodeProps) => {
             </Card>
         </>
     );
-};
+});
 
 const reflect_nodeData = {
     nodeType: "login",
@@ -204,4 +205,5 @@ const reflect_nodeData = {
     nodeComponent: LoginNode,
 } as CustomNode;
 
-export default React.memo(LoginNode);
+LoginNode.displayName = "LoginNode";
+export { LoginNode };

@@ -1,13 +1,13 @@
-//path: src\modules\Auth\client\hooks\guestProvider.tsx
+//path: src\modules\Graph\Internal\providers\guestProvider.tsx
 
 "use client";
 
 import { ReactFlowProvider } from "reactflow";
 import React from "react";
 
-import { GuestCanvas } from "@modules/Graph";
+import { GuestCanvas } from "../core/guestCanvas";
 
-const GuestProvider: React.FC = () => {
+const GuestProvider = React.memo(() => {
     return (
         <>
             <ReactFlowProvider>
@@ -15,6 +15,7 @@ const GuestProvider: React.FC = () => {
             </ReactFlowProvider>
         </>
     );
-};
+});
 
-export default GuestProvider;
+GuestProvider.displayName = "GuestProvider";
+export { GuestProvider };

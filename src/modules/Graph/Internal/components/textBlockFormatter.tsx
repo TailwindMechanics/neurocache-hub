@@ -11,7 +11,7 @@ type TextBlockFormatterProps = {
     className?: string;
 };
 
-const TextBlockFormatter: React.FC<TextBlockFormatterProps> = (props) => {
+const TextBlockFormatter = React.memo((props: TextBlockFormatterProps) => {
     const separator =
         props.separator instanceof RegExp
             ? props.separator
@@ -35,6 +35,7 @@ const TextBlockFormatter: React.FC<TextBlockFormatterProps> = (props) => {
             ))}
         </div>
     );
-};
+});
 
-export default React.memo(TextBlockFormatter);
+TextBlockFormatter.displayName = "TextBlockFormatter";
+export { TextBlockFormatter };

@@ -1,18 +1,17 @@
 //path: src\modules\Graph\External\allNodeData.tsx
 
+"use client";
+
+import { OpenAiModels, OpenAiNode } from "@modules/OpenAi";
 import { CustomNode } from "src/modules/Graph/types";
-
-import { CommentPayload } from "@modules/Graph";
-import { MarkdownBox } from "@modules/Graph";
-import { SendButton } from "@modules/Graph";
-import { Spawner } from "@modules/Graph";
-import { TextBox } from "@modules/Graph";
-import { Splitter } from "@modules/Graph";
-import { TestBox } from "@modules/Graph";
-
-import LoginNode from "src/modules/Auth/client/nodes/loginNode";
-import { OpenAiModels } from "@modules/OpenAi";
-import { OpenAiNode } from "@modules/OpenAi";
+import { LoginNode } from "@modules/Auth";
+import { CommentPayload } from "../Internal/nodes/commentPayload";
+import { InputBox } from "../Internal/nodes/inputBox";
+import { Splitter } from "@modules/Icons/External/icons";
+import { MarkdownBox } from "../Internal/nodes/markdownBox";
+import { TestBox } from "../Internal/nodes/testBox";
+import { SendOutputNode } from "../Internal/nodes/sendOutputNode";
+import { SpawnerNode } from "../Internal/nodes/spawnerNode";
 
 export const allNodeData = [
     {
@@ -69,7 +68,7 @@ export const allNodeData = [
                 angle: 90,
             },
         ],
-        nodeComponent: TextBox,
+        nodeComponent: InputBox,
     } as CustomNode,
     {
         nodeType: "markdown_box",
@@ -115,7 +114,7 @@ export const allNodeData = [
             },
         ],
         nodePosition: { x: 0, y: 0 },
-        nodeComponent: SendButton,
+        nodeComponent: SendOutputNode,
     } as CustomNode,
     {
         nodeType: "spawner",
@@ -125,7 +124,7 @@ export const allNodeData = [
         body: "This node spawns other nodes.",
         handles: [],
         nodePosition: { x: 200, y: 0 },
-        nodeComponent: Spawner,
+        nodeComponent: SpawnerNode,
     } as CustomNode,
     {
         nodeType: "splitter",

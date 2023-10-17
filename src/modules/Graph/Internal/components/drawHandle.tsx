@@ -1,8 +1,11 @@
 //path: src\modules\Graph\Internal\components\drawHandle.tsx
 
+"use client";
+
 import { Handle, Position, XYPosition, useReactFlow } from "reactflow";
 
 import { PositionId, CustomNode } from "../../types";
+import React from "react";
 
 interface DrawHandleProps {
     handle: PositionId;
@@ -53,4 +56,5 @@ const DrawHandle = (props: DrawHandleProps) => {
     );
 };
 
-export default DrawHandle;
+DrawHandle.displayName = "DrawHandle";
+export { DrawHandle };

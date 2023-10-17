@@ -5,7 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 
 import { AtomProps } from "../../types";
 
-const Button: FC<AtomProps> = (props) => {
+export const Button: FC<AtomProps> = (props) => {
     const controls = useAnimation();
     const isMounted = useRef(false);
 
@@ -30,5 +30,3 @@ const Button: FC<AtomProps> = (props) => {
         </motion.button>
     );
 };
-
-export default Button;

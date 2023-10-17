@@ -4,14 +4,13 @@
 
 import React from "react";
 
-import { AuthenticatedProvider, GuestProvider } from "@modules/Auth/client";
-
-const Authenticated = await import("@modules/Auth/server/authenticated").then(
-    (c) => c.default,
+import { AuthenticatedProvider, GuestProvider } from "@modules/Graph";
+const { Authenticated } = await import(
+    "@modules/Auth/External/server/authenticated"
 );
-const Unauthenticated = await import(
-    "@modules/Auth/server/unauthenticated"
-).then((c) => c.default);
+const { Unauthenticated } = await import(
+    "@modules/Auth/External/server/unauthenticated"
+);
 
 export default async function Page() {
     return (

@@ -74,24 +74,21 @@ neurocache-hub
 │  │  └─ page.tsx
 │  └─ modules
 │     ├─ Auth
-│     │  ├─ client
-│     │  │  ├─ hooks
-│     │  │  │  ├─ authenticatedProvider.tsx
-│     │  │  │  ├─ guestProvider.tsx
-│     │  │  │  ├─ useLoggedIn.tsx
-│     │  │  │  └─ useLoggedOut.tsx
-│     │  │  ├─ index.ts
-│     │  │  └─ nodes
-│     │  │     └─ loginNode.tsx
-│     │  └─ server
-│     │     ├─ authenticated.tsx
-│     │     ├─ index.ts
-│     │     └─ unauthenticated.tsx
+│     │  ├─ External
+│     │  │  └─ server
+│     │  │     ├─ authenticated.tsx
+│     │  │     └─ unauthenticated.tsx
+│     │  ├─ index.tsx
+│     │  └─ Internal
+│     │     └─ client
+│     │        ├─ hooks
+│     │        │  ├─ useLoggedIn.tsx
+│     │        │  └─ useLoggedOut.tsx
+│     │        └─ nodes
+│     │           └─ loginNode.tsx
 │     ├─ Colors
 │     │  ├─ colors.json
-│     │  ├─ colors.tsx
-│     │  └─ Internal
-│     │     └─ colors.ts
+│     │  └─ colors.tsx
 │     ├─ Composer
 │     │  ├─ index.tsx
 │     │  ├─ Internal
@@ -136,20 +133,17 @@ neurocache-hub
 │     │  │  │  ├─ edgeLine.tsx
 │     │  │  │  ├─ guestCanvas.tsx
 │     │  │  │  ├─ nodeEvents.tsx
-│     │  │  │  ├─ nodeSerializer.ts
+│     │  │  │  ├─ nodeSerializer.tsx
 │     │  │  │  ├─ reactFlowCanvas.tsx
 │     │  │  │  ├─ reactflowConfig.ts
 │     │  │  │  ├─ saveGraph.tsx
 │     │  │  │  └─ styleReactFlowLogo.tsx
 │     │  │  ├─ hooks
 │     │  │  │  ├─ useAuth.tsx
-│     │  │  │  ├─ useGraphSessionReady.tsx
-│     │  │  │  ├─ useGuestGraphReady.tsx
 │     │  │  │  ├─ useMouseCoords.tsx
 │     │  │  │  ├─ useNodeFlow.tsx
 │     │  │  │  ├─ useNodeHandle.tsx
-│     │  │  │  ├─ useNodeSpawner.tsx
-│     │  │  │  └─ useUserGraphReady.tsx
+│     │  │  │  └─ useNodeSpawner.tsx
 │     │  │  ├─ nodes
 │     │  │  │  ├─ commentPayload.tsx
 │     │  │  │  ├─ inputBox.tsx
@@ -158,6 +152,9 @@ neurocache-hub
 │     │  │  │  ├─ spawnerNode.tsx
 │     │  │  │  ├─ splitterNode.tsx
 │     │  │  │  └─ testBox.tsx
+│     │  │  ├─ providers
+│     │  │  │  ├─ authenticatedProvider.tsx
+│     │  │  │  └─ guestProvider.tsx
 │     │  │  ├─ reflection
 │     │  │  │  └─ compileNodeData.js
 │     │  │  └─ utils

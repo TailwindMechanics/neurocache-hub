@@ -2,12 +2,8 @@
 
 import { Splitter } from "./External/icons";
 
-interface Icons {
-    Splitter: typeof Splitter;
-}
-
-const IIcons: Icons = {
+const Icons = {
     Splitter: Splitter,
 };
 
-export default IIcons;
+export default Icons;

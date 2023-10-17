@@ -14,7 +14,7 @@ import ReactFlow, {
     Edge,
 } from "reactflow";
 
-import useNodeSpawner from "../hooks/useNodeSpawner";
+import { useNodeSpawner } from "../hooks/useNodeSpawner";
 import { UseKeyPress } from "@modules/Utils";
 
 type NodeEventsProps = {

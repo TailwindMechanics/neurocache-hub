@@ -1,4 +1,4 @@
-//path: src\modules\Auth\client\hooks\useLoggedOut.tsx
+//path: src\modules\Auth\Internal\client\hooks\useLoggedOut.tsx
 
 "use client";
 
@@ -8,7 +8,7 @@ import {
     Session,
 } from "@supabase/auth-helpers-nextjs";
 
-const useLoggedOut = (onLoggedOut: () => void) => {
+export const useLoggedOut = (onLoggedOut: () => void) => {
     const [session, setSession] = useState<Session>();
     const supabase = createClientComponentClient();
 
@@ -46,5 +46,3 @@ const useLoggedOut = (onLoggedOut: () => void) => {
         };
     }, [onLoggedOut, session, supabase.auth]);
 };
-
-export default useLoggedOut;

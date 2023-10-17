@@ -2,11 +2,11 @@
 
 import { Node } from "reactflow";
 
+import { CustomNodesRepo } from "../../External/CustomNodesRepo";
 import { CustomNode, PositionId } from "../../types";
-import CustomNodesRepo from "../../External/CustomNodesRepo";
 import { Uid } from "@modules/Utils";
 
-const useNodeSpawner = () => {
+export const useNodeSpawner = () => {
     const spawn = (
         nodeType: string,
         selected: boolean = false,
@@ -56,5 +56,3 @@ const useNodeSpawner = () => {
         despawn,
     };
 };
-
-export default useNodeSpawner;

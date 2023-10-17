@@ -4,8 +4,8 @@ import { Viewport, useReactFlow } from "reactflow";
 import { FC, useState, useEffect } from "react";
 
 import { saveGraph } from "./nodeSerializer";
+import { useAuth } from "../hooks/useAuth";
 import { UseCtrlS } from "@modules/Utils";
-import useAuth from "../hooks/useAuth";
 
 interface SaveGraphProps {
     flowKey: string;

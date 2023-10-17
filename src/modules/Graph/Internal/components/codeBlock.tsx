@@ -7,7 +7,7 @@ import React from "react";
 
 import { CodeBlockProps } from "../../../Composer/types";
 
-const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
+const CodeBlock = React.memo(({ language, value }: CodeBlockProps) => {
     const [isCopied, setIsCopied] = useState(false);
 
     const onClick = () => {
@@ -37,6 +37,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
             </SyntaxHighlighter>
         </div>
     );
-};
+});
 
-export default CodeBlock;
+CodeBlock.displayName = "CodeBlock";
+export { CodeBlock };

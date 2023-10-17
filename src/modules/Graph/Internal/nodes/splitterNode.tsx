@@ -1,23 +1,26 @@
 //path: src\modules\Graph\Internal\nodes\splitterNode.tsx
 
-import React, { useEffect } from "react";
-import { NodeProps } from "reactflow";
+"use client";
 
-import NodeSelectionState from "../components/nodeSelectionState";
+import { NodeProps, useReactFlow } from "reactflow";
+import React, { useEffect } from "react";
+
+import { NodeSelectionState } from "../components/nodeSelectionState";
 import { Composer, ShellPreset } from "@modules/Composer";
+import { DrawHandle } from "../components/drawHandle";
 import { MapOutputIds } from "../utils/mapOutputIds";
 import { useNodeFlow } from "../hooks/useNodeFlow";
-import DrawHandle from "../components/drawHandle";
 import { CustomNode } from "../../types";
-import IIcons from "@modules/Icons";
+import Icons from "@modules/Icons";
 
 const Card = new Composer("SplitterCard", ShellPreset)
     .withStyle("px-1")
     .build();
 
-const SplitterNode: React.FC<NodeProps> = (props: NodeProps) => {
+const SplitterNode = React.memo((props: NodeProps) => {
     const { nodeFlowValue, setNodeFlowValue } = useNodeFlow();
     const nodeData = props.data as CustomNode;
+    const allNodes = useReactFlow().getNodes();
 
     useEffect(() => {
         const updateNodeFlowOutputs = () => {
@@ -35,15 +38,20 @@ const SplitterNode: React.FC<NodeProps> = (props: NodeProps) => {
 
     return (
         <>
-            {nodeData.handles?.map((handle, index) =>
-                DrawHandle({ handle, nodeData, index }),
-            )}
-            <Card className={NodeSelectionState(props.id)}>
-                <IIcons.Splitter className="stroke-fill-none h-5 w-4 stroke-aqua-dark text-aqua" />
+            {nodeData.handles?.map((handle, index) => (
+                <DrawHandle
+                    key={index}
+                    handle={handle}
+                    nodeData={nodeData}
+                    index={index}
+                />
+            ))}
+            <Card className={NodeSelectionState(props.id, allNodes)}>
+                <Icons.Splitter className="stroke-fill-none h-5 w-4 stroke-aqua-dark text-aqua" />
             </Card>
         </>
     );
-};
+});
 
 const reflect_nodeData = {
     nodeType: "splitter",
@@ -74,4 +82,5 @@ const reflect_nodeData = {
     nodePosition: { x: 150, y: 0 },
 } as CustomNode;
 
-export default React.memo(SplitterNode);
+SplitterNode.displayName = "SplitterNode";
+export { SplitterNode };

@@ -13,24 +13,24 @@ import ReactFlow, {
     Edge,
 } from "reactflow";
 
+import { CustomNodesRepo } from "../../External/CustomNodesRepo";
 import { reactFlowSettingsProps } from "./reactflowConfig";
 import { StyleReactFlowLogo } from "./styleReactFlowLogo";
+import { useMouseCoords } from "../hooks/useMouseCoords";
 import { NodeFlowProvider } from "../hooks/useNodeFlow";
-import useMouseCoords from "../hooks/useMouseCoords";
-import CustomNodesRepo from "../../External/CustomNodesRepo";
 import { ConnectionLine } from "./connectionLine";
 import { loadUserGraph } from "./nodeSerializer";
-import Colors from "@modules/Colors/colors";
+import { Colors } from "@modules/Colors/colors";
+import { useAuth } from "../hooks/useAuth";
 import { NodeEvents } from "./nodeEvents";
 import { SaveGraph } from "./saveGraph";
 import { EdgeLine } from "./edgeLine";
-import useAuth from "../hooks/useAuth";
 
 const customNodeTypes = CustomNodesRepo.instance.getNodeTypes();
 const customEdgeTypes = { custom: EdgeLine };
 const flow = loadUserGraph("graph");
 
-const ReactFlowCanvas: React.FC = () => {
+const ReactFlowCanvas = React.memo(() => {
     StyleReactFlowLogo();
     const flowKey = "test-flow";
     let viewport = useViewport();
@@ -80,6 +80,7 @@ const ReactFlowCanvas: React.FC = () => {
             </NodeFlowProvider>
         </div>
     );
-};
+});
 
-export default ReactFlowCanvas;
+ReactFlowCanvas.displayName = "ReactFlowCanvas";
+export { ReactFlowCanvas };
