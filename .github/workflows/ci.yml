@@ -1,4 +1,4 @@
-name: Unit Tests
+name: CI/CD
 
 on:
     push:
@@ -30,6 +30,3 @@ jobs:
 
             - name: Install dependencies
               run: npx pnpm install
-
-            - name: Update node types
-              run: pnpm install --save-dev @types/node
