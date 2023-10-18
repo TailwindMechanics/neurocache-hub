@@ -9,8 +9,8 @@ import {
     User,
 } from "@supabase/auth-helpers-nextjs";
 
-import { CustomNode } from "src/modules/Graph/types";
-import { NodeSelection } from "src/modules/Graph";
+import { CustomNode } from "@modules/Graph/types";
+import { NodeSelection } from "@modules/Graph";
 import { TabPreset } from "@modules/Composer";
 import { Tab } from "@headlessui/react";
 import {

@@ -2,16 +2,16 @@
 
 "use client";
 
-import { OpenAiModels, OpenAiNode } from "@modules/OpenAi";
-import { CustomNode } from "src/modules/Graph/types";
-import { LoginNode } from "@modules/Auth";
 import { CommentPayload } from "../Internal/nodes/commentPayload";
-import { InputBox } from "../Internal/nodes/inputBox";
+import { SendOutputNode } from "../Internal/nodes/sendOutputNode";
 import { SplitterNode } from "../Internal/nodes/splitterNode";
 import { MarkdownBox } from "../Internal/nodes/markdownBox";
-import { TestBox } from "../Internal/nodes/testBox";
-import { SendOutputNode } from "../Internal/nodes/sendOutputNode";
 import { SpawnerNode } from "../Internal/nodes/spawnerNode";
+import { OpenAiModels, OpenAiNode } from "@modules/OpenAi";
+import { InputBox } from "../Internal/nodes/inputBox";
+import { CustomNode } from "src/modules/Graph/types";
+import { TestBox } from "../Internal/nodes/testBox";
+import { LoginNode } from "@modules/Auth";
 
 export const allNodeData = [
     {

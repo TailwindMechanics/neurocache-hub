@@ -9,6 +9,8 @@ import ReactFlow, {
     Connection,
     EdgeChange,
     NodeChange,
+    NodeTypes,
+    EdgeTypes,
     addEdge,
     Node,
     Edge,
@@ -28,17 +30,19 @@ type NodeEventsProps = {
     children: ReactNode;
     edges: Edge[];
     nodes: Node[];
+    nodeTypes?: NodeTypes;
+    edgeTypes?: EdgeTypes;
 };
 
 export const NodeEvents: FC<NodeEventsProps> = (props) => {
     const nodeSpawner = useNodeSpawner();
 
-    // if (!props.nodes.find((node) => node.type == "login")) {
-    //     const loginNode = nodeSpawner.spawn("login", false, "1");
-    //     if (loginNode) {
-    //         props.setNodes([...props.nodes, loginNode]);
-    //     }
-    // }
+    if (!props.nodes.find((node) => node.type == "login")) {
+        const loginNode = nodeSpawner.spawn("login", false, "1");
+        if (loginNode) {
+            props.setNodes([...props.nodes, loginNode]);
+        }
+    }
 
     useOnSelectionChange({
         onChange: ({ nodes, edges }) => {
