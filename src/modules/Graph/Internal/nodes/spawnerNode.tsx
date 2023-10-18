@@ -41,14 +41,14 @@ const nodeLabel = (node: CustomNode) => {
 const SpawnerNode = React.memo((props: NodeProps) => {
     const [query, setQuery] = useState("");
     const reactFlowInstance = useReactFlow();
-    const allNodeTypes = CustomNodesRepo.instance.getUnhiddenNodes();
+    const spawnableNodeTypes = CustomNodesRepo.instance.getUnhiddenNodes();
     const nodeSpawner = useNodeSpawner();
     const allNodes = useReactFlow().getNodes();
 
     const filteredNodes =
         query === ""
-            ? allNodeTypes
-            : allNodeTypes.filter((node) =>
+            ? spawnableNodeTypes
+            : spawnableNodeTypes.filter((node) =>
                   nodeLabel(node)
                       .toLowerCase()
                       .replace(/\s+/g, "")

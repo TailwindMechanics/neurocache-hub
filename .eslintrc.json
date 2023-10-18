@@ -8,9 +8,18 @@
     "rules": {
         "prettier/prettier": "error",
         "no-restricted-imports": [
-            "warn",
+            "error",
             {
-                "patterns": ["**/Internal/**"]
+                "patterns": [
+                    {
+                        "group": ["**modules/*/Internal/**"],
+                        "message": "No rummaging around in other modules! Use the public API instead."
+                    },
+                    {
+                        "group": ["**/modules"],
+                        "message": "Use @modules alias instead."
+                    }
+                ]
             }
         ]
     }

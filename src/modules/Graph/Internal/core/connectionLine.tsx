@@ -1,23 +1,13 @@
 //path: src\modules\Graph\Internal\core\connectionLine.tsx
 
-import { AnimationDefinition, useAnimation } from "framer-motion";
 import { ConnectionLineComponentProps } from "reactflow";
-import React, { FC } from "react";
+import { useAnimation } from "framer-motion";
+import React from "react";
 
 import { ColouredLine } from "../components/colouredLine";
 import { useNodeHandle } from "../hooks/useNodeHandle";
 
-const animation = {
-    strokeDashoffset: [0, 100],
-    transition: {
-        repeat: Infinity,
-        repeatType: "loop",
-        ease: "linear",
-        duration: 10,
-    },
-} as AnimationDefinition;
-
-export const ConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
+const ConnectionLine = React.memo((props: ConnectionLineComponentProps) => {
     const fromHandle = useNodeHandle(props.fromHandle?.id || "");
     const controls = useAnimation();
 
@@ -26,14 +16,6 @@ export const ConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
 
     const fromAngle = fromHandle.handleData.angle;
     const fromXy = fromHandle?.handleXy;
-
-    const playAnimation = () => {
-        controls.start(animation);
-    };
-
-    const stopAnimation = () => {
-        controls.stop();
-    };
 
     return (
         <>
@@ -58,4 +40,7 @@ export const ConnectionLine: FC<ConnectionLineComponentProps> = (props) => {
             />
         </>
     );
-};
+});
+
+ConnectionLine.displayName = "ConnectionLine";
+export { ConnectionLine };

@@ -2,7 +2,7 @@
 
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "reactflow/dist/style.css";
 import ReactFlow, {
     BackgroundVariant,
@@ -31,6 +31,8 @@ const customEdgeTypes = { custom: EdgeLine };
 const flow = loadUserGraph("graph");
 
 const ReactFlowCanvas = React.memo(() => {
+    const memoizedNodeTypes = useMemo(() => customNodeTypes, []);
+    const memoizedEdgeTypes = useMemo(() => customEdgeTypes, []);
     StyleReactFlowLogo();
     const flowKey = "test-flow";
     let viewport = useViewport();
@@ -60,10 +62,10 @@ const ReactFlowCanvas = React.memo(() => {
                     handleMouseMove={handleMouseMove}
                     setSelectedNodes={setSelectedNodes}>
                     <ReactFlow
+                        nodeTypes={memoizedNodeTypes}
+                        edgeTypes={memoizedEdgeTypes}
                         defaultViewport={flow.viewport}
                         connectionLineComponent={ConnectionLine}
-                        nodeTypes={customNodeTypes}
-                        edgeTypes={customEdgeTypes}
                         preventScrolling={canZoom}
                         fitView={!user}
                         {...reactFlowSettingsProps}>

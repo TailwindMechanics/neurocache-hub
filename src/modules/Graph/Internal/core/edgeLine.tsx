@@ -2,22 +2,12 @@
 
 import { useAnimation } from "framer-motion";
 import { EdgeProps } from "reactflow";
-import React, { FC } from "react";
+import React from "react";
 
 import { ColouredLine } from "../components/colouredLine";
 import { useNodeHandle } from "../hooks/useNodeHandle";
 
-// const animation = {
-//     strokeDashoffset: [0, 100],
-//     transition: {
-//         repeat: Infinity,
-//         repeatType: "loop",
-//         ease: "linear",
-//         duration: 10,
-//     },
-// } as AnimationDefinition;
-
-const EdgeLine: FC<EdgeProps> = (props) => {
+const EdgeLine = React.memo((props: EdgeProps) => {
     const fromHandleId = props.sourceHandleId;
     const toHandleId = props.targetHandleId;
 
@@ -32,18 +22,6 @@ const EdgeLine: FC<EdgeProps> = (props) => {
 
     const toAngle = toHandle.handleData.angle;
     const toXy = toHandle.handleXy;
-
-    // const playAnimation = () => {
-    //     controls.start(animation);
-    // };
-
-    // const stopAnimation = () => {
-    //     controls.stop();
-    // };
-
-    // useEffect(() => {
-    // 	playAnimation();
-    // }, [controls]);
 
     return (
         <>
@@ -73,6 +51,7 @@ const EdgeLine: FC<EdgeProps> = (props) => {
             />
         </>
     );
-};
+});
 
+EdgeLine.displayName = "EdgeLine";
 export { EdgeLine };
