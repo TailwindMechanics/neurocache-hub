@@ -21,7 +21,7 @@ import {
     FormPreset,
     CardPreset,
     Composer,
-} from "src/modules/Composer";
+} from "@modules/Composer";
 
 const Card = new Composer("LoginContent", CardPreset)
     .withStyle("w-48")

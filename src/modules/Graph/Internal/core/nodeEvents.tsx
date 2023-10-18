@@ -1,6 +1,6 @@
 //path: src\modules\Graph\Internal\core\nodeEvents.tsx
 
-import React, { ReactNode, FC } from "react";
+import React, { ReactNode, FC, useEffect } from "react";
 import ReactFlow, {
     useOnSelectionChange,
     applyEdgeChanges,
@@ -37,12 +37,14 @@ type NodeEventsProps = {
 export const NodeEvents: FC<NodeEventsProps> = (props) => {
     const nodeSpawner = useNodeSpawner();
 
-    if (!props.nodes.find((node) => node.type == "login")) {
-        const loginNode = nodeSpawner.spawn("login", false, "1");
-        if (loginNode) {
-            props.setNodes([...props.nodes, loginNode]);
+    useEffect(() => {
+        if (!props.nodes.find((node) => node.type == "login")) {
+            const loginNode = nodeSpawner.spawn("login", false, "1");
+            if (loginNode) {
+                props.setNodes((prevNodes) => [...prevNodes, loginNode]);
+            }
         }
-    }
+    }, [props.nodes, nodeSpawner, props.setNodes, props]);
 
     useOnSelectionChange({
         onChange: ({ nodes, edges }) => {

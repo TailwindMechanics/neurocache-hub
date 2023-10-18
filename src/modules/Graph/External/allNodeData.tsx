@@ -7,10 +7,11 @@ import { SendOutputNode } from "../Internal/nodes/sendOutputNode";
 import { SplitterNode } from "../Internal/nodes/splitterNode";
 import { MarkdownBox } from "../Internal/nodes/markdownBox";
 import { SpawnerNode } from "../Internal/nodes/spawnerNode";
-import { OpenAiModels, OpenAiNode } from "@modules/OpenAi";
 import { InputBox } from "../Internal/nodes/inputBox";
-import { CustomNode } from "src/modules/Graph/types";
 import { TestBox } from "../Internal/nodes/testBox";
+import { CustomNode } from "../types";
+
+import { OpenAiModels, OpenAiNode } from "@modules/OpenAi";
 import { LoginNode } from "@modules/Auth";
 
 export const allNodeData = [

@@ -54,8 +54,6 @@ const ReactFlowCanvas = React.memo(() => {
                 <NodeEvents
                     nodes={nodes}
                     edges={edges}
-                    nodeTypes={memoizedNodeTypes}
-                    edgeTypes={memoizedEdgeTypes}
                     setNodes={setNodes}
                     setEdges={setEdges}
                     setCanZoom={setCanZoom}
@@ -64,6 +62,8 @@ const ReactFlowCanvas = React.memo(() => {
                     handleMouseMove={handleMouseMove}
                     setSelectedNodes={setSelectedNodes}>
                     <ReactFlow
+                        nodeTypes={memoizedNodeTypes}
+                        edgeTypes={memoizedEdgeTypes}
                         defaultViewport={flow.viewport}
                         connectionLineComponent={ConnectionLine}
                         preventScrolling={canZoom}

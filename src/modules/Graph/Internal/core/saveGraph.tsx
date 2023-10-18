@@ -1,24 +1,27 @@
 //path: src\modules\Graph\Internal\core\saveGraph.tsx
 
 import { Viewport, useReactFlow } from "reactflow";
-import { FC, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { saveGraph } from "./nodeSerializer";
 import { useAuth } from "../hooks/useAuth";
 import { UseCtrlS } from "@modules/Utils";
+import React from "react";
 
 interface SaveGraphProps {
     flowKey: string;
     viewportRef: React.MutableRefObject<Viewport>;
 }
 
-const SaveGraph: FC<SaveGraphProps> = (props) => {
-    const [statusText, setStatusText] = useState<string>("not logged in");
+const GuestMessage = "guest";
+
+const SaveGraph = React.memo((props: SaveGraphProps) => {
+    const [statusText, setStatusText] = useState<string>(GuestMessage);
     const reactFlowInstance = useReactFlow();
     const user = useAuth().user;
 
     useEffect(() => {
-        setStatusText(user?.email ?? "not logged in");
+        setStatusText(user?.email ?? GuestMessage);
     }, [user]);
 
     UseCtrlS(async () => {
@@ -31,7 +34,7 @@ const SaveGraph: FC<SaveGraphProps> = (props) => {
         );
 
         setTimeout(() => {
-            setStatusText(user?.email ?? "not logged in");
+            setStatusText(user?.email ?? GuestMessage);
         }, 1500);
     });
 
@@ -40,6 +43,7 @@ const SaveGraph: FC<SaveGraphProps> = (props) => {
             {statusText}
         </div>
     );
-};
+});
 
+SaveGraph.displayName = "SaveGraph";
 export { SaveGraph };

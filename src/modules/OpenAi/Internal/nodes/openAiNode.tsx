@@ -5,9 +5,9 @@
 import { NodeProps, useReactFlow } from "reactflow";
 import React, { useEffect } from "react";
 
-import { ContentPreset, CardPreset, Composer } from "src/modules/Composer";
-import { NodeSelection, UseNodeFlow, DrawHandle } from "src/modules/Graph";
-import { CustomNode } from "src/modules/Graph/types";
+import { ContentPreset, CardPreset, Composer } from "@modules/Composer";
+import { NodeSelection, UseNodeFlow, DrawHandle } from "@modules/Graph";
+import { CustomNode } from "@modules/Graph/types";
 import { useOpenAI } from "../hooks/useOpenAI";
 
 const Content = new Composer("OpenAiNodeContent", ContentPreset)
