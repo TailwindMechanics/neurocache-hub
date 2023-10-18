@@ -9,8 +9,8 @@ import {
     User,
 } from "@supabase/auth-helpers-nextjs";
 
-import { CustomNode } from "src/modules/Graph/types";
-import { NodeSelection } from "src/modules/Graph";
+import { CustomNode } from "@modules/Graph/types";
+import { NodeSelection } from "@modules/Graph";
 import { TabPreset } from "@modules/Composer";
 import { Tab } from "@headlessui/react";
 import {
@@ -21,7 +21,8 @@ import {
     FormPreset,
     CardPreset,
     Composer,
-} from "src/modules/Composer";
+    DivAtom,
+} from "@modules/Composer";
 
 const Card = new Composer("LoginContent", CardPreset)
     .withStyle("w-48")
@@ -44,15 +45,36 @@ const Content = new Composer("LoginContent", ContentPreset)
     .withStyle("px-1")
     .withRoundedElement()
     .build();
+const Status = new Composer("LoginStatus", DivAtom)
+    .withStyle("text-night-title")
+    .withStyle("leading-none")
+    .withStyle("text-center")
+    .withStyle("text-ss")
+    .withStyle("px-2")
+    .withRoundedElement()
+    .build();
 
 const LoginNode = React.memo((props: NodeProps) => {
     const [confirmPasswordText, setConfirmPasswordText] = useState("");
     const [passwordText, setPasswordText] = useState("");
     const [emailText, setEmailText] = useState("");
-    const [isSignUp, setIsSignUp] = useState(false);
     const supabase = createClientComponentClient();
     const [user, setUser] = useState<User>();
     const allNodes = useReactFlow().getNodes();
+
+    const [statusText, setStatusText] = useState("");
+
+    const resetStatusText = () => {
+        setTimeout(() => {
+            setStatusText("");
+        }, 6000);
+    };
+
+    useEffect(() => {
+        if (statusText) {
+            resetStatusText();
+        }
+    }, [statusText]);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -68,38 +90,39 @@ const LoginNode = React.memo((props: NodeProps) => {
         fetchUser();
     }, [supabase.auth]);
 
-    const onSubmit = async () => {
-        if (!user) {
-            if (isSignUp) {
-                if (passwordText === confirmPasswordText) {
-                    const response = await supabase.auth.signUp({
-                        email: emailText,
-                        password: passwordText,
-                    });
-                    if (response.data.user) {
-                        window.location.reload();
-                    }
-                } else {
-                    alert("Passwords do not match!");
-                }
-            } else {
-                const response = await supabase.auth.signInWithPassword({
-                    email: emailText,
-                    password: passwordText,
-                });
-                if (response.data.user) {
-                    window.location.reload();
-                }
+    const onSignUp = async () => {
+        if (passwordText === confirmPasswordText) {
+            const response = await supabase.auth.signUp({
+                email: emailText,
+                password: passwordText,
+            });
+            if (response.error) {
+                setStatusText(response.error.message);
+            } else if (response.data.user) {
+                window.location.reload();
             }
+        } else {
+            setStatusText("Passwords do not match!");
+        }
+    };
+    const onLogin = async () => {
+        const response = await supabase.auth.signInWithPassword({
+            email: emailText,
+            password: passwordText,
+        });
+        if (response.error) {
+            setStatusText(response.error.message);
+        } else if (response.data.user) {
+            window.location.reload();
         }
     };
 
     const onLogout = async () => {
         const response = await supabase.auth.signOut();
-        if (!response.error) {
-            window.location.reload();
+        if (response.error) {
+            setStatusText(response.error.message);
         } else {
-            console.error(`Failed to log out: ${response.error}`);
+            window.location.reload();
         }
     };
 
@@ -116,16 +139,12 @@ const LoginNode = React.memo((props: NodeProps) => {
                 ) : (
                     <Tab.Group>
                         <TabListPreset>
-                            <TabPreset onClick={() => setIsSignUp(false)}>
-                                Login
-                            </TabPreset>
-                            <TabPreset onClick={() => setIsSignUp(true)}>
-                                Signup
-                            </TabPreset>
+                            <TabPreset>Login</TabPreset>
+                            <TabPreset>Signup</TabPreset>
                         </TabListPreset>
                         <Tab.Panels>
                             <Tab.Panel>
-                                <FormPreset id="login_form" onSubmit={onSubmit}>
+                                <FormPreset id="login_form" onSubmit={onLogin}>
                                     <Input
                                         type="email"
                                         id="login_email"
@@ -154,7 +173,7 @@ const LoginNode = React.memo((props: NodeProps) => {
                             <Tab.Panel>
                                 <FormPreset
                                     id="signup_form"
-                                    onSubmit={onSubmit}>
+                                    onSubmit={onSignUp}>
                                     <Input
                                         id="signup_email"
                                         type="email"
@@ -195,6 +214,7 @@ const LoginNode = React.memo((props: NodeProps) => {
                         </Tab.Panels>
                     </Tab.Group>
                 )}
+                <Status>{statusText}</Status>
             </Card>
         </>
     );
