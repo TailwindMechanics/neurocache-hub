@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { FC } from "react";
 
-import { Composer, ButtonPreset } from "@modules/Composer";
+import { Composer, GhostButtonPreset } from "@modules/Composer";
 import { Burger } from "@modules/Icons/External/icons";
 import { Agent } from "@modules/Agents/types";
 
@@ -14,8 +14,7 @@ interface TableRowProps {
     agent: Agent;
 }
 
-const Button = new Composer("TableButton", ButtonPreset)
-    .withStyle("text-sm")
+const Button = new Composer("TableButton", GhostButtonPreset)
     .withRoundedFull()
     .build();
 
