@@ -62,6 +62,11 @@ export class ComponentBuilder {
         return this;
     }
 
+    withRoundedFull(): ComponentBuilder {
+        this.push("rounded-full");
+        return this;
+    }
+
     withStyle(style: string): ComponentBuilder {
         this.push(style);
         return this;

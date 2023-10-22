@@ -18,13 +18,13 @@ import { reactFlowSettingsProps } from "./reactflowConfig";
 import { StyleReactFlowLogo } from "./styleReactFlowLogo";
 import { useMouseCoords } from "../hooks/useMouseCoords";
 import { NodeFlowProvider } from "../hooks/useNodeFlow";
-import { ConnectionLine } from "./connectionLine";
+import { ConnectionLine } from "../components/connectionLine";
 import { loadUserGraph } from "./nodeSerializer";
 import { Colors } from "@modules/Colors/colors";
 import { useAuth } from "../hooks/useAuth";
 import { NodeEvents } from "./nodeEvents";
-import { SaveGraph } from "./saveGraph";
-import { EdgeLine } from "./edgeLine";
+import { SaveGraph } from "../components/saveGraph";
+import { EdgeLine } from "../components/edgeLine";
 
 const customNodeTypes = CustomNodesRepo.instance.getNodeTypes();
 const customEdgeTypes = { custom: EdgeLine };

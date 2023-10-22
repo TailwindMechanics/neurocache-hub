@@ -1,7 +1,5 @@
 //path: src\modules\Graph\Internal\providers\authenticatedProvider.tsx
 
-"use client";
-
 import { ReactFlowProvider } from "reactflow";
 import React from "react";
 

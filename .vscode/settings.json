@@ -1,71 +1,51 @@
 {
-  "jest.autoRun": "off",
-  "editor.formatOnSave": true,
-  "explorer.compactFolders": false,
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.expand": false,
-  "editor.detectIndentation": false,
-  "explorer.fileNesting.patterns": {
-    "root": ".editorconfig, .env.example, .env.local, .eslintignore, .eslintrc.json, .gitignore, .jest-test-results.json, .prettierignore, .prettierrc, autoCommentPath.js, jest.config.js, jest.setup.js, junit.xml, middleware.ts, next-env.d.ts, next.config.js, package.json, pnpm-lock.yaml, postcss.config.js, project-hierarchy.txt, README.md, rootGrouper.js, tailwind.config.js, tsconfig.json"
-  },
-  "material-icon-theme.folders.associations": {
-    "External": "Import",
-    "Internal": "Export",
-    "Composer": "Components",
-    "Dev": "Tools",
-    "Graph": "Controller",
-    "OpenAi": "Robot",
-    "ThreeFiber": "Middleware",
-    "atoms": "App",
-    "presets": "Middleware",
-    "behaviour": "Less",
-    "nodes": "Public",
-    "reflection": "Decorators"
-  },
-  "tailwindCSS.experimental.classRegex": [
-    [
-      "shadow: \"(.*)\","
+    "jest.autoRun": "off",
+    "editor.formatOnSave": true,
+    "explorer.compactFolders": false,
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "editor.detectIndentation": false,
+    "explorer.fileNesting.patterns": {
+        "root": ".editorconfig, .env.example, .env.local, .eslintignore, .eslintrc.json, .gitignore, .jest-test-results.json, .prettierignore, .prettierrc, autoCommentPath.js, jest.config.js, jest.setup.js, junit.xml, middleware.ts, next-env.d.ts, next.config.js, package.json, pnpm-lock.yaml, postcss.config.js, project-hierarchy.txt, README.md, rootGrouper.js, tailwind.config.js, tsconfig.json"
+    },
+    "material-icon-theme.folders.associations": {
+        "External": "Import",
+        "Internal": "Export",
+        "Composer": "Examples",
+        "Dev": "Tools",
+        "Graph": "Shader",
+        "OpenAi": "Robot",
+        "ThreeFiber": "Middleware",
+        "atoms": "App",
+        "presets": "Middleware",
+        "behaviour": "Less",
+        "nodes": "Public",
+        "reflection": "Decorators"
+    },
+    "tailwindCSS.experimental.classRegex": [
+        ["shadow: \"(.*)\","],
+        ["color: \"(.*)\","],
+        ["bg: \"(.*)\","],
+        ["hover: \"(.*)\","],
+        ["text: \"(.*)\","],
+        ["font: \"(.*)\","],
+        ["border: \"(.*)\","],
+        ["tw = \"(.*)\";"],
+        ["tw = `(.*)`;"],
+        [".with.*\"(.*)\""]
     ],
-    [
-      "color: \"(.*)\","
+    "project-hierarchy-explorer.ignorePatterns": [
+        ".git",
+        "venv",
+        "env",
+        ".venv",
+        "node_modules",
+        "__pycache__",
+        "versions",
+        ".next",
+        "flowbite",
+        "coverage",
+        "storybook-static"
     ],
-    [
-      "bg: \"(.*)\","
-    ],
-    [
-      "hover: \"(.*)\","
-    ],
-    [
-      "text: \"(.*)\","
-    ],
-    [
-      "font: \"(.*)\","
-    ],
-    [
-      "border: \"(.*)\","
-    ],
-    [
-      "tw = \"(.*)\";"
-    ],
-    [
-      "tw = `(.*)`;"
-    ],
-    [
-      ".with.*\"(.*)\""
-    ]
-  ],
-  "project-hierarchy-explorer.ignorePatterns": [
-    ".git",
-    "venv",
-    "env",
-    ".venv",
-    "node_modules",
-    "__pycache__",
-    "versions",
-    ".next",
-    "flowbite",
-    "coverage",
-    "storybook-static"
-  ],
-  "svg.preview.background": "black"
+    "svg.preview.background": "black"
 }

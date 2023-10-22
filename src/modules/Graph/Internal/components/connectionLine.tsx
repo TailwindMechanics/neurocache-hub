@@ -1,10 +1,10 @@
-//path: src\modules\Graph\Internal\core\connectionLine.tsx
+//path: src\modules\Graph\Internal\components\connectionLine.tsx
 
 import { ConnectionLineComponentProps } from "reactflow";
 import { useAnimation } from "framer-motion";
 import React from "react";
 
-import { ColouredLine } from "../components/colouredLine";
+import { ColouredLine } from "./colouredLine";
 import { useNodeHandle } from "../hooks/useNodeHandle";
 
 const ConnectionLine = React.memo((props: ConnectionLineComponentProps) => {

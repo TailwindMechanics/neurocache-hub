@@ -1,10 +1,10 @@
-//path: src\modules\Graph\Internal\core\edgeLine.tsx
+//path: src\modules\Graph\Internal\components\edgeLine.tsx
 
 import { useAnimation } from "framer-motion";
 import { EdgeProps } from "reactflow";
 import React from "react";
 
-import { ColouredLine } from "../components/colouredLine";
+import { ColouredLine } from "./colouredLine";
 import { useNodeHandle } from "../hooks/useNodeHandle";
 
 const EdgeLine = React.memo((props: EdgeProps) => {

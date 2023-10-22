@@ -73,14 +73,25 @@ neurocache-hub
 │  │  ├─ layout.tsx
 │  │  └─ page.tsx
 │  └─ modules
+│     ├─ Agents
+│     │  ├─ index.tsx
+│     │  ├─ Internal
+│     │  │  ├─ components
+│     │  │  │  ├─ dropdown.tsx
+│     │  │  │  ├─ table.tsx
+│     │  │  │  ├─ tableRow.tsx
+│     │  │  │  └─ users.tsx
+│     │  │  └─ nodes
+│     │  │     └─ agentEditor.tsx
+│     │  └─ types.tsx
 │     ├─ Auth
 │     │  ├─ External
-│     │  │  └─ server
+│     │  │  └─ Server
 │     │  │     ├─ authenticated.tsx
 │     │  │     └─ unauthenticated.tsx
 │     │  ├─ index.tsx
 │     │  └─ Internal
-│     │     └─ client
+│     │     └─ Client
 │     │        ├─ hooks
 │     │        │  ├─ useLoggedIn.tsx
 │     │        │  └─ useLoggedOut.tsx
@@ -112,9 +123,14 @@ neurocache-hub
 │     │  │     ├─ input.tsx
 │     │  │     ├─ prose.tsx
 │     │  │     ├─ shell.tsx
+│     │  │     ├─ status.tsx
 │     │  │     ├─ tab.tsx
 │     │  │     └─ tabList.tsx
 │     │  └─ types.tsx
+│     ├─ Database
+│     │  └─ External
+│     │     └─ Server
+│     │        └─ actions.ts
 │     ├─ Graph
 │     │  ├─ External
 │     │  │  ├─ allNodeData.tsx
@@ -124,19 +140,19 @@ neurocache-hub
 │     │  │  ├─ components
 │     │  │  │  ├─ codeBlock.tsx
 │     │  │  │  ├─ colouredLine.tsx
+│     │  │  │  ├─ connectionLine.tsx
 │     │  │  │  ├─ drawHandle.tsx
+│     │  │  │  ├─ edgeLine.tsx
 │     │  │  │  ├─ nodeSelectionState.tsx
 │     │  │  │  ├─ renderCodeblocks.tsx
+│     │  │  │  ├─ saveGraph.tsx
 │     │  │  │  └─ textBlockFormatter.tsx
 │     │  │  ├─ core
-│     │  │  │  ├─ connectionLine.tsx
-│     │  │  │  ├─ edgeLine.tsx
 │     │  │  │  ├─ guestCanvas.tsx
 │     │  │  │  ├─ nodeEvents.tsx
 │     │  │  │  ├─ nodeSerializer.tsx
 │     │  │  │  ├─ reactFlowCanvas.tsx
 │     │  │  │  ├─ reactflowConfig.ts
-│     │  │  │  ├─ saveGraph.tsx
 │     │  │  │  └─ styleReactFlowLogo.tsx
 │     │  │  ├─ hooks
 │     │  │  │  ├─ useAuth.tsx

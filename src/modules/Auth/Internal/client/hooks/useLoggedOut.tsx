@@ -1,4 +1,4 @@
-//path: src\modules\Auth\Internal\client\hooks\useLoggedOut.tsx
+//path: src\modules\Auth\Internal\Client\hooks\useLoggedOut.tsx
 
 "use client";
 

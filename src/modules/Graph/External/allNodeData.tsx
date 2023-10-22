@@ -12,6 +12,7 @@ import { TestBox } from "../Internal/nodes/testBox";
 import { CustomNode } from "../types";
 
 import { OpenAiModels, OpenAiNode } from "@modules/OpenAi";
+import { AgentEditor } from "@modules/Agents";
 import { LoginNode } from "@modules/Auth";
 
 export const allNodeData = [
@@ -159,7 +160,7 @@ export const allNodeData = [
     {
         nodeType: "test_box",
         nodeName: "Test",
-        category: "Hidden",
+        category: "Unhidden",
         nodeId: "test_box_1",
         body: "This is for testing.",
         handles: [
@@ -212,5 +213,15 @@ export const allNodeData = [
         ],
         nodePosition: { x: 100, y: 0 },
         nodeComponent: OpenAiNode,
+    } as CustomNode,
+    {
+        nodeType: "agent_editor",
+        nodeName: "Agent Editor",
+        category: "Unhidden",
+        nodeId: "agent_editor_1",
+        body: "Edit or Create Agents.",
+        handles: [],
+        nodePosition: { x: 100, y: 0 },
+        nodeComponent: AgentEditor,
     } as CustomNode,
 ];

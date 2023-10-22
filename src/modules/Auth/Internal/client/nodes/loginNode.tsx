@@ -1,4 +1,4 @@
-//path: src\modules\Auth\Internal\client\nodes\loginNode.tsx
+//path: src\modules\Auth\Internal\Client\nodes\loginNode.tsx
 
 "use client";
 
@@ -17,11 +17,11 @@ import {
     TabListPreset,
     ContentPreset,
     ButtonPreset,
+    StatusPreset,
     InputPreset,
     FormPreset,
     CardPreset,
     Composer,
-    DivAtom,
 } from "@modules/Composer";
 
 const Card = new Composer("LoginContent", CardPreset)
@@ -43,14 +43,6 @@ const Content = new Composer("LoginContent", ContentPreset)
     .withStyle("text-center")
     .withStyle("text-sm")
     .withStyle("px-1")
-    .withRoundedElement()
-    .build();
-const Status = new Composer("LoginStatus", DivAtom)
-    .withStyle("text-night-title")
-    .withStyle("leading-none")
-    .withStyle("text-center")
-    .withStyle("text-ss")
-    .withStyle("px-2")
     .withRoundedElement()
     .build();
 
@@ -214,7 +206,7 @@ const LoginNode = React.memo((props: NodeProps) => {
                         </Tab.Panels>
                     </Tab.Group>
                 )}
-                <Status>{statusText}</Status>
+                <StatusPreset newStatus={statusText} />
             </Card>
         </>
     );

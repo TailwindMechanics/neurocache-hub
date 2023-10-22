@@ -1,12 +1,13 @@
-//path: src\modules\Graph\Internal\core\saveGraph.tsx
+//path: src\modules\Graph\Internal\components\saveGraph.tsx
 
 import { Viewport, useReactFlow } from "reactflow";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 
-import { saveGraph } from "./nodeSerializer";
+import { saveGraph as saveGraphLocal } from "../core/nodeSerializer";
 import { useAuth } from "../hooks/useAuth";
 import { UseCtrlS } from "@modules/Utils";
 import React from "react";
+import { upsertAgentGraph } from "@modules/Database/External/Server/actions";
 
 interface SaveGraphProps {
     flowKey: string;
@@ -17,6 +18,7 @@ const GuestMessage = "guest";
 
 const SaveGraph = React.memo((props: SaveGraphProps) => {
     const [statusText, setStatusText] = useState<string>(GuestMessage);
+    let [isPending, startTransition] = useTransition();
     const reactFlowInstance = useReactFlow();
     const user = useAuth().user;
 
@@ -26,7 +28,24 @@ const SaveGraph = React.memo((props: SaveGraphProps) => {
 
     UseCtrlS(async () => {
         setStatusText("saving...");
-        saveGraph(
+        const graphData = {
+            nodes: reactFlowInstance.getNodes(),
+            edges: reactFlowInstance.getEdges(),
+            viewport: props.viewportRef.current,
+        };
+
+        startTransition(async () => {
+            const response = await upsertAgentGraph(graphData);
+            if (response) {
+                if (response.error) {
+                    setStatusText(response.error.message);
+                } else {
+                    setStatusText("saved");
+                }
+            }
+        });
+
+        saveGraphLocal(
             reactFlowInstance.getNodes(),
             reactFlowInstance.getEdges(),
             "graph",

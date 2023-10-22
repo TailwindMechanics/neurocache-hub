@@ -2,13 +2,8 @@
 
 "use client";
 
+import { GraphData } from "@modules/Graph/types";
 import { Edge, Node, Viewport } from "reactflow";
-
-interface GraphData {
-    nodes: Node[];
-    edges: Edge[];
-    viewport: Viewport;
-}
 
 export const loadUserGraph = (flowKey: string): GraphData => {
     const result: GraphData = {
@@ -33,6 +28,14 @@ export const saveGraph = (
     flowKey: string,
     viewport: Viewport,
 ) => {
-    const flowString = JSON.stringify({ nodes, edges, viewport });
-    localStorage.setItem(flowKey, flowString);
+    const flowJson = graphToJson(nodes, edges, viewport);
+    localStorage.setItem(flowKey, flowJson);
+};
+
+export const graphToJson = (
+    nodes: Node[],
+    edges: Edge[],
+    viewport: Viewport,
+) => {
+    return JSON.stringify({ nodes, edges, viewport });
 };
