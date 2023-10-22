@@ -5,6 +5,7 @@
 import React from "react";
 
 import { AuthenticatedProvider, GuestProvider } from "@modules/Graph";
+
 const { Authenticated } = await import(
     "@modules/Auth/External/Server/authenticated"
 );

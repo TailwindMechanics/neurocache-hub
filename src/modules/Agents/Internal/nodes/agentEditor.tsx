@@ -3,20 +3,23 @@
 "use client";
 
 import { NodeProps, useReactFlow } from "reactflow";
+import { toLower } from "lodash";
 import React from "react";
 
 import { sampleAgents } from "../components/sampleAgents";
+import { CustomNode } from "@modules/Graph/types";
+import { NewAgent } from "../components/newAgent";
+import { TableRow } from "../components/tableRow";
+import { NodeSelection } from "@modules/Graph";
+import { Table } from "../components/table";
+import { useDrawer } from "@modules/Drawer";
 import {
+    ContentPreset,
     ButtonPreset,
     CardPreset,
     Composer,
-    ContentPreset,
+    DivAtom,
 } from "@modules/Composer";
-import { NodeSelection } from "@modules/Graph";
-import Table from "../components/table";
-import { TableRow } from "../components/tableRow";
-import { CustomNode } from "@modules/Graph/types";
-import { toLower } from "lodash";
 
 const Card = new Composer("AgentEditorCard", CardPreset)
     .withStyle("flex-col")
@@ -26,34 +29,51 @@ const Card = new Composer("AgentEditorCard", CardPreset)
     .withRoundedFrame()
     .build();
 const Button = new Composer("TableButton", ButtonPreset)
+    .withStyle("border-none")
     .withStyle("leading-tight")
     .withStyle("ml-auto")
     .withStyle("text-xs")
     .withStyle("w-[20%]")
     .withRoundedFull()
     .build();
-const Content = new Composer("AgentEditorContent", ContentPreset)
-    .withStyle("bg-night-dark")
+const HeaderContent = new Composer("AgentEditorContent", DivAtom)
+    .withStyle("border-night-light")
+    .withStyle("text-night-title")
+    .withStyle("content-around")
+    .withStyle("bg-night")
+    .withStyle("font-bold")
+    .withStyle("border")
+    .withStyle("flex")
+    .withStyle("px-1")
+    .withRoundedElement()
+    .build();
+const TableContent = new Composer("AgentEditorContent", ContentPreset)
     .withStyle("border-night")
     .withStyle("pt-0.5")
     .withStyle("px-1")
     .withStyle("pb-1")
     .withRoundedFrame()
     .build();
+
 const AgentEditor = React.memo((props: NodeProps) => {
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
     const nodeConfig = props.data as CustomNode;
+    const { openDrawer: openPanel } = useDrawer();
     return (
         <>
             <Card className={NodeSelection(props.id, allNodes)}>
-                <div className="flex content-around px-2">
-                    <div className="pl-1 font-bold text-aqua-dark">
-                        {toLower(nodeConfig.nodeName)}
-                    </div>
-                    <Button>+ new agent</Button>
-                </div>
-                <Content>
+                <HeaderContent>
+                    <div className="pl-1">{toLower(nodeConfig.nodeName)}</div>
+                    <Button
+                        onClick={() => {
+                            console.log("click agent");
+                            openPanel(<NewAgent />);
+                        }}>
+                        new agent +
+                    </Button>
+                </HeaderContent>
+                <TableContent>
                     <Table className="text-left text-sm text-aqua">
                         <thead className="text-xs font-thin leading-none text-night-title ">
                             <tr>
@@ -77,7 +97,7 @@ const AgentEditor = React.memo((props: NodeProps) => {
                             ))}
                         </tbody>
                     </Table>
-                </Content>
+                </TableContent>
             </Card>
         </>
     );

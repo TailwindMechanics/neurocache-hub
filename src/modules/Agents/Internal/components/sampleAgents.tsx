@@ -1,4 +1,4 @@
-//path: src\modules\Agents\Internal\components\users.tsx
+//path: src\modules\Agents\Internal\components\sampleAgents.tsx
 
 import { Agent } from "@modules/Agents/types";
 

@@ -1,4 +1,4 @@
-//path: src\modules\Composer\Internal\presets\button.tsx
+//path: src\modules\Composer\Internal\presets\ghostButton.tsx
 
 import { ComponentBuilder } from "../components/ComponentBuilder";
 import { Button as ButtonAtom } from "../atoms/button";

@@ -78,9 +78,10 @@ neurocache-hub
 │     │  ├─ Internal
 │     │  │  ├─ components
 │     │  │  │  ├─ dropdown.tsx
+│     │  │  │  ├─ newAgent.tsx
+│     │  │  │  ├─ sampleAgents.tsx
 │     │  │  │  ├─ table.tsx
-│     │  │  │  ├─ tableRow.tsx
-│     │  │  │  └─ users.tsx
+│     │  │  │  └─ tableRow.tsx
 │     │  │  └─ nodes
 │     │  │     └─ agentEditor.tsx
 │     │  └─ types.tsx
@@ -120,6 +121,7 @@ neurocache-hub
 │     │  │     ├─ comboInput.tsx
 │     │  │     ├─ content.tsx
 │     │  │     ├─ form.tsx
+│     │  │     ├─ ghostButton.tsx
 │     │  │     ├─ input.tsx
 │     │  │     ├─ prose.tsx
 │     │  │     ├─ shell.tsx
@@ -192,6 +194,13 @@ neurocache-hub
 │     │  │     ├─ openAiModels.tsx
 │     │  │     └─ openAiNode.tsx
 │     │  └─ types.tsx
+│     ├─ SidePanel
+│     │  ├─ index.tsx
+│     │  └─ Internal
+│     │     ├─ components
+│     │     │  └─ sidePanel.tsx
+│     │     └─ hooks
+│     │        └─ useSidePanel.tsx
 │     └─ Utils
 │        ├─ index.tsx
 │        └─ Internal

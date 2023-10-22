@@ -7,12 +7,10 @@ interface TableProps {
     children?: React.ReactNode;
 }
 
-const Table: React.FC<TableProps> = (props) => {
+export const Table: React.FC<TableProps> = (props) => {
     return (
         <>
             <table className={props.className}>{props.children}</table>
         </>
     );
 };
-
-export default Table;

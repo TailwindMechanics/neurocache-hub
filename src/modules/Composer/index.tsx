@@ -13,4 +13,5 @@ export { Card as CardPreset } from "./Internal/presets/card";
 export { Form as FormPreset } from "./Internal/presets/form";
 export { Tab as TabPreset } from "./Internal/presets/tab";
 export { GhostButton as GhostButtonPreset } from "./Internal/presets/ghostButton";
+export { Div as DivAtom } from "./Internal/atoms/div";
 export type { AtomProps } from "./types";

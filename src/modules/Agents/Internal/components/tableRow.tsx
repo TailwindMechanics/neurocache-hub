@@ -21,7 +21,7 @@ const Button = new Composer("TableButton", GhostButtonPreset)
 export const TableRow: FC<TableRowProps> = (props) => {
     return (
         <>
-            <tr className="rounded bg-none hover:bg-night-light">
+            <tr className="rounded bg-none hover:bg-aqua-dark hover:text-night-black">
                 <td className={props.firstColClassName}>
                     <Image
                         width={64}
@@ -31,10 +31,12 @@ export const TableRow: FC<TableRowProps> = (props) => {
                         className="h-2 w-auto rounded-full"></Image>
                 </td>
                 <td className={props.className}>{props.agent.name}</td>
-                <td className={props.className}>{props.agent.role}</td>
+                <td className={`lowercase ${props.className}`}>
+                    {props.agent.role}
+                </td>
                 <td className={props.className}>
                     <div
-                        className={`rounded-full text-center ${
+                        className={`rounded-full text-center lowercase ${
                             props.agent.status === "active"
                                 ? `bg-aqua-dark font-bold text-night`
                                 : `bg-none`

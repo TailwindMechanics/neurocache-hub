@@ -4,6 +4,7 @@ import { ReactFlowProvider } from "reactflow";
 import React from "react";
 
 import { ReactFlowCanvas } from "../core/reactFlowCanvas";
+import { DrawerProvider } from "@modules/Drawer";
 import { OpenAiContext } from "@modules/OpenAi";
 
 const AuthenticatedProvider = React.memo(() => {
@@ -11,7 +12,9 @@ const AuthenticatedProvider = React.memo(() => {
         <>
             <OpenAiContext>
                 <ReactFlowProvider>
-                    <ReactFlowCanvas />
+                    <DrawerProvider>
+                        <ReactFlowCanvas />
+                    </DrawerProvider>
                 </ReactFlowProvider>
             </OpenAiContext>
         </>

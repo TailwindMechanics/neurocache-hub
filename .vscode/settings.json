@@ -14,13 +14,15 @@
         "Composer": "Examples",
         "Dev": "Tools",
         "Graph": "Shader",
-        "OpenAi": "Robot",
+        "OpenAi": "Custom",
         "ThreeFiber": "Middleware",
         "atoms": "App",
         "presets": "Middleware",
         "behaviour": "Less",
         "nodes": "Public",
-        "reflection": "Decorators"
+        "reflection": "Decorators",
+        "Agents": "Robot",
+        "Drawer": "Class"
     },
     "tailwindCSS.experimental.classRegex": [
         ["shadow: \"(.*)\","],
