@@ -8,6 +8,9 @@ import { Burger } from "@modules/Icons/External/icons";
 import { Agent } from "@modules/Agents/types";
 
 interface TableRowProps {
+    className?: string;
+    firstColClassName?: string;
+    lastColClassName?: string;
     agent: Agent;
 }
 
@@ -19,27 +22,31 @@ const Button = new Composer("TableButton", ButtonPreset)
 export const TableRow: FC<TableRowProps> = (props) => {
     return (
         <>
-            <tr>
-                <td className="flex items-center">
+            <tr className="rounded bg-none hover:bg-night-light">
+                <td className={props.firstColClassName}>
                     <Image
                         width={64}
                         height={64}
                         src={props.agent.imgUrl}
                         alt={`${props.agent.name} avatar`}
-                        className="h-3 w-auto rounded-full"></Image>
-                    {props.agent.name}
+                        className="h-2 w-auto rounded-full"></Image>
                 </td>
-                <td>{props.agent.role}</td>
-                <td>
-                    <div className="flex items-center">
-                        <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                <td className={props.className}>{props.agent.name}</td>
+                <td className={props.className}>{props.agent.role}</td>
+                <td className={props.className}>
+                    <div
+                        className={`rounded-full text-center ${
+                            props.agent.status === "active"
+                                ? `bg-aqua-dark font-bold text-night`
+                                : `bg-none`
+                        }`}>
                         {props.agent.status}
                     </div>
                 </td>
-                <td>{props.agent.date}</td>
+                <td className={props.lastColClassName}>{props.agent.date}</td>
                 <td>
                     <Button>
-                        <Burger className="h-3 w-3" />
+                        <Burger className="h-2 w-2" />
                     </Button>
                 </td>
             </tr>
