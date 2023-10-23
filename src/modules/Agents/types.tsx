@@ -5,5 +5,6 @@ export interface Agent {
     imgUrl: string;
     role: string;
     status: string;
-    date: string;
+    dateCreated: string;
+    dateModified: string;
 }

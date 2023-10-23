@@ -7,10 +7,12 @@ import { toLower } from "lodash";
 import React from "react";
 
 import { sampleAgents } from "../components/sampleAgents";
+import { EditAgent } from "../components/editAgent";
 import { CustomNode } from "@modules/Graph/types";
 import { NewAgent } from "../components/newAgent";
 import { TableRow } from "../components/tableRow";
 import { NodeSelection } from "@modules/Graph";
+import { Agent } from "@modules/Agents/types";
 import { Table } from "../components/table";
 import { useDrawer } from "@modules/Drawer";
 import {
@@ -57,6 +59,11 @@ const AgentEditor = React.memo((props: NodeProps) => {
     const allNodes = reactFlowInstance.getNodes();
     const nodeConfig = props.data as CustomNode;
     const { openDrawer } = useDrawer();
+
+    const onEditClick = (agent: Agent) => {
+        openDrawer(<EditAgent agent={agent} />, "edit agent");
+    };
+
     return (
         <>
             <Card className={NodeSelection(props.id, allNodes)}>
@@ -84,6 +91,7 @@ const AgentEditor = React.memo((props: NodeProps) => {
                         <tbody className="leading-none">
                             {sampleAgents.map((agent) => (
                                 <TableRow
+                                    onEditClick={onEditClick}
                                     className="pr-2"
                                     firstColClassName="pr-0.5"
                                     lastColClassName="pr-0.5"

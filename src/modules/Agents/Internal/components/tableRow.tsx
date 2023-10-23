@@ -12,6 +12,7 @@ interface TableRowProps {
     firstColClassName?: string;
     lastColClassName?: string;
     agent: Agent;
+    onEditClick?: (agent: Agent) => void;
 }
 
 const Button = new Composer("TableButton", GhostButtonPreset)
@@ -44,9 +45,11 @@ export const TableRow: FC<TableRowProps> = (props) => {
                         {props.agent.status}
                     </div>
                 </td>
-                <td className={props.lastColClassName}>{props.agent.date}</td>
+                <td className={props.lastColClassName}>
+                    {props.agent.dateModified}
+                </td>
                 <td>
-                    <Button>
+                    <Button onClick={() => props.onEditClick?.(props.agent)}>
                         <Burger className="h-2 w-2" />
                     </Button>
                 </td>
