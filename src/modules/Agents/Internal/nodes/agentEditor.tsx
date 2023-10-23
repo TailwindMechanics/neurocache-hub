@@ -22,29 +22,26 @@ import {
 } from "@modules/Composer";
 
 const Card = new Composer("AgentEditorCard", CardPreset)
-    .withStyle("flex-col")
     .withStyle("w-256")
     .withStyle("p-1.5")
-    .withStyle("flex")
     .withRoundedFrame()
     .build();
 const Button = new Composer("TableButton", ButtonPreset)
     .withStyle("border-none")
     .withStyle("leading-tight")
-    .withStyle("ml-auto")
     .withStyle("text-xs")
-    .withStyle("w-[20%]")
+    .withStyle("w-[22%]")
     .withRoundedFull()
     .build();
 const HeaderContent = new Composer("AgentEditorContent", DivAtom)
     .withStyle("border-night-light")
     .withStyle("text-night-title")
-    .withStyle("content-around")
+    .withStyle("justify-between")
     .withStyle("bg-night")
     .withStyle("font-bold")
     .withStyle("border")
+    .withStyle("px-0.5")
     .withStyle("flex")
-    .withStyle("px-1")
     .withRoundedElement()
     .build();
 const TableContent = new Composer("AgentEditorContent", ContentPreset)
