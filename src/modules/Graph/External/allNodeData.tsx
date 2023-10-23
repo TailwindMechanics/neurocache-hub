@@ -216,7 +216,7 @@ export const allNodeData = [
     } as CustomNode,
     {
         nodeType: "agent_editor",
-        nodeName: "Agent Editor",
+        nodeName: "Your Agents",
         category: "Unhidden",
         nodeId: "agent_editor_1",
         body: "Edit or Create Agents.",

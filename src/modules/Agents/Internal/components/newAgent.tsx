@@ -1,34 +1,41 @@
 //path: src\modules\Agents\Internal\components\newAgent.tsx
 
-// path: src/modules/Agents/Internal/components/NewAgent.tsx
-
 import { FC } from "react";
+
+import {
+    Composer,
+    ButtonPreset,
+    InputPreset,
+    DivAtom,
+} from "@modules/Composer";
+
+const Wrapper = new Composer("NewAgentWrapper", DivAtom)
+    .withStyle("space-y-2")
+    .withStyle("flex-col")
+    .withStyle("flex")
+    .withStyle("px-2")
+    .withStyle("py-3")
+    .withRoundedElement()
+    .build();
+const Button = new Composer("NewAgentButton", ButtonPreset)
+    .withStyle("border-2")
+    .withStyle("text-xl")
+    .withStyle("py-1")
+    .withRoundedButton()
+    .build();
+const Input = new Composer("NewAgentInput", InputPreset)
+    .withStyle("border-2")
+    .withStyle("text-2xl")
+    .withStyle("py-1")
+    .withRoundedElement()
+    .build();
 
 export const NewAgent: FC = () => {
     return (
-        <div className="flex flex-col rounded-lg bg-night-light p-4">
-            <h2 className="mb-4 text-xl text-aqua">Create New Agent</h2>
-            <label className="mb-2 text-sm text-aqua-light" htmlFor="agentName">
-                Agent Name
-            </label>
-            <input
-                className="mb-4 rounded bg-night p-2 text-aqua"
-                id="agentName"
-                type="text"
-                placeholder="Enter agent name"
-            />
-            <label className="mb-2 text-sm text-aqua-light" htmlFor="agentRole">
-                Agent Role
-            </label>
-            <input
-                className="mb-4 rounded bg-night p-2 text-aqua"
-                id="agentRole"
-                type="text"
-                placeholder="Enter agent role"
-            />
-            <button className="rounded bg-aqua px-4 py-2 text-night">
-                Create Agent
-            </button>
-        </div>
+        <Wrapper>
+            <Input id="agentName" type="text" placeholder="agent name" />
+            <Input id="agentRole" type="text" placeholder="agent role" />
+            <Button>create</Button>
+        </Wrapper>
     );
 };

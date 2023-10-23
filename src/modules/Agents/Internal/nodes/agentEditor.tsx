@@ -56,7 +56,7 @@ const AgentEditor = React.memo((props: NodeProps) => {
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
     const nodeConfig = props.data as CustomNode;
-    const { openDrawer: openPanel } = useDrawer();
+    const { openDrawer } = useDrawer();
     return (
         <>
             <Card className={NodeSelection(props.id, allNodes)}>
@@ -64,8 +64,7 @@ const AgentEditor = React.memo((props: NodeProps) => {
                     <div className="pl-1">{toLower(nodeConfig.nodeName)}</div>
                     <Button
                         onClick={() => {
-                            console.log("click agent");
-                            openPanel(<NewAgent />);
+                            openDrawer(<NewAgent />, "create new agent");
                         }}>
                         new agent +
                     </Button>

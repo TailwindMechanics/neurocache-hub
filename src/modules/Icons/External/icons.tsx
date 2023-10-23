@@ -227,19 +227,19 @@ export const Emoji: FC<IconProps> = ({ className = "w-5 h-5" }) => (
     </svg>
 );
 
-export const Close: FC<IconProps> = ({ className = "w-5 h-5" }) => (
+export const Close: FC<IconProps> = ({ className = "w-4 h-4" }) => (
     <svg
         className={className}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 20 20">
+        viewBox="0 0 24 24">
         <path
             stroke="currentColor"
+            fill="currentColor"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            d="M18.36 19.78L12 13.41l-6.36 6.37-1.42-1.42L10.59 12 4.22 5.64l1.42-1.42L12 10.59l6.36-6.36 1.41 1.41L13.41 12l6.36 6.36-1.41 1.42z"
         />
     </svg>
 );
