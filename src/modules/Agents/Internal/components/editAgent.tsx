@@ -1,4 +1,4 @@
-//path: src\modules\Agents\Internal\components\newAgent.tsx
+//path: src\modules\Agents\Internal\components\editAgent.tsx
 
 import { FC } from "react";
 

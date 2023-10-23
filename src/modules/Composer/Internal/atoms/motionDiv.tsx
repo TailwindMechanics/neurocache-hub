@@ -1,4 +1,4 @@
-//path: src\modules\Composer\Internal\atoms\div.tsx
+//path: src\modules\Composer\Internal\atoms\motionDiv.tsx
 
 import React, { FC } from "react";
 

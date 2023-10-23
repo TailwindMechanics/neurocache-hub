@@ -78,6 +78,7 @@ neurocache-hub
 │     │  ├─ Internal
 │     │  │  ├─ components
 │     │  │  │  ├─ dropdown.tsx
+│     │  │  │  ├─ editAgent.tsx
 │     │  │  │  ├─ newAgent.tsx
 │     │  │  │  ├─ sampleAgents.tsx
 │     │  │  │  ├─ table.tsx
@@ -111,6 +112,7 @@ neurocache-hub
 │     │  │  │  ├─ div.tsx
 │     │  │  │  ├─ form.tsx
 │     │  │  │  ├─ input.tsx
+│     │  │  │  ├─ motionDiv.tsx
 │     │  │  │  ├─ tab.tsx
 │     │  │  │  └─ tabList.tsx
 │     │  │  ├─ components
@@ -133,6 +135,11 @@ neurocache-hub
 │     │  └─ External
 │     │     └─ Server
 │     │        └─ actions.ts
+│     ├─ Drawer
+│     │  ├─ index.tsx
+│     │  └─ Internal
+│     │     └─ hooks
+│     │        └─ useDrawer.tsx
 │     ├─ Graph
 │     │  ├─ External
 │     │  │  ├─ allNodeData.tsx
@@ -194,13 +201,6 @@ neurocache-hub
 │     │  │     ├─ openAiModels.tsx
 │     │  │     └─ openAiNode.tsx
 │     │  └─ types.tsx
-│     ├─ SidePanel
-│     │  ├─ index.tsx
-│     │  └─ Internal
-│     │     ├─ components
-│     │     │  └─ sidePanel.tsx
-│     │     └─ hooks
-│     │        └─ useSidePanel.tsx
 │     └─ Utils
 │        ├─ index.tsx
 │        └─ Internal

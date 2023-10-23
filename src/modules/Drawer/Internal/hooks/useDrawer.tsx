@@ -1,5 +1,6 @@
 //path: src\modules\Drawer\Internal\hooks\useDrawer.tsx
 
+import { AnimatePresence } from "framer-motion";
 import React, {
     useCallback,
     useContext,
@@ -11,7 +12,6 @@ import React, {
 
 import { ButtonPreset, Composer, DivAtom, MotionDiv } from "@modules/Composer";
 import { Close } from "@modules/Icons/External/icons";
-import { AnimatePresence } from "framer-motion";
 
 interface DrawerState {
     openDrawer: (nodes: ReactNode, panelTitle: string) => void;
@@ -66,10 +66,6 @@ const BodyContent = new Composer("NewAgentHeader", DivAtom)
     .withStyle("flex-col")
     .withStyle("flex")
     .build();
-interface DrawerProps {
-    innerNode: ReactNode;
-    panelTitle: string;
-}
 
 const motionSettings = {
     initial: { x: "100%" },
@@ -77,6 +73,11 @@ const motionSettings = {
     exit: { x: "100%" },
     transition: { duration: 0.2, ease: "circOut" },
 };
+
+interface DrawerProps {
+    innerNode: ReactNode;
+    panelTitle: string;
+}
 
 const Drawer: FC<DrawerProps> = (props) => {
     const context = useContext(DrawerContext);
