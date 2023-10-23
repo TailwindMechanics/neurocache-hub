@@ -52,4 +52,12 @@ export interface AtomProps {
     disabled?: boolean;
     value?: string;
     motion?: MotionProps;
+    enabled?: boolean;
+    setEnabled?: (state: boolean) => void;
+    enabledColor?: string;
+    disabledColor?: string;
+    options?: string[];
+    onSelect?: (selected: string) => void;
+    active?: boolean;
+    selected?: boolean;
 }

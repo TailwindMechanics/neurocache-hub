@@ -1,11 +1,14 @@
 //path: src\modules\Agents\Internal\components\editAgent.tsx
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
+import { agentRoles } from "../data/sampleAgents";
 import { Agent } from "@modules/Agents/types";
 import {
     ButtonPreset,
+    DropdownAtom,
     InputPreset,
+    SwitchAtom,
     Composer,
     DivAtom,
 } from "@modules/Composer";
@@ -30,12 +33,18 @@ const Input = new Composer("EditAgentInput", InputPreset)
     .withStyle("py-1")
     .withRoundedElement()
     .build();
-const Label = new Composer("EditAgentLabel", DivAtom)
-    .withStyle("text-xl")
-    .withStyle("font-bold")
+const DatesLabel = new Composer("EditAgentDatesLabel", DivAtom)
+    .withStyle("border-night-light")
     .withStyle("text-night-title")
-    .withStyle("px-2")
-    .withStyle("py-1")
+    .withStyle("text-center")
+    .withStyle("font-bold")
+    .withStyle("flex-col")
+    .withStyle("border-2")
+    .withStyle("text-md")
+    .withStyle("py-0.5")
+    .withStyle("italic")
+    .withStyle("flex")
+    .withRoundedElement()
     .build();
 
 interface EditAgentProps {
@@ -43,18 +52,36 @@ interface EditAgentProps {
 }
 
 export const EditAgent: FC<EditAgentProps> = (props) => {
+    const [enabled, setEnabled] = useState(false);
+
+    useEffect(() => {
+        setEnabled(props.agent.status);
+    }, [props.agent.status]);
+
+    const handleRoleSelect = (selectedRole: string) => {
+        console.log("Selected role:", selectedRole);
+    };
+
     return (
         <Wrapper>
+            <div className="flex justify-center">
+                <SwitchAtom enabled={enabled} setEnabled={setEnabled} />
+            </div>
             <Input id="agentName" type="text" placeholder={props.agent.name} />
-            <Input id="agentRole" type="text" placeholder={props.agent.role} />
             <Input
                 id="agentImageUrl"
                 type="url"
                 placeholder={props.agent.imgUrl}
             />
-            <Label id="agentstatus" type="text" placeholder="status" />
-            <Label>date modified: {props.agent.dateModified}</Label>
-            <Label>date created: {props.agent.dateCreated}</Label>
+            <DropdownAtom
+                value={props.agent.role}
+                options={agentRoles}
+                onSelect={handleRoleSelect}
+            />
+            <DatesLabel>
+                <p>date modified: {props.agent.dateModified}</p>
+                <p>date created: {props.agent.dateCreated}</p>
+            </DatesLabel>
             <Button>save</Button>
         </Wrapper>
     );

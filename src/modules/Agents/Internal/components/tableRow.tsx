@@ -38,11 +38,11 @@ export const TableRow: FC<TableRowProps> = (props) => {
                 <td className={props.className}>
                     <div
                         className={`rounded-full text-center lowercase ${
-                            props.agent.status === "active"
+                            props.agent.status
                                 ? `bg-aqua-dark font-bold text-night`
                                 : `bg-none`
                         }`}>
-                        {props.agent.status}
+                        {props.agent.status ? "active" : "inactive"}
                     </div>
                 </td>
                 <td className={props.lastColClassName}>

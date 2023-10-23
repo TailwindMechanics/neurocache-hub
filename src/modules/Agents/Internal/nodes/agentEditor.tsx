@@ -6,7 +6,7 @@ import { NodeProps, useReactFlow } from "reactflow";
 import { toLower } from "lodash";
 import React from "react";
 
-import { sampleAgents } from "../components/sampleAgents";
+import { sampleAgents } from "../data/sampleAgents";
 import { EditAgent } from "../components/editAgent";
 import { CustomNode } from "@modules/Graph/types";
 import { NewAgent } from "../components/newAgent";
