@@ -1,6 +1,6 @@
 //path: src\modules\Composer\types.tsx
 
-import { AnimationControls } from "framer-motion";
+import { AnimationControls, MotionProps } from "framer-motion";
 
 import {
     HTMLInputTypeAttribute,
@@ -51,4 +51,5 @@ export interface AtomProps {
     className?: string;
     disabled?: boolean;
     value?: string;
+    motion?: MotionProps;
 }

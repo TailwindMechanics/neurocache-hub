@@ -9,8 +9,9 @@ import React, {
     FC,
 } from "react";
 
-import { ButtonPreset, Composer, DivAtom } from "@modules/Composer";
+import { ButtonPreset, Composer, DivAtom, MotionDiv } from "@modules/Composer";
 import { Close } from "@modules/Icons/External/icons";
+import { AnimatePresence } from "framer-motion";
 
 interface DrawerState {
     openDrawer: (nodes: ReactNode, panelTitle: string) => void;
@@ -19,45 +20,42 @@ interface DrawerState {
 
 const DrawerContext = React.createContext<DrawerState | undefined>(undefined);
 
-const Card = new Composer("DrawerCard", DivAtom)
-    .withStyle("transition-transform")
+const Card = new Composer("DrawerCard", MotionDiv)
+    .withStyle("border-night-dark")
     .withStyle("overflow-auto")
-    .withStyle("translate-x-0")
-    .withStyle("duration-700")
     .withStyle("bg-night")
     .withStyle("inset-y-0")
-    .withStyle("transform")
     .withStyle("max-w-md")
     .withStyle("flex-col")
     .withStyle("right-0")
     .withStyle("w-[30%]")
+    .withStyle("border")
     .withStyle("fixed")
-    .withStyle("p-1.5")
     .withStyle("m-1.5")
     .withStyle("flex")
-    .withStyle("-z-100")
+    .withStyle("p-2")
     .withRoundedFrame()
     .withShadow()
     .build();
 const CloseButton = new Composer("TableButton", ButtonPreset)
-    .withStyle("w-[8%]")
-    .withStyle("flex")
-    .withStyle("flex-col")
-    .withStyle("text-center")
     .withStyle("justify-center")
     .withStyle("items-center")
-    .withStyle("mt-1")
+    .withStyle("text-center")
+    .withStyle("flex-col")
+    .withStyle("w-[8%]")
     .withStyle("py-0.5")
+    .withStyle("flex")
+    .withStyle("mt-1")
     .withRoundedFull()
     .build();
 const HeaderContent = new Composer("NewAgentHeader", DivAtom)
     .withStyle("text-night-dark")
     .withStyle("justify-between")
     .withStyle("bg-aqua-dark")
-    .withStyle("items-end")
-    .withStyle("rounded-t-md")
-    .withStyle("font-bold")
     .withStyle("leading-tight")
+    .withStyle("rounded-t-md")
+    .withStyle("items-end")
+    .withStyle("font-bold")
     .withStyle("px-2")
     .withStyle("flex")
     .build();
@@ -72,6 +70,13 @@ interface DrawerProps {
     innerNode: ReactNode;
     panelTitle: string;
 }
+
+const motionSettings = {
+    initial: { x: "100%" },
+    animate: { x: "0%" },
+    exit: { x: "100%" },
+    transition: { duration: 0.2, ease: "circOut" },
+};
 
 const Drawer: FC<DrawerProps> = (props) => {
     const context = useContext(DrawerContext);
@@ -98,7 +103,7 @@ const Drawer: FC<DrawerProps> = (props) => {
     }, [handleEscapePress]);
 
     return (
-        <Card>
+        <Card motion={motionSettings}>
             <HeaderContent>
                 {panelTitle}
                 <CloseButton onClick={closeDrawer}>
@@ -131,9 +136,11 @@ export const DrawerProvider: FC<DrawerProviderProps> = ({ children }) => {
     return (
         <DrawerContext.Provider value={{ openDrawer, closeDrawer }}>
             {children}
-            {innerNode && (
-                <Drawer innerNode={innerNode} panelTitle={panelTitle} />
-            )}
+            <AnimatePresence>
+                {innerNode && (
+                    <Drawer innerNode={innerNode} panelTitle={panelTitle} />
+                )}
+            </AnimatePresence>
         </DrawerContext.Provider>
     );
 };

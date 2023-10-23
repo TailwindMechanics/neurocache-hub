@@ -14,4 +14,5 @@ export { Form as FormPreset } from "./Internal/presets/form";
 export { Tab as TabPreset } from "./Internal/presets/tab";
 export { GhostButton as GhostButtonPreset } from "./Internal/presets/ghostButton";
 export { Div as DivAtom } from "./Internal/atoms/div";
+export { MotionDiv as MotionDiv } from "./Internal/atoms/motionDiv";
 export type { AtomProps } from "./types";

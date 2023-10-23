@@ -84,7 +84,7 @@ const AgentEditor = React.memo((props: NodeProps) => {
                                 <th>Name</th>
                                 <th>Role</th>
                                 <th>Status</th>
-                                <th>Date</th>
+                                <th>Created</th>
                                 <th></th>
                             </tr>
                         </thead>
