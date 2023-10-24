@@ -2,59 +2,60 @@
 
 import { FC, useContext, useCallback, useEffect } from "react";
 
-import { ButtonPreset, MotionDiv, Composer, DivAtom } from "@modules/Composer";
+import {
+    ButtonPreset,
+    MotionDiv,
+    Composer,
+    DivAtom,
+    CloseButtonPreset,
+} from "@modules/Composer";
 import { DrawerElement } from "@modules/Drawer/types";
 import { Close } from "@modules/Icons/External/icons";
 import { DrawerContext } from "../hooks/useDrawer";
-import { NewAgent } from "@modules/Agents/Internal/components/newAgent";
 
-const Card = new Composer("DrawerCard", MotionDiv)
-    .withStyle("border-night-dark")
-    .withStyle("scrollbar-hide")
-    .withStyle("overflow-auto")
-    .withStyle("bg-night")
-    .withStyle("inset-y-0")
-    .withStyle("max-w-md")
-    .withStyle("flex-col")
-    .withStyle("right-0")
-    .withStyle("w-[25%]")
-    .withStyle("border")
-    .withStyle("fixed")
-    .withStyle("m-1.5")
-    .withStyle("p-1.5")
-    .withStyle("flex")
+const OuterWrapper = new Composer("OuterWrapper", MotionDiv)
+    .withStyle("bg-night-dark")
     .withStyle("rounded-xl")
+    .withStyle("inset-y-0")
+    .withStyle("w-[25%]")
+    .withStyle("right-0")
+    .withStyle("fixed")
+    .withStyle("p-1.5")
+    .withStyle("m-1")
     .withShadow()
     .build();
-const CloseButton = new Composer("TableButton", ButtonPreset)
-    .withStyle("justify-center")
-    .withStyle("items-center")
-    .withStyle("text-center")
+const Card = new Composer("DrawerCard", DivAtom)
+    .withStyle("scrollbar-hide")
+    .withStyle("overflow-auto")
+    .withStyle("rounded-md")
+    .withStyle("space-y-2")
     .withStyle("flex-col")
-    .withStyle("w-[8%]")
-    .withStyle("py-0.5")
+    .withStyle("h-full")
     .withStyle("flex")
-    .withStyle("mt-1")
-    .withRoundedFull()
     .build();
-const HeaderContent = new Composer("NewAgentHeader", DivAtom)
+const ElementWrapper = new Composer("NewAgentHeader", DivAtom)
+    .withStyle("rounded-b-md")
+    .withStyle("bg-night")
+    .withStyle("flex-col")
+    .withStyle("flex")
+    .build();
+const ElementHeader = new Composer("NewAgentHeader", DivAtom)
     .withStyle("text-night-dark")
-    .withStyle("justify-between")
     .withStyle("bg-aqua-dark")
     .withStyle("leading-tight")
     .withStyle("rounded-t-md")
-    .withStyle("items-end")
     .withStyle("font-bold")
-    .withStyle("px-2")
-    .withStyle("flex")
+    .withStyle("underline")
+    .withStyle("h-[30%]")
+    .withStyle("pt-0.5")
+    .withStyle("px-2.5")
     .build();
-const NodeWrapper = new Composer("NewAgentHeader", DivAtom)
+const ElementBody = new Composer("NewAgentHeader", DivAtom)
     .withStyle("border-aqua-dark")
     .withStyle("rounded-b-md")
-    .withStyle("border-4")
-    .withStyle("flex-col")
-    .withStyle("flex")
+    .withStyle("border-2")
     .build();
+
 const motionSettings = {
     initial: { x: "100%" },
     animate: { x: "0%" },
@@ -64,45 +65,6 @@ const motionSettings = {
 interface DrawerProps {
     innerElements: DrawerElement[];
 }
-
-const TempDrawerElements: DrawerElement[] = [
-    {
-        node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-];
 
 export const Drawer: FC<DrawerProps> = (props) => {
     const context = useContext(DrawerContext);
@@ -128,16 +90,18 @@ export const Drawer: FC<DrawerProps> = (props) => {
     }, [handleEscapePress]);
 
     return (
-        <Card motion={motionSettings}>
-            <HeaderContent>
-                {"Inspector"}
-                <CloseButton onClick={closeDrawer}>
-                    <Close />
-                </CloseButton>
-            </HeaderContent>
-            {TempDrawerElements.map((element, index) => (
-                <NodeWrapper key={index}>{element.node}</NodeWrapper>
-            ))}
-        </Card>
+        <OuterWrapper motion={motionSettings}>
+            <CloseButtonPreset onClick={closeDrawer}>
+                <Close />
+            </CloseButtonPreset>
+            <Card>
+                {props.innerElements.map((element, index) => (
+                    <ElementWrapper key={index}>
+                        <ElementHeader>{element.panelTitle}</ElementHeader>
+                        <ElementBody>{element.node}</ElementBody>
+                    </ElementWrapper>
+                ))}
+            </Card>
+        </OuterWrapper>
     );
 };

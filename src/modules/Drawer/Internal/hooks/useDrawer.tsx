@@ -22,7 +22,7 @@ interface DrawerProviderProps {
 
 export const DrawerProvider: FC<DrawerProviderProps> = ({ children }) => {
     const [innerElements, setInnerElements] = useState<DrawerElement[]>([]);
-    const [isOpen, setIsOpen] = useState<boolean>(true);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const openDrawer = useCallback((elements: DrawerElement[]) => {
         setInnerElements(elements);
