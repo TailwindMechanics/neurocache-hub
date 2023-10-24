@@ -65,7 +65,9 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
     return (
         <Wrapper>
             <div className="flex justify-center">
-                <SwitchAtom enabled={enabled} setEnabled={setEnabled} />
+                <SwitchAtom enabled={enabled} setEnabled={setEnabled}>
+                    {enabled ? "active" : "inactive"}
+                </SwitchAtom>
             </div>
             <Input id="agentName" type="text" placeholder={props.agent.name} />
             <Input

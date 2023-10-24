@@ -1,14 +1,7 @@
 //path: src\modules\Drawer\Internal\hooks\useDrawer.tsx
 
+import React, { useCallback, useContext, ReactNode, useState, FC } from "react";
 import { AnimatePresence } from "framer-motion";
-import React, {
-    useCallback,
-    useContext,
-    useEffect,
-    ReactNode,
-    useState,
-    FC,
-} from "react";
 
 import { DrawerElement } from "@modules/Drawer/types";
 import { Drawer } from "../components/drawer";

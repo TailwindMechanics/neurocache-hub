@@ -10,7 +10,7 @@ interface TableRowProps {
     firstColClassName?: string;
     lastColClassName?: string;
     agent: Agent;
-    onEditClick?: (agent: Agent) => void;
+    onRowClick?: (agent: Agent, event: boolean) => void; // updated
     isHighlighted?: boolean;
 }
 
@@ -22,8 +22,8 @@ export const TableRow: FC<TableRowProps> = (props) => {
                 className={`cursor-pointer rounded bg-none hover:bg-aqua-dark hover:text-night-black ${
                     props.isHighlighted ? "bg-aqua-dark text-night-black" : ""
                 }`}
-                onClick={() => {
-                    props.onEditClick?.(props.agent);
+                onClick={(e) => {
+                    props.onRowClick?.(props.agent, e.shiftKey); // updated
                 }}>
                 <td className={props.firstColClassName}>
                     <Image

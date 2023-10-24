@@ -3,14 +3,15 @@
 "use client";
 
 import { NodeProps, useReactFlow } from "reactflow";
+import React, { useEffect, useState } from "react";
 import { toLower } from "lodash";
-import React, { useState } from "react";
 
 import { DrawerElement } from "@modules/Drawer/types";
+import { EditAgent } from "../components/editAgent";
 import { sampleAgents } from "../data/sampleAgents";
+import { TableRow } from "../components/tableRow";
 import { CustomNode } from "@modules/Graph/types";
 import { NewAgent } from "../components/newAgent";
-import { TableRow } from "../components/tableRow";
 import { NodeSelection } from "@modules/Graph";
 import { Agent } from "@modules/Agents/types";
 import { Table } from "../components/table";
@@ -22,7 +23,6 @@ import {
     Composer,
     DivAtom,
 } from "@modules/Composer";
-import { EditAgent } from "../components/editAgent";
 
 const Card = new Composer("AgentEditorCard", CardPreset)
     .withStyle("w-256")
@@ -65,19 +65,47 @@ const AgentEditor = React.memo((props: NodeProps) => {
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
     const nodeConfig = props.data as CustomNode;
-    const { openDrawer, isOpen } = useDrawer();
-    const [selectedRow, setSelectedRow] = useState<string | null>(null);
+    const { openDrawer, closeDrawer, isOpen } = useDrawer();
 
-    const onEditClick = (agent: Agent) => {
-        setSelectedRow(agent.name);
-        const EditAgentDrawer: DrawerElement[] = [
-            {
-                node: <EditAgent agent={agent} />,
-                panelTitle: `edit agent: ${toLower(agent.name)}`,
-            },
-        ];
-        openDrawer(EditAgentDrawer);
+    const [selectedRows, setSelectedRows] = useState<string[] | null>([]);
+
+    const onRowClick = (agent: Agent, isShiftKey: boolean) => {
+        if (!isShiftKey) {
+            setSelectedRows([agent.name]);
+            return;
+        }
+
+        setSelectedRows((prevSelectedRows) => {
+            if (!prevSelectedRows) return null;
+
+            const isAlreadySelected = prevSelectedRows.includes(agent.name);
+            return isAlreadySelected
+                ? prevSelectedRows.filter((row) => row !== agent.name)
+                : [...prevSelectedRows, agent.name];
+        });
     };
+
+    useEffect(() => {
+        if (!selectedRows) return;
+
+        if (selectedRows.length < 1) {
+            closeDrawer();
+            return;
+        }
+
+        const EditAgentDrawer: DrawerElement[] = selectedRows.map(
+            (selectedRow) => {
+                const selectedAgent = sampleAgents.find(
+                    (agent) => agent.name === selectedRow,
+                );
+                return {
+                    node: <EditAgent agent={selectedAgent!} />,
+                    panelTitle: `edit agent: ${toLower(selectedAgent!.name)}`,
+                };
+            },
+        );
+        openDrawer(EditAgentDrawer);
+    }, [selectedRows, openDrawer, closeDrawer]);
 
     return (
         <>
@@ -86,8 +114,8 @@ const AgentEditor = React.memo((props: NodeProps) => {
                     <div className="pl-1">{toLower(nodeConfig.nodeName)}</div>
                     <Button
                         onClick={() => {
-                            setSelectedRow(null);
                             openDrawer(NewAgentDrawer);
+                            setSelectedRows(null);
                         }}>
                         {newAgentText}
                     </Button>
@@ -108,9 +136,10 @@ const AgentEditor = React.memo((props: NodeProps) => {
                             {sampleAgents.map((agent) => (
                                 <TableRow
                                     isHighlighted={
-                                        isOpen && selectedRow === agent.name
+                                        isOpen &&
+                                        selectedRows?.includes(agent.name)
                                     }
-                                    onEditClick={onEditClick}
+                                    onRowClick={onRowClick}
                                     className="pr-2"
                                     firstColClassName="pr-0.5"
                                     lastColClassName="pr-0.5"
