@@ -60,6 +60,7 @@ const motionSettings = {
     exit: { x: "100%" },
     transition: { duration: 0.2, ease: "circOut" },
 };
+
 interface DrawerProps {
     innerElements: DrawerElement[];
 }

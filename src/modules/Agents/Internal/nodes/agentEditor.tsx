@@ -4,7 +4,7 @@
 
 import { NodeProps, useReactFlow } from "reactflow";
 import { toLower } from "lodash";
-import React from "react";
+import React, { useState } from "react";
 
 import { DrawerElement } from "@modules/Drawer/types";
 import { sampleAgents } from "../data/sampleAgents";
@@ -16,8 +16,8 @@ import { Agent } from "@modules/Agents/types";
 import { Table } from "../components/table";
 import { useDrawer } from "@modules/Drawer";
 import {
+    GhostButtonPreset,
     ContentPreset,
-    ButtonPreset,
     CardPreset,
     Composer,
     DivAtom,
@@ -29,8 +29,7 @@ const Card = new Composer("AgentEditorCard", CardPreset)
     .withStyle("p-1.5")
     .withRoundedFrame()
     .build();
-const Button = new Composer("TableButton", ButtonPreset)
-    .withStyle("border-none")
+const Button = new Composer("TableButton", GhostButtonPreset)
     .withStyle("leading-tight")
     .withStyle("text-xs")
     .withStyle("w-[22%]")
@@ -61,13 +60,16 @@ const NewAgentDrawer: DrawerElement[] = [
     },
 ];
 
+const newAgentText = "new agent +";
 const AgentEditor = React.memo((props: NodeProps) => {
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
     const nodeConfig = props.data as CustomNode;
-    const { openDrawer } = useDrawer();
+    const { openDrawer, isOpen } = useDrawer();
+    const [selectedRow, setSelectedRow] = useState<string | null>(null);
 
     const onEditClick = (agent: Agent) => {
+        setSelectedRow(agent.name);
         const EditAgentDrawer: DrawerElement[] = [
             {
                 node: <EditAgent agent={agent} />,
@@ -84,9 +86,10 @@ const AgentEditor = React.memo((props: NodeProps) => {
                     <div className="pl-1">{toLower(nodeConfig.nodeName)}</div>
                     <Button
                         onClick={() => {
+                            setSelectedRow(null);
                             openDrawer(NewAgentDrawer);
                         }}>
-                        new agent +
+                        {newAgentText}
                     </Button>
                 </HeaderContent>
                 <TableContent>
@@ -104,6 +107,9 @@ const AgentEditor = React.memo((props: NodeProps) => {
                         <tbody className="leading-none">
                             {sampleAgents.map((agent) => (
                                 <TableRow
+                                    isHighlighted={
+                                        isOpen && selectedRow === agent.name
+                                    }
                                     onEditClick={onEditClick}
                                     className="pr-2"
                                     firstColClassName="pr-0.5"

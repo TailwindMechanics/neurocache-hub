@@ -11,6 +11,7 @@ import {
     ChangeEvent,
     ReactNode,
     FormEvent,
+    MouseEventHandler,
 } from "react";
 
 export interface CodeBlockProps {
@@ -37,6 +38,7 @@ export interface AtomProps {
     onFocus?: FocusEventHandler<HTMLInputElement> | undefined;
     onBlur?: FocusEventHandler<HTMLInputElement> | undefined;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onMouseDown?: React.MouseEventHandler<HTMLDivElement>;
     "aria-label"?: string | undefined;
     style?: CSSProperties | undefined;
     displayValue?(item: any): string;

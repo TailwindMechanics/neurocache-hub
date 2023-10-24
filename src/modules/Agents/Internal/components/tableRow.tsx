@@ -3,8 +3,6 @@
 import Image from "next/image";
 import { FC } from "react";
 
-import { Composer, GhostButtonPreset } from "@modules/Composer";
-import { Burger } from "@modules/Icons/External/icons";
 import { Agent } from "@modules/Agents/types";
 
 interface TableRowProps {
@@ -13,16 +11,20 @@ interface TableRowProps {
     lastColClassName?: string;
     agent: Agent;
     onEditClick?: (agent: Agent) => void;
+    isHighlighted?: boolean;
 }
-
-const Button = new Composer("TableButton", GhostButtonPreset)
-    .withRoundedFull()
-    .build();
 
 export const TableRow: FC<TableRowProps> = (props) => {
     return (
         <>
-            <tr className="rounded bg-none hover:bg-aqua-dark hover:text-night-black">
+            <tr
+                tabIndex={0}
+                className={`cursor-pointer rounded bg-none hover:bg-aqua-dark hover:text-night-black ${
+                    props.isHighlighted ? "bg-aqua-dark text-night-black" : ""
+                }`}
+                onClick={() => {
+                    props.onEditClick?.(props.agent);
+                }}>
                 <td className={props.firstColClassName}>
                     <Image
                         width={64}
@@ -47,11 +49,6 @@ export const TableRow: FC<TableRowProps> = (props) => {
                 </td>
                 <td className={props.lastColClassName}>
                     {props.agent.dateModified}
-                </td>
-                <td>
-                    <Button onClick={() => props.onEditClick?.(props.agent)}>
-                        <Burger className="h-2 w-2" />
-                    </Button>
                 </td>
             </tr>
         </>
