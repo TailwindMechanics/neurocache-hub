@@ -6,8 +6,8 @@ import { NodeProps, useReactFlow } from "reactflow";
 import { toLower } from "lodash";
 import React from "react";
 
+import { DrawerElement } from "@modules/Drawer/types";
 import { sampleAgents } from "../data/sampleAgents";
-import { EditAgent } from "../components/editAgent";
 import { CustomNode } from "@modules/Graph/types";
 import { NewAgent } from "../components/newAgent";
 import { TableRow } from "../components/tableRow";
@@ -22,6 +22,7 @@ import {
     Composer,
     DivAtom,
 } from "@modules/Composer";
+import { EditAgent } from "../components/editAgent";
 
 const Card = new Composer("AgentEditorCard", CardPreset)
     .withStyle("w-256")
@@ -53,6 +54,12 @@ const TableContent = new Composer("AgentEditorContent", ContentPreset)
     .withStyle("pb-1")
     .withRoundedFrame()
     .build();
+const NewAgentDrawer: DrawerElement[] = [
+    {
+        node: <NewAgent />,
+        panelTitle: "create new agent",
+    },
+];
 
 const AgentEditor = React.memo((props: NodeProps) => {
     const reactFlowInstance = useReactFlow();
@@ -61,7 +68,13 @@ const AgentEditor = React.memo((props: NodeProps) => {
     const { openDrawer } = useDrawer();
 
     const onEditClick = (agent: Agent) => {
-        openDrawer(<EditAgent agent={agent} />, "edit agent");
+        const EditAgentDrawer: DrawerElement[] = [
+            {
+                node: <EditAgent agent={agent} />,
+                panelTitle: "create new agent",
+            },
+        ];
+        openDrawer(EditAgentDrawer);
     };
 
     return (
@@ -71,7 +84,7 @@ const AgentEditor = React.memo((props: NodeProps) => {
                     <div className="pl-1">{toLower(nodeConfig.nodeName)}</div>
                     <Button
                         onClick={() => {
-                            openDrawer(<NewAgent />, "create new agent");
+                            openDrawer(NewAgentDrawer);
                         }}>
                         new agent +
                     </Button>

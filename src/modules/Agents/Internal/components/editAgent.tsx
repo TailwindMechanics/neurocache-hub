@@ -21,11 +21,11 @@ const Wrapper = new Composer("EditAgentWrapper", DivAtom)
     .withStyle("py-3")
     .withRoundedElement()
     .build();
-const Button = new Composer("EditAgentButton", ButtonPreset)
+const SaveButton = new Composer("EditAgentSaveButton", ButtonPreset)
     .withStyle("border-2")
     .withStyle("text-xl")
     .withStyle("py-1")
-    .withRoundedButton()
+    .withRoundedElement()
     .build();
 const Input = new Composer("EditAgentInput", InputPreset)
     .withStyle("border-2")
@@ -82,7 +82,7 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
                 <p>date modified: {props.agent.dateModified}</p>
                 <p>date created: {props.agent.dateCreated}</p>
             </DatesLabel>
-            <Button>save</Button>
+            <SaveButton>save</SaveButton>
         </Wrapper>
     );
 };

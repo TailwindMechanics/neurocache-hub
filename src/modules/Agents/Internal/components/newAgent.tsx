@@ -2,7 +2,9 @@
 
 import { FC } from "react";
 
+import { agentRoles } from "../data/sampleAgents";
 import {
+    DropdownAtom,
     ButtonPreset,
     InputPreset,
     Composer,
@@ -21,7 +23,7 @@ const Button = new Composer("NewAgentButton", ButtonPreset)
     .withStyle("border-2")
     .withStyle("text-xl")
     .withStyle("py-1")
-    .withRoundedButton()
+    .withRoundedElement()
     .build();
 const Input = new Composer("NewAgentInput", InputPreset)
     .withStyle("border-2")
@@ -31,10 +33,17 @@ const Input = new Composer("NewAgentInput", InputPreset)
     .build();
 
 export const NewAgent: FC = () => {
+    const handleRoleSelect = (selectedRole: string) => {
+        console.log("Selected role:", selectedRole);
+    };
     return (
         <Wrapper>
             <Input id="agentName" type="text" placeholder="agent name" />
-            <Input id="agentRole" type="text" placeholder="agent role" />
+            <DropdownAtom
+                value={agentRoles[0]}
+                options={agentRoles}
+                onSelect={handleRoleSelect}
+            />
             <Button>create</Button>
         </Wrapper>
     );

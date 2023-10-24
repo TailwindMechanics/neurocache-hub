@@ -142,9 +142,12 @@ neurocache-hub
 │     │        └─ actions.ts
 │     ├─ Drawer
 │     │  ├─ index.tsx
-│     │  └─ Internal
-│     │     └─ hooks
-│     │        └─ useDrawer.tsx
+│     │  ├─ Internal
+│     │  │  ├─ components
+│     │  │  │  └─ drawer.tsx
+│     │  │  └─ hooks
+│     │  │     └─ useDrawer.tsx
+│     │  └─ types.tsx
 │     ├─ Graph
 │     │  ├─ External
 │     │  │  ├─ allNodeData.tsx

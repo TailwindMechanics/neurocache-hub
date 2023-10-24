@@ -9,11 +9,6 @@ export interface GraphData {
     viewport: Viewport;
 }
 
-export interface AgentGraph {
-    user_id: string;
-    graph_data: GraphData;
-}
-
 export type NodeFlowValue = {
     ids: string[];
     payload: string | null;
