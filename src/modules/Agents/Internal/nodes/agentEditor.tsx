@@ -57,39 +57,7 @@ const TableContent = new Composer("AgentEditorContent", ContentPreset)
 const NewAgentDrawer: DrawerElement[] = [
     {
         node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "party with agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "say hello agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "create new agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "edit agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "agent goes to manhattan",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "other thing agent",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "another agent test",
-    },
-    {
-        node: <NewAgent />,
-        panelTitle: "brainwave agent",
+        panelTitle: "new agent:",
     },
 ];
 

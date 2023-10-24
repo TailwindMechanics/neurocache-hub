@@ -2,16 +2,14 @@
 
 import { FC, useContext, useCallback, useEffect } from "react";
 
+import { DrawerElement } from "@modules/Drawer/types";
+import { DrawerContext } from "../hooks/useDrawer";
 import {
-    ButtonPreset,
+    CloseButtonPreset,
     MotionDiv,
     Composer,
     DivAtom,
-    CloseButtonPreset,
 } from "@modules/Composer";
-import { DrawerElement } from "@modules/Drawer/types";
-import { Close } from "@modules/Icons/External/icons";
-import { DrawerContext } from "../hooks/useDrawer";
 
 const OuterWrapper = new Composer("OuterWrapper", MotionDiv)
     .withStyle("bg-night-dark")
@@ -91,9 +89,7 @@ export const Drawer: FC<DrawerProps> = (props) => {
 
     return (
         <OuterWrapper motion={motionSettings}>
-            <CloseButtonPreset onClick={closeDrawer}>
-                <Close />
-            </CloseButtonPreset>
+            <CloseButtonPreset onClick={closeDrawer}></CloseButtonPreset>
             <Card>
                 {props.innerElements.map((element, index) => (
                     <ElementWrapper key={index}>

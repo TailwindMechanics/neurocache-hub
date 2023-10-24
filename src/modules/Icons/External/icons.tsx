@@ -227,7 +227,7 @@ export const Emoji: FC<IconProps> = ({ className = "w-5 h-5" }) => (
     </svg>
 );
 
-export const Close: FC<IconProps> = ({ className = "w-4 h-4" }) => (
+export const Close: FC<IconProps> = ({ className = "w-70p h-70p" }) => (
     <svg
         className={className}
         aria-hidden="true"
