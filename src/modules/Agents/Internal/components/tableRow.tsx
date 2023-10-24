@@ -10,7 +10,7 @@ interface TableRowProps {
     firstColClassName?: string;
     lastColClassName?: string;
     agent: Agent;
-    onRowClick?: (agent: Agent, event: boolean) => void; // updated
+    onRowClick?: (agent: Agent, event: boolean) => void;
     isHighlighted?: boolean;
 }
 
@@ -23,7 +23,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
                     props.isHighlighted ? "bg-aqua-dark text-night-black" : ""
                 }`}
                 onClick={(e) => {
-                    props.onRowClick?.(props.agent, e.shiftKey); // updated
+                    props.onRowClick?.(props.agent, e.shiftKey);
                 }}>
                 <td className={props.firstColClassName}>
                     <Image
@@ -48,7 +48,11 @@ export const TableRow: FC<TableRowProps> = (props) => {
                     </div>
                 </td>
                 <td className={props.lastColClassName}>
-                    {props.agent.dateModified}
+                    {props.agent.dateModified.toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                    })}
                 </td>
             </tr>
         </>

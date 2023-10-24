@@ -81,8 +81,22 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
                 onSelect={handleRoleSelect}
             />
             <DatesLabel>
-                <p>date modified: {props.agent.dateModified}</p>
-                <p>date created: {props.agent.dateCreated}</p>
+                <p>
+                    date modified:{" "}
+                    {props.agent.dateModified.toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                    })}
+                </p>
+                <p>
+                    date created:{" "}
+                    {props.agent.dateCreated.toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                    })}
+                </p>
             </DatesLabel>
             <SaveButton>save</SaveButton>
         </Wrapper>

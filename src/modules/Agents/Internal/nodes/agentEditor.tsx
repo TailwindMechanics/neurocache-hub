@@ -5,6 +5,7 @@
 import { NodeProps, useReactFlow } from "reactflow";
 import React, { useEffect, useState } from "react";
 import { toLower } from "lodash";
+import _ from "lodash";
 
 import { DrawerElement } from "@modules/Drawer/types";
 import { EditAgent } from "../components/editAgent";
@@ -62,12 +63,37 @@ const NewAgentDrawer: DrawerElement[] = [
 
 const newAgentText = "new agent +";
 const AgentEditor = React.memo((props: NodeProps) => {
+    const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>("desc");
+    const [sortField, setSortField] = useState<string | null>("dateModified");
+    const [selectedRows, setSelectedRows] = useState<string[] | null>([]);
+    const [sortedAgents, setSortedAgents] = useState(sampleAgents);
+    const { openDrawer, closeDrawer, isOpen } = useDrawer();
+    const nodeConfig = props.data as CustomNode;
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
-    const nodeConfig = props.data as CustomNode;
-    const { openDrawer, closeDrawer, isOpen } = useDrawer();
 
-    const [selectedRows, setSelectedRows] = useState<string[] | null>([]);
+    const sortAgents = (field: string) => {
+        setSortField(field);
+        setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
+    };
+
+    useEffect(() => {
+        if (!sortField || !sortOrder) return;
+
+        const sorted = _.orderBy(
+            sampleAgents,
+            [
+                (agent: Agent) => {
+                    if (sortField === "dateModified") {
+                        return (agent as any)[sortField].getTime();
+                    }
+                    return (agent as any)[sortField];
+                },
+            ],
+            [sortOrder],
+        );
+        setSortedAgents(sorted);
+    }, [sortField, sortOrder]);
 
     const onRowClick = (agent: Agent, isShiftKey: boolean) => {
         if (!isShiftKey) {
@@ -125,15 +151,31 @@ const AgentEditor = React.memo((props: NodeProps) => {
                         <thead className="text-xs font-thin leading-none text-night-title ">
                             <tr>
                                 <th></th>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Status</th>
-                                <th>Created</th>
+                                <th onClick={() => sortAgents("name")}>
+                                    Name{" "}
+                                    {sortField === "name" &&
+                                        (sortOrder === "asc" ? "▲" : "▼")}
+                                </th>
+                                <th onClick={() => sortAgents("role")}>
+                                    Role{" "}
+                                    {sortField === "role" &&
+                                        (sortOrder === "asc" ? "▲" : "▼")}
+                                </th>
+                                <th onClick={() => sortAgents("status")}>
+                                    Status{" "}
+                                    {sortField === "status" &&
+                                        (sortOrder === "asc" ? "▲" : "▼")}
+                                </th>
+                                <th onClick={() => sortAgents("dateModified")}>
+                                    Modified{" "}
+                                    {sortField === "dateModified" &&
+                                        (sortOrder === "asc" ? "▲" : "▼")}
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody className="leading-none">
-                            {sampleAgents.map((agent) => (
+                            {sortedAgents.map((agent) => (
                                 <TableRow
                                     isHighlighted={
                                         isOpen &&
