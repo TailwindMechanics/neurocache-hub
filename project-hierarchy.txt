@@ -217,7 +217,8 @@ neurocache-hub
 │     │  ├─ index.tsx
 │     │  ├─ Internal
 │     │  │  └─ data
-│     │  │     └─ avatarPrompt.tsx
+│     │  │     ├─ avatarPrompt.tsx
+│     │  │     └─ placeholder.png
 │     │  └─ types.tsx
 │     ├─ OpenAi
 │     │  ├─ index.tsx
@@ -228,6 +229,11 @@ neurocache-hub
 │     │  │     ├─ openAiModels.tsx
 │     │  │     └─ openAiNode.tsx
 │     │  └─ types.tsx
+│     ├─ Textgen
+│     │  ├─ External
+│     │  │  └─ Server
+│     │  │     └─ generateName.tsx
+│     │  └─ Internal
 │     └─ Utils
 │        ├─ index.tsx
 │        └─ Internal

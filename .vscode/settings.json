@@ -24,7 +24,8 @@
         "Agents": "Robot",
         "Drawer": "Class",
         "Avatars": "Robot",
-        "Imagen": "Ci"
+        "Imagen": "Ci",
+        "Textgen": "Docs"
     },
     "tailwindCSS.experimental.classRegex": [
         ["shadow: \"(.*)\","],

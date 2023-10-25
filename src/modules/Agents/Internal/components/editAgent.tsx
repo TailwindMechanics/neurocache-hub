@@ -5,20 +5,19 @@ import Image from "next/image";
 import moment from "moment";
 
 import { RandomAvatar } from "@modules/Imagen/External/Server/randomAvatar";
-import { Refresh } from "@modules/Icons/External/icons";
+import { AvatarResponse } from "@modules/Imagen/types";
 import { agentRoles } from "../data/sampleAgents";
-import { IsNullOrEmpty } from "@modules/Utils";
 import { Agent } from "@modules/Agents/types";
+import { Placeholder } from "@modules/Imagen";
 import {
+    RoundButtonPreset,
     ButtonPreset,
     DropdownAtom,
     InputPreset,
     SwitchAtom,
     Composer,
     DivAtom,
-    RoundButtonPreset,
 } from "@modules/Composer";
-import { AvatarResponse } from "@modules/Imagen/types";
 
 const Wrapper = new Composer("EditAgentWrapper", DivAtom)
     .withStyle("space-y-2")
@@ -110,23 +109,19 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
                 <ImageButton
                     className={imageIsLoading ? "animate-spin" : ""}
                     onClick={onImageClick}>
-                    {IsNullOrEmpty(avatar.imageUrls[0]) ? (
-                        <Refresh className="h-14 w-auto rounded-full" />
-                    ) : (
-                        <Image
-                            width={64}
-                            height={64}
-                            src={avatar.imageUrls[0]}
-                            alt={`${props.agent.name} avatar`}
-                            className="h-14 w-auto rounded-full object-fill"
-                            onLoad={() => {
-                                setImageIsLoading(false);
-                                setAvatarDescription(
-                                    avatar.avatarPrompt.description,
-                                );
-                            }}
-                        />
-                    )}
+                    <Image
+                        width={64}
+                        height={64}
+                        src={avatar.imageUrls[0] || Placeholder}
+                        alt={`${props.agent.name} avatar`}
+                        className="h-14 w-auto rounded-full object-fill"
+                        onLoad={() => {
+                            setImageIsLoading(false);
+                            setAvatarDescription(
+                                avatar.avatarPrompt.description,
+                            );
+                        }}
+                    />
                 </ImageButton>
                 <p className="px-2 text-center text-sm font-bold italic text-night-title underline capitalize-first">
                     {avatarDescription}
