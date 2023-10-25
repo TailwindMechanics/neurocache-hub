@@ -45,16 +45,24 @@ neurocache-hub
 ├─ postcss.config.js
 ├─ project-hierarchy.txt
 ├─ public
+│  ├─ avatars
+│  │  ├─ aine.png
+│  │  ├─ bender.png
+│  │  ├─ bird80px.png
+│  │  ├─ Brainwave.png
+│  │  ├─ claude.png
+│  │  ├─ helptron.png
+│  │  ├─ louise.png
+│  │  ├─ pi.png
+│  │  ├─ pointerbot.png
+│  │  ├─ robotnik.png
+│  │  ├─ searchbot.png
+│  │  └─ vbdvbf.png
 │  ├─ favicon.svg
 │  ├─ images
-│  │  ├─ bird80px.png
 │  │  ├─ neurocache.png
 │  │  └─ openai.svg
-│  ├─ robots.txt
-│  └─ textures
-│     ├─ grid-texture.png
-│     ├─ terrain-normal.jpg
-│     └─ terrain-roughness.jpg
+│  └─ robots.txt
 ├─ README.md
 ├─ root
 ├─ rootGrouper.js
@@ -132,6 +140,7 @@ neurocache-hub
 │     │  │     ├─ ghostButton.tsx
 │     │  │     ├─ input.tsx
 │     │  │     ├─ prose.tsx
+│     │  │     ├─ roundButton.tsx
 │     │  │     ├─ shell.tsx
 │     │  │     ├─ status.tsx
 │     │  │     ├─ tab.tsx
@@ -201,6 +210,15 @@ neurocache-hub
 │     │  ├─ External
 │     │  │  └─ icons.tsx
 │     │  └─ index.tsx
+│     ├─ Imagen
+│     │  ├─ External
+│     │  │  └─ Server
+│     │  │     └─ randomAvatar.tsx
+│     │  ├─ index.tsx
+│     │  ├─ Internal
+│     │  │  └─ data
+│     │  │     └─ avatarPrompt.tsx
+│     │  └─ types.tsx
 │     ├─ OpenAi
 │     │  ├─ index.tsx
 │     │  ├─ Internal

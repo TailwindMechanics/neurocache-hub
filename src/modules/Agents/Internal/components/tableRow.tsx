@@ -1,6 +1,7 @@
 //path: src\modules\Agents\Internal\components\tableRow.tsx
 
 import Image from "next/image";
+import moment from "moment";
 import { FC } from "react";
 
 import { Agent } from "@modules/Agents/types";
@@ -19,7 +20,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
         <>
             <tr
                 tabIndex={0}
-                className={`cursor-pointer rounded bg-none hover:bg-aqua-dark hover:text-night-black ${
+                className={`cursor-pointer rounded bg-none hover:bg-aqua-dark hover:text-night-black focus:outline-none ${
                     props.isHighlighted ? "bg-aqua-dark text-night-black" : ""
                 }`}
                 onClick={(e) => {
@@ -31,12 +32,10 @@ export const TableRow: FC<TableRowProps> = (props) => {
                         height={64}
                         src={props.agent.imgUrl}
                         alt={`${props.agent.name} avatar`}
-                        className="h-2 w-auto rounded-full"></Image>
+                        className="h-3 w-auto rounded-full"></Image>
                 </td>
                 <td className={props.className}>{props.agent.name}</td>
-                <td className={`lowercase ${props.className}`}>
-                    {props.agent.role}
-                </td>
+                <td className={`${props.className}`}>{props.agent.role}</td>
                 <td className={props.className}>
                     <div
                         className={`rounded-full text-center lowercase ${
@@ -48,11 +47,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
                     </div>
                 </td>
                 <td className={props.lastColClassName}>
-                    {props.agent.dateModified.toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                    })}
+                    {moment(props.agent.dateModified).format("DD MMM YYYY")}
                 </td>
             </tr>
         </>

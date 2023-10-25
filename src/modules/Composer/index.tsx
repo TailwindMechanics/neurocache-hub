@@ -18,4 +18,5 @@ export { MotionDiv as MotionDiv } from "./Internal/atoms/motionDiv";
 export { SwitchAtom as SwitchAtom } from "./Internal/atoms/switch";
 export { DropdownAtom as DropdownAtom } from "./Internal/atoms/dropdown";
 export { CloseButton as CloseButtonPreset } from "./Internal/presets/closeButton";
+export { RoundButton as RoundButtonPreset } from "./Internal/presets/roundButton";
 export type { AtomProps } from "./types";

@@ -22,7 +22,9 @@
         "nodes": "Public",
         "reflection": "Decorators",
         "Agents": "Robot",
-        "Drawer": "Class"
+        "Drawer": "Class",
+        "Avatars": "Robot",
+        "Imagen": "Ci"
     },
     "tailwindCSS.experimental.classRegex": [
         ["shadow: \"(.*)\","],

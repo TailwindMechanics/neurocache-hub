@@ -2,6 +2,14 @@
 
 import { Agent } from "@modules/Agents/types";
 
+function getRandomDate(): Date {
+    const end = new Date();
+    const start = new Date(end.getTime() - 1000 * 60 * 60 * 24 * 365 * 3);
+    return new Date(
+        start.getTime() + Math.random() * (end.getTime() - start.getTime()),
+    );
+}
+
 export const sampleAgents: Agent[] = [
     {
         creator_user_id: "0",
@@ -10,12 +18,10 @@ export const sampleAgents: Agent[] = [
             edges: [],
             viewport: { x: 0, y: 0, zoom: 1 },
         },
-        imgUrl: "/images/bird80px.png",
+        imgUrl: "/avatars/Brainwave.png",
         name: "Brainwave",
         role: "Concierge",
         status: true,
-        dateModified: new Date("2023-10-20T00:00:00.000Z"),
-        dateCreated: new Date("2023-10-20T00:00:00.000Z"),
     },
     {
         creator_user_id: "0",
@@ -24,12 +30,10 @@ export const sampleAgents: Agent[] = [
             edges: [],
             viewport: { x: 0, y: 0, zoom: 1 },
         },
-        imgUrl: "/images/bird80px.png",
+        imgUrl: "/avatars/aine.png",
         name: "Aine",
         role: "Coordinator",
         status: false,
-        dateModified: new Date("2023-10-15T00:00:00.000Z"),
-        dateCreated: new Date("2023-10-15T00:00:00.000Z"),
     },
     {
         creator_user_id: "0",
@@ -38,12 +42,10 @@ export const sampleAgents: Agent[] = [
             edges: [],
             viewport: { x: 0, y: 0, zoom: 1 },
         },
-        imgUrl: "/images/bird80px.png",
+        imgUrl: "/avatars/searchbot.png",
         name: "Searchbot",
         role: "Webmaster",
         status: true,
-        dateModified: new Date("2023-10-10T00:00:00.000Z"),
-        dateCreated: new Date("2023-10-10T00:00:00.000Z"),
     },
     {
         creator_user_id: "0",
@@ -52,12 +54,10 @@ export const sampleAgents: Agent[] = [
             edges: [],
             viewport: { x: 0, y: 0, zoom: 1 },
         },
-        imgUrl: "/images/bird80px.png",
+        imgUrl: "/avatars/pointerbot.png",
         name: "Pointer bot",
         role: "Webmaster",
         status: true,
-        dateModified: new Date("2023-10-09T00:00:00.000Z"),
-        dateCreated: new Date("2023-10-09T00:00:00.000Z"),
     },
     {
         creator_user_id: "0",
@@ -66,12 +66,10 @@ export const sampleAgents: Agent[] = [
             edges: [],
             viewport: { x: 0, y: 0, zoom: 1 },
         },
-        imgUrl: "/images/bird80px.png",
+        imgUrl: "/avatars/claude.png",
         name: "Claude",
         role: "Administrator",
         status: true,
-        dateModified: new Date("2022-10-08T00:00:00.000Z"),
-        dateCreated: new Date("2022-10-08T00:00:00.000Z"),
     },
     {
         creator_user_id: "0",
@@ -80,12 +78,10 @@ export const sampleAgents: Agent[] = [
             edges: [],
             viewport: { x: 0, y: 0, zoom: 1 },
         },
-        imgUrl: "/images/bird80px.png",
+        imgUrl: "/avatars/pi.png",
         name: "Pi",
         role: "Librarian",
         status: false,
-        dateModified: new Date("2023-10-07T00:00:00.000Z"),
-        dateCreated: new Date("2023-10-07T00:00:00.000Z"),
     },
     {
         creator_user_id: "0",
@@ -94,12 +90,10 @@ export const sampleAgents: Agent[] = [
             edges: [],
             viewport: { x: 0, y: 0, zoom: 1 },
         },
-        imgUrl: "/images/bird80px.png",
+        imgUrl: "/avatars/robotnik.png",
         name: "Robotnik",
         role: "Concierge",
         status: true,
-        dateModified: new Date("2023-09-06T00:00:00.000Z"),
-        dateCreated: new Date("2023-09-06T00:00:00.000Z"),
     },
     {
         creator_user_id: "0",
@@ -108,12 +102,10 @@ export const sampleAgents: Agent[] = [
             edges: [],
             viewport: { x: 0, y: 0, zoom: 1 },
         },
-        imgUrl: "/images/bird80px.png",
+        imgUrl: "/avatars/Louise.png",
         name: "Louise",
         role: "Researcher",
         status: true,
-        dateModified: new Date("2023-10-05T00:00:00.000Z"),
-        dateCreated: new Date("2023-10-05T00:00:00.000Z"),
     },
     {
         creator_user_id: "0",
@@ -122,12 +114,10 @@ export const sampleAgents: Agent[] = [
             edges: [],
             viewport: { x: 0, y: 0, zoom: 1 },
         },
-        imgUrl: "/images/bird80px.png",
+        imgUrl: "/avatars/helptron.png",
         name: "Helptron",
         role: "Coordinator",
         status: false,
-        dateModified: new Date("2022-10-04T00:00:00.000Z"),
-        dateCreated: new Date("2022-10-04T00:00:00.000Z"),
     },
     {
         creator_user_id: "0",
@@ -136,14 +126,16 @@ export const sampleAgents: Agent[] = [
             edges: [],
             viewport: { x: 0, y: 0, zoom: 1 },
         },
-        imgUrl: "/images/bird80px.png",
+        imgUrl: "/avatars/bender.png",
         name: "Bender",
         role: "Webmaster",
         status: false,
-        dateModified: new Date("2023-10-03T00:00:00.000Z"),
-        dateCreated: new Date("2023-10-03T00:00:00.000Z"),
     },
-];
+].map((agent) => ({
+    ...agent,
+    dateModified: getRandomDate(),
+    dateCreated: getRandomDate(),
+}));
 
 export const agentRoles: string[] = [
     "Coordinator",

@@ -181,6 +181,9 @@ module.exports = {
                         "-ms-overflow-style": "none",
                         "scrollbar-width": "none",
                     },
+                    ".capitalize-first::first-letter": {
+                        textTransform: "capitalize",
+                    },
                 },
                 ["responsive", "hover", "focus"],
             );
