@@ -111,14 +111,14 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
                     className={imageIsLoading ? "animate-spin" : ""}
                     onClick={onImageClick}>
                     {IsNullOrEmpty(avatar.imageUrls[0]) ? (
-                        <Refresh className="h-10 w-auto rounded-full" />
+                        <Refresh className="h-14 w-auto rounded-full" />
                     ) : (
                         <Image
                             width={64}
                             height={64}
                             src={avatar.imageUrls[0]}
                             alt={`${props.agent.name} avatar`}
-                            className="h-12 w-auto rounded-full object-fill"
+                            className="h-14 w-auto rounded-full object-fill"
                             onLoad={() => {
                                 setImageIsLoading(false);
                                 setAvatarDescription(

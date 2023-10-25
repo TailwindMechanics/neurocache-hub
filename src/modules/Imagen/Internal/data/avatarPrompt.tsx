@@ -88,7 +88,6 @@ const ethnicities = [
 const occupations = [
     "accountant",
     "actor",
-    "actress",
     "architect",
     "artist",
     "astronaut",
