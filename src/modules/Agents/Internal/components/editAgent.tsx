@@ -4,11 +4,10 @@ import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import moment from "moment";
 
-import { RandomAvatar } from "@modules/Imagen/External/Server/randomAvatar";
-import { AvatarResponse } from "@modules/Imagen/types";
+import { CreateAvatar } from "../../External/Server/createAvatar";
 import { agentRoles } from "../data/sampleAgents";
-import { Agent } from "@modules/Agents/types";
-import { Placeholder } from "@modules/Imagen";
+import { Placeholder } from "../data/placeholder";
+import { Agent } from "../../types";
 import {
     RoundButtonPreset,
     ButtonPreset,
@@ -81,7 +80,7 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
 
     const onImageClick = async () => {
         setImageIsLoading(true);
-        const response = await RandomAvatar();
+        const response = await CreateAvatar();
         if (response) {
             setAvatar(response);
         }

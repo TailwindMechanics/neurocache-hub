@@ -1,28 +1,18 @@
-//path: src\modules\Imagen\Internal\data\avatarPrompt.tsx
+//path: src\modules\Agents\Internal\persona\createPersona.ts
 
-import { AvatarPrompt } from "@modules/Imagen/types";
+import { RandomElement as RE } from "@modules/Utils";
+import { Persona } from "../../../Personagen/types";
 
-const Rand = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];
-
-export const CreatePrompt = (
-    description: string,
-    expression: string = "friendly and approachable",
-) => {
-    const prompt = `Pixel art portrait of ${description}, 
-    drawing inspiration from 'Thimbleweed Park'. 
-    The profile picture focuses on the face, 
-    capturing a ${expression} expression.`;
-    return { prompt, description, expression } as AvatarPrompt;
-};
-
-export const RandomPrompt = () => {
-    const description = `a ${Rand(weights)} ${Rand(ethnicities)} ${Rand(
+export const CreatePersona = (): Persona => {
+    const description = `a ${RE(weights)} ${RE(ethnicities)} ${RE(
         occupations,
-    )} ${Rand(genders)} in their ${Rand(ages)}`;
-
-    return CreatePrompt(description, Rand(expressions));
+    )} ${RE(genders)} in their ${RE(ages)}`;
+    const expression = RE(expressions);
+    const name = "John Doe";
+    return { description, expression, name };
 };
 
+const weights = ["slim", "plump", "slightly overweight", "fat"];
 const genders = [
     "man",
     "woman",
@@ -62,7 +52,6 @@ const ages = [
     "80s",
     "90s",
 ];
-const weights = ["slim", "plump", "slightly overweight", "fat"];
 const ethnicities = [
     "american",
     "african",

@@ -6,7 +6,7 @@ import { NodeProps, useReactFlow } from "reactflow";
 import { useState, useTransition } from "react";
 import React from "react";
 
-import { upsertAgentGraph } from "@modules/Database/External/Server/actions";
+import { upsertAgentGraph } from "@modules/Agents/External/Server/actions";
 import { NodeSelectionState } from "../components/nodeSelectionState";
 import { DrawHandle } from "../components/drawHandle";
 import { CustomNode, GraphData } from "../../types";

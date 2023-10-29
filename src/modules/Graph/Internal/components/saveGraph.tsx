@@ -7,7 +7,7 @@ import { saveGraph as saveGraphLocal } from "../core/nodeSerializer";
 import { useAuth } from "../hooks/useAuth";
 import { UseCtrlS } from "@modules/Utils";
 import React from "react";
-import { upsertAgentGraph } from "@modules/Database/External/Server/actions";
+import { upsertAgentGraph } from "@modules/Agents/External/Server/actions";
 
 interface SaveGraphProps {
     flowKey: string;

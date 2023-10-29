@@ -3,12 +3,13 @@
 import { GraphData } from "@modules/Graph/types";
 
 export interface Agent {
-    creator_user_id: string;
-    graph_data: GraphData;
+    agent_id: string;
+    user_id: string;
+    name: string;
+    persona: string;
+    status: string;
+    avatarUrl: string;
+    graph: GraphData;
     dateModified: Date;
     dateCreated: Date;
-    status: boolean;
-    imgUrl: string;
-    role: string;
-    name: string;
 }

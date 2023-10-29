@@ -82,17 +82,29 @@ neurocache-hub
 │  │  └─ page.tsx
 │  └─ modules
 │     ├─ Agents
+│     │  ├─ External
+│     │  │  └─ Server
+│     │  │     ├─ actions.ts
+│     │  │     ├─ createAvatar.tsx
+│     │  │     ├─ createName.tsx
+│     │  │     └─ docs.md
 │     │  ├─ index.tsx
 │     │  ├─ Internal
 │     │  │  ├─ components
 │     │  │  │  ├─ editAgent.tsx
+│     │  │  │  ├─ fdsfs.md
 │     │  │  │  ├─ newAgent.tsx
 │     │  │  │  ├─ table.tsx
 │     │  │  │  └─ tableRow.tsx
 │     │  │  ├─ data
+│     │  │  │  ├─ agent.tsx
+│     │  │  │  ├─ placeholder.png
+│     │  │  │  ├─ placeholder.tsx
 │     │  │  │  └─ sampleAgents.tsx
-│     │  │  └─ nodes
-│     │  │     └─ agentEditor.tsx
+│     │  │  ├─ nodes
+│     │  │  │  └─ agentEditor.tsx
+│     │  │  └─ persona
+│     │  │     └─ createPersona.ts
 │     │  └─ types.tsx
 │     ├─ Auth
 │     │  ├─ External
@@ -146,10 +158,6 @@ neurocache-hub
 │     │  │     ├─ tab.tsx
 │     │  │     └─ tabList.tsx
 │     │  └─ types.tsx
-│     ├─ Database
-│     │  └─ External
-│     │     └─ Server
-│     │        └─ actions.ts
 │     ├─ Drawer
 │     │  ├─ index.tsx
 │     │  ├─ Internal
@@ -210,16 +218,6 @@ neurocache-hub
 │     │  ├─ External
 │     │  │  └─ icons.tsx
 │     │  └─ index.tsx
-│     ├─ Imagen
-│     │  ├─ External
-│     │  │  └─ Server
-│     │  │     └─ randomAvatar.tsx
-│     │  ├─ index.tsx
-│     │  ├─ Internal
-│     │  │  └─ data
-│     │  │     ├─ avatarPrompt.tsx
-│     │  │     └─ placeholder.png
-│     │  └─ types.tsx
 │     ├─ OpenAi
 │     │  ├─ index.tsx
 │     │  ├─ Internal
@@ -229,14 +227,10 @@ neurocache-hub
 │     │  │     ├─ openAiModels.tsx
 │     │  │     └─ openAiNode.tsx
 │     │  └─ types.tsx
-│     ├─ Textgen
-│     │  ├─ External
-│     │  │  └─ Server
-│     │  │     └─ generateName.tsx
-│     │  └─ Internal
 │     └─ Utils
 │        ├─ index.tsx
 │        └─ Internal
+│           ├─ collectionUtils.ts
 │           ├─ stringUtils.ts
 │           ├─ useCtrlS.tsx
 │           ├─ useKeyPress.tsx

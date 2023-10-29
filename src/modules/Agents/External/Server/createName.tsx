@@ -1,12 +1,10 @@
-//path: src\modules\Textgen\External\Server\generateName.tsx
-
-// path: src\modules\Imagen\External\Server\RandomName.tsx
+//path: src\modules\Agents\External\Server\createName.tsx
 
 "use server";
 
 import OpenAI from "openai";
 
-export const GenerateName = async (prompt: string) => {
+export const CreateName = async (prompt: string) => {
     const openAI = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,
     });

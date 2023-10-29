@@ -3,10 +3,11 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 
-import { RandomAvatar } from "@modules/Imagen/External/Server/randomAvatar";
-import { AvatarResponse } from "@modules/Imagen/types";
+import { CreateAvatar } from "@modules/Agents/External/Server/createAvatar";
+import { CreatePersona } from "../persona/createPersona";
 import { agentRoles } from "../data/sampleAgents";
-import { Placeholder } from "@modules/Imagen";
+import { Placeholder } from "../data/placeholder";
+import { Agent } from "../../types";
 import {
     RoundButtonPreset,
     DropdownAtom,
@@ -15,7 +16,6 @@ import {
     Composer,
     DivAtom,
 } from "@modules/Composer";
-import { GenerateName } from "@modules/Textgen/External/Server/generateName";
 
 const Wrapper = new Composer("NewAgentWrapper", DivAtom)
     .withStyle("space-y-2")
@@ -55,21 +55,23 @@ export const NewAgent: FC = () => {
     const handleRoleSelect = (selectedRole: string) => {
         console.log("Selected role:", selectedRole);
     };
-    const [agentName, setAgentName] = useState<string>("new agent");
+    const [activeAgent, setActiveAgent] = useState<Agent>();
     const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
-    const [avatar, setAvatar] = useState<AvatarResponse>({
-        avatarPrompt: { description: "", expression: "", prompt: "" },
-        imageUrls: [],
-    });
+    const [avatarUrls, setAvatarUrls] = useState<string[]>([]);
 
     const onImageClick = async () => {
         setImageIsLoading(true);
-        const response = await RandomAvatar();
+
+        const persona = CreatePersona();
+        const agent = activeAgent || {};
+        agent.persona = persona;
+
+        setActiveAgent(persona);
+        setAgentPersona(persona);
+        const response = await CreateAvatar(persona);
         if (!response) return;
 
-        setAvatar(response);
-        const name = await GenerateName(response.avatarPrompt.description);
-        if (name) setAgentName(name);
+        setAvatarUrls(response);
     };
     return (
         <Wrapper>
@@ -80,8 +82,8 @@ export const NewAgent: FC = () => {
                     <Image
                         width={64}
                         height={64}
-                        src={avatar.imageUrls[0] || Placeholder}
-                        alt={`${agentName} avatar`}
+                        src={avatarUrls[0] || Placeholder}
+                        alt={`${agentPersona?.name} avatar`}
                         className="h-14 w-auto rounded-full object-fill"
                         onLoad={() => {
                             setImageIsLoading(false);
@@ -89,15 +91,14 @@ export const NewAgent: FC = () => {
                     />
                 </ImageButton>
                 <p className="px-2 text-center text-sm font-bold italic text-night-title underline capitalize-first">
-                    {avatar.avatarPrompt.description}
+                    {agentPersona?.description || "Agent Description"}
                 </p>
             </ImageSection>
             <Input
                 className="capitalize-first"
-                onChange={(e) => setAgentName(e.target.value)}
                 id="agentName"
                 type="text"
-                placeholder={agentName}
+                placeholder={agentPersona?.name || "Agent Name"}
             />
             <DropdownAtom
                 value={agentRoles[0]}
