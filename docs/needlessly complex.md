@@ -1,3 +1,5 @@
+# Will implement the simpler version of this before moving the agent graph data to a graph db
+
 1. Supabase (implemented):
    - Description: An open-source Firebase alternative that provides capabilities for real-time subscriptions, authentication, and a PostgreSQL database for structured data management.
    - Integration: As the primary data store, Supabase will hold the essential data while interacting with Neo4j for graph-related operations, and with PartyKit for real-time updates and chat functionality.
@@ -10,3 +12,4 @@
 4. PartyKit (todo):
    - Description: An open-source platform designed for real-time collaboration, enabling features like chat and shared editing on applications.
    - Integration: Initially facilitating the chat functionality and later the collaborative editing of graphs in React Flow, PartyKit will enhance the real-time interactive aspect of the application, making collaborative work seamless.
+

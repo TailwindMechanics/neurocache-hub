@@ -1,6 +1,13 @@
---==--
+--===--
 # Agent Crud:
 1. Agent Creation:
+   - Create the agents table
+   - Setup the rls policy for the agents table
+   - Setup realtime subscription for the agents table
+   - Supabase functions
+     - Create
+     - Delete a function for insert we'll do the same for delete for consistency. 
+   - The subscription will only allow modification of an existing row, not creation nor deletion.
    - When a user creates a new agent we add a row to the agents table in Supabase. 
    - Which the user can then edit, later we can auto take the user into edit mode upon creation.
 2. Real-Time Subscription for Agent Editing:
@@ -43,3 +50,5 @@
 
 # Future Considerations:
 1. A module could be a model running on runpod, eg memgpt
+
+--===--

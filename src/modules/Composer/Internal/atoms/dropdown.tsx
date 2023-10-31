@@ -48,8 +48,10 @@ export const DropdownAtom: FC<AtomProps> = (props) => {
         <Listbox value={selected} onChange={handleSelect}>
             {({ open }) => (
                 <>
-                    <div className="relative">
-                        <ListButton>{selected}</ListButton>
+                    <div className={`relative ${props.className}`}>
+                        <ListButton className="lowercase">
+                            {selected}
+                        </ListButton>
                         {open && (
                             <ListboxOptions className="rounded-lg border border-night-light bg-night-black">
                                 {options.map((option) => (

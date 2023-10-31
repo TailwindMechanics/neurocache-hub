@@ -2,8 +2,9 @@
 
 "use server";
 
-import { Agent } from "../../types";
 import OpenAI from "openai";
+
+import { Agent } from "../../types";
 
 export const CreateAvatar = async (agent: Agent): Promise<string[]> => {
     const openAI = new OpenAI({
@@ -22,6 +23,6 @@ export const CreateAvatar = async (agent: Agent): Promise<string[]> => {
 
 const CreateAvatarPrompt = (agent: Agent): string => {
     return `Pixel art portrait of ${agent.persona}, 
-    named ${agent.name}, drawing inspiration from 'Thimbleweed Park'. 
+    named ${agent.agent_name}, drawing inspiration from 'Thimbleweed Park'. 
     The profile picture crops in and focuses on the face.`;
 };

@@ -5,57 +5,36 @@
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-import { Graph } from "@modules/Graph/types";
-import { Agent } from "@modules/Agents/types";
+const createAgentFunction = "create_agent";
+const deleteAgentFunction = "delete_agent";
 
-export async function createAgentGraph(agent: Agent) {
+async function getAuthenticatedClient() {
     const supabase = createServerActionClient({ cookies });
+
     const userResponse = await supabase.auth.getUser();
     if (!userResponse.data.user) return null;
 
-    agent.creator_user_id = userResponse.data.user.id;
-    agent.graph_data = {
-        nodes: [],
-        edges: [],
-        viewport: { x: 0, y: 0, zoom: 1 },
-    };
+    return supabase;
+}
 
-    const response = await supabase.from("agent_graphs").insert(agent).single();
+export async function createAgent(agentName: string) {
+    const supabase = await getAuthenticatedClient();
+    if (!supabase) return null;
+
+    const response = await supabase.rpc(createAgentFunction, {
+        agentname: agentName,
+    });
+
     return response;
 }
 
-export async function upsertAgentGraph(agent: Agent) {
-    const supabase = createServerActionClient({ cookies });
-    const userResponse = await supabase.auth.getUser();
-    if (!userResponse.data.user) return null;
+export async function deleteAgent(agentId: string) {
+    const supabase = await getAuthenticatedClient();
+    if (!supabase) return null;
 
-    const response = await supabase.from("agent_graphs").upsert(agent).select();
-    return response;
-}
+    const response = await supabase.rpc(deleteAgentFunction, {
+        agentid: agentId,
+    });
 
-export async function getAgentGraph(userId: string) {
-    const supabase = createServerActionClient({ cookies });
-    const response = await supabase
-        .from("agent_graphs")
-        .select("*")
-        .eq("user_id", userId);
-    return response;
-}
-
-export async function deleteAgentGraph(userId: string) {
-    const supabase = createServerActionClient({ cookies });
-    const response = await supabase
-        .from("agent_graphs")
-        .delete()
-        .eq("user_id", userId);
-    return response;
-}
-
-export async function updateAgentGraph(userId: string, graphData: Graph) {
-    const supabase = createServerActionClient({ cookies });
-    const response = await supabase
-        .from("agent_graphs")
-        .update({ graph_data: graphData })
-        .eq("user_id", userId);
     return response;
 }

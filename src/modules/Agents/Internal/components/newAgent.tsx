@@ -3,11 +3,9 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 
-import { CreateAvatar } from "@modules/Agents/External/Server/createAvatar";
-import { CreatePersona } from "../persona/createPersona";
+import { createAgent, deleteAgent } from "../../External/Server/actions";
 import { agentRoles } from "../data/sampleAgents";
 import { Placeholder } from "../data/placeholder";
-import { Agent } from "../../types";
 import {
     RoundButtonPreset,
     DropdownAtom,
@@ -16,6 +14,7 @@ import {
     Composer,
     DivAtom,
 } from "@modules/Composer";
+import { useDrawer } from "@modules/Drawer";
 
 const Wrapper = new Composer("NewAgentWrapper", DivAtom)
     .withStyle("space-y-2")
@@ -25,10 +24,21 @@ const Wrapper = new Composer("NewAgentWrapper", DivAtom)
     .withStyle("py-3")
     .withRoundedElement()
     .build();
-const Button = new Composer("NewAgentButton", ButtonPreset)
+const CreateButton = new Composer("NewAgentButton", ButtonPreset)
     .withStyle("border-2")
     .withStyle("text-xl")
     .withStyle("py-1")
+    .withRoundedElement()
+    .build();
+const DeleteButton = new Composer("NewAgentButton", ButtonPreset)
+    .withStyle("border-2")
+    .withStyle("text-xl")
+    .withStyle("py-1")
+    .withStyle("border-red-500")
+    .withStyle("text-red-500")
+    .withStyle("hover:bg-red-500")
+    .withStyle("hover:text-night-dark")
+    .withStyle("hover:border-night-dark")
     .withRoundedElement()
     .build();
 const Input = new Composer("NewAgentInput", InputPreset)
@@ -51,28 +61,34 @@ const ImageButton = new Composer("EditAgentImageButton", RoundButtonPreset)
     .withRoundedElement()
     .build();
 
+const onImageClick = async () => {};
+
 export const NewAgent: FC = () => {
     const handleRoleSelect = (selectedRole: string) => {
         console.log("Selected role:", selectedRole);
     };
-    const [activeAgent, setActiveAgent] = useState<Agent>();
+    const [agentName, setAgentName] = useState<string>();
     const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
-    const [avatarUrls, setAvatarUrls] = useState<string[]>([]);
 
-    const onImageClick = async () => {
-        setImageIsLoading(true);
+    const drawer = useDrawer();
 
-        const persona = CreatePersona();
-        const agent = activeAgent || {};
-        agent.persona = persona;
+    const onCreateClick = async () => {
+        if (!agentName) return;
+        const response = await createAgent(agentName);
+        drawer.closeDrawer();
 
-        setActiveAgent(persona);
-        setAgentPersona(persona);
-        const response = await CreateAvatar(persona);
-        if (!response) return;
-
-        setAvatarUrls(response);
+        console.log(response);
     };
+
+    const onDeleteClick = async () => {
+        const response = await deleteAgent(
+            "157bd58e-bd35-4051-b5d1-ee6ba14d2bf6",
+        );
+        drawer.closeDrawer();
+
+        console.log(response);
+    };
+
     return (
         <Wrapper>
             <ImageSection>
@@ -82,8 +98,8 @@ export const NewAgent: FC = () => {
                     <Image
                         width={64}
                         height={64}
-                        src={avatarUrls[0] || Placeholder}
-                        alt={`${agentPersona?.name} avatar`}
+                        src={Placeholder}
+                        alt={`agent avatar`}
                         className="h-14 w-auto rounded-full object-fill"
                         onLoad={() => {
                             setImageIsLoading(false);
@@ -91,21 +107,24 @@ export const NewAgent: FC = () => {
                     />
                 </ImageButton>
                 <p className="px-2 text-center text-sm font-bold italic text-night-title underline capitalize-first">
-                    {agentPersona?.description || "Agent Description"}
+                    {"Agent Description"}
                 </p>
             </ImageSection>
             <Input
+                onChange={(e) => setAgentName(e.target.value)}
                 className="capitalize-first"
                 id="agentName"
                 type="text"
-                placeholder={agentPersona?.name || "Agent Name"}
+                placeholder={"Agent Name"}
             />
             <DropdownAtom
+                className="lowercase"
                 value={agentRoles[0]}
                 options={agentRoles}
                 onSelect={handleRoleSelect}
             />
-            <Button>create</Button>
+            <CreateButton onClick={onCreateClick}>create</CreateButton>
+            <DeleteButton onClick={onDeleteClick}>delete</DeleteButton>
         </Wrapper>
     );
 };
