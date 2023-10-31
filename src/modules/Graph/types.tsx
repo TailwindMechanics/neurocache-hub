@@ -3,7 +3,7 @@
 import { Edge, Node, NodeProps, Viewport, XYPosition } from "reactflow";
 import { ComponentType } from "react";
 
-export interface GraphData {
+export interface Graph {
     nodes: Node[];
     edges: Edge[];
     viewport: Viewport;

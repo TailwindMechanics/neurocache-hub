@@ -2,12 +2,12 @@
 
 // path: src\modules\Agents\types.tsx
 
-import { GraphData } from "@modules/Graph/types";
+import { Graph } from "@modules/Graph/types";
 import { Persona } from "@modules/Personagen/types";
 
 class Agent {
     private creator_user_id: string;
-    private graph_data?: GraphData;
+    private graph_data?: Graph;
     private dateModified?: Date;
     private dateCreated: Date = new Date();
     private persona?: Persona;
@@ -33,7 +33,7 @@ class Agent {
 
 class AgentBuilder {
     creator_user_id: string;
-    graph_data?: GraphData;
+    graph_data?: Graph;
     dateModified?: Date = new Date();
     dateCreated: Date = new Date();
     persona?: Persona;
@@ -46,7 +46,7 @@ class AgentBuilder {
         this.creator_user_id = creator_user_id;
     }
 
-    setGraphData(graph_data: GraphData): this {
+    setGraphData(graph_data: Graph): this {
         this.graph_data = graph_data;
         return this;
     }

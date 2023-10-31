@@ -2,11 +2,11 @@
 
 "use client";
 
-import { GraphData } from "@modules/Graph/types";
+import { Graph } from "@modules/Graph/types";
 import { Edge, Node, Viewport } from "reactflow";
 
-export const loadUserGraph = (flowKey: string): GraphData => {
-    const result: GraphData = {
+export const loadUserGraph = (flowKey: string): Graph => {
+    const result: Graph = {
         nodes: [],
         edges: [],
         viewport: { x: 0, y: 0, zoom: 2.5 },
@@ -16,7 +16,7 @@ export const loadUserGraph = (flowKey: string): GraphData => {
     const flowData = localStorage.getItem(flowKey);
     if (!flowData) return result;
 
-    const flow = JSON.parse(flowData) as GraphData;
+    const flow = JSON.parse(flowData) as Graph;
     if (!flow) return result;
 
     return flow;

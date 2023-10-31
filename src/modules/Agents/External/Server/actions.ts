@@ -5,7 +5,7 @@
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-import { GraphData } from "@modules/Graph/types";
+import { Graph } from "@modules/Graph/types";
 import { Agent } from "@modules/Agents/types";
 
 export async function createAgentGraph(agent: Agent) {
@@ -51,7 +51,7 @@ export async function deleteAgentGraph(userId: string) {
     return response;
 }
 
-export async function updateAgentGraph(userId: string, graphData: GraphData) {
+export async function updateAgentGraph(userId: string, graphData: Graph) {
     const supabase = createServerActionClient({ cookies });
     const response = await supabase
         .from("agent_graphs")

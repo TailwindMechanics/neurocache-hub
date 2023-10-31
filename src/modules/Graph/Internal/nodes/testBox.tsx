@@ -9,7 +9,7 @@ import React from "react";
 import { upsertAgentGraph } from "@modules/Agents/External/Server/actions";
 import { NodeSelectionState } from "../components/nodeSelectionState";
 import { DrawHandle } from "../components/drawHandle";
-import { CustomNode, GraphData } from "../../types";
+import { CustomNode, Graph } from "../../types";
 import {
     StatusPreset,
     ButtonPreset,
@@ -37,7 +37,7 @@ const TestBox = React.memo((props: NodeProps) => {
     const nodes = reactFlowInstance.getNodes();
     const edges = reactFlowInstance.getEdges();
     const viewport = reactFlowInstance.getViewport();
-    const graphData: GraphData = {
+    const graphData: Graph = {
         nodes: nodes,
         edges: edges,
         viewport: viewport,
