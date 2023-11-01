@@ -2,7 +2,7 @@
 
 "use client";
 
-import React, { use, useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "reactflow/dist/style.css";
 import ReactFlow, {
     BackgroundVariant,
@@ -11,12 +11,11 @@ import ReactFlow, {
     Viewport,
     Node,
     Edge,
-    useReactFlow,
 } from "reactflow";
 
+import { getMostRecentAgent } from "@modules/Agents/External/Server/actions";
 import { CustomNodesRepo } from "../../External/CustomNodesRepo";
 import { ConnectionLine } from "../components/connectionLine";
-import { loadGraph, loadUserGraph } from "./nodeSerializer";
 import { reactFlowSettingsProps } from "./reactflowConfig";
 import { StyleReactFlowLogo } from "./styleReactFlowLogo";
 import { useMouseCoords } from "../hooks/useMouseCoords";
@@ -25,9 +24,9 @@ import { SaveGraph } from "../components/saveGraph";
 import { EdgeLine } from "../components/edgeLine";
 import { useActiveAgent } from "@modules/Agents";
 import { Colors } from "@modules/Colors/colors";
+import { loadGraph } from "./nodeSerializer";
 import { useAuth } from "../hooks/useAuth";
 import { NodeEvents } from "./nodeEvents";
-import { getMostRecentAgent } from "@modules/Agents/External/Server/actions";
 
 const customNodeTypes = CustomNodesRepo.instance.getNodeTypes();
 const customEdgeTypes = { custom: EdgeLine };
@@ -46,7 +45,6 @@ const ReactFlowCanvas = React.memo(() => {
     const viewportRef = useRef<Viewport>(viewport);
     const [canZoom, setCanZoom] = useState(true);
     const { activeAgent } = useActiveAgent();
-    const reactFlowInstance = useReactFlow();
     const { user } = useAuth();
 
     useEffect(() => {
@@ -67,12 +65,12 @@ const ReactFlowCanvas = React.memo(() => {
     }, [viewport]);
 
     useEffect(() => {
-        if (!activeAgent) return;
+        if (!activeAgent?.graph) return;
 
         const graph = loadGraph(activeAgent.graph);
         setNodes(graph.nodes);
         setEdges(graph.edges);
-    }, [activeAgent, reactFlowInstance]);
+    }, [activeAgent]);
 
     return (
         <div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">

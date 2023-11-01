@@ -14,6 +14,7 @@ interface TableRowProps {
     lastColClassName?: string;
     agent: Agent;
     onRowClick?: (agent: Agent, event: boolean) => void;
+    onRowDoubleClick?: (agent: Agent) => void;
     isHighlighted?: boolean;
 }
 
@@ -25,6 +26,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
                 className={`cursor-pointer rounded bg-none hover:bg-aqua-dark hover:text-night-black focus:outline-none ${
                     props.isHighlighted ? "bg-aqua-dark text-night-black" : ""
                 }`}
+                onDoubleClick={() => props.onRowDoubleClick?.(props.agent)}
                 onClick={(e) => {
                     props.onRowClick?.(props.agent, e.shiftKey);
                 }}>

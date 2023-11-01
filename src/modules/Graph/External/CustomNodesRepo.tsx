@@ -32,7 +32,14 @@ class CustomNodesRepo {
 
     public getUnhiddenNodes = () => {
         return Array.from(this.customNodes.values()).filter(
-            (node) => node.category !== "Hidden",
+            (node) =>
+                node.category !== "Hidden" && node.category !== "Persistent",
+        );
+    };
+
+    public getPersistentNodes = () => {
+        return Array.from(this.customNodes.values()).filter(
+            (node) => node.category === "Persistent",
         );
     };
 

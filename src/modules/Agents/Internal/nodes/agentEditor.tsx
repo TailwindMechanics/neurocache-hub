@@ -69,7 +69,6 @@ const AgentEditor = React.memo((props: NodeProps) => {
     const { activeAgent, setActiveAgent } = useActiveAgent();
     const { recentAgents, refresh } = useRecentAgents();
     const [sortedAgents, setSortedAgents] = useState<Agent[]>([]);
-
     const { openDrawer, closeDrawer, isOpen } = useDrawer();
     const nodeConfig = props.data as CustomNode;
     const reactFlowInstance = useReactFlow();
@@ -104,12 +103,7 @@ const AgentEditor = React.memo((props: NodeProps) => {
         setActiveAgent(agent);
     };
 
-    useEffect(() => {
-        if (!isOpen) setActiveAgent(null);
-    }, [isOpen, setActiveAgent]);
-
-    useEffect(() => {
-        if (!activeAgent) return;
+    const onRowDoubleClick = (agent: Agent) => {
         if (!activeAgent) return;
 
         const selectedAgent = recentAgents.find(
@@ -123,9 +117,8 @@ const AgentEditor = React.memo((props: NodeProps) => {
                 panelTitle: selectedAgent.agent_name,
             },
         ];
-
         openDrawer(EditAgentDrawer);
-    }, [activeAgent, closeDrawer, openDrawer, recentAgents]);
+    };
 
     const onNewAgentClick = () => {
         setActiveAgent(null);
@@ -166,10 +159,10 @@ const AgentEditor = React.memo((props: NodeProps) => {
                             {sortedAgents?.map((agent) => (
                                 <TableRow
                                     isHighlighted={
-                                        isOpen &&
                                         activeAgent?.agent_name ===
-                                            agent.agent_name
+                                        agent.agent_name
                                     }
+                                    onRowDoubleClick={onRowDoubleClick}
                                     onRowClick={onRowClick}
                                     className="pr-2"
                                     firstColClassName="pr-0.5"

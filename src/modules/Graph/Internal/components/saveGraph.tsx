@@ -8,8 +8,8 @@ import { UseCtrlS } from "@modules/Utils";
 import React from "react";
 
 import { updateAgentGraph } from "@modules/Agents/External/Server/actions";
-import { saveGraph as saveGraphLocal } from "../core/nodeSerializer";
 import { useActiveAgent } from "@modules/Agents";
+import { CustomNode } from "@modules/Graph/types";
 
 interface SaveGraphProps {
     viewportRef: React.MutableRefObject<Viewport>;
@@ -32,8 +32,13 @@ const SaveGraph = React.memo((props: SaveGraphProps) => {
         if (!activeAgent) return;
 
         setStatusText("saving...");
+
+        const nodes = reactFlowInstance.getNodes().filter((node) => {
+            const nodeData = node.data as CustomNode;
+            return nodeData.category !== "Persistent";
+        });
         const graphData = {
-            nodes: reactFlowInstance.getNodes(),
+            nodes: nodes,
             edges: reactFlowInstance.getEdges(),
             viewport: props.viewportRef.current,
         };
@@ -53,13 +58,6 @@ const SaveGraph = React.memo((props: SaveGraphProps) => {
                 }
             }
         });
-
-        saveGraphLocal(
-            reactFlowInstance.getNodes(),
-            reactFlowInstance.getEdges(),
-            "graph",
-            props.viewportRef.current,
-        );
     });
 
     const setStatus = (text: string, cooldown: number = 1500) => {

@@ -65,7 +65,7 @@ interface AgentInspectorProps {
 
 export const AgentInspector: FC<AgentInspectorProps> = (props) => {
     const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
-    const { activeAgent } = useActiveAgent();
+    const { activeAgent, setActiveAgent } = useActiveAgent();
     const { refresh } = useRecentAgents();
     const drawer = useDrawer();
 
@@ -75,6 +75,7 @@ export const AgentInspector: FC<AgentInspectorProps> = (props) => {
         await deleteAgent(activeAgent?.agent_id);
         drawer.closeDrawer();
         refresh();
+        setActiveAgent(null);
     };
 
     return (

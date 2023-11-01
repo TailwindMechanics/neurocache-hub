@@ -17,16 +17,6 @@ import { LoginNode } from "@modules/Auth";
 
 export const allNodeData = [
     {
-        nodeType: "login",
-        nodeName: "Login",
-        category: "Hidden",
-        nodeId: "node_login_1",
-        body: "This node logs a user in.",
-        handles: [],
-        nodePosition: { x: 0, y: 0 },
-        nodeComponent: LoginNode,
-    } as CustomNode,
-    {
         nodeType: "comment_payload",
         nodeName: "Prefix Payload",
         category: "Hidden",
@@ -160,7 +150,7 @@ export const allNodeData = [
     {
         nodeType: "test_box",
         nodeName: "Test",
-        category: "Unhidden",
+        category: "Hidden",
         nodeId: "test_box_1",
         body: "This is for testing.",
         handles: [
@@ -215,23 +205,33 @@ export const allNodeData = [
         nodeComponent: OpenAiNode,
     } as CustomNode,
     {
-        nodeType: "agent_cache",
-        nodeName: "Agent Cache",
-        category: "Agents",
-        nodeId: "agent_cache_1",
-        body: "Edit or Create Agents.",
-        handles: [],
-        nodePosition: { x: 100, y: 0 },
-        nodeComponent: AgentEditor,
-    } as CustomNode,
-    {
         nodeType: "activeAgent",
         nodeName: "Active Agent",
-        category: "Agents",
+        category: "Persistent",
         nodeId: "Active Agent_1",
         body: "This displays the active agent.",
         handles: [],
-        nodePosition: { x: 0, y: 0 },
+        nodePosition: { x: -240, y: 0 },
         nodeComponent: ActiveAgent,
+    } as CustomNode,
+    {
+        nodeType: "login",
+        nodeName: "Login",
+        category: "Persistent",
+        nodeId: "node_login_1",
+        body: "This node logs a user in.",
+        handles: [],
+        nodePosition: { x: -240, y: -40 },
+        nodeComponent: LoginNode,
+    } as CustomNode,
+    {
+        nodeType: "agent_cache",
+        nodeName: "Agent Cache",
+        category: "Persistent",
+        nodeId: "agent_cache_1",
+        body: "Edit or Create Agents.",
+        handles: [],
+        nodePosition: { x: -140, y: 0 },
+        nodeComponent: AgentEditor,
     } as CustomNode,
 ];

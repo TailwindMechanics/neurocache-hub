@@ -25,12 +25,11 @@ import {
 } from "@modules/Composer";
 
 const Card = new Composer("LoginContent", CardPreset)
-    .withStyle("w-48")
     .withStyle("flex")
     .withRoundedFrame()
     .build();
 const Button = new Composer("LoginButton", ButtonPreset)
-    .withStyle("text-sm")
+    .withStyle("text-ss")
     .withRoundedButton()
     .build();
 const Input = new Composer("LoginInput", InputPreset)
@@ -41,7 +40,7 @@ const Content = new Composer("LoginContent", ContentPreset)
     .withStyle("text-night-title")
     .withStyle("bg-night-dark")
     .withStyle("text-center")
-    .withStyle("text-sm")
+    .withStyle("text-ss")
     .withStyle("px-1")
     .withRoundedElement()
     .build();
@@ -141,7 +140,7 @@ const LoginNode = React.memo((props: NodeProps) => {
                                         type="email"
                                         id="login_email"
                                         placeholder="email"
-                                        className="font-mono text-xs"
+                                        className="font-mono text-ss"
                                         value={emailText}
                                         onChange={(e) =>
                                             setEmailText(e.target.value)
@@ -149,7 +148,7 @@ const LoginNode = React.memo((props: NodeProps) => {
                                     />
                                     <Input
                                         id="login_password"
-                                        className="font-mono text-xs"
+                                        className="font-mono text-ss"
                                         value={passwordText}
                                         placeholder="password"
                                         type="password"
@@ -170,7 +169,7 @@ const LoginNode = React.memo((props: NodeProps) => {
                                         id="signup_email"
                                         type="email"
                                         placeholder="email"
-                                        className="font-mono text-xs"
+                                        className="font-mono text-ss"
                                         value={emailText}
                                         onChange={(e) =>
                                             setEmailText(e.target.value)
@@ -178,7 +177,7 @@ const LoginNode = React.memo((props: NodeProps) => {
                                     />
                                     <Input
                                         id="signup_password"
-                                        className="font-mono text-xs"
+                                        className="font-mono text-ss"
                                         value={passwordText}
                                         placeholder="password"
                                         type="password"
@@ -188,7 +187,7 @@ const LoginNode = React.memo((props: NodeProps) => {
                                     />
                                     <Input
                                         id="signup_confirm_password"
-                                        className="font-mono text-xs"
+                                        className="font-mono text-ss"
                                         value={confirmPasswordText}
                                         type="password"
                                         placeholder="Confirm Password"

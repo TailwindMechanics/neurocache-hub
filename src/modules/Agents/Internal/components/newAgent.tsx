@@ -3,14 +3,13 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 
-import { createAgent } from "../../External/Server/actions";
+import { createAgent, getMostRecentAgent } from "../../External/Server/actions";
 import { useRecentAgents } from "../hooks/useRecentAgents";
 import { useActiveAgent } from "../hooks/useActiveAgent";
 import { agentAvatar } from "../utils/agentAvatar";
 import { IsNullOrEmpty } from "@modules/Utils";
 import { useDrawer } from "@modules/Drawer";
 import {
-    RoundButtonPreset,
     ButtonPreset,
     InputPreset,
     Composer,
@@ -45,46 +44,31 @@ const ImageSection = new Composer("EditAgentImageSection", DivAtom)
     .withStyle("flex")
     .withRoundedElement()
     .build();
-const ImageButton = new Composer("EditAgentImageButton", RoundButtonPreset)
-    .withStyle("border-2")
-    .withStyle("text-xl")
-    .withRoundedElement()
-    .build();
-
-const onImageClick = async () => {};
 
 export const NewAgent: FC = () => {
     const [agentName, setAgentName] = useState<string>();
-    const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
-    const { activeAgent } = useActiveAgent();
-    const { refresh } = useRecentAgents();
+    const { activeAgent, setActiveAgent } = useActiveAgent();
     const drawer = useDrawer();
 
     const onCreateClick = async () => {
         if (!agentName || IsNullOrEmpty(agentName)) return;
 
         await createAgent(agentName);
-        refresh();
+        const newAgent = await getMostRecentAgent();
+        setActiveAgent(newAgent);
         drawer.closeDrawer();
     };
 
     return (
         <Wrapper>
             <ImageSection>
-                <ImageButton
-                    className={imageIsLoading ? "animate-spin" : ""}
-                    onClick={onImageClick}>
-                    <Image
-                        width={128}
-                        height={128}
-                        src={agentAvatar(activeAgent)}
-                        alt={`agent avatar`}
-                        className="h-20 w-auto rounded-full object-fill"
-                        onLoad={() => {
-                            setImageIsLoading(false);
-                        }}
-                    />
-                </ImageButton>
+                <Image
+                    width={128}
+                    height={128}
+                    src={agentAvatar(activeAgent)}
+                    alt={`agent avatar`}
+                    className="h-20 w-auto rounded-full object-fill"
+                />
             </ImageSection>
             <Input
                 onChange={(e) => setAgentName(e.target.value)}

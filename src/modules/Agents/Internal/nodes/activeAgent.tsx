@@ -24,7 +24,7 @@ const AvatarPill = new Composer("ActiveAgentAvatarPill", DivAtom)
     .withRoundedFull()
     .build();
 const AvatarLabel = new Composer("ActiveAgentAvatarLabel", DivAtom)
-    .withStyle("pl-1")
+    .withStyle("px-1")
     .build();
 
 const ActiveAgent = React.memo((props: NodeProps) => {
@@ -47,7 +47,7 @@ const ActiveAgent = React.memo((props: NodeProps) => {
                         {activeAgent?.agent_name}
                     </p>
                     <p className="text-tny leading-tight text-night-title capitalize-first">
-                        {"A plump insane Irish librarian granny."}
+                        {activeAgent?.persona}
                     </p>
                 </AvatarLabel>
             </AvatarPill>
