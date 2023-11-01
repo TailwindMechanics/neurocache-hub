@@ -5,12 +5,12 @@ import Image from "next/image";
 
 import { createAgent } from "../../External/Server/actions";
 import { useRecentAgents } from "../hooks/useRecentAgents";
-import { Placeholder } from "../data/placeholder";
+import { useActiveAgent } from "../hooks/useActiveAgent";
+import { agentAvatar } from "../utils/agentAvatar";
 import { IsNullOrEmpty } from "@modules/Utils";
 import { useDrawer } from "@modules/Drawer";
 import {
     RoundButtonPreset,
-    DropdownAtom,
     ButtonPreset,
     InputPreset,
     Composer,
@@ -54,11 +54,9 @@ const ImageButton = new Composer("EditAgentImageButton", RoundButtonPreset)
 const onImageClick = async () => {};
 
 export const NewAgent: FC = () => {
-    const handleRoleSelect = (selectedRole: string) => {
-        console.log("Selected role:", selectedRole);
-    };
     const [agentName, setAgentName] = useState<string>();
     const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
+    const { activeAgent } = useActiveAgent();
     const { refresh } = useRecentAgents();
     const drawer = useDrawer();
 
@@ -77,19 +75,16 @@ export const NewAgent: FC = () => {
                     className={imageIsLoading ? "animate-spin" : ""}
                     onClick={onImageClick}>
                     <Image
-                        width={64}
-                        height={64}
-                        src={Placeholder}
+                        width={128}
+                        height={128}
+                        src={agentAvatar(activeAgent)}
                         alt={`agent avatar`}
-                        className="h-14 w-auto rounded-full object-fill"
+                        className="h-20 w-auto rounded-full object-fill"
                         onLoad={() => {
                             setImageIsLoading(false);
                         }}
                     />
                 </ImageButton>
-                <p className="px-2 text-center text-sm font-bold italic text-night-title underline capitalize-first">
-                    {"Agent Description"}
-                </p>
             </ImageSection>
             <Input
                 onChange={(e) => setAgentName(e.target.value)}

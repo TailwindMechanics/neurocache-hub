@@ -1,11 +1,11 @@
 //path: src\modules\Agents\Internal\components\tableRow.tsx
 
-import { toLower } from "lodash";
 import Image from "next/image";
 import moment from "moment";
 import { FC } from "react";
 
-import { Placeholder } from "../data/placeholder";
+import { agentStatusStyle } from "../utils/agentStatusStyle";
+import { agentAvatar } from "../utils/agentAvatar";
 import { Agent } from "../../types";
 
 interface TableRowProps {
@@ -32,16 +32,18 @@ export const TableRow: FC<TableRowProps> = (props) => {
                     <Image
                         width={64}
                         height={64}
-                        src={
-                            `/avatars/${toLower(props.agent.agent_name)}.png` ||
-                            Placeholder
-                        }
+                        src={agentAvatar(props.agent)}
                         alt={`${props.agent.agent_name} avatar`}
                         className="h-3 w-auto rounded-full"></Image>
                 </td>
                 <td className={props.className}>{props.agent.agent_name}</td>
+                <td className={agentStatusStyle(props.agent)}>
+                    {props.agent.status}
+                </td>
                 <td className={props.lastColClassName}>
-                    {moment(props.agent.date_modified).format("DD MMM YYYY")}
+                    {moment(props.agent.date_modified).format(
+                        "Do MMM YYYY HH:mm",
+                    )}
                 </td>
             </tr>
         </>

@@ -1,25 +1,23 @@
-//path: src\modules\Agents\Internal\components\editAgent.tsx
+//path: src\modules\Agents\Internal\components\agentInspector.tsx
 
 import { FC, useState } from "react";
 import Image from "next/image";
 import moment from "moment";
 
-import { useActiveAgent } from "../hooks/useActiveAgent";
+import { agentStatusStyle } from "../utils/agentStatusStyle";
 import { deleteAgent } from "../../External/Server/actions";
-import { Placeholder } from "../data/placeholder";
+import { useRecentAgents } from "../hooks/useRecentAgents";
+import { useActiveAgent } from "../hooks/useActiveAgent";
+import { agentAvatar } from "../utils/agentAvatar";
 import { useDrawer } from "@modules/Drawer";
 import { Agent } from "../../types";
 import {
     DangerButtonPreset,
     RoundButtonPreset,
-    ButtonPreset,
-    DropdownAtom,
     InputPreset,
-    SwitchAtom,
     Composer,
     DivAtom,
 } from "@modules/Composer";
-import { useRecentAgents } from "../hooks/useRecentAgents";
 
 const Wrapper = new Composer("EditAgentWrapper", DivAtom)
     .withStyle("space-y-2")
@@ -27,12 +25,6 @@ const Wrapper = new Composer("EditAgentWrapper", DivAtom)
     .withStyle("flex")
     .withStyle("px-2")
     .withStyle("py-3")
-    .withRoundedElement()
-    .build();
-const EditButton = new Composer("EditAgentSaveButton", ButtonPreset)
-    .withStyle("border-2")
-    .withStyle("text-xl")
-    .withStyle("py-1")
     .withRoundedElement()
     .build();
 const Input = new Composer("EditAgentInput", InputPreset)
@@ -68,15 +60,13 @@ const ImageButton = new Composer("EditAgentImageButton", RoundButtonPreset)
     .withRoundedElement()
     .build();
 
-interface EditAgentProps {
+interface AgentInspectorProps {
     agent: Agent;
 }
 
-export const EditAgent: FC<EditAgentProps> = (props) => {
-    const [enabled, setEnabled] = useState(false);
-    const [avatarDescription, setAvatarDescription] = useState<string>("");
+export const AgentInspector: FC<AgentInspectorProps> = (props) => {
     const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
-    const { activeAgent, setActiveAgent } = useActiveAgent();
+    const { activeAgent } = useActiveAgent();
     const { refresh } = useRecentAgents();
     const drawer = useDrawer();
 
@@ -88,56 +78,49 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
         refresh();
     };
 
-    const onEditClick = async () => {
-        setActiveAgent(props.agent);
-    };
-
-    const handleRoleSelect = (selectedRole: string) => {
-        console.log("Selected role:", selectedRole);
-    };
-
     return (
         <Wrapper>
             <ImageSection>
                 <ImageButton className={imageIsLoading ? "animate-spin" : ""}>
                     <Image
-                        width={64}
-                        height={64}
-                        src={Placeholder}
+                        width={128}
+                        height={128}
+                        src={agentAvatar(activeAgent)}
                         alt={`Agent avatar`}
-                        className="h-14 w-auto rounded-full object-fill"
+                        className="h-20 w-auto rounded-full object-fill"
                         onLoad={() => {
                             setImageIsLoading(false);
-                            setAvatarDescription("Agent description");
                         }}
                     />
                 </ImageButton>
                 <p className="px-2 text-center text-sm font-bold italic text-night-title underline capitalize-first">
-                    {avatarDescription}
+                    {activeAgent ? activeAgent.persona : "agent persona"}
                 </p>
             </ImageSection>
-            <div className="flex justify-center">
-                <SwitchAtom enabled={enabled} setEnabled={setEnabled}>
-                    {enabled ? "active" : "inactive"}
-                </SwitchAtom>
-            </div>
-            <Input id="agentName" type="text" placeholder={"agent name"} />
-            <DropdownAtom
-                value={"role 0"}
-                options={["role 1", "role 2", "role 3"]}
-                onSelected={handleRoleSelect}
+            <Input
+                id="agentName"
+                type="text"
+                placeholder={
+                    activeAgent ? activeAgent.agent_name : "agent name"
+                }
             />
             <DatesLabel>
+                <p className={`${agentStatusStyle(activeAgent)}`}>
+                    <p className={"text-2xl"}>status: {activeAgent?.status}</p>
+                </p>
                 <p>
                     date modified:{" "}
-                    {moment(props.agent?.date_modified).format("DD MMM YYYY")}
+                    {moment(props.agent?.date_modified).format(
+                        "Do MMM YYYY HH:mm",
+                    )}
                 </p>
                 <p>
                     date created:{" "}
-                    {moment(props.agent?.date_created).format("DD MMM YYYY")}
+                    {moment(props.agent?.date_created).format(
+                        "Do MMM YYYY HH:mm",
+                    )}
                 </p>
             </DatesLabel>
-            <EditButton onClick={onEditClick}>edit</EditButton>
             <DangerButtonPreset
                 className="rounded border-2 py-1 text-xl"
                 onClick={onDeleteClick}>

@@ -43,15 +43,20 @@ neurocache-hub
 │  ├─ avatars
 │  │  ├─ aine.png
 │  │  ├─ bender.png
-│  │  ├─ birdperson.png
 │  │  ├─ brainwave.png
 │  │  ├─ claude.png
+│  │  ├─ dave.png
+│  │  ├─ edbird.png
 │  │  ├─ fatdan.png
+│  │  ├─ federico.png
+│  │  ├─ glen.png
 │  │  ├─ helptron.png
 │  │  ├─ louise.png
 │  │  ├─ pi.png
+│  │  ├─ placeholder.png
 │  │  ├─ pointerbot.png
 │  │  ├─ robotnik.png
+│  │  ├─ rollersteve.png
 │  │  └─ searchbot.png
 │  ├─ favicon.svg
 │  ├─ images
@@ -85,7 +90,7 @@ neurocache-hub
 │     │  ├─ index.tsx
 │     │  ├─ Internal
 │     │  │  ├─ components
-│     │  │  │  ├─ editAgent.tsx
+│     │  │  │  ├─ agentInspector.tsx
 │     │  │  │  ├─ newAgent.tsx
 │     │  │  │  ├─ table.tsx
 │     │  │  │  └─ tableRow.tsx
@@ -100,8 +105,11 @@ neurocache-hub
 │     │  │  │  └─ useRecentAgents.tsx
 │     │  │  ├─ nodes
 │     │  │  │  └─ agentEditor.tsx
-│     │  │  └─ persona
-│     │  │     └─ createPersona.ts
+│     │  │  ├─ persona
+│     │  │  │  └─ createPersona.ts
+│     │  │  └─ utils
+│     │  │     ├─ agentAvatar.tsx
+│     │  │     └─ agentStatusStyle.tsx
 │     │  └─ types.tsx
 │     ├─ Auth
 │     │  ├─ External

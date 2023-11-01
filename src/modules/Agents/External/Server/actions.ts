@@ -32,6 +32,11 @@ export async function createAgent(agentName: string) {
     return response;
 }
 
+export async function getMostRecentAgent(): Promise<Agent | null> {
+    const response = await getRecentAgents(1);
+    return response[0] as Agent;
+}
+
 export async function getRecentAgents(count: number = 10): Promise<Agent[]> {
     const supabase = await getAuthenticatedClient();
     if (!supabase) return Promise.resolve([]);

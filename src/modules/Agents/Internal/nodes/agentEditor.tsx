@@ -10,7 +10,7 @@ import _ from "lodash";
 import { useRecentAgents } from "../hooks/useRecentAgents";
 import { useActiveAgent } from "../hooks/useActiveAgent";
 import { DrawerElement } from "@modules/Drawer/types";
-import { EditAgent } from "../components/editAgent";
+import { AgentInspector } from "../components/agentInspector";
 import { TableRow } from "../components/tableRow";
 import { CustomNode } from "@modules/Graph/types";
 import { NewAgent } from "../components/newAgent";
@@ -58,7 +58,7 @@ const TableContent = new Composer("AgentEditorContent", ContentPreset)
 const NewAgentDrawer: DrawerElement[] = [
     {
         node: <NewAgent />,
-        panelTitle: "new agent:",
+        panelTitle: "New agent",
     },
 ];
 
@@ -110,14 +110,17 @@ const AgentEditor = React.memo((props: NodeProps) => {
 
     useEffect(() => {
         if (!activeAgent) return;
+        if (!activeAgent) return;
 
         const selectedAgent = recentAgents.find(
             (agent) => agent.agent_name === activeAgent.agent_name,
         );
+        if (!selectedAgent) return;
+
         const EditAgentDrawer: DrawerElement[] = [
             {
-                node: <EditAgent agent={selectedAgent!} />,
-                panelTitle: `edit agent: ${toLower(selectedAgent?.agent_name)}`,
+                node: <AgentInspector agent={selectedAgent!} />,
+                panelTitle: selectedAgent.agent_name,
             },
         ];
 
@@ -146,8 +149,13 @@ const AgentEditor = React.memo((props: NodeProps) => {
                                     {sortField === "agent_name" &&
                                         (sortOrder === "asc" ? "▲" : "▼")}
                                 </th>
+                                <th onClick={() => sortAgents("status")}>
+                                    Status{" "}
+                                    {sortField === "status" &&
+                                        (sortOrder === "asc" ? "▲" : "▼")}
+                                </th>
                                 <th onClick={() => sortAgents("date_modified")}>
-                                    Modified{" "}
+                                    Last Modified{" "}
                                     {sortField === "date_modified" &&
                                         (sortOrder === "asc" ? "▲" : "▼")}
                                 </th>

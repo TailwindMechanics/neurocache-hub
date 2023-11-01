@@ -5,6 +5,15 @@
 import { Graph } from "@modules/Graph/types";
 import { Edge, Node, Viewport } from "reactflow";
 
+export const loadGraph = (graph: Graph): Graph => {
+    const result: Graph = {
+        nodes: graph?.nodes ?? [],
+        edges: graph?.edges ?? [],
+        viewport: graph?.viewport ?? { x: 0, y: 0, zoom: 2.5 },
+    };
+    return result;
+};
+
 export const loadUserGraph = (flowKey: string): Graph => {
     const result: Graph = {
         nodes: [],

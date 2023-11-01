@@ -12,7 +12,6 @@ import { saveGraph as saveGraphLocal } from "../core/nodeSerializer";
 import { useActiveAgent } from "@modules/Agents";
 
 interface SaveGraphProps {
-    flowKey: string;
     viewportRef: React.MutableRefObject<Viewport>;
 }
 
