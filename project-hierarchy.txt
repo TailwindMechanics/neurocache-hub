@@ -104,6 +104,7 @@ neurocache-hub
 │     │  │  │  ├─ useActiveAgent.tsx
 │     │  │  │  └─ useRecentAgents.tsx
 │     │  │  ├─ nodes
+│     │  │  │  ├─ activeAgent.tsx
 │     │  │  │  └─ agentEditor.tsx
 │     │  │  ├─ persona
 │     │  │  │  └─ createPersona.ts

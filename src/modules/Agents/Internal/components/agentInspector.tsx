@@ -10,7 +10,6 @@ import { useRecentAgents } from "../hooks/useRecentAgents";
 import { useActiveAgent } from "../hooks/useActiveAgent";
 import { agentAvatar } from "../utils/agentAvatar";
 import { useDrawer } from "@modules/Drawer";
-import { Agent } from "../../types";
 import {
     DangerButtonPreset,
     RoundButtonPreset,
@@ -61,7 +60,7 @@ const ImageButton = new Composer("EditAgentImageButton", RoundButtonPreset)
     .build();
 
 interface AgentInspectorProps {
-    agent: Agent;
+    className?: string;
 }
 
 export const AgentInspector: FC<AgentInspectorProps> = (props) => {
@@ -110,13 +109,13 @@ export const AgentInspector: FC<AgentInspectorProps> = (props) => {
                 </p>
                 <p>
                     date modified:{" "}
-                    {moment(props.agent?.date_modified).format(
+                    {moment(activeAgent?.date_modified).format(
                         "Do MMM YYYY HH:mm",
                     )}
                 </p>
                 <p>
                     date created:{" "}
-                    {moment(props.agent?.date_created).format(
+                    {moment(activeAgent?.date_created).format(
                         "Do MMM YYYY HH:mm",
                     )}
                 </p>

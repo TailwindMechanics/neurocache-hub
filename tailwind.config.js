@@ -141,6 +141,7 @@ module.exports = {
             },
             colors: colors,
             fontSize: {
+                tny: ".25rem",
                 ss: ".35rem",
                 xs: ".5rem",
                 sm: ".675rem",

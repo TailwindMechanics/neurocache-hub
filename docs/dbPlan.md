@@ -13,6 +13,9 @@
    - Ensure ui updates accordingly
 3. Agent graph recall:
    - When a user clicks on an agent, we recall the graph from supabase and display it in the ui 
+4. Create a concept of some persistent ui
+   - Still nodes but maybe can't be moved or something
+   - Also there's no need to reload the agent cache each time we switch agent
 
 # Running agents via api: api.neurocache.ai/agent/run?agentId=1&payload=hello
 1. Setup Kong on Koyeb for api keys and endpoints: 

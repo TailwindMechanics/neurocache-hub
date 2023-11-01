@@ -72,7 +72,6 @@ const ReactFlowCanvas = React.memo(() => {
         const graph = loadGraph(activeAgent.graph);
         setNodes(graph.nodes);
         setEdges(graph.edges);
-        reactFlowInstance.setViewport(graph.viewport);
     }, [activeAgent, reactFlowInstance]);
 
     return (

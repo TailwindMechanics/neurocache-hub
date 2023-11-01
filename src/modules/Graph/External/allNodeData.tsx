@@ -12,7 +12,7 @@ import { TestBox } from "../Internal/nodes/testBox";
 import { CustomNode } from "../types";
 
 import { OpenAiModels, OpenAiNode } from "@modules/OpenAi";
-import { AgentEditor } from "@modules/Agents";
+import { ActiveAgent, AgentEditor } from "@modules/Agents";
 import { LoginNode } from "@modules/Auth";
 
 export const allNodeData = [
@@ -216,12 +216,22 @@ export const allNodeData = [
     } as CustomNode,
     {
         nodeType: "agent_cache",
-        nodeName: "Cache",
+        nodeName: "Agent Cache",
         category: "Agents",
         nodeId: "agent_cache_1",
         body: "Edit or Create Agents.",
         handles: [],
         nodePosition: { x: 100, y: 0 },
         nodeComponent: AgentEditor,
+    } as CustomNode,
+    {
+        nodeType: "activeAgent",
+        nodeName: "Active Agent",
+        category: "Agents",
+        nodeId: "Active Agent_1",
+        body: "This displays the active agent.",
+        handles: [],
+        nodePosition: { x: 0, y: 0 },
+        nodeComponent: ActiveAgent,
     } as CustomNode,
 ];

@@ -119,7 +119,7 @@ const AgentEditor = React.memo((props: NodeProps) => {
 
         const EditAgentDrawer: DrawerElement[] = [
             {
-                node: <AgentInspector agent={selectedAgent!} />,
+                node: <AgentInspector />,
                 panelTitle: selectedAgent.agent_name,
             },
         ];
