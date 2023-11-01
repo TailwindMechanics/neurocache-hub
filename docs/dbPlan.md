@@ -11,6 +11,8 @@
 2. Agent Editing: *in progress*
    - Add a new supabase server function(s) for editing an agent
    - Ensure ui updates accordingly
+3. Agent graph recall:
+   - When a user clicks on an agent, we recall the graph from supabase and display it in the ui 
 
 # Running agents via api: api.neurocache.ai/agent/run?agentId=1&payload=hello
 1. Setup Kong on Koyeb for api keys and endpoints: 

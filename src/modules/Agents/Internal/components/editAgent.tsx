@@ -67,12 +67,6 @@ const ImageButton = new Composer("EditAgentImageButton", RoundButtonPreset)
     .withStyle("text-xl")
     .withRoundedElement()
     .build();
-const DeleteButton = new Composer("NewAgentButton", DangerButtonPreset)
-    .withStyle("border-2")
-    .withStyle("text-xl")
-    .withStyle("py-1")
-    .withRoundedElement()
-    .build();
 
 interface EditAgentProps {
     agent: Agent;
@@ -144,7 +138,11 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
                 </p>
             </DatesLabel>
             <EditButton onClick={onEditClick}>edit</EditButton>
-            <DeleteButton onClick={onDeleteClick}>delete</DeleteButton>
+            <DangerButtonPreset
+                className="rounded border-2 py-1 text-xl"
+                onClick={onDeleteClick}>
+                delete
+            </DangerButtonPreset>
         </Wrapper>
     );
 };
