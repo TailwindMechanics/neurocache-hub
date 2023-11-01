@@ -1,13 +1,15 @@
 //path: src\modules\Graph\Internal\components\saveGraph.tsx
 
-import { Viewport, useReactFlow } from "reactflow";
 import { useState, useEffect, useTransition } from "react";
+import { Viewport, useReactFlow } from "reactflow";
 
-import { saveGraph as saveGraphLocal } from "../core/nodeSerializer";
 import { useAuth } from "../hooks/useAuth";
 import { UseCtrlS } from "@modules/Utils";
 import React from "react";
-import { upsertAgentGraph } from "@modules/Agents/External/Server/actions";
+
+import { updateAgentGraph } from "@modules/Agents/External/Server/actions";
+import { saveGraph as saveGraphLocal } from "../core/nodeSerializer";
+import { useActiveAgent } from "@modules/Agents";
 
 interface SaveGraphProps {
     flowKey: string;
@@ -20,6 +22,7 @@ const SaveGraph = React.memo((props: SaveGraphProps) => {
     const [statusText, setStatusText] = useState<string>(GuestMessage);
     let [isPending, startTransition] = useTransition();
     const reactFlowInstance = useReactFlow();
+    const { activeAgent } = useActiveAgent();
     const user = useAuth().user;
 
     useEffect(() => {
@@ -27,6 +30,8 @@ const SaveGraph = React.memo((props: SaveGraphProps) => {
     }, [user]);
 
     UseCtrlS(async () => {
+        if (!activeAgent) return;
+
         setStatusText("saving...");
         const graphData = {
             nodes: reactFlowInstance.getNodes(),
@@ -35,12 +40,17 @@ const SaveGraph = React.memo((props: SaveGraphProps) => {
         };
 
         startTransition(async () => {
-            const response = await upsertAgentGraph(graphData);
+            const response = await updateAgentGraph(
+                activeAgent.agent_id,
+                graphData,
+            );
+
             if (response) {
                 if (response.error) {
-                    setStatusText(response.error.message);
+                    setStatus(response.error.message, 20000);
+                    console.log(response.error);
                 } else {
-                    setStatusText("saved");
+                    setStatus("saved");
                 }
             }
         });
@@ -51,14 +61,21 @@ const SaveGraph = React.memo((props: SaveGraphProps) => {
             "graph",
             props.viewportRef.current,
         );
-
-        setTimeout(() => {
-            setStatusText(user?.email ?? GuestMessage);
-        }, 1500);
     });
 
+    const setStatus = (text: string, cooldown: number = 1500) => {
+        setStatusText(text);
+        setTimeout(() => {
+            setStatusText(user?.email ?? GuestMessage);
+        }, cooldown);
+    };
     return (
-        <div className="absolute bottom-1 left-3 z-10 select-none font-mono text-sm font-semibold text-rose-light">
+        <div
+            onClick={() => {
+                navigator.clipboard.writeText(statusText);
+                setStatus(`✓ copied: ${statusText}`);
+            }}
+            className="absolute bottom-1 left-3 z-10 select-none font-mono text-sm font-semibold text-rose-light">
             {statusText}
         </div>
     );

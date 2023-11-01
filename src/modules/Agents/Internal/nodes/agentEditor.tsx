@@ -7,9 +7,10 @@ import React, { useEffect, useState } from "react";
 import { toLower } from "lodash";
 import _ from "lodash";
 
+import { useRecentAgents } from "../hooks/useRecentAgents";
+import { useActiveAgent } from "../hooks/useActiveAgent";
 import { DrawerElement } from "@modules/Drawer/types";
 import { EditAgent } from "../components/editAgent";
-import { sampleAgents } from "../data/sampleAgents";
 import { TableRow } from "../components/tableRow";
 import { CustomNode } from "@modules/Graph/types";
 import { NewAgent } from "../components/newAgent";
@@ -63,14 +64,20 @@ const NewAgentDrawer: DrawerElement[] = [
 
 const newAgentText = "new agent +";
 const AgentEditor = React.memo((props: NodeProps) => {
-    const [sortOrder, setSortOrder] = useState<"asc" | "desc" | null>("desc");
-    const [sortField, setSortField] = useState<string | null>("dateModified");
-    const [selectedRows, setSelectedRows] = useState<string[] | null>([]);
-    const [sortedAgents, setSortedAgents] = useState(sampleAgents);
+    const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+    const [sortField, setSortField] = useState<string>("date_modified");
+    const { activeAgent, setActiveAgent } = useActiveAgent();
+    const { recentAgents, refresh } = useRecentAgents();
+    const [sortedAgents, setSortedAgents] = useState<Agent[]>([]);
+
     const { openDrawer, closeDrawer, isOpen } = useDrawer();
     const nodeConfig = props.data as CustomNode;
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
+
+    useEffect(() => {
+        refresh();
+    }, [recentAgents, refresh]);
 
     const sortAgents = (field: string) => {
         setSortField(field);
@@ -78,14 +85,12 @@ const AgentEditor = React.memo((props: NodeProps) => {
     };
 
     useEffect(() => {
-        if (!sortField || !sortOrder) return;
-
         const sorted = _.orderBy(
-            sampleAgents,
+            recentAgents,
             [
                 (agent: Agent) => {
-                    if (sortField === "dateModified") {
-                        return (agent as any)[sortField].getTime();
+                    if (sortField === "date_modified") {
+                        return new Date((agent as any)[sortField]).getTime();
                     }
                     return (agent as any)[sortField];
                 },
@@ -93,99 +98,75 @@ const AgentEditor = React.memo((props: NodeProps) => {
             [sortOrder],
         );
         setSortedAgents(sorted);
-    }, [sortField, sortOrder]);
+    }, [recentAgents, sortField, sortOrder]);
 
-    const onRowClick = (agent: Agent, isShiftKey: boolean) => {
-        if (!isShiftKey) {
-            setSelectedRows([agent.name]);
-            return;
-        }
-
-        setSelectedRows((prevSelectedRows) => {
-            if (!prevSelectedRows) return null;
-
-            const isAlreadySelected = prevSelectedRows.includes(agent.name);
-            return isAlreadySelected
-                ? prevSelectedRows.filter((row) => row !== agent.name)
-                : [...prevSelectedRows, agent.name];
-        });
+    const onRowClick = (agent: Agent) => {
+        setActiveAgent(agent);
     };
 
     useEffect(() => {
-        if (!selectedRows) return;
+        if (!isOpen) setActiveAgent(null);
+    }, [isOpen, setActiveAgent]);
 
-        if (selectedRows.length < 1) {
-            closeDrawer();
-            return;
-        }
+    useEffect(() => {
+        if (!activeAgent) return;
 
-        const EditAgentDrawer: DrawerElement[] = selectedRows.map(
-            (selectedRow) => {
-                const selectedAgent = sampleAgents.find(
-                    (agent) => agent.name === selectedRow,
-                );
-                return {
-                    node: <EditAgent agent={selectedAgent!} />,
-                    panelTitle: `edit agent: ${toLower(selectedAgent!.name)}`,
-                };
-            },
+        const selectedAgent = recentAgents.find(
+            (agent) => agent.agent_name === activeAgent.agent_name,
         );
+        const EditAgentDrawer: DrawerElement[] = [
+            {
+                node: <EditAgent agent={selectedAgent!} />,
+                panelTitle: `edit agent: ${toLower(selectedAgent?.agent_name)}`,
+            },
+        ];
+
         openDrawer(EditAgentDrawer);
-    }, [selectedRows, openDrawer, closeDrawer]);
+    }, [activeAgent, closeDrawer, openDrawer, recentAgents]);
+
+    const onNewAgentClick = () => {
+        setActiveAgent(null);
+        openDrawer(NewAgentDrawer);
+    };
 
     return (
         <>
             <Card className={NodeSelection(props.id, allNodes)}>
                 <HeaderContent>
                     <div className="pl-1">{toLower(nodeConfig.nodeName)}</div>
-                    <Button
-                        onClick={() => {
-                            openDrawer(NewAgentDrawer);
-                            setSelectedRows(null);
-                        }}>
-                        {newAgentText}
-                    </Button>
+                    <Button onClick={onNewAgentClick}>{newAgentText}</Button>
                 </HeaderContent>
                 <TableContent>
                     <Table className="text-left text-sm text-aqua">
                         <thead className="text-xs font-thin leading-none text-night-title ">
                             <tr>
                                 <th></th>
-                                <th onClick={() => sortAgents("name")}>
+                                <th onClick={() => sortAgents("agent_name")}>
                                     Name{" "}
-                                    {sortField === "name" &&
+                                    {sortField === "agent_name" &&
                                         (sortOrder === "asc" ? "▲" : "▼")}
                                 </th>
-                                <th onClick={() => sortAgents("role")}>
-                                    Role{" "}
-                                    {sortField === "role" &&
-                                        (sortOrder === "asc" ? "▲" : "▼")}
-                                </th>
-                                <th onClick={() => sortAgents("status")}>
-                                    Status{" "}
-                                    {sortField === "status" &&
-                                        (sortOrder === "asc" ? "▲" : "▼")}
-                                </th>
-                                <th onClick={() => sortAgents("dateModified")}>
+                                <th onClick={() => sortAgents("date_modified")}>
                                     Modified{" "}
-                                    {sortField === "dateModified" &&
+                                    {sortField === "date_modified" &&
                                         (sortOrder === "asc" ? "▲" : "▼")}
                                 </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody className="leading-none">
-                            {sortedAgents.map((agent) => (
+                            {sortedAgents?.map((agent) => (
                                 <TableRow
                                     isHighlighted={
                                         isOpen &&
-                                        selectedRows?.includes(agent.name)
+                                        activeAgent?.agent_name ===
+                                            agent.agent_name
                                     }
                                     onRowClick={onRowClick}
                                     className="pr-2"
                                     firstColClassName="pr-0.5"
                                     lastColClassName="pr-0.5"
-                                    key={agent.name}
+                                    key={agent.agent_name}
                                     agent={agent}
                                 />
                             ))}

@@ -26,14 +26,9 @@ neurocache-hub
 │  └─ tasks.json
 ├─ autoCommentPath.js
 ├─ docs
-│  ├─ demo
-│  │  └─ demo.md
-│  ├─ stories
-│  │  ├─ apiStory.md
-│  │  └─ hubStory.md
-│  └─ templates
-│     ├─ template.stories.tsx.md
-│     └─ template.test.tsx.md
+│  ├─ dbPlan.md
+│  ├─ demo.md
+│  └─ needlessly complex.md
 ├─ jest.config.js
 ├─ jest.setup.js
 ├─ junit.xml
@@ -48,16 +43,16 @@ neurocache-hub
 │  ├─ avatars
 │  │  ├─ aine.png
 │  │  ├─ bender.png
-│  │  ├─ bird80px.png
-│  │  ├─ Brainwave.png
+│  │  ├─ birdperson.png
+│  │  ├─ brainwave.png
 │  │  ├─ claude.png
+│  │  ├─ fatdan.png
 │  │  ├─ helptron.png
 │  │  ├─ louise.png
 │  │  ├─ pi.png
 │  │  ├─ pointerbot.png
 │  │  ├─ robotnik.png
-│  │  ├─ searchbot.png
-│  │  └─ vbdvbf.png
+│  │  └─ searchbot.png
 │  ├─ favicon.svg
 │  ├─ images
 │  │  ├─ neurocache.png
@@ -86,13 +81,11 @@ neurocache-hub
 │     │  │  └─ Server
 │     │  │     ├─ actions.ts
 │     │  │     ├─ createAvatar.tsx
-│     │  │     ├─ createName.tsx
-│     │  │     └─ docs.md
+│     │  │     └─ createName.tsx
 │     │  ├─ index.tsx
 │     │  ├─ Internal
 │     │  │  ├─ components
 │     │  │  │  ├─ editAgent.tsx
-│     │  │  │  ├─ fdsfs.md
 │     │  │  │  ├─ newAgent.tsx
 │     │  │  │  ├─ table.tsx
 │     │  │  │  └─ tableRow.tsx
@@ -101,6 +94,10 @@ neurocache-hub
 │     │  │  │  ├─ placeholder.png
 │     │  │  │  ├─ placeholder.tsx
 │     │  │  │  └─ sampleAgents.tsx
+│     │  │  ├─ hooks
+│     │  │  │  ├─ agentsContext.tsx
+│     │  │  │  ├─ useActiveAgent.tsx
+│     │  │  │  └─ useRecentAgents.tsx
 │     │  │  ├─ nodes
 │     │  │  │  └─ agentEditor.tsx
 │     │  │  └─ persona
@@ -148,6 +145,7 @@ neurocache-hub
 │     │  │     ├─ closeButton.tsx
 │     │  │     ├─ comboInput.tsx
 │     │  │     ├─ content.tsx
+│     │  │     ├─ dangerButton.tsx
 │     │  │     ├─ form.tsx
 │     │  │     ├─ ghostButton.tsx
 │     │  │     ├─ input.tsx

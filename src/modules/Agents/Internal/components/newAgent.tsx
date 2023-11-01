@@ -3,9 +3,9 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 
-import { createAgent, deleteAgent } from "../../External/Server/actions";
-import { agentRoles } from "../data/sampleAgents";
+import { createAgent } from "../../External/Server/actions";
 import { Placeholder } from "../data/placeholder";
+import { useDrawer } from "@modules/Drawer";
 import {
     RoundButtonPreset,
     DropdownAtom,
@@ -14,7 +14,10 @@ import {
     Composer,
     DivAtom,
 } from "@modules/Composer";
-import { useDrawer } from "@modules/Drawer";
+import { useActiveAgent } from "../hooks/useActiveAgent";
+import { IsNullOrEmpty } from "@modules/Utils";
+import { useRecentAgents } from "../hooks/useRecentAgents";
+import { set } from "lodash";
 
 const Wrapper = new Composer("NewAgentWrapper", DivAtom)
     .withStyle("space-y-2")
@@ -30,17 +33,7 @@ const CreateButton = new Composer("NewAgentButton", ButtonPreset)
     .withStyle("py-1")
     .withRoundedElement()
     .build();
-const DeleteButton = new Composer("NewAgentButton", ButtonPreset)
-    .withStyle("border-2")
-    .withStyle("text-xl")
-    .withStyle("py-1")
-    .withStyle("border-red-500")
-    .withStyle("text-red-500")
-    .withStyle("hover:bg-red-500")
-    .withStyle("hover:text-night-dark")
-    .withStyle("hover:border-night-dark")
-    .withRoundedElement()
-    .build();
+
 const Input = new Composer("NewAgentInput", InputPreset)
     .withStyle("border-2")
     .withStyle("text-2xl")
@@ -69,24 +62,15 @@ export const NewAgent: FC = () => {
     };
     const [agentName, setAgentName] = useState<string>();
     const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
-
+    const { refresh } = useRecentAgents();
     const drawer = useDrawer();
 
     const onCreateClick = async () => {
-        if (!agentName) return;
-        const response = await createAgent(agentName);
+        if (!agentName || IsNullOrEmpty(agentName)) return;
+
+        await createAgent(agentName);
+        refresh();
         drawer.closeDrawer();
-
-        console.log(response);
-    };
-
-    const onDeleteClick = async () => {
-        const response = await deleteAgent(
-            "157bd58e-bd35-4051-b5d1-ee6ba14d2bf6",
-        );
-        drawer.closeDrawer();
-
-        console.log(response);
     };
 
     return (
@@ -119,12 +103,11 @@ export const NewAgent: FC = () => {
             />
             <DropdownAtom
                 className="lowercase"
-                value={agentRoles[0]}
-                options={agentRoles}
-                onSelect={handleRoleSelect}
+                value={"role 0"}
+                options={["role 0", "role 1", "role 2", "role 3"]}
+                onSelected={handleRoleSelect}
             />
             <CreateButton onClick={onCreateClick}>create</CreateButton>
-            <DeleteButton onClick={onDeleteClick}>delete</DeleteButton>
         </Wrapper>
     );
 };

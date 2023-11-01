@@ -6,12 +6,9 @@ import {
     HTMLInputTypeAttribute,
     KeyboardEventHandler,
     FocusEventHandler,
-    FormEventHandler,
     CSSProperties,
     ChangeEvent,
     ReactNode,
-    FormEvent,
-    MouseEventHandler,
 } from "react";
 
 export interface CodeBlockProps {
@@ -59,7 +56,7 @@ export interface AtomProps {
     enabledColor?: string;
     disabledColor?: string;
     options?: string[];
-    onSelect?: (selected: string) => void;
+    onSelected?: (selected: string) => void;
     active?: boolean;
     selected?: boolean;
 }

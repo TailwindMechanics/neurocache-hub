@@ -10,3 +10,4 @@ export { GuestCanvas as GuestCanvas } from "./Internal/core/guestCanvas";
 
 export { AuthenticatedProvider as AuthenticatedProvider } from "./Internal/providers/authenticatedProvider";
 export { GuestProvider as GuestProvider } from "./Internal/providers/guestProvider";
+export { useAuth } from "./Internal/hooks/useAuth";

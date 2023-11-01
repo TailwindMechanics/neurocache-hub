@@ -1,14 +1,16 @@
 //path: src\modules\Agents\Internal\components\editAgent.tsx
 
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
 import moment from "moment";
 
-import { CreateAvatar } from "../../External/Server/createAvatar";
-import { agentRoles } from "../data/sampleAgents";
+import { useActiveAgent } from "../hooks/useActiveAgent";
+import { deleteAgent } from "../../External/Server/actions";
 import { Placeholder } from "../data/placeholder";
+import { useDrawer } from "@modules/Drawer";
 import { Agent } from "../../types";
 import {
+    DangerButtonPreset,
     RoundButtonPreset,
     ButtonPreset,
     DropdownAtom,
@@ -17,6 +19,7 @@ import {
     Composer,
     DivAtom,
 } from "@modules/Composer";
+import { useRecentAgents } from "../hooks/useRecentAgents";
 
 const Wrapper = new Composer("EditAgentWrapper", DivAtom)
     .withStyle("space-y-2")
@@ -26,7 +29,7 @@ const Wrapper = new Composer("EditAgentWrapper", DivAtom)
     .withStyle("py-3")
     .withRoundedElement()
     .build();
-const SaveButton = new Composer("EditAgentSaveButton", ButtonPreset)
+const EditButton = new Composer("EditAgentSaveButton", ButtonPreset)
     .withStyle("border-2")
     .withStyle("text-xl")
     .withStyle("py-1")
@@ -64,6 +67,12 @@ const ImageButton = new Composer("EditAgentImageButton", RoundButtonPreset)
     .withStyle("text-xl")
     .withRoundedElement()
     .build();
+const DeleteButton = new Composer("NewAgentButton", DangerButtonPreset)
+    .withStyle("border-2")
+    .withStyle("text-xl")
+    .withStyle("py-1")
+    .withRoundedElement()
+    .build();
 
 interface EditAgentProps {
     agent: Agent;
@@ -73,30 +82,21 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
     const [enabled, setEnabled] = useState(false);
     const [avatarDescription, setAvatarDescription] = useState<string>("");
     const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
-    const [avatar, setAvatar] = useState<AvatarResponse>({
-        avatarPrompt: { description: "", expression: "", prompt: "" },
-        imageUrls: [props.agent.imgUrl],
-    });
+    const { activeAgent, setActiveAgent } = useActiveAgent();
+    const { refresh } = useRecentAgents();
+    const drawer = useDrawer();
 
-    const onImageClick = async () => {
-        setImageIsLoading(true);
-        const response = await CreateAvatar();
-        if (response) {
-            setAvatar(response);
-        }
+    const onDeleteClick = async () => {
+        if (!activeAgent) return;
+
+        await deleteAgent(activeAgent?.agent_id);
+        drawer.closeDrawer();
+        refresh();
     };
 
-    useEffect(() => {
-        setAvatar({
-            avatarPrompt: { description: "", expression: "", prompt: "" },
-            imageUrls: [props.agent.imgUrl],
-        });
-        setAvatarDescription("");
-    }, [props.agent]);
-
-    useEffect(() => {
-        setEnabled(props.agent.status);
-    }, [props.agent.status]);
+    const onEditClick = async () => {
+        setActiveAgent(props.agent);
+    };
 
     const handleRoleSelect = (selectedRole: string) => {
         console.log("Selected role:", selectedRole);
@@ -105,20 +105,16 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
     return (
         <Wrapper>
             <ImageSection>
-                <ImageButton
-                    className={imageIsLoading ? "animate-spin" : ""}
-                    onClick={onImageClick}>
+                <ImageButton className={imageIsLoading ? "animate-spin" : ""}>
                     <Image
                         width={64}
                         height={64}
-                        src={avatar.imageUrls[0] || Placeholder}
-                        alt={`${props.agent.name} avatar`}
+                        src={Placeholder}
+                        alt={`Agent avatar`}
                         className="h-14 w-auto rounded-full object-fill"
                         onLoad={() => {
                             setImageIsLoading(false);
-                            setAvatarDescription(
-                                avatar.avatarPrompt.description,
-                            );
+                            setAvatarDescription("Agent description");
                         }}
                     />
                 </ImageButton>
@@ -131,23 +127,24 @@ export const EditAgent: FC<EditAgentProps> = (props) => {
                     {enabled ? "active" : "inactive"}
                 </SwitchAtom>
             </div>
-            <Input id="agentName" type="text" placeholder={props.agent.name} />
+            <Input id="agentName" type="text" placeholder={"agent name"} />
             <DropdownAtom
-                value={props.agent.role}
-                options={agentRoles}
-                onSelect={handleRoleSelect}
+                value={"role 0"}
+                options={["role 1", "role 2", "role 3"]}
+                onSelected={handleRoleSelect}
             />
             <DatesLabel>
                 <p>
                     date modified:{" "}
-                    {moment(props.agent.dateModified).format("DD MMM YYYY")}
+                    {moment(props.agent?.date_modified).format("DD MMM YYYY")}
                 </p>
                 <p>
                     date created:{" "}
-                    {moment(props.agent.dateModified).format("DD MMM YYYY")}
+                    {moment(props.agent?.date_created).format("DD MMM YYYY")}
                 </p>
             </DatesLabel>
-            <SaveButton>save</SaveButton>
+            <EditButton onClick={onEditClick}>edit</EditButton>
+            <DeleteButton onClick={onDeleteClick}>delete</DeleteButton>
         </Wrapper>
     );
 };

@@ -1,46 +1,40 @@
 --===--
 # Agent Crud:
-1. Agent Creation:
+1. Agent Creation: *done*
    - Create the agents table
    - Setup the rls policy for the agents table
    - Setup realtime subscription for the agents table
    - Supabase functions
      - Create
-     - Delete a function for insert we'll do the same for delete for consistency. 
-   - The subscription will only allow modification of an existing row, not creation nor deletion.
+     - Delete 
    - When a user creates a new agent we add a row to the agents table in Supabase. 
-   - Which the user can then edit, later we can auto take the user into edit mode upon creation.
-2. Real-Time Subscription for Agent Editing:
-   - During agent editing, the user subscribes to the agent row for live editing.
-   - The database remains the source of truth; no mirrored data structure on the client side.
-   - User pushes a change to a record, ui does not update until the database confirms the change. 
-   - Optimistic UI updates come later.
-   - There is no concept of saving the agent at the end, the agent is always saved by nature of writing directly to the db.
-3. Agent Deletion:
-   - Implement the deletion of an agent row from the agents table in Supabase.
-   - This happens outside of the subscription.
+2. Agent Editing: *in progress*
+   - Add a new supabase server function(s) for editing an agent
+   - Ensure ui updates accordingly
 
-# Running agents via api: neurocache.ai/api/agents/run
+# Running agents via api: api.neurocache.ai/agent/run?agentId=1&payload=hello
 1. Setup Kong on Koyeb for api keys and endpoints: 
    - Create Koyeb account, research a bit
    - Follow tutorial for Kong setup on Koyeb
    - https://www.koyeb.com/tutorials/use-kong-api-gateway-with-koyeb-serverless-plartform
-2. Create initial module on koyeb for running agents:
-   - Create a simple serverless function that accepts a NodePayload and returns a NodePayload
-   - NodePayload contains array of input handle IDs and payload string
-   - The node will parse its output handle IDs and execute those nodes
-   - The node adds its output to the Output column in the Agent row
-   - Kong can subscribe to the Output record and send a notification to the user
-   - The potential use of RabbitMQ for a controlled client-to-API stream also sounds like a reasonable consideration for future development
-   - There is no concept of final output, just a series of nodes that execute and update the output record
-   - The next time the agent is run the output record will be reset
-3. Create a Kong endpoint for running agents:
+2. Create a Kong endpoint for running agents:
    - Create a Kong endpoint that accepts an agent ID and a payload string
+   - Maybe use Konga for ui stuff
+3. Create initial module on koyeb for running agents:
+   - Create a simple server function on Koyeb that can wait arbitrarily and emit a response ala hello world
+4. Kafka:
+   - Setup kafka on Upstash
+   - Use it to emit a node output as they output
+   - Debug with the simple debug nodes
+5. NodePayload: 
+   - Create a Golang based router node that can route to other nodes based on the graph structure read from supabase. No need to write back to supabase.
+   - Can also handle parsing/sanitizing the payload
+   - Router emits via kafka
+   - Create a final output when graph is complete
   
 # UI and UX improvements:
 1. Create reactflow node execution visualization:
-   - Using the output data from our api via Kong, not via direct subscription to supabase. 
-   - Such that the flow is exactly the same as if you were executing the agent in the users codebase via the api. We just happen to use it in the nextjs app for visualization purposes.
+   - Using the output data from our api via Kong/kafka
 2. Implement optimistic UI Updates:
    - When a user edits an agent, the agent is updated in the database and the UI is updated immediately.
 
@@ -50,5 +44,7 @@
 
 # Future Considerations:
 1. A module could be a model running on runpod, eg memgpt
+2. Consider Ably for multiplayer editing and realtime chat
+3. New relic for monitoring
 
 --===--

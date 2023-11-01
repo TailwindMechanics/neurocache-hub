@@ -23,25 +23,17 @@ const ListButton = new Composer("ListboxButton", ListboxButton)
     .withRoundedElement()
     .build();
 
+const options = ["No options"];
 export const DropdownAtom: FC<AtomProps> = (props) => {
-    const options = props.options;
-    if (!options) {
-        throw new Error("DropdownAtom requires options");
-    }
-    const onSelect = props.onSelect;
-    if (!onSelect) {
-        throw new Error("DropdownAtom requires onSelect");
-    }
-
     const [selected, setSelected] = useState(props.value ?? options[0]);
 
     useEffect(() => {
         setSelected(props.value ?? options[0]);
-    }, [options, props.value]);
+    }, [props.value]);
 
     const handleSelect = (value: string) => {
         setSelected(value);
-        onSelect(value);
+        props.onSelected?.(value);
     };
 
     return (
