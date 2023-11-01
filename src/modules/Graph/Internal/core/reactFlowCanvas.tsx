@@ -14,13 +14,13 @@ import ReactFlow, {
 } from "reactflow";
 
 import { getMostRecentAgent } from "@modules/Agents/External/Server/actions";
+import { SaveGraphComponent } from "../components/saveGraphComponent";
 import { CustomNodesRepo } from "../../External/CustomNodesRepo";
 import { ConnectionLine } from "../components/connectionLine";
 import { reactFlowSettingsProps } from "./reactflowConfig";
 import { StyleReactFlowLogo } from "./styleReactFlowLogo";
 import { useMouseCoords } from "../hooks/useMouseCoords";
 import { NodeFlowProvider } from "../hooks/useNodeFlow";
-import { SaveGraph } from "../components/saveGraph";
 import { EdgeLine } from "../components/edgeLine";
 import { useActiveAgent } from "@modules/Agents";
 import { Colors } from "@modules/Colors/colors";
@@ -93,7 +93,7 @@ const ReactFlowCanvas = React.memo(() => {
                         preventScrolling={canZoom}
                         fitView={!user}
                         {...reactFlowSettingsProps}>
-                        <SaveGraph viewportRef={viewportRef} />
+                        <SaveGraphComponent viewportRef={viewportRef} />
                         <Background
                             variant={BackgroundVariant.Dots}
                             color={Colors["rose-dark"]}

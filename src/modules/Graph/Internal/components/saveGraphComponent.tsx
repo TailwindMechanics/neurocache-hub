@@ -17,9 +17,9 @@ interface SaveGraphProps {
 
 const GuestMessage = "guest";
 
-const SaveGraph = React.memo((props: SaveGraphProps) => {
+const SaveGraphComponent = React.memo((props: SaveGraphProps) => {
     const [statusText, setStatusText] = useState<string>(GuestMessage);
-    let [isPending, startTransition] = useTransition();
+    let [_, startTransition] = useTransition();
     const reactFlowInstance = useReactFlow();
     const { activeAgent } = useActiveAgent();
     const user = useAuth().user;
@@ -35,6 +35,8 @@ const SaveGraph = React.memo((props: SaveGraphProps) => {
 
         const nodes = reactFlowInstance.getNodes().filter((node) => {
             const nodeData = node.data as CustomNode;
+            console.log(nodeData.category);
+
             return nodeData.category !== "Persistent";
         });
         const graphData = {
@@ -78,5 +80,5 @@ const SaveGraph = React.memo((props: SaveGraphProps) => {
     );
 });
 
-SaveGraph.displayName = "SaveGraph";
-export { SaveGraph };
+SaveGraphComponent.displayName = "SaveGraphComponent";
+export { SaveGraphComponent };
