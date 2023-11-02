@@ -41,6 +41,7 @@
         "flowbite-react": "^0.4.11",
         "framer-motion": "^10.16.4",
         "lodash": "^4.17.21",
+        "moment": "^2.29.4",
         "next": "13.5.5",
         "openai": "^4.12.1",
         "postcss": "8.4.25",

@@ -48,5 +48,19 @@
         "light": "#f5cdc1",
         "title": "#edb9c8",
         "body": "#f5dae2"
+    },
+    "lemon": {
+        "DEFAULT": "#f9d569",
+        "dark": "#f5c53f",
+        "light": "#fae382",
+        "title": "#fcf6b6",
+        "body": "#fcfaca"
+    },
+    "lime": {
+        "DEFAULT": "#8CD50B",
+        "dark": "#79B908",
+        "light": "#9FD70E",
+        "title": "#AEE219",
+        "body": "#C5E673"
     }
 }

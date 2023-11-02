@@ -1,11 +1,12 @@
 //path: src\modules\Graph\types.tsx
 
-import { NodeProps, XYPosition } from "reactflow";
+import { Edge, Node, NodeProps, Viewport, XYPosition } from "reactflow";
 import { ComponentType } from "react";
 
-export interface AgentGraph {
-    user_id: string;
-    graph_data: JSON | null;
+export interface Graph {
+    nodes: Node[];
+    edges: Edge[];
+    viewport: Viewport;
 }
 
 export type NodeFlowValue = {

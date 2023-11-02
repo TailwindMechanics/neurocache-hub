@@ -1,4 +1,4 @@
-//path: src\modules\Auth\External\server\unauthenticated.tsx
+//path: src\modules\Auth\External\Server\unauthenticated.tsx
 
 "use server";
 

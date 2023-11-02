@@ -5,3 +5,4 @@ export { useCtrlS as UseCtrlS } from "./Internal/useCtrlS";
 export { useStart as UseStart } from "./Internal/useStart";
 
 export { IsNullOrEmpty, Uid } from "./Internal/stringUtils";
+export { RandomElement } from "./Internal/collectionUtils";

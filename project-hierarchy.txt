@@ -26,14 +26,9 @@ neurocache-hub
 │  └─ tasks.json
 ├─ autoCommentPath.js
 ├─ docs
-│  ├─ demo
-│  │  └─ demo.md
-│  ├─ stories
-│  │  ├─ apiStory.md
-│  │  └─ hubStory.md
-│  └─ templates
-│     ├─ template.stories.tsx.md
-│     └─ template.test.tsx.md
+│  ├─ dbPlan.md
+│  ├─ demo.md
+│  └─ needlessly complex.md
 ├─ jest.config.js
 ├─ jest.setup.js
 ├─ junit.xml
@@ -45,16 +40,27 @@ neurocache-hub
 ├─ postcss.config.js
 ├─ project-hierarchy.txt
 ├─ public
+│  ├─ avatars
+│  │  ├─ aine.png
+│  │  ├─ brainwave.png
+│  │  ├─ claude.png
+│  │  ├─ dave.png
+│  │  ├─ edbird.png
+│  │  ├─ fatdan.png
+│  │  ├─ federico.png
+│  │  ├─ glen.png
+│  │  ├─ helptron.png
+│  │  ├─ louise.png
+│  │  ├─ pi.png
+│  │  ├─ placeholder.png
+│  │  ├─ pointerbot.png
+│  │  ├─ rollersteve.png
+│  │  └─ searchbot.png
 │  ├─ favicon.svg
 │  ├─ images
-│  │  ├─ bird80px.png
 │  │  ├─ neurocache.png
 │  │  └─ openai.svg
-│  ├─ robots.txt
-│  └─ textures
-│     ├─ grid-texture.png
-│     ├─ terrain-normal.jpg
-│     └─ terrain-roughness.jpg
+│  └─ robots.txt
 ├─ README.md
 ├─ root
 ├─ rootGrouper.js
@@ -73,14 +79,45 @@ neurocache-hub
 │  │  ├─ layout.tsx
 │  │  └─ page.tsx
 │  └─ modules
+│     ├─ Agents
+│     │  ├─ External
+│     │  │  └─ Server
+│     │  │     ├─ actions.ts
+│     │  │     ├─ createAvatar.tsx
+│     │  │     └─ createName.tsx
+│     │  ├─ index.tsx
+│     │  ├─ Internal
+│     │  │  ├─ components
+│     │  │  │  ├─ agentInspector.tsx
+│     │  │  │  ├─ newAgent.tsx
+│     │  │  │  ├─ table.tsx
+│     │  │  │  └─ tableRow.tsx
+│     │  │  ├─ data
+│     │  │  │  ├─ agent.tsx
+│     │  │  │  ├─ placeholder.png
+│     │  │  │  ├─ placeholder.tsx
+│     │  │  │  └─ sampleAgents.tsx
+│     │  │  ├─ hooks
+│     │  │  │  ├─ agentsContext.tsx
+│     │  │  │  ├─ useActiveAgent.tsx
+│     │  │  │  └─ useRecentAgents.tsx
+│     │  │  ├─ nodes
+│     │  │  │  ├─ activeAgent.tsx
+│     │  │  │  └─ agentEditor.tsx
+│     │  │  ├─ persona
+│     │  │  │  └─ createPersona.ts
+│     │  │  └─ utils
+│     │  │     ├─ agentAvatar.tsx
+│     │  │     └─ agentStatusStyle.tsx
+│     │  └─ types.tsx
 │     ├─ Auth
 │     │  ├─ External
-│     │  │  └─ server
+│     │  │  └─ Server
 │     │  │     ├─ authenticated.tsx
 │     │  │     └─ unauthenticated.tsx
 │     │  ├─ index.tsx
 │     │  └─ Internal
-│     │     └─ client
+│     │     └─ Client
 │     │        ├─ hooks
 │     │        │  ├─ useLoggedIn.tsx
 │     │        │  └─ useLoggedOut.tsx
@@ -97,8 +134,14 @@ neurocache-hub
 │     │  │  │  ├─ card.tsx
 │     │  │  │  ├─ comboInput.tsx
 │     │  │  │  ├─ div.tsx
+│     │  │  │  ├─ dropdown.tsx
 │     │  │  │  ├─ form.tsx
 │     │  │  │  ├─ input.tsx
+│     │  │  │  ├─ listboxButton.tsx
+│     │  │  │  ├─ listboxOption.tsx
+│     │  │  │  ├─ listboxOptions.tsx
+│     │  │  │  ├─ motionDiv.tsx
+│     │  │  │  ├─ switch.tsx
 │     │  │  │  ├─ tab.tsx
 │     │  │  │  └─ tabList.tsx
 │     │  │  ├─ components
@@ -106,14 +149,27 @@ neurocache-hub
 │     │  │  └─ presets
 │     │  │     ├─ button.tsx
 │     │  │     ├─ card.tsx
+│     │  │     ├─ closeButton.tsx
 │     │  │     ├─ comboInput.tsx
 │     │  │     ├─ content.tsx
+│     │  │     ├─ dangerButton.tsx
 │     │  │     ├─ form.tsx
+│     │  │     ├─ ghostButton.tsx
 │     │  │     ├─ input.tsx
 │     │  │     ├─ prose.tsx
+│     │  │     ├─ roundButton.tsx
 │     │  │     ├─ shell.tsx
+│     │  │     ├─ status.tsx
 │     │  │     ├─ tab.tsx
 │     │  │     └─ tabList.tsx
+│     │  └─ types.tsx
+│     ├─ Drawer
+│     │  ├─ index.tsx
+│     │  ├─ Internal
+│     │  │  ├─ components
+│     │  │  │  └─ drawer.tsx
+│     │  │  └─ hooks
+│     │  │     └─ useDrawer.tsx
 │     │  └─ types.tsx
 │     ├─ Graph
 │     │  ├─ External
@@ -124,19 +180,19 @@ neurocache-hub
 │     │  │  ├─ components
 │     │  │  │  ├─ codeBlock.tsx
 │     │  │  │  ├─ colouredLine.tsx
+│     │  │  │  ├─ connectionLine.tsx
 │     │  │  │  ├─ drawHandle.tsx
+│     │  │  │  ├─ edgeLine.tsx
 │     │  │  │  ├─ nodeSelectionState.tsx
 │     │  │  │  ├─ renderCodeblocks.tsx
+│     │  │  │  ├─ saveGraphComponent.tsx
 │     │  │  │  └─ textBlockFormatter.tsx
 │     │  │  ├─ core
-│     │  │  │  ├─ connectionLine.tsx
-│     │  │  │  ├─ edgeLine.tsx
 │     │  │  │  ├─ guestCanvas.tsx
 │     │  │  │  ├─ nodeEvents.tsx
 │     │  │  │  ├─ nodeSerializer.tsx
 │     │  │  │  ├─ reactFlowCanvas.tsx
 │     │  │  │  ├─ reactflowConfig.ts
-│     │  │  │  ├─ saveGraph.tsx
 │     │  │  │  └─ styleReactFlowLogo.tsx
 │     │  │  ├─ hooks
 │     │  │  │  ├─ useAuth.tsx
@@ -179,6 +235,7 @@ neurocache-hub
 │     └─ Utils
 │        ├─ index.tsx
 │        └─ Internal
+│           ├─ collectionUtils.ts
 │           ├─ stringUtils.ts
 │           ├─ useCtrlS.tsx
 │           ├─ useKeyPress.tsx

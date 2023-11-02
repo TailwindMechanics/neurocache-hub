@@ -12,19 +12,10 @@ import { TestBox } from "../Internal/nodes/testBox";
 import { CustomNode } from "../types";
 
 import { OpenAiModels, OpenAiNode } from "@modules/OpenAi";
+import { ActiveAgent, AgentEditor } from "@modules/Agents";
 import { LoginNode } from "@modules/Auth";
 
 export const allNodeData = [
-    {
-        nodeType: "login",
-        nodeName: "Login",
-        category: "Hidden",
-        nodeId: "node_login_1",
-        body: "This node logs a user in.",
-        handles: [],
-        nodePosition: { x: 0, y: 0 },
-        nodeComponent: LoginNode,
-    } as CustomNode,
     {
         nodeType: "comment_payload",
         nodeName: "Prefix Payload",
@@ -212,5 +203,35 @@ export const allNodeData = [
         ],
         nodePosition: { x: 100, y: 0 },
         nodeComponent: OpenAiNode,
+    } as CustomNode,
+    {
+        nodeType: "activeAgent",
+        nodeName: "Active Agent",
+        category: "Persistent",
+        nodeId: "Active Agent_1",
+        body: "This displays the active agent.",
+        handles: [],
+        nodePosition: { x: -240, y: 0 },
+        nodeComponent: ActiveAgent,
+    } as CustomNode,
+    {
+        nodeType: "login",
+        nodeName: "Login",
+        category: "Persistent",
+        nodeId: "node_login_1",
+        body: "This node logs a user in.",
+        handles: [],
+        nodePosition: { x: -240, y: -40 },
+        nodeComponent: LoginNode,
+    } as CustomNode,
+    {
+        nodeType: "agent_cache",
+        nodeName: "Agent Cache",
+        category: "Persistent",
+        nodeId: "agent_cache_1",
+        body: "Edit or Create Agents.",
+        handles: [],
+        nodePosition: { x: -140, y: 0 },
+        nodeComponent: AgentEditor,
     } as CustomNode,
 ];
