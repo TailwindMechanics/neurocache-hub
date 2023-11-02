@@ -2,37 +2,17 @@
 
 "use client";
 
-import { Edge, Node, Viewport } from "reactflow";
+import { CustomNode, Graph } from "../../types";
 
-interface GraphData {
-    nodes: Node[];
-    edges: Edge[];
-    viewport: Viewport;
-}
-
-export const loadUserGraph = (flowKey: string): GraphData => {
-    const result: GraphData = {
-        nodes: [],
-        edges: [],
-        viewport: { x: 0, y: 0, zoom: 2.5 },
+export const loadGraph = (graph: Graph): Graph => {
+    const nodes = graph.nodes.filter((node) => {
+        const nodeData = node.data as CustomNode;
+        return nodeData.category !== "Persistent";
+    });
+    const result: Graph = {
+        nodes: nodes,
+        edges: graph.edges,
+        viewport: graph.viewport,
     };
-    if (typeof window === "undefined") return result;
-
-    const flowData = localStorage.getItem(flowKey);
-    if (!flowData) return result;
-
-    const flow = JSON.parse(flowData) as GraphData;
-    if (!flow) return result;
-
-    return flow;
-};
-
-export const saveGraph = (
-    nodes: Node[],
-    edges: Edge[],
-    flowKey: string,
-    viewport: Viewport,
-) => {
-    const flowString = JSON.stringify({ nodes, edges, viewport });
-    localStorage.setItem(flowKey, flowString);
+    return result;
 };

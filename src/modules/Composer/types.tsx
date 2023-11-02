@@ -1,16 +1,14 @@
 //path: src\modules\Composer\types.tsx
 
-import { AnimationControls } from "framer-motion";
+import { AnimationControls, MotionProps } from "framer-motion";
 
 import {
     HTMLInputTypeAttribute,
     KeyboardEventHandler,
     FocusEventHandler,
-    FormEventHandler,
     CSSProperties,
     ChangeEvent,
     ReactNode,
-    FormEvent,
 } from "react";
 
 export interface CodeBlockProps {
@@ -37,6 +35,7 @@ export interface AtomProps {
     onFocus?: FocusEventHandler<HTMLInputElement> | undefined;
     onBlur?: FocusEventHandler<HTMLInputElement> | undefined;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onMouseDown?: React.MouseEventHandler<HTMLDivElement>;
     "aria-label"?: string | undefined;
     style?: CSSProperties | undefined;
     displayValue?(item: any): string;
@@ -51,4 +50,13 @@ export interface AtomProps {
     className?: string;
     disabled?: boolean;
     value?: string;
+    motion?: MotionProps;
+    enabled?: boolean;
+    setEnabled?: (state: boolean) => void;
+    enabledColor?: string;
+    disabledColor?: string;
+    options?: string[];
+    onSelected?: (selected: string) => void;
+    active?: boolean;
+    selected?: boolean;
 }

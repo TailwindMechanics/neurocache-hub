@@ -5,7 +5,9 @@ import { Input as InputAtom } from "../atoms/input";
 
 export const Input = new ComponentBuilder("InputPreset", InputAtom)
     .withStyle("focus:border-aqua-light")
+    .withStyle("placeholder:night-title")
     .withStyle("border-night-light")
+    .withStyle("placeholder:italic")
     .withStyle("text-aqua-light")
     .withStyle("bg-night-black")
     .withStyle("outline-none")

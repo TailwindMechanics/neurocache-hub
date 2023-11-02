@@ -18,6 +18,7 @@ import ReactFlow, {
 
 import { useNodeSpawner } from "../hooks/useNodeSpawner";
 import { UseKeyPress } from "@modules/Utils";
+import { CustomNodesRepo } from "@modules/Graph/External/CustomNodesRepo";
 
 type NodeEventsProps = {
     handleMouseMove: (event: React.MouseEvent<Element, MouseEvent>) => void;
@@ -38,13 +39,27 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
     const nodeSpawner = useNodeSpawner();
 
     useEffect(() => {
-        if (!props.nodes.find((node) => node.type == "login")) {
-            const loginNode = nodeSpawner.spawn("login", false, "1");
-            if (loginNode) {
-                props.setNodes((prevNodes) => [...prevNodes, loginNode]);
-            }
-        }
-    }, [props.nodes, nodeSpawner, props.setNodes, props]);
+        const persistentNodes = CustomNodesRepo.instance.getPersistentNodes();
+
+        persistentNodes.forEach((persistentNode) => {
+            props.setNodes((prevNodes) => {
+                const nodeExists = prevNodes.some(
+                    (node) => node.type === persistentNode.nodeType,
+                );
+
+                if (!nodeExists) {
+                    const spawnedNode = nodeSpawner.spawn(
+                        persistentNode.nodeType,
+                    );
+                    if (spawnedNode) {
+                        return [...prevNodes, spawnedNode];
+                    }
+                }
+
+                return prevNodes;
+            });
+        });
+    }, [nodeSpawner, props, props.setNodes]);
 
     useOnSelectionChange({
         onChange: ({ nodes, edges }) => {

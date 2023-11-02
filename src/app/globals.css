@@ -3,6 +3,10 @@
 @import "tailwindcss/utilities";
 @import "prismjs/themes/prism-okaidia.css";
 
+.capitalize-first::first-letter {
+    text-transform: capitalize;
+}
+
 /* Change Autocomplete styles in Chrome */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

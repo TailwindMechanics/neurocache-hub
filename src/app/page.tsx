@@ -5,12 +5,17 @@
 import React from "react";
 
 import { AuthenticatedProvider, GuestProvider } from "@modules/Graph";
+
 const { Authenticated } = await import(
-    "@modules/Auth/External/server/authenticated"
+    "@modules/Auth/External/Server/authenticated"
 );
 const { Unauthenticated } = await import(
-    "@modules/Auth/External/server/unauthenticated"
+    "@modules/Auth/External/Server/unauthenticated"
 );
+
+export interface ServerComponents {
+    UpsertAgentGraph: React.ReactNode;
+}
 
 export default async function Page() {
     return (

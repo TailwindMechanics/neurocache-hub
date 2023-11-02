@@ -15,7 +15,7 @@ This is a work in progress and an _experimental_ codebase.
 - Our UI components are designed using Storybook and adhere to the principles of Atomic Design.
 
 ## Neurocache Api
-- The Neurocache Api app is a secured, public API service that enables users to interact with their custom-built AI agents from any codebase, anywhere. This API acts as the brain of Neurocache, equipping the agents with a rich library of AI-powered abilities.
+- The Neurocache Api will no longer be a single dedicated codebase but a distributed network of microservices hosted on Koyeb, available to clients via a Kong api, and managed by the Neurocache Hub.
 
 ### Website
 - neurocache.ai: The Hub URL. Here you'll find our landing page, sales information, and login and signup pages.
@@ -31,7 +31,7 @@ This is a work in progress and an _experimental_ codebase.
 - Authentication: Supabase
 - Routing: Built-in with Next.js (later server components/actions)
 - Fetching: Axios
-- State: Rxjs
+- State: Rxjs and context api
 - Database: Supabase Postgres
 - ORM: Supabase
 - Caching: Upstash Redis

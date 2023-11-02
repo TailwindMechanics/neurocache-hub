@@ -6,6 +6,12 @@ import { motion, useAnimation } from "framer-motion";
 import { AtomProps } from "../../types";
 
 export const Button: FC<AtomProps> = (props) => {
+    const motionSettings = props.motion ?? {
+        whileTap: {
+            scale: 0.97,
+            transition: { duration: 0.15, ease: "linear" },
+        },
+    };
     const controls = useAnimation();
     const isMounted = useRef(false);
 
@@ -22,10 +28,7 @@ export const Button: FC<AtomProps> = (props) => {
             onClick={props.onClick}
             className={props.className}
             animate={controls}
-            whileTap={{
-                scale: 0.97,
-                transition: { duration: 0.15, ease: "linear" },
-            }}>
+            whileTap={motionSettings.whileTap}>
             {props.children}
         </motion.button>
     );

@@ -32,7 +32,7 @@ export const useNodeSpawner = () => {
             nodeId: `node_${nodeType}_${uid}`,
             body: nodeDataDefaults.body,
             handles: handles,
-            nodePosition: { x: 0, y: 0 },
+            nodePosition: nodeDataDefaults.nodePosition,
         } as CustomNode;
 
         const newNode: Node = {
