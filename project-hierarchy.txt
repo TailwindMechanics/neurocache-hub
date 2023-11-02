@@ -93,10 +93,8 @@ neurocache-hub
 │     │  │  │  ├─ table.tsx
 │     │  │  │  └─ tableRow.tsx
 │     │  │  ├─ data
-│     │  │  │  ├─ agent.tsx
 │     │  │  │  ├─ placeholder.png
-│     │  │  │  ├─ placeholder.tsx
-│     │  │  │  └─ sampleAgents.tsx
+│     │  │  │  └─ placeholder.tsx
 │     │  │  ├─ hooks
 │     │  │  │  ├─ agentsContext.tsx
 │     │  │  │  ├─ useActiveAgent.tsx
@@ -105,7 +103,7 @@ neurocache-hub
 │     │  │  │  ├─ activeAgent.tsx
 │     │  │  │  └─ agentEditor.tsx
 │     │  │  ├─ persona
-│     │  │  │  └─ createPersona.ts
+│     │  │  │  └─ createPersona.ts.md
 │     │  │  └─ utils
 │     │  │     ├─ agentAvatar.tsx
 │     │  │     └─ agentStatusStyle.tsx

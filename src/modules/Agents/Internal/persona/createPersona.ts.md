@@ -1,7 +1,8 @@
+```tsx
+
 //path: src\modules\Agents\Internal\persona\createPersona.ts
 
 import { RandomElement as RE } from "@modules/Utils";
-import { Persona } from "../../../Personagen/types";
 
 export const CreatePersona = (): Persona => {
     const description = `a ${RE(weights)} ${RE(ethnicities)} ${RE(
@@ -186,3 +187,4 @@ const occupations = [
     "waitress",
     "writer",
 ];
+```

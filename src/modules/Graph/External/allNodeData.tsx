@@ -184,7 +184,7 @@ export const allNodeData = [
     {
         nodeType: "open_ai",
         nodeName: "Gpt-4",
-        category: "OpenAi",
+        category: "Hidden",
         nodeId: "node_open_ai_60e9b8e9a7f1d8c7c7f8",
         body: "This node makes an API request to OpenAI.",
         handles: [

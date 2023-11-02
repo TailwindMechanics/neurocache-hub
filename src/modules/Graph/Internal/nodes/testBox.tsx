@@ -6,7 +6,6 @@ import { NodeProps, useReactFlow } from "reactflow";
 import { useState, useTransition } from "react";
 import React from "react";
 
-import { upsertAgentGraph } from "@modules/Agents/External/Server/actions";
 import { NodeSelectionState } from "../components/nodeSelectionState";
 import { DrawHandle } from "../components/drawHandle";
 import { CustomNode, Graph } from "../../types";
@@ -56,14 +55,7 @@ const TestBox = React.memo((props: NodeProps) => {
             <Card className={NodeSelectionState(props.id, allNodes)}>
                 <StatusPreset newStatus={isLoading.message} />
                 <StatusPreset newStatus={isPending.valueOf.toString()} />
-                <Button
-                    onClick={() => {
-                        startTransition(() => {
-                            const response = upsertAgentGraph(graphData);
-                        });
-                    }}>
-                    Test
-                </Button>
+                <Button>Test</Button>
             </Card>
         </>
     );
