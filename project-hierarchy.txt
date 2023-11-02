@@ -42,7 +42,6 @@ neurocache-hub
 ├─ public
 │  ├─ avatars
 │  │  ├─ aine.png
-│  │  ├─ bender.png
 │  │  ├─ brainwave.png
 │  │  ├─ claude.png
 │  │  ├─ dave.png
@@ -55,7 +54,6 @@ neurocache-hub
 │  │  ├─ pi.png
 │  │  ├─ placeholder.png
 │  │  ├─ pointerbot.png
-│  │  ├─ robotnik.png
 │  │  ├─ rollersteve.png
 │  │  └─ searchbot.png
 │  ├─ favicon.svg
@@ -187,7 +185,7 @@ neurocache-hub
 │     │  │  │  ├─ edgeLine.tsx
 │     │  │  │  ├─ nodeSelectionState.tsx
 │     │  │  │  ├─ renderCodeblocks.tsx
-│     │  │  │  ├─ saveGraph.tsx
+│     │  │  │  ├─ saveGraphComponent.tsx
 │     │  │  │  └─ textBlockFormatter.tsx
 │     │  │  ├─ core
 │     │  │  │  ├─ guestCanvas.tsx

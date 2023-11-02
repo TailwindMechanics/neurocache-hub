@@ -1,5 +1,5 @@
 --===--
-# Agent Crud:
+# Agent Crud: *done*
 1. Agent Creation: *done*
    - Create the agents table
    - Setup the rls policy for the agents table
@@ -8,21 +8,22 @@
      - Create
      - Delete 
    - When a user creates a new agent we add a row to the agents table in Supabase. 
-2. Agent Editing: *in progress*
+2. Agent Editing: *done*
    - Add a new supabase server function(s) for editing an agent
    - Ensure ui updates accordingly
-3. Agent graph recall:
+3. Agent graph recall: *done*
    - When a user clicks on an agent, we recall the graph from supabase and display it in the ui 
-4. Create a concept of some persistent ui
+4. Create a concept of some persistent ui *done*
    - Still nodes but maybe can't be moved or something
    - Also there's no need to reload the agent cache each time we switch agent
 
-# Running agents via api: api.neurocache.ai/agent/run?agentId=1&payload=hello
+# Running agents via api: *in progress*
 1. Setup Kong on Koyeb for api keys and endpoints: 
    - Create Koyeb account, research a bit
    - Follow tutorial for Kong setup on Koyeb
    - https://www.koyeb.com/tutorials/use-kong-api-gateway-with-koyeb-serverless-plartform
 2. Create a Kong endpoint for running agents:
+   - eg api.neurocache.ai/agent/run
    - Create a Kong endpoint that accepts an agent ID and a payload string
    - Maybe use Konga for ui stuff
 3. Create initial module on koyeb for running agents:
