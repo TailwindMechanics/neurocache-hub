@@ -1,7 +1,6 @@
 
 Use this after the demo https://youtu.be/AAMJZTEH_h4
 https://youtu.be/aD-u0gl93wM
-supabase: https://youtu.be/RJccSbJ9Go4
 
 # Todo
 - Sign in

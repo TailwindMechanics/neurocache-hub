@@ -18,21 +18,30 @@
    - Also there's no need to reload the agent cache each time we switch agent
 
 # Running agents via api: *in progress*
-1. Setup Kong on Koyeb for api keys and endpoints: 
-   - Create Koyeb account, research a bit
-   - Follow tutorial for Kong setup on Koyeb
-   - https://www.koyeb.com/tutorials/use-kong-api-gateway-with-koyeb-serverless-plartform
-2. Create a Kong endpoint for running agents:
-   - eg api.neurocache.ai/agent/run
+1. Setup Kong Konnect *done*
+   - Create and test local kong gateway image
+2.  Setup koyeb *in progress*
+   - Create a new app on koyeb using image: kong/kong-gateway:3.4
+   - Create koyeb secrets for sensitive env variables
+   - Assign env variables to new koyeb kong app
+   - Ensure network settings eg port are correct found here: https://www.koyeb.com/tutorials/use-kong-api-gateway-with-koyeb-serverless-plartform
+   - Test to ensure it's working
+3. Domain and DNS Configuration:
+   - Configure your domain registrar (Namecheap) DNS settings to point to the IP address or hostname of your Kong Gateway on Koyeb.
+   - Setup a CNAME or A record for subdomain neurocache.dev pointing to your Koyeb service.
+   - Configure Kong to handle traffic for your custom domain (neurocache.dev).
+4. Create a Kong endpoint for running agents:
+   - eg neurocache.dev/agent/run
    - Create a Kong endpoint that accepts an agent ID and a payload string
    - Maybe use Konga for ui stuff
-3. Create initial module on koyeb for running agents:
+5. Create initial module on koyeb for running agents:
    - Create a simple server function on Koyeb that can wait arbitrarily and emit a response ala hello world
-4. Kafka:
+6. Kafka:
    - Setup kafka on Upstash
    - Use it to emit a node output as they output
    - Debug with the simple debug nodes
-5. NodePayload: 
+7. NodePayload: 
+   - Will need a concept of an input node and output node(s) on ai app, such that dev app receives the output
    - Create a Golang based router node that can route to other nodes based on the graph structure read from supabase. No need to write back to supabase.
    - Can also handle parsing/sanitizing the payload
    - Router emits via kafka
@@ -52,5 +61,10 @@
 1. A module could be a model running on runpod, eg memgpt
 2. Consider Ably for multiplayer editing and realtime chat
 3. New relic for monitoring
-
+4. Utilize Kong's ability to execute custom Lua code to identify and redirect browser traffic from neurocache.dev to neurocache.ai
 --===--
+
+
+
+
+
