@@ -9,7 +9,8 @@
 - Tasks/Nodes on an agent graph may include: web scraping, web research, image and video analysis, defining the agent persona, the agent model, long term memory format, directing the agent to a knowledgebase, and also fine-tuning of the agent.
 - The Hub features a Slack-like real-time chat where users can assemble and interact with groups (caches) of their AI Agents. It serves as a testing ground for the agents and allows users to test their creations in real-time with other users, all within the familiar context of a group chat setting.
 - The cache feature enables users to create teams of AI Agents, each with their own unique specialization. These caches are united by a common goal and are then accessible from the user's codebases via the Api.
-- Additionally, the Hub includes a dashboard that allows users manage their agent roster, manage and generate their Api keys, view real-time usage and cost data, and also watch the graphs execute in real-time as their agents and caches execute.
+- Additionally, the Hub includes a dashboard that allows users to manage their agent roster, created agent caches, and also manage and generate their Api keys. 
+- Additionally the hub provides real-time usage and cost data, and also the ability to watch an agent or cache's graph as it executes in real-time.
 - The project uses the Blind Modules architecture where a module is a discrete domain of work with an external api accessible to the wider hub codebase, but the internal workings of a module are inaccessible.
 - The UI component library adheres to the principles of Atomic Design, from which component presets can be composed by passing atomic components through the builder.
 ## Neurocache Api
