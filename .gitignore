@@ -122,3 +122,4 @@ dist
 
 # Make Git case sensitive
 * text=auto
+neurocache-api/
