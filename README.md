@@ -1,6 +1,9 @@
 
 ## Project Overview
-- Neurocache consists of two standalone web applications: **Neurocache Hub** (neurocache.ai) and **Neurocache Api** (neurocache.dev). This is a work in progress and an _experimental_ codebase.
+- Neurocache consists of two standalone web applications: 
+	- **Neurocache Hub** a full stack web app for creating and managing cohorts of ai agents found at [neurocache.ai]() 
+	- **Neurocache Api** a service mesh api app that provides the intelligence for the cohorts of agents found at [neurocache.dev](). 
+- This is a work in progress and an _experimental_ codebase.
 
 ## Neurocache Hub (this repo)
 - Neurocache Hub is a full-stack web application that provides a platform for users to create, train, and customize their own AI agents to perform tasks tailored to their needs. Tasks may include deep web searching, image and video analysis, or even transforming into a subject matter expert trained on custom datasets.
