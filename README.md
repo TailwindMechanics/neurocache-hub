@@ -1,8 +1,8 @@
 
 ## Project Overview
 - Neurocache consists of two standalone web applications: 
-	- **Neurocache Hub** a full stack web app for creating and managing cohorts of ai agents, found at [neurocache.ai]() 
-	- **Neurocache Api** a service mesh api app that provides the intelligence for the cohorts of agents, found at [neurocache.dev](). 
+	- **Neurocache Hub** a full stack web app for creating and managing cohorts of ai agents, found at [neurocache.ai](https://www.neurocache.ai/) 
+	- **Neurocache Api** a service mesh api app that provides the intelligence for the cohorts of agents, found at [neurocache.dev](https://www.neurocache.dev/)
 - This is a work in progress and an _experimental_ codebase.
 
 ## Neurocache Hub (this repo)
@@ -19,7 +19,7 @@
 - Users can leverage the api from their own codebases in order to use their custom agents and agent caches.
 
 ## Neurocache Hub tech stack
-- Url: [neurocache.ai]()
+- Url: [neurocache.ai](https://www.neurocache.ai/)
 - Dependency Management: Pnpm
 - Framework: Next.js
 - Language: TypeScript
@@ -35,7 +35,7 @@
 - Animation: Framer motion
 
 ## Neurocache Api tech stack
-- Url: [neurocache.dev]()
+- Url: [neurocache.dev](https://www.neurocache.dev/)
 - Hosting and deployment: Koyeb
 - Api gateway and management: Kong
 - Messaging: Kafka
