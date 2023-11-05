@@ -1,4 +1,4 @@
-## Project Overview
+## Neurocache Project Overview
 - Neurocache enables users to easily create customizable AI Agents to automate tasks and access them via an Api.
 - Neurocache consists of two standalone web applications: 
 	- **Neurocache Hub** a full-stack web app for creating and managing cohorts of AI Agents, found at <a href="https://www.neurocache.ai/" target="_blank">neurocache.ai</a>
