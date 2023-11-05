@@ -6,14 +6,16 @@
 - This is a work in progress and an _experimental_ codebase.
 
 ## Neurocache Hub (this repo)
-- Neurocache Hub is a full-stack web application that provides a platform for users to create, train, and customize their own AI agents to perform tasks tailored to their needs. Tasks may include deep web searching, image and video analysis, or even transforming into a subject matter expert trained on custom datasets.
-- The Hub features a Slack-like real-time chat where users can assemble and interact with groups (caches) of AI agents. It serves as a training ground for the agents and allows users to test their creations in real-time with other users, all within the familiar context of a group chat setting.
-- The cache feature enables users to create teams of AI agents, each with their own unique specialization. These caches are united by a common goal and are accessible through the API, enabling you to harness the collective intelligence of your AI agents.
-- Additionally, the Hub includes a dashboard that lets users manage their agent roster, manage and generate API keys, and view real-time usage data.
-- The UI component library adheres to the principles of Atomic Design, from which component presets can be composed.
+- Neurocache Hub is a full-stack web application that provides a platform for users to create, train, and customize their own AI agents to perform tasks tailored to their needs, using an interactive node graph editor, which executes in a behaviour tree fashion on the Neurocache Api app. 
+- Tasks/Nodes on an agent graph may include; web scraping, web research, image and video analysis, defining the agent persona, the agent model, long term memory format, directing the agent to a knowledgebase, and also finetuning of the agent.
+- The Hub features a Slack-like real-time chat where users can assemble and interact with groups (caches) of their AI agents. It serves as a testing ground for the agents and allows users to test their creations in real-time with other users, all within the familiar context of a group chat setting.
+- The cache feature enables users to create teams of AI agents, each with their own unique specialization. These caches are united by a common goal and are then accessible from the users codebases via the Api.
+- Additionally, the Hub includes a dashboard that allows users manage their agent roster, manage and generate their API keys, view real-time usage data and cost data, and also watch the graphs execute in realtime as their agents and caches execute.
+- The project uses the Blind Modules architecture where a module is a discrete domain of work with an external api accessible to the wider codebase, but the internal workings of a module are inaccessible.
+- The UI component library adheres to the principles of Atomic Design, from which component presets can be composed by passing atomic components through the builder.
 
 ## Neurocache Api
-- The Neurocache Api is a collection of microservices in a service mesh architecture. Each representing a node on the graph in the Hub.
+- The Neurocache Api is a collection of microservices in a service mesh architecture. Each represented by a node on the graph in the Hub.
 - Users can leverage the api from their own codebases in order to use their custom agents and agent caches.
 
 ## Neurocache Hub tech stack
