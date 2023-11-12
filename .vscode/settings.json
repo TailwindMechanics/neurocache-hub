@@ -6,7 +6,7 @@
   "explorer.fileNesting.expand": false,
   "editor.detectIndentation": false,
   "explorer.fileNesting.patterns": {
-    "root": ".editorconfig, .env.example, .env.local, .eslintignore, .eslintrc.json, .gitignore, .ignore, .jest-test-results.json, .prettierignore, .prettierrc, autoCommentPath.js, jest.config.js, jest.setup.js, junit.xml, middleware.ts, next-env.d.ts, next.config.js, package.json, pnpm-lock.yaml, postcss.config.js, project-hierarchy.txt, README.md, rootGrouper.js, tailwind.config.js, tsconfig.json"
+    "root": ".editorconfig, .env.example, .env.local, .eslintignore, .eslintrc.json, .gitignore, .ignore, .jest-test-results.json, .prettierignore, .prettierrc, autoCommentPath.js, jest.config.js, jest.setup.js, junit.xml, middleware.ts, next-env.d.ts, next.config.js, package.json, pnpm-lock.yaml, postcss.config.js, project-hierarchy.txt, README.md, rootGrouper.js, tailwind.config.js, tsconfig.json, vercel.json"
   },
   "material-icon-theme.folders.associations": {
     "External": "Import",
