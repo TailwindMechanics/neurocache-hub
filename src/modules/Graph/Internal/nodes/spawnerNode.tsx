@@ -114,10 +114,11 @@ const SpawnerNode = React.memo((props: NodeProps) => {
 });
 
 const reflect_nodeData = {
+    serializable: false,
     nodeType: "spawner",
     nodeName: "Spawner",
     category: "Hidden",
-    nodeId: "node_spawner_1",
+    nodeId: "spawner",
     body: "This node spawns other nodes.",
     handles: [],
     nodePosition: { x: 200, y: 0 },

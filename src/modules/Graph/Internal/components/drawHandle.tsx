@@ -23,9 +23,12 @@ const DrawHandle = (props: DrawHandleProps) => {
     const handleOffsetY = (props.handle.offset.y / 100) * parentSize.y;
     const handleOffsetX = ((props.handle.offset.x - 50) / 100) * parentSize.x;
 
+    const nodeId = props.nodeData.nodeId;
+    const handleId = `handle_${props.handle.type}_${nodeId}_${props.index}`;
+
     return (
         <Handle
-            id={props.handle.id}
+            id={handleId}
             position={Position.Top}
             key={props.index}
             type={props.handle.type}

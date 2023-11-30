@@ -211,16 +211,5 @@ const LoginNode = React.memo((props: NodeProps) => {
     );
 });
 
-const reflect_nodeData = {
-    nodeType: "login",
-    nodeName: "Login",
-    category: "Utils",
-    nodeId: "node_login_1",
-    body: "This node logs a user in or signs up a new user.",
-    handles: [],
-    nodePosition: { x: 0, y: 0 },
-    nodeComponent: LoginNode,
-} as CustomNode;
-
 LoginNode.displayName = "LoginNode";
 export { LoginNode };

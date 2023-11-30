@@ -61,23 +61,5 @@ const TestBox = React.memo((props: NodeProps) => {
     );
 });
 
-const reflect_nodeData = {
-    nodeType: "test_box",
-    nodeName: "Test",
-    category: "Unhidden",
-    nodeId: "test_box_1",
-    body: "This is for testing.",
-    handles: [
-        {
-            id: "out_test_box_60e9b8e9a7f1d8c774h2",
-            type: "source",
-            offset: { x: 100.33, y: 40 },
-            angle: 90,
-        },
-    ],
-    nodePosition: { x: 100, y: 0 },
-    nodeComponent: TestBox,
-} as CustomNode;
-
 TestBox.displayName = "TestBox";
 export { TestBox };

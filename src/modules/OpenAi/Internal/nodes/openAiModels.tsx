@@ -92,22 +92,5 @@ const OpenAiModels = React.memo((props: NodeProps) => {
     );
 });
 
-const reflect_nodeData = {
-    nodeType: "openai_models",
-    nodeName: "Models",
-    category: "OpenAi",
-    nodeId: "openai_models_60e9b8e9a7f1d8c7gdw3",
-    body: "This node returns the models.",
-    handles: [
-        {
-            id: "out_openai_models_60e9b8e9a7f1d8c7gdw3",
-            type: "source",
-            offset: { x: 100.33, y: 40 },
-            angle: 90,
-        },
-    ],
-    nodePosition: { x: 100, y: 0 },
-} as CustomNode;
-
 OpenAiModels.displayName = "OpenAiModels";
 export { OpenAiModels };

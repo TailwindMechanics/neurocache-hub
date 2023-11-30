@@ -35,10 +35,11 @@ const SaveGraphComponent = React.memo((props: SaveGraphProps) => {
 
         const nodes = reactFlowInstance.getNodes().filter((node) => {
             const nodeData = node.data as CustomNode;
-            console.log(nodeData.category);
+            console.log(nodeData);
 
-            return nodeData.category !== "Persistent";
+            return nodeData.serializable;
         });
+
         const graphData = {
             nodes: nodes,
             edges: reactFlowInstance.getEdges(),

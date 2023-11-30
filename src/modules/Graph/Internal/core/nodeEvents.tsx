@@ -16,9 +16,9 @@ import ReactFlow, {
     Edge,
 } from "reactflow";
 
+import { CustomNodesRepo } from "@modules/Graph/External/CustomNodesRepo";
 import { useNodeSpawner } from "../hooks/useNodeSpawner";
 import { UseKeyPress } from "@modules/Utils";
-import { CustomNodesRepo } from "@modules/Graph/External/CustomNodesRepo";
 
 type NodeEventsProps = {
     handleMouseMove: (event: React.MouseEvent<Element, MouseEvent>) => void;
@@ -69,10 +69,7 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
     });
 
     const removeSpawnerNode = () => {
-        const filteredNodes = nodeSpawner.despawn(
-            "node_spawner_1",
-            props.nodes,
-        );
+        const filteredNodes = nodeSpawner.despawn("spawner", props.nodes);
 
         props.setNodes(filteredNodes);
     };
@@ -104,7 +101,7 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
             let newPos = { ...props.mouseCoordsRef.current };
             newPos.x -= 20;
             newPos.y -= 20;
-            const spawnerNode = nodeSpawner.spawn("spawner", false, "1");
+            const spawnerNode = nodeSpawner.spawn("spawner", false);
             if (spawnerNode) {
                 spawnerNode.position = newPos;
                 props.setNodes((prevNodes: Node[]) => [

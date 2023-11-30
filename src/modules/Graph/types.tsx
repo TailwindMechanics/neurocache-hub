@@ -15,6 +15,7 @@ export type NodeFlowValue = {
 };
 
 export interface CustomNode {
+    serializable: boolean;
     nodeType: string;
     nodeName: string;
     category: string;

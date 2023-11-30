@@ -4,35 +4,33 @@ import { Node } from "reactflow";
 
 import { CustomNodesRepo } from "../../External/CustomNodesRepo";
 import { CustomNode, PositionId } from "../../types";
-import { Uid } from "@modules/Utils";
+import { IsNullOrEmpty } from "@modules/Utils";
 
 export const useNodeSpawner = () => {
-    const spawn = (
-        nodeType: string,
-        selected: boolean = false,
-        overrideId: string | null = null,
-    ) => {
-        const nodeDataDefaults = CustomNodesRepo.instance.getNode(nodeType);
+    const spawn = (nodeType: string, selected: boolean = false) => {
+        const customNodeData = CustomNodesRepo.instance.getNode(nodeType);
 
-        if (!nodeDataDefaults) return null;
+        if (!customNodeData) return null;
 
-        const uid = overrideId ?? Uid();
-        const handles = nodeDataDefaults.handles
-            ? nodeDataDefaults.handles.map((handle, index) => {
+        const nodeId = CustomNodesRepo.instance.getNodeId(customNodeData);
+        const handles = customNodeData.handles
+            ? customNodeData.handles.map((handle, index) => {
                   return {
                       ...handle,
-                      id: `handle_${index}_${handle.type}_${nodeType}_${uid}`,
+                      id: `handle_${handle.type}_${nodeId}_${index}`,
                   };
               })
             : ([] as PositionId[]);
 
         const nodeData = {
+            serializable: customNodeData.serializable,
+            category: customNodeData.category,
             nodeType: nodeType,
-            nodeName: nodeDataDefaults.nodeName,
-            nodeId: `node_${nodeType}_${uid}`,
-            body: nodeDataDefaults.body,
+            nodeName: customNodeData.nodeName,
+            nodeId: nodeId,
+            body: customNodeData.body,
             handles: handles,
-            nodePosition: nodeDataDefaults.nodePosition,
+            nodePosition: customNodeData.nodePosition,
         } as CustomNode;
 
         const newNode: Node = {
@@ -46,9 +44,9 @@ export const useNodeSpawner = () => {
         return newNode;
     };
 
-    const despawn = (removeId: string, prevNodes: Node[]): Node[] => {
-        const filteredNodes = prevNodes.filter((node) => node.id !== removeId);
-        return filteredNodes;
+    const despawn = (removeId: string, prevNodes: Node[]) => {
+        const filtered = prevNodes.filter((n) => n.id !== removeId);
+        return filtered;
     };
 
     return {

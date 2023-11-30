@@ -164,6 +164,9 @@ dependencies:
   typescript:
     specifier: 5.1.6
     version: 5.1.6
+  unique-names-generator:
+    specifier: ^4.7.1
+    version: 4.7.1
   validator:
     specifier: ^13.11.0
     version: 13.11.0
@@ -14707,6 +14710,11 @@ packages:
       is-plain-obj: 4.1.0
       trough: 2.1.0
       vfile: 6.0.1
+    dev: false
+
+  /unique-names-generator@4.7.1:
+    resolution: {integrity: sha512-lMx9dX+KRmG8sq6gulYYpKWZc9RlGsgBR6aoO8Qsm3qvkSJ+3rAymr+TnV8EDMrIrwuFJ4kruzMWM/OpYzPoow==}
+    engines: {node: '>=8'}
     dev: false
 
   /unique-string@2.0.0:

@@ -68,28 +68,5 @@ const OpenAiNode = React.memo((props: NodeProps) => {
     );
 });
 
-const reflect_nodeData = {
-    nodeType: "open_ai",
-    nodeName: "Gpt-4",
-    category: "OpenAi",
-    nodeId: "node_open_ai_60e9b8e9a7f1d8c7c7f8",
-    body: "This node makes an API request to OpenAI.",
-    handles: [
-        {
-            id: "in_open_ai_60e9b8e9a7f1d8c7c7f8",
-            type: "target",
-            offset: { x: -0.33, y: 40 },
-            angle: -90,
-        },
-        {
-            id: "out_open_ai_60e9b8e9a7f1d8c7c7f8",
-            type: "source",
-            offset: { x: 100.33, y: 40 },
-            angle: 90,
-        },
-    ],
-    nodePosition: { x: 100, y: 0 },
-} as CustomNode;
-
 OpenAiNode.displayName = "OpenAiNode";
 export { OpenAiNode };

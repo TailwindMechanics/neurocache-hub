@@ -7,6 +7,7 @@ import { FC } from "react";
 import { agentStatusStyle } from "../utils/agentStatusStyle";
 import { agentAvatar } from "../utils/agentAvatar";
 import { Agent } from "../../types";
+import { useActiveAgent } from "../hooks/useActiveAgent";
 
 interface TableRowProps {
     className?: string;
@@ -19,6 +20,7 @@ interface TableRowProps {
 }
 
 export const TableRow: FC<TableRowProps> = (props) => {
+    var { setActiveAgent } = useActiveAgent();
     return (
         <>
             <tr
@@ -27,9 +29,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
                     props.isHighlighted ? "bg-aqua-dark text-night-black" : ""
                 }`}
                 onDoubleClick={() => props.onRowDoubleClick?.(props.agent)}
-                onClick={(e) => {
-                    props.onRowClick?.(props.agent, e.shiftKey);
-                }}>
+                onClick={() => setActiveAgent(props.agent)}>
                 <td className={props.firstColClassName}>
                     <Image
                         width={64}

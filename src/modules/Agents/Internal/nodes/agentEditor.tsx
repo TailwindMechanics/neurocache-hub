@@ -7,10 +7,10 @@ import React, { useEffect, useState } from "react";
 import { toLower } from "lodash";
 import _ from "lodash";
 
+import { AgentInspector } from "../components/agentInspector";
 import { useRecentAgents } from "../hooks/useRecentAgents";
 import { useActiveAgent } from "../hooks/useActiveAgent";
 import { DrawerElement } from "@modules/Drawer/types";
-import { AgentInspector } from "../components/agentInspector";
 import { TableRow } from "../components/tableRow";
 import { CustomNode } from "@modules/Graph/types";
 import { NewAgent } from "../components/newAgent";

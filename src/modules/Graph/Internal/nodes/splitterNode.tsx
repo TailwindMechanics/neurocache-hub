@@ -53,34 +53,5 @@ const SplitterNode = React.memo((props: NodeProps) => {
     );
 });
 
-const reflect_nodeData = {
-    nodeType: "splitter",
-    nodeName: "Splitter",
-    category: "Utils",
-    nodeId: "splitter_60e9b8e9a7f1d8c7c7f9",
-    body: "This node is used to split the flow.",
-    handles: [
-        {
-            id: "in_splitter_1_60e9b8e9a7f1d8c7c7f9",
-            type: "target",
-            offset: { x: 50, y: -8 },
-            angle: 0,
-        },
-        {
-            id: "out_splitter_1_60e9b8e9a7f1d8c7c7f9",
-            type: "source",
-            offset: { x: 8, y: 85 },
-            angle: 240,
-        },
-        {
-            id: "out_splitter_2_60e9b8e9a7f1d8c7c7f9",
-            type: "source",
-            offset: { x: 92, y: 85 },
-            angle: 120,
-        },
-    ],
-    nodePosition: { x: 150, y: 0 },
-} as CustomNode;
-
 SplitterNode.displayName = "SplitterNode";
 export { SplitterNode };
