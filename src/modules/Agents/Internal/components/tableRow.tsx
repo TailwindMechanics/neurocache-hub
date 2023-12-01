@@ -5,9 +5,9 @@ import moment from "moment";
 import { FC } from "react";
 
 import { agentStatusStyle } from "../utils/agentStatusStyle";
+import { useAgentStore } from "../../External/agentStore";
 import { agentAvatar } from "../utils/agentAvatar";
-import { Agent } from "../../types";
-import { useActiveAgent } from "../hooks/useActiveAgent";
+import { Agent } from "@modules/Agents/types";
 
 interface TableRowProps {
     className?: string;
@@ -20,7 +20,7 @@ interface TableRowProps {
 }
 
 export const TableRow: FC<TableRowProps> = (props) => {
-    var { setActiveAgent } = useActiveAgent();
+    const setActiveAgent = useAgentStore((state) => state.setActiveAgent);
     return (
         <>
             <tr

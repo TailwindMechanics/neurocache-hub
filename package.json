@@ -65,7 +65,8 @@
         "typescript": "5.1.6",
         "unique-names-generator": "^4.7.1",
         "validator": "^13.11.0",
-        "zod": "^3.22.4"
+        "zod": "^3.22.4",
+        "zustand": "^4.4.7"
     },
     "devDependencies": {
         "@storybook/addon-a11y": "^7.5.2",

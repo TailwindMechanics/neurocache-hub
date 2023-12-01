@@ -16,7 +16,6 @@ import ReactFlow, {
     Edge,
 } from "reactflow";
 
-import { CustomNodesRepo } from "@modules/Graph/External/CustomNodesRepo";
 import { useNodeSpawner } from "../hooks/useNodeSpawner";
 import { UseKeyPress } from "@modules/Utils";
 
@@ -37,29 +36,6 @@ type NodeEventsProps = {
 
 export const NodeEvents: FC<NodeEventsProps> = (props) => {
     const nodeSpawner = useNodeSpawner();
-
-    useEffect(() => {
-        const persistentNodes = CustomNodesRepo.instance.getPersistentNodes();
-
-        persistentNodes.forEach((persistentNode) => {
-            props.setNodes((prevNodes) => {
-                const nodeExists = prevNodes.some(
-                    (node) => node.type === persistentNode.nodeType,
-                );
-
-                if (!nodeExists) {
-                    const spawnedNode = nodeSpawner.spawn(
-                        persistentNode.nodeType,
-                    );
-                    if (spawnedNode) {
-                        return [...prevNodes, spawnedNode];
-                    }
-                }
-
-                return prevNodes;
-            });
-        });
-    }, [nodeSpawner, props, props.setNodes]);
 
     useOnSelectionChange({
         onChange: ({ nodes, edges }) => {

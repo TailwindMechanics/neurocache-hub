@@ -4,8 +4,7 @@ import { FC, useState } from "react";
 import Image from "next/image";
 
 import { createAgent, getMostRecentAgent } from "../../External/Server/actions";
-import { useRecentAgents } from "../hooks/useRecentAgents";
-import { useActiveAgent } from "../hooks/useActiveAgent";
+import { useAgentStore } from "../../External/agentStore";
 import { agentAvatar } from "../utils/agentAvatar";
 import { IsNullOrEmpty } from "@modules/Utils";
 import { useDrawer } from "@modules/Drawer";
@@ -47,7 +46,13 @@ const ImageSection = new Composer("EditAgentImageSection", DivAtom)
 
 export const NewAgent: FC = () => {
     const [agentName, setAgentName] = useState<string>();
-    const { activeAgent, setActiveAgent } = useActiveAgent();
+    const { activeAgent, setActiveAgent, refreshRecentAgents } = useAgentStore(
+        (state) => ({
+            activeAgent: state.activeAgent,
+            setActiveAgent: state.setActiveAgent,
+            refreshRecentAgents: state.refreshRecentAgents,
+        }),
+    );
     const drawer = useDrawer();
 
     const onCreateClick = async () => {
@@ -56,6 +61,7 @@ export const NewAgent: FC = () => {
         await createAgent(agentName);
         const newAgent = await getMostRecentAgent();
         setActiveAgent(newAgent);
+        refreshRecentAgents();
         drawer.closeDrawer();
     };
 
@@ -66,7 +72,7 @@ export const NewAgent: FC = () => {
                     width={128}
                     height={128}
                     src={agentAvatar(activeAgent)}
-                    alt={`agent avatar`}
+                    alt={`Agent avatar`}
                     className="h-20 w-auto rounded-full object-fill"
                 />
             </ImageSection>

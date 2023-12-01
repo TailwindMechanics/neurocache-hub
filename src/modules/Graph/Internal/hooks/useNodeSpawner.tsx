@@ -4,7 +4,6 @@ import { Node } from "reactflow";
 
 import { CustomNodesRepo } from "../../External/CustomNodesRepo";
 import { CustomNode, PositionId } from "../../types";
-import { IsNullOrEmpty } from "@modules/Utils";
 
 export const useNodeSpawner = () => {
     const spawn = (nodeType: string, selected: boolean = false) => {

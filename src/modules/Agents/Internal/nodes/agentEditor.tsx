@@ -8,8 +8,7 @@ import { toLower } from "lodash";
 import _ from "lodash";
 
 import { AgentInspector } from "../components/agentInspector";
-import { useRecentAgents } from "../hooks/useRecentAgents";
-import { useActiveAgent } from "../hooks/useActiveAgent";
+import { useAgentStore } from "../../External/agentStore";
 import { DrawerElement } from "@modules/Drawer/types";
 import { TableRow } from "../components/tableRow";
 import { CustomNode } from "@modules/Graph/types";
@@ -66,8 +65,14 @@ const newAgentText = "new agent +";
 const AgentEditor = React.memo((props: NodeProps) => {
     const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
     const [sortField, setSortField] = useState<string>("date_modified");
-    const { activeAgent, setActiveAgent } = useActiveAgent();
-    const { recentAgents, refresh } = useRecentAgents();
+    // Replace useActiveAgent and useRecentAgents with useAgentStore
+    const { activeAgent, setActiveAgent, recentAgents, refreshRecentAgents } =
+        useAgentStore((state) => ({
+            activeAgent: state.activeAgent,
+            setActiveAgent: state.setActiveAgent,
+            recentAgents: state.recentAgents,
+            refreshRecentAgents: state.refreshRecentAgents,
+        }));
     const [sortedAgents, setSortedAgents] = useState<Agent[]>([]);
     const { openDrawer, closeDrawer, isOpen } = useDrawer();
     const nodeConfig = props.data as CustomNode;
@@ -75,8 +80,8 @@ const AgentEditor = React.memo((props: NodeProps) => {
     const allNodes = reactFlowInstance.getNodes();
 
     useEffect(() => {
-        refresh();
-    }, [recentAgents, refresh]);
+        refreshRecentAgents();
+    }, [refreshRecentAgents]);
 
     const sortAgents = (field: string) => {
         setSortField(field);

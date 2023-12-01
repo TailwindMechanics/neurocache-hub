@@ -7,7 +7,7 @@ import Image from "next/image";
 import React from "react";
 
 import { CardPreset, Composer, DivAtom } from "@modules/Composer";
-import { useActiveAgent } from "../hooks/useActiveAgent";
+import { useAgentStore } from "../../External/agentStore";
 import { agentAvatar } from "../utils/agentAvatar";
 import { NodeSelection } from "@modules/Graph";
 
@@ -28,7 +28,7 @@ const AvatarLabel = new Composer("ActiveAgentAvatarLabel", DivAtom)
     .build();
 
 const ActiveAgent = React.memo((props: NodeProps) => {
-    const { activeAgent } = useActiveAgent();
+    const activeAgent = useAgentStore((state) => state.activeAgent);
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
 

@@ -6,8 +6,7 @@ import moment from "moment";
 
 import { agentStatusStyle } from "../utils/agentStatusStyle";
 import { deleteAgent } from "../../External/Server/actions";
-import { useRecentAgents } from "../hooks/useRecentAgents";
-import { useActiveAgent } from "../hooks/useActiveAgent";
+import { useAgentStore } from "../../External/agentStore";
 import { agentAvatar } from "../utils/agentAvatar";
 import { useDrawer } from "@modules/Drawer";
 import {
@@ -65,8 +64,12 @@ interface AgentInspectorProps {
 
 export const AgentInspector: FC<AgentInspectorProps> = (props) => {
     const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
-    const { activeAgent, setActiveAgent } = useActiveAgent();
-    const { refresh } = useRecentAgents();
+    const activeAgent = useAgentStore((state) => state.activeAgent);
+    const setActiveAgent = useAgentStore((state) => state.setActiveAgent);
+    const refreshRecentAgents = useAgentStore(
+        (state) => state.refreshRecentAgents,
+    );
+
     const drawer = useDrawer();
 
     const onDeleteClick = async () => {
@@ -74,7 +77,7 @@ export const AgentInspector: FC<AgentInspectorProps> = (props) => {
 
         await deleteAgent(activeAgent?.agent_id);
         drawer.closeDrawer();
-        refresh();
+        refreshRecentAgents();
         setActiveAgent(null);
     };
 
@@ -105,9 +108,9 @@ export const AgentInspector: FC<AgentInspectorProps> = (props) => {
                 }
             />
             <DatesLabel>
-                <p className={`${agentStatusStyle(activeAgent)}`}>
+                <div className={`${agentStatusStyle(activeAgent)}`}>
                     <p className={"text-2xl"}>status: {activeAgent?.status}</p>
-                </p>
+                </div>
                 <p>
                     date modified:{" "}
                     {moment(activeAgent?.date_modified).format(
