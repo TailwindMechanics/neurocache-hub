@@ -74,29 +74,5 @@ const MarkdownBox = React.memo((props: NodeProps) => {
     );
 });
 
-const reflect_nodeData = {
-    nodeType: "markdown_box",
-    nodeName: "Markdown",
-    category: "UI",
-    nodeId: "node_markdown_box_50e9b8e9a7f1d8c7c7f7",
-    body: "This node displays input markdown.",
-    nodePosition: { x: 50, y: 0 },
-    handles: [
-        {
-            id: "in_markdown_box_50e9b8e9a7f1d8c7c7f7",
-            type: "target",
-            offset: { x: -0.33, y: 40 },
-            angle: -90,
-        },
-        {
-            id: "out_markdown_box_50e9b8e9a7f1d8c7c7f7",
-            type: "source",
-            offset: { x: 100.33, y: 40 },
-            angle: 90,
-        },
-    ],
-    nodeComponent: MarkdownBox,
-} as CustomNode;
-
 MarkdownBox.displayName = "MarkdownBox";
 export { MarkdownBox };

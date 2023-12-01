@@ -47,29 +47,5 @@ const CommentPayload = React.memo((props: NodeProps) => {
     );
 });
 
-const reflect_nodeData = {
-    nodeType: "comment_payload",
-    nodeName: "Comment Payload",
-    category: "Utils",
-    nodeId: "comment_payload_60e9b8e9a7f1d8c7dsa2",
-    body: "This node returns the models.",
-    handles: [
-        {
-            id: "in_comment_payload_60e9b8e9a7f1d8c7dsa2",
-            type: "target",
-            offset: { x: -0.33, y: 40 },
-            angle: -90,
-        },
-        {
-            id: "out_comment_payload_60e9b8e9a7f1d8c7dsa2",
-            type: "source",
-            offset: { x: 100.33, y: 40 },
-            angle: 90,
-        },
-    ],
-    nodePosition: { x: 100, y: 0 },
-    nodeComponent: CommentPayload,
-} as CustomNode;
-
 CommentPayload.displayName = "CommentPayload";
 export { CommentPayload };

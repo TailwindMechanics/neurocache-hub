@@ -8,8 +8,8 @@ import { UseCtrlS } from "@modules/Utils";
 import React from "react";
 
 import { updateAgentGraph } from "@modules/Agents/External/Server/actions";
+import { useAgentStore } from "@modules/Agents/External/agentStore";
 import { CustomNode } from "@modules/Graph/types";
-import { useActiveAgent } from "@modules/Agents";
 
 interface SaveGraphProps {
     viewportRef: React.MutableRefObject<Viewport>;
@@ -21,8 +21,12 @@ const SaveGraphComponent = React.memo((props: SaveGraphProps) => {
     const [statusText, setStatusText] = useState<string>(GuestMessage);
     let [_, startTransition] = useTransition();
     const reactFlowInstance = useReactFlow();
-    const { activeAgent } = useActiveAgent();
+
     const user = useAuth().user;
+    const { activeAgent, refreshRecentAgents } = useAgentStore((state) => ({
+        activeAgent: state.activeAgent,
+        refreshRecentAgents: state.refreshRecentAgents,
+    }));
 
     useEffect(() => {
         setStatusText(user?.email ?? GuestMessage);
@@ -35,10 +39,9 @@ const SaveGraphComponent = React.memo((props: SaveGraphProps) => {
 
         const nodes = reactFlowInstance.getNodes().filter((node) => {
             const nodeData = node.data as CustomNode;
-            console.log(nodeData.category);
-
-            return nodeData.category !== "Persistent";
+            return nodeData.serializable;
         });
+
         const graphData = {
             nodes: nodes,
             edges: reactFlowInstance.getEdges(),
@@ -56,6 +59,7 @@ const SaveGraphComponent = React.memo((props: SaveGraphProps) => {
                     setStatus(response.error.message, 20000);
                     console.log(response.error);
                 } else {
+                    refreshRecentAgents();
                     setStatus("saved");
                 }
             }

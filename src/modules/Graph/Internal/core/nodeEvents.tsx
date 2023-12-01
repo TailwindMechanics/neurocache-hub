@@ -18,7 +18,6 @@ import ReactFlow, {
 
 import { useNodeSpawner } from "../hooks/useNodeSpawner";
 import { UseKeyPress } from "@modules/Utils";
-import { CustomNodesRepo } from "@modules/Graph/External/CustomNodesRepo";
 
 type NodeEventsProps = {
     handleMouseMove: (event: React.MouseEvent<Element, MouseEvent>) => void;
@@ -38,29 +37,6 @@ type NodeEventsProps = {
 export const NodeEvents: FC<NodeEventsProps> = (props) => {
     const nodeSpawner = useNodeSpawner();
 
-    useEffect(() => {
-        const persistentNodes = CustomNodesRepo.instance.getPersistentNodes();
-
-        persistentNodes.forEach((persistentNode) => {
-            props.setNodes((prevNodes) => {
-                const nodeExists = prevNodes.some(
-                    (node) => node.type === persistentNode.nodeType,
-                );
-
-                if (!nodeExists) {
-                    const spawnedNode = nodeSpawner.spawn(
-                        persistentNode.nodeType,
-                    );
-                    if (spawnedNode) {
-                        return [...prevNodes, spawnedNode];
-                    }
-                }
-
-                return prevNodes;
-            });
-        });
-    }, [nodeSpawner, props, props.setNodes]);
-
     useOnSelectionChange({
         onChange: ({ nodes, edges }) => {
             props.setSelectedNodes(nodes);
@@ -69,10 +45,7 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
     });
 
     const removeSpawnerNode = () => {
-        const filteredNodes = nodeSpawner.despawn(
-            "node_spawner_1",
-            props.nodes,
-        );
+        const filteredNodes = nodeSpawner.despawn("spawner", props.nodes);
 
         props.setNodes(filteredNodes);
     };
@@ -104,7 +77,7 @@ export const NodeEvents: FC<NodeEventsProps> = (props) => {
             let newPos = { ...props.mouseCoordsRef.current };
             newPos.x -= 20;
             newPos.y -= 20;
-            const spawnerNode = nodeSpawner.spawn("spawner", false, "1");
+            const spawnerNode = nodeSpawner.spawn("spawner", false);
             if (spawnerNode) {
                 spawnerNode.position = newPos;
                 props.setNodes((prevNodes: Node[]) => [

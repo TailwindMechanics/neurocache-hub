@@ -62,29 +62,5 @@ const SendOutputNode = React.memo((props: NodeProps) => {
     );
 });
 
-const reflect_nodeData = {
-    nodeType: "send_output",
-    nodeName: "Send Button",
-    category: "Utils",
-    nodeId: "node_button_output_60e9b8e9a7f1d8c7c7f6",
-    body: "This node outputs the InputField text when the Button is clicked.",
-    handles: [
-        {
-            id: "in_button_output_60e9b8e9a7f1d8c7c7f6",
-            type: "target",
-            offset: { x: -0.33, y: 40 },
-            angle: -90,
-        },
-        {
-            id: "out_button_output_60e9b8e9a7f1d8c7c7f6",
-            type: "source",
-            offset: { x: 100.33, y: 40 },
-            angle: 90,
-        },
-    ],
-    nodePosition: { x: 0, y: 0 },
-    nodeComponent: SendOutputNode,
-} as CustomNode;
-
 SendOutputNode.displayName = "SendOutputNode";
 export { SendOutputNode };

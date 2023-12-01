@@ -164,12 +164,18 @@ dependencies:
   typescript:
     specifier: 5.1.6
     version: 5.1.6
+  unique-names-generator:
+    specifier: ^4.7.1
+    version: 4.7.1
   validator:
     specifier: ^13.11.0
     version: 13.11.0
   zod:
     specifier: ^3.22.4
     version: 3.22.4
+  zustand:
+    specifier: ^4.4.7
+    version: 4.4.7(@types/react@18.2.14)(react@18.2.0)
 
 devDependencies:
   '@storybook/addon-a11y':
@@ -3240,7 +3246,7 @@ packages:
       classcat: 5.0.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.4.5(@types/react@18.2.14)(react@18.2.0)
+      zustand: 4.4.7(@types/react@18.2.14)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -3256,7 +3262,7 @@ packages:
       classcat: 5.0.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.4.5(@types/react@18.2.14)(react@18.2.0)
+      zustand: 4.4.7(@types/react@18.2.14)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -3278,7 +3284,7 @@ packages:
       d3-zoom: 3.0.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.4.5(@types/react@18.2.14)(react@18.2.0)
+      zustand: 4.4.7(@types/react@18.2.14)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -3298,7 +3304,7 @@ packages:
       d3-zoom: 3.0.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.4.5(@types/react@18.2.14)(react@18.2.0)
+      zustand: 4.4.7(@types/react@18.2.14)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -3316,7 +3322,7 @@ packages:
       d3-selection: 3.0.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.4.5(@types/react@18.2.14)(react@18.2.0)
+      zustand: 4.4.7(@types/react@18.2.14)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -3332,7 +3338,7 @@ packages:
       classcat: 5.0.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.4.5(@types/react@18.2.14)(react@18.2.0)
+      zustand: 4.4.7(@types/react@18.2.14)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -14709,6 +14715,11 @@ packages:
       vfile: 6.0.1
     dev: false
 
+  /unique-names-generator@4.7.1:
+    resolution: {integrity: sha512-lMx9dX+KRmG8sq6gulYYpKWZc9RlGsgBR6aoO8Qsm3qvkSJ+3rAymr+TnV8EDMrIrwuFJ4kruzMWM/OpYzPoow==}
+    engines: {node: '>=8'}
+    dev: false
+
   /unique-string@2.0.0:
     resolution: {integrity: sha512-uNaeirEPvpZWSgzwsPGtU2zVSTrn/8L5q/IexZmH0eH6SA73CmAA5U4GwORTxQAZs95TAXLNqeLoPPNO5gZfWg==}
     engines: {node: '>=8'}
@@ -15373,8 +15384,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /zustand@4.4.5(@types/react@18.2.14)(react@18.2.0):
-    resolution: {integrity: sha512-jgIrBBLKncQW74PA2Lclct3gwD4aPughwGE4FqlXrv3rDqQox7JCn8rwUiFK6ygJcbBAvfTf8fF+ICg7HLD2FQ==}
+  /zustand@4.4.7(@types/react@18.2.14)(react@18.2.0):
+    resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       '@types/react': '>=16.8'

@@ -53,29 +53,5 @@ const InputBox = React.memo((props: NodeProps) => {
     );
 });
 
-const reflect_nodeData = {
-    nodeType: "input_box",
-    nodeName: "Text",
-    category: "Utils",
-    nodeId: "node_input_box_60e9b8e9a7f1d8c7c7f7",
-    body: "This node displays input payload it receives.",
-    nodePosition: { x: 50, y: 0 },
-    handles: [
-        {
-            id: "in_input_box_60e9b8e9a7f1d8c7c7f7",
-            type: "target",
-            offset: { x: -0.33, y: 40 },
-            angle: -90,
-        },
-        {
-            id: "out_input_box_60e9b8e9a7f1d8c7c7f7",
-            type: "source",
-            offset: { x: 100.33, y: 40 },
-            angle: 90,
-        },
-    ],
-    nodeComponent: InputBox,
-} as CustomNode;
-
 InputBox.displayName = "InputBox";
 export { InputBox };

@@ -2,14 +2,14 @@ neurocache-hub
 ├─ .dependencygraph
 │  └─ setting.json
 ├─ .editorconfig
-├─ .env.example
-├─ .env.local
+├─ .env
 ├─ .eslintignore
 ├─ .eslintrc.json
 ├─ .github
 │  └─ workflows
 │     └─ ci.yml
 ├─ .gitignore
+├─ .ignore
 ├─ .jest-test-results.json
 ├─ .prettierignore
 ├─ .prettierrc
@@ -18,17 +18,10 @@ neurocache-hub
 │  ├─ main.js
 │  ├─ manager-head.html
 │  └─ preview.js
-├─ .swc
-│  └─ plugins
-│     └─ v7_windows_x86_64_0.97.9
 ├─ .vscode
 │  ├─ settings.json
 │  └─ tasks.json
 ├─ autoCommentPath.js
-├─ docs
-│  ├─ dbPlan.md
-│  ├─ demo.md
-│  └─ needlessly complex.md
 ├─ jest.config.js
 ├─ jest.setup.js
 ├─ junit.xml
@@ -81,6 +74,7 @@ neurocache-hub
 │  └─ modules
 │     ├─ Agents
 │     │  ├─ External
+│     │  │  ├─ agentStore.ts
 │     │  │  └─ Server
 │     │  │     ├─ actions.ts
 │     │  │     ├─ createAvatar.tsx
@@ -95,10 +89,6 @@ neurocache-hub
 │     │  │  ├─ data
 │     │  │  │  ├─ placeholder.png
 │     │  │  │  └─ placeholder.tsx
-│     │  │  ├─ hooks
-│     │  │  │  ├─ agentsContext.tsx
-│     │  │  │  ├─ useActiveAgent.tsx
-│     │  │  │  └─ useRecentAgents.tsx
 │     │  │  ├─ nodes
 │     │  │  │  ├─ activeAgent.tsx
 │     │  │  │  └─ agentEditor.tsx
@@ -186,6 +176,7 @@ neurocache-hub
 │     │  │  │  ├─ saveGraphComponent.tsx
 │     │  │  │  └─ textBlockFormatter.tsx
 │     │  │  ├─ core
+│     │  │  │  ├─ agentGraphLoader.tsx
 │     │  │  │  ├─ guestCanvas.tsx
 │     │  │  │  ├─ nodeEvents.tsx
 │     │  │  │  ├─ nodeSerializer.tsx

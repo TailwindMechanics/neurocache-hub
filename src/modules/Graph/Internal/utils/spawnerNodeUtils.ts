@@ -23,8 +23,6 @@ export const spawnSpawnerNode = (mouseCoords: XYPosition): Node => {
 };
 
 export const removeSpawnerNode = (prevNodes: Node[]): Node[] => {
-    const filteredNodes = prevNodes.filter(
-        (node) => node.id !== "node_spawner_1",
-    );
+    const filteredNodes = prevNodes.filter((node) => node.id !== "spawner");
     return filteredNodes;
 };

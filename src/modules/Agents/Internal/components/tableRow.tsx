@@ -5,8 +5,9 @@ import moment from "moment";
 import { FC } from "react";
 
 import { agentStatusStyle } from "../utils/agentStatusStyle";
+import { useAgentStore } from "../../External/agentStore";
 import { agentAvatar } from "../utils/agentAvatar";
-import { Agent } from "../../types";
+import { Agent } from "@modules/Agents/types";
 
 interface TableRowProps {
     className?: string;
@@ -19,6 +20,7 @@ interface TableRowProps {
 }
 
 export const TableRow: FC<TableRowProps> = (props) => {
+    const setActiveAgent = useAgentStore((state) => state.setActiveAgent);
     return (
         <>
             <tr
@@ -27,9 +29,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
                     props.isHighlighted ? "bg-aqua-dark text-night-black" : ""
                 }`}
                 onDoubleClick={() => props.onRowDoubleClick?.(props.agent)}
-                onClick={(e) => {
-                    props.onRowClick?.(props.agent, e.shiftKey);
-                }}>
+                onClick={() => setActiveAgent(props.agent)}>
                 <td className={props.firstColClassName}>
                     <Image
                         width={64}

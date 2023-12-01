@@ -4,6 +4,7 @@ import { NodeTypes } from "reactflow";
 
 import { allNodeData } from "./allNodeData";
 import { CustomNode } from "../types";
+import { uniqueNamesGenerator, colors, animals } from "unique-names-generator";
 
 class CustomNodesRepo {
     private static _instance: CustomNodesRepo;
@@ -22,6 +23,20 @@ class CustomNodesRepo {
         return CustomNodesRepo._instance;
     }
 
+    getNodeId(customNode: CustomNode) {
+        if (!customNode.serializable) {
+            return customNode.nodeId;
+        }
+
+        const shortName: string = uniqueNamesGenerator({
+            dictionaries: [colors, animals],
+            separator: "_",
+            length: 2,
+        });
+
+        return `${customNode.nodeType}_${shortName}`;
+    }
+
     public getNode(nodeType: string) {
         return this.customNodes.get(nodeType);
     }
@@ -32,8 +47,7 @@ class CustomNodesRepo {
 
     public getUnhiddenNodes = () => {
         return Array.from(this.customNodes.values()).filter(
-            (node) =>
-                node.category !== "Hidden" && node.category !== "Persistent",
+            (node) => node.category !== "Hidden" && node.serializable,
         );
     };
 

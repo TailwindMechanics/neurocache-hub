@@ -5,7 +5,6 @@ import React from "react";
 
 import { ReactFlowCanvas } from "../core/reactFlowCanvas";
 import { DrawerProvider } from "@modules/Drawer";
-import { AgentProvider } from "@modules/Agents";
 import { OpenAiContext } from "@modules/OpenAi";
 
 const AuthenticatedProvider = React.memo(() => {
@@ -13,11 +12,9 @@ const AuthenticatedProvider = React.memo(() => {
         <>
             <OpenAiContext>
                 <ReactFlowProvider>
-                    <AgentProvider>
-                        <DrawerProvider>
-                            <ReactFlowCanvas />
-                        </DrawerProvider>
-                    </AgentProvider>
+                    <DrawerProvider>
+                        <ReactFlowCanvas />
+                    </DrawerProvider>
                 </ReactFlowProvider>
             </OpenAiContext>
         </>
