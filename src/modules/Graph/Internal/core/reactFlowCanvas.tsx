@@ -15,7 +15,6 @@ import { useMouseCoords } from "../hooks/useMouseCoords";
 import AgentGraphLoader from "./agentGraphLoader";
 import { EdgeLine } from "../components/edgeLine";
 import { Colors } from "@modules/Colors/colors";
-import { useAuth } from "../hooks/useAuth";
 
 const customNodeTypes = CustomNodesRepo.instance.getNodeTypes();
 const customEdgeTypes = { custom: EdgeLine };
@@ -27,7 +26,6 @@ const ReactFlowCanvas = React.memo(() => {
     const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
     const { mouseCoordsRef, handleMouseMove } = useMouseCoords();
     const [canZoom, setCanZoom] = useState(true);
-    const { user } = useAuth();
 
     return (
         <div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">
