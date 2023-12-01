@@ -4,6 +4,7 @@
 
 export { NodeSelectionState as NodeSelection } from "./Internal/components/nodeSelectionState";
 export { ReactFlowCanvas as FlowCanvas } from "./Internal/core/reactFlowCanvas";
+export { onDoubleClick as OnDoubleClick } from "./Internal/utils/nodeInspector";
 export { DrawHandle as DrawHandle } from "./Internal/components/drawHandle";
 export { useNodeFlow as UseNodeFlow } from "./Internal/hooks/useNodeFlow";
 export { GuestCanvas as GuestCanvas } from "./Internal/core/guestCanvas";

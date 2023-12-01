@@ -15,6 +15,7 @@ import {
     InputPreset,
     Composer,
     DivAtom,
+    ApiIdBox,
 } from "@modules/Composer";
 
 const Wrapper = new Composer("EditAgentWrapper", DivAtom)
@@ -64,8 +65,11 @@ interface AgentInspectorProps {
 
 export const AgentInspector: FC<AgentInspectorProps> = (props) => {
     const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
-    const activeAgent = useAgentStore((state) => state.activeAgent);
-    const setActiveAgent = useAgentStore((state) => state.setActiveAgent);
+    const { activeAgent, setActiveAgent } = useAgentStore((state) => ({
+        activeAgent: state.activeAgent,
+        setActiveAgent: state.setActiveAgent,
+    }));
+
     const refreshRecentAgents = useAgentStore(
         (state) => state.refreshRecentAgents,
     );
@@ -107,6 +111,7 @@ export const AgentInspector: FC<AgentInspectorProps> = (props) => {
                     activeAgent ? activeAgent.agent_name : "agent name"
                 }
             />
+            <ApiIdBox id={activeAgent ? activeAgent.agent_id : "agen id"} />
             <DatesLabel>
                 <div className={`${agentStatusStyle(activeAgent)}`}>
                     <p className={"text-2xl"}>status: {activeAgent?.status}</p>

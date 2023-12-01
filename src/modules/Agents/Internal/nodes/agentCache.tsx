@@ -1,4 +1,4 @@
-//path: src\modules\Agents\Internal\nodes\agentEditor.tsx
+//path: src\modules\Agents\Internal\nodes\agentCache.tsx
 
 "use client";
 
@@ -7,13 +7,13 @@ import React, { useEffect, useState } from "react";
 import { toLower } from "lodash";
 import _ from "lodash";
 
+import { NodeSelection, OnDoubleClick } from "@modules/Graph";
 import { AgentInspector } from "../components/agentInspector";
 import { useAgentStore } from "../../External/agentStore";
 import { DrawerElement } from "@modules/Drawer/types";
 import { TableRow } from "../components/tableRow";
 import { CustomNode } from "@modules/Graph/types";
 import { NewAgent } from "../components/newAgent";
-import { NodeSelection } from "@modules/Graph";
 import { Agent } from "@modules/Agents/types";
 import { Table } from "../components/table";
 import { useDrawer } from "@modules/Drawer";
@@ -25,18 +25,18 @@ import {
     DivAtom,
 } from "@modules/Composer";
 
-const Card = new Composer("AgentEditorCard", CardPreset)
+const Card = new Composer("AgentCacheCard", CardPreset)
     .withStyle("w-256")
     .withStyle("p-1.5")
     .withRoundedFrame()
     .build();
-const Button = new Composer("TableButton", GhostButtonPreset)
+const Button = new Composer("AgentCacheTableButton", GhostButtonPreset)
     .withStyle("leading-tight")
     .withStyle("text-xs")
     .withStyle("w-[22%]")
     .withRoundedFull()
     .build();
-const HeaderContent = new Composer("AgentEditorContent", DivAtom)
+const HeaderContent = new Composer("AgentCacheContent", DivAtom)
     .withStyle("border-night-light")
     .withStyle("text-night-title")
     .withStyle("justify-between")
@@ -47,7 +47,7 @@ const HeaderContent = new Composer("AgentEditorContent", DivAtom)
     .withStyle("flex")
     .withRoundedElement()
     .build();
-const TableContent = new Composer("AgentEditorContent", ContentPreset)
+const TableContent = new Composer("AgentCacheContent", ContentPreset)
     .withStyle("border-night")
     .withStyle("pt-0.5")
     .withStyle("px-1")
@@ -62,7 +62,7 @@ const NewAgentDrawer: DrawerElement[] = [
 ];
 
 const newAgentText = "new agent +";
-const AgentEditor = React.memo((props: NodeProps) => {
+const AgentCache = React.memo((props: NodeProps) => {
     const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
     const [sortField, setSortField] = useState<string>("date_modified");
     const { activeAgent, setActiveAgent, recentAgents, refreshRecentAgents } =
@@ -73,8 +73,8 @@ const AgentEditor = React.memo((props: NodeProps) => {
             refreshRecentAgents: state.refreshRecentAgents,
         }));
     const [sortedAgents, setSortedAgents] = useState<Agent[]>([]);
-    const { openDrawer, closeDrawer, isOpen } = useDrawer();
-    const nodeConfig = props.data as CustomNode;
+    const { openDrawer } = useDrawer();
+    const nodeData = props.data as CustomNode;
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
 
@@ -132,8 +132,9 @@ const AgentEditor = React.memo((props: NodeProps) => {
     return (
         <>
             <Card className={NodeSelection(props.id, allNodes)}>
-                <HeaderContent>
-                    <div className="pl-1">{toLower(nodeConfig.nodeName)}</div>
+                <HeaderContent
+                    onDoubleClick={() => OnDoubleClick(nodeData, openDrawer)}>
+                    <div className="pl-1">{toLower(nodeData.nodeName)}</div>
                     <Button onClick={onNewAgentClick}>{newAgentText}</Button>
                 </HeaderContent>
                 <TableContent>
@@ -183,5 +184,5 @@ const AgentEditor = React.memo((props: NodeProps) => {
     );
 });
 
-AgentEditor.displayName = "AgentEditor";
-export { AgentEditor };
+AgentCache.displayName = "AgentCache";
+export { AgentCache };

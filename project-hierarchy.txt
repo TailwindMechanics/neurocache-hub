@@ -91,7 +91,7 @@ neurocache-hub
 │     │  │  │  └─ placeholder.tsx
 │     │  │  ├─ nodes
 │     │  │  │  ├─ activeAgent.tsx
-│     │  │  │  └─ agentEditor.tsx
+│     │  │  │  └─ agentCache.tsx
 │     │  │  ├─ persona
 │     │  │  │  └─ createPersona.ts.md
 │     │  │  └─ utils
@@ -133,6 +133,7 @@ neurocache-hub
 │     │  │  │  ├─ tab.tsx
 │     │  │  │  └─ tabList.tsx
 │     │  │  ├─ components
+│     │  │  │  ├─ apiIdBox.tsx
 │     │  │  │  └─ ComponentBuilder.tsx
 │     │  │  └─ presets
 │     │  │     ├─ button.tsx
@@ -192,12 +193,12 @@ neurocache-hub
 │     │  │  │  └─ useNodeSpawner.tsx
 │     │  │  ├─ nodes
 │     │  │  │  ├─ commentPayload.tsx
-│     │  │  │  ├─ inputBox.tsx
-│     │  │  │  ├─ markdownBox.tsx
+│     │  │  │  ├─ entryNode.tsx
 │     │  │  │  ├─ sendOutputNode.tsx
 │     │  │  │  ├─ spawnerNode.tsx
 │     │  │  │  ├─ splitterNode.tsx
-│     │  │  │  └─ testBox.tsx
+│     │  │  │  ├─ testBox.tsx
+│     │  │  │  └─ textBox.tsx
 │     │  │  ├─ providers
 │     │  │  │  ├─ authenticatedProvider.tsx
 │     │  │  │  └─ guestProvider.tsx
@@ -214,6 +215,12 @@ neurocache-hub
 │     │  ├─ External
 │     │  │  └─ icons.tsx
 │     │  └─ index.tsx
+│     ├─ Nodes
+│     │  ├─ index.tsx
+│     │  └─ Internal
+│     │     ├─ avatarGen.tsx
+│     │     ├─ gptChat.tsx
+│     │     └─ persona.tsx
 │     ├─ OpenAi
 │     │  ├─ index.tsx
 │     │  ├─ Internal

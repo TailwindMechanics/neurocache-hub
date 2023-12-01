@@ -7,9 +7,11 @@ import Image from "next/image";
 import React from "react";
 
 import { CardPreset, Composer, DivAtom } from "@modules/Composer";
+import { NodeSelection, OnDoubleClick } from "@modules/Graph";
 import { useAgentStore } from "../../External/agentStore";
 import { agentAvatar } from "../utils/agentAvatar";
-import { NodeSelection } from "@modules/Graph";
+import { CustomNode } from "@modules/Graph/types";
+import { useDrawer } from "@modules/Drawer";
 
 const Card = new Composer("ActiveAgentCard", CardPreset)
     .withStyle("w-24")
@@ -28,12 +30,16 @@ const AvatarLabel = new Composer("ActiveAgentAvatarLabel", DivAtom)
     .build();
 
 const ActiveAgent = React.memo((props: NodeProps) => {
+    const nodeData = props.data as CustomNode;
     const activeAgent = useAgentStore((state) => state.activeAgent);
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
+    const { openDrawer } = useDrawer();
 
     return (
-        <Card className={NodeSelection(props.id, allNodes)}>
+        <Card
+            onDoubleClick={() => OnDoubleClick(nodeData, openDrawer)}
+            className={NodeSelection(props.id, allNodes)}>
             <AvatarPill>
                 <Image
                     width={128}

@@ -5,14 +5,15 @@
 import { CommentPayload } from "../Internal/nodes/commentPayload";
 import { SendOutputNode } from "../Internal/nodes/sendOutputNode";
 import { SplitterNode } from "../Internal/nodes/splitterNode";
-import { MarkdownBox } from "../Internal/nodes/markdownBox";
 import { SpawnerNode } from "../Internal/nodes/spawnerNode";
-import { InputBox } from "../Internal/nodes/inputBox";
 import { TestBox } from "../Internal/nodes/testBox";
+import { TextBox } from "../Internal/nodes/textBox";
 import { CustomNode } from "../types";
 
+import { AvatarGen, Persona, GptChat } from "@modules/Nodes";
 import { OpenAiModels, OpenAiNode } from "@modules/OpenAi";
-import { ActiveAgent, AgentEditor } from "@modules/Agents";
+import { ActiveAgent, AgentCache } from "@modules/Agents";
+import { EntryNode } from "../Internal/nodes/entryNode";
 import { LoginNode } from "@modules/Auth";
 
 export const allNodeData = [
@@ -42,51 +43,21 @@ export const allNodeData = [
     } as CustomNode,
     {
         serializable: true,
-        nodeType: "input_box",
+        nodeType: "text",
         nodeName: "Text",
-        category: "Hidden",
-        nodeId: "unset",
-        body: "This node displays input payload it receives.",
-        nodePosition: { x: 50, y: 0 },
-        handles: [
-            {
-                id: "unset",
-                type: "target",
-                offset: { x: -0.33, y: 40 },
-                angle: -90,
-            },
-            {
-                id: "unset",
-                type: "source",
-                offset: { x: 100.33, y: 40 },
-                angle: 90,
-            },
-        ],
-        nodeComponent: InputBox,
-    } as CustomNode,
-    {
-        serializable: true,
-        nodeType: "markdown_box",
-        nodeName: "Markdown",
         category: "UI",
         nodeId: "unset",
-        body: "This node displays input markdown.",
+        body: "This node displays text formatted with markdown.",
         nodePosition: { x: 50, y: 0 },
         handles: [
             {
                 id: "unset",
                 type: "target",
-                offset: { x: -0.33, y: 40 },
-                angle: -90,
-            },
-            {
-                id: "unset",
-                type: "source",
-                offset: { x: 100.33, y: 40 },
-                angle: 90,
+                offset: { x: 50, y: 0 },
+                angle: 0,
             },
         ],
-        nodeComponent: MarkdownBox,
+        nodeComponent: TextBox,
     } as CustomNode,
     {
         serializable: true,
@@ -230,7 +201,7 @@ export const allNodeData = [
         nodeName: "Login",
         category: "Persistent",
         nodeId: "login",
-        body: "This node logs a user in.",
+        body: "This node allows a user to login, signup, and logout.",
         handles: [],
         nodePosition: { x: -240, y: -40 },
         nodeComponent: LoginNode,
@@ -244,6 +215,96 @@ export const allNodeData = [
         body: "Edit or Create Agents.",
         handles: [],
         nodePosition: { x: -140, y: 0 },
-        nodeComponent: AgentEditor,
+        nodeComponent: AgentCache,
+    } as CustomNode,
+    {
+        serializable: true,
+        nodeType: "entry",
+        nodeName: "Entry",
+        category: "Utils",
+        nodeId: "unset",
+        body: "This node is a convenience, a node you can call from your code to kick things off.",
+        nodePosition: { x: 50, y: 0 },
+        handles: [
+            {
+                id: "unset",
+                type: "source",
+                offset: { x: 90, y: 90 },
+                angle: 135,
+            },
+        ],
+        nodeComponent: EntryNode,
+    } as CustomNode,
+    {
+        serializable: true,
+        nodeType: "avatar_gen",
+        nodeName: "Avatar Gen",
+        category: "Images",
+        nodeId: "unset",
+        body: "This node generates an avatar.",
+        nodePosition: { x: 50, y: 0 },
+        handles: [
+            {
+                id: "unset",
+                type: "target",
+                offset: { x: 5, y: 5 },
+                angle: -45,
+            },
+            {
+                id: "unset",
+                type: "source",
+                offset: { x: 90, y: 90 },
+                angle: 135,
+            },
+        ],
+        nodeComponent: AvatarGen,
+    } as CustomNode,
+    {
+        serializable: true,
+        nodeType: "persona",
+        nodeName: "Persona",
+        category: "Persona",
+        nodeId: "unset",
+        body: "This node generates the Name and Personality for the agent.",
+        nodePosition: { x: 50, y: 0 },
+        handles: [
+            {
+                id: "unset",
+                type: "target",
+                offset: { x: 5, y: 5 },
+                angle: -45,
+            },
+            {
+                id: "unset",
+                type: "source",
+                offset: { x: 90, y: 90 },
+                angle: 135,
+            },
+        ],
+        nodeComponent: Persona,
+    } as CustomNode,
+    {
+        serializable: true,
+        nodeType: "gpt_chat",
+        nodeName: "Gpt Chat",
+        category: "Chat",
+        nodeId: "unset",
+        body: "This node is used to get OpenAi Gpt chat replies.",
+        nodePosition: { x: 50, y: 0 },
+        handles: [
+            {
+                id: "unset",
+                type: "target",
+                offset: { x: 5, y: 5 },
+                angle: -45,
+            },
+            {
+                id: "unset",
+                type: "source",
+                offset: { x: 90, y: 90 },
+                angle: 135,
+            },
+        ],
+        nodeComponent: GptChat,
     } as CustomNode,
 ];
