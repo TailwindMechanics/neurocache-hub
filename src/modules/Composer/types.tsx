@@ -43,11 +43,12 @@ export interface AtomProps {
     autoFocus?: boolean | undefined;
     tabIndex?: number | undefined;
     type?: HTMLInputTypeAttribute;
+    onDoubleClick?: () => void;
     title?: string | undefined;
     id?: string | undefined;
     onClick?: () => void;
-    children?: ReactNode;
     className?: string;
+    children?: ReactNode;
     disabled?: boolean;
     value?: string;
     motion?: MotionProps;

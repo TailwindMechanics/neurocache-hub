@@ -65,7 +65,6 @@ const newAgentText = "new agent +";
 const AgentEditor = React.memo((props: NodeProps) => {
     const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
     const [sortField, setSortField] = useState<string>("date_modified");
-    // Replace useActiveAgent and useRecentAgents with useAgentStore
     const { activeAgent, setActiveAgent, recentAgents, refreshRecentAgents } =
         useAgentStore((state) => ({
             activeAgent: state.activeAgent,

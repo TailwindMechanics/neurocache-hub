@@ -15,6 +15,10 @@ import {
     CardPreset,
     Composer,
 } from "@modules/Composer";
+import { DrawerElement } from "@modules/Drawer/types";
+import NodeInspector from "../components/nodeInspector";
+import { useDrawer } from "@modules/Drawer";
+import { onDoubleClick } from "../utils/nodeInspector";
 
 const Button = new Composer("SendOutputButton", ButtonPreset)
     .withRoundedButton()
@@ -28,6 +32,7 @@ const SendOutputNode = React.memo((props: NodeProps) => {
     const { setNodeFlowValue } = useNodeFlow();
     const nodeData = props.data as CustomNode;
     const allNodes = useReactFlow().getNodes();
+    const { openDrawer } = useDrawer();
 
     return (
         <>
@@ -39,7 +44,9 @@ const SendOutputNode = React.memo((props: NodeProps) => {
                     index={index}
                 />
             ))}
-            <CardPreset className={NodeSelectionState(props.id, allNodes)}>
+            <CardPreset
+                onDoubleClick={() => onDoubleClick(nodeData, openDrawer)}
+                className={NodeSelectionState(props.id, allNodes)}>
                 <Input
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}

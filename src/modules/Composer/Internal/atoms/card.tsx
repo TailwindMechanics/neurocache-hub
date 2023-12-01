@@ -19,7 +19,7 @@ const Root = new ComponentBuilder("CardAtom", DivAtom)
 
 export const Card: FC<AtomProps> = (props) => {
     return (
-        <Root>
+        <Root onDoubleClick={props.onDoubleClick}>
             <div className={props.className}>{props.children}</div>
         </Root>
     );
