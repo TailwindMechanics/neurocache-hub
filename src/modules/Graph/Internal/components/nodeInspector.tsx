@@ -9,19 +9,23 @@ interface NodeInspectorProps {
 
 const NodeInspector: FC<NodeInspectorProps> = (props) => {
     return (
-        <div className="rounded-lg bg-night-black p-2 font-mono font-semibold text-aqua-dark">
-            <div className="mb-2 rounded-lg border-2 border-night-light p-1 text-center text-xl">
-                <p>
-                    <u>Id</u>:
+        <div className="rounded-lg bg-night-black p-2 font-mono font-extrabold leading-snug text-aqua-dark">
+            <div className="mx-1 mb-2 mt-1 rounded-lg border-2 border-night-light pb-2 pt-1 text-center text-xl">
+                <p>Api Id</p>
+                <p className="font-medium leading-none text-night-body">
+                    {props.nodeData.nodeId}
                 </p>
-                <p className="text-night-body">{props.nodeData.nodeId}</p>
             </div>
-            <p>
-                <u>Name</u>: {props.nodeData.nodeName}
-            </p>
-            <p>
-                <u>Description</u>: {props.nodeData.body}
-            </p>
+            <div className="px-1.5">
+                Name:
+                <p className="font-medium text-night-body">
+                    {props.nodeData.nodeName}
+                </p>
+                Description:
+                <p className="font-medium text-night-body">
+                    {props.nodeData.body}
+                </p>
+            </div>
         </div>
     );
 };
