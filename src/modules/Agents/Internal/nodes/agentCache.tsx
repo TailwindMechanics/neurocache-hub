@@ -26,7 +26,7 @@ import {
 } from "@modules/Composer";
 
 const Card = new Composer("AgentCacheCard", CardPreset)
-    .withStyle("min-w-13u")
+    .withStyle("min-w-12u")
     .withStyle("min-h-5u")
     .withStyle("flex-col")
     .withStyle("p-1.5")
