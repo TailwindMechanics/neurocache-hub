@@ -9,9 +9,11 @@ import Markdown from "react-markdown";
 import { NodeSelectionState } from "../components/nodeSelectionState";
 import { CardPreset, Composer, ProsePreset } from "@modules/Composer";
 import { RenderCodeblocks } from "../components/renderCodeblocks";
+import { onDoubleClick } from "../utils/nodeInspector";
 import { DrawHandle } from "../components/drawHandle";
 import { useNodeFlow } from "../hooks/useNodeFlow";
 import { IsNullOrEmpty } from "@modules/Utils";
+import { useDrawer } from "@modules/Drawer";
 import { CustomNode } from "../../types";
 
 const Card = new Composer("MarkdownCard", CardPreset)
@@ -29,6 +31,7 @@ const MarkdownBox = React.memo((props: NodeProps) => {
     const { nodeFlowValue } = useNodeFlow();
     const nodeData = props.data as CustomNode;
     const allNodes = useReactFlow().getNodes();
+    const { openDrawer } = useDrawer();
 
     useEffect(() => {
         const anyInputIncluded = nodeData.handles.some((input) => {
@@ -67,7 +70,9 @@ const MarkdownBox = React.memo((props: NodeProps) => {
                     index={index}
                 />
             ))}
-            <Card className={NodeSelectionState(props.id, allNodes)}>
+            <Card
+                onDoubleClick={() => onDoubleClick(nodeData, openDrawer)}
+                className={NodeSelectionState(props.id, allNodes)}>
                 <Prose>{memoizedMarkdown}</Prose>
             </Card>
         </>

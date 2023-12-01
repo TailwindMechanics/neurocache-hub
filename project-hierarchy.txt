@@ -171,6 +171,7 @@ neurocache-hub
 │     │  │  │  ├─ connectionLine.tsx
 │     │  │  │  ├─ drawHandle.tsx
 │     │  │  │  ├─ edgeLine.tsx
+│     │  │  │  ├─ nodeInspector.tsx
 │     │  │  │  ├─ nodeSelectionState.tsx
 │     │  │  │  ├─ renderCodeblocks.tsx
 │     │  │  │  ├─ saveGraphComponent.tsx
@@ -205,6 +206,7 @@ neurocache-hub
 │     │  │  └─ utils
 │     │  │     ├─ mapOutputIds.ts
 │     │  │     ├─ nodeFlowUtils.ts
+│     │  │     ├─ nodeInspector.tsx
 │     │  │     ├─ nodeUtils.ts
 │     │  │     └─ spawnerNodeUtils.ts
 │     │  └─ types.tsx
