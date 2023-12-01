@@ -1,9 +1,9 @@
-//path: src\modules\Graph\Internal\nodes\markdownBox.tsx
+//path: src\modules\Graph\Internal\nodes\textBox.tsx
 
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
 import { NodeProps, useReactFlow } from "reactflow";
+import React, { useMemo, useState } from "react";
 import Markdown from "react-markdown";
 
 import { NodeSelectionState } from "../components/nodeSelectionState";
@@ -11,43 +11,24 @@ import { CardPreset, Composer, ProsePreset } from "@modules/Composer";
 import { RenderCodeblocks } from "../components/renderCodeblocks";
 import { onDoubleClick } from "../utils/nodeInspector";
 import { DrawHandle } from "../components/drawHandle";
-import { useNodeFlow } from "../hooks/useNodeFlow";
-import { IsNullOrEmpty } from "@modules/Utils";
 import { useDrawer } from "@modules/Drawer";
 import { CustomNode } from "../../types";
 
-const Card = new Composer("MarkdownCard", CardPreset)
+const Card = new Composer("TextBoxCard", CardPreset)
     .withStyle("scrollbar-hide")
     .withStyle("overflow-auto")
     .withStyle("max-h-44")
     .withStyle("max-w-60")
     .build();
-const Prose = new Composer("MarkdownProse", ProsePreset)
+const Prose = new Composer("TextBoxProse", ProsePreset)
     .withStyle("px-1")
     .build();
 
-const MarkdownBox = React.memo((props: NodeProps) => {
-    const [markdownText, setMarkdownText] = useState("## *Markdown*");
-    const { nodeFlowValue } = useNodeFlow();
+const TextBox = React.memo((props: NodeProps) => {
+    const [markdownText, setMarkdownText] = useState("## *Text*");
     const nodeData = props.data as CustomNode;
     const allNodes = useReactFlow().getNodes();
     const { openDrawer } = useDrawer();
-
-    useEffect(() => {
-        const anyInputIncluded = nodeData.handles.some((input) => {
-            return (
-                input.type === "target" && nodeFlowValue.ids.includes(input.id)
-            );
-        });
-
-        if (anyInputIncluded && nodeFlowValue.payload) {
-            let displayText = !IsNullOrEmpty(nodeFlowValue.payload)
-                ? (nodeFlowValue.payload as string)
-                : "Input box";
-
-            setMarkdownText(displayText);
-        }
-    }, [nodeData.handles, nodeFlowValue]);
 
     const memoizedMarkdown = useMemo(() => {
         return (
@@ -79,5 +60,5 @@ const MarkdownBox = React.memo((props: NodeProps) => {
     );
 });
 
-MarkdownBox.displayName = "MarkdownBox";
-export { MarkdownBox };
+TextBox.displayName = "TextBox";
+export { TextBox };

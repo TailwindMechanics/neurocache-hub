@@ -10,7 +10,7 @@ import {
 } from "@supabase/auth-helpers-nextjs";
 
 import { CustomNode } from "@modules/Graph/types";
-import { NodeSelection } from "@modules/Graph";
+import { NodeSelection, OnDoubleClick } from "@modules/Graph";
 import { TabPreset } from "@modules/Composer";
 import { Tab } from "@headlessui/react";
 import {
@@ -23,6 +23,7 @@ import {
     CardPreset,
     Composer,
 } from "@modules/Composer";
+import { useDrawer } from "@modules/Drawer";
 
 const Card = new Composer("LoginContent", CardPreset)
     .withStyle("flex")
@@ -52,8 +53,9 @@ const LoginNode = React.memo((props: NodeProps) => {
     const supabase = createClientComponentClient();
     const [user, setUser] = useState<User>();
     const allNodes = useReactFlow().getNodes();
-
+    const nodeData = props.data as CustomNode;
     const [statusText, setStatusText] = useState("");
+    const { openDrawer } = useDrawer();
 
     const resetStatusText = () => {
         setTimeout(() => {
@@ -119,7 +121,9 @@ const LoginNode = React.memo((props: NodeProps) => {
 
     return (
         <>
-            <Card className={NodeSelection(props.id, allNodes)}>
+            <Card
+                onDoubleClick={() => OnDoubleClick(nodeData, openDrawer)}
+                className={NodeSelection(props.id, allNodes)}>
                 {user ? (
                     <>
                         <Content>{user.email}</Content>

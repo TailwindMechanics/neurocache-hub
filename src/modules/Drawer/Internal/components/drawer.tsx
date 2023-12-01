@@ -12,6 +12,8 @@ import {
 } from "@modules/Composer";
 
 const OuterWrapper = new Composer("OuterWrapper", MotionDiv)
+    .withStyle("selection:text-night-dark")
+    .withStyle("selection:bg-aqua-dark")
     .withStyle("bg-night-dark")
     .withStyle("rounded-xl")
     .withStyle("inset-y-0")

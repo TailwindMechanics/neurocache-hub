@@ -20,4 +20,5 @@ export { DropdownAtom as DropdownAtom } from "./Internal/atoms/dropdown";
 export { CloseButton as CloseButtonPreset } from "./Internal/presets/closeButton";
 export { RoundButton as RoundButtonPreset } from "./Internal/presets/roundButton";
 export { DangerButton as DangerButtonPreset } from "./Internal/presets/dangerButton";
+export { ApiIdBox } from "./Internal/components/apiIdBox";
 export type { AtomProps } from "./types";

@@ -6,8 +6,10 @@ import { NodeProps, useReactFlow } from "reactflow";
 import React, { useState } from "react";
 
 import { NodeSelectionState } from "../components/nodeSelectionState";
+import { onDoubleClick } from "../utils/nodeInspector";
 import { DrawHandle } from "../components/drawHandle";
 import { useNodeFlow } from "../hooks/useNodeFlow";
+import { useDrawer } from "@modules/Drawer";
 import { CustomNode } from "../../types";
 import {
     ButtonPreset,
@@ -15,10 +17,6 @@ import {
     CardPreset,
     Composer,
 } from "@modules/Composer";
-import { DrawerElement } from "@modules/Drawer/types";
-import NodeInspector from "../components/nodeInspector";
-import { useDrawer } from "@modules/Drawer";
-import { onDoubleClick } from "../utils/nodeInspector";
 
 const Button = new Composer("SendOutputButton", ButtonPreset)
     .withRoundedButton()
