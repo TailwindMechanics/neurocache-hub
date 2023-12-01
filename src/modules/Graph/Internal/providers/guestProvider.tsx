@@ -6,12 +6,15 @@ import { ReactFlowProvider } from "reactflow";
 import React from "react";
 
 import { GuestCanvas } from "../core/guestCanvas";
+import { DrawerProvider } from "@modules/Drawer";
 
 const GuestProvider = React.memo(() => {
     return (
         <>
             <ReactFlowProvider>
-                <GuestCanvas />
+                <DrawerProvider>
+                    <GuestCanvas />
+                </DrawerProvider>
             </ReactFlowProvider>
         </>
     );

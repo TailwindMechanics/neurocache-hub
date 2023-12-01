@@ -1,7 +1,7 @@
 //path: src\modules\Graph\Internal\components\saveGraphComponent.tsx
 
 import { useState, useEffect, useTransition } from "react";
-import { Viewport, useReactFlow } from "reactflow";
+import { Viewport, useReactFlow, useViewport } from "reactflow";
 
 import { useAuth } from "../hooks/useAuth";
 import { UseCtrlS } from "@modules/Utils";
@@ -11,16 +11,13 @@ import { updateAgentGraph } from "@modules/Agents/External/Server/actions";
 import { useAgentStore } from "@modules/Agents/External/agentStore";
 import { CustomNode } from "@modules/Graph/types";
 
-interface SaveGraphProps {
-    viewportRef: React.MutableRefObject<Viewport>;
-}
-
 const GuestMessage = "guest";
 
-const SaveGraphComponent = React.memo((props: SaveGraphProps) => {
+const SaveGraphComponent = React.memo(() => {
     const [statusText, setStatusText] = useState<string>(GuestMessage);
     let [_, startTransition] = useTransition();
     const reactFlowInstance = useReactFlow();
+    const viewport = useViewport();
 
     const user = useAuth().user;
     const { activeAgent, refreshRecentAgents } = useAgentStore((state) => ({
@@ -45,7 +42,7 @@ const SaveGraphComponent = React.memo((props: SaveGraphProps) => {
         const graphData = {
             nodes: nodes,
             edges: reactFlowInstance.getEdges(),
-            viewport: props.viewportRef.current,
+            viewport: viewport,
         };
 
         startTransition(async () => {

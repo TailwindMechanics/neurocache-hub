@@ -104,13 +104,6 @@ export const AgentInspector: FC<AgentInspectorProps> = (props) => {
                     {activeAgent ? activeAgent.persona : "agent persona"}
                 </p>
             </ImageSection>
-            <Input
-                id="agentName"
-                type="text"
-                placeholder={
-                    activeAgent ? activeAgent.agent_name : "agent name"
-                }
-            />
             <ApiIdBox id={activeAgent ? activeAgent.agent_id : "agen id"} />
             <DatesLabel>
                 <div className={`${agentStatusStyle(activeAgent)}`}>

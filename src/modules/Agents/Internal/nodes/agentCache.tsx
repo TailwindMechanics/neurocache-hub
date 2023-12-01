@@ -26,8 +26,11 @@ import {
 } from "@modules/Composer";
 
 const Card = new Composer("AgentCacheCard", CardPreset)
-    .withStyle("w-256")
+    .withStyle("min-w-12u")
+    .withStyle("min-h-5u")
+    .withStyle("flex-col")
     .withStyle("p-1.5")
+    .withStyle("flex")
     .withRoundedFrame()
     .build();
 const Button = new Composer("AgentCacheTableButton", GhostButtonPreset)
@@ -49,6 +52,7 @@ const HeaderContent = new Composer("AgentCacheContent", DivAtom)
     .build();
 const TableContent = new Composer("AgentCacheContent", ContentPreset)
     .withStyle("border-night")
+    .withStyle("flex-grow")
     .withStyle("pt-0.5")
     .withStyle("px-1")
     .withStyle("pb-1")

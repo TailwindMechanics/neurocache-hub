@@ -26,11 +26,15 @@ import {
 import { useDrawer } from "@modules/Drawer";
 
 const Card = new Composer("LoginContent", CardPreset)
+    .withStyle("min-w-5.5u")
+    .withStyle("min-h-2u")
     .withStyle("flex")
+    .withStyle("flex-col")
     .withRoundedFrame()
     .build();
 const Button = new Composer("LoginButton", ButtonPreset)
-    .withStyle("text-ss")
+    .withStyle("text-xs")
+    .withStyle("flex-grow")
     .withRoundedButton()
     .build();
 const Input = new Composer("LoginInput", InputPreset)
@@ -40,8 +44,12 @@ const Input = new Composer("LoginInput", InputPreset)
 const Content = new Composer("LoginContent", ContentPreset)
     .withStyle("text-night-title")
     .withStyle("bg-night-dark")
+    .withStyle("leading-none")
+    .withStyle("align-bottom")
     .withStyle("text-center")
+    .withStyle("flex-grow")
     .withStyle("text-ss")
+    .withStyle("pt-0.5")
     .withStyle("px-1")
     .withRoundedElement()
     .build();

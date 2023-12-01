@@ -2,19 +2,11 @@
 
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import ReactFlow, { BackgroundVariant, Background, Node } from "reactflow";
+import React, { useMemo, useState } from "react";
 import "reactflow/dist/style.css";
-import ReactFlow, {
-    BackgroundVariant,
-    useViewport,
-    Background,
-    Viewport,
-    Node,
-    Edge,
-} from "reactflow";
 
 import { SaveGraphComponent } from "../components/saveGraphComponent";
-import { useAgentStore } from "@modules/Agents/External/agentStore";
 import { CustomNodesRepo } from "../../External/CustomNodesRepo";
 import { ConnectionLine } from "../components/connectionLine";
 import { reactFlowSettingsProps } from "./reactflowConfig";
@@ -29,25 +21,13 @@ const customNodeTypes = CustomNodesRepo.instance.getNodeTypes();
 const customEdgeTypes = { custom: EdgeLine };
 
 const ReactFlowCanvas = React.memo(() => {
+    StyleReactFlowLogo();
     const memoizedNodeTypes = useMemo(() => customNodeTypes, []);
     const memoizedEdgeTypes = useMemo(() => customEdgeTypes, []);
-
-    StyleReactFlowLogo();
-    let viewport = useViewport();
     const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
     const { mouseCoordsRef, handleMouseMove } = useMouseCoords();
-
-    const viewportRef = useRef<Viewport>(viewport);
     const [canZoom, setCanZoom] = useState(true);
     const { user } = useAuth();
-
-    const { activeAgent } = useAgentStore((state) => ({
-        activeAgent: state.activeAgent,
-    }));
-
-    useEffect(() => {
-        viewportRef.current = viewport;
-    }, [viewport]);
 
     return (
         <div className="h-screen w-screen bg-gradient-to-tr from-rose-dark from-0% via-rose via-20% to-rose-light to-90%">
@@ -60,12 +40,12 @@ const ReactFlowCanvas = React.memo(() => {
                 <ReactFlow
                     nodeTypes={memoizedNodeTypes}
                     edgeTypes={memoizedEdgeTypes}
-                    defaultViewport={activeAgent?.graph?.viewport}
+                    defaultViewport={{ x: 440, y: 100, zoom: 3 }}
                     connectionLineComponent={ConnectionLine}
                     preventScrolling={canZoom}
-                    fitView={!user}
+                    fitView={false}
                     {...reactFlowSettingsProps}>
-                    <SaveGraphComponent viewportRef={viewportRef} />
+                    <SaveGraphComponent />
                     <Background
                         variant={BackgroundVariant.Dots}
                         color={Colors["rose-dark"]}

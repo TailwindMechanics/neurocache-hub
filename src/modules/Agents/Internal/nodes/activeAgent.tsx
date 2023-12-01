@@ -12,9 +12,11 @@ import { useAgentStore } from "../../External/agentStore";
 import { agentAvatar } from "../utils/agentAvatar";
 import { CustomNode } from "@modules/Graph/types";
 import { useDrawer } from "@modules/Drawer";
+import { IsNullOrEmpty } from "@modules/Utils";
 
 const Card = new Composer("ActiveAgentCard", CardPreset)
-    .withStyle("w-24")
+    .withStyle("h-2.5u")
+    .withStyle("w-5.5u")
     .withRoundedFull()
     .build();
 const AvatarPill = new Composer("ActiveAgentAvatarPill", DivAtom)
@@ -22,10 +24,16 @@ const AvatarPill = new Composer("ActiveAgentAvatarPill", DivAtom)
     .withStyle("bg-night-black")
     .withStyle("border-1")
     .withStyle("border")
+    .withStyle("w-full")
+    .withStyle("h-full")
     .withStyle("flex")
     .withRoundedFull()
     .build();
 const AvatarLabel = new Composer("ActiveAgentAvatarLabel", DivAtom)
+    .withStyle("overflow-hidden")
+    .withStyle("justify-center")
+    .withStyle("flex")
+    .withStyle("flex-col")
     .withStyle("px-1")
     .build();
 
@@ -46,15 +54,19 @@ const ActiveAgent = React.memo((props: NodeProps) => {
                     height={128}
                     src={agentAvatar(activeAgent)}
                     alt={`Agent avatar`}
-                    className="h-7 w-7 rounded-full object-fill"
+                    className="h-2u w-2u rounded-full object-fill"
                 />
                 <AvatarLabel>
                     <p className="text-xs font-bold text-aqua underline">
                         {activeAgent?.agent_name}
                     </p>
-                    <p className="text-tny leading-tight text-night-title capitalize-first">
-                        {activeAgent?.persona}
-                    </p>
+                    <div className="max-w-2u">
+                        <p className="text-tny leading-tight text-night-title capitalize-first">
+                            {activeAgent && !IsNullOrEmpty(activeAgent.persona)
+                                ? activeAgent.persona
+                                : "This is where the description of the agent's personality is displayed."}
+                        </p>
+                    </div>
                 </AvatarLabel>
             </AvatarPill>
         </Card>
