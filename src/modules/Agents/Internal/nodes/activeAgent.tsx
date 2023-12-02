@@ -31,6 +31,7 @@ const AvatarPill = new Composer("ActiveAgentAvatarPill", DivAtom)
     .build();
 const AvatarLabel = new Composer("ActiveAgentAvatarLabel", DivAtom)
     .withStyle("overflow-hidden")
+    // .withStyle("border")
     .withStyle("justify-center")
     .withStyle("flex")
     .withStyle("flex-col")
@@ -61,7 +62,7 @@ const ActiveAgent = React.memo((props: NodeProps) => {
                         {activeAgent?.agent_name}
                     </p>
                     <div className="max-w-2u">
-                        <p className="text-tny leading-tight text-night-title capitalize-first">
+                        <p className="mb-0.5 line-clamp-5 pr-1.5 text-justify text-tny leading-tight text-night-title capitalize-first">
                             {activeAgent && !IsNullOrEmpty(activeAgent.persona)
                                 ? activeAgent.persona
                                 : "This is where the description of the agent's personality is displayed."}
