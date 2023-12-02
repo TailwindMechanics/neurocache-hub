@@ -12,7 +12,7 @@ const TitleAndBody = (title: string, body: string) => {
     return (
         <>
             {title}:
-            <p className="font-semibold leading-tight text-night-body">
+            <p className="text-justify font-semibold leading-tight text-night-body">
                 {body}
             </p>
         </>
