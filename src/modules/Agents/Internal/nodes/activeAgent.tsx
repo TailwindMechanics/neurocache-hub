@@ -3,16 +3,16 @@
 "use client";
 
 import { NodeProps, useReactFlow } from "reactflow";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import React from "react";
 
 import { CardPreset, Composer, DivAtom } from "@modules/Composer";
 import { NodeSelection, OnDoubleClick } from "@modules/Graph";
 import { useAgentStore } from "../../External/agentStore";
 import { agentAvatar } from "../utils/agentAvatar";
 import { CustomNode } from "@modules/Graph/types";
-import { useDrawer } from "@modules/Drawer";
 import { IsNullOrEmpty } from "@modules/Utils";
+import { useDrawer } from "@modules/Drawer";
 
 const Card = new Composer("ActiveAgentCard", CardPreset)
     .withStyle("h-2.5u")
@@ -31,10 +31,9 @@ const AvatarPill = new Composer("ActiveAgentAvatarPill", DivAtom)
     .build();
 const AvatarLabel = new Composer("ActiveAgentAvatarLabel", DivAtom)
     .withStyle("overflow-hidden")
-    // .withStyle("border")
     .withStyle("justify-center")
-    .withStyle("flex")
     .withStyle("flex-col")
+    .withStyle("flex")
     .withStyle("px-1")
     .build();
 
@@ -44,6 +43,11 @@ const ActiveAgent = React.memo((props: NodeProps) => {
     const reactFlowInstance = useReactFlow();
     const allNodes = reactFlowInstance.getNodes();
     const { openDrawer } = useDrawer();
+    const [imageError, setImageError] = useState<boolean>(false);
+
+    useEffect(() => {
+        setImageError(false);
+    }, [activeAgent]);
 
     return (
         <Card
@@ -53,21 +57,26 @@ const ActiveAgent = React.memo((props: NodeProps) => {
                 <Image
                     width={128}
                     height={128}
-                    src={agentAvatar(activeAgent)}
+                    src={
+                        imageError
+                            ? "/avatars/placeholder.png"
+                            : agentAvatar(activeAgent)
+                    }
                     alt={`Agent avatar`}
-                    className="h-2u w-2u rounded-full object-fill"
+                    className="w-40p rounded-full object-fill"
+                    onError={() => {
+                        setImageError(true);
+                    }}
                 />
-                <AvatarLabel>
-                    <p className="text-xs font-bold text-aqua underline">
+                <AvatarLabel className="h-auto w-60p">
+                    <p className="line-clamp-1 text-xs font-bold text-aqua underline">
                         {activeAgent?.agent_name}
                     </p>
-                    <div className="max-w-2u">
-                        <p className="mb-0.5 line-clamp-5 pr-1.5 text-justify text-tny leading-tight text-night-title capitalize-first">
-                            {activeAgent && !IsNullOrEmpty(activeAgent.persona)
-                                ? activeAgent.persona
-                                : "This is where the description of the agent's personality is displayed."}
-                        </p>
-                    </div>
+                    <p className="mb-0.5 line-clamp-5 pr-1.5 text-justify text-tny leading-tight text-night-title capitalize-first">
+                        {activeAgent && !IsNullOrEmpty(activeAgent.persona)
+                            ? activeAgent.persona
+                            : "This is where the description of the agent's personality is displayed."}
+                    </p>
                 </AvatarLabel>
             </AvatarPill>
         </Card>
