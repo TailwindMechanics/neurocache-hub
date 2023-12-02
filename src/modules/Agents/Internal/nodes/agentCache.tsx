@@ -55,9 +55,6 @@ const TableContent = new Composer("AgentCacheContent", ContentPreset)
     .withStyle("flex-grow")
     .withStyle("flex")
     .withStyle("flex-col")
-    .withStyle("pt-0.5")
-    .withStyle("px-1")
-    .withStyle("pb-1")
     .withRoundedFrame()
     .build();
 const NewAgentDrawer: DrawerElement[] = [
