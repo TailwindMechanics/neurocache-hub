@@ -8,15 +8,26 @@ interface NodeInspectorProps {
     nodeData: CustomNode;
 }
 
+const TitleAndBody = (title: string, body: string) => {
+    return (
+        <>
+            {title}:
+            <p className="font-semibold leading-tight text-night-body">
+                {body}
+            </p>
+        </>
+    );
+};
+
 const NodeInspector: FC<NodeInspectorProps> = (props) => {
     return (
         <div className="rounded-lg p-2 text-aqua-dark">
             <ApiIdBox className="mb-0.5" id={props.nodeData.nodeId} />
-            <div className="px-1.5">
-                Name:
-                <p className="text-night-body">{props.nodeData.nodeName}</p>
-                Description:
-                <p className="text-night-body">{props.nodeData.body}</p>
+            <div className="px-1.5 font-extrabold">
+                {TitleAndBody("Title", props.nodeData.nodeName)}
+                {TitleAndBody("Type", props.nodeData.nodeType)}
+                {TitleAndBody("Category", props.nodeData.category)}
+                {TitleAndBody("Description", props.nodeData.body)}
             </div>
         </div>
     );
