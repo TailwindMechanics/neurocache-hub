@@ -26,7 +26,7 @@ import {
 } from "@modules/Composer";
 
 const Card = new Composer("AgentCacheCard", CardPreset)
-    .withStyle("min-w-12u")
+    .withStyle("w-12u")
     .withStyle("min-h-5u")
     .withStyle("flex-col")
     .withStyle("p-1.5")
@@ -53,6 +53,8 @@ const HeaderContent = new Composer("AgentCacheContent", DivAtom)
 const TableContent = new Composer("AgentCacheContent", ContentPreset)
     .withStyle("border-night")
     .withStyle("flex-grow")
+    .withStyle("flex")
+    .withStyle("flex-col")
     .withStyle("pt-0.5")
     .withStyle("px-1")
     .withStyle("pb-1")
@@ -139,31 +141,12 @@ const AgentCache = React.memo((props: NodeProps) => {
                 <HeaderContent
                     onDoubleClick={() => OnDoubleClick(nodeData, openDrawer)}>
                     <div className="pl-1">{toLower(nodeData.nodeName)}</div>
-                    <Button onClick={onNewAgentClick}>{newAgentText}</Button>
+                    <Button className="mr-1" onClick={onNewAgentClick}>
+                        {newAgentText}
+                    </Button>
                 </HeaderContent>
                 <TableContent>
-                    <Table className="text-left text-sm text-aqua">
-                        <thead className="text-xs font-thin leading-none text-night-title ">
-                            <tr>
-                                <th></th>
-                                <th onClick={() => sortAgents("agent_name")}>
-                                    Name{" "}
-                                    {sortField === "agent_name" &&
-                                        (sortOrder === "asc" ? "▲" : "▼")}
-                                </th>
-                                <th onClick={() => sortAgents("status")}>
-                                    Status{" "}
-                                    {sortField === "status" &&
-                                        (sortOrder === "asc" ? "▲" : "▼")}
-                                </th>
-                                <th onClick={() => sortAgents("date_modified")}>
-                                    Last Modified{" "}
-                                    {sortField === "date_modified" &&
-                                        (sortOrder === "asc" ? "▲" : "▼")}
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                    <Table className="flex flex-grow flex-col text-aqua">
                         <tbody className="leading-none">
                             {sortedAgents?.map((agent) => (
                                 <TableRow
@@ -173,9 +156,6 @@ const AgentCache = React.memo((props: NodeProps) => {
                                     }
                                     onRowDoubleClick={onRowDoubleClick}
                                     onRowClick={onRowClick}
-                                    className="pr-2"
-                                    firstColClassName="pr-0.5"
-                                    lastColClassName="pr-0.5"
                                     key={agent.agent_name}
                                     agent={agent}
                                 />

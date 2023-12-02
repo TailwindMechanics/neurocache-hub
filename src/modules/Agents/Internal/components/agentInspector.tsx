@@ -1,6 +1,6 @@
 //path: src\modules\Agents\Internal\components\agentInspector.tsx
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import moment from "moment";
 
@@ -65,16 +65,15 @@ interface AgentInspectorProps {
 
 export const AgentInspector: FC<AgentInspectorProps> = (props) => {
     const [imageIsLoading, setImageIsLoading] = useState<boolean>(false);
-    const { activeAgent, setActiveAgent } = useAgentStore((state) => ({
-        activeAgent: state.activeAgent,
-        setActiveAgent: state.setActiveAgent,
-    }));
-
-    const refreshRecentAgents = useAgentStore(
-        (state) => state.refreshRecentAgents,
-    );
-
+    const [imageError, setImageError] = useState<boolean>(false);
     const drawer = useDrawer();
+    const { activeAgent, setActiveAgent, refreshRecentAgents } = useAgentStore(
+        (state) => ({
+            activeAgent: state.activeAgent,
+            setActiveAgent: state.setActiveAgent,
+            refreshRecentAgents: state.refreshRecentAgents,
+        }),
+    );
 
     const onDeleteClick = async () => {
         if (!activeAgent) return;
@@ -85,6 +84,10 @@ export const AgentInspector: FC<AgentInspectorProps> = (props) => {
         setActiveAgent(null);
     };
 
+    useEffect(() => {
+        setImageError(false);
+    }, [activeAgent]);
+
     return (
         <Wrapper>
             <ImageSection>
@@ -92,11 +95,18 @@ export const AgentInspector: FC<AgentInspectorProps> = (props) => {
                     <Image
                         width={128}
                         height={128}
-                        src={agentAvatar(activeAgent)}
+                        src={
+                            imageError
+                                ? "/avatars/placeholder.png"
+                                : agentAvatar(activeAgent)
+                        }
                         alt={`Agent avatar`}
                         className="h-20 w-auto rounded-full object-fill"
                         onLoad={() => {
                             setImageIsLoading(false);
+                        }}
+                        onError={() => {
+                            setImageError(true);
                         }}
                     />
                 </ImageButton>
