@@ -1,8 +1,7 @@
 //path: src\modules\Graph\Internal\components\saveGraphComponent.tsx
 
 import { useState, useEffect, useTransition } from "react";
-import { Viewport, useReactFlow, useViewport } from "reactflow";
-
+import { useReactFlow, useViewport } from "reactflow";
 import { useAuth } from "../hooks/useAuth";
 import { UseCtrlS } from "@modules/Utils";
 import React from "react";
@@ -30,6 +29,17 @@ const SaveGraphComponent = React.memo(() => {
     }, [user]);
 
     UseCtrlS(async () => {
+        doSave();
+    });
+
+    const setStatus = (text: string, cooldown: number = 1500) => {
+        setStatusText(text);
+        setTimeout(() => {
+            setStatusText(user?.email ?? GuestMessage);
+        }, cooldown);
+    };
+
+    const doSave = async () => {
         if (!activeAgent) return;
 
         setStatusText("saving...");
@@ -61,14 +71,20 @@ const SaveGraphComponent = React.memo(() => {
                 }
             }
         });
-    });
-
-    const setStatus = (text: string, cooldown: number = 1500) => {
-        setStatusText(text);
-        setTimeout(() => {
-            setStatusText(user?.email ?? GuestMessage);
-        }, cooldown);
     };
+
+    useEffect(() => {
+        const now = new Date();
+        if (activeAgent?.date_created) {
+            const createdDate = new Date(activeAgent.date_created);
+            const timeDifference = now.getTime() - createdDate.getTime();
+
+            if (timeDifference >= 0 && timeDifference <= 1000) {
+                doSave();
+            }
+        }
+    }, [activeAgent]);
+
     return (
         <div
             onClick={() => {

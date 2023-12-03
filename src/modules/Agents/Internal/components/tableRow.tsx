@@ -33,7 +33,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
         <>
             <tr
                 tabIndex={0}
-                className={`flex flex-grow cursor-pointer items-center justify-between rounded-full bg-none hover:bg-aqua-dark hover:text-night-black focus:outline-none ${
+                className={`flex flex-grow cursor-pointer items-center justify-between rounded bg-none px-0.5 hover:bg-aqua-dark hover:text-night-black focus:outline-none ${
                     props.isHighlighted ? "bg-aqua-dark text-night-black" : ""
                 }`}
                 onDoubleClick={() => props.onRowDoubleClick?.(props.agent)}
@@ -48,7 +48,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
                                 : agentAvatar(props.agent)
                         }
                         alt={`${props.agent.agent_name} avatar`}
-                        className="h-25p w-25p rounded-full"
+                        className="h-19p w-19p rounded-full"
                         onError={() => {
                             setImageError(true);
                         }}
@@ -60,7 +60,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
                 <td className={"25p" + agentStatusStyle(props.agent)}>
                     {props.agent.status}
                 </td>
-                <td className="w-40p">
+                <td className="">
                     {moment(props.agent.date_modified).format(
                         "Do MMM YYYY HH:mm",
                     )}

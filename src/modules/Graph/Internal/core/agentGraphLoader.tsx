@@ -59,14 +59,22 @@ export const AgentGraphLoader: React.FC<AgentGraphLoaderProps> = (props) => {
                 (node) => node.data.serializable,
             );
             setNodes((prevNodes) => {
-                // Remove old agent nodes
                 const filteredNodes = prevNodes.filter(
                     (node) => !node.data.serializable,
                 );
-                // Add new agent nodes
+
                 return [...filteredNodes, ...newAgentNodes];
             });
             setEdges(graph.edges);
+        } else {
+            setNodes((prevNodes) => {
+                const filteredNodes = prevNodes.filter(
+                    (node) => !node.data.serializable,
+                );
+
+                return [...filteredNodes];
+            });
+            setEdges([]);
         }
     }, [activeAgent?.graph]);
 
