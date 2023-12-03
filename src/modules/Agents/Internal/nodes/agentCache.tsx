@@ -26,10 +26,10 @@ import {
 } from "@modules/Composer";
 
 const Card = new Composer("AgentCacheCard", CardPreset)
-    .withStyle("w-12u")
     .withStyle("min-h-5u")
     .withStyle("flex-col")
     .withStyle("p-1.5")
+    .withStyle("w-12u")
     .withStyle("flex")
     .withRoundedFrame()
     .build();
@@ -52,11 +52,14 @@ const HeaderContent = new Composer("AgentCacheContent", DivAtom)
     .build();
 const TableContent = new Composer("AgentCacheContent", ContentPreset)
     .withStyle("border-night")
+    .withStyle("rounded-t-md")
+    .withStyle("rounded-b-lg")
     .withStyle("flex-grow")
-    .withStyle("flex")
     .withStyle("flex-col")
-    .withRoundedFrame()
+    .withStyle("flex")
     .build();
+
+const newAgentText = "new agent +";
 const NewAgentDrawer: DrawerElement[] = [
     {
         node: <NewAgent />,
@@ -64,10 +67,9 @@ const NewAgentDrawer: DrawerElement[] = [
     },
 ];
 
-const newAgentText = "new agent +";
 const AgentCache = React.memo((props: NodeProps) => {
-    const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
-    const [sortField, setSortField] = useState<string>("date_modified");
+    const [sortOrder] = useState<"asc" | "desc">("desc");
+    const [sortField] = useState<string>("date_modified");
     const { activeAgent, setActiveAgent, recentAgents, refreshRecentAgents } =
         useAgentStore((state) => ({
             activeAgent: state.activeAgent,
@@ -84,11 +86,6 @@ const AgentCache = React.memo((props: NodeProps) => {
     useEffect(() => {
         refreshRecentAgents();
     }, [refreshRecentAgents]);
-
-    const sortAgents = (field: string) => {
-        setSortField(field);
-        setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
-    };
 
     useEffect(() => {
         const sorted = _.orderBy(
@@ -137,7 +134,7 @@ const AgentCache = React.memo((props: NodeProps) => {
             <Card className={NodeSelection(props.id, allNodes)}>
                 <HeaderContent
                     onDoubleClick={() => OnDoubleClick(nodeData, openDrawer)}>
-                    <div className="pl-1">{toLower(nodeData.nodeName)}</div>
+                    <div className="ml-1">{toLower(nodeData.nodeName)}</div>
                     <Button className="mr-1" onClick={onNewAgentClick}>
                         {newAgentText}
                     </Button>
