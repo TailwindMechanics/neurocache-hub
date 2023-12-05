@@ -26,8 +26,8 @@ import {
 import { useDrawer } from "@modules/Drawer";
 
 const Card = new Composer("LoginContent", CardPreset)
-    .withStyle("min-w-5.5u")
-    .withStyle("min-h-2u")
+    .withStyle("w-4u")
+    .withStyle("h-2u")
     .withStyle("flex")
     .withStyle("flex-col")
     .withRoundedFrame()
@@ -48,6 +48,7 @@ const Content = new Composer("LoginContent", ContentPreset)
     .withStyle("align-bottom")
     .withStyle("text-center")
     .withStyle("flex-grow")
+    .withStyle("truncate")
     .withStyle("text-ss")
     .withStyle("pt-0.5")
     .withStyle("px-1")

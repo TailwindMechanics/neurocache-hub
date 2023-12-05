@@ -26,10 +26,10 @@ import {
 } from "@modules/Composer";
 
 const Card = new Composer("AgentCacheCard", CardPreset)
-    .withStyle("min-h-5u")
+    .withStyle("h-4.5u")
     .withStyle("flex-col")
     .withStyle("p-1.5")
-    .withStyle("w-12u")
+    .withStyle("w-8u")
     .withStyle("flex")
     .withRoundedFrame()
     .build();
@@ -134,8 +134,12 @@ const AgentCache = React.memo((props: NodeProps) => {
             <Card className={NodeSelection(props.id, allNodes)}>
                 <HeaderContent
                     onDoubleClick={() => OnDoubleClick(nodeData, openDrawer)}>
-                    <div className="ml-1">{toLower(nodeData.nodeName)}</div>
-                    <Button className="mr-1" onClick={onNewAgentClick}>
+                    <div className="ml-0.5 w-50p">
+                        {toLower(nodeData.nodeName)}
+                    </div>
+                    <Button
+                        className="mr-0.5 w-50p text-right"
+                        onClick={onNewAgentClick}>
                         {newAgentText}
                     </Button>
                 </HeaderContent>

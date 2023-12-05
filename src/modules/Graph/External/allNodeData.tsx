@@ -25,7 +25,7 @@ export const allNodeData = [
         nodeId: "active_agent",
         body: "This displays the active agent.",
         handles: [],
-        nodePosition: { x: -120, y: 0 },
+        nodePosition: { x: -90, y: 0 },
         nodeComponent: ActiveAgent,
     } as CustomNode,
     {
@@ -36,7 +36,7 @@ export const allNodeData = [
         nodeId: "login",
         body: "This node allows a user to login, signup, and logout.",
         handles: [],
-        nodePosition: { x: -120, y: 60 },
+        nodePosition: { x: -90, y: 50 },
         nodeComponent: LoginNode,
     } as CustomNode,
     {
