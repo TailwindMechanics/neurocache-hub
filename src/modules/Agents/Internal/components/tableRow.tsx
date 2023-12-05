@@ -38,7 +38,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
                 }`}
                 onDoubleClick={() => props.onRowDoubleClick?.(props.agent)}
                 onClick={() => setActiveAgent(props.agent)}>
-                <td className="flex w-35p items-center">
+                <td className="flex w-40p items-center">
                     <Image
                         width={64}
                         height={64}
@@ -53,17 +53,15 @@ export const TableRow: FC<TableRowProps> = (props) => {
                             setImageError(true);
                         }}
                     />
-                    <p className="line-clamp-1 h-75p w-75p pl-1">
+                    <p className="line-clamp-1 h-75p w-100p pl-1">
                         {props.agent.agent_name}
                     </p>
                 </td>
-                <td className={"25p" + agentStatusStyle(props.agent)}>
+                <td className={"20p" + agentStatusStyle(props.agent)}>
                     {props.agent.status}
                 </td>
                 <td className="">
-                    {moment(props.agent.date_modified).format(
-                        "Do MMM YYYY HH:mm",
-                    )}
+                    {moment(props.agent.date_modified).format("Do MMM HH:mm")}
                 </td>
             </tr>
         </>

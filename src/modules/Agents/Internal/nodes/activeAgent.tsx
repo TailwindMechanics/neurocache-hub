@@ -15,13 +15,14 @@ import { IsNullOrEmpty } from "@modules/Utils";
 import { useDrawer } from "@modules/Drawer";
 
 const Card = new Composer("ActiveAgentCard", CardPreset)
-    .withStyle("h-2.5u")
-    .withStyle("w-5.5u")
+    .withStyle("h-2u")
+    .withStyle("w-4u")
     .withRoundedFull()
     .build();
 const AvatarPill = new Composer("ActiveAgentAvatarPill", DivAtom)
     .withStyle("border-night-light")
     .withStyle("bg-night-black")
+    .withStyle("border-1")
     .withStyle("border-1")
     .withStyle("border")
     .withStyle("w-full")
@@ -32,9 +33,12 @@ const AvatarPill = new Composer("ActiveAgentAvatarPill", DivAtom)
 const AvatarLabel = new Composer("ActiveAgentAvatarLabel", DivAtom)
     .withStyle("overflow-hidden")
     .withStyle("justify-center")
+    .withStyle("rounded-tr-2xl")
+    .withStyle("rounded-br-2xl")
     .withStyle("flex-col")
+    .withStyle("px-0.5")
+    .withStyle("pb-0.5")
     .withStyle("flex")
-    .withStyle("px-1")
     .build();
 
 const ActiveAgent = React.memo((props: NodeProps) => {
@@ -63,16 +67,16 @@ const ActiveAgent = React.memo((props: NodeProps) => {
                             : agentAvatar(activeAgent)
                     }
                     alt={`Agent avatar`}
-                    className="w-40p rounded-full object-fill"
+                    className="h-full w-auto rounded-full object-fill"
                     onError={() => {
                         setImageError(true);
                     }}
                 />
-                <AvatarLabel className="h-auto w-60p">
+                <AvatarLabel className="h-auto">
                     <p className="line-clamp-1 text-xs font-bold text-aqua underline">
                         {activeAgent?.agent_name}
                     </p>
-                    <p className="mb-0.5 line-clamp-5 pr-1.5 text-justify text-tny leading-tight text-night-title capitalize-first">
+                    <p className="line-clamp-5 h-100p text-tny leading-tight text-night-title capitalize-first">
                         {activeAgent && !IsNullOrEmpty(activeAgent.persona)
                             ? activeAgent.persona
                             : "This is where the description of the agent's personality is displayed."}
