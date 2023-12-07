@@ -26,18 +26,16 @@ import {
 } from "@modules/Composer";
 
 const Card = new Composer("AgentCacheCard", CardPreset)
-    .withStyle("h-4.5u")
     .withStyle("flex-col")
     .withStyle("p-1.5")
     .withStyle("w-8u")
+    .withStyle("h-4.5u")
     .withStyle("flex")
     .withRoundedFrame()
     .build();
 const Button = new Composer("AgentCacheTableButton", GhostButtonPreset)
     .withStyle("leading-tight")
     .withStyle("text-xs")
-    .withStyle("w-[22%]")
-    .withRoundedFull()
     .build();
 const HeaderContent = new Composer("AgentCacheContent", DivAtom)
     .withStyle("border-night-light")
