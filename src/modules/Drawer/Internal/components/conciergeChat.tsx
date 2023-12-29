@@ -10,7 +10,7 @@ export const ConciergeAgent: string = "Concierge: Aine";
 const ChatFrame = new Composer("ConciergeChatFrame", DivAtom)
     .withStyle("justify-between")
     .withStyle("flex-col")
-    .withStyle("h-70")
+    .withStyle("h-80")
     .withStyle("flex")
     .withRoundedElement()
     .build();
@@ -110,6 +110,20 @@ const ConciergeChat: FC = React.memo(() => {
                             play on perception—like objects appearing different from what
                             they are, shapes that seem to move or change, or clever use of
                             negative space."
+                        />
+                    </ChatLine>
+                    <UserChatLine Body="I have been dead for ten thousand years." />
+                    <ChatLine>
+                        <ChatLineHeader
+                            Title={"Aine"}
+                            ImageUrl={"/avatars/aine.png"}
+                        />
+                        <ChatLineBody
+                            Body="In this version:
+
+                            The interval has been removed.
+                            The handleInput function is simplified to adjust the height based on the scrollHeight.
+                            The height is first reset to 'auto' to ensure that the scrollHeight calculation is accurate."
                         />
                     </ChatLine>
                 </ChatArea>
