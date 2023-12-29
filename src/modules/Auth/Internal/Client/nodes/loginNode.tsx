@@ -27,7 +27,7 @@ import { useDrawer } from "@modules/Drawer";
 
 const Card = new Composer("LoginContent", CardPreset)
     .withStyle("w-4u")
-    .withStyle("h-2u")
+    .withStyle("min-h-2u")
     .withStyle("flex")
     .withStyle("flex-col")
     .withRoundedFrame()
