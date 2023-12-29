@@ -3,14 +3,14 @@
 import React, { FC } from "react";
 import Image from "next/image";
 
-import { Composer, DivAtom, InputPreset } from "@modules/Composer";
+import { Composer, DivAtom, TextAreaPreset } from "@modules/Composer";
 
 export const ConciergeAgent: string = "Concierge: Aine";
 
 const ChatFrame = new Composer("ConciergeChatFrame", DivAtom)
     .withStyle("justify-between")
     .withStyle("flex-col")
-    .withStyle("h-60")
+    .withStyle("h-70")
     .withStyle("flex")
     .withRoundedElement()
     .build();
@@ -18,26 +18,25 @@ const ChatArea = new Composer("ConciergeChatArea", DivAtom)
     .withStyle("overflow-y-auto")
     .withStyle("scrollbar-hide")
     .withStyle("flex-grow")
-    .withStyle("flex-col")
+    .withStyle("flex-col-reverse")
     .withStyle("flex")
+    .withStyle("px-1")
     .withRoundedElement()
     .build();
 const ChatLine = new Composer("ConciergeChatBubble", DivAtom)
     .withStyle("text-night-title")
-    .withStyle("rounded-lg")
-    .withStyle("flex-grow")
-    .withStyle("flex-col")
+    .withStyle("items-start")
     .withStyle("flex")
     .withStyle("py-1")
-    .withStyle("px-1.5")
     .build();
-const Input = new Composer("ConciergeAgentInput", InputPreset)
+const TextArea = new Composer("ConciergeAgentInput", TextAreaPreset)
+    .withStyle("resize-none")
     .withStyle("text-start")
+    .withStyle("rounded-lg")
     .withStyle("border-2")
-    .withStyle("text-2xl")
-    .withStyle("py-1")
-    .withStyle("h-20p")
-    .withRoundedElement()
+    .withStyle("text-xl")
+    .withStyle("font-semibold")
+    .withStyle("leading-snug")
     .build();
 
 interface ChatLineHeaderProps {
@@ -46,35 +45,42 @@ interface ChatLineHeaderProps {
 }
 const ChatLineHeader = (props: ChatLineHeaderProps) => {
     return (
-        <div className="flex items-center space-x-3 rounded-t-2xl border border-b-night-light border-l-night border-r-night border-t-night bg-night-black">
-            <Image
-                width={128}
-                height={128}
-                src={props.ImageUrl}
-                alt={props.Title}
-                className="h-8 w-8 rounded-full object-fill"
-            />
-            <p className="text-2xl font-bold text-aqua-dark">{props.Title}</p>
+        <div className="items-left flex h-full w-10 flex-shrink-0 flex-col">
+            <div className="w-full rounded-l-full bg-night-black p-1">
+                <Image
+                    width={128}
+                    height={128}
+                    src={props.ImageUrl}
+                    alt={props.Title}
+                    className="h-8 w-8 rounded-full object-fill"
+                />
+            </div>
+            <div className="w-full bg-night-black">
+                <div className="min-h-10 h-10 w-full rounded-tr-xl bg-night"></div>
+            </div>
         </div>
     );
 };
 
-const ChatLineBody = () => {
+interface ChatLineBodyProps {
+    Body: string;
+}
+const ChatLineBody = (props: ChatLineBodyProps) => {
     return (
-        <p className="rounded-b-lg border border-b-night border-l-night border-r-night border-t-night-black bg-night-black px-1.5">
-            WebGPU, a new web standard for high-performance 3D graphics and
-            data-parallel computation on the web, has been officially released.
-            It was shipped by the Chrome team on April 6, 2023, and is available
-            by default in Chrome 113. This release marks a significant milestone
-            as it brings advanced GPU capabilities to the web, similar to APIs
-            like Direct3D 12, Metal, and Vulkan, but with a focus on web
-            platform integration. WebGPU provides access to more advanced GPU
-            features than its predecessor, WebGL, and offers improvements in
-            areas such as reduced JavaScript workload for graphics rendering and
-            enhanced efficiency in machine learning model inferences. The
-            initial release of WebGPU supports ChromeOS, macOS, and Windows,
-            with plans for expanding support to other platforms later.
+        <p className="rounded-b-xl rounded-r-xl bg-night-black px-2 py-1 font-semibold leading-snug">
+            {props.Body}
         </p>
+    );
+};
+
+const UserChatLine = (props: ChatLineBodyProps) => {
+    return (
+        <ChatLine>
+            <div className="w-12 "></div>
+            <p className="rounded-b-xl rounded-l-xl bg-aqua-black px-2 py-1 font-bold leading-snug text-night-black">
+                {props.Body}
+            </p>
+        </ChatLine>
     );
 };
 
@@ -88,17 +94,28 @@ const ConciergeChat: FC = React.memo(() => {
                             Title={"Aine"}
                             ImageUrl={"/avatars/aine.png"}
                         />
-                        <ChatLineBody />
+                        <ChatLineBody
+                            Body="WebGPU, a new web standard for high-performance 3D graphics and
+                            data-parallel computation on the web, has been officially released."
+                        />
                     </ChatLine>
+                    <UserChatLine Body="I have been dead for ten thousand years." />
                     <ChatLine>
                         <ChatLineHeader
                             Title={"Aine"}
                             ImageUrl={"/avatars/aine.png"}
                         />
-                        <ChatLineBody />
+                        <ChatLineBody
+                            Body="Optical illusions in logos typically involve visual tricks that
+                            play on perception—like objects appearing different from what
+                            they are, shapes that seem to move or change, or clever use of
+                            negative space."
+                        />
                     </ChatLine>
                 </ChatArea>
-                <Input />
+                <div className="mx-1">
+                    <TextArea />
+                </div>
             </ChatFrame>
         </>
     );

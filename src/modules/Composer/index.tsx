@@ -22,3 +22,4 @@ export { RoundButton as RoundButtonPreset } from "./Internal/presets/roundButton
 export { DangerButton as DangerButtonPreset } from "./Internal/presets/dangerButton";
 export { ApiIdBox } from "./Internal/components/apiIdBox";
 export type { AtomProps } from "./types";
+export { TextArea as TextAreaPreset } from "./Internal/presets/textArea";

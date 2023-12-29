@@ -133,12 +133,12 @@ neurocache-hub
 │     │  │  │  ├─ motionDiv.tsx
 │     │  │  │  ├─ switch.tsx
 │     │  │  │  ├─ tab.tsx
-│     │  │  │  └─ tabList.tsx
+│     │  │  │  ├─ tabList.tsx
+│     │  │  │  └─ textArea.tsx
 │     │  │  ├─ components
 │     │  │  │  ├─ apiIdBox.tsx
 │     │  │  │  └─ ComponentBuilder.tsx
 │     │  │  └─ presets
-│     │  │     ├─ avatarPill.tsx
 │     │  │     ├─ button.tsx
 │     │  │     ├─ card.tsx
 │     │  │     ├─ closeButton.tsx
@@ -153,7 +153,8 @@ neurocache-hub
 │     │  │     ├─ shell.tsx
 │     │  │     ├─ status.tsx
 │     │  │     ├─ tab.tsx
-│     │  │     └─ tabList.tsx
+│     │  │     ├─ tabList.tsx
+│     │  │     └─ textArea.tsx
 │     │  └─ types.tsx
 │     ├─ Drawer
 │     │  ├─ index.tsx

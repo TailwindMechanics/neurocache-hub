@@ -19,7 +19,8 @@
         "dark": "#66b3a0",
         "light": "#8cd7ce",
         "title": "#a1e2de",
-        "body": "#c6ede5"
+        "body": "#c6ede5",
+        "black": "#427872"
     },
     "grape": {
         "DEFAULT": "#cf91c2",
