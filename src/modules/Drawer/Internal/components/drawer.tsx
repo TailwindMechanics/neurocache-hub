@@ -1,7 +1,9 @@
 //path: src\modules\Drawer\Internal\components\drawer.tsx
 
-import { FC, useContext, useCallback, useEffect } from "react";
+import { FC, useContext } from "react";
+import React from "react";
 
+import { ConciergeAgent, ConciergeChat } from "./conciergeChat";
 import { DrawerElement } from "@modules/Drawer/types";
 import { DrawerContext } from "../hooks/useDrawer";
 import {
@@ -69,33 +71,23 @@ interface DrawerProps {
     innerElements: DrawerElement[];
 }
 
-export const Drawer: FC<DrawerProps> = (props) => {
+const Drawer: FC<DrawerProps> = React.memo((props) => {
     const context = useContext(DrawerContext);
     if (!context) {
         throw new Error("Drawer must be used within a DrawerProvider");
     }
-
     const { closeDrawer } = context;
-    const handleEscapePress = useCallback(
-        (event: { key: string }) => {
-            if (event.key === "Escape") {
-                closeDrawer();
-            }
-        },
-        [closeDrawer],
-    );
-
-    useEffect(() => {
-        window.addEventListener("keydown", handleEscapePress);
-        return () => {
-            window.removeEventListener("keydown", handleEscapePress);
-        };
-    }, [handleEscapePress]);
 
     return (
         <OuterWrapper motion={motionSettings}>
             <CloseButtonPreset onClick={closeDrawer}></CloseButtonPreset>
             <Card>
+                <ElementWrapper>
+                    <ElementHeader>{ConciergeAgent}</ElementHeader>
+                    <ElementBody>
+                        <ConciergeChat />
+                    </ElementBody>
+                </ElementWrapper>
                 {props.innerElements.map((element, index) => (
                     <ElementWrapper key={index}>
                         <ElementHeader>{element.panelTitle}</ElementHeader>
@@ -105,4 +97,7 @@ export const Drawer: FC<DrawerProps> = (props) => {
             </Card>
         </OuterWrapper>
     );
-};
+});
+
+Drawer.displayName = "Drawer";
+export { Drawer };

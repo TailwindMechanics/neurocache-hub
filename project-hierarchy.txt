@@ -36,6 +36,7 @@ neurocache-hub
 │  ├─ avatars
 │  │  ├─ aine.png
 │  │  ├─ brainwave.png
+│  │  ├─ celeste.png
 │  │  ├─ claude.png
 │  │  ├─ dave.png
 │  │  ├─ edbird.png
@@ -48,7 +49,8 @@ neurocache-hub
 │  │  ├─ placeholder.png
 │  │  ├─ pointerbot.png
 │  │  ├─ rollersteve.png
-│  │  └─ searchbot.png
+│  │  ├─ searchbot.png
+│  │  └─ sophia.png
 │  ├─ favicon.svg
 │  ├─ images
 │  │  ├─ neurocache.png
@@ -136,6 +138,7 @@ neurocache-hub
 │     │  │  │  ├─ apiIdBox.tsx
 │     │  │  │  └─ ComponentBuilder.tsx
 │     │  │  └─ presets
+│     │  │     ├─ avatarPill.tsx
 │     │  │     ├─ button.tsx
 │     │  │     ├─ card.tsx
 │     │  │     ├─ closeButton.tsx
@@ -156,7 +159,9 @@ neurocache-hub
 │     │  ├─ index.tsx
 │     │  ├─ Internal
 │     │  │  ├─ components
-│     │  │  │  └─ drawer.tsx
+│     │  │  │  ├─ conciergeChat.tsx
+│     │  │  │  ├─ drawer.tsx
+│     │  │  │  └─ drawerController.tsx
 │     │  │  └─ hooks
 │     │  │     └─ useDrawer.tsx
 │     │  └─ types.tsx

@@ -5,8 +5,10 @@ import { AnimatePresence } from "framer-motion";
 
 import { DrawerElement } from "@modules/Drawer/types";
 import { Drawer } from "../components/drawer";
+import { DrawerController } from "../components/drawerController";
 
 interface DrawerState {
+    toggleDrawer: () => void;
     openDrawer: (elements: DrawerElement[]) => void;
     closeDrawer: () => void;
     isOpen: boolean;
@@ -22,7 +24,7 @@ interface DrawerProviderProps {
 
 export const DrawerProvider: FC<DrawerProviderProps> = ({ children }) => {
     const [innerElements, setInnerElements] = useState<DrawerElement[]>([]);
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(true);
 
     const openDrawer = useCallback((elements: DrawerElement[]) => {
         setInnerElements(elements);
@@ -34,12 +36,22 @@ export const DrawerProvider: FC<DrawerProviderProps> = ({ children }) => {
         setIsOpen(false);
     }, []);
 
+    const toggleDrawer = useCallback(() => {
+        if (isOpen) {
+            closeDrawer();
+        } else {
+            openDrawer([]);
+        }
+    }, [closeDrawer, isOpen, openDrawer]);
+
     return (
-        <DrawerContext.Provider value={{ openDrawer, closeDrawer, isOpen }}>
+        <DrawerContext.Provider
+            value={{ toggleDrawer, openDrawer, closeDrawer, isOpen }}>
             {children}
             <AnimatePresence>
                 {isOpen && <Drawer innerElements={innerElements} />}
             </AnimatePresence>
+            <DrawerController />
         </DrawerContext.Provider>
     );
 };
