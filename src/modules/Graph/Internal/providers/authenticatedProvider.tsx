@@ -5,18 +5,15 @@ import React from "react";
 
 import { ReactFlowCanvas } from "../core/reactFlowCanvas";
 import { DrawerProvider } from "@modules/Drawer";
-import { OpenAiContext } from "@modules/OpenAi";
 
 const AuthenticatedProvider = React.memo(() => {
     return (
         <>
-            <OpenAiContext>
-                <ReactFlowProvider>
-                    <DrawerProvider>
-                        <ReactFlowCanvas />
-                    </DrawerProvider>
-                </ReactFlowProvider>
-            </OpenAiContext>
+            <ReactFlowProvider>
+                <DrawerProvider>
+                    <ReactFlowCanvas />
+                </DrawerProvider>
+            </ReactFlowProvider>
         </>
     );
 });

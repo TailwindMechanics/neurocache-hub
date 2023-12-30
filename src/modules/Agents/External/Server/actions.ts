@@ -11,6 +11,7 @@ const createAgentFunction = "CreateAgent";
 const getRecentAgentsFunction = "GetRecentAgents";
 const updateAgentGraphFunction = "UpdateAgentGraph";
 const deleteAgentFunction = "DeleteAgent";
+const getAgentFunction = "get_agent_by_id";
 
 async function getAuthenticatedClient() {
     const supabase = createServerActionClient({ cookies });
@@ -72,4 +73,24 @@ export async function deleteAgent(agentId: string) {
     });
 
     return response;
+}
+
+export async function getAgent(
+    agentId: string | undefined,
+): Promise<Agent | null> {
+    console.log("getAgent", agentId);
+
+    if (!agentId) return Promise.resolve(null);
+
+    const supabase = await getAuthenticatedClient();
+    if (!supabase) return Promise.resolve(null);
+
+    const userResponse = await supabase.auth.getUser();
+    if (!userResponse.data.user) return Promise.resolve(null);
+
+    const response = await supabase.rpc(getAgentFunction, {
+        agent_id: agentId,
+    });
+
+    return response.data as Agent;
 }

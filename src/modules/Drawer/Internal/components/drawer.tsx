@@ -1,11 +1,12 @@
 //path: src\modules\Drawer\Internal\components\drawer.tsx
 
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect } from "react";
 import React from "react";
 
-import { ConciergeAgent, ConciergeChat } from "./conciergeChat";
+import { useAgentStore } from "@modules/Agents/External/agentStore";
 import { DrawerElement } from "@modules/Drawer/types";
 import { DrawerContext } from "../hooks/useDrawer";
+import { ConciergeChat } from "./conciergeChat";
 import {
     CloseButtonPreset,
     MotionDiv,
@@ -72,7 +73,16 @@ interface DrawerProps {
 }
 
 const Drawer: FC<DrawerProps> = React.memo((props) => {
+    const conciergeAgent = useAgentStore((state) => state.conciergeAgent);
     const context = useContext(DrawerContext);
+    const fetchConciergeAgent = useAgentStore(
+        (state) => state.fetchConciergeAgent,
+    );
+
+    useEffect(() => {
+        fetchConciergeAgent();
+    }, [fetchConciergeAgent]);
+
     if (!context) {
         throw new Error("Drawer must be used within a DrawerProvider");
     }
@@ -83,7 +93,11 @@ const Drawer: FC<DrawerProps> = React.memo((props) => {
             <CloseButtonPreset onClick={closeDrawer}></CloseButtonPreset>
             <Card>
                 <ElementWrapper>
-                    <ElementHeader>{ConciergeAgent}</ElementHeader>
+                    <ElementHeader>
+                        {conciergeAgent
+                            ? conciergeAgent.agent_name
+                            : "untitled"}
+                    </ElementHeader>
                     <ElementBody>
                         <ConciergeChat />
                     </ElementBody>

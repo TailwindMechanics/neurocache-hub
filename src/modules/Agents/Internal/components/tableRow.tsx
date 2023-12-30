@@ -60,7 +60,7 @@ export const TableRow: FC<TableRowProps> = (props) => {
                 <td className={"20p" + agentStatusStyle(props.agent)}>
                     {props.agent.status}
                 </td>
-                <td className="">
+                <td className="text-ss">
                     {moment(props.agent.date_modified).format("Do MMM HH:mm")}
                 </td>
             </tr>
