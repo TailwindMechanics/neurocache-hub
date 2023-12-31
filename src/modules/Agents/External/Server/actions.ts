@@ -6,12 +6,51 @@ import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
 import { Agent } from "../../types";
+import { AgentChatHistory, ChatMessage } from "@modules/Drawer/types";
 
+const getChatHistory = "get_chat_history";
 const createAgentFunction = "CreateAgent";
 const getRecentAgentsFunction = "GetRecentAgents";
 const updateAgentGraphFunction = "UpdateAgentGraph";
 const deleteAgentFunction = "DeleteAgent";
 const getAgentFunction = "get_agent_by_id";
+
+export async function getConciergeAgent() {
+    const supabase = await getAuthenticatedClient();
+    if (!supabase) return null;
+
+    const userResponse = await supabase.auth.getUser();
+    const user = userResponse.data.user;
+    if (!user) return null;
+
+    const response = await supabase
+        .from("user_data")
+        .select("*")
+        .eq("user_id", user.id)
+        .single();
+
+    const userData = response.data;
+    const conciergeAgentId = userData["concierge_agent_id"];
+    const conciergeChannelId = userData["concierge_channel_id"];
+    const response2 = await supabase.rpc(getChatHistory, {
+        _channel_id: conciergeChannelId,
+        _num_entries: 60,
+    });
+
+    const response3 = await supabase
+        .from("agents")
+        .select("*")
+        .eq("agent_id", conciergeAgentId)
+        .single();
+
+    const conciergeAgent = response3.data as Agent;
+    const chatHistory = response2.data as ChatMessage[];
+
+    return {
+        agent: conciergeAgent,
+        chatHistory: chatHistory,
+    } as AgentChatHistory;
+}
 
 async function getAuthenticatedClient() {
     const supabase = createServerActionClient({ cookies });

@@ -95,7 +95,7 @@ const Drawer: FC<DrawerProps> = React.memo((props) => {
                 <ElementWrapper>
                     <ElementHeader>
                         {conciergeAgent
-                            ? conciergeAgent.agent_name
+                            ? "Concierge: " + conciergeAgent.agent_name
                             : "untitled"}
                     </ElementHeader>
                     <ElementBody>

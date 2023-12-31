@@ -3,12 +3,15 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
+import { getConciergeAgent } from "@modules/Agents/External/Server/actions";
 import { Composer, DivAtom, TextAreaPreset } from "@modules/Composer";
+import { useAgentStore } from "@modules/Agents/External/agentStore";
+import { ChatMessage } from "@modules/Drawer/types";
 
 const ChatFrame = new Composer("ConciergeChatFrame", DivAtom)
     .withStyle("justify-between")
     .withStyle("flex-col")
-    .withStyle("h-80")
+    .withStyle("h-25u")
     .withStyle("flex")
     .withRoundedElement()
     .build();
@@ -19,13 +22,14 @@ const ChatArea = new Composer("ConciergeChatArea", DivAtom)
     .withStyle("flex-grow")
     .withStyle("flex")
     .withStyle("px-1")
+    .withStyle("pb-0.5")
     .withRoundedElement()
     .build();
 const ChatLine = new Composer("ConciergeChatBubble", DivAtom)
     .withStyle("text-night-title")
     .withStyle("items-start")
     .withStyle("flex")
-    .withStyle("mr-1")
+    .withStyle("mx-1")
     .withStyle("mt-1")
     .build();
 const TextArea = new Composer("ConciergeAgentInput", TextAreaPreset)
@@ -110,7 +114,7 @@ const RemoteUserChatLine = (props: RemoteUserChatLineProps) => {
 const UserChatLine = (props: { Body: string }) => {
     return (
         <ChatLine>
-            <p className="ml-1 w-full rounded-b-xl rounded-l-xl bg-aqua-black px-2 py-1 font-bold leading-tight text-night-black">
+            <p className="w-full rounded-b-xl rounded-l-xl bg-aqua-black px-2 py-1 font-bold leading-tight text-night-black">
                 {props.Body}
             </p>
             <div className="w-3 flex-shrink-0 bg-aqua-black">
@@ -121,62 +125,58 @@ const UserChatLine = (props: { Body: string }) => {
 };
 
 const ConciergeChat: FC = React.memo(() => {
+    const { conciergeAgent, setConciergeAgent } = useAgentStore((state) => ({
+        conciergeAgent: state.conciergeAgent,
+        setConciergeAgent: state.setConciergeAgent,
+    }));
+    const [chatHistory, setChatHistory] = useState<ChatMessage[] | undefined>(
+        undefined,
+    );
+
+    useEffect(() => {
+        console.log("fetching concierge agent");
+
+        const fetchData = async () => {
+            const fetchedHistory = await getConciergeAgent();
+            if (fetchedHistory) {
+                setChatHistory(fetchedHistory.chatHistory);
+                console.log(fetchedHistory.agent);
+
+                setConciergeAgent(fetchedHistory.agent);
+            }
+        };
+
+        fetchData();
+    }, [setConciergeAgent]);
+
     return (
         <>
             <ChatFrame>
                 <ChatArea>
-                    <UserChatLine Body="Tailwind classes" />
-                    <RemoteUserChatLine
-                        Username={"Aine"}
-                        AvatarUrl={"/avatars/aine.png"}
-                        Body="Conditional rendering is done with the ternary operator."
-                    />
-                    <RemoteUserChatLine
-                        Username={"Aine"}
-                        AvatarUrl={"/avatars/aine.png"}
-                        Body="Conditional rendering is done with the ternary operator."
-                    />
-                    <UserChatLine Body="Tailwind classes" />
-                    <RemoteUserChatLine
-                        Username={"Aine"}
-                        AvatarUrl={"/avatars/aine.png"}
-                        Body="Here's the corrected syntax."
-                    />
-                    <RemoteUserChatLine
-                        Username={"Aine"}
-                        AvatarUrl={"/avatars/aine.png"}
-                        Body="In React, conditional rendering is typically handled using
-                        ternary operators."
-                    />
-                    <UserChatLine Body="Tailwind classes" />
-                    <UserChatLine Body="Tailwind classes" />
-                    <UserChatLine Body="Tailwind classes. These can cause a gradual change in height" />
-                    <RemoteUserChatLine
-                        Username={"Aine"}
-                        AvatarUrl={"/avatars/aine.png"}
-                        Body="Check for CSS Transitions/Animations: Ensure that no 
-                        CSS transitions or animations are being applied to the textarea's 
-                        height property in your global styles or Tailwind classes. 
-                        These can cause a gradual change in height rather than an 
-                        immediate adjustment."
-                    />
-                    <UserChatLine Body="Tailwind classes. These can cause a gradual change in height" />
-                    <RemoteUserChatLine
-                        Username={"Aine"}
-                        AvatarUrl={"/avatars/aine.png"}
-                        Body="If the textarea's height adjustment appears to be lagging or
-                        requires multiple frames to update, it might indeed be due
-                        to CSS transitions or animations applied to the height
-                        property. The behavior could also be influenced by how the
-                        scrollHeight is being calculated and applied. Here are a few
-                        things to consider and adjust in your code"
-                    />
-                    <UserChatLine
-                        Body="Ok so the issue here is it seems to need
-                        many frames to get from one value to the other, 
-                        is that due to some sort of animation or transition 
-                        somewhere? Can we force it?"
-                    />
+                    {chatHistory?.map((message, index) => {
+                        if (message.user_author_id) {
+                            return (
+                                <UserChatLine
+                                    key={index}
+                                    Body={message.content}
+                                />
+                            );
+                        } else {
+                            return (
+                                <RemoteUserChatLine
+                                    key={index}
+                                    Username={
+                                        conciergeAgent?.agent_name ?? "Unknown"
+                                    }
+                                    AvatarUrl={
+                                        conciergeAgent?.avatar_url ??
+                                        "/avatars/placeholder.png"
+                                    }
+                                    Body={message.content}
+                                />
+                            );
+                        }
+                    })}
                 </ChatArea>
                 <div className="mx-1">
                     <TextArea />

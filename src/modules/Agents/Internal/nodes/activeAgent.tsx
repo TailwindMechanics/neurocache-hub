@@ -79,7 +79,7 @@ const ActiveAgent = React.memo((props: NodeProps) => {
                     <p className="line-clamp-5 h-100p text-tny leading-tight text-night-title capitalize-first">
                         {activeAgent && !IsNullOrEmpty(activeAgent.persona)
                             ? activeAgent.persona
-                            : "This is where the description of the agent's personality is displayed."}
+                            : "Agents persona description goes here."}
                     </p>
                 </AvatarLabel>
             </AvatarPill>
