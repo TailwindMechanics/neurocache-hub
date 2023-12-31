@@ -1,6 +1,6 @@
 //path: src\modules\Drawer\Internal\components\drawer.tsx
 
-import { FC, useContext, useEffect } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import React from "react";
 
 import { useAgentStore } from "@modules/Agents/External/agentStore";
@@ -48,10 +48,11 @@ const ElementHeader = new Composer("NewAgentHeader", DivAtom)
     .withStyle("bg-aqua-dark")
     .withStyle("font-extrabold")
     .withStyle("leading-tight")
-    .withStyle("rounded-t-md")
     .withStyle("underline")
     .withStyle("text-2xl")
     .withStyle("h-[30%]")
+    .withStyle("h-full")
+    .withStyle("w-full")
     .withStyle("pt-0.5")
     .withStyle("px-2.5")
     .build();
@@ -72,12 +73,22 @@ interface DrawerProps {
     innerElements: DrawerElement[];
 }
 
+const conciergeElementIndex = 199;
+
 const Drawer: FC<DrawerProps> = React.memo((props) => {
     const conciergeAgent = useAgentStore((state) => state.conciergeAgent);
     const context = useContext(DrawerContext);
     const fetchConciergeAgent = useAgentStore(
         (state) => state.fetchConciergeAgent,
     );
+
+    const [collapsedElements, setCollapsedElements] = useState<
+        Record<number, boolean>
+    >({});
+
+    const toggleCollapse = (index: number) => {
+        setCollapsedElements((prev) => ({ ...prev, [index]: !prev[index] }));
+    };
 
     useEffect(() => {
         fetchConciergeAgent();
@@ -93,19 +104,58 @@ const Drawer: FC<DrawerProps> = React.memo((props) => {
             <CloseButtonPreset onClick={closeDrawer}></CloseButtonPreset>
             <Card>
                 <ElementWrapper>
-                    <ElementHeader>
+                    <ElementHeader
+                        className={`${
+                            collapsedElements[conciergeElementIndex]
+                                ? "rounded"
+                                : "rounded-t"
+                        } mr-2`}
+                        onClick={() => toggleCollapse(conciergeElementIndex)}>
+                        <span
+                            className={`inline-block transform ${
+                                collapsedElements[conciergeElementIndex]
+                                    ? "-rotate-90"
+                                    : ""
+                            } mr-2`}>
+                            ▼
+                        </span>
                         {conciergeAgent
                             ? "Concierge: " + conciergeAgent.agent_name
                             : "untitled"}
                     </ElementHeader>
-                    <ElementBody>
-                        <ConciergeChat />
-                    </ElementBody>
+                    {!collapsedElements[conciergeElementIndex] && (
+                        <ElementBody
+                            className={`transition-all duration-300 ease-in-out ${
+                                collapsedElements[conciergeElementIndex]
+                                    ? "hidden"
+                                    : "block"
+                            }`}>
+                            <ConciergeChat />
+                        </ElementBody>
+                    )}
                 </ElementWrapper>
                 {props.innerElements.map((element, index) => (
                     <ElementWrapper key={index}>
-                        <ElementHeader>{element.panelTitle}</ElementHeader>
-                        <ElementBody>{element.node}</ElementBody>
+                        <ElementHeader
+                            className={`${
+                                collapsedElements[index]
+                                    ? "rounded"
+                                    : "rounded-t"
+                            } mr-2`}
+                            onClick={() => toggleCollapse(index)}>
+                            <span
+                                className={`inline-block transform ${
+                                    collapsedElements[index] ? "-rotate-90" : ""
+                                } mr-2`}>
+                                ▼
+                            </span>
+                            {element.panelTitle}
+                        </ElementHeader>
+                        {!collapsedElements[index] && (
+                            <ElementBody className="transition-all duration-300 ease-in-out">
+                                {element.node}
+                            </ElementBody>
+                        )}
                     </ElementWrapper>
                 ))}
             </Card>

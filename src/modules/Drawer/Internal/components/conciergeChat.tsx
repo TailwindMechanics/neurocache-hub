@@ -43,6 +43,7 @@ const TextArea = new Composer("ConciergeAgentInput", TextAreaPreset)
     .build();
 
 interface RemoteUserChatLineProps {
+    className?: string;
     Username: string;
     AvatarUrl: string;
     Body: string;
@@ -82,7 +83,7 @@ const RemoteUserChatLine = (props: RemoteUserChatLineProps) => {
 
     return (
         <>
-            <ChatLine>
+            <ChatLine className={props.className}>
                 <div className="items-left flex h-full w-10 flex-shrink-0 flex-col">
                     <div className="w-full rounded-l-full bg-night-black p-1">
                         <Image
@@ -111,10 +112,10 @@ const RemoteUserChatLine = (props: RemoteUserChatLineProps) => {
     );
 };
 
-const UserChatLine = (props: { Body: string }) => {
+const UserChatLine = (props: { Body: string; className?: string }) => {
     return (
-        <ChatLine>
-            <p className="w-full rounded-b-xl rounded-l-xl bg-aqua-black px-2 py-1 font-bold leading-tight text-night-black">
+        <ChatLine className={props.className}>
+            <p className="h-full w-full rounded-b-xl rounded-l-xl bg-aqua-black px-2 py-1 font-bold leading-tight text-night-black">
                 {props.Body}
             </p>
             <div className="w-3 flex-shrink-0 bg-aqua-black">
@@ -153,30 +154,84 @@ const ConciergeChat: FC = React.memo(() => {
         <>
             <ChatFrame>
                 <ChatArea>
-                    {chatHistory?.map((message, index) => {
-                        if (message.user_author_id) {
-                            return (
-                                <UserChatLine
-                                    key={index}
-                                    Body={message.content}
-                                />
-                            );
-                        } else {
-                            return (
-                                <RemoteUserChatLine
-                                    key={index}
-                                    Username={
-                                        conciergeAgent?.agent_name ?? "Unknown"
-                                    }
-                                    AvatarUrl={
-                                        conciergeAgent?.avatar_url ??
-                                        "/avatars/placeholder.png"
-                                    }
-                                    Body={message.content}
-                                />
-                            );
-                        }
-                    })}
+                    {chatHistory ? (
+                        chatHistory.map((message, index) => {
+                            if (message.user_author_id) {
+                                return (
+                                    <UserChatLine
+                                        key={index}
+                                        Body={message.content}
+                                    />
+                                );
+                            } else {
+                                return (
+                                    <RemoteUserChatLine
+                                        key={index}
+                                        Username={
+                                            conciergeAgent?.agent_name ??
+                                            "Unknown"
+                                        }
+                                        AvatarUrl={
+                                            conciergeAgent?.avatar_url ??
+                                            "/avatars/placeholder.png"
+                                        }
+                                        Body={message.content}
+                                    />
+                                );
+                            }
+                        })
+                    ) : (
+                        <div className="animate-pulse">
+                            <RemoteUserChatLine
+                                className="opacity-50"
+                                Username={""}
+                                AvatarUrl={"/avatars/placeholder.png"}
+                                Body={
+                                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
+                                }
+                            />
+                            <UserChatLine
+                                className="opacity-50"
+                                Body={"———— ———————— ———— ————————"}
+                            />
+                            <RemoteUserChatLine
+                                className="opacity-50"
+                                Username={""}
+                                AvatarUrl={"/avatars/placeholder.png"}
+                                Body={
+                                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
+                                }
+                            />
+                            <UserChatLine
+                                className="opacity-50"
+                                Body={"———— ———————— ———— ————————"}
+                            />
+                            <RemoteUserChatLine
+                                className="opacity-50"
+                                Username={""}
+                                AvatarUrl={"/avatars/placeholder.png"}
+                                Body={
+                                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
+                                }
+                            />
+                            <UserChatLine
+                                className="opacity-50"
+                                Body={"———— ———————— ———— ————————"}
+                            />
+                            <RemoteUserChatLine
+                                className="opacity-50"
+                                Username={""}
+                                AvatarUrl={"/avatars/placeholder.png"}
+                                Body={
+                                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
+                                }
+                            />
+                            <UserChatLine
+                                className="opacity-50"
+                                Body={"———— ———————— ———— ————————"}
+                            />
+                        </div>
+                    )}
                 </ChatArea>
                 <div className="mx-1">
                     <TextArea />
