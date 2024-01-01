@@ -123,16 +123,14 @@ const Drawer: FC<DrawerProps> = React.memo((props) => {
                             ? "Concierge: " + conciergeAgent.agent_name
                             : "untitled"}
                     </ElementHeader>
-                    {!collapsedElements[conciergeElementIndex] && (
-                        <ElementBody
-                            className={`transition-all duration-300 ease-in-out ${
-                                collapsedElements[conciergeElementIndex]
-                                    ? "hidden"
-                                    : "block"
-                            }`}>
-                            <ConciergeChat />
-                        </ElementBody>
-                    )}
+                    <ElementBody
+                        className={`transition-all duration-300 ease-in-out ${
+                            collapsedElements[conciergeElementIndex]
+                                ? "hidden"
+                                : ""
+                        }`}>
+                        <ConciergeChat />
+                    </ElementBody>
                 </ElementWrapper>
                 {props.innerElements.map((element, index) => (
                     <ElementWrapper key={index}>
@@ -151,11 +149,12 @@ const Drawer: FC<DrawerProps> = React.memo((props) => {
                             </span>
                             {element.panelTitle}
                         </ElementHeader>
-                        {!collapsedElements[index] && (
-                            <ElementBody className="transition-all duration-300 ease-in-out">
-                                {element.node}
-                            </ElementBody>
-                        )}
+                        <ElementBody
+                            className={`transition-all duration-300 ease-in-out ${
+                                collapsedElements[index] ? "hidden" : ""
+                            }`}>
+                            {element.node}
+                        </ElementBody>
                     </ElementWrapper>
                 ))}
             </Card>

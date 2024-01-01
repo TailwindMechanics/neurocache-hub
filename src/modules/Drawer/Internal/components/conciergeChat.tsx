@@ -125,6 +125,61 @@ const UserChatLine = (props: { Body: string; className?: string }) => {
     );
 };
 
+const ChatSkeleton = () => {
+    return (
+        <div className="animate-pulse">
+            <RemoteUserChatLine
+                className="opacity-50"
+                Username={""}
+                AvatarUrl={"/avatars/placeholder.png"}
+                Body={
+                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
+                }
+            />
+            <UserChatLine
+                className="opacity-50"
+                Body={"———— ———————— ———— ————————"}
+            />
+            <RemoteUserChatLine
+                className="opacity-50"
+                Username={""}
+                AvatarUrl={"/avatars/placeholder.png"}
+                Body={
+                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
+                }
+            />
+            <UserChatLine
+                className="opacity-50"
+                Body={"———— ———————— ———— ————————"}
+            />
+            <RemoteUserChatLine
+                className="opacity-50"
+                Username={""}
+                AvatarUrl={"/avatars/placeholder.png"}
+                Body={
+                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
+                }
+            />
+            <UserChatLine
+                className="opacity-50"
+                Body={"———— ———————— ———— ————————"}
+            />
+            <RemoteUserChatLine
+                className="opacity-50"
+                Username={""}
+                AvatarUrl={"/avatars/placeholder.png"}
+                Body={
+                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
+                }
+            />
+            <UserChatLine
+                className="opacity-50"
+                Body={"———— ———————— ———— ————————"}
+            />
+        </div>
+    );
+};
+
 const ConciergeChat: FC = React.memo(() => {
     const { conciergeAgent, setConciergeAgent } = useAgentStore((state) => ({
         conciergeAgent: state.conciergeAgent,
@@ -135,8 +190,6 @@ const ConciergeChat: FC = React.memo(() => {
     );
 
     useEffect(() => {
-        console.log("fetching concierge agent");
-
         const fetchData = async () => {
             const fetchedHistory = await getConciergeAgent();
             if (fetchedHistory) {
@@ -181,56 +234,7 @@ const ConciergeChat: FC = React.memo(() => {
                             }
                         })
                     ) : (
-                        <div className="animate-pulse">
-                            <RemoteUserChatLine
-                                className="opacity-50"
-                                Username={""}
-                                AvatarUrl={"/avatars/placeholder.png"}
-                                Body={
-                                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
-                                }
-                            />
-                            <UserChatLine
-                                className="opacity-50"
-                                Body={"———— ———————— ———— ————————"}
-                            />
-                            <RemoteUserChatLine
-                                className="opacity-50"
-                                Username={""}
-                                AvatarUrl={"/avatars/placeholder.png"}
-                                Body={
-                                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
-                                }
-                            />
-                            <UserChatLine
-                                className="opacity-50"
-                                Body={"———— ———————— ———— ————————"}
-                            />
-                            <RemoteUserChatLine
-                                className="opacity-50"
-                                Username={""}
-                                AvatarUrl={"/avatars/placeholder.png"}
-                                Body={
-                                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
-                                }
-                            />
-                            <UserChatLine
-                                className="opacity-50"
-                                Body={"———— ———————— ———— ————————"}
-                            />
-                            <RemoteUserChatLine
-                                className="opacity-50"
-                                Username={""}
-                                AvatarUrl={"/avatars/placeholder.png"}
-                                Body={
-                                    "———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— ———— ———————— "
-                                }
-                            />
-                            <UserChatLine
-                                className="opacity-50"
-                                Body={"———— ———————— ———— ————————"}
-                            />
-                        </div>
+                        <ChatSkeleton />
                     )}
                 </ChatArea>
                 <div className="mx-1">
