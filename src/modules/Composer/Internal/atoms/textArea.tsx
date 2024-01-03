@@ -1,26 +1,30 @@
-//path: src\modules\Composer\Internal\atoms\textArea.tsx
+// src\modules\Composer\Internal\atoms\textArea.tsx
 
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useCallback, useEffect } from "react";
+
 import { AtomProps } from "../../types";
 
 export const TextArea: FC<AtomProps> = (props) => {
-    const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-    useEffect(() => handleInput(), []);
-
-    const handleInput = () => {
-        const textArea = textAreaRef.current;
+    const handleInput = useCallback(() => {
+        const textArea = props.textAreaRef?.current;
         if (textArea) {
             textArea.style.height = "2rem";
             textArea.style.height = `${textArea.scrollHeight}px`;
         }
-    };
+    }, [props.textAreaRef]);
+
+    useEffect(() => {
+        handleInput();
+    }, [handleInput]);
 
     return (
         <textarea
             className={`resize-none rounded scrollbar-hide focus:outline-none ${props.className}`}
-            ref={textAreaRef}
+            ref={props.textAreaRef}
             onInput={handleInput}
+            onChange={(e) => props.onTextAreaChange?.(e)}
+            onKeyDown={(e) => props.onTextAreaKeyDown?.(e)}
+            value={props.value}
         />
     );
 };

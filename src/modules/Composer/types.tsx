@@ -30,11 +30,13 @@ export interface ColouredLineProps {
 }
 
 export interface AtomProps {
-    onKeyDown?: KeyboardEventHandler<HTMLInputElement> | undefined;
     onSubmit?: () => void;
     onFocus?: FocusEventHandler<HTMLInputElement> | undefined;
     onBlur?: FocusEventHandler<HTMLInputElement> | undefined;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onKeyDown?: KeyboardEventHandler<HTMLInputElement> | undefined;
+    onTextAreaChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+    onTextAreaKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>;
     onMouseDown?: React.MouseEventHandler<HTMLDivElement>;
     "aria-label"?: string | undefined;
     style?: CSSProperties | undefined;
@@ -60,4 +62,5 @@ export interface AtomProps {
     onSelected?: (selected: string) => void;
     active?: boolean;
     selected?: boolean;
+    textAreaRef?: React.RefObject<HTMLTextAreaElement>;
 }

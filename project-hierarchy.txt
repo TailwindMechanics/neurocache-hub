@@ -37,13 +37,13 @@ neurocache-hub
 │  │  ├─ aine.png
 │  │  ├─ brainwave.png
 │  │  ├─ celeste.png
-│  │  ├─ claude.png
 │  │  ├─ dave.png
 │  │  ├─ edbird.png
 │  │  ├─ fatdan.png
 │  │  ├─ federico.png
 │  │  ├─ glen.png
 │  │  ├─ helptron.png
+│  │  ├─ ken.png
 │  │  ├─ louise.png
 │  │  ├─ pi.png
 │  │  ├─ placeholder.png
@@ -160,9 +160,11 @@ neurocache-hub
 │     │  ├─ index.tsx
 │     │  ├─ Internal
 │     │  │  ├─ components
+│     │  │  │  ├─ chatInputField.tsx
 │     │  │  │  ├─ conciergeChat.tsx
 │     │  │  │  ├─ drawer.tsx
-│     │  │  │  └─ drawerController.tsx
+│     │  │  │  ├─ drawerController.tsx
+│     │  │  │  └─ TEMP.md
 │     │  │  └─ hooks
 │     │  │     └─ useDrawer.tsx
 │     │  └─ types.tsx

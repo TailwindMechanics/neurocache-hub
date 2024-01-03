@@ -4,9 +4,10 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import { getConciergeAgent } from "@modules/Agents/External/Server/actions";
-import { Composer, DivAtom, TextAreaPreset } from "@modules/Composer";
 import { useAgentStore } from "@modules/Agents/External/agentStore";
+import { Composer, DivAtom } from "@modules/Composer";
 import { ChatMessage } from "@modules/Drawer/types";
+import { ChatInputField } from "./chatInputField";
 
 const ChatFrame = new Composer("ConciergeChatFrame", DivAtom)
     .withStyle("justify-between")
@@ -31,15 +32,6 @@ const ChatLine = new Composer("ConciergeChatBubble", DivAtom)
     .withStyle("flex")
     .withStyle("mx-1")
     .withStyle("mt-1")
-    .build();
-const TextArea = new Composer("ConciergeAgentInput", TextAreaPreset)
-    .withStyle("font-semibold")
-    .withStyle("leading-snug")
-    .withStyle("resize-none")
-    .withStyle("text-start")
-    .withStyle("rounded-lg")
-    .withStyle("border-2")
-    .withStyle("text-xl")
     .build();
 
 interface RemoteUserChatLineProps {
@@ -185,13 +177,28 @@ const ConciergeChat: FC = React.memo(() => {
         undefined,
     );
 
+    const onChatSubmit = (input: string) => {
+        const newMessage: ChatMessage = {
+            content: input,
+            id: "",
+            channel_id: "",
+            agent_author_id: null,
+            type: "",
+            status: null,
+            created_at: "",
+            user_author_id: "you",
+        };
+
+        if (chatHistory) {
+            setChatHistory([newMessage, ...chatHistory]);
+        }
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             const fetchedHistory = await getConciergeAgent();
             if (fetchedHistory) {
                 setChatHistory(fetchedHistory.chatHistory);
-                console.log(fetchedHistory.agent);
-
                 setConciergeAgent(fetchedHistory.agent);
             }
         };
@@ -234,7 +241,7 @@ const ConciergeChat: FC = React.memo(() => {
                     )}
                 </ChatArea>
                 <div className="mx-1">
-                    <TextArea />
+                    <ChatInputField onSubmit={onChatSubmit} />
                 </div>
             </ChatFrame>
         </>
